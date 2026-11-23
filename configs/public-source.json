@@ -159,6 +159,10 @@
     "examples/native-plane-control/prediction-v01.png": "cc-original",
     "examples/native-plane-control/rgb-error-v01.png": "cc-original",
     "examples/native-plane-control/v01-L2-vision-ft-state.png": "cc-original",
+    "examples/offset-bell-cage/m4-target-v01.png": "cc-original",
+    "examples/offset-bell-cage/origins.json": "cc-original",
+    "examples/offset-bell-cage/reference-v01.png": "cc-original",
+    "examples/offset-bell-cage/source-s00.png": "cc-original",
     "examples/study-figures/README.md": "cc-original",
     "examples/study-figures/paired-changes.png": "cc-original",
     "examples/study-figures/risk-coverage-B0.png": "cc-original",
@@ -285,16 +289,19 @@
     "scripts/stage2_reference.py": "apache-original",
     "scripts/stage2_reference_catalog.py": "apache-original",
     "scripts/stage2_register_reference.py": "apache-original",
+    "scripts/stage3_acquisition_costs.py": "apache-original",
     "scripts/stage3_budget.py": "apache-original",
     "scripts/stage3_canary.py": "apache-original",
     "scripts/stage3_case_replay.py": "apache-original",
     "scripts/stage3_intake.py": "apache-original",
     "scripts/stage3_intake_audit.py": "apache-original",
     "scripts/stage3_jobs.py": "apache-original",
+    "scripts/stage3_open_references.py": "apache-original",
     "scripts/stage3_opening.py": "apache-original",
     "scripts/stage3_postreview.py": "apache-original",
     "scripts/stage3_public_blend.py": "apache-original",
     "scripts/stage3_public_case.py": "apache-original",
+    "scripts/stage3_reconstruction_ledger.py": "apache-original",
     "scripts/stage3_reference.py": "apache-original",
     "scripts/stage3_register_reference.py": "apache-original",
     "scripts/stage3_registration_worker.py": "apache-original",
@@ -448,6 +455,7 @@
     "tests/test_stage2_process.py": "apache-original",
     "tests/test_stage2_reference.py": "apache-original",
     "tests/test_stage3_acquisition.py": "apache-original",
+    "tests/test_stage3_acquisition_ledger.py": "apache-original",
     "tests/test_stage3_distribution.py": "apache-original",
     "tests/test_stage3_gate.py": "apache-original",
     "tests/test_stage3_input_qa.py": "apache-original",
@@ -503,6 +511,21 @@
       "format": "rgb8-png",
       "bytes": 4156,
       "sha256": "fec323ae18774814dfd66a0c98bbe429503566e41a773a3e6b1dff7ea09b5d6e"
+    },
+    "examples/offset-bell-cage/m4-target-v01.png": {
+      "format": "rgb8-png",
+      "bytes": 38740,
+      "sha256": "40433b03729b97fb1733c8d6c92f0518c91a4836552bc0c7970e0ece1db61c82"
+    },
+    "examples/offset-bell-cage/reference-v01.png": {
+      "format": "rgb8-png",
+      "bytes": 36826,
+      "sha256": "fcfdb64c609d4cfd76b5d60de52feed5fddf7497fbbb5cf88914f251df366396"
+    },
+    "examples/offset-bell-cage/source-s00.png": {
+      "format": "rgb8-png",
+      "bytes": 35749,
+      "sha256": "0f5997191125d2360cbf4946e22ea391da8e8539a0e15398915d121307c2b61b"
     },
     "examples/study-figures/paired-changes.png": {
       "format": "rgb8-png",

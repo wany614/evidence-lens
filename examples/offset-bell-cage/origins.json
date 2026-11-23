@@ -1,0 +1,45 @@
+{
+  "family": "scene_057_offset_bell_cage",
+  "split": "development",
+  "condition": "M4",
+  "registered_for_public_example": true,
+  "attribution": "wany614",
+  "members": [
+    {
+      "file": "source-s00.png",
+      "release_example_member": "CASE/M4/sources/s00.png",
+      "source": {
+        "manifest_sha256": "746df66da8aee2cfdcf2de1981e731f9e488cd128a76458b4b4ea7e2eaa218fa",
+        "member": "payload/CASE/M4/sources/s00.png",
+        "run_id": "20261123T162553037969Z-c6c429e1d8704905",
+        "sha256": "0f5997191125d2360cbf4946e22ea391da8e8539a0e15398915d121307c2b61b"
+      },
+      "bytes": 35749,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "m4-target-v01.png",
+      "release_example_member": "CASE/M4/predictions/v01.png",
+      "source": {
+        "manifest_sha256": "746df66da8aee2cfdcf2de1981e731f9e488cd128a76458b4b4ea7e2eaa218fa",
+        "member": "payload/CASE/M4/predictions/v01.png",
+        "run_id": "20261123T162553037969Z-c6c429e1d8704905",
+        "sha256": "40433b03729b97fb1733c8d6c92f0518c91a4836552bc0c7970e0ece1db61c82"
+      },
+      "bytes": 38740,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "reference-v01.png",
+      "release_example_member": "REFERENCE/reference/v01.png",
+      "source": {
+        "manifest_sha256": "746df66da8aee2cfdcf2de1981e731f9e488cd128a76458b4b4ea7e2eaa218fa",
+        "member": "payload/REFERENCE/reference/v01.png",
+        "run_id": "20261123T162553037969Z-c6c429e1d8704905",
+        "sha256": "fcfdb64c609d4cfd76b5d60de52feed5fddf7497fbbb5cf88914f251df366396"
+      },
+      "bytes": 36826,
+      "license": "CC-BY-4.0"
+    }
+  ]
+}

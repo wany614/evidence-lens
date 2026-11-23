@@ -67,3 +67,8 @@ __pycache__/
 !/examples/vision-study-figures/new_confirmation-B0.png
 !/examples/vision-study-figures/new_confirmation-Q1.png
 !/examples/vision-study-figures/new_confirmation-R1.png
+
+# Authored Stage C development example listed in configs/public-source.json.
+!/examples/offset-bell-cage/source-s00.png
+!/examples/offset-bell-cage/m4-target-v01.png
+!/examples/offset-bell-cage/reference-v01.png
