@@ -2,6 +2,7 @@
 import argparse
 from collections import Counter
 import fcntl
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -14,6 +15,7 @@ from evidence_lens._bundle import encoded,load,sha
 from evidence_lens._verify import require,verify_bundle
 from evidence_lens.archive import receive
 from make_handoff import publish
+from stage3_postreview import audit as postreview_audit
 from stage3_reference import family_info,located
 
 
@@ -159,6 +161,35 @@ def authenticate_render(root,job,pred_owner,rec,audit):
     return {'views':totals,'depth_probe_sha256':m['depth_probe_sha256'],'stage_seconds':m['stage_seconds'],'runtime':m['runtime']}
 
 
+def published_attempts(selection,received,job_sha):
+    previous={v['run_id']:v for v in selection['attempts']}
+    for kind in ('generation','render'):
+        for receipt in received.get((job_sha,kind),()):
+            attempt=previous.get(receipt['run'])
+            require(attempt is not None,'Additional return after selection requires explicit review; original remains immutable')
+            require((receipt['manifest_sha256'],receipt['status'],kind,receipt['sha256'])==
+                    (attempt['manifest_sha256'],attempt['status'],attempt['stage'],attempt['return_sha256']),
+                    'Received attempt changed after its immutable selection')
+
+
+def publish_postreview(store,selection,chosen,job,gauss):
+    digest=hashlib.sha256(encoded(chosen)).hexdigest()
+    if selection.exists():
+        require(sha(selection)==digest,'Noncanonical selection bytes')
+    audit=postreview_audit(store,chosen,job,digest,gauss)
+    publish(selection.parent/'postreview-input-audit.json',encoded(audit))
+
+
+def retry_predecessor_pending(archive,store):
+    with zipfile.ZipFile(archive) as z:
+        previous=json.loads(z.read('run.json')).get('retry_of_run_id')
+    if not previous:
+        return False
+    from evidence_lens._bundle import RUN_ID
+    require(isinstance(previous,str) and RUN_ID.fullmatch(previous),'Invalid original ID of returned retry')
+    return not any((s/'runs'/previous/'manifest.json').is_file() for s in (store,store.parent/'cold-shelf'))
+
+
 def intake(a):
     store,assets,project,returns=a.store.resolve(),a.assets.resolve(),a.project.resolve(),a.returns.resolve()
     require(sha(a.batch)==a.batch_sha256,'Batch selection digest differs')
@@ -190,6 +221,8 @@ def intake(a):
             if selection.exists():
                 old=load(selection)
                 require(old['job_sha256']==jsha,'Existing selection belongs to a different dispatch')
+                published_attempts(old,received,jsha)
+                publish_postreview(store,selection,old,j,gauss)
                 result[tid]=old['selection_status'];continue
             selected={};attempts=[];reports={};pending=None;pre=None
             for kind in ('generation','render'):
@@ -206,6 +239,8 @@ def intake(a):
                         x=load(marker)
                         require(x['manifest_sha256']==p['manifest_sha256'] and x['container_sha256']==er['sha256'],'Prior transfer differs')
                     else:
+                        if retry_predecessor_pending(zipname,store):
+                            pending='waiting_for_retry_parent';continue
                         x=receive(zipname,store,er['sha256'],project/'configs/storage.json',shelf=store.parent/'cold-shelf')
                         if x['status']=='deferred_capacity':
                             pending='waiting_capacity';break
@@ -238,6 +273,7 @@ def intake(a):
             chosen.update(job_sha256=jsha,batch_sha256=a.batch_sha256,attempts=attempts,numerical_readback=reports,
                           production_budget=j.get('production_budget'),optimizer_sha256=j['files']['optimization.json']['sha256'],
                           optimization_steps=j['optimization_steps'],worker_sha256=j['worker_sha256'])
+            publish_postreview(store,selection,chosen,j,gauss)
             publish(selection,encoded(chosen))
             result[tid]=chosen['selection_status']
     return result
