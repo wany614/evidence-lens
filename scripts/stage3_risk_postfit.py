@@ -22,6 +22,12 @@ SCIENTIFIC = {
     "development": ("evaluation", "evaluation.json", "stage3-risk-development-evaluation", 190_000_000),
     "example": ("derivation", "expected-example.json", "stage3-public-expected-example", 75_000_000),
     "parity": ("archive_verify", "parity.json", "stage3-native-risk-parity", 2_000_000),
+    "pixel-replay": (
+        "archive_verify",
+        "pixel-replay.json",
+        "stage3-independent-heldout-pixel-replay",
+        2_000_000,
+    ),
     "joint-report": ("report", "report.json", "stage3-joint-study-report", 25_000_000),
     "confirmation": ("evaluation", "evaluation.json", "stage3-risk-test-evaluation", 200_000_000),
 }
@@ -52,6 +58,8 @@ def verified_selection(roots, state, name):
 
 
 def formal_candidates(roots, path, sha, train_sha, dev_sha):
+    from evidence_lens.stage3_decision import validate_fit_origin
+
     d = signed(path, sha)
     require(
         d["schema"] == "el-stage3-risk-candidate-roster-1"
@@ -74,9 +82,9 @@ def formal_candidates(roots, path, sha, train_sha, dev_sha):
         model, ms = json_member(r, "payload/package/model.json")
         score, ss = json_member(r, "payload/development-scores/scores.json")
         w = member(r, "payload/package/weights.safetensors", j["weights_sha256"])[1]
+        validate_fit_origin(r, roots[0], roots[1])
         require(
-            r.run["run_kind"] == "model_fit"
-            and r.run["execution_status"] == "succeeded"
+            r.run["execution_status"] == "succeeded"
             and j["schema"] == "el-multisource-risk-training-1"
             and j["phase"] == "formal"
             and j["status"] == "completed"
@@ -308,7 +316,7 @@ class Post:
             ("test_baselines", "score-test"),
         ):
             add(key, *chosen(self.roots, self.base, action))
-        for key in ("selection", "development", "example", "parity", "confirmation"):
+        for key in ("selection", "development", "example", "parity", "confirmation", "pixel-replay"):
             add(key, *verified_selection(self.roots, self.state, key))
         for m in METHODS:
             add("native_" + m, *verified_selection(self.roots, self.state, "native-" + m))
@@ -455,6 +463,56 @@ class Post:
                 "4",
             ]
             return self.record(action, [modelp, p, mk["method"]], roles, args, exe=str(self.cpu), retry=retry)
+        if action == "pixel-replay":
+            from evidence_lens.stage3_gate import require_opening
+
+            require(opening, "explicit held-out opening digest required")
+            marker = require_opening(store, CATALOG, opening_sha256=opening, shelf=shelf)
+            ep, er, erec = verified_selection(self.roots, self.state, "confirmation")
+            dp, dr, drec = chosen(self.roots, self.base, "data-test")
+            bp, br, _ = chosen(self.roots, self.base, "score-test")
+
+            def spec(p, r, path):
+                return {
+                    **compact_pin(p),
+                    "member": path.relative_to(r.root).as_posix(),
+                    "sha256": file_hash(path),
+                }
+
+            req = {
+                "schema": "el-stage3-confirmation-replay-request-1",
+                "opening_sha256": opening,
+                "dataset": spec(dp, dr, drec),
+                "evaluation": spec(ep, er, erec),
+                "scores": {},
+            }
+            roles = {"dataset": (drec, dp), "evaluation": (erec, ep)}
+            parents = [ep, dp, bp, marker["method"]]
+            for m in METHODS:
+                if m in METHODS[:2]:
+                    p, r, path = bp, br, br.open("payload/" + m + "/scores.json")
+                else:
+                    p, r, path = verified_selection(self.roots, self.state, "test-" + m)
+                    parents.append(p)
+                roles["scores_" + m] = (path, p)
+                req["scores"][m] = spec(p, r, path)
+            request = folder / "pixel-originals.json"
+            publish(request, req)
+            roles["request"] = (request, None)
+            argv = [
+                "stage3_risk_replay.py",
+                "--store",
+                str(store),
+                "--shelf",
+                str(shelf),
+                "--opening-sha256",
+                opening,
+                "--request",
+                "{input:request}",
+                "--request-sha256",
+                file_hash(request),
+            ]
+            return self.record(action, parents, roles, argv, retry=retry)
         if action == "confirmation":
             from evidence_lens.stage3_gate import require_opening
 

@@ -178,7 +178,7 @@ def verify_method_sources(store, shelf, method, direct):
 
     selection, thresholds, lightweight = (load(paths[k]) for k in ("neural_selection", "thresholds", "lightweight_development"))
     check_selection(method, study, selection, thresholds, lightweight)
-    roster = check_neural_fits(method, study, thresholds, original)
+    roster = check_neural_fits(method, study, thresholds, original, store, shelf)
     check_independent_readbacks(method, study, roster, load(paths["tensor_comparison"]), load(paths["cpu_validation"]), original)
 
 

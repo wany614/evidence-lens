@@ -327,6 +327,15 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         s.append(
             f"| {f} | {z['paired_E']:,} | {z['paired_Z']:,} | {v(d['rgb_mae'])} | {v(d['rgb_error_fraction'], True)} | {v(d['depth_mae_m'])} |"
         )
+    recovered = [r for r in learn["neural_candidates"] if r["optimizer_steps_in_this_record"] == 0]
+    if recovered:
+        rr = recovered[0]
+        s.extend(
+            [
+                "",
+                f"The original Windows {rr['method']} fit with seed {rr['seed']} completed {rr['optimizer_steps']} optimizer steps, then failed its deployment-schema export. The Mac recovery performed zero additional updates and inherited the exact selected weights and all 48 Windows score-all arrays. M2 score-two uses the same two sources and bytes. The remaining smaller-source maps were scored on the Mac CPU. The three other pairs of method and seed produced all development scope scores on Windows. [Export evidence](engineering-and-failures.json)",
+            ]
+        )
     budget = acquisition["production"]
     eng = acquisition["engineering"]
     s += [
@@ -339,7 +348,7 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         "",
         f"The acquisition ledger contains {budget['trials']} scientific reconstructions and {eng['trials']} engineering reconstructions, including the extra engineering repeat. Separate recorder intervals can overlap. The recorded sums represent stage workloads. CUDA allocation and reservation counters describe the framework allocator. Device capacity and any available driver samples have separate fields. [Scientific and engineering resource ledger](acquisition-costs.json) · [Selected recorder stages](stage-receipts.csv) · [Recovery and missing observations](engineering-and-failures.json)",
         "",
-        f"Four held-out families support a paired descriptive comparison. Counts and per-family outcomes show the range that the macro averages combine. The accompanying public example uses the preregistered development family {case['family']} and its six target cameras under each reconstruction. [Scientific provenance](provenance.json) · [Held-out table checksums](confirmation-manifest.json)",
+        f"Four held-out families support a paired descriptive comparison. Counts and per-family outcomes show the range that the macro averages combine. The accompanying public example uses the preregistered development family {case['family']} and its six target cameras under each reconstruction. [Independent raw-pixel and scikit-learn AP check](heldout-pixel-recheck.json) · [Scientific provenance](provenance.json) · [Held-out table checksums](confirmation-manifest.json)",
     ]
     return "\n".join(s) + "\n"
 
@@ -376,6 +385,16 @@ def run_report(roots, request, opening, out, rid):
     dv, de = secondary("development")
     _, sel = secondary("selection")
     _, parity = secondary("parity")
+    _, pixel = secondary("pixel-replay")
+    require(
+        pixel["schema"] == "el-stage3-raw-confirmation-replay-1"
+        and pixel["passed"]
+        and pixel["method_sha256"] == mk["method_sha256"]
+        and pixel["opening_sha256"] == opening
+        and compact_pin(pixel["original_evaluation"]) == compact_pin(held.pin)
+        and pixel["original_evaluation"]["sha256"] == sources["confirmation"]["sha256"],
+        "independent heldout validation uses another original or method",
+    )
     _, ex = secondary("example")
     _, fit = secondary("fit")
     br, baseline = secondary("baseline_development")
@@ -449,11 +468,48 @@ def run_report(roots, request, opening, out, rid):
                 },
             }
         )
+    from evidence_lens.stage3_decision import validate_fit_origin
+
     candidates = []
+    neural_recoveries = []
+    actual_optimizer_steps = {}
     for k, spec in sorted(request["sources"].items()):
         if not k.startswith("candidate_"):
             continue
         r, t = take(k, spec)
+        validate_fit_origin(r, roots[0], roots[1])
+        if r.run["run_kind"] == "derivation":
+            opt_pin = compact_pin(t["optimization_parent"])
+            failed = find_run(roots, opt_pin)
+            require(
+                t["optimizer_steps_in_this_record"] == 0
+                and t["optimizer_steps"] > 0
+                and failed.run["execution_status"] == "failed",
+                "incorrect recovery work accounting",
+            )
+            roles.setdefault(opt_pin["run_id"], []).append("original_neural_optimization_and_export_failure")
+            runs[opt_pin["run_id"]] = failed
+            actual_optimizer_steps[opt_pin["run_id"]] = t["optimizer_steps"]
+            actual_optimizer_steps[r.pin["run_id"]] = 0
+            neural_recoveries.append(
+                {
+                    "scope": "neural export",
+                    "status": "failed",
+                    "source": opt_pin,
+                    "recovered_by": compact_pin(r.pin),
+                    "original_optimizer_steps": t["optimizer_steps"],
+                    "additional_optimizer_steps": 0,
+                    "original_exit_code": failed.run["exit_code"],
+                    "reason": "The Windows optimization completed and its deployment export failed the schema-order check. The Mac derivation reused the exact selected weights and Windows score-all maps.",
+                    "development_scoring": {
+                        "windows": "M2/all (byte-identical to M2/two), M4/all",
+                        "mac_cpu": "M2/one; M4/one and M4/two",
+                    },
+                }
+            )
+        else:
+            opt_pin = compact_pin(r.pin)
+            actual_optimizer_steps[r.pin["run_id"]] = t["optimizer_steps"]
         pr, pps = json_member(r, "payload/independent-proof/verified-updates.json")
         require(
             t["phase"] == "formal"
@@ -494,6 +550,15 @@ def run_report(roots, request, opening, out, rid):
         row.update(
             **compact_pin(r.pin), scientific_member_sha256=spec["sha256"], tensor_proof_sha256=pps["sha256"]
         )
+        row.update(
+            optimization_parent=opt_pin,
+            optimizer_steps_in_this_record=actual_optimizer_steps[r.pin["run_id"]],
+            development_score_producer=(
+                "Windows score-all reused; smaller new scopes from a Mac CPU derivation"
+                if r.run["run_kind"] == "derivation"
+                else "Windows"
+            ),
+        )
         candidates.append(row)
     require(
         {(r["method"], r["seed"]) for r in candidates} == {(m, s) for m in METHODS[2:] for s in (1729, 2718)}
@@ -507,7 +572,7 @@ def run_report(roots, request, opening, out, rid):
     sources["method_freeze"] = proof(freeze, "payload/method-freeze.json", mk["method_sha256"])
     roles.setdefault(freeze.pin["run_id"], []).append("method_freeze")
     runs[freeze.pin["run_id"]] = freeze
-    failures = []
+    failures = list(neural_recoveries)
     correction = load(br.open("config.resolved.yaml")).get("engineering_correction")
     if correction:
         fr = find_run(roots, correction["previous_failed"])
@@ -567,12 +632,30 @@ def run_report(roots, request, opening, out, rid):
                         "code_snapshot_sha256",
                     )
                 },
+                "actual_optimizer_steps_in_this_record": actual_optimizer_steps.get(key),
                 "logical_payload_bytes": sum(
                     v["bytes"] for n, v in r.files.items() if n.startswith("payload/")
                 ),
             }
         )
     cands = sorted(candidates, key=lambda x: (x["seed"], x["method"]))
+    recovered_primary = {
+        q["method"]
+        for q in cands
+        if q["seed"] == method["primary_seed"] and q["optimizer_steps_in_this_record"] == 0
+    }
+    for q in nr:
+        m = q["method"]
+        c = q["condition"]
+        scope = q["scope"]
+        if m in METHODS[:2]:
+            producer = "Mac CPU baseline"
+        elif m in recovered_primary and scope != "all" and (c, scope) != ("M2", "two"):
+            producer = "Mac CPU terminal-export recovery"
+        else:
+            producer = "Windows CUDA"
+        q["original_score_platform"] = producer
+        q["repeat_score_platform"] = "Mac CPU native source-to-score"
     lp = (
         "status",
         "reason",
@@ -623,6 +706,9 @@ def run_report(roots, request, opening, out, rid):
             },
         )
         write_json(pub / "training-and-selection.json", learn)
+        public_grade = {k: v for k, v in pixel.items() if k not in {"per_view_records"}}
+        public_grade["original_per_view_row_count"] = len(pixel["per_view_records"])
+        write_json(pub / "heldout-pixel-recheck.json", public_grade)
         table(pub / "mac-native-and-qa.csv", nr)
         write_json(
             pub / "neural-cpu-cost.json", {"schema": "el-stage3-public-neural-cpu-costs-1", "cases": cpu_cost}
@@ -646,7 +732,8 @@ def run_report(roots, request, opening, out, rid):
                 "schema": "el-stage3-engineering-and-failures-1",
                 "observed": failures,
                 "acquisition_failed_attempts": len(acquisition_attempts),
-                "packaging_failures": int(correction is not None),
+                "lightweight_threshold_packaging_failures": int(correction is not None),
+                "neural_export_failures": len(neural_recoveries),
                 "scientific_dispositions": he["dispositions"],
                 "coverage": "Acquisition attempt failures, recorded learning packaging correction and formal scientific target return counts are separate.",
             },

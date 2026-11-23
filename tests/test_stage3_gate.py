@@ -11,6 +11,19 @@ from evidence_lens.stage3_gate import require_opening
 CAT = "b" * 64
 
 
+def test_failed_fit_or_an_unrelated_derivation_cannot_supply_deployment_weights(tmp_path):
+    from types import SimpleNamespace
+    from evidence_lens.stage3_decision import validate_fit_origin
+
+    for status, experiment, message in (
+        ("failed", "stage3-risk-neural-fit", "did not succeed"),
+        ("succeeded", "some-other-recovery", "Unrecognized multisource"),
+    ):
+        run = SimpleNamespace(run={"execution_status": status, "run_kind": "derivation", "experiment_id": experiment})
+        with pytest.raises(BundleError, match=message):
+            validate_fit_origin(run, tmp_path, None)
+
+
 def test_ordinary_folder_or_wrong_index_does_not_open_test(tmp_path):
     with pytest.raises(BundleError, match="still sealed"):
         require_opening(tmp_path, CAT)

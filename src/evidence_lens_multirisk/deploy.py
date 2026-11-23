@@ -85,8 +85,8 @@ def export(model, directory, prep_path, schema_path, upstream_index, identity, t
     }
     require(set(files) == PACKAGE_MEMBERS, "unexpected release file in trained package")
     idx = {
-        "schema": "el-multisource-risk-model-1",
         **identity,
+        "schema": "el-multisource-risk-model-1",
         "threshold": float(threshold),
         "files": files,
         "precision": "float32",

@@ -1,10 +1,87 @@
 """Authenticate a four-method operating decision before admitting the held-out cohort."""
 
 import math
+from pathlib import Path
 from statistics import mean
 
 from ._bundle import HASH, load
-from ._verify import require
+from ._verify import parent_directory, require
+from .formal_inputs import PinnedRun
+
+
+# The sole interrupted optimizer admitted by the registered four-fit comparison.
+INTERRUPTED = {
+    "run_id": "20261123T163117676676Z-81c14259dee84abf",
+    "manifest_sha256": "2f811f866d6581f846484f089ddbeb9c36239499e213af0fff338243c149e536",
+}
+TERMINAL_WEIGHTS = "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+TERMINAL_STATE = "8df402a3d8170c39bc9b1decd531f7dd5e2ff7e3a13a5fcb90030505a808bae9"
+
+
+def validate_fit_origin(run, store, shelf):
+    """Attribute optimizer updates to a sealed training run, including the documented export recovery."""
+    require(run.run["execution_status"] == "succeeded", "The deployable producer did not succeed")
+    kind = (run.run["run_kind"], run.run["experiment_id"])
+    require(kind in {("model_fit", "stage3-risk-neural-fit"), ("derivation", "stage3-terminal-export-recovery")},
+            "Unrecognized multisource fit producer")
+    fit = load(run.open("payload/training.json"))
+    proof = load(run.open("payload/independent-proof/verified-updates.json"))
+    steps = fit["optimizer_steps"]
+    require(fit["schema"] == "el-multisource-risk-training-1" and fit["phase"] == proof["phase"] == "formal"
+            and fit["run_id"] == proof["run_id"] == run.pin["run_id"] and type(steps) is int
+            and steps == proof["optimizer_steps"] and steps > 0
+            and fit["weights_sha256"] == proof["weights_sha256"] == run.files["payload/package/weights.safetensors"]["sha256"],
+            "The training evidence and deployable parameters differ")
+    if kind[0] == "model_fit":
+        return {"kind": "native_training", "optimizer_run": run.pin, "export_run": run.pin,
+                "optimizer_steps": steps, "optimizer_steps_in_this_record": steps}
+
+    def pinned(pin):
+        parent = parent_directory(Path(store).resolve(), pin, Path(shelf).resolve() if shelf else None)
+        return PinnedRun(parent.parent.parent, pin)
+
+    recovery = load(run.open("payload/recovery.json"))
+    require(recovery["schema"] == "el-stage3-terminal-export-recovery-1" and recovery["run_id"] == fit["run_id"]
+            and fit["recovery_sha256"] == run.files["payload/recovery.json"]["sha256"]
+            and recovery["optimization_parent"] == fit["optimization_parent"] == INTERRUPTED
+            and (fit["method"], fit["seed"]) == ("MS-frozen", 1729)
+            and fit["optimizer_steps_in_this_record"] == recovery["optimizer_steps_in_this_record"] == 0
+            and steps == recovery["optimizer_steps_on_original"] == 288
+            and fit["weights_sha256"] == recovery["original_weights_sha256"] == TERMINAL_WEIGHTS
+            and recovery["terminal_checkpoint_sha256"] == TERMINAL_STATE, "Incorrect terminal optimizer recovery")
+    receipt = recovery["terminal_readback"]
+    cpin = {k: receipt[k] for k in ("run_id", "manifest_sha256")}
+    require(cpin in load(run.open("inputs.json"))["parents"] and receipt["member"] == "payload/terminal-optimization.json",
+            "Missing direct readback of the interrupted optimizer")
+    certificate = pinned(cpin)
+    doc = load(certificate.open(receipt["member"]))
+    require(certificate.files[receipt["member"]]["sha256"] == receipt["sha256"]
+            and certificate.run["execution_status"] == "succeeded" and certificate.run["run_kind"] == "archive_verify"
+            and certificate.run["experiment_id"] == "stage3-terminal-optimization-readback"
+            and doc["schema"] == "el-stage3-terminal-optimization-readback-1" and doc["run_id"] == cpin["run_id"]
+            and doc["optimization_parent"] == INTERRUPTED and doc["optimizer_steps"] == steps
+            and doc["original_weights_sha256"] == TERMINAL_WEIGHTS and doc["terminal_checkpoint_sha256"] == TERMINAL_STATE
+            and doc["validated_tensors"] == recovery["verified_terminal_tensors"] == 181,
+            "The terminal readback does not certify the selected checkpoint")
+    original = pinned(INTERRUPTED)
+    require(original.run["execution_status"] == "failed" and original.run["run_kind"] == "model_fit"
+            and original.run["experiment_id"] == "stage3-risk-neural-fit", "The interrupted optimization seal differs")
+    copies = {n: n for n in ("curves.json", "initialization.json", "gradient-witnesses.json", "parameter-changes.json",
+                              "initial-head.safetensors", "development.json", "training-state.pt", "package/weights.safetensors")}
+    copies.update({"setup.json": "optimization-original/setup.json", "package/model.json": "optimization-original/broken-model.json"})
+    prefix = "payload/fit/development-scores/"
+    maps = [n.removeprefix("payload/fit/") for n in original.files if n.startswith(prefix) and "/all/" in n and n.endswith(".npz")]
+    require(len(maps) == recovery["original_all_scope_maps"] == 48, "The original development maps are incomplete")
+    copies.update({n: n for n in maps})
+    for before, after in copies.items():
+        a, b = "payload/fit/" + before, "payload/" + after
+        original.open(a)
+        run.open(b)
+        require(original.files[a]["sha256"] == run.files[b]["sha256"], "An original optimizer product changed: " + before)
+    require(original.files["payload/fit/training-state.pt"]["sha256"] == TERMINAL_STATE,
+            "The archived checkpoint differs from the certified checkpoint")
+    return {"kind": "terminal_export_recovery", "optimizer_run": INTERRUPTED.copy(), "export_run": run.pin,
+            "optimizer_steps": steps, "optimizer_steps_in_this_record": 0, "terminal_readback": cpin}
 
 
 def check_selection(method, study, selected, cutoffs, light):
@@ -65,7 +142,7 @@ def check_selection(method, study, selected, cutoffs, light):
             and expected == decision["default"] == method["default_method"], "Selected default violates the registered rule")
 
 
-def check_neural_fits(method, study, cutoffs, original):
+def check_neural_fits(method, study, cutoffs, original, store, shelf):
     """Recheck each fit against its recorded model and native gradient verification."""
     dev = method["components"]["development_dataset"]["sha256"]
     train = method["components"]["training_dataset"]["sha256"]
@@ -75,10 +152,10 @@ def check_neural_fits(method, study, cutoffs, original):
         for name in study["neural"]["branches"]:
             selected = cutoffs["all_seed_models"][str(seed)][name]
             run = original(selected["model_id"])
+            validate_fit_origin(run, store, shelf)
             fit = load(run.open("payload/training.json"))
             proof = load(run.open("payload/independent-proof/verified-updates.json"))
-            require(run.run["run_kind"] == "model_fit" and run.run["experiment_id"] == "stage3-risk-neural-fit"
-                    and fit["phase"] == proof["phase"] == "formal" and fit["run_id"] == proof["run_id"] == selected["model_id"]
+            require(fit["phase"] == proof["phase"] == "formal" and fit["run_id"] == proof["run_id"] == selected["model_id"]
                     and fit["method"] == proof["method"] == name and fit["seed"] == proof["seed"] == seed
                     and fit["schema"] == "el-multisource-risk-training-1" and proof["schema"] == "el-verified-multisource-update-1",
                     "Unrecognized formal paired neural fit")
