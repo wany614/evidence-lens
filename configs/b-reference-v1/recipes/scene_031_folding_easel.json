@@ -1,0 +1,173 @@
+{
+  "objects": [
+    {
+      "axis": [
+        0.296,
+        0.34,
+        0.785
+      ],
+      "center": [
+        -0.222,
+        -0.02,
+        0.4075
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Easel leg -0.37",
+      "primitive": "rod",
+      "radius": 0.037
+    },
+    {
+      "axis": [
+        -0.296,
+        0.34,
+        0.785
+      ],
+      "center": [
+        0.222,
+        -0.02,
+        0.4075
+      ],
+      "id": 11,
+      "material": "timber",
+      "name": "Easel leg 0.37",
+      "primitive": "rod",
+      "radius": 0.037
+    },
+    {
+      "axis": [
+        -0.14,
+        -0.29,
+        0.755
+      ],
+      "center": [
+        0.06,
+        0.295,
+        0.3925
+      ],
+      "id": 12,
+      "material": "legs",
+      "name": "Rear kickstand",
+      "primitive": "rod",
+      "radius": 0.036
+    },
+    {
+      "center": [
+        -0.01,
+        0.01,
+        0.52
+      ],
+      "id": 13,
+      "material": "cream",
+      "name": "Canvas",
+      "primitive": "box",
+      "rotation_deg": [
+        -12,
+        0,
+        3
+      ],
+      "size": [
+        0.61,
+        0.043,
+        0.49
+      ]
+    },
+    {
+      "center": [
+        -0.01,
+        -0.095,
+        0.31
+      ],
+      "id": 14,
+      "material": "blue",
+      "name": "Canvas ledge",
+      "primitive": "box",
+      "size": [
+        0.82,
+        0.14,
+        0.06
+      ]
+    },
+    {
+      "center": [
+        -0.12,
+        -0.03,
+        0.55
+      ],
+      "id": 15,
+      "material": "terracotta",
+      "name": "Colour field",
+      "primitive": "box",
+      "rotation_deg": [
+        -12,
+        0,
+        3
+      ],
+      "size": [
+        0.2,
+        0.018,
+        0.15
+      ]
+    },
+    {
+      "center": [
+        0.32,
+        -0.31,
+        0.14
+      ],
+      "id": 16,
+      "material": "green",
+      "name": "Tray",
+      "primitive": "box",
+      "size": [
+        0.36,
+        0.25,
+        0.05
+      ]
+    },
+    {
+      "bottom_radius": 0.043,
+      "center": [
+        0.22,
+        -0.31,
+        0.2
+      ],
+      "depth": 0.09,
+      "id": 17,
+      "material": "blue",
+      "name": "Paint pot 0",
+      "primitive": "frustum",
+      "top_radius": 0.043
+    },
+    {
+      "bottom_radius": 0.043,
+      "center": [
+        0.34,
+        -0.31,
+        0.2
+      ],
+      "depth": 0.09,
+      "id": 18,
+      "material": "cream",
+      "name": "Paint pot 1",
+      "primitive": "frustum",
+      "top_radius": 0.043
+    },
+    {
+      "bottom_radius": 0.043,
+      "center": [
+        0.44,
+        -0.31,
+        0.2
+      ],
+      "depth": 0.09,
+      "id": 19,
+      "material": "terracotta",
+      "name": "Paint pot 2",
+      "primitive": "frustum",
+      "top_radius": 0.043
+    }
+  ],
+  "occlusion_description": "The broad angled canvas masks a rear kickstand while the low paint tray and paint bottles project in front.",
+  "title": "Folding easel and paint tray"
+}

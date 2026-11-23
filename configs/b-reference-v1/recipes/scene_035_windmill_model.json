@@ -1,0 +1,240 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.23,
+      "center": [
+        -0.09,
+        0.11,
+        0.34
+      ],
+      "depth": 0.67,
+      "id": 10,
+      "material": "cream",
+      "name": "Tower",
+      "primitive": "frustum",
+      "top_radius": 0.13
+    },
+    {
+      "bottom_radius": 0.18,
+      "center": [
+        -0.09,
+        0.11,
+        0.73
+      ],
+      "depth": 0.18,
+      "id": 11,
+      "material": "terracotta",
+      "name": "Roof",
+      "primitive": "frustum",
+      "top_radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.35,
+        0.0
+      ],
+      "center": [
+        -0.09,
+        -0.025,
+        0.55
+      ],
+      "id": 12,
+      "material": "dark",
+      "name": "Windshaft",
+      "primitive": "rod",
+      "radius": 0.041
+    },
+    {
+      "axis": [
+        0.324161,
+        0.0,
+        0.156588
+      ],
+      "center": [
+        0.07208,
+        -0.2,
+        0.628294
+      ],
+      "id": 13,
+      "material": "legs",
+      "name": "Sail spar 0",
+      "primitive": "rod",
+      "radius": 0.016
+    },
+    {
+      "center": [
+        0.13061,
+        -0.207,
+        0.656567
+      ],
+      "id": 14,
+      "material": "blue",
+      "name": "Sail panel 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -25.783100780887047,
+        0
+      ],
+      "size": [
+        0.22,
+        0.036,
+        0.088
+      ]
+    },
+    {
+      "axis": [
+        -0.156588,
+        0.0,
+        0.324161
+      ],
+      "center": [
+        -0.168294,
+        -0.2,
+        0.71208
+      ],
+      "id": 15,
+      "material": "legs",
+      "name": "Sail spar 1",
+      "primitive": "rod",
+      "radius": 0.016
+    },
+    {
+      "center": [
+        -0.196567,
+        -0.207,
+        0.77061
+      ],
+      "id": 16,
+      "material": "blue",
+      "name": "Sail panel 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -115.78310078088705,
+        0
+      ],
+      "size": [
+        0.22,
+        0.036,
+        0.088
+      ]
+    },
+    {
+      "axis": [
+        -0.324161,
+        0.0,
+        -0.156588
+      ],
+      "center": [
+        -0.25208,
+        -0.2,
+        0.471706
+      ],
+      "id": 17,
+      "material": "legs",
+      "name": "Sail spar 2",
+      "primitive": "rod",
+      "radius": 0.016
+    },
+    {
+      "center": [
+        -0.31061,
+        -0.207,
+        0.443433
+      ],
+      "id": 18,
+      "material": "blue",
+      "name": "Sail panel 2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -205.78310078088705,
+        0
+      ],
+      "size": [
+        0.22,
+        0.036,
+        0.088
+      ]
+    },
+    {
+      "axis": [
+        0.156588,
+        0.0,
+        -0.324161
+      ],
+      "center": [
+        -0.011706,
+        -0.2,
+        0.38792
+      ],
+      "id": 19,
+      "material": "legs",
+      "name": "Sail spar 3",
+      "primitive": "rod",
+      "radius": 0.016
+    },
+    {
+      "center": [
+        0.016567,
+        -0.207,
+        0.32939
+      ],
+      "id": 20,
+      "material": "blue",
+      "name": "Sail panel 3",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -295.7831007808871,
+        0
+      ],
+      "size": [
+        0.22,
+        0.036,
+        0.088
+      ]
+    },
+    {
+      "center": [
+        0.29,
+        0.14,
+        0.15
+      ],
+      "id": 21,
+      "material": "green",
+      "name": "Service shed",
+      "primitive": "box",
+      "size": [
+        0.37,
+        0.33,
+        0.3
+      ]
+    },
+    {
+      "center": [
+        0.29,
+        0.14,
+        0.325
+      ],
+      "id": 22,
+      "material": "timber",
+      "name": "Shed overhang",
+      "primitive": "box",
+      "rotation_deg": [
+        7,
+        0,
+        0
+      ],
+      "size": [
+        0.46,
+        0.4,
+        0.05
+      ]
+    }
+  ],
+  "occlusion_description": "Four broad radial sails cross a tapered tower and an attached low shed. The lower sail masks the tower entrance.",
+  "title": "Windmill model with service shed"
+}

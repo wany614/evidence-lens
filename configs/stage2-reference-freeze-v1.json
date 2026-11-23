@@ -1,0 +1,29 @@
+{
+  "catalog_path": "protocol/stage2-families-v1.json",
+  "catalog_sha256": "543adef7b3b3f0dbc11434738f5a7a6d4c6178622b63f452a5133eed6446dc79",
+  "common_source_files": {
+    "configs/formal-cameras-v1.json": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+    "configs/formal-scenes-v1.json": "82acab3ba09aed1d54f8f16f88b30552a349398aa5af3ca9e9cf25339dd66fe6",
+    "configs/reference.json": "111c0dbb28fd53839f2824d0d1cb58ad8ef69bb68c5df130ed56d1ba56420a60",
+    "protocol/families-v1.json": "fb7fabef06d006c992bc38cb03c283a41d90238e0b174664a1357f274bb36baa",
+    "scripts/formal_reference.py": "e884d05f630d0d9d21a4d5ab968dd8420ae20b1028b703665dda7ef4df753a58",
+    "src/evidence_lens/blender_reference/formal_catalog.py": "309973dbf756be607f2d1e9fbbcced4a1d190735d679e1bd2d1943e155b2c32d",
+    "src/evidence_lens/blender_reference/formal_designs.py": "154c22804e9c95087808bb614ce389616f309aaa0136f1a9f4cc6166d9199e5c",
+    "src/evidence_lens/blender_reference/passes.py": "420f20140d4061784bd02afd844a619c827417dd1d7b960d85451955d8d050cc",
+    "src/evidence_lens/blender_reference/produce.py": "ddadefb0848ff8069d753567607600888c3e5873de98dd21d7264281c8a3644d",
+    "src/evidence_lens/blender_reference/scene.py": "a0fe55000c0c1b903a8825b93a91496f359a634416679a835ac53fa189f882bc",
+    "src/evidence_lens/blender_reference/validation.py": "0fac806f84749e76e782d72c25fbf57c8728b1edea495214d7430331358e2d02",
+    "src/evidence_lens/blender_reference/verify_reference.py": "9cafd44db9df881c0e387a6cb2d9d060f6ec02f022bcbfa9a08704196b281a7e",
+    "src/evidence_lens/labels.py": "feeaa173848e8a8cb0da6c6f9c7a051a6d6cb4343024d558583c3c0b37131f1b"
+  },
+  "note": "Recipe file digests for all 24 are in the roster. Acquisition opens only the selected train/development recipe until the shared test-opening is authenticated.",
+  "registered_at_utc": "2026-11-23T12:19:43.145612Z",
+  "schema": "el-vision-reference-freeze-1",
+  "stage_files": {
+    "protocol/stage2-reference-v1.json": "b593e7ffd444d649f0de3077bf9c644f6ef0d19488983c2a0c8b0818186888e2",
+    "scripts/b_scene_designs.py": "3d0d8d5dcc836710e112bf3c14bcb5a593522b47f65b9182f1de5cdc63cc3214",
+    "scripts/stage2_reference.py": "570972cff1769dc77f695b6239c68ec3d09c03c8438e5dfc0884fd411789493f",
+    "scripts/stage2_reference_catalog.py": "4dd501826fccc752c9f0d04a1cfbbefde79e1154c5c9ff88f2d0dd8b6363ad97",
+    "scripts/stage2_register_reference.py": "628310c6af635bc8d1bd46515954d1976be90b0871e26ef0ee1b79912608b82a"
+  }
+}

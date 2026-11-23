@@ -1,0 +1,207 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.46,
+      "center": [
+        -0.06,
+        0.03,
+        0.035
+      ],
+      "depth": 0.07,
+      "id": 10,
+      "material": "timber",
+      "name": "Serving tray",
+      "primitive": "frustum",
+      "top_radius": 0.46
+    },
+    {
+      "center": [
+        -0.13,
+        0.08,
+        0.27
+      ],
+      "id": 11,
+      "material": "blue",
+      "name": "Squat teapot",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.23,
+        0.18,
+        0.2
+      ]
+    },
+    {
+      "bottom_radius": 0.12,
+      "center": [
+        -0.13,
+        0.08,
+        0.45
+      ],
+      "depth": 0.038,
+      "id": 12,
+      "material": "cream",
+      "name": "Lid",
+      "primitive": "frustum",
+      "top_radius": 0.12
+    },
+    {
+      "center": [
+        -0.13,
+        0.08,
+        0.49
+      ],
+      "id": 13,
+      "material": "terracotta",
+      "name": "Lid knob",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.037,
+        0.037,
+        0.031
+      ]
+    },
+    {
+      "center": [
+        -0.35,
+        0.09,
+        0.28
+      ],
+      "id": 14,
+      "major_radius": 0.115,
+      "material": "blue",
+      "minor_radius": 0.032,
+      "name": "Handle",
+      "primitive": "torus",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": [
+        0.23,
+        -0.02,
+        0.15
+      ],
+      "center": [
+        0.135,
+        0.04,
+        0.375
+      ],
+      "id": 15,
+      "material": "blue",
+      "name": "Spout",
+      "primitive": "rod",
+      "radius": 0.055
+    },
+    {
+      "bottom_radius": 0.13,
+      "center": [
+        0.24,
+        -0.19,
+        0.088
+      ],
+      "depth": 0.025,
+      "id": 16,
+      "material": "cream",
+      "name": "Saucer 0 0",
+      "primitive": "frustum",
+      "top_radius": 0.13
+    },
+    {
+      "bottom_radius": 0.071,
+      "center": [
+        0.24,
+        -0.19,
+        0.17
+      ],
+      "depth": 0.13,
+      "id": 17,
+      "material": "green",
+      "name": "Teacup 0",
+      "primitive": "frustum",
+      "top_radius": 0.092
+    },
+    {
+      "center": [
+        0.322,
+        -0.19,
+        0.17
+      ],
+      "id": 18,
+      "major_radius": 0.038,
+      "material": "green",
+      "minor_radius": 0.013,
+      "name": "Cup handle 0",
+      "primitive": "torus",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "bottom_radius": 0.13,
+      "center": [
+        0.29,
+        0.22,
+        0.088
+      ],
+      "depth": 0.025,
+      "id": 19,
+      "material": "cream",
+      "name": "Saucer 1 0",
+      "primitive": "frustum",
+      "top_radius": 0.13
+    },
+    {
+      "bottom_radius": 0.13,
+      "center": [
+        0.29,
+        0.22,
+        0.119
+      ],
+      "depth": 0.025,
+      "id": 20,
+      "material": "cream",
+      "name": "Saucer 1 1",
+      "primitive": "frustum",
+      "top_radius": 0.13
+    },
+    {
+      "bottom_radius": 0.071,
+      "center": [
+        0.29,
+        0.22,
+        0.2
+      ],
+      "depth": 0.13,
+      "id": 21,
+      "material": "green",
+      "name": "Teacup 1",
+      "primitive": "frustum",
+      "top_radius": 0.092
+    },
+    {
+      "center": [
+        0.372,
+        0.22,
+        0.2
+      ],
+      "id": 22,
+      "major_radius": 0.038,
+      "material": "green",
+      "minor_radius": 0.013,
+      "name": "Cup handle 1",
+      "primitive": "torus",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ]
+    }
+  ],
+  "occlusion_description": "The spout extends across stacked saucers with two cups at different depths; the handle creates an aperture against the rear tray.",
+  "title": "Teapot service on two trays"
+}

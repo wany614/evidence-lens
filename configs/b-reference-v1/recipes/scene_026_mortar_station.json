@@ -1,0 +1,192 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.04,
+        0.03,
+        0.034
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Preparation board",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        -6
+      ],
+      "size": [
+        1.08,
+        0.68,
+        0.068
+      ]
+    },
+    {
+      "bottom_radius": 0.16,
+      "center": [
+        -0.15,
+        -0.15,
+        0.2
+      ],
+      "depth": 0.28,
+      "id": 11,
+      "material": "green",
+      "name": "Heavy mortar",
+      "primitive": "frustum",
+      "top_radius": 0.26
+    },
+    {
+      "center": [
+        -0.15,
+        -0.15,
+        0.35
+      ],
+      "id": 12,
+      "major_radius": 0.235,
+      "material": "cream",
+      "minor_radius": 0.037,
+      "name": "Mortar lip",
+      "primitive": "torus",
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": [
+        0.32,
+        0.22,
+        0.38
+      ],
+      "center": [
+        -0.06,
+        -0.07,
+        0.5
+      ],
+      "id": 13,
+      "material": "legs",
+      "name": "Pestle",
+      "primitive": "rod",
+      "radius": 0.044
+    },
+    {
+      "center": [
+        0.1,
+        0.04,
+        0.69
+      ],
+      "id": 14,
+      "material": "terracotta",
+      "name": "Pestle knob",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.063,
+        0.063,
+        0.073
+      ]
+    },
+    {
+      "center": [
+        0.12,
+        0.29,
+        0.12
+      ],
+      "id": 15,
+      "material": "blue",
+      "name": "Ingredient ledge",
+      "primitive": "box",
+      "size": [
+        0.75,
+        0.24,
+        0.12
+      ]
+    },
+    {
+      "bottom_radius": 0.074,
+      "center": [
+        -0.15,
+        0.29,
+        0.275
+      ],
+      "depth": 0.19,
+      "id": 16,
+      "material": "cream",
+      "name": "Jar body 0",
+      "primitive": "frustum",
+      "top_radius": 0.072
+    },
+    {
+      "bottom_radius": 0.08,
+      "center": [
+        -0.15,
+        0.29,
+        0.38
+      ],
+      "depth": 0.026,
+      "id": 17,
+      "material": "dark",
+      "name": "Jar stopper 0",
+      "primitive": "frustum",
+      "top_radius": 0.08
+    },
+    {
+      "bottom_radius": 0.074,
+      "center": [
+        0.06,
+        0.29,
+        0.33
+      ],
+      "depth": 0.3,
+      "id": 18,
+      "material": "cream",
+      "name": "Jar body 1",
+      "primitive": "frustum",
+      "top_radius": 0.072
+    },
+    {
+      "bottom_radius": 0.08,
+      "center": [
+        0.06,
+        0.29,
+        0.49
+      ],
+      "depth": 0.026,
+      "id": 19,
+      "material": "green",
+      "name": "Jar stopper 1",
+      "primitive": "frustum",
+      "top_radius": 0.08
+    },
+    {
+      "bottom_radius": 0.074,
+      "center": [
+        0.33,
+        0.29,
+        0.295
+      ],
+      "depth": 0.23,
+      "id": 20,
+      "material": "cream",
+      "name": "Jar body 2",
+      "primitive": "frustum",
+      "top_radius": 0.072
+    },
+    {
+      "bottom_radius": 0.08,
+      "center": [
+        0.33,
+        0.29,
+        0.42
+      ],
+      "depth": 0.026,
+      "id": 21,
+      "material": "terracotta",
+      "name": "Jar stopper 2",
+      "primitive": "frustum",
+      "top_radius": 0.08
+    }
+  ],
+  "occlusion_description": "A sloping pestle crosses the front bowl rim and the line of raised ingredient jars.",
+  "title": "Mortar, pestle and ingredient shelf"
+}

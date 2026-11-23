@@ -1,0 +1,302 @@
+{
+  "basis": "Second-study single-image RGB risk, original opaque static synthetic objects at nearby poses.",
+  "camera_contract": "512 square source and six target views. OpenCV camera-to-world, X right, Y down, Z forward, metres, integer pixel centres.",
+  "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+  "family_blocking": "All camera, quantization and resize versions descend from one stated family and split. Initial four training families are part of the 12. Historical test families remain separate regression evidence.",
+  "historical_catalog_sha256": "fb7fabef06d006c992bc38cb03c283a41d90238e0b174664a1357f274bb36baa",
+  "hypotheses": [
+    "Original geometric edge/support features and RGB consistency can rank excessive RGB error in previously unseen layouts, with family-level variation and preserved failures.",
+    "A spatial visual descriptor updated by the RGB-error task can improve common-domain ranking beyond the frozen descriptor and original logistic baselines. A null or negative comparison is retained.",
+    "The four novel topology families can yield different coverage and error from the four familiar-category layout families. Both four-family groups are descriptive with limited precision.",
+    "R1 may increase false negatives or RGB error at fixed operating points. Q1 isolates colour rounding and can have a numerically small measured effect."
+  ],
+  "matrix": {
+    "B0": 24,
+    "Q1": 8,
+    "R1": 8,
+    "new_learned_scene_calls": 32,
+    "new_predicted_source_and_target_images": 280
+  },
+  "novelty_audit": {
+    "historical_foreground_pair_fingerprints": {
+      "scene_001_tabletop": "187770dab1a913286a3159984dc9490c5f97f5b71e9827806dae4a3f4d1d04d8",
+      "scene_002_book_nook": "d44cdf86eea769c7b61aecee69442bb3527f01fc0efe0999e3b38e96933d97a6",
+      "scene_003_pulley_frame": "79044412dd402d5cc408924e033945e7d39cc43edaa6e54ebdbd9ef1acb6ed10",
+      "scene_004_dish_drainer": "9f80358878b14d06fbd30e6d6971fda5f8f02507dc52a884af3b2aa48d9f1e5b",
+      "scene_005_stair_landing": "185070062fb4833f436f7b224bf8d35a5667a2af88191af6913d1098eaf93f7a",
+      "scene_006_fruit_crate": "7f775958cac8fac6071d6a22921dffaa2cb083b2994f34ae71f5a6a5e584e90c",
+      "scene_007_surveyor_tripod": "c374cb6fb0861526f6020843fba62f3aa0028636b0291186c11dd5fc0224275a",
+      "scene_008_bench_vise": "654918519f5fa3c25e23120721c2094d09dae8628518683a57d53d6a4d1776f1",
+      "scene_009_pipe_manifold": "f70b3ebe21cb98109dc53b8a46b8766aa68342c14cea26b381ebb92548584d0b",
+      "scene_010_open_drawers": "5e6c76099f7d4dea772f73284977def0d84b7922f040aeebfaebcd8ffc1465cc",
+      "scene_011_counting_frame": "b93d166d5876fb0b84fab4f715d8af6b11e2dd85351063b5762e5c3d98c15d54",
+      "scene_012_plant_stand": "1ec587cb47a6400935fc04e24ba7a8bbdfadc2bf411e81d02da2607b285b2dfb",
+      "scene_013_awning_kiosk": "a523c90892b6ef77e20b49e8d3522279343cfb87b9d3ea0247a65f3a0aa6e495",
+      "scene_014_slide_ladder": "0df4e881e4c060bffd5c603808ea7f176b7595909ae12a611768f34a635f0461",
+      "scene_015_jointed_lamp": "837b7b759c2322b448a83bff0a98f6579a2f89e4047329eddc69c4e3dc772e5a",
+      "scene_016_weaving_loom": "51b7b600a58cb83ef4fee3625e14628db9f4e8d6423cda03084d5b5e41e20ad2",
+      "scene_017_cycle_stand": "133d1444c07c667fc88f7d5df2680e00144ed11ff9c91505b706b87f353175f7",
+      "scene_018_balance_scale": "2a911409553482703e88227645a9610459b62751d1d15563739ae990d0c55c31",
+      "scene_019_corner_booth": "4f726762ddf6ee955c59bfc3fa41ef0ded257df9c64566673f2f78fa0219a33d",
+      "scene_020_switchback_ramp": "74b6fcf9e71c1590e717c50de749bb08cb5e8011572ff0da01d63d945d783f4c",
+      "scene_021_drum_kit": "dedcfe818edf551c22b50f005494e79b9614039506e997e9dca7886e69fd5841",
+      "scene_022_picket_gate": "e8ed9a7fc399b41bfcea1ad2e19e8778b3cc2f4eaaab4a5e23327e22c91ce30d",
+      "scene_023_potters_wheel": "51e147ace9f25d59778510013d2d8d0772b16fe2039c415c42a333bfcaa16b2b",
+      "scene_024_orbital_mobile": "20fc1d79947e1d5683749b58b75d4b38bba87d7000a4dec0b7a94faeb0460c4d"
+    },
+    "method": "Geometry fingerprint excludes names/IDs/pigments. A separate canonical shape-and-normalized-pair-distance measure is invariant to rigid whole-layout pose and uniform scale. Geometric graph/face signatures are verified against all 24 historical families and 16 new train/development recipes.",
+    "reserved_signatures": [
+      "trihedral_pleat",
+      "pentagonal_taper_field",
+      "screw_pair",
+      "octagonal_antiprism"
+    ]
+  },
+  "primary_display": "v01 in every family and variant including failed or low-support cases",
+  "reference_design": "The 24 B0 reference bundles share seven camera-equivalent views. R1 gets a half-resolution sole source and matching K. Its six native target references remain identical to B0. Q1 uses that family's B0 reference and camera set.",
+  "registered_at_utc": "2026-11-23T12:19:43.145612Z",
+  "render_settings": {
+    "blender_version": [
+      4,
+      5,
+      16
+    ],
+    "denoiser": "OPENIMAGEDENOISE",
+    "device": "CPU",
+    "engine": "CYCLES",
+    "filter_width": 1.5,
+    "height": 512,
+    "pixel_filter": "BLACKMAN_HARRIS",
+    "preview_width": 256,
+    "repeat_seed": 3797,
+    "samples": 96,
+    "seed": 1931,
+    "width": 512
+  },
+  "research_scope": "Checkpoint-based historical generator uses its own upstream research terms. These Blender recipes, materials and reference images are original. Evidence Lens deployable models do not receive target truth or scene/split identity as features.",
+  "schema": "el-vision-reference-preregistration-1",
+  "scientific_label": "E is the valid predicted/reference RGB intersection. Y marks mean absolute error in three display-sRGB channels strictly >0.05. Real optical-axis Z, Position, object ID, visibility and edge are evaluation-only.",
+  "shared_world": {
+    "colour": {
+      "display": "sRGB",
+      "exposure": 0,
+      "gamma": 1,
+      "look": "None",
+      "view": "Standard"
+    },
+    "geometry_and_lighting": {
+      "area_light": {
+        "aim": [
+          0,
+          0,
+          0.3
+        ],
+        "color_linear": [
+          1.0,
+          0.96,
+          0.91
+        ],
+        "energy_w": 95.0,
+        "location": [
+          -1.2,
+          -1.1,
+          2.17
+        ],
+        "size_m": 1.1
+      },
+      "camera": {
+        "aim": [
+          0,
+          0.05,
+          0.43
+        ],
+        "clip_m": [
+          0.05,
+          30.0
+        ],
+        "development": [
+          "v01",
+          "v02"
+        ],
+        "lens_mm": 42,
+        "positions": {
+          "source": [
+            0.0,
+            -1.78,
+            0.67
+          ],
+          "v01": [
+            -0.17,
+            -1.78,
+            0.67
+          ],
+          "v02": [
+            0.17,
+            -1.78,
+            0.67
+          ],
+          "v03": [
+            -0.25,
+            -1.76,
+            0.68
+          ],
+          "v04": [
+            0.25,
+            -1.76,
+            0.68
+          ],
+          "v05": [
+            -0.12,
+            -1.82,
+            0.78
+          ],
+          "v06": [
+            0.12,
+            -1.74,
+            0.76
+          ]
+        },
+        "sensor_mm": 36
+      },
+      "objects": [
+        {
+          "center": [
+            0,
+            1.41,
+            1.42
+          ],
+          "id": 1,
+          "material": "plaster",
+          "name": "Studio back wall",
+          "primitive": "box",
+          "size": [
+            6,
+            0.08,
+            2.84
+          ]
+        },
+        {
+          "center": [
+            0,
+            0,
+            -0.04
+          ],
+          "id": 2,
+          "material": "floor",
+          "name": "Studio floor",
+          "primitive": "box",
+          "size": [
+            6,
+            6,
+            0.08
+          ]
+        }
+      ]
+    },
+    "identity": "original studio floor and closed backdrop, internally lit opaque diffuse objects",
+    "material_roughness": 0.65,
+    "materials": {
+      "blue": {
+        "linear": [
+          0.06,
+          0.27,
+          0.39
+        ]
+      },
+      "cream": {
+        "linear": [
+          0.77,
+          0.61,
+          0.34
+        ]
+      },
+      "dark": {
+        "linear": [
+          0.055,
+          0.075,
+          0.095
+        ]
+      },
+      "floor": {
+        "linear": [
+          0.17,
+          0.17,
+          0.15
+        ]
+      },
+      "green": {
+        "linear": [
+          0.16,
+          0.32,
+          0.21
+        ]
+      },
+      "legs": {
+        "linear": [
+          0.18,
+          0.1,
+          0.05
+        ]
+      },
+      "plaster": {
+        "linear": [
+          0.54,
+          0.58,
+          0.55
+        ]
+      },
+      "terracotta": {
+        "linear": [
+          0.66,
+          0.16,
+          0.066
+        ]
+      },
+      "timber": {
+        "checker_linear": [
+          0.43,
+          0.28,
+          0.16
+        ],
+        "linear": [
+          0.39,
+          0.25,
+          0.13
+        ],
+        "scale": 10
+      }
+    },
+    "world_linear_rgb": [
+      0.72,
+      0.77,
+      0.82
+    ],
+    "world_strength": 0.45
+  },
+  "source": "source",
+  "targets": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "test_opening": "One recorder-sealed method freeze covers all eight unseen families, the four familiar-category layouts and four genuinely novel geometry templates. No target render, reference truth, selection result or sample is generated for these eight in this pipeline until the controller verifies the opening.",
+  "validation": {
+    "band_min_interior_pixels": 24,
+    "band_min_width_px": 10,
+    "display_tolerance_code_values": 1,
+    "edge_radius_px": 2,
+    "noise_exceedance_fraction_max": 0.001,
+    "noise_mae_max": 0.005,
+    "noise_pixel_mae_threshold": 0.05,
+    "occlusion_profile": "opaque_mesh_pairs",
+    "plane_relative_tolerance": 0.0001,
+    "projection_tolerance_px": 0.1,
+    "ray_epsilon_abs_m": 0.0001,
+    "ray_epsilon_rel": 0.0001,
+    "render_pixel_tolerance_px": 1.0,
+    "source_min_observed_fraction": 0.999
+  }
+}

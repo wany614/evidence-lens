@@ -1,0 +1,403 @@
+{
+  "objects": [
+    {
+      "center": [
+        0.29,
+        0.18,
+        0.075
+      ],
+      "id": 10,
+      "material": "blue",
+      "name": "Mast shoe",
+      "primitive": "box",
+      "size": [
+        0.43,
+        0.35,
+        0.15
+      ]
+    },
+    {
+      "center": [
+        0.34,
+        0.2,
+        0.47
+      ],
+      "id": 11,
+      "material": "timber",
+      "name": "Offset mast",
+      "primitive": "box",
+      "size": [
+        0.105,
+        0.13,
+        0.75
+      ]
+    },
+    {
+      "center": [
+        0.12,
+        0.18,
+        0.8
+      ],
+      "id": 12,
+      "material": "green",
+      "name": "Jib",
+      "primitive": "box",
+      "size": [
+        0.56,
+        0.13,
+        0.083
+      ]
+    },
+    {
+      "center": [
+        -0.1,
+        0.095,
+        0.72
+      ],
+      "id": 13,
+      "major_radius": 0.105,
+      "material": "dark",
+      "minor_radius": 0.017,
+      "name": "High sheave rim",
+      "primitive": "torus",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "bottom_radius": 0.035,
+      "center": [
+        -0.1,
+        0.095,
+        0.72
+      ],
+      "depth": 0.055,
+      "id": 14,
+      "material": "cream",
+      "name": "High sheave hub",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.035
+    },
+    {
+      "axis": [
+        0.105,
+        0.0,
+        0.0
+      ],
+      "center": [
+        -0.0475,
+        0.095,
+        0.72
+      ],
+      "id": 15,
+      "material": "legs",
+      "name": "High sheave spoke 1",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        0.032447,
+        0.0,
+        0.099861
+      ],
+      "center": [
+        -0.083777,
+        0.095,
+        0.76993
+      ],
+      "id": 16,
+      "material": "legs",
+      "name": "High sheave spoke 2",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        -0.084947,
+        0.0,
+        0.061717
+      ],
+      "center": [
+        -0.142473,
+        0.095,
+        0.750859
+      ],
+      "id": 17,
+      "material": "legs",
+      "name": "High sheave spoke 3",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        -0.084947,
+        0.0,
+        -0.061717
+      ],
+      "center": [
+        -0.142473,
+        0.095,
+        0.689141
+      ],
+      "id": 18,
+      "material": "legs",
+      "name": "High sheave spoke 4",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        0.032447,
+        0.0,
+        -0.099861
+      ],
+      "center": [
+        -0.083777,
+        0.095,
+        0.67007
+      ],
+      "id": 19,
+      "material": "legs",
+      "name": "High sheave spoke 5",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "center": [
+        -0.1,
+        -0.025,
+        0.37
+      ],
+      "id": 20,
+      "major_radius": 0.076,
+      "material": "dark",
+      "minor_radius": 0.017,
+      "name": "Cradle sheave rim",
+      "primitive": "torus",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "bottom_radius": 0.035,
+      "center": [
+        -0.1,
+        -0.025,
+        0.37
+      ],
+      "depth": 0.055,
+      "id": 21,
+      "material": "cream",
+      "name": "Cradle sheave hub",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.035
+    },
+    {
+      "axis": [
+        0.076,
+        0.0,
+        0.0
+      ],
+      "center": [
+        -0.062,
+        -0.025,
+        0.37
+      ],
+      "id": 22,
+      "material": "legs",
+      "name": "Cradle sheave spoke 1",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.076
+      ],
+      "center": [
+        -0.1,
+        -0.025,
+        0.408
+      ],
+      "id": 23,
+      "material": "legs",
+      "name": "Cradle sheave spoke 2",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        -0.076,
+        0.0,
+        0.0
+      ],
+      "center": [
+        -0.138,
+        -0.025,
+        0.37
+      ],
+      "id": 24,
+      "material": "legs",
+      "name": "Cradle sheave spoke 3",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        -0.0,
+        0.0,
+        -0.076
+      ],
+      "center": [
+        -0.1,
+        -0.025,
+        0.332
+      ],
+      "id": 25,
+      "material": "legs",
+      "name": "Cradle sheave spoke 4",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        0.0,
+        -0.11,
+        -0.34
+      ],
+      "center": [
+        -0.18,
+        0.015,
+        0.54
+      ],
+      "id": 26,
+      "material": "cream",
+      "name": "Hoist rope -0.18",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "axis": [
+        0.0,
+        -0.11,
+        -0.34
+      ],
+      "center": [
+        -0.02,
+        0.015,
+        0.54
+      ],
+      "id": 27,
+      "material": "cream",
+      "name": "Hoist rope -0.02",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "center": [
+        -0.1,
+        -0.07,
+        0.25
+      ],
+      "id": 28,
+      "material": "terracotta",
+      "name": "Moving cradle",
+      "primitive": "box",
+      "size": [
+        0.27,
+        0.22,
+        0.12
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.33,
+        0.0
+      ],
+      "center": [
+        -0.39,
+        -0.075,
+        0.19
+      ],
+      "id": 29,
+      "material": "legs",
+      "name": "Floor winch core",
+      "primitive": "rod",
+      "radius": 0.103
+    },
+    {
+      "bottom_radius": 0.15,
+      "center": [
+        -0.39,
+        -0.24,
+        0.19
+      ],
+      "depth": 0.043,
+      "id": 30,
+      "material": "blue",
+      "name": "Winch side -0.24",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.15
+    },
+    {
+      "bottom_radius": 0.15,
+      "center": [
+        -0.39,
+        0.08,
+        0.19
+      ],
+      "depth": 0.043,
+      "id": 31,
+      "material": "blue",
+      "name": "Winch side 0.08",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.15
+    },
+    {
+      "axis": [
+        0.21,
+        0.19,
+        0.42
+      ],
+      "center": [
+        -0.295,
+        -0.035,
+        0.5
+      ],
+      "id": 32,
+      "material": "cream",
+      "name": "Winch feed",
+      "primitive": "rod",
+      "radius": 0.012
+    }
+  ],
+  "occlusion_description": "A floor winch leads ropes around two offset sheaves to a moving cradle. Foreground rope and drum cross the hoist foot.",
+  "title": "Split-level winch and moving pulley"
+}

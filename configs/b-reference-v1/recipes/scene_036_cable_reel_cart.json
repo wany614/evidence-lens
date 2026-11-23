@@ -1,0 +1,291 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0,
+        0.22
+      ],
+      "id": 10,
+      "material": "green",
+      "name": "Cart bed",
+      "primitive": "box",
+      "size": [
+        0.98,
+        0.42,
+        0.07
+      ]
+    },
+    {
+      "bottom_radius": 0.1,
+      "center": [
+        -0.36,
+        -0.22,
+        0.1
+      ],
+      "depth": 0.05,
+      "id": 11,
+      "material": "dark",
+      "name": "Trolley wheel -0.36 -0.22",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.1
+    },
+    {
+      "bottom_radius": 0.1,
+      "center": [
+        -0.36,
+        0.22,
+        0.1
+      ],
+      "depth": 0.05,
+      "id": 12,
+      "material": "dark",
+      "name": "Trolley wheel -0.36 0.22",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.1
+    },
+    {
+      "bottom_radius": 0.1,
+      "center": [
+        0.34,
+        -0.22,
+        0.1
+      ],
+      "depth": 0.05,
+      "id": 13,
+      "material": "dark",
+      "name": "Trolley wheel 0.34 -0.22",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.1
+    },
+    {
+      "bottom_radius": 0.1,
+      "center": [
+        0.34,
+        0.22,
+        0.1
+      ],
+      "depth": 0.05,
+      "id": 14,
+      "material": "dark",
+      "name": "Trolley wheel 0.34 0.22",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.27,
+        0.0
+      ],
+      "center": [
+        -0.18,
+        0.015,
+        0.42
+      ],
+      "id": 15,
+      "material": "timber",
+      "name": "Drum core 0",
+      "primitive": "rod",
+      "radius": 0.12240000000000001
+    },
+    {
+      "bottom_radius": 0.17,
+      "center": [
+        -0.18,
+        -0.13,
+        0.42
+      ],
+      "depth": 0.04,
+      "id": 16,
+      "material": "blue",
+      "name": "Reel flange 0-0",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.17
+    },
+    {
+      "bottom_radius": 0.17,
+      "center": [
+        -0.18,
+        0.16,
+        0.42
+      ],
+      "depth": 0.04,
+      "id": 17,
+      "material": "blue",
+      "name": "Reel flange 0-1",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.17
+    },
+    {
+      "center": [
+        -0.18,
+        0.18,
+        0.32
+      ],
+      "id": 18,
+      "material": "cream",
+      "name": "Reel bracket 0",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.06,
+        0.21
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.27,
+        0.0
+      ],
+      "center": [
+        0.26,
+        0.015,
+        0.51
+      ],
+      "id": 19,
+      "material": "timber",
+      "name": "Drum core 1",
+      "primitive": "rod",
+      "radius": 0.0936
+    },
+    {
+      "bottom_radius": 0.13,
+      "center": [
+        0.26,
+        -0.13,
+        0.51
+      ],
+      "depth": 0.04,
+      "id": 20,
+      "material": "terracotta",
+      "name": "Reel flange 1-0",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.13
+    },
+    {
+      "bottom_radius": 0.13,
+      "center": [
+        0.26,
+        0.16,
+        0.51
+      ],
+      "depth": 0.04,
+      "id": 21,
+      "material": "terracotta",
+      "name": "Reel flange 1-1",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.13
+    },
+    {
+      "center": [
+        0.26,
+        0.18,
+        0.32
+      ],
+      "id": 22,
+      "material": "cream",
+      "name": "Reel bracket 1",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.06,
+        0.21
+      ]
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        0.4
+      ],
+      "center": [
+        0.49,
+        -0.2,
+        0.44
+      ],
+      "id": 23,
+      "material": "legs",
+      "name": "Handle arm -0.2",
+      "primitive": "rod",
+      "radius": 0.02
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        0.4
+      ],
+      "center": [
+        0.49,
+        0.2,
+        0.44
+      ],
+      "id": 24,
+      "material": "legs",
+      "name": "Handle arm 0.2",
+      "primitive": "rod",
+      "radius": 0.02
+    },
+    {
+      "axis": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "center": [
+        0.56,
+        0.0,
+        0.64
+      ],
+      "id": 25,
+      "material": "legs",
+      "name": "Push handle",
+      "primitive": "rod",
+      "radius": 0.024
+    }
+  ],
+  "occlusion_description": "One transverse spool partly hides a smaller raised spool. The angled trolley handle cuts across the rear spool flange.",
+  "title": "Cable reel service trolley"
+}

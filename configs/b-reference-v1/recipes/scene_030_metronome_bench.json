@@ -1,0 +1,276 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.08,
+        0.04,
+        0.041
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Low plinth",
+      "primitive": "box",
+      "size": [
+        0.91,
+        0.55,
+        0.082
+      ]
+    },
+    {
+      "center": [
+        -0.2,
+        0.04,
+        0.15
+      ],
+      "id": 11,
+      "material": "terracotta",
+      "name": "Tapered case tier 0",
+      "primitive": "box",
+      "size": [
+        0.39,
+        0.32,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.2,
+        0.04,
+        0.28
+      ],
+      "id": 12,
+      "material": "terracotta",
+      "name": "Tapered case tier 1",
+      "primitive": "box",
+      "size": [
+        0.32,
+        0.27,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.2,
+        0.04,
+        0.41
+      ],
+      "id": 13,
+      "material": "terracotta",
+      "name": "Tapered case tier 2",
+      "primitive": "box",
+      "size": [
+        0.26,
+        0.22,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.2,
+        0.04,
+        0.53
+      ],
+      "id": 14,
+      "material": "terracotta",
+      "name": "Tapered case tier 3",
+      "primitive": "box",
+      "size": [
+        0.19,
+        0.16,
+        0.14
+      ]
+    },
+    {
+      "axis": [
+        0.255,
+        0.0,
+        0.46
+      ],
+      "center": [
+        -0.1025,
+        -0.145,
+        0.41
+      ],
+      "id": 15,
+      "material": "dark",
+      "name": "Pendulum arm",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "center": [
+        -0.035,
+        -0.15,
+        0.52
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Sliding bob",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        17,
+        0
+      ],
+      "size": [
+        0.092,
+        0.052,
+        0.083
+      ]
+    },
+    {
+      "center": [
+        0.25,
+        0.19,
+        0.16
+      ],
+      "id": 17,
+      "material": "green",
+      "name": "Fork rail",
+      "primitive": "box",
+      "size": [
+        0.33,
+        0.16,
+        0.13
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.16
+      ],
+      "center": [
+        0.14,
+        0.18,
+        0.28
+      ],
+      "id": 18,
+      "material": "blue",
+      "name": "Fork stem 0",
+      "primitive": "rod",
+      "radius": 0.02
+    },
+    {
+      "axis": [
+        0.08,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.14,
+        0.18,
+        0.36
+      ],
+      "id": 19,
+      "material": "blue",
+      "name": "Fork bridge 0",
+      "primitive": "rod",
+      "radius": 0.019
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.18
+      ],
+      "center": [
+        0.1,
+        0.18,
+        0.45
+      ],
+      "id": 20,
+      "material": "blue",
+      "name": "Fork tine 0 -1",
+      "primitive": "rod",
+      "radius": 0.017
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.18
+      ],
+      "center": [
+        0.18,
+        0.18,
+        0.45
+      ],
+      "id": 21,
+      "material": "blue",
+      "name": "Fork tine 0 1",
+      "primitive": "rod",
+      "radius": 0.017
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.16
+      ],
+      "center": [
+        0.31,
+        0.18,
+        0.28
+      ],
+      "id": 22,
+      "material": "blue",
+      "name": "Fork stem 1",
+      "primitive": "rod",
+      "radius": 0.02
+    },
+    {
+      "axis": [
+        0.08,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.31,
+        0.18,
+        0.36
+      ],
+      "id": 23,
+      "material": "blue",
+      "name": "Fork bridge 1",
+      "primitive": "rod",
+      "radius": 0.019
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "center": [
+        0.27,
+        0.18,
+        0.51
+      ],
+      "id": 24,
+      "material": "blue",
+      "name": "Fork tine 1 -1",
+      "primitive": "rod",
+      "radius": 0.017
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "center": [
+        0.35,
+        0.18,
+        0.51
+      ],
+      "id": 25,
+      "material": "blue",
+      "name": "Fork tine 1 1",
+      "primitive": "rod",
+      "radius": 0.017
+    }
+  ],
+  "occlusion_description": "A swinging arm crosses a tapering metronome case. Separate tuning-fork tines rise behind the case and over a shared rear rest.",
+  "title": "Metronome and tuning forks"
+}

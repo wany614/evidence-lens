@@ -1,0 +1,258 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.06,
+        0.02,
+        0.24
+      ],
+      "id": 10,
+      "material": "green",
+      "name": "Cabinet",
+      "primitive": "box",
+      "size": [
+        0.9,
+        0.48,
+        0.48
+      ]
+    },
+    {
+      "center": [
+        -0.28,
+        0.25,
+        0.57
+      ],
+      "id": 11,
+      "material": "timber",
+      "name": "Tap mount",
+      "primitive": "box",
+      "size": [
+        0.35,
+        0.11,
+        0.19
+      ]
+    },
+    {
+      "center": [
+        -0.19,
+        -0.02,
+        0.487
+      ],
+      "id": 12,
+      "material": "dark",
+      "name": "Basin floor",
+      "primitive": "box",
+      "size": [
+        0.42,
+        0.29,
+        0.021
+      ]
+    },
+    {
+      "center": [
+        -0.4,
+        -0.02,
+        0.545
+      ],
+      "id": 13,
+      "material": "cream",
+      "name": "Basin rim 0",
+      "primitive": "box",
+      "size": [
+        0.045,
+        0.36,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        -0.02,
+        0.545
+      ],
+      "id": 14,
+      "material": "cream",
+      "name": "Basin rim 1",
+      "primitive": "box",
+      "size": [
+        0.045,
+        0.36,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        -0.19,
+        -0.18,
+        0.545
+      ],
+      "id": 15,
+      "material": "cream",
+      "name": "Basin rim 2",
+      "primitive": "box",
+      "size": [
+        0.46,
+        0.045,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        -0.19,
+        0.14,
+        0.545
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Basin rim 3",
+      "primitive": "box",
+      "size": [
+        0.46,
+        0.045,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        0.26,
+        0.025,
+        0.56
+      ],
+      "id": 17,
+      "material": "blue",
+      "name": "Drainboard",
+      "primitive": "box",
+      "rotation_deg": [
+        4,
+        0,
+        -2
+      ],
+      "size": [
+        0.37,
+        0.45,
+        0.065
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.36,
+        0.025
+      ],
+      "center": [
+        0.12,
+        0.02,
+        0.5925
+      ],
+      "id": 18,
+      "material": "cream",
+      "name": "Drain flute 0",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "axis": [
+        0.0,
+        0.36,
+        0.025
+      ],
+      "center": [
+        0.2,
+        0.02,
+        0.5925
+      ],
+      "id": 19,
+      "material": "cream",
+      "name": "Drain flute 1",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "axis": [
+        0.0,
+        0.36,
+        0.025
+      ],
+      "center": [
+        0.28,
+        0.02,
+        0.5925
+      ],
+      "id": 20,
+      "material": "cream",
+      "name": "Drain flute 2",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "axis": [
+        0.0,
+        0.36,
+        0.025
+      ],
+      "center": [
+        0.36,
+        0.02,
+        0.5925
+      ],
+      "id": 21,
+      "material": "cream",
+      "name": "Drain flute 3",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.17
+      ],
+      "center": [
+        -0.26,
+        0.21,
+        0.705
+      ],
+      "id": 22,
+      "material": "legs",
+      "name": "Tap riser",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "axis": [
+        0.07,
+        -0.28,
+        0.0
+      ],
+      "center": [
+        -0.225,
+        0.07,
+        0.79
+      ],
+      "id": 23,
+      "material": "legs",
+      "name": "Tap arm",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        -0.07
+      ],
+      "center": [
+        -0.19,
+        -0.07,
+        0.755
+      ],
+      "id": 24,
+      "material": "legs",
+      "name": "Spout",
+      "primitive": "rod",
+      "radius": 0.023
+    }
+  ],
+  "occlusion_description": "The front basin lip hides a recessed well. Its raised drainboard and crossing faucet create separate occluding silhouettes.",
+  "title": "Sink with raised drainboard"
+}

@@ -1,0 +1,258 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.28,
+        -0.12,
+        0.09
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Display island 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        -18
+      ],
+      "size": [
+        0.45,
+        0.3,
+        0.15
+      ]
+    },
+    {
+      "center": [
+        -0.365,
+        -0.12,
+        0.36
+      ],
+      "id": 11,
+      "material": "green",
+      "name": "Fanned volume 0-0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -12,
+        -18
+      ],
+      "size": [
+        0.081,
+        0.22,
+        0.4
+      ]
+    },
+    {
+      "center": [
+        -0.287,
+        -0.095,
+        0.388
+      ],
+      "id": 12,
+      "material": "cream",
+      "name": "Fanned volume 0-1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -3,
+        -18
+      ],
+      "size": [
+        0.081,
+        0.22,
+        0.43300000000000005
+      ]
+    },
+    {
+      "center": [
+        -0.209,
+        -0.07,
+        0.416
+      ],
+      "id": 13,
+      "material": "blue",
+      "name": "Fanned volume 0-2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        6,
+        -18
+      ],
+      "size": [
+        0.081,
+        0.22,
+        0.466
+      ]
+    },
+    {
+      "center": [
+        0.28,
+        0.21,
+        0.09
+      ],
+      "id": 14,
+      "material": "timber",
+      "name": "Display island 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        23
+      ],
+      "size": [
+        0.45,
+        0.3,
+        0.15
+      ]
+    },
+    {
+      "center": [
+        0.195,
+        0.21,
+        0.36
+      ],
+      "id": 15,
+      "material": "green",
+      "name": "Fanned volume 1-0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -12,
+        23
+      ],
+      "size": [
+        0.081,
+        0.22,
+        0.4
+      ]
+    },
+    {
+      "center": [
+        0.273,
+        0.235,
+        0.388
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Fanned volume 1-1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -3,
+        23
+      ],
+      "size": [
+        0.081,
+        0.22,
+        0.43300000000000005
+      ]
+    },
+    {
+      "center": [
+        0.351,
+        0.26,
+        0.416
+      ],
+      "id": 17,
+      "material": "blue",
+      "name": "Fanned volume 1-2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        6,
+        23
+      ],
+      "size": [
+        0.081,
+        0.22,
+        0.466
+      ]
+    },
+    {
+      "center": [
+        -0.01,
+        -0.26,
+        0.34
+      ],
+      "id": 18,
+      "material": "terracotta",
+      "name": "Face-out folio",
+      "primitive": "box",
+      "rotation_deg": [
+        -9,
+        0,
+        17
+      ],
+      "size": [
+        0.38,
+        0.055,
+        0.43
+      ]
+    },
+    {
+      "center": [
+        0.28,
+        -0.12,
+        0.06
+      ],
+      "id": 19,
+      "material": "blue",
+      "name": "Horizontal atlas 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        -8
+      ],
+      "size": [
+        0.35,
+        0.21,
+        0.06
+      ]
+    },
+    {
+      "center": [
+        0.28,
+        -0.12,
+        0.128
+      ],
+      "id": 20,
+      "material": "cream",
+      "name": "Horizontal atlas 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        -2
+      ],
+      "size": [
+        0.35,
+        0.21,
+        0.06
+      ]
+    },
+    {
+      "center": [
+        0.28,
+        -0.12,
+        0.196
+      ],
+      "id": 21,
+      "material": "green",
+      "name": "Horizontal atlas 2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        4
+      ],
+      "size": [
+        0.35,
+        0.21,
+        0.06
+      ]
+    }
+  ],
+  "occlusion_description": "Two counter-facing supports show fanned books at different depths. A broad face-out volume hides a stack at the gap.",
+  "title": "Two-island crossed book display"
+}

@@ -1,0 +1,393 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0.32,
+        0.4
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Pipe mounting plate",
+      "primitive": "box",
+      "size": [
+        0.99,
+        0.06,
+        0.7
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        -0.47,
+        0.0
+      ],
+      "center": [
+        -0.34,
+        0.075,
+        0.24
+      ],
+      "id": 11,
+      "material": "blue",
+      "name": "Return 0 run 0",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "axis": [
+        0.18,
+        0.0,
+        0.0
+      ],
+      "center": [
+        -0.25,
+        -0.16,
+        0.24
+      ],
+      "id": 12,
+      "material": "blue",
+      "name": "Return 0 run 1",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "axis": [
+        0.0,
+        0.47,
+        0.0
+      ],
+      "center": [
+        -0.16,
+        0.075,
+        0.24
+      ],
+      "id": 13,
+      "material": "blue",
+      "name": "Return 0 run 2",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "center": [
+        -0.34,
+        -0.16,
+        0.24
+      ],
+      "id": 14,
+      "material": "blue",
+      "name": "Return 0 joint 1",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.044,
+        0.044,
+        0.044
+      ]
+    },
+    {
+      "center": [
+        -0.16,
+        -0.16,
+        0.24
+      ],
+      "id": 15,
+      "material": "blue",
+      "name": "Return 0 joint 2",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.044,
+        0.044,
+        0.044
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        -0.275,
+        0.0
+      ],
+      "center": [
+        -0.06,
+        0.1725,
+        0.39
+      ],
+      "id": 16,
+      "material": "green",
+      "name": "Return 1 run 0",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "axis": [
+        0.18,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.03,
+        0.035,
+        0.39
+      ],
+      "id": 17,
+      "material": "green",
+      "name": "Return 1 run 1",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "axis": [
+        0.0,
+        0.275,
+        0.0
+      ],
+      "center": [
+        0.12,
+        0.1725,
+        0.39
+      ],
+      "id": 18,
+      "material": "green",
+      "name": "Return 1 run 2",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "center": [
+        -0.06,
+        0.035,
+        0.39
+      ],
+      "id": 19,
+      "material": "green",
+      "name": "Return 1 joint 1",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.044,
+        0.044,
+        0.044
+      ]
+    },
+    {
+      "center": [
+        0.12,
+        0.035,
+        0.39
+      ],
+      "id": 20,
+      "material": "green",
+      "name": "Return 1 joint 2",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.044,
+        0.044,
+        0.044
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        -0.13,
+        0.0
+      ],
+      "center": [
+        0.21,
+        0.245,
+        0.54
+      ],
+      "id": 21,
+      "material": "cream",
+      "name": "Return 2 run 0",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "axis": [
+        0.18,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.3,
+        0.18,
+        0.54
+      ],
+      "id": 22,
+      "material": "cream",
+      "name": "Return 2 run 1",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "axis": [
+        0.0,
+        0.13,
+        0.0
+      ],
+      "center": [
+        0.39,
+        0.245,
+        0.54
+      ],
+      "id": 23,
+      "material": "cream",
+      "name": "Return 2 run 2",
+      "primitive": "rod",
+      "radius": 0.034
+    },
+    {
+      "center": [
+        0.21,
+        0.18,
+        0.54
+      ],
+      "id": 24,
+      "material": "cream",
+      "name": "Return 2 joint 1",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.044,
+        0.044,
+        0.044
+      ]
+    },
+    {
+      "center": [
+        0.39,
+        0.18,
+        0.54
+      ],
+      "id": 25,
+      "material": "cream",
+      "name": "Return 2 joint 2",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.044,
+        0.044,
+        0.044
+      ]
+    },
+    {
+      "axis": [
+        0.89,
+        0.0,
+        0.14
+      ],
+      "center": [
+        -0.015,
+        -0.25,
+        0.42
+      ],
+      "id": 26,
+      "material": "terracotta",
+      "name": "Cross feed",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "center": [
+        0.12,
+        -0.29,
+        0.435
+      ],
+      "id": 27,
+      "major_radius": 0.082,
+      "material": "dark",
+      "minor_radius": 0.017,
+      "name": "Shutoff valve rim",
+      "primitive": "torus",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "bottom_radius": 0.035,
+      "center": [
+        0.12,
+        -0.29,
+        0.435
+      ],
+      "depth": 0.055,
+      "id": 28,
+      "material": "cream",
+      "name": "Shutoff valve hub",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.035
+    },
+    {
+      "axis": [
+        0.082,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.161,
+        -0.29,
+        0.435
+      ],
+      "id": 29,
+      "material": "legs",
+      "name": "Shutoff valve spoke 1",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.082
+      ],
+      "center": [
+        0.12,
+        -0.29,
+        0.476
+      ],
+      "id": 30,
+      "material": "legs",
+      "name": "Shutoff valve spoke 2",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        -0.082,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.079,
+        -0.29,
+        0.435
+      ],
+      "id": 31,
+      "material": "legs",
+      "name": "Shutoff valve spoke 3",
+      "primitive": "rod",
+      "radius": 0.005
+    },
+    {
+      "axis": [
+        -0.0,
+        0.0,
+        -0.082
+      ],
+      "center": [
+        0.12,
+        -0.29,
+        0.394
+      ],
+      "id": 32,
+      "material": "legs",
+      "name": "Shutoff valve spoke 4",
+      "primitive": "rod",
+      "radius": 0.005
+    }
+  ],
+  "occlusion_description": "Parallel return loops bend back toward the same wall. A forward cross-feed and valve conceal portions of the middle loop.",
+  "title": "Cross-feed and three pipe returns"
+}

@@ -1,0 +1,694 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.47,
+        0.02,
+        0.13
+      ],
+      "id": 10,
+      "material": "cream",
+      "name": "Stone abutment -0.47",
+      "primitive": "box",
+      "size": [
+        0.25,
+        0.58,
+        0.26
+      ]
+    },
+    {
+      "center": [
+        0.47,
+        0.02,
+        0.13
+      ],
+      "id": 11,
+      "material": "cream",
+      "name": "Stone abutment 0.47",
+      "primitive": "box",
+      "size": [
+        0.25,
+        0.58,
+        0.26
+      ]
+    },
+    {
+      "center": [
+        -0.49,
+        0.01,
+        0.3
+      ],
+      "id": 12,
+      "material": "timber",
+      "name": "Cross plank 0",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        -0.35,
+        0.01,
+        0.38
+      ],
+      "id": 13,
+      "material": "timber",
+      "name": "Cross plank 1",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        -0.19,
+        0.01,
+        0.425
+      ],
+      "id": 14,
+      "material": "timber",
+      "name": "Cross plank 2",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.01,
+        0.44
+      ],
+      "id": 15,
+      "material": "timber",
+      "name": "Cross plank 3",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        0.19,
+        0.01,
+        0.425
+      ],
+      "id": 16,
+      "material": "timber",
+      "name": "Cross plank 4",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        0.35,
+        0.01,
+        0.38
+      ],
+      "id": 17,
+      "material": "timber",
+      "name": "Cross plank 5",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        0.49,
+        0.01,
+        0.3
+      ],
+      "id": 18,
+      "material": "timber",
+      "name": "Cross plank 6",
+      "primitive": "box",
+      "size": [
+        0.15,
+        0.44,
+        0.055
+      ]
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        0.08
+      ],
+      "center": [
+        -0.42,
+        -0.24,
+        0.51
+      ],
+      "id": 19,
+      "material": "green",
+      "name": "Curved rail 0-0",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        0.08
+      ],
+      "center": [
+        -0.42,
+        -0.24,
+        0.285
+      ],
+      "id": 20,
+      "material": "blue",
+      "name": "Lower rib 0-0",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        0.045
+      ],
+      "center": [
+        -0.27,
+        -0.24,
+        0.5725
+      ],
+      "id": 21,
+      "material": "green",
+      "name": "Curved rail 0-1",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        0.045
+      ],
+      "center": [
+        -0.27,
+        -0.24,
+        0.3475
+      ],
+      "id": 22,
+      "material": "blue",
+      "name": "Lower rib 0-1",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        0.015
+      ],
+      "center": [
+        -0.095,
+        -0.24,
+        0.6025
+      ],
+      "id": 23,
+      "material": "green",
+      "name": "Curved rail 0-2",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        0.015
+      ],
+      "center": [
+        -0.095,
+        -0.24,
+        0.3775
+      ],
+      "id": 24,
+      "material": "blue",
+      "name": "Lower rib 0-2",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        -0.015
+      ],
+      "center": [
+        0.095,
+        -0.24,
+        0.6025
+      ],
+      "id": 25,
+      "material": "green",
+      "name": "Curved rail 0-3",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        -0.015
+      ],
+      "center": [
+        0.095,
+        -0.24,
+        0.3775
+      ],
+      "id": 26,
+      "material": "blue",
+      "name": "Lower rib 0-3",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        -0.045
+      ],
+      "center": [
+        0.27,
+        -0.24,
+        0.5725
+      ],
+      "id": 27,
+      "material": "green",
+      "name": "Curved rail 0-4",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        -0.045
+      ],
+      "center": [
+        0.27,
+        -0.24,
+        0.3475
+      ],
+      "id": 28,
+      "material": "blue",
+      "name": "Lower rib 0-4",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        -0.08
+      ],
+      "center": [
+        0.42,
+        -0.24,
+        0.51
+      ],
+      "id": 29,
+      "material": "green",
+      "name": "Curved rail 0-5",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        -0.08
+      ],
+      "center": [
+        0.42,
+        -0.24,
+        0.285
+      ],
+      "id": 30,
+      "material": "blue",
+      "name": "Lower rib 0-5",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        -0.49,
+        -0.24,
+        0.3575
+      ],
+      "id": 31,
+      "material": "legs",
+      "name": "Picket 0-0",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        -0.19,
+        -0.24,
+        0.4825
+      ],
+      "id": 32,
+      "material": "legs",
+      "name": "Picket 0-1",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        0.19,
+        -0.24,
+        0.4825
+      ],
+      "id": 33,
+      "material": "legs",
+      "name": "Picket 0-2",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        0.49,
+        -0.24,
+        0.3575
+      ],
+      "id": 34,
+      "material": "legs",
+      "name": "Picket 0-3",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        0.08
+      ],
+      "center": [
+        -0.42,
+        0.26,
+        0.51
+      ],
+      "id": 35,
+      "material": "green",
+      "name": "Curved rail 1-0",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        0.08
+      ],
+      "center": [
+        -0.42,
+        0.26,
+        0.285
+      ],
+      "id": 36,
+      "material": "blue",
+      "name": "Lower rib 1-0",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        0.045
+      ],
+      "center": [
+        -0.27,
+        0.26,
+        0.5725
+      ],
+      "id": 37,
+      "material": "green",
+      "name": "Curved rail 1-1",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        0.045
+      ],
+      "center": [
+        -0.27,
+        0.26,
+        0.3475
+      ],
+      "id": 38,
+      "material": "blue",
+      "name": "Lower rib 1-1",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        0.015
+      ],
+      "center": [
+        -0.095,
+        0.26,
+        0.6025
+      ],
+      "id": 39,
+      "material": "green",
+      "name": "Curved rail 1-2",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        0.015
+      ],
+      "center": [
+        -0.095,
+        0.26,
+        0.3775
+      ],
+      "id": 40,
+      "material": "blue",
+      "name": "Lower rib 1-2",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        -0.015
+      ],
+      "center": [
+        0.095,
+        0.26,
+        0.6025
+      ],
+      "id": 41,
+      "material": "green",
+      "name": "Curved rail 1-3",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.19,
+        0.0,
+        -0.015
+      ],
+      "center": [
+        0.095,
+        0.26,
+        0.3775
+      ],
+      "id": 42,
+      "material": "blue",
+      "name": "Lower rib 1-3",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        -0.045
+      ],
+      "center": [
+        0.27,
+        0.26,
+        0.5725
+      ],
+      "id": 43,
+      "material": "green",
+      "name": "Curved rail 1-4",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        -0.045
+      ],
+      "center": [
+        0.27,
+        0.26,
+        0.3475
+      ],
+      "id": 44,
+      "material": "blue",
+      "name": "Lower rib 1-4",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        -0.08
+      ],
+      "center": [
+        0.42,
+        0.26,
+        0.51
+      ],
+      "id": 45,
+      "material": "green",
+      "name": "Curved rail 1-5",
+      "primitive": "rod",
+      "radius": 0.021
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        -0.08
+      ],
+      "center": [
+        0.42,
+        0.26,
+        0.285
+      ],
+      "id": 46,
+      "material": "blue",
+      "name": "Lower rib 1-5",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        -0.49,
+        0.26,
+        0.3575
+      ],
+      "id": 47,
+      "material": "legs",
+      "name": "Picket 1-0",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        -0.19,
+        0.26,
+        0.4825
+      ],
+      "id": 48,
+      "material": "legs",
+      "name": "Picket 1-1",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        0.19,
+        0.26,
+        0.4825
+      ],
+      "id": 49,
+      "material": "legs",
+      "name": "Picket 1-2",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.225
+      ],
+      "center": [
+        0.49,
+        0.26,
+        0.3575
+      ],
+      "id": 50,
+      "material": "legs",
+      "name": "Picket 1-3",
+      "primitive": "rod",
+      "radius": 0.018
+    }
+  ],
+  "occlusion_description": "Stepped deck planks rise to a crown between side ribs. The near rail screens the far abutment and center span.",
+  "title": "Arched model footbridge"
+}

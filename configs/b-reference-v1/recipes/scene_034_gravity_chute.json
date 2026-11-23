@@ -1,0 +1,267 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.43,
+        0.21,
+        0.39
+      ],
+      "id": 10,
+      "material": "legs",
+      "name": "Chute upright -0.43",
+      "primitive": "box",
+      "size": [
+        0.065,
+        0.085,
+        0.78
+      ]
+    },
+    {
+      "center": [
+        0.43,
+        0.21,
+        0.39
+      ],
+      "id": 11,
+      "material": "legs",
+      "name": "Chute upright 0.43",
+      "primitive": "box",
+      "size": [
+        0.065,
+        0.085,
+        0.78
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.15,
+        0.65
+      ],
+      "id": 12,
+      "material": "terracotta",
+      "name": "Sloped tray 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        11,
+        0
+      ],
+      "size": [
+        0.88,
+        0.16,
+        0.041
+      ]
+    },
+    {
+      "axis": [
+        0.86,
+        0.0,
+        -0.17
+      ],
+      "center": [
+        0.0,
+        0.078,
+        0.69
+      ],
+      "id": 13,
+      "material": "cream",
+      "name": "Tray guard 0 -1",
+      "primitive": "rod",
+      "radius": 0.013
+    },
+    {
+      "axis": [
+        0.86,
+        0.0,
+        -0.17
+      ],
+      "center": [
+        0.0,
+        0.222,
+        0.69
+      ],
+      "id": 14,
+      "material": "cream",
+      "name": "Tray guard 0 1",
+      "primitive": "rod",
+      "radius": 0.013
+    },
+    {
+      "center": [
+        0,
+        0.02,
+        0.43
+      ],
+      "id": 15,
+      "material": "blue",
+      "name": "Sloped tray 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -11,
+        0
+      ],
+      "size": [
+        0.88,
+        0.16,
+        0.041
+      ]
+    },
+    {
+      "axis": [
+        0.86,
+        0.0,
+        0.17
+      ],
+      "center": [
+        0.0,
+        -0.052,
+        0.47
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Tray guard 1 -1",
+      "primitive": "rod",
+      "radius": 0.013
+    },
+    {
+      "axis": [
+        0.86,
+        0.0,
+        0.17
+      ],
+      "center": [
+        0.0,
+        0.092,
+        0.47
+      ],
+      "id": 17,
+      "material": "cream",
+      "name": "Tray guard 1 1",
+      "primitive": "rod",
+      "radius": 0.013
+    },
+    {
+      "center": [
+        0,
+        -0.13,
+        0.23
+      ],
+      "id": 18,
+      "material": "green",
+      "name": "Sloped tray 2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        11,
+        0
+      ],
+      "size": [
+        0.88,
+        0.16,
+        0.041
+      ]
+    },
+    {
+      "axis": [
+        0.86,
+        0.0,
+        -0.17
+      ],
+      "center": [
+        0.0,
+        -0.202,
+        0.27
+      ],
+      "id": 19,
+      "material": "cream",
+      "name": "Tray guard 2 -1",
+      "primitive": "rod",
+      "radius": 0.013
+    },
+    {
+      "axis": [
+        0.86,
+        0.0,
+        -0.17
+      ],
+      "center": [
+        0.0,
+        -0.058,
+        0.27
+      ],
+      "id": 20,
+      "material": "cream",
+      "name": "Tray guard 2 1",
+      "primitive": "rod",
+      "radius": 0.013
+    },
+    {
+      "center": [
+        0.33,
+        -0.29,
+        0.053
+      ],
+      "id": 21,
+      "material": "timber",
+      "name": "Catch bin floor",
+      "primitive": "box",
+      "size": [
+        0.34,
+        0.25,
+        0.08
+      ]
+    },
+    {
+      "center": [
+        0.33,
+        -0.405,
+        0.11
+      ],
+      "id": 22,
+      "material": "green",
+      "name": "Catch bin lip",
+      "primitive": "box",
+      "size": [
+        0.34,
+        0.037,
+        0.15
+      ]
+    },
+    {
+      "center": [
+        -0.18,
+        0.15,
+        0.74
+      ],
+      "id": 23,
+      "material": "cream",
+      "name": "Top marble",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.055,
+        0.055,
+        0.055
+      ]
+    },
+    {
+      "center": [
+        0.21,
+        -0.14,
+        0.25
+      ],
+      "id": 24,
+      "material": "terracotta",
+      "name": "Lower marble",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.052,
+        0.052,
+        0.052
+      ]
+    }
+  ],
+  "occlusion_description": "Three sloping rails reverse direction at alternating ends. Balls and a catch bin occupy separate foreground and rear depths.",
+  "title": "Gravity chute and marble catch"
+}

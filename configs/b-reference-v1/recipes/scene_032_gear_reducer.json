@@ -1,0 +1,797 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0.08,
+        0.045
+      ],
+      "id": 10,
+      "material": "legs",
+      "name": "Gearbox foot",
+      "primitive": "box",
+      "size": [
+        1.08,
+        0.45,
+        0.09
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.27,
+        0.3
+      ],
+      "id": 11,
+      "material": "green",
+      "name": "Rear bearing block",
+      "primitive": "box",
+      "size": [
+        0.94,
+        0.1,
+        0.5
+      ]
+    },
+    {
+      "bottom_radius": 0.22,
+      "center": [
+        -0.26,
+        -0.17,
+        0.34
+      ],
+      "depth": 0.059,
+      "id": 12,
+      "material": "blue",
+      "name": "Gear disk 0",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.22
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.26,
+        0.035,
+        0.34
+      ],
+      "id": 13,
+      "material": "dark",
+      "name": "Transmission shaft 0",
+      "primitive": "rod",
+      "radius": 0.032
+    },
+    {
+      "center": [
+        -0.026,
+        -0.17,
+        0.34
+      ],
+      "id": 14,
+      "material": "blue",
+      "name": "Gear 0 tooth 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -0.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.05735,
+        -0.17,
+        0.457
+      ],
+      "id": 15,
+      "material": "blue",
+      "name": "Gear 0 tooth 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -29.999999999999996,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.143,
+        -0.17,
+        0.54265
+      ],
+      "id": 16,
+      "material": "blue",
+      "name": "Gear 0 tooth 2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -59.99999999999999,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.26,
+        -0.17,
+        0.574
+      ],
+      "id": 17,
+      "material": "blue",
+      "name": "Gear 0 tooth 3",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -90.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.377,
+        -0.17,
+        0.54265
+      ],
+      "id": 18,
+      "material": "blue",
+      "name": "Gear 0 tooth 4",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -119.99999999999999,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.46265,
+        -0.17,
+        0.457
+      ],
+      "id": 19,
+      "material": "blue",
+      "name": "Gear 0 tooth 5",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -150.00000000000003,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.494,
+        -0.17,
+        0.34
+      ],
+      "id": 20,
+      "material": "blue",
+      "name": "Gear 0 tooth 6",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -180.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.46265,
+        -0.17,
+        0.223
+      ],
+      "id": 21,
+      "material": "blue",
+      "name": "Gear 0 tooth 7",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -209.99999999999997,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.377,
+        -0.17,
+        0.13735
+      ],
+      "id": 22,
+      "material": "blue",
+      "name": "Gear 0 tooth 8",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -239.99999999999997,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.26,
+        -0.17,
+        0.106
+      ],
+      "id": 23,
+      "material": "blue",
+      "name": "Gear 0 tooth 9",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -270.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.143,
+        -0.17,
+        0.13735
+      ],
+      "id": 24,
+      "material": "blue",
+      "name": "Gear 0 tooth 10",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -300.00000000000006,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.05735,
+        -0.17,
+        0.223
+      ],
+      "id": 25,
+      "material": "blue",
+      "name": "Gear 0 tooth 11",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -329.99999999999994,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "bottom_radius": 0.12,
+      "center": [
+        0.02,
+        -0.07,
+        0.47
+      ],
+      "depth": 0.059,
+      "id": 26,
+      "material": "cream",
+      "name": "Gear disk 1",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.12
+    },
+    {
+      "axis": [
+        0.0,
+        0.41,
+        0.0
+      ],
+      "center": [
+        0.02,
+        0.085,
+        0.47
+      ],
+      "id": 27,
+      "material": "dark",
+      "name": "Transmission shaft 1",
+      "primitive": "rod",
+      "radius": 0.032
+    },
+    {
+      "center": [
+        0.154,
+        -0.07,
+        0.47
+      ],
+      "id": 28,
+      "material": "cream",
+      "name": "Gear 1 tooth 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -0.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.114752,
+        -0.07,
+        0.564752
+      ],
+      "id": 29,
+      "material": "cream",
+      "name": "Gear 1 tooth 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -45.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.02,
+        -0.07,
+        0.604
+      ],
+      "id": 30,
+      "material": "cream",
+      "name": "Gear 1 tooth 2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -90.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.074752,
+        -0.07,
+        0.564752
+      ],
+      "id": 31,
+      "material": "cream",
+      "name": "Gear 1 tooth 3",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -135.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.114,
+        -0.07,
+        0.47
+      ],
+      "id": 32,
+      "material": "cream",
+      "name": "Gear 1 tooth 4",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -180.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        -0.074752,
+        -0.07,
+        0.375248
+      ],
+      "id": 33,
+      "material": "cream",
+      "name": "Gear 1 tooth 5",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -225.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.02,
+        -0.07,
+        0.336
+      ],
+      "id": 34,
+      "material": "cream",
+      "name": "Gear 1 tooth 6",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -270.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.114752,
+        -0.07,
+        0.375248
+      ],
+      "id": 35,
+      "material": "cream",
+      "name": "Gear 1 tooth 7",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -315.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "bottom_radius": 0.2,
+      "center": [
+        0.24,
+        0.055,
+        0.34
+      ],
+      "depth": 0.059,
+      "id": 36,
+      "material": "terracotta",
+      "name": "Gear disk 2",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.2
+    },
+    {
+      "axis": [
+        0.0,
+        0.285,
+        0.0
+      ],
+      "center": [
+        0.24,
+        0.1475,
+        0.34
+      ],
+      "id": 37,
+      "material": "dark",
+      "name": "Transmission shaft 2",
+      "primitive": "rod",
+      "radius": 0.032
+    },
+    {
+      "center": [
+        0.454,
+        0.055,
+        0.34
+      ],
+      "id": 38,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -0.0,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.420028,
+        0.055,
+        0.455697
+      ],
+      "id": 39,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -32.72727272727273,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.328899,
+        0.055,
+        0.534661
+      ],
+      "id": 40,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 2",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -65.45454545454545,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.209545,
+        0.055,
+        0.551822
+      ],
+      "id": 41,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 3",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -98.18181818181817,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.09986,
+        0.055,
+        0.50173
+      ],
+      "id": 42,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 4",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -130.9090909090909,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.034669,
+        0.055,
+        0.400291
+      ],
+      "id": 43,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 5",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -163.63636363636365,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.034669,
+        0.055,
+        0.279709
+      ],
+      "id": 44,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 6",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -196.36363636363635,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.09986,
+        0.055,
+        0.17827
+      ],
+      "id": 45,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 7",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -229.0909090909091,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.209545,
+        0.055,
+        0.128178
+      ],
+      "id": 46,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 8",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -261.8181818181818,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.328899,
+        0.055,
+        0.145339
+      ],
+      "id": 47,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 9",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -294.54545454545456,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    },
+    {
+      "center": [
+        0.420028,
+        0.055,
+        0.224303
+      ],
+      "id": 48,
+      "material": "terracotta",
+      "name": "Gear 2 tooth 10",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -327.2727272727273,
+        0
+      ],
+      "size": [
+        0.058,
+        0.056,
+        0.04
+      ]
+    }
+  ],
+  "occlusion_description": "Three toothed disks rotate on independent shafts. The large front gear overlaps the offset pinion and rear output wheel.",
+  "title": "Open three-gear reduction model"
+}

@@ -1,0 +1,226 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        -0.43,
+        0.045,
+        0.64
+      ],
+      "depth": 0.6,
+      "id": 10,
+      "material": "blue",
+      "name": "Trihedral canopy fold 0",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102,
+      "vertices": 3
+    },
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        -0.258,
+        0.045,
+        0.64
+      ],
+      "depth": 0.6,
+      "id": 11,
+      "material": "cream",
+      "name": "Trihedral canopy fold 1",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102,
+      "vertices": 3
+    },
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        -0.086,
+        0.045,
+        0.64
+      ],
+      "depth": 0.6,
+      "id": 12,
+      "material": "blue",
+      "name": "Trihedral canopy fold 2",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102,
+      "vertices": 3
+    },
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        0.086,
+        0.045,
+        0.64
+      ],
+      "depth": 0.6,
+      "id": 13,
+      "material": "cream",
+      "name": "Trihedral canopy fold 3",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102,
+      "vertices": 3
+    },
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        0.258,
+        0.045,
+        0.64
+      ],
+      "depth": 0.6,
+      "id": 14,
+      "material": "blue",
+      "name": "Trihedral canopy fold 4",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102,
+      "vertices": 3
+    },
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        0.43,
+        0.045,
+        0.64
+      ],
+      "depth": 0.6,
+      "id": 15,
+      "material": "cream",
+      "name": "Trihedral canopy fold 5",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102,
+      "vertices": 3
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.6
+      ],
+      "center": [
+        -0.45,
+        -0.23,
+        0.32
+      ],
+      "id": 16,
+      "material": "legs",
+      "name": "Slender support -0.45 -0.23",
+      "primitive": "rod",
+      "radius": 0.023
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.6
+      ],
+      "center": [
+        -0.45,
+        0.29,
+        0.32
+      ],
+      "id": 17,
+      "material": "legs",
+      "name": "Slender support -0.45 0.29",
+      "primitive": "rod",
+      "radius": 0.023
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.6
+      ],
+      "center": [
+        0.45,
+        -0.23,
+        0.32
+      ],
+      "id": 18,
+      "material": "legs",
+      "name": "Slender support 0.45 -0.23",
+      "primitive": "rod",
+      "radius": 0.023
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.6
+      ],
+      "center": [
+        0.45,
+        0.29,
+        0.32
+      ],
+      "id": 19,
+      "material": "legs",
+      "name": "Slender support 0.45 0.29",
+      "primitive": "rod",
+      "radius": 0.023
+    },
+    {
+      "center": [
+        0.11,
+        0.21,
+        0.28
+      ],
+      "id": 20,
+      "material": "green",
+      "name": "Rear service counter",
+      "primitive": "box",
+      "size": [
+        0.65,
+        0.18,
+        0.45
+      ]
+    },
+    {
+      "center": [
+        -0.26,
+        -0.24,
+        0.19
+      ],
+      "id": 21,
+      "material": "terracotta",
+      "name": "Foreground ticket stand",
+      "primitive": "box",
+      "size": [
+        0.21,
+        0.2,
+        0.38
+      ]
+    }
+  ],
+  "occlusion_description": "Six neighboring triangular roof prisms create repeated planar folds over an open entrance. The near folds cover different rear supports.",
+  "title": "Pleated triangular-prism canopy"
+}

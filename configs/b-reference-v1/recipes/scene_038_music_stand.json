@@ -1,0 +1,252 @@
+{
+  "objects": [
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.6
+      ],
+      "center": [
+        -0.13,
+        0.02,
+        0.39
+      ],
+      "id": 10,
+      "material": "legs",
+      "name": "Stand upright",
+      "primitive": "rod",
+      "radius": 0.03
+    },
+    {
+      "axis": [
+        -0.29,
+        -0.24,
+        -0.115
+      ],
+      "center": [
+        -0.275,
+        -0.1,
+        0.0825
+      ],
+      "id": 11,
+      "material": "dark",
+      "name": "Tripod foot 0",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.28,
+        -0.19,
+        -0.115
+      ],
+      "center": [
+        0.01,
+        -0.075,
+        0.0825
+      ],
+      "id": 12,
+      "material": "dark",
+      "name": "Tripod foot 1",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.0,
+        0.29,
+        -0.115
+      ],
+      "center": [
+        -0.13,
+        0.165,
+        0.0825
+      ],
+      "id": 13,
+      "material": "dark",
+      "name": "Tripod foot 2",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "center": [
+        -0.12,
+        0.02,
+        0.63
+      ],
+      "id": 14,
+      "material": "blue",
+      "name": "Music board",
+      "primitive": "box",
+      "rotation_deg": [
+        -17,
+        0,
+        8
+      ],
+      "size": [
+        0.64,
+        0.048,
+        0.37
+      ]
+    },
+    {
+      "center": [
+        -0.17,
+        -0.012,
+        0.65
+      ],
+      "id": 15,
+      "material": "cream",
+      "name": "Score sheet",
+      "primitive": "box",
+      "rotation_deg": [
+        -17,
+        0,
+        8
+      ],
+      "size": [
+        0.34,
+        0.02,
+        0.24
+      ]
+    },
+    {
+      "center": [
+        -0.12,
+        -0.068,
+        0.45
+      ],
+      "id": 16,
+      "material": "terracotta",
+      "name": "Board lip",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        0,
+        8
+      ],
+      "size": [
+        0.71,
+        0.12,
+        0.041
+      ]
+    },
+    {
+      "center": [
+        0.32,
+        0.19,
+        0.12
+      ],
+      "id": 17,
+      "material": "timber",
+      "name": "Mallet rack",
+      "primitive": "box",
+      "size": [
+        0.31,
+        0.22,
+        0.19
+      ]
+    },
+    {
+      "axis": [
+        -0.055,
+        0.0,
+        0.3
+      ],
+      "center": [
+        0.1925,
+        0.18,
+        0.35
+      ],
+      "id": 18,
+      "material": "legs",
+      "name": "Mallet 0",
+      "primitive": "rod",
+      "radius": 0.014
+    },
+    {
+      "center": [
+        0.165,
+        0.18,
+        0.5
+      ],
+      "id": 19,
+      "material": "green",
+      "name": "Beater head 0",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.046,
+        0.046,
+        0.046
+      ]
+    },
+    {
+      "axis": [
+        -0.055,
+        0.0,
+        0.345
+      ],
+      "center": [
+        0.2925,
+        0.215,
+        0.3725
+      ],
+      "id": 20,
+      "material": "legs",
+      "name": "Mallet 1",
+      "primitive": "rod",
+      "radius": 0.014
+    },
+    {
+      "center": [
+        0.265,
+        0.215,
+        0.545
+      ],
+      "id": 21,
+      "material": "green",
+      "name": "Beater head 1",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.046,
+        0.046,
+        0.046
+      ]
+    },
+    {
+      "axis": [
+        -0.055,
+        0.0,
+        0.39
+      ],
+      "center": [
+        0.4025,
+        0.18,
+        0.395
+      ],
+      "id": 22,
+      "material": "legs",
+      "name": "Mallet 2",
+      "primitive": "rod",
+      "radius": 0.014
+    },
+    {
+      "center": [
+        0.375,
+        0.18,
+        0.59
+      ],
+      "id": 23,
+      "material": "green",
+      "name": "Beater head 2",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.046,
+        0.046,
+        0.046
+      ]
+    }
+  ],
+  "occlusion_description": "The slanted score board masks the rear leg and tall mallets. Its projecting lip occupies a different depth from the rack.",
+  "title": "Music stand and mallet rack"
+}

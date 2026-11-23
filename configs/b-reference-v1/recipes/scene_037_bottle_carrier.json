@@ -1,0 +1,303 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0.02,
+        0.065
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Carrier floor",
+      "primitive": "box",
+      "size": [
+        0.82,
+        0.53,
+        0.09
+      ]
+    },
+    {
+      "center": [
+        0,
+        -0.25,
+        0.19
+      ],
+      "id": 11,
+      "material": "green",
+      "name": "End face -0.25",
+      "primitive": "box",
+      "size": [
+        0.83,
+        0.042,
+        0.23
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.28,
+        0.19
+      ],
+      "id": 12,
+      "material": "green",
+      "name": "End face 0.28",
+      "primitive": "box",
+      "size": [
+        0.83,
+        0.042,
+        0.23
+      ]
+    },
+    {
+      "center": [
+        -0.4,
+        0.02,
+        0.31
+      ],
+      "id": 13,
+      "material": "timber",
+      "name": "Carrier side -0.4",
+      "primitive": "box",
+      "size": [
+        0.046,
+        0.52,
+        0.5
+      ]
+    },
+    {
+      "center": [
+        0.4,
+        0.02,
+        0.31
+      ],
+      "id": 14,
+      "material": "timber",
+      "name": "Carrier side 0.4",
+      "primitive": "box",
+      "size": [
+        0.046,
+        0.52,
+        0.5
+      ]
+    },
+    {
+      "axis": [
+        0.8,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.0,
+        0.04,
+        0.59
+      ],
+      "id": 15,
+      "material": "legs",
+      "name": "Carrying handle",
+      "primitive": "rod",
+      "radius": 0.042
+    },
+    {
+      "center": [
+        -0.14,
+        0.02,
+        0.22
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Cell divider -0.14",
+      "primitive": "box",
+      "size": [
+        0.028,
+        0.47,
+        0.24
+      ]
+    },
+    {
+      "center": [
+        0.14,
+        0.02,
+        0.22
+      ],
+      "id": 17,
+      "material": "cream",
+      "name": "Cell divider 0.14",
+      "primitive": "box",
+      "size": [
+        0.028,
+        0.47,
+        0.24
+      ]
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        -0.26,
+        -0.11,
+        0.3
+      ],
+      "depth": 0.38,
+      "id": 18,
+      "material": "blue",
+      "name": "Bottle body 0",
+      "primitive": "frustum",
+      "top_radius": 0.069
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        -0.26,
+        -0.11,
+        0.52
+      ],
+      "depth": 0.067,
+      "id": 19,
+      "material": "blue",
+      "name": "Bottle shoulder 0",
+      "primitive": "frustum",
+      "top_radius": 0.033
+    },
+    {
+      "bottom_radius": 0.032,
+      "center": [
+        -0.26,
+        -0.11,
+        0.58
+      ],
+      "depth": 0.063,
+      "id": 20,
+      "material": "dark",
+      "name": "Bottle neck 0",
+      "primitive": "frustum",
+      "top_radius": 0.032
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        0.02,
+        -0.11,
+        0.265
+      ],
+      "depth": 0.31,
+      "id": 21,
+      "material": "green",
+      "name": "Bottle body 1",
+      "primitive": "frustum",
+      "top_radius": 0.069
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        0.02,
+        -0.11,
+        0.45
+      ],
+      "depth": 0.067,
+      "id": 22,
+      "material": "blue",
+      "name": "Bottle shoulder 1",
+      "primitive": "frustum",
+      "top_radius": 0.033
+    },
+    {
+      "bottom_radius": 0.032,
+      "center": [
+        0.02,
+        -0.11,
+        0.51
+      ],
+      "depth": 0.063,
+      "id": 23,
+      "material": "dark",
+      "name": "Bottle neck 1",
+      "primitive": "frustum",
+      "top_radius": 0.032
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        0.26,
+        0.16,
+        0.32
+      ],
+      "depth": 0.42000000000000004,
+      "id": 24,
+      "material": "terracotta",
+      "name": "Bottle body 2",
+      "primitive": "frustum",
+      "top_radius": 0.069
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        0.26,
+        0.16,
+        0.56
+      ],
+      "depth": 0.067,
+      "id": 25,
+      "material": "blue",
+      "name": "Bottle shoulder 2",
+      "primitive": "frustum",
+      "top_radius": 0.033
+    },
+    {
+      "bottom_radius": 0.032,
+      "center": [
+        0.26,
+        0.16,
+        0.62
+      ],
+      "depth": 0.063,
+      "id": 26,
+      "material": "dark",
+      "name": "Bottle neck 2",
+      "primitive": "frustum",
+      "top_radius": 0.032
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        -0.24,
+        0.16,
+        0.29
+      ],
+      "depth": 0.36000000000000004,
+      "id": 27,
+      "material": "cream",
+      "name": "Bottle body 3",
+      "primitive": "frustum",
+      "top_radius": 0.069
+    },
+    {
+      "bottom_radius": 0.069,
+      "center": [
+        -0.24,
+        0.16,
+        0.5
+      ],
+      "depth": 0.067,
+      "id": 28,
+      "material": "blue",
+      "name": "Bottle shoulder 3",
+      "primitive": "frustum",
+      "top_radius": 0.033
+    },
+    {
+      "bottom_radius": 0.032,
+      "center": [
+        -0.24,
+        0.16,
+        0.56
+      ],
+      "depth": 0.063,
+      "id": 29,
+      "material": "dark",
+      "name": "Bottle neck 3",
+      "primitive": "frustum",
+      "top_radius": 0.032
+    }
+  ],
+  "occlusion_description": "An elevated handle spans a partitioned crate. Front and rear bottles have different heights and mask neighboring cells.",
+  "title": "Partitioned bottle carrier"
+}

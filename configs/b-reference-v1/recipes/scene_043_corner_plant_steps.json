@@ -1,0 +1,346 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.38,
+        -0.16,
+        0.065
+      ],
+      "id": 10,
+      "material": "green",
+      "name": "Corner plinth 0",
+      "primitive": "box",
+      "size": [
+        0.29,
+        0.24,
+        0.13
+      ]
+    },
+    {
+      "bottom_radius": 0.062,
+      "center": [
+        -0.38,
+        -0.16,
+        0.2
+      ],
+      "depth": 0.14,
+      "id": 11,
+      "material": "terracotta",
+      "name": "Small pot 0",
+      "primitive": "frustum",
+      "top_radius": 0.087
+    },
+    {
+      "axis": [
+        0.025,
+        0.0,
+        0.13
+      ],
+      "center": [
+        -0.3675,
+        -0.16,
+        0.325
+      ],
+      "id": 12,
+      "material": "legs",
+      "name": "Stem 0",
+      "primitive": "rod",
+      "radius": 0.01
+    },
+    {
+      "center": [
+        -0.355,
+        -0.16,
+        0.39
+      ],
+      "id": 13,
+      "material": "green",
+      "name": "Leaf crown 0",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.105,
+        0.066,
+        0.076
+      ],
+      "rotation_deg": [
+        12,
+        0,
+        0
+      ]
+    },
+    {
+      "center": [
+        -0.08,
+        -0.14,
+        0.11
+      ],
+      "id": 14,
+      "material": "timber",
+      "name": "Corner plinth 1",
+      "primitive": "box",
+      "size": [
+        0.28,
+        0.24,
+        0.22
+      ]
+    },
+    {
+      "bottom_radius": 0.062,
+      "center": [
+        -0.08,
+        -0.14,
+        0.29
+      ],
+      "depth": 0.14,
+      "id": 15,
+      "material": "terracotta",
+      "name": "Small pot 1",
+      "primitive": "frustum",
+      "top_radius": 0.087
+    },
+    {
+      "axis": [
+        0.025,
+        0.0,
+        0.13
+      ],
+      "center": [
+        -0.0675,
+        -0.14,
+        0.415
+      ],
+      "id": 16,
+      "material": "legs",
+      "name": "Stem 1",
+      "primitive": "rod",
+      "radius": 0.01
+    },
+    {
+      "center": [
+        -0.055,
+        -0.14,
+        0.48
+      ],
+      "id": 17,
+      "material": "green",
+      "name": "Leaf crown 1",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.105,
+        0.066,
+        0.076
+      ],
+      "rotation_deg": [
+        12,
+        9,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.22,
+        -0.1,
+        0.16
+      ],
+      "id": 18,
+      "material": "green",
+      "name": "Corner plinth 2",
+      "primitive": "box",
+      "size": [
+        0.29,
+        0.24,
+        0.32
+      ]
+    },
+    {
+      "bottom_radius": 0.062,
+      "center": [
+        0.22,
+        -0.1,
+        0.39
+      ],
+      "depth": 0.14,
+      "id": 19,
+      "material": "terracotta",
+      "name": "Small pot 2",
+      "primitive": "frustum",
+      "top_radius": 0.087
+    },
+    {
+      "axis": [
+        0.025,
+        0.0,
+        0.13
+      ],
+      "center": [
+        0.2325,
+        -0.1,
+        0.515
+      ],
+      "id": 20,
+      "material": "legs",
+      "name": "Stem 2",
+      "primitive": "rod",
+      "radius": 0.01
+    },
+    {
+      "center": [
+        0.245,
+        -0.1,
+        0.58
+      ],
+      "id": 21,
+      "material": "green",
+      "name": "Leaf crown 2",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.105,
+        0.066,
+        0.076
+      ],
+      "rotation_deg": [
+        12,
+        18,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.26,
+        0.15,
+        0.215
+      ],
+      "id": 22,
+      "material": "timber",
+      "name": "Corner plinth 3",
+      "primitive": "box",
+      "size": [
+        0.28,
+        0.24,
+        0.43
+      ]
+    },
+    {
+      "bottom_radius": 0.062,
+      "center": [
+        0.26,
+        0.15,
+        0.5
+      ],
+      "depth": 0.14,
+      "id": 23,
+      "material": "terracotta",
+      "name": "Small pot 3",
+      "primitive": "frustum",
+      "top_radius": 0.087
+    },
+    {
+      "axis": [
+        0.025,
+        0.0,
+        0.13
+      ],
+      "center": [
+        0.2725,
+        0.15,
+        0.625
+      ],
+      "id": 24,
+      "material": "legs",
+      "name": "Stem 3",
+      "primitive": "rod",
+      "radius": 0.01
+    },
+    {
+      "center": [
+        0.285,
+        0.15,
+        0.69
+      ],
+      "id": 25,
+      "material": "green",
+      "name": "Leaf crown 3",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.105,
+        0.066,
+        0.076
+      ],
+      "rotation_deg": [
+        12,
+        27,
+        0
+      ]
+    },
+    {
+      "center": [
+        0.23,
+        0.37,
+        0.255
+      ],
+      "id": 26,
+      "material": "green",
+      "name": "Corner plinth 4",
+      "primitive": "box",
+      "size": [
+        0.3,
+        0.24,
+        0.51
+      ]
+    },
+    {
+      "bottom_radius": 0.062,
+      "center": [
+        0.23,
+        0.37,
+        0.58
+      ],
+      "depth": 0.14,
+      "id": 27,
+      "material": "terracotta",
+      "name": "Small pot 4",
+      "primitive": "frustum",
+      "top_radius": 0.087
+    },
+    {
+      "axis": [
+        0.025,
+        0.0,
+        0.13
+      ],
+      "center": [
+        0.2425,
+        0.37,
+        0.705
+      ],
+      "id": 28,
+      "material": "legs",
+      "name": "Stem 4",
+      "primitive": "rod",
+      "radius": 0.01
+    },
+    {
+      "center": [
+        0.255,
+        0.37,
+        0.77
+      ],
+      "id": 29,
+      "material": "green",
+      "name": "Leaf crown 4",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.105,
+        0.066,
+        0.076
+      ],
+      "rotation_deg": [
+        12,
+        36,
+        0
+      ]
+    }
+  ],
+  "occlusion_description": "An L-shaped bank of plinths climbs away from the viewer. Broad front leaves hide rims and upright rear stems.",
+  "title": "Corner plant display steps"
+}
