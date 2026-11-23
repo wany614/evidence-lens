@@ -8,7 +8,7 @@ This release scores nearby views synthesized from a single image. Its L1-full mo
 
 Download the release ZIP and its SHA-256 sidecar together. From the download directory, verify the container with `shasum -a 256 -c <downloaded-sidecar>` on macOS or `sha256sum -c <downloaded-sidecar>` on Linux. In PowerShell, compare `Get-FileHash -Algorithm SHA256 <downloaded-zip>` with the sidecar. Extract the ZIP into a new folder and open a shell inside it.
 
-Use Python 3.11 or later. The six-view example passed on macOS arm64 with CPython 3.12.16, NumPy 2.5.5 and Pillow 12.3.0, and with CPython 3.11.18, NumPy 1.26.4 and Pillow 11.0.0. The largest absolute score differences from the original across five methods were 0 and 1.19 × 10⁻⁷, respectively. Both environments reproduced all valid masks and decisions. The wheel contains the Evidence Lens code. Pip obtains the two numeric and image dependencies from your package index or wheelhouse.
+Use Python 3.11 or later. The six-view example passed on macOS arm64 with CPython 3.12.16, NumPy 2.5.5 and Pillow 12.3.0, and with CPython 3.11.18, NumPy 1.26.4 and Pillow 11.0.0. The largest absolute score differences from the original across five methods were 0 and 1.19 × 10⁻⁷, respectively. A clean Windows 11 25H2 AMD64 preflight used CPython 3.11.5, NumPy 2.4.6 and Pillow 12.3.0 and reproduced the original scores exactly. All three installations agreed on valid masks and decisions across six targets and five methods. Linux CPU validation is pending. The wheel contains the Evidence Lens code. Pip obtains the two numeric and image dependencies from your package index or wheelhouse.
 
 ```sh
 python -m venv .venv

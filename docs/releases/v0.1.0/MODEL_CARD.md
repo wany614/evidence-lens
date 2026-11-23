@@ -24,11 +24,11 @@ The formal SHARP generation and gsplat rendering ran on a Windows CUDA GPU. The 
 
 ## Held-out results
 
-The four held-out layouts provided six planned targets per condition. 72 of 72 target predictions completed. V counts every reference-valid RGB pixel. E also requires valid predicted RGB. Fair average precision (AP) uses the five-method score intersection S within E, averages only targets containing positive and negative errors, and then gives each eligible family equal weight. S/V gives the share of the evaluation domain represented by that comparison. System coverage and error rates use their own stated denominators. `results/family-results.csv` · `results/data-completion.csv`
+The four held-out layouts provided six planned targets per condition. 72 of 72 target predictions completed. V counts every reference-valid RGB pixel. E also requires valid predicted RGB. Common-mask average precision (AP) uses the five-method score intersection S within E. Each eligible target must contain both confirmed errors and pixels within tolerance. We average target AP within each family and give each eligible family equal weight. S/V gives the share of the evaluation domain represented by that comparison. For each percentage below, we pool the six targets within each family and average the four resulting family ratios. This also applies to detection (HY/Y), where HY is the number of confirmed error pixels flagged high and Y is the total number of confirmed error pixels. `results/family-results.csv` · `results/data-completion.csv`
 
 ### Baseline B0
 
-| Method | Fair AP | Low-risk coverage L/V | Error among low LY/L | Known errors flagged HY/Y | Unknown among E |
+| Method | Common-mask AP | Low-risk coverage L/V | Error among low LY/L | Confirmed errors flagged, family-mean HY/Y | Unknown among E |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | L1-full | 0.804 | 62.71% | 11.03% | 78.42% | 0.25% |
 | L1-geometry | 0.771 | 60.57% | 11.20% | 78.24% | 0.25% |
@@ -36,36 +36,36 @@ The four held-out layouts provided six planned targets per condition. 72 of 72 t
 | 1-alpha | 0.355 | 77.01% | 31.84% | 24.21% | 0.00% |
 | constant | 0.323 | 100.00% | 32.48% | 0.00% | 0.00% |
 
-L1-full accepted 62.71% of B0 test pixels at its development threshold, with 11.03% error among those accepted. On development the same figures were 80.00% and 6.47%. The common mask covered 99.75% of V on average and supplied 24/24 two-class targets. L1-full’s median family AP was 0.800, with a range of 0.768 to 0.846. Its median family low-risk error rate was 11.08%, ranging from 6.89% to 15.07%. `results/family-equal-summary.csv`
+L1-full accepted 62.71% of B0 test pixels at its development threshold, with 11.03% error among those accepted. On development the same figures were 80.00% and 6.47%. The common mask covered 99.75% of V on average and supplied 24/24 two-class targets. L1-full’s median family common-mask AP was 0.800, with a range of 0.768 to 0.846. Its median family low-risk error rate was 11.08%, ranging from 6.89% to 15.07%. `results/family-equal-summary.csv`
 
-| B0 layout | L1-full fair AP | Low-risk coverage | Error among low | True-error pixels marked low |
+| B0 layout | L1-full common-mask AP | Low-risk coverage | Error among low | Confirmed error pixels marked low |
 | --- | ---: | ---: | ---: | ---: |
 | Drum kit | 0.846 | 62.54% | 9.88% | 97,196 |
 | Picket gate | 0.773 | 52.25% | 15.07% | 123,829 |
 | Potter’s wheel | 0.828 | 60.02% | 12.27% | 115,863 |
 | Orbital mobile | 0.768 | 76.04% | 6.89% | 82,436 |
 
-Across the 24 planned B0 targets there were 2,043,247 known high-error pixels. L1-full marked 419,324 of them low and left 15,732 unknown. These are pixel counts pooled across families. On geometrically disoccluded surfaces, the family-mean incidence of strict RGB error among evaluable pixels was 36.23%. On surfaces visible to the source camera it was 33.14%.
+Across the 24 B0 targets there were 2,043,247 confirmed error pixels (Y). L1-full marked 419,324 of them low and left 15,732 unknown. These counts pool the four families. Of evaluable pixels (E), 87.81% were on surfaces visible to the source camera and 6.21% were disoccluded. Their family-mean error incidences were 33.14% and 36.23%, respectively. Another 5.98% fell outside the source field of view, and one pixel had the background/invalid visibility label.
 
 ### Input resolution and colour precision
 
 R1 halves the source to 256 × 256 before a fresh generation and retains 512 × 512 targets. Q1 rounds only the three B0 Gaussian colour coefficients through FP16 before rerendering. The operating thresholds are fixed in both conditions.
 
-| Condition | Targets completed | Confirmed error Y/V | Invalid output (V−E)/V | Common coverage S/V | L1-full fair AP | L1-full low coverage |
+| Condition | Targets completed | Confirmed error Y/V | Invalid output (V−E)/V | Common coverage S/V | L1-full common-mask AP | L1-full low coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | B0 | 24/24 | 32.48% | 0.00% | 99.75% | 0.804 | 62.71% |
 | R1 | 24/24 | 33.93% | 0.00% | 99.32% | 0.812 | 61.22% |
 | Q1 | 24/24 | 32.48% | 0.00% | 99.75% | 0.804 | 62.71% |
 
-R1 changed confirmed error incidence by +1.46 percentage points versus B0. Conditional error among E was 33.93% for R1 and 32.48% for B0. The mean absolute change between Q1 and B0 predicted RGB was 1.06327e-05 in display-sRGB units, giving each family equal weight. The largest paired per-pixel channel-mean change was 0.0001127621. The target-to-reference error label uses 0.05 per pixel, so even a smaller change can move a pixel already close to the boundary across it. This Q1 measurement covers one round trip of the degree-zero colour coefficients in these four layouts. Geometry, opacity, support, geometry-only scores and rule diagnostics were bitwise identical in 24/24 paired targets and 4/4 paired source self-renders. The target comparisons counted 0 differing geometry-related values and 6,237,618 differing full-model scores. `results/paired-family-equal.csv` · `results/Q1-numerical-response.csv`
+R1 changed confirmed error incidence by +1.46 percentage points versus B0. Its common-mask AP uses the error prevalence observed in R1. Conditional error among E was 33.93% for R1 and 32.48% for B0. The mean absolute change between Q1 and B0 predicted RGB was 1.06327e-05 in display-sRGB units, giving each family equal weight. The largest paired per-pixel channel-mean change was 0.0001127621. The target-to-reference error label uses 0.05 per pixel, so even a smaller change can move a pixel already close to the boundary across it. This Q1 measurement covers one round trip of the degree-zero colour coefficients in these four layouts. Geometry, opacity, support, geometry-only scores and rule diagnostics were bitwise identical in 24/24 paired targets and 4/4 paired source self-renders. The target comparisons counted 0 differing geometry-related values and 6,237,618 differing full-model scores. `results/paired-family-equal.csv` · `results/Q1-numerical-response.csv`
 
 ## Intended use and limits
 
-Use the maps to inspect synthetic novel views for likely reconstruction errors near changed visibility, edges and weak support. The measured domain is opaque, static object layouts under a single Apple SHARP checkpoint, a fixed rendering pipeline and nearby perspective cameras. Real photographs, transparent or moving objects, wide camera changes and other synthesis methods lie outside the measured domain. Four held-out families give a descriptive case series. Related pixels and nearby views share geometry, so the family is the unit of comparison.
+Use these pixel-level risk maps to select areas of a synthetic novel view for inspection. The measured domain is opaque, static object layouts under a single Apple SHARP checkpoint, a fixed rendering pipeline and nearby perspective cameras. Real photographs, transparent or moving objects, wide camera changes and other synthesis methods lie outside the measured domain. Four held-out families give a descriptive case series. Related pixels and nearby views share geometry, so the family is the unit of comparison.
 
 ## Running the CPU example
 
-The packaged input is an original Blender tabletop image. An independent renderer maps it onto an assumed plane at two metres and predicts six 128 × 128 views. The isolated macOS arm64 CPU preflight on Python 3.12.16, NumPy 2.5.5 and Pillow 12.3.0 reproduced all five methods exactly on the fixed v01. A second Mac installation on Python 3.11.18, NumPy 1.26.4 and Pillow 11.0.0 matched validity and decisions across all six targets and five methods. Its largest finite score difference was 1.1921 × 10⁻⁷ against the recorded reference, within the 10⁻⁶ tolerance. L1-full produced 12,181 low, 3,533 high and 670 unknown pixels on v01. The six views together produced 70,874 low, 22,761 high and 4,669 unknown. `example/provenance.json` · [Run the example](README.md)
+The packaged input is an original Blender tabletop image. An independent renderer maps it onto an assumed plane at two metres and predicts six 128 × 128 views. Three isolated CPU preflights compared every method on all six views against the original Mac scores. Both macOS arm64 (CPython 3.12.16, NumPy 2.5.5, Pillow 12.3.0) and Windows 11 25H2 AMD64 (CPython 3.11.5, NumPy 2.4.6, Pillow 12.3.0) matched all finite scores exactly. On macOS arm64 with CPython 3.11.18, NumPy 1.26.4 and Pillow 11.0.0, the maximum finite difference was 1.1921 × 10⁻⁷ against the 10⁻⁶ tolerance. All three matched validity masks and decisions. L1-full produced 12,181 low, 3,533 high and 670 unknown pixels on v01. The six views together produced 70,874 low, 22,761 high and 4,669 unknown. `example/provenance.json` · [Run the example](README.md)
 
 The downloaded example includes its original v01 prediction preview at `example/v01-prediction.png`.
 

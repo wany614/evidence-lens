@@ -27,6 +27,12 @@ LABEL = {
     "L1-full": "L1 full",
 }
 CONDITIONS = ("B0", "R1", "Q1")
+VISIBILITY = {
+    "observed": "Visible in the source view",
+    "disoccluded": "Revealed by a target view",
+    "outside_input_fov": "Outside the source field of view",
+    "background_or_invalid": "Background or invalid reference geometry",
+}
 COUNT_COLUMNS = ("V", "E", "Y", "S", "SY", "L", "LY", "H", "HY", "U", "UY")
 FAMILY_COLUMNS = (
     "family",
@@ -86,7 +92,8 @@ def pp(value):
 
 
 def family_name(family):
-    return re.sub(r"^scene_[0-9]+_", "", family).replace("_", " ").replace("-", " ").capitalize()
+    words = re.sub(r"^scene_[0-9]+_", "", family).replace("_", " ").replace("-", " ")
+    return words.replace("potters wheel", "potter’s wheel").capitalize()
 
 
 def table(labels, body):
@@ -99,6 +106,8 @@ def selected_pin(method, prefix):
 
 class Tables:
     def __init__(self, store, pin, fixture):
+        self.store = store
+        self.supplemental = {}
         self.run = PinnedRun(store, pin)
         rec = self.run.open("payload/report.json")
         self.receipt = load(rec)
@@ -151,6 +160,17 @@ class Tables:
             "unexpected fit receipt",
         )
         self.fit_receipt = signature(train_result)
+        dev_member = f"numeric/evidence/{self.method['threshold_select_run_id']}/development.json"
+        self.development = load(self.open(dev_member))
+        require(
+            self.sources[dev_member]["sha256"] == self.method["development_receipt_sha256"]
+            and self.development["schema"] == "el-development-freeze-1"
+            and self.development["status"] == "frozen"
+            and self.development["run_id"] == self.method["threshold_select_run_id"]
+            and self.development["fit_run_id"] == self.method["model_fit_run_id"]
+            and self.development["model_index_sha256"] == self.method["model_index_sha256"],
+            "development operating points differ from the frozen method",
+        )
 
     def open(self, member):
         spec = self.receipt["files"][member]
@@ -175,9 +195,9 @@ def parse_family_tables(source):
     all_regions = source.public("family-results.csv")
     family = [r for r in all_regions if r["region"] == "all"]
     regional = {
-        (r["family"], r["region"]): n(r["rgb_error_incidence"])
+        (r["family"], r["region"]): (int(r["Y"]), int(r["E"]))
         for r in all_regions
-        if r["condition"] == "B0" and r["method"] == "constant" and r["region"] in ("observed", "disoccluded")
+        if r["condition"] == "B0" and r["method"] == "constant" and r["region"] in (*VISIBILITY, "all")
     }
     by_family = {(r["family"], r["condition"], r["method"]): r for r in family}
     expected = {(f, c, m) for f, c in source.trials for m in METHODS}
@@ -224,6 +244,71 @@ def parse_family_tables(source):
             record.update({metric + "_B0": b, metric + "_variant": a, metric + "_delta": d})
         paired[f, c] = record
     return by_family, aggregates, paired, regional
+
+
+def visibility_text(families, regional):
+    require(
+        set(regional) == {(f, k) for f in families for k in (*VISIBILITY, "all")},
+        "incomplete B0 visibility regions",
+    )
+    for f in families:
+        parts = [regional[f, region] for region in VISIBILITY]
+        require(all(0 <= y <= e for y, e in parts), "invalid regional error count")
+        totals = (sum(y for y, e in parts), sum(e for y, e in parts))
+        require(totals == regional[f, "all"], "B0 visibility regions do not partition Y and E")
+    conditional = {}
+    panel = []
+    for region, label in {"all": "All evaluable pixels", **VISIBILITY}.items():
+        shares = []
+        errors, evaluable = 0, 0
+        rates = []
+        for f in families:
+            y, e = regional[f, region]
+            errors += y
+            evaluable += e
+            if regional[f, "all"][1]:
+                shares.append(e / regional[f, "all"][1])
+            if e:
+                conditional[f, region] = y / e
+                rates.append(y / e)
+        share = mean(shares) if shares else None
+        share_text = "<0.01" if share is not None and 0 < share < 0.0001 else fmt(share, 2, scale=100)
+        panel.append(
+            (
+                label,
+                f"{errors:,}",
+                f"{evaluable:,}",
+                share_text,
+                fmt(mean(rates) if rates else None, 2, scale=100),
+                f"{len(rates)}/{len(families)}",
+            )
+        )
+    paired = [
+        conditional[f, "disoccluded"] - conditional[f, "observed"]
+        for f in families
+        if (f, "disoccluded") in conditional and (f, "observed") in conditional
+    ]
+    text = [
+        "The B0 counts below sum pixels across all four families. The share of E divides the region’s evaluable pixels by all evaluable pixels in that family. Error incidence divides errors in the region by evaluable pixels in that same region. Each percentage gives eligible families equal weight.",
+        "",
+        *table(
+            (
+                "B0 visibility region",
+                "Errors (Y)",
+                "Evaluable pixels (E)",
+                "Share of E %",
+                "Within-region errors / E %",
+                "Families with region E",
+            ),
+            panel,
+        ),
+    ]
+    if paired:
+        text += [
+            "",
+            f"Surfaces revealed by a target view were occluded in the source. The mean within-family difference in error incidence, revealed minus visible, was {pp(mean(paired))} percentage points across {len(paired)} families with both regions.",
+        ]
+    return text
 
 
 def draw_changes(path, families, paired):
@@ -285,7 +370,7 @@ def draw_changes(path, families, paired):
 
 def magnitude(value):
     value = n(value)
-    return "—" if value is None else format(value, ".4g")
+    return "—" if value is None else format(value, ".3e")
 
 
 def results_text(source, fam, agg, paired, regional):
@@ -302,23 +387,17 @@ def results_text(source, fam, agg, paired, regional):
     if eligible:
         best, m = max(eligible)
         baseline = f" The highest AP among the three simple baselines was {fmt(best)} ({LABEL[m]})."
-    observed = [regional[f, "observed"] for f in source.families if regional[f, "observed"] is not None]
-    hidden = [regional[f, "disoccluded"] for f in source.families if regional[f, "disoccluded"] is not None]
-    changes = [
-        regional[f, "disoccluded"] - regional[f, "observed"]
-        for f in source.families
-        if all(regional[f, k] is not None for k in ("observed", "disoccluded"))
-    ]
-    spatial = (
-        f"In B0, the mean error incidence was {pct(mean(observed) if observed else None)}% on surfaces visible from the input "
-        f"({len(observed)}/4 families) and {pct(mean(hidden) if hidden else None)}% on surfaces revealed by the new viewpoint "
-        f"({len(hidden)}/4). The mean within-family difference was {pp(mean(changes) if changes else None)} percentage points "
-        f"across {len(changes)} families with both regions."
+    dev = source.development["methods"]["L1-full"]
+    require(
+        all(n(fam[f, "B0", "L1-full"]["tau"]) == n(dev["tau"]) for f in source.families),
+        "held-out L1 full thresholds differ from development",
     )
     lead += [
-        f"On four held-out scenes, L1 full ranked pixels by the risk of an RGB reconstruction error with an average precision (AP) of **{fmt(averaged('B0', 'L1-full', 'common_ap'))}** under the baseline condition.{baseline} At its frozen threshold it accepted **{pct(averaged('B0', 'L1-full', 'low_coverage'))}%** of reference-valid pixels as low risk. **{pct(averaged('B0', 'L1-full', 'low_risk_error'))}%** of the accepted pixels were errors, averaged across eligible families.",
+        f"On four held-out scenes, L1 full ranked pixels by the risk of an RGB reconstruction error with an average precision (AP) of **{fmt(averaged('B0', 'L1-full', 'common_ap'))}** under the baseline condition.{baseline}",
         "",
-        f"Each scene starts from one image. SHARP generates the scene representation and renders six new camera views. Blender supplies the reference for evaluation. An error is a mean absolute RGB channel difference greater than 0.05 on a display-sRGB scale from 0 to 1. The study assigned {counts['train']} original, static, opaque scene families to training, {counts['development']} to development and {counts['test']} to testing. The development families set the decision thresholds. Performance on real photographs and other generators is unmeasured. [Study protocol](../../protocol/study-v1.json)",
+        f"At the frozen B0 threshold, L1 full accepted **{fmt(dev['coverage'], 2, scale=100)}%** of reference-valid pixels as low risk on the four development families. **{fmt(dev['family_macro_low_risk_error_rate'], 2, scale=100)}%** of accepted pixels were errors. On the four held-out families, coverage was **{fmt(averaged('B0', 'L1-full', 'low_coverage'), 2, scale=100)}%** and the error rate among accepted pixels was **{fmt(averaged('B0', 'L1-full', 'low_risk_error'), 2, scale=100)}%**. Both metrics give eligible families equal weight.",
+        "",
+        f"Each scene starts from one image. Apple’s SHARP estimates a Gaussian scene representation. gsplat renders six new camera views, and Blender supplies independent reference images. An error is a mean absolute RGB channel difference greater than 0.05 on a display-sRGB scale from 0 to 1. The study assigned {counts['train']} original, static, opaque scene families to training, {counts['development']} to development and {counts['test']} to testing. The development families set the decision thresholds. Performance on real photographs and other generators is unmeasured. [Study protocol](../../protocol/study-v1.json)",
         "",
         "## Render quality",
         "",
@@ -358,11 +437,11 @@ def results_text(source, fam, agg, paired, regional):
         "",
         "The reference population **V** contains all pixels with valid reference RGB. **E** also requires valid predicted RGB. Confirmed errors **Y** are defined on E. The common ranking set **S** contains the pixels in E that all five methods can score. Percentages pool pixels across each family’s cameras first, then give every eligible family equal weight.",
         "",
-        spatial,
+        *visibility_text(source.families, regional),
         "",
         "## Ranking and the low-risk decision",
         "",
-        "L1 geometry uses camera, depth and opacity features. L1 full also uses appearance differences. The baselines are the training-family error prior, one minus predicted opacity, and L0’s fixed geometric rule. Higher AP means that true errors receive higher scores. For the four continuous scores, development chose the available threshold nearest to 80% low-risk coverage while keeping equal scores together. L0 retained its 0.5 decision boundary.",
+        "L1 geometry uses camera, depth and opacity features. L1 full also uses appearance differences. The baselines are the training-family error prior, one minus predicted opacity, and L0’s fixed geometric rule. Higher AP means that true errors receive higher scores. For the four methods with development-selected thresholds, the operating point was the attainable coverage nearest to 80%, keeping equal scores together. The constant prior assigns every scored pixel to one tie group. L0 retained its 0.5 decision boundary.",
         "",
     ]
     items = []
@@ -435,7 +514,9 @@ def results_text(source, fam, agg, paired, regional):
     }
     effect = paired_macro["R1", "confirmed_error_fraction_of_V"]
     lead += [
-        f"The preregistered R1 outcome measures confirmed errors over all V. Reducing input resolution changed that rate by **{pp(effect['mean'])} percentage points** across {effect['eligible_family_count']} matched families. The AP differences below pair only cameras eligible in both conditions. Coverage uses the whole planned family population. [Paired numerical changes](paired-changes.csv) · [Registered intervention](../../protocol/analysis-addendum-v1.json)",
+        f"The preregistered R1 outcome measures confirmed errors over all V. Reducing input resolution changed that rate by **{pp(effect['mean'])} percentage points** across {effect['eligible_family_count']} matched families. L1 full’s matched common AP changed by {fmt(paired_macro['R1', 'common_ap']['mean'], signed=True)} and its low-risk coverage by {pp(paired_macro['R1', 'low_coverage']['mean'])} percentage points. The AP differences pair cameras eligible in both conditions. Coverage uses the whole planned family population.",
+        "",
+        f"The constant prior’s common-mask AP was {fmt(averaged('B0', 'constant', 'common_ap'))} under B0 and {fmt(averaged('R1', 'constant', 'common_ap'))} under R1. Its AP equals the error prevalence on each eligible camera’s common mask. The L1 AP change is unadjusted for this shift in prevalence. [Paired numerical changes](paired-changes.csv) · [Registered intervention](../../protocol/analysis-addendum-v1.json)",
         "",
     ]
     lead += table(
@@ -487,7 +568,7 @@ def results_text(source, fam, agg, paired, regional):
                 magnitude(delta),
                 magnitude(peak),
                 f"{row['geometry_bitwise_equal_views']}/{row['paired_views']}",
-                int(row["full_score_changed_values"]),
+                f"{int(row['full_score_changed_values']):,}",
             )
         )
     lead += [
@@ -522,6 +603,63 @@ def results_text(source, fam, agg, paired, regional):
     return lead
 
 
+def engineering_and_hardware(source, stages):
+    smoke = []
+    hardware = ""
+    for stage in stages:
+        rid = stage["run_id"]
+        if (
+            stage["purpose"] == "engineering"
+            and stage["status"] == "failed"
+            and stage["stage"] == "scene_render"
+        ):
+            pin = {k: stage[k] for k in ("run_id", "manifest_sha256")}
+            trial = PinnedRun(source.store, pin)
+            if (
+                trial.run.get("trial_id") != "fixture-failure"
+                or trial.run.get("exit_code") != 7
+                or trial.run.get("run_kind") != "scene_render"
+            ):
+                continue
+            cfg = trial.open("config.resolved.yaml")
+            cmd = trial.open("command.json")
+            args = load(cmd)["argv_template"]
+            config = load(cfg)
+            if (
+                config.get("purpose") == "recorder only"
+                and config.get("scientific_result") is False
+                and len(args) == 3
+                and args[:2] == ["{python}", "-c"]
+                and "intentional fixture exit 7" in args[2]
+                and "sys.exit(7)" in args[2]
+            ):
+                source.supplemental["deliberate_recorder_smoke"] = {
+                    "run": pin,
+                    "config": signature(cfg),
+                    "command": signature(cmd),
+                }
+                smoke.append(
+                    f"The engineering entry `{rid}` was a deliberate recorder smoke test tagged `scene_render`. Its Python worker exited with code 7 before any Blender rendering."
+                )
+        if not hardware and (stage["purpose"], stage["stage"], stage["platform_family"], stage["status"]) == (
+            "scientific",
+            "generation",
+            "Windows",
+            "succeeded",
+        ):
+            rel = f"numeric/evidence/{rid}/generation.json"
+            if rel not in source.receipt["files"]:
+                continue
+            data = load(source.open(rel))
+            name = data.get("runtime", {}).get("gpu", "")
+            capacities = {
+                v["cuda_total_bytes"] for v in data.get("phases", {}).values() if v.get("cuda_total_bytes")
+            }
+            if len(capacities) == 1 and re.fullmatch(r"NVIDIA GeForce RTX [0-9A-Za-z +.-]+", name):
+                hardware = f"The {name} has {next(iter(capacities)) / 2**30:.0f} GiB of dedicated VRAM. "
+    return smoke, hardware
+
+
 def cost_text(source):
     stages = source.public("stage-times.csv")
     phase = source.public("worker-phase-times.csv")
@@ -535,15 +673,20 @@ def cost_text(source):
     require(
         completed == results["completed_targets"] and len(local) == 12, "inconsistent held-out target count"
     )
-    failure = Counter(r["purpose"] for r in stages if r["status"] != "succeeded")
+    failure = Counter((r["purpose"], r["stage"]) for r in stages if r["status"] != "succeeded")
     retries = sum(r["is_retry"] == "True" for r in stages)
-    detail = ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in sorted(failure.items()))
+    detail = ", ".join(
+        f"{v} {k.replace('_', ' ')} {stage.replace('_', ' ')}" for (k, stage), v in sorted(failure.items())
+    )
     text = [
         "## Completion, cost and recovery",
         "",
-        f"**{completed}/{results['planned_targets']} held-out target renders completed.** The run roster contains {len(stages):,} stage records. {sum(failure.values())} recorded stages ended unsuccessfully{(' (' + detail + ')') if detail else ''}, and {retries} records identify an explicit retry. Stage attempts and held-out target completion have different denominators.",
+        f"**{completed}/{results['planned_targets']} held-out target renders completed.** The run roster contains {len(stages):,} stage records. Of these, {sum(failure.values())} ended unsuccessfully{(' (' + detail + ')') if detail else ''} and {retries} have an explicit retry link. Stage attempts and held-out target completion have different denominators.",
         "",
     ]
+    smoke, hardware = engineering_and_hardware(source, stages)
+    for sentence in smoke:
+        text.extend([sentence, ""])
     quality_stages = (
         "generation",
         "preparation",
@@ -562,8 +705,25 @@ def cost_text(source):
                 value += f" ({len(values)}/{len(source.families)})"
             parts.append("reuses B0" if c == "Q1" and k == "generation" else value)
         by_cond.append((c, *parts))
+    generation_ids = {
+        r["run_id"]
+        for r in stages
+        if r["stage"] == "generation"
+        and r["purpose"] in ("scientific", "timing_repeat")
+        and r["family"] in source.families
+        and r["condition"] in ("B0", "R1")
+        and r["status"] == "succeeded"
+    }
+    worker_phases = defaultdict(set)
+    for record in phase:
+        worker_phases[record["run_id"]].add(record["phase"])
+    generation_scope = ""
+    expected = {"load_model", "preprocess_forward_unproject", "export_ply"}
+    if generation_ids and all(expected <= worker_phases[rid] for rid in generation_ids):
+        generation_scope = " Generation wall time includes recorder setup, launching a separate worker for each run, loading the model, running prediction and exporting the Gaussian scene."
     text += [
-        "Median recorded wall time in seconds across the four selected quality families, using each stage’s available receipts. Q1 reuses B0 generation.",
+        "Median recorded wall time in seconds across the four selected quality families, using each stage’s available receipts. Q1 reuses B0 generation."
+        + generation_scope,
         "",
     ]
     text += table(
@@ -617,7 +777,7 @@ def cost_text(source):
     )
     text += [
         "",
-        f"The listed run bundles total {logical / 2**30:.2f} GiB in logical member bytes. This includes repeated and staged files. Sampled peak process-tree RSS by platform was {', '.join(rss) or 'unavailable'}. CUDA worker phases recorded a maximum of {fmt(allocated / 2**30 if allocated is not None else None, 2)} GiB allocated and {fmt(reserved / 2**30 if reserved is not None else None, 2)} GiB reserved. GPU allocator memory and process RSS measure different resources.",
+        f"The listed run bundles total {logical / 2**30:.2f} GiB in logical member bytes. This includes repeated and staged files. Sampled peak process-tree RSS by platform was {', '.join(rss) or 'unavailable'}. {hardware}Across worker phases, the independent maxima of PyTorch’s CUDA allocator counters were {fmt(allocated / 2**30 if allocated is not None else None, 2)} GiB allocated and {fmt(reserved / 2**30 if reserved is not None else None, 2)} GiB reserved. Physical GPU memory residency was unmeasured.",
         "",
     ]
     metrics = defaultdict(list)
@@ -724,6 +884,7 @@ def export(store, pin, output, *, fixture=False):
             "training_receipt": source.fit_receipt,
             "training_manifest_sha256": source.fit["training_manifest_sha256"],
             "sources": source.sources,
+            "supplemental_receipts": source.supplemental,
             "figure_sources": {
                 "examples/study-figures/paired-changes.png": ["numeric/paired.csv"],
                 **{

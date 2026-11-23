@@ -43,3 +43,9 @@ __pycache__/
 !/examples/tabletop-plane/v01-prediction.png
 !/examples/tabletop-plane/v01-risk.png
 !/examples/tabletop-plane/v01-state.png
+
+# Aggregate study figures identified by the release source inventory.
+!/examples/study-figures/paired-changes.png
+!/examples/study-figures/risk-coverage-B0.png
+!/examples/study-figures/risk-coverage-Q1.png
+!/examples/study-figures/risk-coverage-R1.png

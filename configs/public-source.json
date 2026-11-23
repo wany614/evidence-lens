@@ -8,6 +8,10 @@
     "original-example-pending": {
       "description": "Authored input, camera and provenance for the two-metre tabletop plane demonstration. Owner example license selection is pending.",
       "public_export": false
+    },
+    "research-measurements-pending": {
+      "description": "Original factual aggregate measurements, filed result summaries, and figures drawn from those measurements. The selected research-record notice governs these assets.",
+      "public_export": false
     }
   },
   "files": {
@@ -37,7 +41,15 @@
     "docs/releases/v0.1.0/MODEL_CARD.md": "original-source-pending",
     "docs/releases/v0.1.0/README.md": "original-source-pending",
     "docs/releases/v0.1.0/RELEASE_NOTES.md": "original-source-pending",
+    "docs/results/README.md": "research-measurements-pending",
+    "docs/results/family-methods.csv": "research-measurements-pending",
+    "docs/results/paired-changes.csv": "research-measurements-pending",
+    "docs/results/provenance.json": "research-measurements-pending",
     "docs/windows-worker.md": "original-source-pending",
+    "examples/study-figures/paired-changes.png": "research-measurements-pending",
+    "examples/study-figures/risk-coverage-B0.png": "research-measurements-pending",
+    "examples/study-figures/risk-coverage-Q1.png": "research-measurements-pending",
+    "examples/study-figures/risk-coverage-R1.png": "research-measurements-pending",
     "examples/tabletop-plane/README.md": "original-source-pending",
     "examples/tabletop-plane/cameras.json": "original-example-pending",
     "examples/tabletop-plane/input.png": "original-example-pending",
@@ -165,6 +177,26 @@
     "tests/test_trial_summary.py": "original-source-pending"
   },
   "binary_examples": {
+    "examples/study-figures/paired-changes.png": {
+      "format": "rgb8-png",
+      "bytes": 39537,
+      "sha256": "d24ebfd804991cfcfb162c2cc7c619a743e0521ef4f7e461d162067eabe59cbe"
+    },
+    "examples/study-figures/risk-coverage-B0.png": {
+      "format": "rgb8-png",
+      "bytes": 45549,
+      "sha256": "935683f5175e72c77da8bd63100b5b9d6122084b4380c58fb5100712d4f52b8f"
+    },
+    "examples/study-figures/risk-coverage-Q1.png": {
+      "format": "rgb8-png",
+      "bytes": 45386,
+      "sha256": "f09027e4ac6ff01153adffd5419f750c11ff3ca85e119602128af3e0e4f5a9d1"
+    },
+    "examples/study-figures/risk-coverage-R1.png": {
+      "format": "rgb8-png",
+      "bytes": 45694,
+      "sha256": "011afbc104bd5615ee58fc091bf51acdf8a940f99c5256d149930eab091aa704"
+    },
     "examples/tabletop-plane/input.png": {
       "format": "rgb8-png",
       "bytes": 10275,
