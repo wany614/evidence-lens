@@ -170,6 +170,13 @@ def _unsupported(out, receipt, reason, cameras=None):
 def run(input_path, camera_path, prediction_dir, model_dir, output, run_id=None, model_sha256=None):
     package = load_package(model_dir, expected_index_sha256=model_sha256)
     audit = ReadAudit()
+    # Establish byte identity even when the matching producer declares an unsupported camera or encoding.
+    # ReadAudit also detects a change between this preflight and the subsequent decode.
+    metadata = json.loads(audit.read("prediction_metadata", prediction_dir / "prediction.json"))
+    for role, key, path in (("input_png", "input_sha256", input_path), ("cameras", "camera_sha256", camera_path)):
+        audit.read(role, path)
+        if metadata.get(key) != audit.sha(role):
+            raise ValueError(f"prediction.json: incompatible {key} (declared and supplied bytes differ)")
     receipt = {"schema": "el-l1-score-1", "run_id": run_id, "model_id": package["index"]["model_id"],
                "model_files": package["file_hashes"], "inputs": audit.files, "methods": KEYS,
                "state_codes": {"0": "low", "1": "high", "255": "unknown"},

@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import runpy
 import shutil
 import subprocess
 import sys
@@ -23,7 +24,7 @@ from evidence_lens.l1_fit import choose_c, fit, folds_for, preprocess, weights
 from evidence_lens.l1_freeze import freeze, threshold_for
 from evidence_lens.risk_model import run_score
 from evidence_lens.scoring_io import TARGETS, file_hash, write_json
-from test_cpu_p2 import deployable, reference
+from test_cpu_p2 import arrays, camera, deployable, reference
 
 
 def test_sampling_weights_fallback_and_fold_preprocessing():
@@ -69,23 +70,43 @@ def test_exact_family_thresholds_and_unknown():
     assert risk_state(between, tau).tolist() == [0, 1]
 
 
-def make_extract(raw, dest, catalog, row, color, single_class=False):
+def make_extract(raw, dest, catalog, row, color, single_class=False, large=False):
     family, trial = row["scene_family_id"], row["trial_id"]
     pred = deployable(raw)
     if single_class:
         for view in TARGETS:
             path = pred / (view + ".npz")
             with np.load(path) as doc:
-                arrays = {k: doc[k] for k in doc.files}
-            arrays["rgb"].fill(0)
-            np.savez_compressed(path, **arrays)
+                maps = {k: doc[k] for k in doc.files}
+            maps["rgb"].fill(0)
+            np.savez_compressed(path, **maps)
     image = raw / "input.png"
-    Image.fromarray(np.full((2, 3, 3), color, np.uint8)).save(image)
+    shape = (65, 67) if large else (2, 3)
+    Image.fromarray(np.full((*shape, 3), color, np.uint8)).save(image)
+    if large:
+        cam = camera(shape[1], shape[0], 90)
+        cameras = json.loads((raw / "cameras.json").read_bytes())
+        for key in cameras["views"]:
+            cameras["views"][key].update(width=cam.width, height=cam.height, K=cam.K.tolist())
+            target = arrays(cam)
+            if key != "source":
+                target["rgb"].reshape(-1, 3)[::17] = 0.9
+                target["alpha"].ravel()[::211] = np.nan
+            np.savez_compressed(pred / (key + ".npz"), **target)
+        write_json(raw / "cameras.json", cameras)
     p = json.loads((pred / "prediction.json").read_text())
-    p.update(input_sha256=file_hash(image), producer_run_id=f"fixture-render-{family}")
+    p.update(input_sha256=file_hash(image), camera_sha256=file_hash(raw / "cameras.json"), producer_run_id=f"fixture-render-{family}")
     write_json(pred / "prediction.json", p)
     ref = reference(raw)
     r = json.loads((ref / "reference.json").read_text())
+    if large:
+        yy, xx = np.indices(shape)
+        position = ((np.stack((xx, yy, np.ones_like(xx)), axis=-1) @ np.linalg.inv(cam.K).T) * 2).astype(np.float32)
+        for key in TARGETS:
+            path = ref / "reference" / (key + ".npz")
+            np.savez_compressed(path, rgb=np.zeros((*shape, 3), np.float32), z=position[...,2], position=position,
+                                object_id=np.ones(shape,np.uint16), visibility=np.ones(shape,np.uint8), edge=np.zeros(shape,bool))
+            r["views"][key]["reference_sha256"] = file_hash(path)
     r.update(scene_id=row["scene_id"], scene_family_id=family)
     write_json(ref / "reference.json", r)
     scored, evaluated = raw / "scores", raw / "evaluated"
@@ -103,6 +124,37 @@ def make_extract(raw, dest, catalog, row, color, single_class=False):
     return {"scene_family_id": family, "extract_manifest_sha256": file_hash(dest / "family.json")}
 
 
+def test_prepare_rederives_large_sample_from_independent_original_arrays(tmp_path):
+    raw, extract = tmp_path / "source", tmp_path / "extract"
+    raw.mkdir()
+    row = {"scene_family_id":"fixture-large", "scene_id":"fixture-large/v001", "trial_id":"fixture-large-B0",
+           "split":"train","cv_fold":0}
+    catalog = tmp_path / "family-catalog.json"
+    write_json(catalog, {"schema":"el-formal-families-1", "families":[row]})
+    make_extract(raw, extract, catalog, row, 7, large=True)
+    receipt = json.loads((extract / "family.json").read_bytes())
+    with np.load(raw / "scores/v01.npz") as features, np.load(raw / "evaluated/labels/v01.npz") as labels, np.load(extract / "v01.npz") as sample:
+        population = np.flatnonzero(features["scoreable"] & labels["rgb_evaluable"])
+        assert len(population) > 4096
+        seed = int.from_bytes(hashlib.sha256(f"9184\n{file_hash(catalog)}\nfixture-large\nv01".encode()).digest()[:16], "big")
+        expected = np.sort(np.random.Generator(np.random.PCG64(seed)).choice(population, 4096, replace=False))
+        np.testing.assert_array_equal(sample["index"], expected)
+        np.testing.assert_array_equal(sample["Y"], labels["rgb_high_error"].ravel()[expected])
+        for j, name in enumerate(ALL_COLUMNS):
+            np.testing.assert_array_equal(sample["X"][:,j], features[name].ravel()[expected])
+        assert receipt["views"]["v01"]["sample_probability"] == 4096 / len(population)
+    meta = raw / "evaluated/evaluation.json"
+    broken = json.loads(meta.read_bytes())
+    broken["inputs"]["score/v01"]["sha256"] = "0"*64
+    write_json(meta, broken)
+    fp = raw / "family-pin.json"
+    family = json.loads(fp.read_bytes())
+    family["evaluation_receipt_sha256"] = file_hash(meta)
+    write_json(fp, family)
+    with pytest.raises(ValueError, match="array linkage"):
+        prepare(fp, raw / "scores", raw / "evaluated", tmp_path / "rejected", catalog)
+
+
 def test_fit_freeze_and_base_only_scorer(tmp_path):
     train, dev = tmp_path / "train", tmp_path / "dev"
     train.mkdir()
@@ -115,6 +167,8 @@ def test_fit_freeze_and_base_only_scorer(tmp_path):
     sources = {"train": [], "dev": []}
     deployed = tmp_path / "deployed"
     deployed.mkdir()
+    first_dev = tmp_path / "first-development-inputs"
+    first_dev.mkdir()
     for i, row in enumerate(rows[:20]):
         key = "train" if i < 16 else "dev"
         folder = train if i < 16 else dev
@@ -122,6 +176,12 @@ def test_fit_freeze_and_base_only_scorer(tmp_path):
             raw = Path(work)
             entry = make_extract(raw, folder / row["scene_family_id"], catalog, row, i)
             sources[key].append(entry)
+            if i == 16:
+                for name in ("input.png", "cameras.json"):
+                    shutil.copyfile(raw / name, first_dev / name)
+                shutil.copytree(raw / "prediction", first_dev / "prediction")
+                shutil.copytree(raw / "scores", tmp_path / "first-dev-original-rules")
+                shutil.copytree(raw / "evaluated", tmp_path / "first-dev-original-eval")
             if i == 19:
                 for name in ("input.png", "cameras.json"):
                     shutil.copyfile(raw / name, deployed / name)
@@ -147,6 +207,9 @@ def test_fit_freeze_and_base_only_scorer(tmp_path):
     assert selected["status"] == "frozen" and set(selected["methods"]) == {*MODELS, "1-alpha", "constant"}
     assert len(selected["methods"]["constant"]["families"]) == 4
     package = load_package(frozen / "model")
+    assert load_package(frozen / "model", expected_index_sha256=file_hash(frozen / "model/model.json"))["index"] == package["index"]
+    with pytest.raises(ValueError, match="pinned model index"):
+        load_package(frozen / "model", expected_index_sha256="0"*64)
     assert package["index"]["constant_risk"] == pytest.approx(2/5)
     assert "local_rgb_difference" not in package["models"]["L1-geometry"]["columns"]
     root = Path(__file__).resolve().parents[1]
@@ -160,6 +223,40 @@ assert not any(k in sys.modules for k in ('sklearn','pyarrow','torch','bpy','evi
             "--model", str(frozen / "model"), "--input", str(deployed / "input.png"), "--cameras", str(deployed / "cameras.json"),
             "--predictions", str(deployed / "prediction"), "--run-id", "synthetic-public-score", "--output", str(deployed / "risks")]
     subprocess.run(args, check=True, cwd=deployed, env=dict(os.environ, PYTHONPATH=str(root / "src")))
+    devargs = [arg.replace(str(deployed), str(first_dev)) for arg in args]
+    subprocess.run(devargs, check=True, cwd=first_dev, env=dict(os.environ, PYTHONPATH=str(root / "src")))
+    compare = runpy.run_path(str(root / "scripts/verify_l1_development.py"))["compare_files"]
+    parity = compare(frozen, first_dev / "risks", tmp_path / "first-dev-original-rules", tmp_path / "first-dev-original-eval",
+                     rows[16]["scene_family_id"], tmp_path / "parity", "synthetic-audit")
+    assert parity["status"] == "passed" and parity["family_V"] == 36 and parity["family_V_minus_E"] == 6
+    assert all(v["methods"]["L0"]["raw_rule_equal"] and v["methods"]["L1-full"]["strict_states_equal"] for v in parity["views"].values())
+    # A mismatch in intentionally incompatible calibration still takes precedence over a semantic unsupported result.
+    from evidence_lens.l1 import run
+    camera_file = deployed / "cameras.json"
+    png_file = deployed / "input.png"
+    image_bytes, camera_bytes = png_file.read_bytes(), camera_file.read_bytes()
+    Image.new("RGB", (3, 2), (59, 13, 223)).save(png_file)
+    with pytest.raises(ValueError, match="incompatible input_sha256"):
+        run(png_file, camera_file, deployed / "prediction", frozen / "model", deployed / "wrong-image")
+    png_file.write_bytes(image_bytes)
+    camera_meta = json.loads(camera_bytes)
+    camera_meta["views"]["source"]["K"][0][0] += 1
+    write_json(camera_file, camera_meta)
+    with pytest.raises(ValueError, match="incompatible camera_sha256"):
+        run(png_file, camera_file, deployed / "prediction", frozen / "model", deployed / "wrong-calibration")
+    camera_meta["unit"] = "unsupported_fixture_unit"
+    write_json(camera_file, camera_meta)
+    with pytest.raises(ValueError, match="incompatible camera_sha256"):
+        run(png_file, camera_file, deployed / "prediction", frozen / "model", deployed / "wrong-incompatible-camera")
+    metadata_file = deployed / "prediction/prediction.json"
+    original_metadata = metadata_file.read_bytes()
+    bound = json.loads(original_metadata)
+    bound["camera_sha256"] = file_hash(camera_file)
+    write_json(metadata_file, bound)
+    unsupported = run(png_file, camera_file, deployed / "prediction", frozen / "model", deployed / "honestly-unsupported")
+    assert unsupported["status"] == "unsupported" and "incompatible camera" in unsupported["reason"]
+    camera_file.write_bytes(camera_bytes)
+    metadata_file.write_bytes(original_metadata)
     if os.environ.get("EL_TEST_CLEAN_WHEEL") == "1":
         grade_wheel(tmp_path, frozen, deployed)
     with np.load(deployed / "risks/v01.npz") as scored:
@@ -262,3 +359,16 @@ def grade_wheel(tmp_path, frozen, deployed):
     wrong.write_bytes(wrong.read_bytes() + b" changed")
     with pytest.raises(ValueError, match="changed expected"):
         grade(public, tmp_path / "tampered", manifest["manifest_sha256"], python=python)
+    # Even a rehashed, internally consistent but numerically wrong expectation fails independent deployment.
+    with np.load(wrong) as original:
+        maps = {k:original[k] for k in original.files}
+    values = maps["l1_full"]
+    i = np.flatnonzero(np.isfinite(values))[0]
+    values.ravel()[i] += -0.01 if values.ravel()[i] > 0.5 else 0.01
+    np.savez_compressed(wrong, **maps)
+    meta = public / "demo.json"
+    changed = json.loads(meta.read_bytes())
+    changed["expected_views"]["v01"] = {"sha256":file_hash(wrong), "bytes":wrong.stat().st_size}
+    write_json(meta, changed)
+    mismatch = grade(public, tmp_path / "numerical-mismatch", file_hash(meta), python=python)
+    assert not mismatch["passed"] and mismatch["views"]["v01"]["methods"]["L1-full"]["max_absolute_score_difference"] > 1e-6

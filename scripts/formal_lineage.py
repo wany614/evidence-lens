@@ -34,6 +34,7 @@ class VerifiedRuns:
         self.store = Path(store)
         self.records = {}
         self.shared = {}
+        self.releases = {}
 
     def get(self, rid, kind=None, ancestors=()):
         require(isinstance(rid, str) and RUN_ID.fullmatch(rid) and rid not in ancestors, "invalid or cyclic run ID")
@@ -113,9 +114,21 @@ def heldout_method(verified, family, method_file, study_file, freeze):
             method.get("study_sha256") == study_hash == load(freeze)["preregistration_sha256"] and
             HASH.fullmatch(method["comparison_protocol_sha256"]) and re.fullmatch(r"[0-9a-f]{40}", method["method_code_commit"]),
             "held-out method freeze does not pin this catalog and registered comparison")
+    from evidence_lens.formal_inputs import protocol
+    expected_comparison = protocol(Path(__file__).resolve().parents[1])
+    require(method["comparison_protocol_sha256"] == expected_comparison["comparison_protocol_sha256"] and
+            method.get("comparison_files", expected_comparison["files"]) == expected_comparison["files"], "comparison protocol differs from the frozen release")
     rid = method["threshold_select_run_id"]
-    release = verified.get(rid, "threshold_select")
-    require(release["manifest_sha256"] == method["threshold_select_manifest_sha256"], "threshold-selection manifest differs")
+    require(isinstance(rid, str) and RUN_ID.fullmatch(rid), "invalid threshold-selection ID")
+    # The method freeze already archived its training/development graph. For this
+    # gate, authenticate the pinned release bytes and its concrete fit edge once.
+    # Held-out measurement does not reopen every training-family raw dataset.
+    if rid not in verified.releases:
+        verified.releases[rid] = verified.records.get(rid) or verify_bundle(verified.store / "runs" / rid)
+    release = verified.releases[rid]
+    require(release["run"]["run_id"] == rid and release["run"]["run_kind"] == "threshold_select" and
+            release["run"]["execution_status"] == "succeeded" and release["manifest_sha256"] == method["threshold_select_manifest_sha256"],
+            "threshold-selection status or manifest differs")
     path = verified.store / "runs" / rid
     config = load(path / "config.resolved.yaml")
     split_pin = config.get("identity", {}).get("dataset_hash") or config.get("dataset_hash") or config.get("split_manifest_sha256")
@@ -126,5 +139,14 @@ def heldout_method(verified, family, method_file, study_file, freeze):
             method["model_id"] == model["model_id"] == model["threshold_run_id"] == rid and
             release["artifacts"]["payload/model/model.json"]["sha256"] == dev["model_index_sha256"],
             "held-out evaluation requires the matching frozen development model and thresholds")
+    require(method.get("model_index_sha256", dev["model_index_sha256"]) == dev["model_index_sha256"] and
+            method.get("thresholds_sha256", model["files"]["thresholds.json"]) == model["files"]["thresholds.json"] and
+            method.get("model_fit_run_id", model["fit_run_id"]) == model["fit_run_id"] == dev["fit_run_id"], "frozen method model or thresholds differ")
+    if "model_fit_manifest_sha256" in method:
+        fit = {"run_id": model["fit_run_id"], "manifest_sha256": method["model_fit_manifest_sha256"]}
+        require(fit in release["inputs"]["parents"], "method freeze does not identify a direct model-fit parent")
+        fit_dir = verified.store / "runs" / fit["run_id"]
+        require(sha(fit_dir / "manifest.json") == fit["manifest_sha256"] and load(fit_dir / "completion.json")["execution_status"] == "succeeded" and
+                load(fit_dir / "run.json")["run_kind"] == "model_fit", "selected model-fit parent is missing or differs")
     return {"method_freeze_sha256": sha(method_file), "threshold_select_run_id": rid,
             "threshold_select_manifest_sha256": release["manifest_sha256"], "frozen_model_id": method["model_id"]}

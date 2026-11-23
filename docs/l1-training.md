@@ -95,6 +95,17 @@ The immutable selected fit and threshold receipts are `STORE/formal/<catalog-sha
 
 `freeze-method` checks that the committed numerical and comparison source bytes match the registered study and the executed learning snapshots. It publishes `STORE/protocol/method-freeze-v1.json` with catalog, study, comparison, commit, model, fit and threshold hashes. Held-out `score` verifies the gate before opening the selected condition. R1 uses the selected half-size preparation’s source and calibration. B0 and Q1 use the selected reference’s exact source and camera. The scoring subprocess receives only the condition input, cameras, available predicted numeric arrays and frozen model. The learned-score selection is `STORE/formal/<catalog-sha>/learned-scores/<trial>.json`. The registered first test family also permits `--timing-repeat 1`, `2` or `3`. Timing selections are archived under `learned-scores/timing/<repeat>/`.
 
+Run the six-view development deployment check after the method freeze. The registered audit uses the lexicographically first development family, `scene_017_cycle_stand`. It makes a new CPU deployment from the selected B0 source, cameras and predictions. A separate recorded worker compares all four continuous scores on E with their saved development arrays, verifies exact validity and frozen states, and checks L0 against the original P2 rule throughout the image. It reports V−E by view and the raw low/high/unknown counts there. The method operating counts use E and the complete V denominator.
+
+```sh
+PYTHONPATH=src .venv/bin/python scripts/verify_l1_development.py record \
+  --store "$STORE" --threshold-run "$THRESHOLD_RUN_ID" --cpu-python .venv-cpu/bin/python
+```
+
+The audit writes a selected `archive_verify` pin to `STORE/formal/<catalog-sha>/learning/development-parity.json`. Its `payload/development_parity.json` identifies both original P2 runs, the frozen threshold run, the new CPU deployment and the exact model index. The public inference process checks content identity before semantic support, so wrong PNG or camera bytes fail even if they also use an unsupported encoding or camera convention.
+
+To inspect V−E on a selected training or development B0 pilot, use `PYTHONPATH=src .venv/bin/python scripts/verify_l1_development.py pilot --store "$STORE" --family "$FAMILY" --output "$NEW_MASK_CHECK"`. The output records every view’s complete V, E, failed-RGB count and raw low/high/unknown L0 partition of V−E. Each count is tied to the selected source manifests.
+
 ## Grade a standalone release example
 
 Stage the five model files under `BUNDLE/model/` and the condition’s deployable assets under `BUNDLE/example/input.png`, `BUNDLE/example/cameras.json` and `BUNDLE/example/predictions/`. Seal the expected result from a selected recorded five-method score receipt. The default graded view is v01. Repeat `--view` to include more targets.

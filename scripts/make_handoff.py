@@ -109,6 +109,10 @@ def build(bundle, out, readback=None, families=None, freeze=None):
                 publish(pin_path, source_bytes)
                 publish(receipt, encoded({"schema": "el-formal-worker-source-1", "sha256": sha_bytes(source_bytes),
                                           "files": {name: sha_bytes(data) for name, data in members.items()}}))
+        official = json.loads(Path(freeze or ROOT / "configs/formal-freeze-v1.json").read_text()).get("frozen_files", {})
+        for name in ("configs/windows-b0.json", "configs/storage.json"):
+            if name in official:
+                require(sha_bytes(members[name]) == official[name], f"worker configuration differs from formal freeze: {name}")
         identity = {k: family[k] for k in ("dataset_id", "dataset_hash", "split", "scene_family_id", "scene_id",
                                            "scene_version", "trial_id", "condition_id")}
         identity.update(scene_hash=ref["blend_sha256"], camera_set_hash=ref["camera_sha256"])

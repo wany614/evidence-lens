@@ -21,7 +21,7 @@ def policy(explicit: Path | None, project: Path) -> dict:
     return result
 
 
-def bytes_on_tree(path: Path) -> int:
+def bytes_on_tree(path: Path, *, count_links: bool = False) -> int:
     if not path.exists():
         return 0
     if path.is_symlink():
@@ -36,9 +36,9 @@ def bytes_on_tree(path: Path) -> int:
         for name in names:
             item = (Path(parent) / name).lstat()
             inode = (item.st_dev, item.st_ino)
-            if stat.S_ISREG(item.st_mode) and (not item.st_ino or inode not in seen):
+            if stat.S_ISREG(item.st_mode) and (count_links or not item.st_ino or inode not in seen):
                 count += item.st_size
-                if item.st_nlink > 1:
+                if not count_links and item.st_nlink > 1:
                     seen.add(inode)
     return count
 

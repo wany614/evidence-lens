@@ -314,7 +314,7 @@ def record(args: argparse.Namespace) -> dict:
                 if args.kind in {"scene_render", "generation", "render"} or embedded or shared:
                     staged_shared = [path for path in shared.values() if not Path(path).expanduser().resolve().is_relative_to(root / "assets/sha256")]
                     expected = config["recording"]["expected_output_bytes"] + sum(
-                        _capacity.bytes_on_tree(Path(path).expanduser()) for path in [*embedded.values(), *staged_shared])
+                        _capacity.bytes_on_tree(Path(path).expanduser(), count_links=True) for path in [*embedded.values(), *staged_shared])
                     space = _capacity.check(root, expected, limits)
                     events.write("storage_preflight", **space)
                     require(not space["reason"], space["reason"] or "")
@@ -438,13 +438,17 @@ def record(args: argparse.Namespace) -> dict:
                 retry_matches(old, run, inputs, command)
             except BundleError:
                 rejected = True
+        storage_reuse = {}
+        if sys.platform == "darwin" and not rejected:
+            from ._dedup import compact_inputs
+            storage_reuse = compact_inputs(root, bundle, result)
         final = root / ("quarantine" if rejected else "runs") / rid
         final.parent.mkdir(exist_ok=True)
         bundle.rename(final)
         return {"run_id": rid, "path": str(final), "execution_status": status, "exit_code": code,
                 "producer_disposition": "quarantined" if rejected else "sealed",
                 "failure_reason": reason, "manifest_sha256": result["manifest_sha256"],
-                "manifest_files": len(manifest["files"]), "manifest_bytes": result["bytes"]}
+                "manifest_files": len(manifest["files"]), "manifest_bytes": result["bytes"], "local_input_storage": storage_reuse}
     finally:
         signal.signal(signal.SIGTERM, previous)
         events.handle.close()

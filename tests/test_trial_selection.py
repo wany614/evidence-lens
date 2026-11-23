@@ -21,7 +21,7 @@ selector = runpy.run_path(str(SCRIPTS / "select_trial.py"))
 recompute = runpy.run_path(str(SCRIPTS / "recompute_view.py"))["check"]
 
 
-def build_frozen_fixture(tmp_path, monkeypatch, capsys):
+def build_frozen_fixture(tmp_path, monkeypatch, capsys, ply_fixture=None):
     """Build the isolated six-pixel chain and return its store and selection file."""
     store, project = tmp_path / "store", tmp_path / "project"
     (project / "scripts").mkdir(parents=True)
@@ -53,10 +53,15 @@ def build_frozen_fixture(tmp_path, monkeypatch, capsys):
     generation, rb = tmp_path / "generation", tmp_path / "readback"
     generation.mkdir()
     rb.mkdir()
-    (generation / "scene.ply").write_bytes(b"synthetic PLY fixture")
+    if ply_fixture:
+        shutil.copyfile(ply_fixture, generation / "scene.ply")
+    else:
+        (generation / "scene.ply").write_bytes(b"synthetic PLY fixture")
     gen = {"schema":"el-generation-1", "producer_run_id":ids["generation"], "gaussian_count":1,
            "checkpoint_sha256":sha(weights), "ply_sha256":sha(generation / "scene.ply"),
            "input_sha256":sha(rgb), "camera_sha256":sha(cameras)}
+    if ply_fixture:
+        gen.update(gaussian_count=3, generator_commit="c"*40, ply_bytes=ply_fixture.stat().st_size)
     save(generation / "generation.json", gen)
     save(rb / "reference_readback.json", {"schema":"el-reference-readback-1", "scientific_acceptance":True,
          "integrity_checked":True, "failed_scientific_checks":[], "views":dict.fromkeys(VIEWS, {}),

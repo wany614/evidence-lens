@@ -93,3 +93,9 @@ python scripts/select_trial.py --store "$STORE" --trial "$TRIAL_ID" \
 ```
 
 The immutable local output is `STORE/trials/TRIAL_ID/trial_selection.json`. It identifies the selected manifests, transfer receipts, acceptance evidence and every sealed attempt for this trial in the canonical Mac store at freeze time, including failures, retries and independent checks. Repeating the same nomination revalidates that frozen snapshot. A conflicting nomination fails. Later reports use the selected run IDs and hashes recorded in the file.
+
+### Mac storage after sealing
+
+A live worker receives an independent snapshot of every embedded input. After its process has stopped, the Mac verifies the new bundle and sets its file modes read-only. Before publishing a new bundle, it may replace an embedded input of at least 64 KiB with a same-volume hard link to identical read-only bytes in its declared local parent. It checks the parent manifest pin, both byte counts and both file hashes. The receiver applies the same operation to a fully verified staging copy. Unsupported links retain the independent snapshot. Local receipts report linked bytes and elapsed time. The store still charges the full temporary working copy at preflight and counts a shared inode once in the published active tree.
+
+The operation only touches the new package's incoming link before publication. Earlier recorder bundles keep their original content, inode, permissions and scientific manifest. A hard-linked asset's link count increases as later verified packages reuse it.

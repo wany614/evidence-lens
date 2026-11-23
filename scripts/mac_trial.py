@@ -136,6 +136,9 @@ def main():
                 or score_run["experiment_id"] != experiment or (family and load(score / "config.resolved.yaml").get("formal_handoff_sha256") != binding["handoff_sha256"])):
             raise ValueError("scores do not descend from this prediction and trial")
     targets = [f"v{i:02}" for i in range(1, 7)]
+    if family:
+        frozen_files = load(args.freeze or root / "configs/formal-freeze-v1.json")["frozen_files"]
+        require(sha(root / "configs/p2-cpu.json") == frozen_files["configs/p2-cpu.json"], "CPU scoring configuration differs from the formal freeze")
     config = load(root/"configs/p2-cpu.json")
     config.update(scene_id=ref_run["scene_id"], scene_family_id=ref_run["scene_family_id"],
                   camera_set_hash=ref_meta["camera_sha256"], scene_hash=ref_meta["blend_sha256"])

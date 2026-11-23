@@ -1,6 +1,7 @@
 """Audit the staged public-source tree and export its explicitly licensed Git blobs."""
 
 import argparse
+import hashlib
 import json
 import subprocess
 import zipfile
@@ -40,6 +41,9 @@ def audit(root, entries=None):
         raise ValueError("staged tree has no source allowlist")
     policy = json.loads(git(root, "cat-file", "blob", entries[POLICY][1]), object_pairs_hook=unique_keys)
     declared = policy["files"]
+    binaries = policy.get("binary_examples", {})
+    if not set(binaries) <= set(declared):
+        raise ValueError("example manifest includes a file outside the source inventory")
     if set(entries) != set(declared):
         raise ValueError(f"index differs from explicit file list: {sorted(set(entries) ^ set(declared))}")
     blobs = {}
@@ -50,7 +54,14 @@ def audit(root, entries=None):
         if not policy["license_status"].get(license_id):
             raise ValueError(f"missing license record for {name}")
         data = git(root, "cat-file", "blob", entries[name][1])
-        data.decode("utf-8")  # Binary release assets have their own inventory.
+        if name in binaries:
+            pin = binaries[name]
+            if (not name.startswith("examples/") or not name.endswith(".png") or pin.get("format") != "rgb8-png"
+                    or pin.get("bytes") != len(data) or pin.get("sha256") != hashlib.sha256(data).hexdigest()
+                    or not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR" or data[24:26] != b"\x08\x02"):
+                raise ValueError(f"original PNG example does not match its public inventory: {name}")
+        else:
+            data.decode("utf-8")  # All other binary assets belong to the separate Release inventory.
         blobs[name] = data
     return policy, blobs
 

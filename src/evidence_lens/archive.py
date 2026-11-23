@@ -101,10 +101,11 @@ def receive(source: Path, root: Path, expected: str | None = None, storage_polic
     copy = stage / "bundle"
     container_hash, rid, digest = None, None, None
     size = None
+    storage_reuse = {}
     source_kind = "directory" if source.is_dir() else "zip"
     with writer_gate(root):
         try:
-            estimate = _capacity.bytes_on_tree(source)
+            estimate = _capacity.bytes_on_tree(source, count_links=True)
             if source.is_file() and zipfile.is_zipfile(source):
                 with zipfile.ZipFile(source) as remote:
                     estimate += sum(i.file_size for i in remote.infolist())
@@ -150,6 +151,9 @@ def receive(source: Path, root: Path, expected: str | None = None, storage_polic
             else:
                 out.parent.mkdir(exist_ok=True)
                 freeze_tree(copy)
+                if sys.platform == "darwin":
+                    from ._dedup import compact_inputs
+                    storage_reuse = compact_inputs(root, copy, result, upstreams)
                 copy.rename(out)
                 status = "accepted"
         except (OSError, ValueError, KeyError, TypeError, RuntimeError, zipfile.BadZipFile) as error:
@@ -163,7 +167,7 @@ def receive(source: Path, root: Path, expected: str | None = None, storage_polic
                                       bytes=size, elapsed_seconds=time.monotonic() - start)
             project_receipt(root, receipt)
             return record
-        receipt, record = make_receipt(root, "transfer", run_id=rid, manifest_sha256=digest, status=status,
+        receipt, record = make_receipt(root, "transfer", run_id=rid, manifest_sha256=digest, status=status, local_input_storage=storage_reuse,
                                       reason=None, source_kind=source_kind, container_sha256=container_hash,
                                       bytes=size, elapsed_seconds=time.monotonic() - start)
         project_receipt(root, receipt, out, result, upstreams)
