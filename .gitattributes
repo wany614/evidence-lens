@@ -1,0 +1,18 @@
+# The recorder and published checksums identify these research inputs by their exact bytes.
+protocol/** -text
+reproduce/** -text
+scripts/*.py -text
+src/** -text
+configs/*.json -text
+docs/results/reconstruction-recovery/** -text
+LICENSE -text
+
+# Preserve the recorded RFC 4180 rows on every platform.
+docs/results/reconstruction-recovery/quality/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/results/reconstruction-recovery/risk/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# Preserve the original formatter output in sealed figures and visual notes.
+docs/results/reconstruction-recovery/quality/quality-curves.svg whitespace=-blank-at-eol
+docs/results/reconstruction-recovery/risk/matched-coverage.svg whitespace=-blank-at-eol
+docs/results/reconstruction-recovery/resources/fit-and-resources.svg whitespace=-blank-at-eol
+docs/results/reconstruction-recovery/quality/visual-readback.md whitespace=-blank-at-eof

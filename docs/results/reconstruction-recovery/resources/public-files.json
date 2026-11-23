@@ -1,0 +1,131 @@
+{
+  "files": [
+    {
+      "bytes": 5085,
+      "path": "README.md",
+      "sha256": "6846c05cf7ec2b0b0747a2b96a29096d6ee077827dbad9d23f62e52373fd1e98"
+    },
+    {
+      "bytes": 111,
+      "path": "archives.csv",
+      "sha256": "b9e0f40777abdd5ed5a129e1fc1996f7fd73c08e684a9b47841e2cbed2e0481e"
+    },
+    {
+      "bytes": 18807,
+      "path": "checkpoint-audits.csv",
+      "sha256": "f48e81a3b264e3231903805779a3bcd08048c7d0ee5fd746669018f8a603c4a6"
+    },
+    {
+      "bytes": 15109,
+      "path": "checkpoint-scales.csv",
+      "sha256": "d1ecca40ad1c179bc52d4dde9cc7e20e7cdc44c3054a20a713fb63dbcc9d7ba2"
+    },
+    {
+      "bytes": 3912,
+      "path": "engineering-density-steps.csv",
+      "sha256": "82995a6506a0eab848c21e75cfd797bbde47d06a29e182d6b23ff310088ac3ef"
+    },
+    {
+      "bytes": 46692,
+      "path": "exchange-files.csv",
+      "sha256": "e62c394f881721f8acd4b194ff9e5590025e26aa02057ebc23523c3eeeaca2f4"
+    },
+    {
+      "bytes": 8196,
+      "path": "extent-recipe-comparison.csv",
+      "sha256": "07961857765bdaec6d3b9eeb1efbba9954159488ecf5d6b97c0dd9d284ffec00"
+    },
+    {
+      "bytes": 77685,
+      "path": "extreme-points.csv",
+      "sha256": "3a6cb4d5e0aecf276fbb934fba03d25821df837873f0076e4cd89eb610001bac"
+    },
+    {
+      "bytes": 273688,
+      "path": "fit-and-resources.svg",
+      "sha256": "3c08a25c764fd0ebf9f9cdf5c49561230cabb170acd4c6743b02ab54498953b5"
+    },
+    {
+      "bytes": 2759,
+      "path": "fit-cells.csv",
+      "sha256": "f8f1635e28c06798907768a07a6697df282712fbe8ad2924f0994ece7b46bdd4"
+    },
+    {
+      "bytes": 11322,
+      "path": "fit-checkpoints.csv",
+      "sha256": "121621105da2209600abd7628afeeb8a4b4affb633516a7cd36d354f7a9813dc"
+    },
+    {
+      "bytes": 4139,
+      "path": "fit-costs.csv",
+      "sha256": "a2fec73a779c35e4a17fb10ae527e732e88bd9fa9bef275d6f8445ead8d29a9f"
+    },
+    {
+      "bytes": 1853607,
+      "path": "fit-steps.csv.gz",
+      "sha256": "7e505d69142a867cfd421db063a29fec7b4e5e1edb01117325dbb82ac93f8dc8"
+    },
+    {
+      "bytes": 5556,
+      "path": "full-state-supplements.csv",
+      "sha256": "c90a191bb3b2ec7caa5b3e313cb34d8130376ffe278f78f0ccb10aa78293a7b1"
+    },
+    {
+      "bytes": 6982,
+      "path": "render-checkpoints.csv",
+      "sha256": "3aacbb573b013137e43d48dc67427331b76eaa8d04268b7dcbc5f93c3d66a4c4"
+    },
+    {
+      "bytes": 27938,
+      "path": "resources.json",
+      "sha256": "69f8057fb5484ec43dc6f8d6ad222718bde639c54382becafb48a1ab811cfab7"
+    },
+    {
+      "bytes": 109506,
+      "path": "runs.csv",
+      "sha256": "120bf8db28ea654e1fa5caf380120f79d36783ceb68608f941fe12bdce6ee645"
+    },
+    {
+      "bytes": 4597,
+      "path": "schedule-audits.csv",
+      "sha256": "1bb0004e6f7c7b3a39e27467643363f27a2d4af105a5d8e1841cb5090de0f1d3"
+    },
+    {
+      "bytes": 14650,
+      "path": "source-extent-proofs.json",
+      "sha256": "9428e0927bfafe9749241b2ffea47461de93f0ab2c9d4ce663b12ae7ca0d6097"
+    },
+    {
+      "bytes": 33509,
+      "path": "source-projection.csv",
+      "sha256": "cda5fc646b74d9e45c71f519d7d2065ffea2682902ed2b84f3f5025561fe72a6"
+    },
+    {
+      "bytes": 4073,
+      "path": "stages.csv",
+      "sha256": "87f5e25b37f9e986967bdd2c937d826c7be6e7543b31002358a6c9cdc51560a4"
+    },
+    {
+      "bytes": 8173,
+      "path": "telemetry.csv.gz",
+      "sha256": "9f7203e7d505f15c83b2c3a502f015309c6637f1340e7339728e6aa0ce477e9f"
+    },
+    {
+      "bytes": 144375,
+      "path": "topology-events.csv",
+      "sha256": "56010d8d04c874a9ee6b239d40cbb4c482cbdcced1400fa09f511cac2a9af1c6"
+    },
+    {
+      "bytes": 11374,
+      "path": "transfers.csv",
+      "sha256": "c9cec5f1a49294b142f7668a961ff38455442818a0660adf01714731113135a0"
+    },
+    {
+      "bytes": 13932,
+      "path": "windows-package-receipts.csv",
+      "sha256": "45990e2105b16e4d4c300dfcc932cc1383b7f992961f3fe9264ee8c76a1ecc29"
+    }
+  ],
+  "run_id": "20261123T225329875344Z-5b540e4b593d42b7",
+  "schema": "el-recovery-resource-files-1"
+}

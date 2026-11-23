@@ -1,5 +1,7 @@
 """A synthetic staged file cannot slip into the source candidate."""
 import importlib.util
+import gzip
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -12,6 +14,27 @@ MODULE = Path(__file__).resolve().parents[1] / "scripts/source_candidate.py"
 spec = importlib.util.spec_from_file_location("source_candidate", MODULE)
 candidate = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(candidate)
+
+
+def test_recovery_table_is_limited_to_pinned_columns_and_values():
+    name = "docs/results/reconstruction-recovery/resources/telemetry.csv.gz"
+
+    def verify(contents, path=name):
+        raw = contents.encode("ascii")
+        data = gzip.compress(raw, mtime=0)
+        pin = {"format": "gzip-csv-1", "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest(),
+               "csv_bytes": len(raw), "csv_sha256": hashlib.sha256(raw).hexdigest(), "rows": 1}
+        candidate.audit_numeric_table(path, data, pin)
+
+    header = candidate.RECOVERY_TABLES[name] + "\n"
+    row = "20260101T000000000000Z-0000000000000000,1,4,256,\n"
+    verify(header + row)
+    with pytest.raises(ValueError):
+        verify(header + row, "docs/results/reconstruction-recovery/resources/notes.csv.gz")
+    with pytest.raises(ValueError):
+        verify(header + row.replace(",4,", ",sample-host,"))
+    with pytest.raises(ValueError):
+        verify(header.replace("tree_rss_mib", "account") + row)
 
 
 def test_exact_file_and_rights_inventory(tmp_path):

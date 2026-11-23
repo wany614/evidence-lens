@@ -2,6 +2,8 @@
 
 The public release scores where a calibrated Gaussian reconstruction is likely to have high display-RGB error. The default is **MS-L1**. The release includes trained parameters, a two- and four-source example, separate Blender references and a CPU verifier. This D0 readback uses the released weights and the four existing development histories. [Fixed source](https://github.com/wany614/evidence-lens/tree/a65b1caea258d991573bddb7a65f2bc4f9945fd7) · [Public assets](https://github.com/wany614/evidence-lens/releases/tag/v0.3.0-rc.1)
 
+The subsequent recovery study selected an upstream reconstruction on a photographed can and applied it to the previously exposed DTU building model. On the building, all six M2 and all six M4 targets beat both their original reconstructions and their nearest-axis source copies. Four-source MS-L1 low-group error fell from 82.34% to 27.77% as its coverage rose from 0.60% to 30.15% of the full crop. The research record includes both candidate recipes, the failed first synthetic control, source and target errors, and the four frozen scorers at matched coverage. [Recovery evidence and limitations](results/reconstruction-recovery/README.md) · [Public source replay](recovery-reproduction.md)
+
 | Question | Evidence and limits |
 | --- | --- |
 | What has been implemented? | One calibrated source can exercise the Stage B risk pipeline. Stage C jointly fits a Gaussian scene from two or four registered source images. Its four scorers produce a native continuous risk, support and low/high/unknown state at each of six target views. The Stage B transfer uses only s00. [Stage B](results/vision-confirmation.md) · [Stage C input and scoring contract](stage3-risk.md) |

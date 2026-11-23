@@ -1,0 +1,332 @@
+{
+  "diagnostics": [
+    {
+      "files": [
+        {
+          "bytes": 2932,
+          "path": "checkpoint-scales.csv",
+          "sha256": "4ab36b28ae8bebf454f81ab1f982b912b9c1f2b41fa079c1a6065d91dc2fa346"
+        },
+        {
+          "bytes": 11471,
+          "path": "extreme-points.csv",
+          "sha256": "e3fe23ad8c8d4dba82285e3769b5420130e898de4c6278e62241f2ed1c0da690"
+        },
+        {
+          "bytes": 6272,
+          "path": "source-projection.csv",
+          "sha256": "e0b631848002547e867f11062432cb169d23f57e0c2d52e9aafcc096296e6528"
+        }
+      ],
+      "inputs": [
+        {
+          "condition": "M4",
+          "counts": {
+            "0": 66,
+            "3000": 18202,
+            "5000": 18202
+          },
+          "generation": {
+            "manifest_sha256": "d1abd96f9fc22c87cc585ce41152051a1cff2fa90c5575b9de24cad5242aef1f",
+            "run_id": "20261123T220109117394Z-4edc40e3cd80442a"
+          },
+          "members": {
+            "057-camera": {
+              "bytes": 8397,
+              "sha256": "c72be3ea38d925003dcb5f79c4a120fc444c674b2a6de53a028825cf1bba240d"
+            },
+            "057-p0": {
+              "bytes": 22993,
+              "sha256": "3f2e1b84279c50967b12a9f95cf58d08130e6489e505d5d044e8d3496978c47d"
+            },
+            "057-p3000": {
+              "bytes": 3226843,
+              "sha256": "55fbae8b43dc5867190b001018967c68a008c2f22afbc8bd7bfc42ac675d6518"
+            },
+            "057-p5000": {
+              "bytes": 3226843,
+              "sha256": "f3e9705e544be66973d825cc7f8ca07d838ee451bf3874a7970a06ba04a5c234"
+            },
+            "057-trace": {
+              "bytes": 4623313,
+              "sha256": "49f5ab5374bb3080d0e3e91822f13b5f7267d8487e503690b8ff3784631d267e"
+            }
+          },
+          "object_id": "scene_057_offset_bell_cage",
+          "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+          "short": "057"
+        }
+      ],
+      "interpretation": "The CPU major semiaxis and gsplat's rasterizer support radius have different definitions. Native per-point radii and compositing weights were unrecorded for these fits. Checkpoint row indices identify only their own saved tensors.",
+      "manifest_sha256": "c877edb78bfdc3c3307241a5d9450509f79059c90b67518d8c8fd879989f3426",
+      "member": "payload/projection.json",
+      "member_sha256": "724510fc4b9fd647c8073fa15698645e46f1c6d030ed7245e3ed7dbbcff94528",
+      "native_arrays_read": "Source cameras, three guarded CPU checkpoints and source optimizer trace per condition. No image files.",
+      "projection": "FP64 pinhole covariance Jacobian and unconstrained local 3-sigma major semiaxis using the original epsilon. Counts use strict >64 and >256 pixels in each named domain. The source image is 256 x 256.",
+      "run_id": "20261123T221336627855Z-1f47572088814bf6",
+      "section": "runs",
+      "timing": "The native maximum and visible count came from the nearest same-source training draw. Its row gives the actual pre-update state step and signed offset from the checkpoint."
+    },
+    {
+      "files": [
+        {
+          "bytes": 5094,
+          "path": "checkpoint-scales.csv",
+          "sha256": "a29fbf60160f65f13e6b83afec4a3a672a35ca16ef6132374e0ab63672623ba6"
+        },
+        {
+          "bytes": 16117,
+          "path": "extreme-points.csv",
+          "sha256": "6857a76858c50a1d345512460b80cf5b50281b8ddb893fba266c4ebab8d18d92"
+        },
+        {
+          "bytes": 8412,
+          "path": "source-projection.csv",
+          "sha256": "81b94f3c738d738f6786c7dfa17c02b7338bf31f7d0c07b5f23bd1ec0a6815f9"
+        }
+      ],
+      "inputs": [
+        {
+          "condition": "M2",
+          "counts": {
+            "0": 52,
+            "3000": 20000,
+            "5000": 20000
+          },
+          "generation": {
+            "manifest_sha256": "ca35686b519f275a1a9d17f89799e87b3da488eb34aecbe4ecf8dde8fea150a6",
+            "run_id": "20261123T221137108783Z-ab4150df37dc43b9"
+          },
+          "members": {
+            "set1m2-camera": {
+              "bytes": 2025,
+              "sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a"
+            },
+            "set1m2-p0": {
+              "bytes": 21713,
+              "sha256": "ecfd6a7f60defd63dde75039f5ebef5d0ce5c2ee422385c1be52f03fd7292a0d"
+            },
+            "set1m2-p3000": {
+              "bytes": 3543195,
+              "sha256": "c9a34a38ebc4a46c2f3c068b7898812058dd986cf05bb1cef2fd145ec181795e"
+            },
+            "set1m2-p5000": {
+              "bytes": 3543195,
+              "sha256": "0b9531a43b3b3072e2fe9ad5872c9b0d23e13f2944447204dc16e840aa5cb32e"
+            },
+            "set1m2-trace": {
+              "bytes": 4517503,
+              "sha256": "05eb0a41fb84763ac202f3eec9784c2867b3ff9231c3d51004df628d3d6658d6"
+            }
+          },
+          "object_id": "set1",
+          "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+          "short": "set1m2"
+        },
+        {
+          "condition": "M4",
+          "counts": {
+            "0": 271,
+            "3000": 20000,
+            "5000": 20000
+          },
+          "generation": {
+            "manifest_sha256": "4f54f336b2231e7ca5857c17b7eb7f448703f8c9986ed058d6cc22270800d5f5",
+            "run_id": "20261123T221223847720Z-b947249c08bd498f"
+          },
+          "members": {
+            "set1m4-camera": {
+              "bytes": 3886,
+              "sha256": "e349f27b6067acb44f49df01b08bd0adf3222572da7f268543105b0e00e987ee"
+            },
+            "set1m4-p0": {
+              "bytes": 34321,
+              "sha256": "6e5b24a639739920ec9f1d6b8a2c26b0054dab017b3de2c41f888b4b6f0c1f18"
+            },
+            "set1m4-p3000": {
+              "bytes": 3543579,
+              "sha256": "ccf160e2a55d8b4846cbfa78d306c3f3df025638eceee19040b594e46794c1ac"
+            },
+            "set1m4-p5000": {
+              "bytes": 3543579,
+              "sha256": "7d9fb039f1fc01153eda025f4f6e000d6e423dcf1570948ae1865321f16b8f4f"
+            },
+            "set1m4-trace": {
+              "bytes": 4628957,
+              "sha256": "7308e9fe0d67e5abd5b98fca0225a8ba4ffb7832c095208c1e6ab007588087f2"
+            }
+          },
+          "object_id": "set1",
+          "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+          "short": "set1m4"
+        }
+      ],
+      "interpretation": "The CPU major semiaxis and gsplat's rasterizer support radius have different definitions. Native per-point radii and compositing weights were unrecorded for these fits. Checkpoint row indices identify only their own saved tensors.",
+      "manifest_sha256": "37e206540c801a61ecdacfd2a71be300391527cca6a55fdc9387133bd0feb3c7",
+      "member": "payload/projection.json",
+      "member_sha256": "f2e66ac0f551cc2b5d93a4ad91bf9df6b89334687cc336c035ddf8b78bbc7cf1",
+      "native_arrays_read": "Source cameras, three guarded CPU checkpoints and source optimizer trace per condition. No image files.",
+      "projection": "FP64 pinhole covariance Jacobian and unconstrained local 3-sigma major semiaxis using the original epsilon. Counts use strict >64 and >256 pixels in each named domain. The source image is 256 x 256.",
+      "run_id": "20261123T221626000986Z-4532c75d8ea34590",
+      "section": "runs",
+      "timing": "The native maximum and visible count came from the nearest same-source training draw. Its row gives the actual pre-update state step and signed offset from the checkpoint."
+    },
+    {
+      "files": [
+        {
+          "bytes": 2314,
+          "path": "checkpoint-scales.csv",
+          "sha256": "a992925da58b811c7a25dd87f9c4a7ea90ab1eb9e28fdfe33b1bb19e2f995d54"
+        },
+        {
+          "bytes": 8026,
+          "path": "extreme-points.csv",
+          "sha256": "fa8c67deaea6a60c06f70cd708a6e824f67f3fe9d69233ed2fda8b727c47b6e7"
+        },
+        {
+          "bytes": 4478,
+          "path": "source-projection.csv",
+          "sha256": "364ba4722f6d06efe741c18ce03cb607cf701eba51d0e88f7817ff34bcea8b3a"
+        }
+      ],
+      "inputs": [
+        {
+          "condition": "M4",
+          "counts": {
+            "3000": 18508,
+            "5000": 18508
+          },
+          "generation": {
+            "manifest_sha256": "7bcc6d7155bcf063058da69eb9b33564f17af9e3f8344e8931e1d21109534366",
+            "run_id": "20261123T222702958331Z-5c378f9a59c34b17"
+          },
+          "members": {
+            "057-camera": {
+              "bytes": 8397,
+              "sha256": "c72be3ea38d925003dcb5f79c4a120fc444c674b2a6de53a028825cf1bba240d"
+            },
+            "057-p3000": {
+              "bytes": 3281051,
+              "sha256": "ae8e53941d7b1075553202cc9b26d3fee2beaca96a63bf534109e39ecc34eaf4"
+            },
+            "057-p5000": {
+              "bytes": 3281051,
+              "sha256": "3653b4305a62658d208eb85b57883316343f4fa848224121107e2b54215565c7"
+            },
+            "057-trace": {
+              "bytes": 4638374,
+              "sha256": "5e337a5d87a8dc0cd500d035389e3ceb4086f3da11633e8b491085b43dd156cb"
+            }
+          },
+          "object_id": "scene_057_offset_bell_cage",
+          "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+          "short": "057"
+        }
+      ],
+      "interpretation": "The CPU major semiaxis and gsplat's rasterizer support radius have different definitions. Native per-point radii and compositing weights were unrecorded for these fits. Checkpoint row indices identify only their own saved tensors.",
+      "manifest_sha256": "09ab41322d1d15b1a50541df78d3503543b9e5896bfc434f18d2240004519941",
+      "member": "payload/projection.json",
+      "member_sha256": "019d487fab6ac7aa31fdb16c167ab425a65c45b8749d655257c5a971ed2cffec",
+      "native_arrays_read": "Source cameras, three guarded CPU checkpoints and source optimizer trace per condition. No image files.",
+      "projection": "FP64 pinhole covariance Jacobian and unconstrained local 3-sigma major semiaxis using the original epsilon. Counts use strict >64 and >256 pixels in each named domain. The source image is 256 x 256.",
+      "run_id": "20261123T223247990893Z-9c49f91dcb554650",
+      "section": "runs",
+      "timing": "The native maximum and visible count came from the nearest same-source training draw. Its row gives the actual pre-update state step and signed offset from the checkpoint."
+    },
+    {
+      "files": [
+        {
+          "bytes": 3848,
+          "path": "checkpoint-scales.csv",
+          "sha256": "82b5c80051f520fb4a10beeed8a2e84de00bc2ecf156add22dcd0cb68794cac0"
+        },
+        {
+          "bytes": 11168,
+          "path": "extreme-points.csv",
+          "sha256": "2187f30857db5520b8e97e6620cdca2bebf75b09b2070f1388abc82acdcc54e2"
+        },
+        {
+          "bytes": 5944,
+          "path": "source-projection.csv",
+          "sha256": "a5d3c0101fd050cb307b116da50fa43acd987f30dfff0e011a5aa53d4f7a3aa8"
+        }
+      ],
+      "inputs": [
+        {
+          "condition": "M2",
+          "counts": {
+            "3000": 20000,
+            "5000": 20000
+          },
+          "generation": {
+            "manifest_sha256": "66e89c7ee6462c00cc0cd810d1351d840e70019bac696b6775e39aa06390b822",
+            "run_id": "20261123T223253609516Z-40d100affe3d492a"
+          },
+          "members": {
+            "set1m2-camera": {
+              "bytes": 2025,
+              "sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a"
+            },
+            "set1m2-p3000": {
+              "bytes": 3543195,
+              "sha256": "7f27aea056023436a296d1cdc6d72ec79874bd164c92cab0effb6df8b253737e"
+            },
+            "set1m2-p5000": {
+              "bytes": 3543195,
+              "sha256": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370"
+            },
+            "set1m2-trace": {
+              "bytes": 4521298,
+              "sha256": "958634d31f0cb03d027361446492e87cee54fabba68efaf712357fdce278809c"
+            }
+          },
+          "object_id": "set1",
+          "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+          "short": "set1m2"
+        },
+        {
+          "condition": "M4",
+          "counts": {
+            "3000": 20000,
+            "5000": 20000
+          },
+          "generation": {
+            "manifest_sha256": "4fc4d5d6bad43477636a5c694f7ef0b848509580f2e3ee719f4bba080968c7ad",
+            "run_id": "20261123T223339734230Z-4dfea2e8243c4dc8"
+          },
+          "members": {
+            "set1m4-camera": {
+              "bytes": 3886,
+              "sha256": "e349f27b6067acb44f49df01b08bd0adf3222572da7f268543105b0e00e987ee"
+            },
+            "set1m4-p3000": {
+              "bytes": 3543579,
+              "sha256": "e58397eca485f108d781dc482ae0fce8ad85fdc4798104ac2a1be96124683bae"
+            },
+            "set1m4-p5000": {
+              "bytes": 3543579,
+              "sha256": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+            },
+            "set1m4-trace": {
+              "bytes": 4635078,
+              "sha256": "243aa69a7e038777509051fd07cb9f87deab6eb6d7b570c59add838dea25fba1"
+            }
+          },
+          "object_id": "set1",
+          "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+          "short": "set1m4"
+        }
+      ],
+      "interpretation": "The CPU major semiaxis and gsplat's rasterizer support radius have different definitions. Native per-point radii and compositing weights were unrecorded for these fits. Checkpoint row indices identify only their own saved tensors.",
+      "manifest_sha256": "7670bbe8a33bb920066e86546063de65f41a038dd58fceb0b91d506a6cb4cea9",
+      "member": "payload/projection.json",
+      "member_sha256": "ae5f5c9af61b242825a42822de41cb5504f27b197f6cd2e8be2a3cb0882ba290",
+      "native_arrays_read": "Source cameras, three guarded CPU checkpoints and source optimizer trace per condition. No image files.",
+      "projection": "FP64 pinhole covariance Jacobian and unconstrained local 3-sigma major semiaxis using the original epsilon. Counts use strict >64 and >256 pixels in each named domain. The source image is 256 x 256.",
+      "run_id": "20261123T223727164131Z-72c28162013e42f2",
+      "section": "runs",
+      "timing": "The native maximum and visible count came from the nearest same-source training draw. Its row gives the actual pre-update state step and signed offset from the checkpoint."
+    }
+  ],
+  "schema": "el-recovery-extent-proofs-1"
+}

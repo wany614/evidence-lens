@@ -1,0 +1,36 @@
+role,platform,runs,succeeded,failed,workers_started,worker_wall_samples,individual_recorder_seconds_sum,worker_wall_seconds_sum,max_sampled_tree_rss_bytes,max_device_used_MiB,max_process_gpu_bytes,max_torch_allocated_bytes,max_torch_reserved_bytes,sealed_payload_bytes_sum,issued_checkpoint_bytes_sum,native_frame_npz_bytes_sum,native_frame_png_bytes_sum
+Authored control Gaussian optimization,Windows,2,2,0,2,2,72.34399999999732,65.43206110000028,1509040128,997.0,,36382720,58720256,25404197,16128378,0,0
+Authored control checkpoint rendering,Windows,2,2,0,2,2,14.748999999996158,7.273141999990912,922071040,947.0,,10285056,14680064,99333014,0,94788750,4502516
+Authored control qualification,macOS,2,2,0,2,0,2.4439431670034537,,6537216,,,,,9943,0,0,0
+CPU source-camera extent readback,macOS,4,4,0,4,0,55.61008575100277,,252870656,,,,,98864,0,0,0
+DTU Gaussian optimization,Windows,6,6,0,6,6,221.5640000000276,198.72980990001815,1542152192,1014.0,,37429248,60817408,90163285,62663086,0,0
+DTU checkpoint rendering,Windows,6,6,0,6,6,38.87500000001455,15.76582870000857,952639488,947.0,,10659328,14680064,218270989,0,201253506,16930437
+Engineering Gaussian optimization,Windows,4,3,1,4,3,19.235999999989872,6.960357799980557,902492160,907.0,,9326080,23068672,830547,790596,0,0
+Engineering checkpoint rendering,Windows,2,2,0,2,2,8.452999999994063,1.4154481000150554,922812416,907.0,,350720,2097152,274404,0,216926,38563
+Frozen recipe and stopping rule,macOS,1,1,0,1,0,1.1860082909988705,,6471680,,,,,22230,0,0,0
+Frozen risk scoring,macOS,4,4,0,4,0,14.559743958991021,,532316160,,,,,22075876,0,0,0
+Historical cache restoration and capacity audit,macOS,1,1,0,1,0,4.514927666998119,,63307776,,,,,2419,0,0,0
+Historical cache retirement and capacity audit,macOS,2,2,0,2,0,2.5637512919929577,,6324224,,,,,9641,0,0,0
+Independent checkpoint learning-rate readback,macOS,6,6,0,6,0,10.42095337601495,,6553600,,,,,40178,0,0,0
+Independent engineering qualification,macOS,1,1,0,1,0,0.9667970830050763,,4243456,,,,,21167,0,0,0
+Independent evaluation,macOS,12,12,0,12,0,39.11993687496579,,184729600,,,,,212247947,0,0,0
+Independent numerical or transport audit,macOS,16,15,1,16,8,249.4372548770043,23.03897069999948,221429760,,,10659328,14680064,537515,0,0,0
+Independent source-only Windows handoff,macOS,5,5,0,5,0,4.997548583007301,,6635520,,,,,3621062,0,0,0
+Native output adaptation for frozen scoring,macOS,4,4,0,4,0,5.477872874995228,,6324224,,,,,41647393,0,0,0
+Protocol or recipe registration,macOS,3,3,0,3,0,3.6012764569895808,,7405568,,,,,29377,0,0,0
+Public 057 zero-fit replay,macOS,1,1,0,1,0,2.573942540999269,,97058816,,,,,22659,0,0,0
+R0 CPU checkpoints and image boards,macOS,1,1,0,1,0,1.6752386669977568,,97517568,,,,,26155560,0,0,0
+R0 CPU projection roundoff,macOS,1,1,0,1,0,0.378797500001383,,7766016,,,,,6927,0,0,0
+R0 CUDA endpoint use and gradients,Windows,4,4,0,4,4,14.218000000008033,3.280304800005979,543727616,898.0,,11104256,12582912,669652,0,0,0
+R0 CUDA projection,Windows,1,1,0,1,0,3.4840000000112923,,520957952,820.0,,656384,2097152,660926,0,0,0
+R0 joined report,macOS,1,1,0,1,0,0.4650399170059245,,7438336,,,,,129240,0,0,0
+R1 disposition,macOS,1,1,0,1,0,1.146197083988227,,7831552,,,,,3215,0,0,0
+Scientific dispatch authorization,macOS,8,8,0,8,0,9.593516917986562,,6963200,,,,,42714,0,0,0
+Scientific report,macOS,2,2,0,2,0,3.355301124989637,,6471680,,,,,101060514,0,0,0
+Source-only geometry initialization,macOS,7,5,2,6,0,14.003987083036918,,96550912,,,,,157460,0,0,0
+Source-only initialization replay,macOS,5,3,2,3,0,5.316124958000728,,7405568,,,,,35718,0,0,0
+Study decisions and verification,macOS,1,1,0,1,0,1.127294375008205,,278528,,,,,25646,0,0,0
+Verified Windows return-cache retirement,macOS,2,2,0,2,0,3.6347063339926535,,68698112,,,,,76905,0,0,0
+Windows engineering verification,Windows,7,6,1,7,3,22.139999999999418,4.969966500008013,1383227392,986.0,,26146304,44040192,27258,0,0,0
+Windows worker source verification,macOS,3,2,1,3,0,3.3427466660068603,,3604480,,,,,170732,0,0,0
+Zero-fit image baseline,macOS,2,2,0,2,0,3.037567459003185,,6537216,,,,,71151,0,0,0

@@ -1,13 +1,59 @@
 """Audit the staged public-source tree and export its explicitly licensed Git blobs."""
 
 import argparse
+import csv
+import gzip
 import hashlib
+import io
 import json
+import math
+import re
 import subprocess
 import zipfile
 from pathlib import Path, PurePosixPath
 
 POLICY = "configs/public-source.json"
+RECOVERY_TABLES = {
+    "docs/results/reconstruction-recovery/resources/telemetry.csv.gz":
+        "run_id,elapsed_seconds,tree_rss_mib,device_used_mib,process_gpu_bytes",
+    "docs/results/reconstruction-recovery/resources/fit-steps.csv.gz":
+        "run_id,population,recipe_id,recipe_sha256,object_id,condition,step,phase,source,s00_updates,"
+        "s01_updates,s02_updates,s03_updates,n_before,gaussians,pixels,visible,loss,display_l1,ssim,"
+        "max_radius_px,max_abs_visible_means2d_px,topology_events,adam_mutations_checked",
+}
+TEXT_FIELDS = {
+    "run_id": r"[0-9]{8}T[0-9]{12}Z-[a-f0-9]{16}", "recipe_sha256": r"[0-9a-f]{64}",
+    "recipe_id": r"[a-f0-9]{12}", "object_id": r"set1|set6|scene_057_offset_bell_cage|generated-fixture",
+    "condition": r"M2|M4", "phase": r"initial|warmup|refinement|fixed_topology", "source": r"s0[0-3]",
+    "population": r"engineering|authored_control|dtu",
+}
+
+
+def audit_numeric_table(name, data, pin):
+    if (name not in RECOVERY_TABLES or pin.get("format") != "gzip-csv-1"
+            or pin.get("bytes") != len(data) or pin.get("sha256") != hashlib.sha256(data).hexdigest()
+            or type(pin.get("csv_bytes")) is not int or not 0 < pin["csv_bytes"] <= 64 * 1024**2):
+        raise ValueError(f"unlisted or changed compressed numerical table: {name}")
+    with gzip.GzipFile(fileobj=io.BytesIO(data)) as stream:
+        raw = stream.read(pin["csv_bytes"] + 1)
+    if len(raw) != pin["csv_bytes"] or pin.get("csv_sha256") != hashlib.sha256(raw).hexdigest():
+        raise ValueError(f"changed decompressed measurements: {name}")
+    rows = csv.reader(io.StringIO(raw.decode("ascii"), newline=""), strict=True)
+    header = RECOVERY_TABLES[name].split(",")
+    if next(rows, None) != header:
+        raise ValueError(f"unregistered measurement columns: {name}")
+    count = 0
+    for row in rows:
+        if len(row) != len(header):
+            raise ValueError(f"malformed measurement row: {name}")
+        for field, value in zip(header, row, strict=True):
+            valid = (re.fullmatch(TEXT_FIELDS[field], value) if field in TEXT_FIELDS else
+                     (not value or math.isfinite(float(value))))
+            if not valid:
+                raise ValueError(f"invalid measurement in {name}: {field}")
+        count += 1
+    if not count or count != pin.get("rows"):
+        raise ValueError(f"measurement row count differs: {name}")
 
 
 def git(root, *args):
@@ -42,6 +88,9 @@ def audit(root, entries=None):
     policy = json.loads(git(root, "cat-file", "blob", entries[POLICY][1]), object_pairs_hook=unique_keys)
     declared = policy["files"]
     binaries = policy.get("binary_examples", {})
+    numeric = policy.get("numeric_tables", {})
+    if not set(numeric) <= set(RECOVERY_TABLES) or not set(numeric) <= set(declared) or set(numeric) & set(binaries):
+        raise ValueError("numerical data inventory contains an undeclared table")
     if not set(binaries) <= set(declared):
         raise ValueError("example manifest includes a file outside the source inventory")
     if set(entries) != set(declared):
@@ -62,6 +111,8 @@ def audit(root, entries=None):
                     or pin.get("bytes") != len(data) or pin.get("sha256") != hashlib.sha256(data).hexdigest()
                     or not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR" or data[24:26] != ihdr):
                 raise ValueError(f"original PNG example does not match its public inventory: {name}")
+        elif name in numeric:
+            audit_numeric_table(name, data, numeric[name])
         else:
             data.decode("utf-8")  # All other binary assets belong to the separate Release inventory.
         blobs[name] = data

@@ -100,6 +100,23 @@ def test_selection_eligibility_and_ties_ignore_control_and_regression():
     pytest.raises(ValueError, selection, rs)
 
 
+def test_quality_report_pairs_candidate_rows_by_the_same_update(tmp_path):
+    from recovery_eval_report import quality_text
+
+    settings = ("r2-scale-decay-02", "r2-geometry-01")
+    data = [
+        curve(name, cond, {500: 0.12, 1500: 0.25, 3000: 0.11, 5000: 0.15})
+        for name in settings
+        for cond in ("M2", "M4")
+    ]
+    rows, winner = selection(data)
+    quality_text(tmp_path, [], {**winner, "stop_step": winner["step"], "candidates": rows}, [])
+    lines = (tmp_path / "README.md").read_text().splitlines()
+    cells = [line.split(" | ")[:2] for line in lines if " | r2-" in line]
+    assert cells == [[f"| {step:,}", name] for step in (500, 1500, 3000, 5000) for name in reversed(settings)]
+    assert "one run per setting" in " ".join(lines)
+
+
 def test_exact_same_coverage_unattainable_and_partial_tie_limits():
     score = np.ones(8, np.float32)
     y = np.array([0, 0, 0, 0, 1, 1, 1, 1], np.uint8)

@@ -370,6 +370,29 @@ def quality_text(out, qs, sel, comparisons):
         )
     text += [
         "",
+        "## Candidate recipes at matched update counts",
+        "",
+        "Each column of errors uses the same six set1 target cameras. The last column gives M2 and M4 equal weight. "
+        "Each recipe was fitted once per source count. These observations support a stopping decision, "
+        "but one run per setting cannot establish why the recipes differ.",
+        "",
+        "| Updates | Recipe | M2 target MAE | M4 target MAE | Paired mean |",
+        "|---:|---|---:|---:|---:|",
+    ]
+    for candidate in sorted(sel["candidates"], key=lambda r: (r["step"], r["recipe_id"])):
+        means = candidate["condition_means"] or {}
+        text.append(
+            f"| {candidate['step']:,} | {candidate['recipe_id']} | {num(means.get('M2'))} | "
+            f"{num(means.get('M4'))} | {num(candidate['macro_target_MAE'])} |"
+        )
+    if any(r["recipe_id"] == "r2-scale-decay-02" for r in sel["candidates"]):
+        text += [
+            "",
+            "The second recipe varies the learning rate for Gaussian log-scales. "
+            "This parameter controls updates to the spatial widths of the reconstruction Gaussians.",
+        ]
+    text += [
+        "",
         "Errors are pixels whose mean absolute display-RGB difference exceeds 0.05. The full 256 × 256 crop includes background and low-opacity pixels. Each rate uses observed RGB-comparable pixels E. The tables retain reference-valid V, missing observations and object-mask status. DTU supplies no independent 2D object mask for these views, so the image-wide figures cannot separate object from background.",
         "",
         "The mean-colour comparator broadcasts the per-channel mean of the allowed source photographs. The closest-source comparator copies the full crop whose optical axis has the smallest angle to the target, breaking ties by source ID. Both use source images only.",
