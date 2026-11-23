@@ -1,0 +1,169 @@
+{
+  "future_objects": {
+    "eligibility": "New physical subject with all ten required frames and finite compatible calibrations, independently documented identity, required rights and accessible within a separately registered storage/transfer budget. Exclude set1/set6, previously exposed subjects, rotation variants and ambiguous or duplicate physical subjects. Log every exclusion from catalogue evidence.",
+    "information_boundary": "Eligibility and order use catalogue, permissions and technical completeness before viewing model predictions, errors or difficulty. Future photographs and results have no role in this round.",
+    "ordering": "Sort eligible official scan IDs as integers ascending; retain the lowest ID of each independently established physical family. A future confirmation takes the first up to six eligible families, reports a shortfall below four, and preserves failures.",
+    "source": "official DTU calibrated rectified collection, lighting 3, same registered source/target cameras and use rights",
+    "status": "eligibility registration only; acquire no new photographs this round"
+  },
+  "historical_source_sha256": {
+    "protocol/stage3-optimizer-v1.json": "2d1a704a8c93922326663edb3e27b047e05b1916bc47795d9a43771900fdf122",
+    "scripts/dtu_camera.py": "370c38de5917f706f856b15993d336ed26534956287c18125fd093fba30de6b7",
+    "scripts/dtu_camera_checkerboard.py": "850edd53af23bc6b6584c64a6a8893d756e45e14248d1b518981d74ea335034b",
+    "scripts/dtu_case.py": "c4a8385a01d22e0206a596e2dc438c46b001979a8fb87fbf3545228601831d92",
+    "scripts/dtu_case_record.py": "678ab76000dced404375fa721b5505bd21431bec451e1b4ba7001f985721e40c",
+    "scripts/dtu_convert.py": "a1e5a782621894eebf48ed47692a5f5a54fe6b00ebfeeb38429778dc502b7cfb",
+    "scripts/dtu_eval.py": "481a56481068f148401db465c99446c2e72c18896af06b0024a677a843aaa3fd",
+    "scripts/dtu_eval_board.py": "c43e9147b89733aecf037fa2f8f4c6d07d6c5f725c87bdb46fa9ccddfee2c29b",
+    "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+    "scripts/dtu_eval_record.py": "5e43eead8900c40dc655924fa30438551cacd02b1f76113c412c5dfaa619074a",
+    "scripts/dtu_eval_regression.py": "d89923c18b365e452b14dca3dadb72f051be809d6e9d6f5885c7468459d3b6a0",
+    "scripts/dtu_eval_replay.py": "1b77797c3c1064847581011aaa8b97ae1c6987b965d0240132ca40a3af264fdc",
+    "scripts/dtu_gate.py": "33441a1816029982584a0e85cf6c2f56f73fc0187011de28660a2e7685ba0d63",
+    "scripts/dtu_handoff.py": "1e026c9da10a97d82c1b03338336d83dc73a4fcfa947be292d9e5f3c979fd788",
+    "scripts/dtu_photo_probe.py": "4ba2af51430b23206f6860ba271eaf04a0f44606a59be3b22410d6bd9686303a",
+    "scripts/dtu_reconstruct_windows.py": "82d13f0a3c67f983a7b11866bb5aa0ed9b4e386aeec638440903851f01b06669",
+    "scripts/dtu_record_gate.py": "3c315bc27fa6fd1da24861f4cea8c5d789ca57bfbb9aa3261894a0b7abf15529",
+    "scripts/dtu_render.py": "f88e0ea03fda8b87d56979358949049016d70834fd8c91addd5e8b2cafa87693",
+    "scripts/dtu_report.py": "ba9e13a28ee50cba65f1879eb4ec8683d37c6d5bfc9691afe98aba8242527227",
+    "scripts/dtu_sample.py": "22ec2384061fce7993728ac6f9e0c61e34f50d2b4004faf4b1e59277b8232c7e",
+    "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+    "scripts/dtu_score_assets.py": "344b49d291d6a513330019609226f54cce99955e4cc60be195815d91ac767ae8",
+    "scripts/dtu_score_record.py": "3d93acddde69af9ef7ad102434498b23f660bcbce7330b57071a22334521d9b3",
+    "scripts/worker_jobs.py": "6f7cda07302c6052d1dcde935d7451ae799f581d35fd974dc18542bd89084a0b",
+    "src/evidence_lens/dtu_camera.py": "b6bb3a6bc5e1b2c1f90cf2563aefe1e0c2843201223760d75e5fd10e29884da0",
+    "src/evidence_lens/stage3_gaussians.py": "4fb9f7153ea96e5e6c8255d88e92f2ed56fd484320e7e2c665088c2441bf7b95"
+  },
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "previous_freeze": {
+    "manifest_sha256": "a90a08799089c1f934c94ae80eead2f5ef316d6571ca308d1360c0c03df1e942",
+    "member": "payload/freeze.json",
+    "run_id": "20261123T195524386855Z-2ea8b1e8f0e94d3a",
+    "sha256": "49be35c4f44dd35075945cfbeffc1d8a8b39f2624b54603b605659c05f71955b"
+  },
+  "protocol_sha256": "82619d87327135f0f999fab67b468de121b2fb95c77fab3af55b90285d0b2c8d",
+  "registered_files": {
+    "protocol/dtu-external-v1.json": "7460bff77c65709cf2bd3f1273ff67a71fa9a400b80c809e9343e637a08d012b",
+    "protocol/reconstruction-recovery-v1.json": "82619d87327135f0f999fab67b468de121b2fb95c77fab3af55b90285d0b2c8d",
+    "protocol/recovery-initialization-v1.json": "024a4a08552e748afafc3ead27ba745d6f96e84757572e5fbf9aec387653d086",
+    "protocol/recovery-risk-comparison-v1.json": "d08647fd05b3c3ae1fedab75ea77b9cf869b4b7d0a3d3f3afca0f45445b79e31",
+    "protocol/stage3-optimizer-v1.json": "2d1a704a8c93922326663edb3e27b047e05b1916bc47795d9a43771900fdf122"
+  },
+  "release": {
+    "candidate_sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669",
+    "commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+    "cpu_zip_sha256": "f555956840870309217cc85fe9b339ef53762679bbd2138b7f149d8ea451a7b7",
+    "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+    "method_sha256": "1a2cbdb0ea3a52dfbde2e518c833b18d677209444c6aa345314ba3757aa3c9db",
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "repository": "https://github.com/wany614/evidence-lens",
+    "version": "v0.3.0-rc.1"
+  },
+  "resource_baseline": {
+    "active_logical_bytes": 13707519818,
+    "utc": "2026-11-23T21:18:38.426066Z",
+    "volume_free_bytes": 34336374784
+  },
+  "roles": {
+    "scene_057_offset_bell_cage": "previously published authored Stage C development case; M4 positive control for a complete new recipe, with old M4 comparator",
+    "set1": "development; six fixed target photographs may influence selection only in the independent reconstruction evaluator",
+    "set6": "already exposed in D1; final selected recipe regression once each for M2 and M4"
+  },
+  "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+  "schema": "el-recovery-registration-1",
+  "scopes": {
+    "B-L1-transfer": "one",
+    "MS-L1": "all",
+    "MS-frozen": "all",
+    "MS-ft": "all"
+  },
+  "selection": {
+    "eligible_checkpoints": [
+      500,
+      1500,
+      3000,
+      5000
+    ],
+    "eligible_development": "A complete pair of set1 fits under its registered full schedule; all twelve target comparisons at a candidate step must be observed. Resource-aborted fits are incomplete.",
+    "freeze": "Seal the exact recipe, implementation hashes, full schedule, both development curves and common stop step before any new risk scores or set6 preparation. The trained interval may end before the scheduled fixed-topology tail; report the actual phase.",
+    "metric": "Arithmetic mean of the six target display-RGB MAEs for each condition, then mean of the M2 and M4 means. Full comparable crop at native prediction precision. Sources, synthetic control, risk outputs and set6 do not enter this objective.",
+    "on_abort": "Preserve reached checkpoints; missing ones N/A. The protection endpoint cannot substitute for the frozen finish. Record each technical attempt separately.",
+    "tie_order": [
+      "smallest mean MAE",
+      "earlier shared stop step",
+      "lexicographically first recipe ID"
+    ]
+  },
+  "sources_and_targets": {
+    "M2": [
+      "s00",
+      "s03"
+    ],
+    "M4": [
+      "s00",
+      "s01",
+      "s02",
+      "s03"
+    ],
+    "converter": "dtu-crop256-v1",
+    "evaluation_inputs": [
+      "sealed renders from the same parameters",
+      "source originals",
+      "separate target references",
+      "registered historical results"
+    ],
+    "frame": "existing D1 metric frame defined by common endpoint cameras. Optimization scene_scale_m equals the Euclidean distance between s00 and s03 centers in metres. Use the same definition on the Stage C camera rig.",
+    "light": 3,
+    "optimization_inputs": [
+      "condition-specific registered 256-square source RGB",
+      "its calibrated source cameras",
+      "source-only initialization",
+      "fixed optimizer recipe and registration"
+    ],
+    "render_inputs": [
+      "one identified checkpoint",
+      "source and novel-view camera calibration",
+      "fixed render recipe"
+    ],
+    "sources": {
+      "s00": 24,
+      "s01": 23,
+      "s02": 17,
+      "s03": 22
+    },
+    "targets": {
+      "v01": 16,
+      "v02": 18,
+      "v03": 25,
+      "v04": 37,
+      "v05": 35,
+      "v06": 36
+    }
+  },
+  "utc": "2026-11-23T21:18:41.143238Z"
+}

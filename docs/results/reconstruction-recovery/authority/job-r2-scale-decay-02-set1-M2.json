@@ -1,0 +1,71 @@
+{
+  "condition": "M2",
+  "experiment_id": "reconstruction-recovery-v1",
+  "files": {
+    "init.json": {
+      "bytes": 6475,
+      "sha256": "8356ca857733ccbe9ce868a6a8f63be5705d29ed6a8836699f53075b44912c05"
+    },
+    "init.npz": {
+      "bytes": 4186,
+      "sha256": "d9d96ba068eee3bb16fa77c43e64c3ad535856201715f8ee76e8ca6632973864"
+    },
+    "render_cameras.json": {
+      "bytes": 7557,
+      "sha256": "2bed3761ae30e1a65e55c447b55f7067a4c3a2644a3fbd749d35b0f837ba6ad2"
+    },
+    "source_cameras.json": {
+      "bytes": 2025,
+      "sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a"
+    },
+    "sources/s00.png": {
+      "bytes": 120627,
+      "sha256": "5170506362e207609c123ebc561c33ee882b782beeea977fa0f67136d87bc1af"
+    },
+    "sources/s03.png": {
+      "bytes": 120751,
+      "sha256": "d681590f9063609e11a1f946c0a97873ee032c88eb43f7c8ceaf2d91f33dfcc1"
+    }
+  },
+  "input_parents": {
+    "init.json": "20261123T212134525567Z-fd62a9c99694440a",
+    "init.npz": "20261123T212134525567Z-fd62a9c99694440a",
+    "recipe": "20261123T222505349174Z-e7bc004c018846f8",
+    "render_cameras.json": "20261123T212140960422Z-a4cef940c8d941d1",
+    "source_cameras.json": "20261123T212140960422Z-a4cef940c8d941d1",
+    "sources/s00.png": "20261123T212140960422Z-a4cef940c8d941d1",
+    "sources/s03.png": "20261123T212140960422Z-a4cef940c8d941d1"
+  },
+  "object_id": "set1",
+  "parents": [
+    {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647"
+    },
+    {
+      "manifest_sha256": "4c34fd4159c9b65ad0c4d2ed11849e65657b6ee99351ac8a04081f041b3c854c",
+      "run_id": "20261123T212134525567Z-fd62a9c99694440a"
+    },
+    {
+      "manifest_sha256": "a3bd2249df87b82ae9715793209fbc12be89eede6bfc36cd4d0927148ab6f384",
+      "run_id": "20261123T212140960422Z-a4cef940c8d941d1"
+    },
+    {
+      "manifest_sha256": "b226a1f0ffd74e2847777024305f1b9a337a8721950327122aa05040cc325f76",
+      "run_id": "20261123T215715001746Z-6f8c142187d04328"
+    },
+    {
+      "manifest_sha256": "2c11b501b7866b4010f4fc33b0117a2a08a07030d8c44d8c62dca5cd82e274c0",
+      "run_id": "20261123T222505349174Z-e7bc004c018846f8"
+    },
+    {
+      "manifest_sha256": "846f741cc07925aaedfebe45a7e94fed67a03b3b95f5f64a3e26e8819afe2c94",
+      "run_id": "20261123T223113607762Z-33c1d594e0a14b18"
+    }
+  ],
+  "purpose": "formal",
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "schema": "el-recovery-cell-1",
+  "stop_step": 5000,
+  "trial_id": "r2-scale-decay-02-set1-M2"
+}

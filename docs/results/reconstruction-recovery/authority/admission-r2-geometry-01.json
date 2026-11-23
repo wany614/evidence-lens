@@ -1,0 +1,82 @@
+{
+  "R1": {
+    "manifest_sha256": "f640fe7f151e531cacdcfa3463cdee20a047b97098f97d0a7dbc760307483cce",
+    "member": "payload/r1-decision.json",
+    "run_id": "20261123T213531971072Z-5b70fc0426974887",
+    "sha256": "28ca5b97e28eec6a10327e14f7817306112b36031866ca6b35779e53910343ae"
+  },
+  "decision": "admit",
+  "implementation_sha256": {
+    "scripts/recovery_decide.py": "1cf8024a264c37a7c583d2b7035bd8898eb0b2cc44bc29bce7450ef754026628",
+    "scripts/recovery_dispatch.py": "3d1584f78b4a0cdf81ae72574690d1c067f4c8cf91bea5b515bfa10148ad9363",
+    "scripts/recovery_eval_quality.py": "329184073f2488b3fb44338bddb89874ed99e69b394ea347d186444e16c4243d",
+    "scripts/recovery_eval_select.py": "a35129bb2eb7a27603f6c378722650789dc1a319e7efde6ae8ccc57749d69441",
+    "scripts/recovery_freeze.py": "96672f924b0bd10e0fa641c6c99f9110023459282b5eca04e15ef035590ffb4f",
+    "scripts/recovery_inputs.py": "fd46d9b79faa9b8a22e9dfb6a589f2ea907c793c74b475cdc279a57484cafdc0",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27",
+    "src/recovery/contract.py": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1",
+    "src/recovery/engine.py": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539",
+    "src/recovery/scene.py": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6",
+    "src/recovery/topology.py": "e7667706cf952841dd9388ab478108fbddab079248b0275670b292eb211bbd32",
+    "src/recovery/transport.py": "b669202a4e89727a347e72d849564623c2ad13c04e344379eaebe3118fac801d"
+  },
+  "inputs": {
+    "init_M2": {
+      "manifest_sha256": "4c34fd4159c9b65ad0c4d2ed11849e65657b6ee99351ac8a04081f041b3c854c",
+      "member": "payload/init.json",
+      "run_id": "20261123T212134525567Z-fd62a9c99694440a",
+      "sha256": "8356ca857733ccbe9ce868a6a8f63be5705d29ed6a8836699f53075b44912c05"
+    },
+    "init_M4": {
+      "manifest_sha256": "9a2bc7fc484d8417be1057b8eead7bbac80da9e10ffce1071151902a9e2510a1",
+      "member": "payload/init.json",
+      "run_id": "20261123T212142066231Z-9f7d688da98c4b91",
+      "sha256": "6db5a1c61942de44c23593d2ee7236db0b276fc3d39fa43c2061b78343019c68"
+    },
+    "r0": {
+      "manifest_sha256": "435d64bf7e5a95031adee5a5ca7058344cc810e240f797858de0d6977c28422f",
+      "member": "payload/public/summary.json",
+      "run_id": "20261123T212935774196Z-6fc57ff541824ed0",
+      "sha256": "1bfd260dd2cb7c2728060fbb9f712c371698c36876bce9615d5b85bdf679b258"
+    },
+    "r1_decision": {
+      "manifest_sha256": "f640fe7f151e531cacdcfa3463cdee20a047b97098f97d0a7dbc760307483cce",
+      "member": "payload/r1-decision.json",
+      "run_id": "20261123T213531971072Z-5b70fc0426974887",
+      "sha256": "28ca5b97e28eec6a10327e14f7817306112b36031866ca6b35779e53910343ae"
+    },
+    "registration": {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "member": "payload/registration.json",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+      "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+    },
+    "resource_probe": {
+      "manifest_sha256": "0eeb35a5cda4c4c5ccaaf50bf09d8f951892b986dddcc745b09ecffbb29f97e6",
+      "member": "payload/resource-probe.json",
+      "run_id": "20261123T215811873138Z-45b9398149e646da",
+      "sha256": "2e29cb3b339f9082304971f743344b53a397669a6160a00451b08266d1d330d1"
+    },
+    "worker_source": {
+      "manifest_sha256": "b226a1f0ffd74e2847777024305f1b9a337a8721950327122aa05040cc325f76",
+      "member": "payload/source.zip",
+      "run_id": "20261123T215715001746Z-6f8c142187d04328",
+      "sha256": "aa65bc5a412cdafdac2e9ffa5f64f675ba8253904100dafbc086284b5a9632c1"
+    }
+  },
+  "interpretation": "The historical D1 initial arrays placed only 151 (M2) and 180 (M4) centres inside an allowed DTU source frame, versus 2441 on the authored rig. Independent fixed-camera source matching qualified 52 and 271 set1 tracks and 66 on the authored positive control. Admit this first geometry-initialized, variable-topology recipe on those source-only grounds. The actual synthetic CUDA capacity fixture rasterized and updated 20,000 points, exercised clone, split, prune and opacity reset, and verified Adam state. It used 26,146,304 bytes Torch allocated, 44,040,192 bytes Torch reserved and a device-wide 959 MiB sample. The off-axis projection/ED experiment, segmented continuation, selected-checkpoint rerender and one-second cutoff retain original recorder evidence. Scientific fits use the same worker, the original crop and metric endpoint scale, a 5000-update schedule and 1800-second abort. No recovery candidate target or risk results have been consulted.\n",
+  "reason_for_candidate": "The historical D1 initial arrays placed only 151 (M2) and 180 (M4) centres inside an allowed DTU source frame, versus 2441 on the authored rig. Independent fixed-camera source matching qualified 52 and 271 set1 tracks and 66 on the authored positive control. Admit this first geometry-initialized, variable-topology recipe on those source-only grounds. The actual synthetic CUDA capacity fixture rasterized and updated 20,000 points, exercised clone, split, prune and opacity reset, and verified Adam state. It used 26,146,304 bytes Torch allocated, 44,040,192 bytes Torch reserved and a device-wide 959 MiB sample. The off-axis projection/ED experiment, segmented continuation, selected-checkpoint rerender and one-second cutoff retain original recorder evidence. Scientific fits use the same worker, the original crop and metric endpoint scale, a 5000-update schedule and 1800-second abort. No recovery candidate target or risk results have been consulted.\n",
+  "recipe_id": "r2-geometry-01",
+  "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+  "registration": {
+    "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+    "member": "payload/registration.json",
+    "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+    "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+  },
+  "risk_results_used": false,
+  "run_id": "20261123T215848459905Z-2ea00b699be64da6",
+  "schema": "el-recovery-recipe-admission-1",
+  "utc": "2026-11-23T21:58:49.600981Z"
+}

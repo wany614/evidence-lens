@@ -1,0 +1,152 @@
+{
+  "R1": {
+    "manifest_sha256": "f640fe7f151e531cacdcfa3463cdee20a047b97098f97d0a7dbc760307483cce",
+    "member": "payload/r1-decision.json",
+    "run_id": "20261123T213531971072Z-5b70fc0426974887",
+    "sha256": "28ca5b97e28eec6a10327e14f7817306112b36031866ca6b35779e53910343ae"
+  },
+  "decision": "admit",
+  "implementation_sha256": {
+    "scripts/recovery_decide.py": "0544eabfbeddf2327a76709bd5f8094c51e27fa0081e7fb47a0c15b1793a79c6",
+    "scripts/recovery_dispatch.py": "3d1584f78b4a0cdf81ae72574690d1c067f4c8cf91bea5b515bfa10148ad9363",
+    "scripts/recovery_eval_quality.py": "329184073f2488b3fb44338bddb89874ed99e69b394ea347d186444e16c4243d",
+    "scripts/recovery_eval_select.py": "a35129bb2eb7a27603f6c378722650789dc1a319e7efde6ae8ccc57749d69441",
+    "scripts/recovery_freeze.py": "96672f924b0bd10e0fa641c6c99f9110023459282b5eca04e15ef035590ffb4f",
+    "scripts/recovery_inputs.py": "fd46d9b79faa9b8a22e9dfb6a589f2ea907c793c74b475cdc279a57484cafdc0",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27",
+    "src/recovery/contract.py": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1",
+    "src/recovery/engine.py": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539",
+    "src/recovery/scene.py": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6",
+    "src/recovery/topology.py": "e7667706cf952841dd9388ab478108fbddab079248b0275670b292eb211bbd32",
+    "src/recovery/transport.py": "b669202a4e89727a347e72d849564623c2ad13c04e344379eaebe3118fac801d"
+  },
+  "inputs": {
+    "capacity_confirmation": {
+      "manifest_sha256": "b0a2c90e2ce0f22453e01815064a276a3cc4b8d889b344752a6191babacf79a3",
+      "member": "payload/forced-topology.json",
+      "run_id": "20261123T222056223877Z-ebcbdc9f99074b0d",
+      "sha256": "2db6a8bb6e0b0426fde2e2bcd791262bd37b5b1cb78ce79f746686bcede1da58"
+    },
+    "extent_057": {
+      "manifest_sha256": "c877edb78bfdc3c3307241a5d9450509f79059c90b67518d8c8fd879989f3426",
+      "member": "payload/projection.json",
+      "run_id": "20261123T221336627855Z-1f47572088814bf6",
+      "sha256": "724510fc4b9fd647c8073fa15698645e46f1c6d030ed7245e3ed7dbbcff94528"
+    },
+    "extent_set1": {
+      "manifest_sha256": "37e206540c801a61ecdacfd2a71be300391527cca6a55fdc9387133bd0feb3c7",
+      "member": "payload/projection.json",
+      "run_id": "20261123T221626000986Z-4532c75d8ea34590",
+      "sha256": "f2e66ac0f551cc2b5d93a4ad91bf9df6b89334687cc336c035ddf8b78bbc7cf1"
+    },
+    "init_M2": {
+      "manifest_sha256": "4c34fd4159c9b65ad0c4d2ed11849e65657b6ee99351ac8a04081f041b3c854c",
+      "member": "payload/init.json",
+      "run_id": "20261123T212134525567Z-fd62a9c99694440a",
+      "sha256": "8356ca857733ccbe9ce868a6a8f63be5705d29ed6a8836699f53075b44912c05"
+    },
+    "init_M4": {
+      "manifest_sha256": "9a2bc7fc484d8417be1057b8eead7bbac80da9e10ffce1071151902a9e2510a1",
+      "member": "payload/init.json",
+      "run_id": "20261123T212142066231Z-9f7d688da98c4b91",
+      "sha256": "6db5a1c61942de44c23593d2ee7236db0b276fc3d39fa43c2061b78343019c68"
+    },
+    "prior_admission": {
+      "manifest_sha256": "885b21baeb57050aed7cff80d42c8bd7b3fe03de458def1b2a24f2a09e59bd9e",
+      "member": "payload/admission.json",
+      "run_id": "20261123T215848459905Z-2ea00b699be64da6",
+      "sha256": "a495a5e3fe488f20ef409d15b040e63409939942bb4f84b7271d9c4927774d0f"
+    },
+    "prior_control": {
+      "manifest_sha256": "d88b9e78cb780f38ad867a061169daa335a011436e38e698417a88931d418de6",
+      "member": "payload/control-review.json",
+      "run_id": "20261123T220923391914Z-7ad9146c4b954d4f",
+      "sha256": "3f7e6cca49c275bbb1c79de033f0881ec6b169143ed67ae9a488f45fa9f5c34a"
+    },
+    "prior_recipe": {
+      "manifest_sha256": "885b21baeb57050aed7cff80d42c8bd7b3fe03de458def1b2a24f2a09e59bd9e",
+      "member": "payload/recipe.json",
+      "run_id": "20261123T215848459905Z-2ea00b699be64da6",
+      "sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b"
+    },
+    "quality_M2": {
+      "manifest_sha256": "7bb59f156c22f3bc43f3457c845d43992ad1a0e4e61302d9c2543b523287e1fb",
+      "member": "payload/quality.json",
+      "run_id": "20261123T221639381954Z-88542d44fceb480e",
+      "sha256": "5e91177b626170141923262b8bd480f4b59b351066d81744e7af5794c11fd239"
+    },
+    "quality_M4": {
+      "manifest_sha256": "938db6b7838a97bf60a04bc29609dbdd057ad324fb3ba083880c11d27beca86d",
+      "member": "payload/quality.json",
+      "run_id": "20261123T221639381930Z-4a07849a4a4a4f27",
+      "sha256": "6317ce0d8b7f4062cfde3fa55f2139246ee6ebea4c79bc128fc2e4801ae8074b"
+    },
+    "r0": {
+      "manifest_sha256": "435d64bf7e5a95031adee5a5ca7058344cc810e240f797858de0d6977c28422f",
+      "member": "payload/public/summary.json",
+      "run_id": "20261123T212935774196Z-6fc57ff541824ed0",
+      "sha256": "1bfd260dd2cb7c2728060fbb9f712c371698c36876bce9615d5b85bdf679b258"
+    },
+    "r1_decision": {
+      "manifest_sha256": "f640fe7f151e531cacdcfa3463cdee20a047b97098f97d0a7dbc760307483cce",
+      "member": "payload/r1-decision.json",
+      "run_id": "20261123T213531971072Z-5b70fc0426974887",
+      "sha256": "28ca5b97e28eec6a10327e14f7817306112b36031866ca6b35779e53910343ae"
+    },
+    "registration": {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "member": "payload/registration.json",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+      "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+    },
+    "resource_probe": {
+      "manifest_sha256": "0eeb35a5cda4c4c5ccaaf50bf09d8f951892b986dddcc745b09ecffbb29f97e6",
+      "member": "payload/resource-probe.json",
+      "run_id": "20261123T215811873138Z-45b9398149e646da",
+      "sha256": "2e29cb3b339f9082304971f743344b53a397669a6160a00451b08266d1d330d1"
+    },
+    "worker_source": {
+      "manifest_sha256": "b226a1f0ffd74e2847777024305f1b9a337a8721950327122aa05040cc325f76",
+      "member": "payload/source.zip",
+      "run_id": "20261123T215715001746Z-6f8c142187d04328",
+      "sha256": "aa65bc5a412cdafdac2e9ffa5f64f675ba8253904100dafbc086284b5a9632c1"
+    }
+  },
+  "interpretation": "Admit the second and final reconstruction candidate to test growth of the longest Gaussian axes. With the first recipe, set1 M2 and M4 both improved over D1 on all six development targets. At 3000 versus 5000 the paired target MAE rose from 0.12072843 to 0.12301014 while source MAE continued to fall in both conditions. The M4 lid remained distorted on v04–v06. The set1 source-only checkpoint diagnosis found no image-intersecting projected three-sigma major half-axis above 256 px at 3000 in either condition. At 5000 it found two to four per source, including a 1.674 m long axis in M4 (0.244 m camera baseline, opacity 0.0147). The synthetic control had a 4.691 m long axis on a 0.720 m baseline, a marked source/target gap and a false foreground surface. These counts and a single extreme axis do not determine its compositing weight or establish the cause of the target errors. In both DTU conditions density growth hit the 20k cap; the control did not reach it. Test exactly one alternative that can affect all three cells, preserving the observed hard limit rather than simultaneously changing capacity. Keep initial log-scale learning rate 0.005 and lower its exponential terminal value from 0.005 to 0.0005. The interpolation affects the entire schedule, including refinement, and may reduce legitimate growth on smooth surfaces. All other parameter rates, sources, initialization bytes, rendering, losses, topology dates, stop candidates and seed are identical. Reuse the same native geometry/ED and continuation evidence; a separate actual short 20K synthetic capacity and topology run binds the changed recipe. No new views, risk outcomes or set6 recovery results were inspected. Select over all eight registered recipe/step combinations using only set1 target quality. There will be no third candidate.\n",
+  "reason_for_candidate": "Admit the second and final reconstruction candidate to test growth of the longest Gaussian axes. With the first recipe, set1 M2 and M4 both improved over D1 on all six development targets. At 3000 versus 5000 the paired target MAE rose from 0.12072843 to 0.12301014 while source MAE continued to fall in both conditions. The M4 lid remained distorted on v04–v06. The set1 source-only checkpoint diagnosis found no image-intersecting projected three-sigma major half-axis above 256 px at 3000 in either condition. At 5000 it found two to four per source, including a 1.674 m long axis in M4 (0.244 m camera baseline, opacity 0.0147). The synthetic control had a 4.691 m long axis on a 0.720 m baseline, a marked source/target gap and a false foreground surface. These counts and a single extreme axis do not determine its compositing weight or establish the cause of the target errors. In both DTU conditions density growth hit the 20k cap; the control did not reach it. Test exactly one alternative that can affect all three cells, preserving the observed hard limit rather than simultaneously changing capacity. Keep initial log-scale learning rate 0.005 and lower its exponential terminal value from 0.005 to 0.0005. The interpolation affects the entire schedule, including refinement, and may reduce legitimate growth on smooth surfaces. All other parameter rates, sources, initialization bytes, rendering, losses, topology dates, stop candidates and seed are identical. Reuse the same native geometry/ED and continuation evidence; a separate actual short 20K synthetic capacity and topology run binds the changed recipe. No new views, risk outcomes or set6 recovery results were inspected. Select over all eight registered recipe/step combinations using only set1 target quality. There will be no third candidate.\n",
+  "recipe_id": "r2-scale-decay-02",
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "registration": {
+    "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+    "member": "payload/registration.json",
+    "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+    "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+  },
+  "resource_basis": {
+    "fresh_capacity": {
+      "manifest_sha256": "b0a2c90e2ce0f22453e01815064a276a3cc4b8d889b344752a6191babacf79a3",
+      "member": "payload/forced-topology.json",
+      "run_id": "20261123T222056223877Z-ebcbdc9f99074b0d",
+      "sha256": "2db6a8bb6e0b0426fde2e2bcd791262bd37b5b1cb78ce79f746686bcede1da58"
+    },
+    "original_log_scale_rate": [
+      0.005,
+      0.005
+    ],
+    "revised_log_scale_rate": [
+      0.005,
+      0.0005
+    ],
+    "unchanged_renderer_and_resume": {
+      "manifest_sha256": "0eeb35a5cda4c4c5ccaaf50bf09d8f951892b986dddcc745b09ecffbb29f97e6",
+      "member": "payload/resource-probe.json",
+      "run_id": "20261123T215811873138Z-45b9398149e646da",
+      "sha256": "2e29cb3b339f9082304971f743344b53a397669a6160a00451b08266d1d330d1"
+    }
+  },
+  "risk_results_used": false,
+  "run_id": "20261123T222505349174Z-e7bc004c018846f8",
+  "schema": "el-recovery-recipe-admission-1",
+  "utc": "2026-11-23T22:25:06.566711Z"
+}

@@ -1,0 +1,238 @@
+{
+  "N": 52,
+  "actual_method": "known_pose_sift_triangulation",
+  "condition": "M2",
+  "eligibility": {
+    "failed_gates": [],
+    "independent_tracks": 52,
+    "qualified": true,
+    "source_coverage": {
+      "s00": {
+        "histogram_4x4": [
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            10,
+            15,
+            3
+          ],
+          [
+            0,
+            3,
+            9,
+            1
+          ]
+        ],
+        "observed_tracks": 52,
+        "occupied_cells": 8
+      },
+      "s03": {
+        "histogram_4x4": [
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            12,
+            11,
+            3
+          ],
+          [
+            0,
+            10,
+            4,
+            1
+          ]
+        ],
+        "observed_tracks": 52,
+        "occupied_cells": 8
+      }
+    }
+  },
+  "fallback": null,
+  "frame": "Original el-camera-1 world in metres, OpenCV integer-centre source pixels, quaternion wxyz, scales exp(log_scales), linear RGB and opacity sigmoid(logits)",
+  "generator_source_ids": [
+    "s00",
+    "s03"
+  ],
+  "init_npz_sha256": "d9d96ba068eee3bb16fa77c43e64c3ad535856201715f8ee76e8ca6632973864",
+  "initialization_protocol_sha256": "024a4a08552e748afafc3ead27ba745d6f96e84757572e5fbf9aec387653d086",
+  "matching": {
+    "features": {
+      "s00": {
+        "raw": 446,
+        "unique_at_0p001px": 400
+      },
+      "s03": {
+        "raw": 468,
+        "unique_at_0p001px": 400
+      }
+    },
+    "pairs": {
+      "s00-s03": {
+        "accepted_point_line_error_px": {
+          "max": 0.887382039844638,
+          "median": 0.18876762992125726,
+          "min": 0.01813254135019668,
+          "n": 54,
+          "p10": 0.041762076130806534,
+          "p90": 0.7567898223874392
+        },
+        "accepted_worst_ratios": {
+          "max": 0.7809319825099412,
+          "median": 0.5637815357329505,
+          "min": 0.19136564836794137,
+          "n": 54,
+          "p10": 0.4127680035972482,
+          "p90": 0.7519353647806994
+        },
+        "epipolar_pass": 54,
+        "knn_forward": 446,
+        "knn_reverse": 468,
+        "ratio_forward": 89,
+        "ratio_reverse": 91,
+        "reciprocal": 62
+      }
+    },
+    "tracks": {
+      "all_observation_reprojection_px": {
+        "max": 0.4437594718805921,
+        "median": 0.09194468690491964,
+        "min": 0.009019159817707408,
+        "n": 104,
+        "p10": 0.020123406002876487,
+        "p90": 0.35895387056887434
+      },
+      "ambiguous_component_edges_rejected": 0,
+      "candidate_tracks": 52,
+      "centre_bounds_m": {
+        "max": [
+          0.08863625379457743,
+          0.44570711748991376,
+          0.9332009755476324
+        ],
+        "min": [
+          -0.07301421401921422,
+          0.35411227843719706,
+          0.7343387806107854
+        ]
+      },
+      "duplicate_points_removed": 0,
+      "redundant_compatible_edges": 2,
+      "rejected": {
+        "insufficient_parallax": 0,
+        "invalid_DLT": 0,
+        "outside_positive_source_clip": 0,
+        "reprojection_error": 0
+      },
+      "retained_before_spatial_dedup": 52,
+      "track_length_histogram": {
+        "2": 52
+      },
+      "triangulation_angle_deg": {
+        "max": 24.647248007574454,
+        "median": 22.603636789099703,
+        "min": 20.98773337185379,
+        "n": 52,
+        "p10": 21.97018531583262,
+        "p90": 24.28636089702876
+      }
+    }
+  },
+  "object_id": "set1",
+  "parameter_sha256": "a4bb8bd35e7709131f20646ec5c31ff92e53210481bc8f9be4a29a24315d5a08",
+  "parameters": {
+    "actual_means_max_m": [
+      0.08863625379457743,
+      0.44570711748991376,
+      0.9332009755476324
+    ],
+    "actual_means_min_m": [
+      -0.07301421401921422,
+      0.35411227843719706,
+      0.7343387806107854
+    ],
+    "color_components_high_clipped": 0,
+    "color_components_low_clipped": 0,
+    "footprint_m_per_px": {
+      "max": 0.0010633979014249167,
+      "median": 0.0010051494129382455,
+      "min": 0.0009180833202789612,
+      "n": 52,
+      "p10": 0.0009297649264508924,
+      "p90": 0.001027762960347489
+    },
+    "initial_opacity": 0.1,
+    "linear_rgb_before_clip": {
+      "max": 0.9647521519949757,
+      "median": 0.04541736922839955,
+      "min": 0.0036400174487322785,
+      "n": 156,
+      "p10": 0.017351273762525855,
+      "p90": 0.19695269122768208
+    },
+    "nearest_three_median_m": {
+      "max": 0.05046195280597837,
+      "median": 0.013308176514174019,
+      "min": 0.0077663888298173485,
+      "n": 52,
+      "p10": 0.008381265216900954,
+      "p90": 0.03320328549365866
+    },
+    "scale_bound_conflicts": 0,
+    "sigma_lower_clipped": 0,
+    "sigma_m": {
+      "max": 0.008507183211399334,
+      "median": 0.0066540882570870095,
+      "min": 0.0038831944149086742,
+      "n": 52,
+      "p10": 0.004190632608450477,
+      "p90": 0.008222103682779912
+    },
+    "sigma_upper_clipped": 20
+  },
+  "scene_scale_m": 0.2442371192480833,
+  "schema": "el-recovery-public-initializer-1",
+  "shared_endpoints": [
+    "s00",
+    "s03"
+  ],
+  "source": {
+    "manifest_sha256": "4c34fd4159c9b65ad0c4d2ed11849e65657b6ee99351ac8a04081f041b3c854c",
+    "member": "payload/init.json",
+    "run_id": "20261123T212134525567Z-fd62a9c99694440a",
+    "sha256": "8356ca857733ccbe9ce868a6a8f63be5705d29ed6a8836699f53075b44912c05"
+  },
+  "source_camera_sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a",
+  "source_rgb_sha256": {
+    "s00": "5170506362e207609c123ebc561c33ee882b782beeea977fa0f67136d87bc1af",
+    "s03": "d681590f9063609e11a1f946c0a97873ee032c88eb43f7c8ceaf2d91f33dfcc1"
+  },
+  "source_tracks_sha256": "d595327b9fc4aa05c6a251467c43b2838094a01053fc21bee5958ae39fc5fb5e",
+  "versions": {
+    "numpy": "2.2.6",
+    "opencv-python-headless": "4.11.0.86",
+    "pillow": "11.3.0",
+    "scipy": "1.15.3"
+  }
+}

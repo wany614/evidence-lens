@@ -1,0 +1,64 @@
+{
+  "condition": "M4",
+  "decision": "proceed",
+  "implementation_sha256": {
+    "scripts/recovery_decide.py": "0544eabfbeddf2327a76709bd5f8094c51e27fa0081e7fb47a0c15b1793a79c6",
+    "scripts/recovery_dispatch.py": "3d1584f78b4a0cdf81ae72574690d1c067f4c8cf91bea5b515bfa10148ad9363",
+    "scripts/recovery_eval_quality.py": "329184073f2488b3fb44338bddb89874ed99e69b394ea347d186444e16c4243d",
+    "scripts/recovery_eval_select.py": "a35129bb2eb7a27603f6c378722650789dc1a319e7efde6ae8ccc57749d69441",
+    "scripts/recovery_freeze.py": "96672f924b0bd10e0fa641c6c99f9110023459282b5eca04e15ef035590ffb4f",
+    "scripts/recovery_inputs.py": "fd46d9b79faa9b8a22e9dfb6a589f2ea907c793c74b475cdc279a57484cafdc0",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27",
+    "src/recovery/contract.py": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1",
+    "src/recovery/engine.py": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539",
+    "src/recovery/scene.py": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6",
+    "src/recovery/topology.py": "e7667706cf952841dd9388ab478108fbddab079248b0275670b292eb211bbd32",
+    "src/recovery/transport.py": "b669202a4e89727a347e72d849564623c2ad13c04e344379eaebe3118fac801d"
+  },
+  "inputs": {
+    "fit": {
+      "manifest_sha256": "7bcc6d7155bcf063058da69eb9b33564f17af9e3f8344e8931e1d21109534366",
+      "member": "payload/reconstruction.json",
+      "run_id": "20261123T222702958331Z-5c378f9a59c34b17",
+      "sha256": "3ea962b289601c72548d4edc6fa50c1ad4dfa23211470d9c9a00cb95b6f180ea"
+    },
+    "quality": {
+      "manifest_sha256": "7794525a133dd4cb8c23c06ab3fad109c3075d743550f4f4c8085136d7b0e3db",
+      "member": "payload/quality.json",
+      "run_id": "20261123T223026228851Z-2f9bd130b3d44994",
+      "sha256": "9831a5b05043827a06c390cc59cb36fee1a9312c607f1b3705b868f72df5fac8"
+    },
+    "recipe": {
+      "manifest_sha256": "2c11b501b7866b4010f4fc33b0117a2a08a07030d8c44d8c62dca5cd82e274c0",
+      "member": "payload/recipe.json",
+      "run_id": "20261123T222505349174Z-e7bc004c018846f8",
+      "sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98"
+    },
+    "registration": {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "member": "payload/registration.json",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+      "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+    }
+  },
+  "interpretation": "Proceed to the two set1 development fits with the registered second recipe. I inspected the full four-source and six-target contact sheets from the independently rendered 5,000-update checkpoint. The top bar, three bells, blue ball and legs remain distinct. The foreground sheet obscuring the lower bells on v06 in the first recipe has disappeared in this render. The floor-wall line still falls at a different height in several targets; v05 has a broad line error and smeared floor and corner detail. Native target MAE 0.01117946 improves on the historical 0.0175496 and the first recipe at the same update (0.034351); all six views beat both the historical reconstruction and their nearest-axis RGB copies. There were 15,065 errors among 393,216 comparable pixels; the source self-render mean was 0.00152494. At step 3,000 the second recipe's target mean was 0.015028 versus 0.052303 for the first, with 19,362 errors. At 1,500 the scheduled opacity reset temporarily raised error. This positive control supports native reconstruction competence on this one authored scene; it cannot establish cause, geometry accuracy, risk calibration or transfer to DTU. The synthetic result does not rank the set1 candidates. The originally registered eight development checkpoint comparisons and tie rule stand.\n",
+  "object_role": "synthetic-positive-control",
+  "quality_evidence": {
+    "manifest_sha256": "7794525a133dd4cb8c23c06ab3fad109c3075d743550f4f4c8085136d7b0e3db",
+    "member": "payload/quality.json",
+    "run_id": "20261123T223026228851Z-2f9bd130b3d44994",
+    "sha256": "9831a5b05043827a06c390cc59cb36fee1a9312c607f1b3705b868f72df5fac8"
+  },
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "registration": {
+    "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+    "member": "payload/registration.json",
+    "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+    "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+  },
+  "risk_results_used": false,
+  "run_id": "20261123T223113607762Z-33c1d594e0a14b18",
+  "schema": "el-recovery-control-review-1",
+  "utc": "2026-11-23T22:31:14.762965Z"
+}

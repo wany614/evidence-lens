@@ -1,0 +1,406 @@
+{
+  "schema": "el-recovery-quality-selection-1",
+  "run_id": "20261123T223800991463Z-ae9ebec514224819",
+  "status": "selected",
+  "registered_selection": {
+    "eligible_checkpoints": [
+      500,
+      1500,
+      3000,
+      5000
+    ],
+    "eligible_development": "A complete pair of set1 fits under its registered full schedule; all twelve target comparisons at a candidate step must be observed. Resource-aborted fits are incomplete.",
+    "freeze": "Seal the exact recipe, implementation hashes, full schedule, both development curves and common stop step before any new risk scores or set6 preparation. The trained interval may end before the scheduled fixed-topology tail; report the actual phase.",
+    "metric": "Arithmetic mean of the six target display-RGB MAEs for each condition, then mean of the M2 and M4 means. Full comparable crop at native prediction precision. Sources, synthetic control, risk outputs and set6 do not enter this objective.",
+    "on_abort": "Preserve reached checkpoints; missing ones N/A. The protection endpoint cannot substitute for the frozen finish. Record each technical attempt separately.",
+    "tie_order": [
+      "smallest mean MAE",
+      "earlier shared stop step",
+      "lexicographically first recipe ID"
+    ]
+  },
+  "protocol": {
+    "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+    "member": "payload/registration.json",
+    "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+    "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+  },
+  "quality": [
+    {
+      "manifest_sha256": "7bb59f156c22f3bc43f3457c845d43992ad1a0e4e61302d9c2543b523287e1fb",
+      "member": "payload/quality.json",
+      "run_id": "20261123T221639381954Z-88542d44fceb480e",
+      "sha256": "5e91177b626170141923262b8bd480f4b59b351066d81744e7af5794c11fd239"
+    },
+    {
+      "manifest_sha256": "938db6b7838a97bf60a04bc29609dbdd057ad324fb3ba083880c11d27beca86d",
+      "member": "payload/quality.json",
+      "run_id": "20261123T221639381930Z-4a07849a4a4a4f27",
+      "sha256": "6317ce0d8b7f4062cfde3fa55f2139246ee6ebea4c79bc128fc2e4801ae8074b"
+    },
+    {
+      "manifest_sha256": "8058fc788e9371d62db37c73b0a4ac322c772c56869ef1f422a2e43b272ec697",
+      "member": "payload/quality.json",
+      "run_id": "20261123T223751772619Z-f7dad525f5dc41a4",
+      "sha256": "089f9e1654be0ca0e63fd4cd44cb91d829bbabf6efadaf6234a0adc7c81e791c"
+    },
+    {
+      "manifest_sha256": "beddca306203e2316d28f7a29479f3eb9b05ca182447490873755d45862fa9d9",
+      "member": "payload/quality.json",
+      "run_id": "20261123T223756646816Z-919a5ad9782a486f",
+      "sha256": "164248a1ea1fa453de5ad78a4ecf36bb859c9ba060541ad533bb97e43b6bbd22"
+    }
+  ],
+  "selection_metric": "equal mean of the six set1 target full-crop native FP32 RGB MAEs per condition, then equal mean of M2 and M4",
+  "eligible_candidates": [
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 500,
+      "condition_means": {
+        "M2": 0.20123241121695198,
+        "M4": 0.146230183549515
+      },
+      "macro_target_MAE": 0.1737312973832335,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "afbf5f817605e7a2efb4f5c7acbfdb8ce0094e5fd70456e65550c678ca46dbb5",
+        "M4": "5a3e1caf89dceeabb7396d632adb9611b488d8e9a0a74f42a389b08f8fc2329d"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 1500,
+      "condition_means": {
+        "M2": 0.28351566659529015,
+        "M4": 0.26957131068857026
+      },
+      "macro_target_MAE": 0.27654348864193024,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "0e27cce44cc64b42b77b60eafdfa879d89190619ea8f9cfb0807d4fb3da4847a",
+        "M4": "1749de441015004640545a144729a7e0dc283e7154780ca4e60c4b9c00af7fcf"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 3000,
+      "condition_means": {
+        "M2": 0.14631860742793132,
+        "M4": 0.09513826178931868
+      },
+      "macro_target_MAE": 0.12072843460862501,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "c9a34a38ebc4a46c2f3c068b7898812058dd986cf05bb1cef2fd145ec181795e",
+        "M4": "ccf160e2a55d8b4846cbfa78d306c3f3df025638eceee19040b594e46794c1ac"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    },
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 5000,
+      "condition_means": {
+        "M2": 0.1496829695511043,
+        "M4": 0.09633731562784585
+      },
+      "macro_target_MAE": 0.12301014258947507,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "0b9531a43b3b3072e2fe9ad5872c9b0d23e13f2944447204dc16e840aa5cb32e",
+        "M4": "7d9fb039f1fc01153eda025f4f6e000d6e423dcf1570948ae1865321f16b8f4f"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 500,
+      "condition_means": {
+        "M2": 0.2021237707569047,
+        "M4": 0.1461349658703545
+      },
+      "macro_target_MAE": 0.1741293683136296,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "bb478f881ce7ce941a49a47302d08d6a9ec6081ab95963cbe23700a7b8e25cc7",
+        "M4": "b454cdca4cbfe55e01113924ca61daab06ca5db394fe08448fcad1e0b7243b45"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 1500,
+      "condition_means": {
+        "M2": 0.29294520005756675,
+        "M4": 0.2780699227691493
+      },
+      "macro_target_MAE": 0.28550756141335804,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "cde19b0a1dd70aad611d982579b1510e713d4bc16a14d6b20e903459c6c43113",
+        "M4": "cef3127780dd1c007c80275cc56a01731e69e47145af9d4420aa2a67c3541a5f"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 3000,
+      "condition_means": {
+        "M2": 0.14346359863112032,
+        "M4": 0.08831486913062003
+      },
+      "macro_target_MAE": 0.11588923388087018,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "7f27aea056023436a296d1cdc6d72ec79874bd164c92cab0effb6df8b253737e",
+        "M4": "e58397eca485f108d781dc482ae0fce8ad85fdc4798104ac2a1be96124683bae"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 5000,
+      "condition_means": {
+        "M2": 0.14534391660662957,
+        "M4": 0.08552649685708343
+      },
+      "macro_target_MAE": 0.1154352067318565,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370",
+        "M4": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    }
+  ],
+  "recipe_id": "r2-scale-decay-02",
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "stop_step": 5000,
+  "schedule_steps": 5000,
+  "candidates": [
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 500,
+      "condition_means": {
+        "M2": 0.20123241121695198,
+        "M4": 0.146230183549515
+      },
+      "macro_target_MAE": 0.1737312973832335,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "afbf5f817605e7a2efb4f5c7acbfdb8ce0094e5fd70456e65550c678ca46dbb5",
+        "M4": "5a3e1caf89dceeabb7396d632adb9611b488d8e9a0a74f42a389b08f8fc2329d"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 1500,
+      "condition_means": {
+        "M2": 0.28351566659529015,
+        "M4": 0.26957131068857026
+      },
+      "macro_target_MAE": 0.27654348864193024,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "0e27cce44cc64b42b77b60eafdfa879d89190619ea8f9cfb0807d4fb3da4847a",
+        "M4": "1749de441015004640545a144729a7e0dc283e7154780ca4e60c4b9c00af7fcf"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 3000,
+      "condition_means": {
+        "M2": 0.14631860742793132,
+        "M4": 0.09513826178931868
+      },
+      "macro_target_MAE": 0.12072843460862501,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "c9a34a38ebc4a46c2f3c068b7898812058dd986cf05bb1cef2fd145ec181795e",
+        "M4": "ccf160e2a55d8b4846cbfa78d306c3f3df025638eceee19040b594e46794c1ac"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    },
+    {
+      "recipe_id": "r2-geometry-01",
+      "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+      "step": 5000,
+      "condition_means": {
+        "M2": 0.1496829695511043,
+        "M4": 0.09633731562784585
+      },
+      "macro_target_MAE": 0.12301014258947507,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "0b9531a43b3b3072e2fe9ad5872c9b0d23e13f2944447204dc16e840aa5cb32e",
+        "M4": "7d9fb039f1fc01153eda025f4f6e000d6e423dcf1570948ae1865321f16b8f4f"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 500,
+      "condition_means": {
+        "M2": 0.2021237707569047,
+        "M4": 0.1461349658703545
+      },
+      "macro_target_MAE": 0.1741293683136296,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "bb478f881ce7ce941a49a47302d08d6a9ec6081ab95963cbe23700a7b8e25cc7",
+        "M4": "b454cdca4cbfe55e01113924ca61daab06ca5db394fe08448fcad1e0b7243b45"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 1500,
+      "condition_means": {
+        "M2": 0.29294520005756675,
+        "M4": 0.2780699227691493
+      },
+      "macro_target_MAE": 0.28550756141335804,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "cde19b0a1dd70aad611d982579b1510e713d4bc16a14d6b20e903459c6c43113",
+        "M4": "cef3127780dd1c007c80275cc56a01731e69e47145af9d4420aa2a67c3541a5f"
+      },
+      "phase": {
+        "M2": "refinement",
+        "M4": "refinement"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 3000,
+      "condition_means": {
+        "M2": 0.14346359863112032,
+        "M4": 0.08831486913062003
+      },
+      "macro_target_MAE": 0.11588923388087018,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "7f27aea056023436a296d1cdc6d72ec79874bd164c92cab0effb6df8b253737e",
+        "M4": "e58397eca485f108d781dc482ae0fce8ad85fdc4798104ac2a1be96124683bae"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    },
+    {
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 5000,
+      "condition_means": {
+        "M2": 0.14534391660662957,
+        "M4": 0.08552649685708343
+      },
+      "macro_target_MAE": 0.1154352067318565,
+      "reason": null,
+      "condition_exclusions": {},
+      "checkpoint_sha256": {
+        "M2": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370",
+        "M4": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+      },
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      }
+    }
+  ],
+  "winner": {
+    "recipe_id": "r2-scale-decay-02",
+    "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+    "step": 5000,
+    "condition_means": {
+      "M2": 0.14534391660662957,
+      "M4": 0.08552649685708343
+    },
+    "macro_target_MAE": 0.1154352067318565,
+    "reason": null,
+    "condition_exclusions": {},
+    "checkpoint_sha256": {
+      "M2": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370",
+      "M4": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+    },
+    "phase": {
+      "M2": "fixed_topology",
+      "M4": "fixed_topology"
+    }
+  },
+  "risk_read": false,
+  "synthetic_control_used_for_ranking": false,
+  "set6_used_for_ranking": false
+}

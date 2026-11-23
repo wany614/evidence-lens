@@ -1,0 +1,641 @@
+{
+  "actual_worker_snapshots": {
+    "continuation": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "continuous": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "cutoff": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "data": "dcee147afb19ca8dd5465439db1f5f00474ce000a2155fe7093568821296ddbe",
+    "first-segment": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "parity": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "plan": "dcee147afb19ca8dd5465439db1f5f00474ce000a2155fe7093568821296ddbe",
+    "projection": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "render-all": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "render-selected": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317",
+    "topology": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317"
+  },
+  "candidate_recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+  "cap_probe_device_capacity_bytes": 6442450944,
+  "continuation": {
+    "endpoint": 12,
+    "full": {
+      "manifest_sha256": "9069d1d9e56048f93396dfa1acd09ab89c617f7e0082bd5e06c68b41b11bf797",
+      "run_id": "20261123T215517211968Z-51a7e5dedb56448b"
+    },
+    "head": {
+      "manifest_sha256": "71dd165f625bda263dd3c2b148bca9d1ee3ef54a6f51875cb9328495d467a963",
+      "run_id": "20261123T215524036815Z-fb97e3fab35940a0"
+    },
+    "issued_resume_step": 4,
+    "published_numeric_comparison": {
+      "all_checkpoint_steps": [
+        0,
+        4,
+        8,
+        12
+      ],
+      "endpoint": {
+        "max_abs": 2.3283064365386963e-10,
+        "mismatches": []
+      },
+      "interruption_boundary": {
+        "max_abs": 1.1641532182693481e-10,
+        "mismatches": []
+      },
+      "max_source_loss_difference": 0.0,
+      "passed": true,
+      "same_selected_checkpoint_views": true,
+      "same_trace_schedule_and_topology": true,
+      "tolerances": {
+        "absolute": 0.0001,
+        "loss": 3e-05,
+        "relative": 0.0001
+      },
+      "view_ids": [
+        "s00",
+        "s03",
+        "v01",
+        "v02",
+        "v03",
+        "v04",
+        "v05",
+        "v06"
+      ]
+    },
+    "selected_native_views_reproduced": 8,
+    "tail": {
+      "manifest_sha256": "a99378b9896ec981e415ea1cb4078dcf01b154686d452bbbc1330a490ee75fa6",
+      "run_id": "20261123T215530890082Z-5781133e3f304d57"
+    }
+  },
+  "density": {
+    "adam_moment_controls_passed": true,
+    "all_active_and_fixed_geometry_color_updated": true,
+    "cap": 20000,
+    "forced_selected_totals": {
+      "clone": 3,
+      "prune": 6,
+      "reset": 19996,
+      "split": 3
+    },
+    "full": {
+      "fixture": "synthetic-20k-controlled-branches",
+      "nominal_resolution": [
+        256,
+        256
+      ],
+      "passed": true,
+      "runtime": {
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "gsplat": "1.5.3",
+        "python": "3.11.5",
+        "torch": "2.8.0+cu128",
+        "torch_allocated_peak_bytes": 26146304,
+        "torch_reserved_peak_bytes": 44040192
+      },
+      "steps": [
+        {
+          "after": 20000,
+          "before": 20000,
+          "delta_l2": {
+            "colors": 2.381498336791992,
+            "means": 0.03876541554927826,
+            "opacities": 6.950106143951416,
+            "quats": 0.22972805798053741,
+            "scales": 1.175997257232666
+          },
+          "events": [
+            {
+              "admitted": 0,
+              "available": 0,
+              "blocked": 8,
+              "candidates": 8,
+              "operation": "growth_budget"
+            }
+          ],
+          "loss": 0.2297220081090927,
+          "max_abs_visible_means2d_px": 264.1524658203125,
+          "max_radius_px": 9.0,
+          "phase": "active",
+          "step": 1,
+          "visible": 19726
+        },
+        {
+          "after": 20000,
+          "before": 20000,
+          "delta_l2": {
+            "colors": 2.3800454139709473,
+            "means": 0.03833669424057007,
+            "opacities": 6.943591594696045,
+            "quats": 0.22934211790561676,
+            "scales": 1.1744962930679321
+          },
+          "events": [
+            {
+              "adam_moments_checked": true,
+              "affected_values": 2,
+              "after": 19998,
+              "before": 20000,
+              "operation": "prune",
+              "selected": 2
+            },
+            {
+              "admitted": 2,
+              "available": 2,
+              "blocked": 6,
+              "candidates": 8,
+              "operation": "growth_budget"
+            },
+            {
+              "adam_moments_checked": true,
+              "affected_values": 1,
+              "after": 19999,
+              "before": 19998,
+              "operation": "clone",
+              "selected": 1
+            },
+            {
+              "adam_moments_checked": true,
+              "affected_values": 1,
+              "after": 20000,
+              "before": 19999,
+              "operation": "split",
+              "selected": 1
+            }
+          ],
+          "loss": 0.22132393717765808,
+          "max_abs_visible_means2d_px": 264.1524658203125,
+          "max_radius_px": 9.0,
+          "phase": "active",
+          "step": 2,
+          "visible": 19726
+        },
+        {
+          "after": 19996,
+          "before": 20000,
+          "delta_l2": {
+            "colors": 2.377836227416992,
+            "means": 0.038037512451410294,
+            "opacities": 6.941273212432861,
+            "quats": 0.22890035808086395,
+            "scales": 1.1731560230255127
+          },
+          "events": [
+            {
+              "adam_moments_checked": true,
+              "affected_values": 4,
+              "after": 19996,
+              "before": 20000,
+              "operation": "prune",
+              "selected": 4
+            },
+            {
+              "admitted": 0,
+              "available": 4,
+              "blocked": 0,
+              "candidates": 0,
+              "operation": "growth_budget"
+            },
+            {
+              "adam_moments_checked": true,
+              "affected_values": 19996,
+              "after": 19996,
+              "before": 19996,
+              "operation": "reset",
+              "selected": 19996
+            }
+          ],
+          "loss": 0.21287237107753754,
+          "max_abs_visible_means2d_px": 264.1524658203125,
+          "max_radius_px": 9.0,
+          "phase": "active",
+          "step": 3,
+          "visible": 19725
+        },
+        {
+          "after": 20000,
+          "before": 19996,
+          "delta_l2": {
+            "colors": 1.6902246475219727,
+            "means": 0.029031887650489807,
+            "opacities": 3.9875612258911133,
+            "quats": 0.17150059342384338,
+            "scales": 0.8784207105636597
+          },
+          "events": [
+            {
+              "admitted": 4,
+              "available": 4,
+              "blocked": 4,
+              "candidates": 8,
+              "operation": "growth_budget"
+            },
+            {
+              "adam_moments_checked": true,
+              "affected_values": 2,
+              "after": 19998,
+              "before": 19996,
+              "operation": "clone",
+              "selected": 2
+            },
+            {
+              "adam_moments_checked": true,
+              "affected_values": 2,
+              "after": 20000,
+              "before": 19998,
+              "operation": "split",
+              "selected": 2
+            }
+          ],
+          "loss": 0.25640228390693665,
+          "max_abs_visible_means2d_px": 259.7464294433594,
+          "max_radius_px": 4.0,
+          "phase": "active",
+          "step": 4,
+          "visible": 19601
+        },
+        {
+          "after": 20000,
+          "before": 20000,
+          "delta_l2": {
+            "colors": 1.2075848579406738,
+            "means": 0.024659473448991776,
+            "opacities": 5.049535751342773,
+            "quats": 0.13319924473762512,
+            "scales": 0.674107015132904
+          },
+          "events": [],
+          "loss": 0.25413963198661804,
+          "max_abs_visible_means2d_px": 259.7251281738281,
+          "max_radius_px": 5.0,
+          "phase": "fixed",
+          "step": 5,
+          "visible": 19604
+        }
+      ],
+      "wall_seconds": 2.2343229000107385
+    },
+    "growth_at_20000": {
+      "admitted": 0,
+      "available": 0,
+      "blocked": 8,
+      "candidates": 8,
+      "operation": "growth_budget"
+    },
+    "peak_projected_radius_px": 9.0,
+    "point_counts": [
+      20000,
+      20000,
+      19996,
+      20000,
+      20000
+    ],
+    "scale": [
+      256,
+      256
+    ]
+  },
+  "disposition": "20,000 points were rasterized and updated, the forced-cap and continuation controls passed, and the one-second watchdog produced its registered cutoff. The timings and memory values below describe these synthetic probes.",
+  "earlier_engineering_failures": [
+    {
+      "elapsed_seconds": 2.5939999999973224,
+      "exit_code": 1,
+      "failure_reason": "stage exited with code 1",
+      "last_error": "RuntimeError: Invalid device argument ",
+      "manifest_sha256": "1365b1668b532a0d8ca5ed6ee3f2a3a07fbbbed9523055b156691f065bdb9cb8",
+      "run_id": "20261123T215015100650Z-c56b56a887944ecb",
+      "stderr_sha256": "754a1d53bb60b6e9fb5341a70dd9d5806fc5f68225a98eb2903120fb6b92a046",
+      "trial_id": "r-eng-01-projection"
+    }
+  ],
+  "environment_source_sha256": "13d1948022a806783234f03afa0f9b76ff3d2358ea8a8d216a3b6552e4bfadcc",
+  "generation_wall_limit_seconds": 1800,
+  "geometry": {
+    "actual": {
+      "actual_alpha": 0.7900000214576721,
+      "actual_display_rgb": [
+        0.4340571165084839,
+        0.6306496858596802,
+        0.7285985350608826
+      ],
+      "actual_z_m": 0.6568354964256287,
+      "errors": {
+        "alpha": 2.1457672083613488e-08,
+        "display_rgb": 2.1646516801254734e-08,
+        "expected_camera_z_m": 5.3387653964342974e-08,
+        "projection_edge_px": 0.0
+      },
+      "expected_alpha": 0.79,
+      "expected_display_rgb": [
+        0.4340571123184247,
+        0.630649707506197,
+        0.7285985402692934
+      ],
+      "expected_z_m": 0.6568354430379747,
+      "native_edge_means2d": [
+        [
+          [
+            22.5,
+            12.5
+          ],
+          [
+            22.5,
+            12.5
+          ]
+        ]
+      ],
+      "passed": true,
+      "resources": {
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "gsplat": "1.5.3",
+        "python": "3.11.5",
+        "torch": "2.8.0+cu128",
+        "torch_allocated_peak_bytes": 88576,
+        "torch_reserved_peak_bytes": 2097152
+      },
+      "wall_seconds": 0.5962575000012293
+    },
+    "alpha": 0.79,
+    "expected_display_rgb": [
+      0.4340571123184247,
+      0.630649707506197,
+      0.7285985402692934
+    ],
+    "frame": "metres, OpenCV integer-centre calibrations; measured off-axis GPU means use pixel-edge coordinates",
+    "two_layer_expected_z_m": 0.6568354430379747
+  },
+  "gpu_reserved_fraction_at_20k": 0.0068359375,
+  "measured_processor_scope": "Measured synthetic 20K and short real optimizer path; no 5000-step wall-time or memory projection.",
+  "original_summary_sha256": "65e48d54c89c6babfeac48455c344e8b0ca0dbc6de2042119e478f06eaa33d2f",
+  "passed": true,
+  "raw_runs": {
+    "continuation": {
+      "manifest_sha256": "a99378b9896ec981e415ea1cb4078dcf01b154686d452bbbc1330a490ee75fa6",
+      "run_id": "20261123T215530890082Z-5781133e3f304d57"
+    },
+    "continuous": {
+      "manifest_sha256": "9069d1d9e56048f93396dfa1acd09ab89c617f7e0082bd5e06c68b41b11bf797",
+      "run_id": "20261123T215517211968Z-51a7e5dedb56448b"
+    },
+    "cutoff": {
+      "manifest_sha256": "2258c49cfef2a148ea8dc234289147f435d11236575d40b76b35ebee65a9ecad",
+      "run_id": "20261123T215549038243Z-e4c9cce243cc4c83"
+    },
+    "data": {
+      "manifest_sha256": "fc4c3f4c6e1e50de37c7f4bf4a93311607ce1898b00bc010c2a6a22e4f579ba9",
+      "run_id": "20261123T214026138368Z-02dd8005298243ff"
+    },
+    "first-segment": {
+      "manifest_sha256": "71dd165f625bda263dd3c2b148bca9d1ee3ef54a6f51875cb9328495d467a963",
+      "run_id": "20261123T215524036815Z-fb97e3fab35940a0"
+    },
+    "parity": {
+      "manifest_sha256": "c0f9030afd4caa71d1ec7f7d91c37d29b0526ec30f5a15f11b1b8441e5a102a9",
+      "run_id": "20261123T215551775467Z-6aa6f677f96b46cb"
+    },
+    "plan": {
+      "manifest_sha256": "13794eb1af6a7c105832787f87f5076fdae72a9e9c5c6e8db5806599bab5a2a6",
+      "run_id": "20261123T214023501331Z-cf5d4065bc4b4e0a"
+    },
+    "projection": {
+      "manifest_sha256": "c993bac3a90b13e38170fc90d8d4afadda6f571517daeaf6fee3a6348943db97",
+      "run_id": "20261123T215155494209Z-b1129f6ed79c4085"
+    },
+    "render-all": {
+      "manifest_sha256": "d33d847de73e73739d3912175daef7360661bb098fd082736a751d5593320128",
+      "run_id": "20261123T215537861021Z-71125072ccf84e81"
+    },
+    "render-selected": {
+      "manifest_sha256": "8de0fa6aaac2e29da7a755a8dba5f651bdd1cb25b9b542c3a982228f5d1bd483",
+      "run_id": "20261123T215543502355Z-f8a3d566545e46df"
+    },
+    "topology": {
+      "manifest_sha256": "593d2bfcf6ab02311f2d412a290be545ad560e29d758436edd4a7e0d0864969f",
+      "run_id": "20261123T215511002729Z-542d30e673c04ef8"
+    }
+  },
+  "resource_cutoff": {
+    "evidence": {
+      "budget_seconds": 1,
+      "cumulative_seconds": 1.000711600005161,
+      "exit_code": 124,
+      "prior_seconds": 0.0,
+      "process_seconds": 1.000711600005161,
+      "resource_cutoff": true
+    },
+    "recorded_status": "failed",
+    "run": {
+      "manifest_sha256": "2258c49cfef2a148ea8dc234289147f435d11236575d40b76b35ebee65a9ecad",
+      "run_id": "20261123T215549038243Z-e4c9cce243cc4c83"
+    }
+  },
+  "resources": {
+    "continuation": {
+      "device_memory_samples": 5,
+      "numeric_process_wall": {
+        "budget_seconds": 1800,
+        "cumulative_seconds": 10.222256399996695,
+        "exit_code": 0,
+        "prior_seconds": 5.076981999998679,
+        "process_seconds": 5.145274399998016,
+        "resource_cutoff": false
+      },
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 5.860000000000582,
+      "sampled_device_memory_peak_MiB": 907.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 9326080,
+      "torch_reserved_peak_bytes": 23068672
+    },
+    "continuous": {
+      "device_memory_samples": 5,
+      "numeric_process_wall": {
+        "budget_seconds": 1800,
+        "cumulative_seconds": 5.05213699999149,
+        "exit_code": 0,
+        "prior_seconds": 0.0,
+        "process_seconds": 5.05213699999149,
+        "resource_cutoff": false
+      },
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 5.75,
+      "sampled_device_memory_peak_MiB": 907.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 9326080,
+      "torch_reserved_peak_bytes": 23068672
+    },
+    "cutoff": {
+      "device_memory_samples": 2,
+      "numeric_process_wall": {
+        "budget_seconds": 1,
+        "cumulative_seconds": 1.000711600005161,
+        "exit_code": 124,
+        "prior_seconds": 0.0,
+        "process_seconds": 1.000711600005161,
+        "resource_cutoff": true
+      },
+      "process_counter_missing_reasons": [
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 1.8439999999973224,
+      "sampled_device_memory_peak_MiB": 779.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": null,
+      "torch_reserved_peak_bytes": null
+    },
+    "data": {
+      "device_memory_samples": 1,
+      "numeric_process_wall": null,
+      "process_counter_missing_reasons": [
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 0.5779999999940628,
+      "sampled_device_memory_peak_MiB": 796.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": null,
+      "torch_reserved_peak_bytes": null
+    },
+    "first-segment": {
+      "device_memory_samples": 5,
+      "numeric_process_wall": {
+        "budget_seconds": 1800,
+        "cumulative_seconds": 5.076981999998679,
+        "exit_code": 0,
+        "prior_seconds": 0.0,
+        "process_seconds": 5.076981999998679,
+        "resource_cutoff": false
+      },
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 5.781999999991967,
+      "sampled_device_memory_peak_MiB": 907.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 9123840,
+      "torch_reserved_peak_bytes": 23068672
+    },
+    "parity": {
+      "device_memory_samples": 3,
+      "numeric_process_wall": null,
+      "process_counter_missing_reasons": [
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 3.264999999999418,
+      "sampled_device_memory_peak_MiB": 796.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": null,
+      "torch_reserved_peak_bytes": null
+    },
+    "plan": {
+      "device_memory_samples": 1,
+      "numeric_process_wall": null,
+      "process_counter_missing_reasons": [
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 1.985000000000582,
+      "sampled_device_memory_peak_MiB": 799.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": null,
+      "torch_reserved_peak_bytes": null
+    },
+    "projection": {
+      "device_memory_samples": 2,
+      "numeric_process_wall": null,
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 3.3589999999967404,
+      "sampled_device_memory_peak_MiB": 915.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 88576,
+      "torch_reserved_peak_bytes": 2097152
+    },
+    "render-all": {
+      "device_memory_samples": 4,
+      "numeric_process_wall": {
+        "budget_seconds": 1800,
+        "cumulative_seconds": 3.3316473000013502,
+        "exit_code": 0,
+        "prior_seconds": 0.0,
+        "process_seconds": 3.3316473000013502,
+        "resource_cutoff": false
+      },
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 4.0939999999973224,
+      "sampled_device_memory_peak_MiB": 907.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 350720,
+      "torch_reserved_peak_bytes": 2097152
+    },
+    "render-selected": {
+      "device_memory_samples": 4,
+      "numeric_process_wall": {
+        "budget_seconds": 1800,
+        "cumulative_seconds": 3.5450395999941975,
+        "exit_code": 0,
+        "prior_seconds": 0.0,
+        "process_seconds": 3.5450395999941975,
+        "resource_cutoff": false
+      },
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 4.35899999999674,
+      "sampled_device_memory_peak_MiB": 898.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 256512,
+      "torch_reserved_peak_bytes": 2097152
+    },
+    "topology": {
+      "device_memory_samples": 5,
+      "numeric_process_wall": null,
+      "process_counter_missing_reasons": [
+        "driver_process_counter_unavailable",
+        "no_matching_process_counter"
+      ],
+      "process_memory_samples": 0,
+      "recorder_wall_seconds": 5.187000000005355,
+      "sampled_device_memory_peak_MiB": 959.0,
+      "sampled_process_memory_peak_bytes": null,
+      "torch_allocated_peak_bytes": 26146304,
+      "torch_reserved_peak_bytes": 44040192
+    }
+  },
+  "run_id": "20261123T215811873138Z-45b9398149e646da",
+  "schema": "el-recovery-resource-probe-1",
+  "scope": "synthetic engineering only",
+  "series": "r-eng-02",
+  "torch_device_runtime": {
+    "cuda_runtime": "12.8",
+    "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "gsplat": "1.5.3",
+    "python": "3.11.5",
+    "torch": "2.8.0+cu128",
+    "torch_allocated_peak_bytes": 26146304,
+    "torch_reserved_peak_bytes": 44040192
+  },
+  "worker_tree_sha256": "02fe9a25281a72b43a4eb038b37d0a2c5b6e291175f0ac0b1c8c0b5761247e3c",
+  "worker_zip_sha256": "aa65bc5a412cdafdac2e9ffa5f64f675ba8253904100dafbc086284b5a9632c1"
+}

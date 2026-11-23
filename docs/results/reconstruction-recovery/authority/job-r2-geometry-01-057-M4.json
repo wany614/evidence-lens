@@ -1,0 +1,77 @@
+{
+  "condition": "M4",
+  "experiment_id": "reconstruction-recovery-v1",
+  "files": {
+    "init.json": {
+      "bytes": 11296,
+      "sha256": "cb967e9bd0d99c69f84acc1b2e542609a6c54447e84fb537e81b0ca0f07a1633"
+    },
+    "init.npz": {
+      "bytes": 4970,
+      "sha256": "1c58d61d5726b320a6d025fbdbb262b0e9b3a02825f14f102215286f088d15ff"
+    },
+    "render_cameras.json": {
+      "bytes": 20652,
+      "sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e"
+    },
+    "source_cameras.json": {
+      "bytes": 8397,
+      "sha256": "c72be3ea38d925003dcb5f79c4a120fc444c674b2a6de53a028825cf1bba240d"
+    },
+    "sources/s00.png": {
+      "bytes": 35749,
+      "sha256": "0f5997191125d2360cbf4946e22ea391da8e8539a0e15398915d121307c2b61b"
+    },
+    "sources/s01.png": {
+      "bytes": 36432,
+      "sha256": "6b02caf2480cb7209ee89c9895be631b3369ccae10ac684c286d180425215fd1"
+    },
+    "sources/s02.png": {
+      "bytes": 36765,
+      "sha256": "198537935648c0f10648e8eb5b84c89f8d62a06134495ed8ac56eda209741925"
+    },
+    "sources/s03.png": {
+      "bytes": 36248,
+      "sha256": "3ae284cdd082bb1f604ed29ff8ef44e10215827b5be7f67fe127a32c137634f9"
+    }
+  },
+  "input_parents": {
+    "init.json": "20261123T212246962320Z-12e166ac20924a07",
+    "init.npz": "20261123T212246962320Z-12e166ac20924a07",
+    "recipe": "20261123T215848459905Z-2ea00b699be64da6",
+    "render_cameras.json": "20261123T212248508030Z-bf87cbc58fb24e94",
+    "source_cameras.json": "20261123T212248508030Z-bf87cbc58fb24e94",
+    "sources/s00.png": "20261123T212248508030Z-bf87cbc58fb24e94",
+    "sources/s01.png": "20261123T212248508030Z-bf87cbc58fb24e94",
+    "sources/s02.png": "20261123T212248508030Z-bf87cbc58fb24e94",
+    "sources/s03.png": "20261123T212248508030Z-bf87cbc58fb24e94"
+  },
+  "object_id": "scene_057_offset_bell_cage",
+  "parents": [
+    {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647"
+    },
+    {
+      "manifest_sha256": "0ede6cde3513516f7ef56cc76d4032a37a01d7d24d23b3d678dbb21794876606",
+      "run_id": "20261123T212246962320Z-12e166ac20924a07"
+    },
+    {
+      "manifest_sha256": "d258d2c11bb2844abdcb9574b249e3f7403730d5d70f5a504a9de460e00f4f60",
+      "run_id": "20261123T212248508030Z-bf87cbc58fb24e94"
+    },
+    {
+      "manifest_sha256": "b226a1f0ffd74e2847777024305f1b9a337a8721950327122aa05040cc325f76",
+      "run_id": "20261123T215715001746Z-6f8c142187d04328"
+    },
+    {
+      "manifest_sha256": "885b21baeb57050aed7cff80d42c8bd7b3fe03de458def1b2a24f2a09e59bd9e",
+      "run_id": "20261123T215848459905Z-2ea00b699be64da6"
+    }
+  ],
+  "purpose": "formal",
+  "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+  "schema": "el-recovery-cell-1",
+  "stop_step": 5000,
+  "trial_id": "r2-geometry-01-057-M4"
+}

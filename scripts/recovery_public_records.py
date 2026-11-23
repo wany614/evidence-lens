@@ -22,9 +22,12 @@ INIT_FIELDS = ("object_id", "condition", "actual_method", "N", "generator_source
 
 def export(store, spec, out):
     records = []
+    names = set()
 
     def add(name, pin, raw):
         require(Path(name).name == name and name.endswith(".json"), "nonportable public destination")
+        require(name not in names, "duplicate public table")
+        names.add(name)
         dest = out / name
         publish(dest, raw)
         records.append({"path": name, "source": pin, "bytes": dest.stat().st_size, "sha256": sha(dest)})
@@ -39,6 +42,29 @@ def export(store, spec, out):
                   "resource-probe": v.get("candidate_recipe_sha256", "")[:16]}.get(role)
         suffix = "-" + suffix if suffix else ""
         add(role + suffix + ".json", pin, p.read_bytes())
+        if role == "admission" and "resource_basis" in v:
+            proof = v["resource_basis"]["fresh_capacity"]
+            raw = verified_member(store, proof)
+            measured = load(raw)
+            require(proof["member"] == "payload/forced-topology.json"
+                    and measured["fixture"] == "synthetic-20k-controlled-branches"
+                    and measured["passed"] is True and measured["nominal_resolution"] == [256, 256]
+                    and len(measured["steps"]) == 5, "unknown recipe capacity measurement")
+            original = store / "runs" / proof["run_id"]
+            inputs = load(original / "inputs.json")["inputs"]
+            applied = [r["role"] for r in inputs if r["role"] in {"recipe", "candidate"} and
+                       len(r["files"]) == 1 and r["files"][0]["sha256"] == v["recipe_sha256"]]
+            require(len(applied) == 1, "original capacity record lacks the admitted recipe")
+            snapshot = load(original / "code_snapshot.json")["snapshot_sha256"]
+            primary = load(verified_member(store, v["resource_basis"]["unchanged_renderer_and_resume"]))
+            require(snapshot == primary["actual_worker_snapshots"]["topology"], "capacity worker differs")
+            add("capacity-" + v["recipe_id"] + ".json", proof, raw.read_bytes())
+            add("capacity-binding-" + v["recipe_id"] + ".json", pin, encoded({
+                "schema": "el-recovery-public-capacity-binding-1", "native_observation": proof,
+                "source_snapshot_sha256": snapshot, "recipe_input_role": applied[0],
+                "original_inputs_manifest_sha256": sha(original / "inputs.json"),
+                "recipe_sha256": v["recipe_sha256"], "admission": pin,
+            }))
     for pin in spec.get("jobs", []):
         p = verified_member(store, pin)
         job = load(p)
@@ -54,7 +80,6 @@ def export(store, spec, out):
                 "not a registered recovery condition")
         table = {"schema": "el-recovery-public-initializer-1", "source": pin, **{k: v[k] for k in INIT_FIELDS}}
         add("initialization-" + obj + "-" + cond + ".json", pin, encoded(table))
-    require(len({r["path"] for r in records}) == len(records), "duplicate public table")
     publish(out / "members.json", encoded({"schema": "el-recovery-public-authority-1", "files": records}))
 
 

@@ -1,0 +1,64 @@
+{
+  "condition": "M4",
+  "decision": "proceed",
+  "implementation_sha256": {
+    "scripts/recovery_decide.py": "1cf8024a264c37a7c583d2b7035bd8898eb0b2cc44bc29bce7450ef754026628",
+    "scripts/recovery_dispatch.py": "3d1584f78b4a0cdf81ae72574690d1c067f4c8cf91bea5b515bfa10148ad9363",
+    "scripts/recovery_eval_quality.py": "329184073f2488b3fb44338bddb89874ed99e69b394ea347d186444e16c4243d",
+    "scripts/recovery_eval_select.py": "a35129bb2eb7a27603f6c378722650789dc1a319e7efde6ae8ccc57749d69441",
+    "scripts/recovery_freeze.py": "96672f924b0bd10e0fa641c6c99f9110023459282b5eca04e15ef035590ffb4f",
+    "scripts/recovery_inputs.py": "fd46d9b79faa9b8a22e9dfb6a589f2ea907c793c74b475cdc279a57484cafdc0",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27",
+    "src/recovery/contract.py": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1",
+    "src/recovery/engine.py": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539",
+    "src/recovery/scene.py": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6",
+    "src/recovery/topology.py": "e7667706cf952841dd9388ab478108fbddab079248b0275670b292eb211bbd32",
+    "src/recovery/transport.py": "b669202a4e89727a347e72d849564623c2ad13c04e344379eaebe3118fac801d"
+  },
+  "inputs": {
+    "fit": {
+      "manifest_sha256": "d1abd96f9fc22c87cc585ce41152051a1cff2fa90c5575b9de24cad5242aef1f",
+      "member": "payload/reconstruction.json",
+      "run_id": "20261123T220109117394Z-4edc40e3cd80442a",
+      "sha256": "85dad99acfa090ea79f3c05c1c411c17a17ebbad6f1b452eb696099642f81ce1"
+    },
+    "quality": {
+      "manifest_sha256": "f2d58e66d1ad26c583b769436ef09f2a21dc0804bd3b6749195527928081496e",
+      "member": "payload/quality.json",
+      "run_id": "20261123T220815844571Z-10fb752a1ce04ee0",
+      "sha256": "5e564167d19803bbf55d0179612eef549cbdfe5857196d97eb8d4571874a5d10"
+    },
+    "recipe": {
+      "manifest_sha256": "885b21baeb57050aed7cff80d42c8bd7b3fe03de458def1b2a24f2a09e59bd9e",
+      "member": "payload/recipe.json",
+      "run_id": "20261123T215848459905Z-2ea00b699be64da6",
+      "sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b"
+    },
+    "registration": {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "member": "payload/registration.json",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+      "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+    }
+  },
+  "interpretation": "The synthetic M4 positive control completed the planned schedule with 66 initial and 18,202 final Gaussians. This is a genuine negative target result. All four source images reproduced the sharp bell outlines, crossbar and legs. Source self-render MAE fell from 0.009163 to 0.002591. Six-view target MAE instead rose from 0.017550 to 0.034351, compared with 0.021136 from nearest-axis source copying. Endpoint errors were 66,744/393,216. I examined the complete source and target boards. Most new targets show sharper bells but displaced floor/wall boundaries, streaks and false foreground shapes. In v06 a large foreground smear hides the lower part of the apparatus; this view changed from 0.02024 to 0.07285 MAE. The 1500 checkpoint is sampled immediately after the registered opacity reset and is also poor. The last four source updates showed maximum projected radii of 1913 to 2367 pixels on 256-square images, with no cap-blocked growth in this fit. These measurements support view-specific appearance and poorly constrained large projected splats as candidate explanations. They do not identify the responsible Gaussian or establish geometric accuracy. Independently checked camera matrices, reconstruction identities, RGB/alpha/ED probes, Adam states and same-checkpoint rerenders agree. Retain the negative control and proceed to the two preregistered set1 development fits so their real-source failure mode and candidate stopping points can be tested. No set6 recovery image or risk score entered this decision.\n",
+  "object_role": "synthetic-positive-control",
+  "quality_evidence": {
+    "manifest_sha256": "f2d58e66d1ad26c583b769436ef09f2a21dc0804bd3b6749195527928081496e",
+    "member": "payload/quality.json",
+    "run_id": "20261123T220815844571Z-10fb752a1ce04ee0",
+    "sha256": "5e564167d19803bbf55d0179612eef549cbdfe5857196d97eb8d4571874a5d10"
+  },
+  "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+  "registration": {
+    "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+    "member": "payload/registration.json",
+    "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+    "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+  },
+  "risk_results_used": false,
+  "run_id": "20261123T220923391914Z-7ad9146c4b954d4f",
+  "schema": "el-recovery-control-review-1",
+  "utc": "2026-11-23T22:09:24.658580Z"
+}

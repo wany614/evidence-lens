@@ -1,0 +1,19 @@
+{
+  "admission": {
+    "manifest_sha256": "2c11b501b7866b4010f4fc33b0117a2a08a07030d8c44d8c62dca5cd82e274c0",
+    "member": "payload/admission.json",
+    "run_id": "20261123T222505349174Z-e7bc004c018846f8",
+    "sha256": "f7d716aaf78c3f95372ef09556e298ca035cc54f87b891a5b227b4271b426c9f"
+  },
+  "native_observation": {
+    "manifest_sha256": "b0a2c90e2ce0f22453e01815064a276a3cc4b8d889b344752a6191babacf79a3",
+    "member": "payload/forced-topology.json",
+    "run_id": "20261123T222056223877Z-ebcbdc9f99074b0d",
+    "sha256": "2db6a8bb6e0b0426fde2e2bcd791262bd37b5b1cb78ce79f746686bcede1da58"
+  },
+  "original_inputs_manifest_sha256": "b3cd8b447db0ff1ba9f704da7f8f95c81fca268eb4c46ec4ec78b83e0393e0d0",
+  "recipe_input_role": "recipe",
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "schema": "el-recovery-public-capacity-binding-1",
+  "source_snapshot_sha256": "6394bdb025aaab70303f0b8d409116ff41e5a98d8afb15af8dfa73554b766317"
+}

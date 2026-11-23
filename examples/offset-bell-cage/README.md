@@ -15,3 +15,11 @@ The anonymous macOS run scored the four-source case with MS-L1. The panels below
 | Continuous risk | Frozen low, high and unknown states |
 | --- | --- |
 | ![Default per-pixel risk for target v01](m4-v01-risk.png) | ![Default frozen decision for target v01](m4-v01-state.png) |
+
+## Recovery control on the same six cameras
+
+The later reconstruction study fitted the four original source images with source-only triangulation and a density-changing optimizer. Each row below shows a target reference, the historical prediction, the 5,000-update scale-decay prediction, both native RGB error maps and the nearest-axis source copy. Across all six views, mean absolute RGB error fell from 0.01755 to 0.01118. The floor–wall boundary remains displaced on several views. The development selection on DTU independently chose this same recipe and stop step. [Reconstruction results and limits](../../docs/results/reconstruction-recovery/README.md) · [CPU replay and separate CUDA commands](../../docs/recovery-reproduction.md)
+
+![Six authored target views with old and new reconstructions, errors and a source-copy reference](recovery-target-comparison.png)
+
+This CC BY 4.0 board is credited to wany614. Its original run is `20261123T223026228851Z-2f9bd130b3d44994`, member `payload/boards/target-5000.png`, SHA-256 `22686c84d282142c6e7155c8b5cea6425d2c1322e2e0c998bcd2ec6defcba58b`.

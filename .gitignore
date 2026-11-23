@@ -75,6 +75,7 @@ __pycache__/
 !/examples/offset-bell-cage/m4-v01-state.png
 !/examples/offset-bell-cage/reference-v01.png
 !/examples/offset-bell-cage/four-method-comparison-v01.png
+!/examples/offset-bell-cage/recovery-target-comparison.png
 
 # Aggregate figure from authored Stage C training and development measurements.
 !/docs/results/stage3-learning-curves/learning-curves.png

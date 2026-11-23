@@ -1,0 +1,71 @@
+{
+  "condition": "M2",
+  "experiment_id": "reconstruction-recovery-v1",
+  "files": {
+    "init.json": {
+      "bytes": 6475,
+      "sha256": "8356ca857733ccbe9ce868a6a8f63be5705d29ed6a8836699f53075b44912c05"
+    },
+    "init.npz": {
+      "bytes": 4186,
+      "sha256": "d9d96ba068eee3bb16fa77c43e64c3ad535856201715f8ee76e8ca6632973864"
+    },
+    "render_cameras.json": {
+      "bytes": 7557,
+      "sha256": "2bed3761ae30e1a65e55c447b55f7067a4c3a2644a3fbd749d35b0f837ba6ad2"
+    },
+    "source_cameras.json": {
+      "bytes": 2025,
+      "sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a"
+    },
+    "sources/s00.png": {
+      "bytes": 120627,
+      "sha256": "5170506362e207609c123ebc561c33ee882b782beeea977fa0f67136d87bc1af"
+    },
+    "sources/s03.png": {
+      "bytes": 120751,
+      "sha256": "d681590f9063609e11a1f946c0a97873ee032c88eb43f7c8ceaf2d91f33dfcc1"
+    }
+  },
+  "input_parents": {
+    "init.json": "20261123T212134525567Z-fd62a9c99694440a",
+    "init.npz": "20261123T212134525567Z-fd62a9c99694440a",
+    "recipe": "20261123T215848459905Z-2ea00b699be64da6",
+    "render_cameras.json": "20261123T212140960422Z-a4cef940c8d941d1",
+    "source_cameras.json": "20261123T212140960422Z-a4cef940c8d941d1",
+    "sources/s00.png": "20261123T212140960422Z-a4cef940c8d941d1",
+    "sources/s03.png": "20261123T212140960422Z-a4cef940c8d941d1"
+  },
+  "object_id": "set1",
+  "parents": [
+    {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647"
+    },
+    {
+      "manifest_sha256": "4c34fd4159c9b65ad0c4d2ed11849e65657b6ee99351ac8a04081f041b3c854c",
+      "run_id": "20261123T212134525567Z-fd62a9c99694440a"
+    },
+    {
+      "manifest_sha256": "a3bd2249df87b82ae9715793209fbc12be89eede6bfc36cd4d0927148ab6f384",
+      "run_id": "20261123T212140960422Z-a4cef940c8d941d1"
+    },
+    {
+      "manifest_sha256": "b226a1f0ffd74e2847777024305f1b9a337a8721950327122aa05040cc325f76",
+      "run_id": "20261123T215715001746Z-6f8c142187d04328"
+    },
+    {
+      "manifest_sha256": "885b21baeb57050aed7cff80d42c8bd7b3fe03de458def1b2a24f2a09e59bd9e",
+      "run_id": "20261123T215848459905Z-2ea00b699be64da6"
+    },
+    {
+      "manifest_sha256": "d88b9e78cb780f38ad867a061169daa335a011436e38e698417a88931d418de6",
+      "run_id": "20261123T220923391914Z-7ad9146c4b954d4f"
+    }
+  ],
+  "purpose": "formal",
+  "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+  "schema": "el-recovery-cell-1",
+  "stop_step": 5000,
+  "trial_id": "r2-geometry-01-set1-M2"
+}

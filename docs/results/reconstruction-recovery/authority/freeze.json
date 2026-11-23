@@ -1,0 +1,580 @@
+{
+  "admission": {
+    "manifest_sha256": "2c11b501b7866b4010f4fc33b0117a2a08a07030d8c44d8c62dca5cd82e274c0",
+    "member": "payload/admission.json",
+    "run_id": "20261123T222505349174Z-e7bc004c018846f8",
+    "sha256": "f7d716aaf78c3f95372ef09556e298ca035cc54f87b891a5b227b4271b426c9f"
+  },
+  "admitted_candidates": {
+    "r2-geometry-01": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+    "r2-scale-decay-02": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98"
+  },
+  "authorized_new_conditions": {
+    "set6": [
+      "M2",
+      "M4"
+    ]
+  },
+  "control_review": {
+    "manifest_sha256": "846f741cc07925aaedfebe45a7e94fed67a03b3b95f5f64a3e26e8819afe2c94",
+    "member": "payload/control-review.json",
+    "run_id": "20261123T223113607762Z-33c1d594e0a14b18",
+    "sha256": "4d01c743d5a48bda6d02760f4dd29c55fea39ad15d70d2e47c3a5851ff8f82f3"
+  },
+  "implementation_sha256": {
+    "scripts/recovery_decide.py": "0544eabfbeddf2327a76709bd5f8094c51e27fa0081e7fb47a0c15b1793a79c6",
+    "scripts/recovery_dispatch.py": "3d1584f78b4a0cdf81ae72574690d1c067f4c8cf91bea5b515bfa10148ad9363",
+    "scripts/recovery_eval_quality.py": "329184073f2488b3fb44338bddb89874ed99e69b394ea347d186444e16c4243d",
+    "scripts/recovery_eval_select.py": "a35129bb2eb7a27603f6c378722650789dc1a319e7efde6ae8ccc57749d69441",
+    "scripts/recovery_freeze.py": "96672f924b0bd10e0fa641c6c99f9110023459282b5eca04e15ef035590ffb4f",
+    "scripts/recovery_inputs.py": "fd46d9b79faa9b8a22e9dfb6a589f2ea907c793c74b475cdc279a57484cafdc0",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27",
+    "src/recovery/contract.py": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1",
+    "src/recovery/engine.py": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539",
+    "src/recovery/scene.py": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6",
+    "src/recovery/topology.py": "e7667706cf952841dd9388ab478108fbddab079248b0275670b292eb211bbd32",
+    "src/recovery/transport.py": "b669202a4e89727a347e72d849564623c2ad13c04e344379eaebe3118fac801d"
+  },
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "protocol_sha256": "82619d87327135f0f999fab67b468de121b2fb95c77fab3af55b90285d0b2c8d",
+  "recipe_id": "r2-scale-decay-02",
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "registered_selection": {
+    "manifest_sha256": "f773f6ddb6de943247da97363f0a3ec563849d0b3af17014185c6a6570d71640",
+    "member": "payload/selection.json",
+    "run_id": "20261123T223800991463Z-ae9ebec514224819",
+    "sha256": "a40a1a2a7f4c4a66513e7da2db2530f0d806fdf394e1182eafeaacb7804f1175"
+  },
+  "registration": {
+    "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+    "member": "payload/registration.json",
+    "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+    "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+  },
+  "release": {
+    "candidate_sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669",
+    "commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+    "cpu_zip_sha256": "f555956840870309217cc85fe9b339ef53762679bbd2138b7f149d8ea451a7b7",
+    "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+    "method_sha256": "1a2cbdb0ea3a52dfbde2e518c833b18d677209444c6aa345314ba3757aa3c9db",
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "repository": "https://github.com/wany614/evidence-lens",
+    "version": "v0.3.0-rc.1"
+  },
+  "risk_fits": 0,
+  "risk_order": "The reconstruction search is closed. Frozen scoring can read renders produced from the selected parameters, independently of all target photographs.",
+  "risk_recalibrations": 0,
+  "run_id": "20261123T223830955940Z-3256d8a180b341b3",
+  "schedule_steps": 5000,
+  "schema": "el-recovery-final-freeze-1",
+  "scopes": {
+    "B-L1-transfer": "one",
+    "MS-L1": "all",
+    "MS-frozen": "all",
+    "MS-ft": "all"
+  },
+  "selected_recipe": {
+    "adam": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08
+    },
+    "checkpoints": [
+      0,
+      500,
+      1500,
+      3000,
+      5000
+    ],
+    "eps2d": 0.3,
+    "learning_rates": {
+      "color_logits": [
+        0.01,
+        0.01
+      ],
+      "log_scales": [
+        0.005,
+        0.0005
+      ],
+      "means": [
+        0.00016,
+        1.6e-06
+      ],
+      "opacity_logits": [
+        0.05,
+        0.05
+      ],
+      "quats": [
+        0.001,
+        0.001
+      ]
+    },
+    "loss": {
+      "display_l1": 0.8,
+      "one_minus_ssim": 0.2
+    },
+    "schema": "el-recovery-recipe-1",
+    "seed": 43171,
+    "stop_step": 5000,
+    "topology": {
+      "cap": 20000,
+      "clone_scale_fraction": 0.01,
+      "every": 100,
+      "grow_grad2d": 0.0002,
+      "prune_opacity": 0.005,
+      "prune_scale_fraction": 0.1,
+      "prune_scale_from": 1600,
+      "reset_opacity": 0.01,
+      "reset_steps": [
+        1500
+      ],
+      "start": 500,
+      "stop": 3000
+    },
+    "wall_seconds": 1800
+  },
+  "selection": {
+    "candidates": [
+      {
+        "checkpoint_sha256": {
+          "M2": "afbf5f817605e7a2efb4f5c7acbfdb8ce0094e5fd70456e65550c678ca46dbb5",
+          "M4": "5a3e1caf89dceeabb7396d632adb9611b488d8e9a0a74f42a389b08f8fc2329d"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.20123241121695198,
+          "M4": 0.146230183549515
+        },
+        "macro_target_MAE": 0.1737312973832335,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "0e27cce44cc64b42b77b60eafdfa879d89190619ea8f9cfb0807d4fb3da4847a",
+          "M4": "1749de441015004640545a144729a7e0dc283e7154780ca4e60c4b9c00af7fcf"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.28351566659529015,
+          "M4": 0.26957131068857026
+        },
+        "macro_target_MAE": 0.27654348864193024,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 1500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "c9a34a38ebc4a46c2f3c068b7898812058dd986cf05bb1cef2fd145ec181795e",
+          "M4": "ccf160e2a55d8b4846cbfa78d306c3f3df025638eceee19040b594e46794c1ac"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.14631860742793132,
+          "M4": 0.09513826178931868
+        },
+        "macro_target_MAE": 0.12072843460862501,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 3000
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "0b9531a43b3b3072e2fe9ad5872c9b0d23e13f2944447204dc16e840aa5cb32e",
+          "M4": "7d9fb039f1fc01153eda025f4f6e000d6e423dcf1570948ae1865321f16b8f4f"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.1496829695511043,
+          "M4": 0.09633731562784585
+        },
+        "macro_target_MAE": 0.12301014258947507,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 5000
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "bb478f881ce7ce941a49a47302d08d6a9ec6081ab95963cbe23700a7b8e25cc7",
+          "M4": "b454cdca4cbfe55e01113924ca61daab06ca5db394fe08448fcad1e0b7243b45"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.2021237707569047,
+          "M4": 0.1461349658703545
+        },
+        "macro_target_MAE": 0.1741293683136296,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "cde19b0a1dd70aad611d982579b1510e713d4bc16a14d6b20e903459c6c43113",
+          "M4": "cef3127780dd1c007c80275cc56a01731e69e47145af9d4420aa2a67c3541a5f"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.29294520005756675,
+          "M4": 0.2780699227691493
+        },
+        "macro_target_MAE": 0.28550756141335804,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 1500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "7f27aea056023436a296d1cdc6d72ec79874bd164c92cab0effb6df8b253737e",
+          "M4": "e58397eca485f108d781dc482ae0fce8ad85fdc4798104ac2a1be96124683bae"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.14346359863112032,
+          "M4": 0.08831486913062003
+        },
+        "macro_target_MAE": 0.11588923388087018,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 3000
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370",
+          "M4": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.14534391660662957,
+          "M4": 0.08552649685708343
+        },
+        "macro_target_MAE": 0.1154352067318565,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 5000
+      }
+    ],
+    "eligible_candidates": [
+      {
+        "checkpoint_sha256": {
+          "M2": "afbf5f817605e7a2efb4f5c7acbfdb8ce0094e5fd70456e65550c678ca46dbb5",
+          "M4": "5a3e1caf89dceeabb7396d632adb9611b488d8e9a0a74f42a389b08f8fc2329d"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.20123241121695198,
+          "M4": 0.146230183549515
+        },
+        "macro_target_MAE": 0.1737312973832335,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "0e27cce44cc64b42b77b60eafdfa879d89190619ea8f9cfb0807d4fb3da4847a",
+          "M4": "1749de441015004640545a144729a7e0dc283e7154780ca4e60c4b9c00af7fcf"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.28351566659529015,
+          "M4": 0.26957131068857026
+        },
+        "macro_target_MAE": 0.27654348864193024,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 1500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "c9a34a38ebc4a46c2f3c068b7898812058dd986cf05bb1cef2fd145ec181795e",
+          "M4": "ccf160e2a55d8b4846cbfa78d306c3f3df025638eceee19040b594e46794c1ac"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.14631860742793132,
+          "M4": 0.09513826178931868
+        },
+        "macro_target_MAE": 0.12072843460862501,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 3000
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "0b9531a43b3b3072e2fe9ad5872c9b0d23e13f2944447204dc16e840aa5cb32e",
+          "M4": "7d9fb039f1fc01153eda025f4f6e000d6e423dcf1570948ae1865321f16b8f4f"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.1496829695511043,
+          "M4": 0.09633731562784585
+        },
+        "macro_target_MAE": 0.12301014258947507,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-geometry-01",
+        "recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+        "step": 5000
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "bb478f881ce7ce941a49a47302d08d6a9ec6081ab95963cbe23700a7b8e25cc7",
+          "M4": "b454cdca4cbfe55e01113924ca61daab06ca5db394fe08448fcad1e0b7243b45"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.2021237707569047,
+          "M4": 0.1461349658703545
+        },
+        "macro_target_MAE": 0.1741293683136296,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "cde19b0a1dd70aad611d982579b1510e713d4bc16a14d6b20e903459c6c43113",
+          "M4": "cef3127780dd1c007c80275cc56a01731e69e47145af9d4420aa2a67c3541a5f"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.29294520005756675,
+          "M4": 0.2780699227691493
+        },
+        "macro_target_MAE": 0.28550756141335804,
+        "phase": {
+          "M2": "refinement",
+          "M4": "refinement"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 1500
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "7f27aea056023436a296d1cdc6d72ec79874bd164c92cab0effb6df8b253737e",
+          "M4": "e58397eca485f108d781dc482ae0fce8ad85fdc4798104ac2a1be96124683bae"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.14346359863112032,
+          "M4": 0.08831486913062003
+        },
+        "macro_target_MAE": 0.11588923388087018,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 3000
+      },
+      {
+        "checkpoint_sha256": {
+          "M2": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370",
+          "M4": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+        },
+        "condition_exclusions": {},
+        "condition_means": {
+          "M2": 0.14534391660662957,
+          "M4": 0.08552649685708343
+        },
+        "macro_target_MAE": 0.1154352067318565,
+        "phase": {
+          "M2": "fixed_topology",
+          "M4": "fixed_topology"
+        },
+        "reason": null,
+        "recipe_id": "r2-scale-decay-02",
+        "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+        "step": 5000
+      }
+    ],
+    "protocol": {
+      "manifest_sha256": "38b1bfb26f985603055ef46c15602a70b399b3db128c5772e79a21bac1030327",
+      "member": "payload/registration.json",
+      "run_id": "20261123T211839939983Z-b5f7663e8f694647",
+      "sha256": "b8d8fa5b1e59e0b521b14a48cadf0728b5c9ef3f316cf617cac3fb0391f5be40"
+    },
+    "quality": [
+      {
+        "manifest_sha256": "7bb59f156c22f3bc43f3457c845d43992ad1a0e4e61302d9c2543b523287e1fb",
+        "member": "payload/quality.json",
+        "run_id": "20261123T221639381954Z-88542d44fceb480e",
+        "sha256": "5e91177b626170141923262b8bd480f4b59b351066d81744e7af5794c11fd239"
+      },
+      {
+        "manifest_sha256": "938db6b7838a97bf60a04bc29609dbdd057ad324fb3ba083880c11d27beca86d",
+        "member": "payload/quality.json",
+        "run_id": "20261123T221639381930Z-4a07849a4a4a4f27",
+        "sha256": "6317ce0d8b7f4062cfde3fa55f2139246ee6ebea4c79bc128fc2e4801ae8074b"
+      },
+      {
+        "manifest_sha256": "8058fc788e9371d62db37c73b0a4ac322c772c56869ef1f422a2e43b272ec697",
+        "member": "payload/quality.json",
+        "run_id": "20261123T223751772619Z-f7dad525f5dc41a4",
+        "sha256": "089f9e1654be0ca0e63fd4cd44cb91d829bbabf6efadaf6234a0adc7c81e791c"
+      },
+      {
+        "manifest_sha256": "beddca306203e2316d28f7a29479f3eb9b05ca182447490873755d45862fa9d9",
+        "member": "payload/quality.json",
+        "run_id": "20261123T223756646816Z-919a5ad9782a486f",
+        "sha256": "164248a1ea1fa453de5ad78a4ecf36bb859c9ba060541ad533bb97e43b6bbd22"
+      }
+    ],
+    "recipe_id": "r2-scale-decay-02",
+    "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+    "registered_selection": {
+      "eligible_checkpoints": [
+        500,
+        1500,
+        3000,
+        5000
+      ],
+      "eligible_development": "A complete pair of set1 fits under its registered full schedule; all twelve target comparisons at a candidate step must be observed. Resource-aborted fits are incomplete.",
+      "freeze": "Seal the exact recipe, implementation hashes, full schedule, both development curves and common stop step before any new risk scores or set6 preparation. The trained interval may end before the scheduled fixed-topology tail; report the actual phase.",
+      "metric": "Arithmetic mean of the six target display-RGB MAEs for each condition, then mean of the M2 and M4 means. Full comparable crop at native prediction precision. Sources, synthetic control, risk outputs and set6 do not enter this objective.",
+      "on_abort": "Preserve reached checkpoints; missing ones N/A. The protection endpoint cannot substitute for the frozen finish. Record each technical attempt separately.",
+      "tie_order": [
+        "smallest mean MAE",
+        "earlier shared stop step",
+        "lexicographically first recipe ID"
+      ]
+    },
+    "risk_read": false,
+    "run_id": "20261123T223800991463Z-ae9ebec514224819",
+    "schedule_steps": 5000,
+    "schema": "el-recovery-quality-selection-1",
+    "selection_metric": "equal mean of the six set1 target full-crop native FP32 RGB MAEs per condition, then equal mean of M2 and M4",
+    "set6_used_for_ranking": false,
+    "status": "selected",
+    "stop_step": 5000,
+    "synthetic_control_used_for_ranking": false,
+    "winner": {
+      "checkpoint_sha256": {
+        "M2": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370",
+        "M4": "e15f11c640305d5749c5ae16e171aaa2e45164d4bda0bea5601cc2b87d777956"
+      },
+      "condition_exclusions": {},
+      "condition_means": {
+        "M2": 0.14534391660662957,
+        "M4": 0.08552649685708343
+      },
+      "macro_target_MAE": 0.1154352067318565,
+      "phase": {
+        "M2": "fixed_topology",
+        "M4": "fixed_topology"
+      },
+      "reason": null,
+      "recipe_id": "r2-scale-decay-02",
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "step": 5000
+    }
+  },
+  "stop_rule": "Run the selected recipe on its complete original schedule until exactly stop_step. Apply the registered resource abort first. An aborted fit has no replacement endpoint.",
+  "stop_step": 5000,
+  "utc": "2026-11-23T22:38:32.133156Z",
+  "worker_source": {
+    "manifest_sha256": "b226a1f0ffd74e2847777024305f1b9a337a8721950327122aa05040cc325f76",
+    "member": "payload/source.zip",
+    "run_id": "20261123T215715001746Z-6f8c142187d04328",
+    "sha256": "aa65bc5a412cdafdac2e9ffa5f64f675ba8253904100dafbc086284b5a9632c1"
+  },
+  "worker_tree_sha256": "02fe9a25281a72b43a4eb038b37d0a2c5b6e291175f0ac0b1c8c0b5761247e3c"
+}
