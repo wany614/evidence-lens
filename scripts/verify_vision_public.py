@@ -120,7 +120,7 @@ def installer_environment(temp):
     system={k:os.environ[k] for k in ("SYSTEMROOT","WINDIR","COMSPEC","SYSTEMDRIVE") if k in os.environ}
     return dict(system,PATH=os.defpath,HOME=home,USERPROFILE=home,APPDATA=home,LOCALAPPDATA=home,PROGRAMDATA=home,
                 XDG_CONFIG_HOME=home,XDG_CONFIG_DIRS=home,XDG_DATA_HOME=home,XDG_CACHE_HOME=home,TMP=tmp,TEMP=tmp,TMPDIR=tmp,
-                NETRC=os.devnull,PIP_CONFIG_FILE=os.devnull,PYTHONNOUSERSITE="1",GIT_TERMINAL_PROMPT="0")
+                NETRC=os.devnull,PIP_CONFIG_FILE=os.devnull,NO_PROXY="*",no_proxy="*",PYTHONNOUSERSITE="1",GIT_TERMINAL_PROMPT="0")
 
 
 def installed_wheels(report, source, wheelhouse):
@@ -177,7 +177,7 @@ print(json.dumps({d.metadata['Name']:d.version for d in dists},sort_keys=True))"
              "bootstrap":"Fresh venv with the interpreter's bundled ensurepip; separately recorded from selected dependency wheels.",
              "dependency_policy":"The release requirements name the direct dependencies. pip resolved the remaining wheels in this run.",
              "child_isolation":{"empty_user_profile":True,"netrc":"null device","pip_config_files":"disabled","keyring":"disabled",
-                                "inherited_proxy_or_ca_variables":False,"persistent_cache":False},
+                                "inherited_proxy_or_ca_variables":False,"system_proxy_bypass":"all hosts","persistent_cache":False},
              "installed_distributions":actual,"transactions":transactions}
     rel.write(temp,"installation.json",rel.entries(receipt))
     return exe

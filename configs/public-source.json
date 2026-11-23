@@ -122,6 +122,11 @@
     "examples/heldout-drum/blender-v01.png": "cc-original",
     "examples/heldout-drum/input.png": "cc-original",
     "examples/heldout-drum/provenance.json": "cc-original",
+    "examples/native-plane-control/README.md": "cc-original",
+    "examples/native-plane-control/input.png": "cc-original",
+    "examples/native-plane-control/prediction-v01.png": "cc-original",
+    "examples/native-plane-control/rgb-error-v01.png": "cc-original",
+    "examples/native-plane-control/v01-L2-vision-ft-state.png": "cc-original",
     "examples/study-figures/README.md": "cc-original",
     "examples/study-figures/paired-changes.png": "cc-original",
     "examples/study-figures/risk-coverage-B0.png": "cc-original",
@@ -349,6 +354,7 @@
     "tests/test_vision_control_attachment.py": "apache-original",
     "tests/test_vision_data.py": "apache-original",
     "tests/test_vision_engineering_report.py": "apache-original",
+    "tests/test_vision_failure_observations.py": "apache-original",
     "tests/test_vision_gpu_job.py": "apache-original",
     "tests/test_vision_method.py": "apache-original",
     "tests/test_vision_public_download.py": "apache-original",
@@ -368,6 +374,26 @@
       "format": "rgb8-png",
       "bytes": 111556,
       "sha256": "bf0ce4e2515fef11737910046773102435a23b324bce7aaacdf307c00ccb3305"
+    },
+    "examples/native-plane-control/input.png": {
+      "format": "rgb8-png",
+      "bytes": 92650,
+      "sha256": "1c689d3ef4f82729082b54d148e23d7e298f4cdae2fc6ac21bcff71aacd6bbe4"
+    },
+    "examples/native-plane-control/prediction-v01.png": {
+      "format": "rgb8-png",
+      "bytes": 92224,
+      "sha256": "37fc7eefe9c433147547d25d5e1c239435c5c1740d1b4638ef903fb37008cd02"
+    },
+    "examples/native-plane-control/rgb-error-v01.png": {
+      "format": "rgb8-png",
+      "bytes": 251099,
+      "sha256": "0b775adaa55a2398bc0a723bf12916dcefb78ecdce79ccc92991333956b1547c"
+    },
+    "examples/native-plane-control/v01-L2-vision-ft-state.png": {
+      "format": "rgb8-png",
+      "bytes": 4156,
+      "sha256": "fec323ae18774814dfd66a0c98bbe429503566e41a773a3e6b1dff7ea09b5d6e"
     },
     "examples/study-figures/paired-changes.png": {
       "format": "rgb8-png",

@@ -113,6 +113,7 @@ def test_installer_environment_and_scope_stay_distinct(tmp_path,monkeypatch):
     env=public.installer_environment(tmp_path)
     assert 'never-inherit' not in env.values() and env['HOME']==env['USERPROFILE'] and not list(Path(env['HOME']).iterdir())
     assert env['NETRC']==env['PIP_CONFIG_FILE']==public.os.devnull and 'HTTPS_PROXY' not in env
+    assert env['NO_PROXY']==env['no_proxy']=='*'
     assert public.verification_scope(None)[0]=='verified_builtin_only'
     with pytest.raises(ValueError,match='requires the public 512'):public.verification_scope(None,True)
     with pytest.raises(ValueError,match='incomplete'):public.verification_scope({'method_views':42,'coordinates':42*512**2})

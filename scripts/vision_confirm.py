@@ -18,6 +18,44 @@ from vision_record import parse_pin, publish
 from vision_sources import find_run, signed
 
 
+def observed_failure_evidence(roots, pins, folder):
+    """Embed original failed manifests as typed observations, keeping recorder success-parent semantics."""
+    from hashlib import sha256
+
+    records = {}
+    for source in pins:
+        pin = compact_pin(source)
+        run = find_run(roots, pin)
+        status = run.run["execution_status"]
+        require(
+            status in {"failed", "interrupted", "cancelled"}, "observation must identify an unsuccessful run"
+        )
+        raw = (run.root / "manifest.json").read_bytes()
+        require(sha256(raw).hexdigest() == pin["manifest_sha256"], "observed original manifest differs")
+        row = {
+            **pin,
+            "execution_status": status,
+            "source_member": "manifest.json",
+            "original_manifest_utf8": raw.decode("utf-8"),
+        }
+        previous = records.setdefault(pin["run_id"], row)
+        require(previous == row, "conflicting observed failure identities")
+    path = folder / "observed-failures.json"
+    publish(
+        path,
+        {"schema": "el-vision-observed-failures-1", "observations": [records[k] for k in sorted(records)]},
+    )
+    return path
+
+
+def report_sources(roots, pins):
+    parents, observed = [], []
+    for p in pins:
+        verified = find_run(roots, p)
+        (parents if verified.run["execution_status"] == "succeeded" else observed).append(compact_pin(p))
+    return parents, observed
+
+
 def record(
     project,
     roots,
@@ -36,6 +74,14 @@ def record(
     store, shelf = roots
     folder = state / stage
     folder.mkdir(parents=True, exist_ok=True)
+    evidence = None
+    if roster.get("observed_failures"):
+        require(
+            roster["action"] in ("materials", "report"),
+            "unexpected failed observations on a computational stage",
+        )
+        evidence = observed_failure_evidence(roots, roster["observed_failures"], folder)
+        roster = {**roster, "observed_failure_evidence_sha256": file_hash(evidence)}
     inputs = folder / "input-roster.json"
     publish(inputs, roster)
     request = {
@@ -58,9 +104,24 @@ def record(
             run.run["run_kind"] == kind
             and run.run["experiment_id"] == experiment
             and run.run["trial_id"] == request["trial_id"]
-            and load(run.open("config.resolved.yaml"))["input_roster_sha256"] == request["input_roster_sha256"],
+            and load(run.open("config.resolved.yaml"))["input_roster_sha256"]
+            == request["input_roster_sha256"],
             "registered output belongs to another computation",
         )
+        if evidence is not None:
+            info = load(run.open("inputs.json"))
+            files = [r for r in info["inputs"] if r["role"] == "observed_failures"]
+            require(
+                len(files) == 1
+                and files[0]["kind"] == "file"
+                and files[0]["storage"] == "embedded"
+                and files[0]["parent_run_id"] is None
+                and file_hash(run.open(files[0]["path"])) == roster["observed_failure_evidence_sha256"]
+                and not {r["run_id"] for r in roster["observed_failures"]}.intersection(
+                    p["run_id"] for p in info["parents"]
+                ),
+                "sealed failed observations or scientific parent roles differ",
+            )
         p, sha = successful(roots, pin, label)
         return {
             **compact_pin(pin),
@@ -112,6 +173,8 @@ def record(
         ]
         if registry_path:
             cmd += ["--input", "approved_registry=" + str(registry_path)]
+        if evidence is not None:
+            cmd += ["--input", "observed_failures=" + str(evidence)]
         for p in request["parents"]:
             cmd += ["--parent", p["run_id"] + "=" + p["manifest_sha256"]]
         if prev:
@@ -211,8 +274,10 @@ def main():
         "opening_sha256": marker,
     }
 
-    def call(stage, kind, cohort, action, extra, parents, receipt, limit, vision=False):
+    def call(stage, kind, cohort, action, extra, parents, receipt, limit, vision=False, observations=()):
         spec = {**common, "cohort": cohort, "action": action, **extra}
+        if observations:
+            spec["observed_failures"] = observations
         it = None
         if vision:
             it = a.vision_python or project / ".venv-vision-cpu/bin/python"
@@ -246,22 +311,23 @@ def main():
             parents.extend([*(p for k, p in rr.items() if k != "scores"), *rr["scores"].values()])
             allroles[c] = rr
         eng = [parse_pin(s) for s in a.engineering]
-        for pin in eng:
-            find_run(roots, pin)
+        engineering_parents, observed = report_sources(roots, eng)
         result = call(
             "joint-public-report",
             "report",
             "both",
             "report",
             {"cohorts": allroles, "engineering": eng},
-            [*parents, *eng],
+            [*parents, *engineering_parents],
             "public-numerical/manifest.json",
             20_000_000,
+            observations=observed,
         )
     else:
         c = COHORTS[0] if a.action == "new" else COHORTS[1]
         extra = {}
         parents = []
+        observed = []
         if c == COHORTS[0]:
             grid = catalog_grid(newcat)
             trials = {}
@@ -294,7 +360,8 @@ def main():
                 )
                 trials[s["trial_id"]] = {"selection_sha256": sha_sel, "status": s["selection_status"]}
                 if s["selection_status"] == "failed":
-                    parents.extend([compact_pin(s[k]) for k in ("reference", "failure")])
+                    parents.append(compact_pin(s["reference"]))
+                    observed.append(compact_pin(s["failure"]))
                 else:
                     parents.append(compact_pin(s["selected"]["evaluation"]))
             require(
@@ -319,7 +386,15 @@ def main():
         else:
             parents = [PRIOR_REPORT]
         mat = call(
-            c + "-materials", "dataset_build", c, "materials", extra, parents, "materials.json", 6_000_000
+            c + "-materials",
+            "dataset_build",
+            c,
+            "materials",
+            extra,
+            parents,
+            "materials.json",
+            6_000_000,
+            observations=observed,
         )
         data = call(
             c + "-dataset",

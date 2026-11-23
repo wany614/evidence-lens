@@ -53,3 +53,9 @@ __pycache__/
 # Original formal Blender case, pinned by the explicit source inventory.
 !/examples/heldout-drum/input.png
 !/examples/heldout-drum/blender-v01.png
+
+# Authored native-resolution plane controls pinned in configs/public-source.json.
+!/examples/native-plane-control/input.png
+!/examples/native-plane-control/prediction-v01.png
+!/examples/native-plane-control/rgb-error-v01.png
+!/examples/native-plane-control/v01-L2-vision-ft-state.png
