@@ -163,6 +163,25 @@
       "validation": "Inspect configured Git remotes/tags and owner-approved terms. Candidate verification uses its own exact bytes.",
       "conclusion": "Owner repository and separate grants pending. A local or private download is private acceptance.",
       "status": "external_decision_pending"
+    },
+    {
+      "issue_id": "EL-10",
+      "observation": "The first private RC allowed an editable project import to influence its build and did not require a nonempty finite comparison in every method and view.",
+      "original_evidence": [
+        "b04a370dd7b5d419b54050592a7b493db7e39d5a",
+        "75674fc4beecd3f073664e5d2a47ca2f5aef7a88889df7943eaa3cd4f1d21c3e",
+        "20261123T090439715207Z-27e6f9bdc0cd4e13"
+      ],
+      "hypothesis": "A dirty Python import or an uninformative zero-finite comparison could pass part of the delivery checks.",
+      "confirmed_cause": "The original tool pinned selected scripts and checked an aggregate of available maxima. Its real rc.1 payload nevertheless passed independent raw validation of all 90 cross-platform result groups.",
+      "fix_commit": "554a229a5932574d06d0de37702aab9d927f60b2",
+      "impact": "Build tooling, standalone grader, acceptance reporting, instructions, version and container. Inference functions, thresholds and trained parameters retain their frozen scientific identity.",
+      "rerun_ids": [
+        "20261123T090439715207Z-27e6f9bdc0cd4e13"
+      ],
+      "validation": "Poisoned editable working-tree and PYTHONPATH regression, fixture isolation, retained failure evidence, external ZIP and wheel hashes, and a new six-by-five smoke with a detached receipt for each exact artifact.",
+      "conclusion": "The rc.2 builder imports project code from the nominated commit. The grader requires all 30 nonempty comparisons and checks all 12 maps. The detached release acceptance identifies the final three platform runs.",
+      "status": "fixed_in_rc2"
     }
   ]
 }

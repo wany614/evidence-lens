@@ -92,7 +92,7 @@
     "zip_bytes": 1061945
   },
   "reuse": {
-    "training": "Original B0 inputs, downstream features/labels, sampled fit and development threshold identities verified against the frozen study. CPU scoring and production scientific modules are byte-identical to the original commit.",
+    "training": "Original B0 inputs, labels, feature construction, the fit and development thresholds match the frozen study. Production inference and risk scoring retain the original source bytes. The deployment comparison harness records per-view failures separately in rc.2.",
     "model_index_sha256": "b3c65130bf803611e3904ac69a270f6944b48a8d78ce049bdc1424c15ba6cb54",
     "protocol_sha256": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
     "method_freeze_sha256": "b077f4d4e5f64b7648d36d9de112e84444102fcbfea7e9a5a8c8939673d0290a",
@@ -109,5 +109,14 @@
     "Owner repository target and original-asset use terms",
     "Public GitHub pre-release and independent public URL download",
     "New families reserved for explicit second-stage authorization"
-  ]
+  ],
+  "rc2_build_and_validation_commit": "554a229a5932574d06d0de37702aab9d927f60b2",
+  "internal_rc1": {
+    "version": "v0.1.1-rc.1",
+    "code_commit": "b04a370dd7b5d419b54050592a7b493db7e39d5a",
+    "sha256": "75674fc4beecd3f073664e5d2a47ca2f5aef7a88889df7943eaa3cd4f1d21c3e",
+    "wheel_sha256": "8af6d7bb01111dec0dbbbdfa8a54eb20d84baa7dece03b3dce6dd125f87a0049",
+    "bytes": 1661952,
+    "three_platform_validation_run": "20261123T090439715207Z-27e6f9bdc0cd4e13"
+  }
 }
