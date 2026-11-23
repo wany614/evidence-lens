@@ -372,3 +372,40 @@ def test_q1_stage2_record_selection_from_real_fp16_and_fixed_six_pixel_render(tm
     args.producer = run_pin(ctx["verified"].get(derived))
     args.render = run_pin(ctx["verified"].get(rendered))
     assert controller.process(args)["sha256"] == item["sha256"]
+
+
+def test_two_b0_package_manifests_preserve_each_exact_worker_and_one_scientific_interface(tmp_path):
+    from make_handoff import sha_bytes, zip_bytes
+
+    store = tmp_path / "store"
+    catalog = "9" * 64
+    root = store / "stage2" / catalog / "dispatches/workers"
+    root.mkdir(parents=True)
+    archive = root / "fixture.zip"
+    ctx = {"store": store, "project": ROOT, "catalog_hash": catalog, "family": {"scene_family_id": "fixture"}}
+
+    def bundle(deps, kernel):
+        package = (
+            "[project]\nrequires-python='>=3.11'\ndependencies=['numpy>=1.26,<3']\n[project.optional-dependencies]\nrecord=['psutil']\n"
+            + deps
+        )
+        code = {"pyproject.toml": package.encode(), "src/evidence_lens/renderer_adapter.py": kernel}
+        members = {"code/" + n: v for n, v in code.items()}
+        meta = encoded({"files": {n: sha_bytes(b) for n, b in members.items()}})
+        raw = zip_bytes({**members, "handoff.json": meta})
+        archive.write_bytes(raw)
+        ctx["b0_dispatch"] = {
+            "handoff_sha256": sha_bytes(meta),
+            "container_sha256": sha_bytes(raw),
+            "worker_source_sha256": sha_bytes(zip_bytes(code)),
+        }
+        return controller.worker_source(ctx)[1]
+
+    a = bundle("", b"fixture-identical")
+    b = bundle("vision=['fixture']\n", b"fixture-identical")
+    directory = store / "formal" / catalog / "conditions"
+    assert a != b and {
+        load(f)["sha256"] for f in (directory / "worker-sources").glob("*/worker-source.json")
+    } == {a, b}
+    with pytest.raises(BundleError, match="immutable file conflicts"):
+        bundle("vision=['fixture']\n", b"numerical change")

@@ -146,15 +146,32 @@ def worker_source(ctx):
         contents["scripts/" + name] = path.read_bytes()
     raw = zip_bytes(contents)
     root = ctx["store"] / "formal" / ctx["catalog_hash"] / "conditions"
-    publish(root / "worker-source.zip", raw)
+    # Keep the whole package for each real B0 baseline. An optional dependency for
+    # unrelated training does not change the isolated Windows worker invocation.
+    # Freeze its actual source, configuration and effective package requirements across cells.
+    import tomllib
+
+    package = tomllib.loads(contents["pyproject.toml"].decode("utf-8"))["project"]
+    members = {k: sha_bytes(v) for k, v in contents.items()}
+    interface = {
+        "schema": "el-stage2-condition-worker-interface-1",
+        "members": {k: v for k, v in members.items() if k != "pyproject.toml"},
+        "requires_python": package["requires-python"],
+        "runtime_dependencies": package["dependencies"],
+        "recorder_dependencies": package.get("optional-dependencies", {}).get("record", []),
+    }
+    publish(root / "worker-interface.json", encoded(interface))
+    variant = root / "worker-sources" / dispatch["worker_source_sha256"]
+    publish(variant / "worker-source.zip", raw)
     publish(
-        root / "worker-source.json",
+        variant / "worker-source.json",
         encoded(
             {
                 "schema": "el-stage2-condition-worker-1",
                 "sha256": sha_bytes(raw),
                 "b0_worker_sha256": dispatch["worker_source_sha256"],
-                "member_sha256": {k: sha_bytes(v) for k, v in contents.items()},
+                "member_sha256": members,
+                "worker_interface_sha256": sha_bytes(encoded(interface)),
             }
         ),
     )

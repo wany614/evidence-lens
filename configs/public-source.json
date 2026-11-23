@@ -213,6 +213,7 @@
     "scripts/verify_l1_development.py": "apache-original",
     "scripts/verify_public_prerelease.py": "apache-original",
     "scripts/verify_reference_config.py": "apache-original",
+    "scripts/verify_vision_updates.py": "apache-original",
     "scripts/vision_baselines.py": "apache-original",
     "scripts/vision_data.py": "apache-original",
     "scripts/vision_evaluate.py": "apache-original",
