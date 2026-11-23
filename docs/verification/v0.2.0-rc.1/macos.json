@@ -1,0 +1,349 @@
+{
+  "assets": {
+    "RELEASE_NOTES.md": {
+      "asset_id": 783488938,
+      "bytes": 6293,
+      "sha256": "af7c1d944a26f443e7fadeffc0d8a3edea5a6d405778b3c7a166945068a9bf60",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/RELEASE_NOTES.md"
+    },
+    "SHA256SUMS": {
+      "asset_id": 783488936,
+      "bytes": 299,
+      "sha256": "c86f40b44a6cf9745c3be0f6229600be58cc4dc4060a3505ebc2da1692172f1d",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/SHA256SUMS"
+    },
+    "candidate.json": {
+      "asset_id": 783488942,
+      "bytes": 3735,
+      "sha256": "52a13598378813fca132f122d8f7bc6d8b6ca47a57cff81bc40b1a3e9707289d",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/candidate.json"
+    },
+    "dinov2_vits14_pretrain.pth": {
+      "asset_id": 783488935,
+      "bytes": 88283115,
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/dinov2_vits14_pretrain.pth"
+    },
+    "evidence-lens-v0.2.0-rc.1-cpu.zip": {
+      "asset_id": 783488941,
+      "bytes": 166532365,
+      "sha256": "f18508a019583961c0141d7a780d47d768f6d49dbb2764df7d89e0816e593320",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/evidence-lens-v0.2.0-rc.1-cpu.zip"
+    },
+    "evidence-lens-v0.2.0-rc.1-numerical.zip": {
+      "asset_id": 783488998,
+      "bytes": 258301,
+      "sha256": "e09341d065836054a0fd9a665db1ab3c8e4e2db75ebc6cd30411df33d0705001",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/evidence-lens-v0.2.0-rc.1-numerical.zip"
+    },
+    "evidence-lens-v0.2.0-rc.1-public-plane-512.zip": {
+      "asset_id": 783488999,
+      "bytes": 46423486,
+      "sha256": "0a2c80c15e9ad6eb15e15707880bdd269fe70899c07ae91cf9ffc3a13fd7d0db",
+      "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/evidence-lens-v0.2.0-rc.1-public-plane-512.zip"
+    }
+  },
+  "base": {
+    "asset_id": 783488935,
+    "bytes": 88283115,
+    "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+    "source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/dinov2_vits14_pretrain.pth"
+  },
+  "candidate_sha256": "52a13598378813fca132f122d8f7bc6d8b6ca47a57cff81bc40b1a3e9707289d",
+  "code_commit": "fb2fbdc232cf2be706ca88e4ad9ddfe884013cc3",
+  "dependency_installation": {
+    "bootstrap": "Fresh venv with the interpreter's bundled ensurepip; separately recorded from selected dependency wheels.",
+    "child_isolation": {
+      "empty_user_profile": true,
+      "inherited_proxy_or_ca_variables": false,
+      "keyring": "disabled",
+      "netrc": "null device",
+      "persistent_cache": false,
+      "pip_config_files": "disabled",
+      "system_proxy_bypass": "all hosts"
+    },
+    "declared_requirements": [
+      "torch==2.8.0",
+      "numpy==2.2.6; python_version < \"3.12\"",
+      "numpy==2.5.5; python_version >= \"3.12\"",
+      "safetensors==0.8.0",
+      "psutil==7.2.2",
+      "Pillow==12.3.0"
+    ],
+    "dependency_policy": "The release requirements name the direct dependencies. pip resolved the remaining wheels in this run.",
+    "installed_distributions": {
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.4",
+      "filelock": "4.3.0",
+      "fsspec": "2026.9.0",
+      "mpmath": "1.3.0",
+      "networkx": "3.7",
+      "numpy": "2.5.5",
+      "pillow": "12.3.0",
+      "pip": "26.2.2",
+      "psutil": "7.2.2",
+      "safetensors": "0.8.0",
+      "setuptools": "84.2.1",
+      "sympy": "1.14.0",
+      "torch": "2.8.0",
+      "typing_extensions": "4.16.0"
+    },
+    "requirements_sha256": "64e2ed378bea8a15cbe84fe049a0b97b56789c7cc3023b51fb3a561482221e9d",
+    "schema": "el-vision-dependency-installation-1",
+    "source_mode": "online_public_indices",
+    "transactions": [
+      {
+        "pip_report_sha256": "a0c9cace1d6366c186905e7576bf4bde711b1d27e8dba3427099359506aa5694",
+        "pip_version": "26.2.2",
+        "source": "https://pypi.org/simple",
+        "wheels": [
+          {
+            "distribution": "torch",
+            "origin": "files.pythonhosted.org",
+            "requested": true,
+            "sha256": "619c2869db3ada2c0105487ba21b5008defcc472d23f8b80ed91ac4a380283b0",
+            "version": "2.8.0",
+            "wheel": "torch-2.8.0-cp312-none-macosx_11_0_arm64.whl"
+          },
+          {
+            "distribution": "numpy",
+            "origin": "files.pythonhosted.org",
+            "requested": true,
+            "sha256": "a3856a97e48ed8371c680fb04120b99fbcc29f2076ebe6dc3deb34f77947c5ca",
+            "version": "2.5.5",
+            "wheel": "numpy-2.5.5-cp312-cp312-macosx_14_0_arm64.whl"
+          },
+          {
+            "distribution": "safetensors",
+            "origin": "files.pythonhosted.org",
+            "requested": true,
+            "sha256": "c80201d22cbf405b80647a60ada77bba06c8fba2da2743ba1e89cdcc39a81f25",
+            "version": "0.8.0",
+            "wheel": "safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl"
+          },
+          {
+            "distribution": "psutil",
+            "origin": "files.pythonhosted.org",
+            "requested": true,
+            "sha256": "1a7b04c10f32cc88ab39cbf606e117fd74721c831c98a27dc04578deb0c16979",
+            "version": "7.2.2",
+            "wheel": "psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl"
+          },
+          {
+            "distribution": "pillow",
+            "origin": "files.pythonhosted.org",
+            "requested": true,
+            "sha256": "ffd0c5368496f41b0944be820fcb7a838aa6e623d250b01acf2643939c3f99d7",
+            "version": "12.3.0",
+            "wheel": "pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl"
+          },
+          {
+            "distribution": "sympy",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+            "version": "1.14.0",
+            "wheel": "sympy-1.14.0-py3-none-any.whl"
+          },
+          {
+            "distribution": "mpmath",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+            "version": "1.3.0",
+            "wheel": "mpmath-1.3.0-py3-none-any.whl"
+          },
+          {
+            "distribution": "typing_extensions",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+            "version": "4.16.0",
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl"
+          },
+          {
+            "distribution": "filelock",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "f933f39f7e01249a4a49b9abab30edc6d4b874624c3de5dd0b0d137aa8adb979",
+            "version": "4.3.0",
+            "wheel": "filelock-4.3.0-py3-none-any.whl"
+          },
+          {
+            "distribution": "fsspec",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f",
+            "version": "2026.9.0",
+            "wheel": "fsspec-2026.9.0-py3-none-any.whl"
+          },
+          {
+            "distribution": "Jinja2",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+            "version": "3.1.6",
+            "wheel": "jinja2-3.1.6-py3-none-any.whl"
+          },
+          {
+            "distribution": "MarkupSafe",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "0930db9bdc62d22944e10b066448bb65dc9abe9112880c7cab8da54db4284d5f",
+            "version": "3.0.4",
+            "wheel": "markupsafe-3.0.4-cp312-cp312-macosx_11_0_arm64.whl"
+          },
+          {
+            "distribution": "networkx",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "e3fd2c13a7814cee3746340d8d7f8598a67f16a58bf47fb7f8793fab6efca1b0",
+            "version": "3.7",
+            "wheel": "networkx-3.7-py3-none-any.whl"
+          },
+          {
+            "distribution": "setuptools",
+            "origin": "files.pythonhosted.org",
+            "requested": false,
+            "sha256": "ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2",
+            "version": "84.2.1",
+            "wheel": "setuptools-84.2.1-py3-none-any.whl"
+          }
+        ]
+      }
+    ]
+  },
+  "elapsed_seconds": 42.26057758300158,
+  "formal_native_public_receipt": {
+    "checked_coordinates": 4718592,
+    "family": "scene_037_bottle_carrier",
+    "manifest_sha256": "318c8aed91d2e01e4d9291fe1c425edc1f382fc96355c8740ff0d1465206ad8b",
+    "methods": 3,
+    "run_id": "20261123T140916480246Z-3837e609c88243e1",
+    "sha256": "e1a1433a6e49a41b77e25d7799361ee68391b2fa96e56d28a9866e4aec232c47",
+    "views": 6
+  },
+  "github_published_at": "2026-11-23T15:35:21Z",
+  "installation_sha256": "5bc1921914c4cb33bee40ae2629cf1ab6a0c188c40afd7bdc96db14c5dddd282",
+  "local_private_native": null,
+  "measured_weights": {
+    "L1-full": {
+      "bytes": 3079,
+      "sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "L1-geometry": {
+      "bytes": 2353,
+      "sha256": "61820691bc8e4a63ffc9adeca03ba2f33a7c313977d608f568a8b58b1c778c81"
+    },
+    "L2-frozen": {
+      "bytes": 88301188,
+      "sha256": "952d7481970296737c77492a466261dd764ee28eba4406e644f36aa5b8c3bce9"
+    },
+    "L2-vision-ft": {
+      "bytes": 88301188,
+      "sha256": "f372bd34faa1b345ae2486fe6c96aea00d8d9ac5749b0b2c237f9ed08d50f228"
+    }
+  },
+  "models": {
+    "L1": {
+      "manifest_sha256": "137fde135925ad311179bf83c31b041c5dd5f6389ee51bd47a0a472aebfe7f14",
+      "model_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "run_id": "20261123T132250544881Z-e115a32a4501435b"
+    },
+    "L2-frozen": {
+      "manifest_sha256": "857880093e218c13d098b4eae52521d9604b246eee9585069ee6aa5607dfbab2",
+      "model_sha256": "3dc77ee982f742b30e179f4bac7099eeb96a4091f77fe3cba3ac6891db435e65",
+      "run_id": "20261123T131854609280Z-61d909f49ff24a08"
+    },
+    "L2-vision-ft": {
+      "manifest_sha256": "0100b3f27e79c4498d51854d249312fc54cd7c80291b812e68f42c1dbfd88583",
+      "model_sha256": "08af4cba3537f6f677b24d045c4c374d2d46eedc63a20abc874cfcad3f7ddac5",
+      "run_id": "20261123T133146588950Z-c1d19dcb78c74cf0"
+    }
+  },
+  "plane_method_views": 42,
+  "plane_pngs": 36,
+  "release_download": {
+    "cookies": false,
+    "credentials": false,
+    "environment_proxy": false,
+    "repository": "https://github.com/wany614/evidence-lens/releases/tag/v0.2.0-rc.1",
+    "transport": "anonymous HTTPS",
+    "upstream_checkpoint_source": "https://github.com/wany614/evidence-lens/releases/download/v0.2.0-rc.1/dinov2_vits14_pretrain.pth"
+  },
+  "release_id": 455619675,
+  "release_sha256": "e2853a9d05c3ea9ddb27cb74221c1bf0161b6bc516b0827111d4a48e15ff0708",
+  "release_url": "https://github.com/wany614/evidence-lens/releases/tag/v0.2.0-rc.1",
+  "repository": "wany614/evidence-lens",
+  "runtime": {
+    "architecture": "arm64",
+    "device": "cpu",
+    "numpy": "2.5.5",
+    "python": "3.12.16",
+    "system": "Darwin",
+    "torch": "2.8.0"
+  },
+  "schema": "el-vision-anonymous-verification-1",
+  "scope": "anonymous release assets, authored 128-pixel example and independently evaluated 512-pixel public control",
+  "separate_public_control": {
+    "attachment": "evidence-lens-v0.2.0-rc.1-public-plane-512.zip",
+    "attachment_sha256": "0a2c80c15e9ad6eb15e15707880bdd269fe70899c07ae91cf9ffc3a13fd7d0db",
+    "case_export": {
+      "manifest_sha256": "ecc31a41cb0db4ae0319ac6f5057bf9f0326a776cb641a2a9b961172fa0c79e8",
+      "run_id": "20261123T134307201400Z-a5e16b2b6c7f4dd2"
+    },
+    "case_sha256": "1323cd8fd285eea2af58133d2b7f63fefed676fd1e44d6eb43e6795ab85a97e0",
+    "coordinates": 11010048,
+    "independent_evaluation_sha256": "fad135c230e7c526838233b5b02f8c001f6d1b6271cf65fb8d7e9b74b7395b9a",
+    "method_views": 42,
+    "original_reference": {
+      "manifest_sha256": "cc17f2eb753176cafac3afa3299d2fa8c427e0218d23fdc2698c3c081e4c0e53",
+      "run_id": "20261123T124705616092Z-5739968b93d64b4d"
+    },
+    "original_source_sha256": "1c689d3ef4f82729082b54d148e23d7e298f4cdae2fc6ac21bcff71aacd6bbe4",
+    "receipt_sha256": "34b8e81802476c55f5bed1ae19cc11a745628ccf835211f1644f5528858c8419",
+    "reference_export": {
+      "manifest_sha256": "df36889a5cae9222e586bedbe2a64a2fb047376d73cfaf6bc5150ffae707c7a2",
+      "run_id": "20261123T134308150391Z-402d42333024458b"
+    }
+  },
+  "smoke_sha256": "3ba49fc0632a00090410f864cb9182b32f07b63740aab753f4fcf9e4d612ba0f",
+  "source_files": {
+    "verify_vision_public.py": {
+      "bytes": 27289,
+      "sha256": "e63bdc8c38f72c8745122ef6fc30aa2bc9508b5b585c68b5b5a26695b6957a22"
+    },
+    "vision_control_attachment.py": {
+      "bytes": 33531,
+      "sha256": "a34224b8fca5fb26d364b8de39b0d9b47cce372c603c852a706e991d1f31402a"
+    },
+    "vision_public_smoke.py": {
+      "bytes": 20468,
+      "sha256": "a94ad70e48fc37d39636753ae24198233ce99a54979e34c0d36d0b0f67258d38"
+    },
+    "vision_release.py": {
+      "bytes": 58787,
+      "sha256": "a5920404bb708fd63872bffa2f5de1499d0db09289c1e82db87923d6cccd3bf3"
+    },
+    "vision_release_native.py": {
+      "bytes": 24579,
+      "sha256": "4cac1a4f61466760d56028c4c899bab469829ddd687a5a56269ae0af107f5cd4"
+    }
+  },
+  "status": "verified_full",
+  "verified_deployed_source_sha256": "77c685edc6c79f945c9fa09a213c6fd9277f560b4afcae2b13011f056bf130fb",
+  "verified_runtime_git_paths": [
+    "src/evidence_lens/__init__.py",
+    "src/evidence_lens/features.py",
+    "src/evidence_lens/l1.py",
+    "src/evidence_lens/risk_model.py",
+    "src/evidence_lens/scoring_io.py",
+    "src/evidence_lens_vision/__init__.py",
+    "src/evidence_lens_vision/contract.py",
+    "src/evidence_lens_vision/deploy.py",
+    "src/evidence_lens_vision/model.py",
+    "src/evidence_lens_vision/native.py"
+  ],
+  "verified_utc": "2026-11-23T15:36:49.267566+00:00",
+  "version": "v0.2.0-rc.1"
+}

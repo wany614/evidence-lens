@@ -12,7 +12,7 @@ The independently runnable 512 × 512 example uses an authored two-metre plane a
 
 ## Run the visual models
 
-Download the CPU ZIP and checksum list from the pre-release, check the ZIP, and extract it into a new directory. With Python 3.11 or 3.12, run this command from the extracted directory. [v0.2.0-rc.1 downloads](https://github.com/wany614/evidence-lens/releases/tag/v0.2.0-rc.1)
+Download the CPU ZIP and checksum list from the pre-release, check the ZIP, and extract it into a new directory. With Python 3.11 or 3.12, run this command from the extracted directory. [v0.2.0-rc.1 downloads](https://github.com/wany614/evidence-lens/releases/tag/v0.2.0-rc.1) · [Verified public CPU replay with pinned downloads](docs/verification/v0.2.0-rc.1/README.md)
 
 ```sh
 python3 -I -B smoke.py --output ../vision-plane-result
