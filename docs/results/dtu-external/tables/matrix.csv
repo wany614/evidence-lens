@@ -1,0 +1,5 @@
+object_id,family_id,role,condition,arm,execution_status,failure_reason,planned_targets,reference_readable_targets,ready_targets,expected_target_method_pairs,scored_target_method_pairs,maximum_replay_AP_gap
+set1,DTU-scan1,debug,M2,main-256,ready,,6,6,6,24,24,2.220446049250313e-16
+set1,DTU-scan1,debug,M4,main-256,ready,,6,6,6,24,24,2.220446049250313e-16
+set6,DTU-scan6,external,M2,main-256,ready,,6,6,6,24,24,2.220446049250313e-16
+set6,DTU-scan6,external,M4,main-256,ready,,6,6,6,24,24,2.220446049250313e-16

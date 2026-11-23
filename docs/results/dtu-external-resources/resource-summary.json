@@ -1,0 +1,113 @@
+{
+  "acquisition_by_arm": {
+    "set1_debug_256": {
+      "gaussian_optimizer_updates": 512,
+      "self_renders": 6,
+      "successful_reconstructions": 2,
+      "targets": 12
+    },
+    "set1_diagnostic_1024": {
+      "gaussian_optimizer_updates": 2048,
+      "self_renders": 6,
+      "successful_reconstructions": 2,
+      "targets": 12
+    },
+    "set6_external_256": {
+      "gaussian_optimizer_updates": 512,
+      "self_renders": 6,
+      "successful_reconstructions": 2,
+      "targets": 12
+    }
+  },
+  "additional_events": [
+    {
+      "event": "Windows native GPU environment preflight",
+      "observation": "WSL check exited 1 because no distribution was installed. Linux deployment was verified on the separately registered Debian container.",
+      "receipt_id": "4d07ee42-e11e-431d-94b1-8f3e283a4cec",
+      "receipt_sha256": "8fc9a1d722fd429604bd0b500950f995dedd39b45d680ec6e777325f0a4b6dd9",
+      "status": "native_environment_verified",
+      "wall_s": null,
+      "wire_B": null
+    }
+  ],
+  "archive_scope": "Per-run manifest bytes sum the hash-bound members. The manifest and completion wrapper sit outside that inventory. Payload is a subset. Shared bytes can appear in several runs. Storage measurements were collected at discrete producer preflights. On Windows they cover the selected batch store.",
+  "cutoff_scope": "Complete successful, failed and recovered D0/D1 recorder executions sealed through the displayed inventory UTC. It excludes the resource summarizer itself and any later publication operations. Returned Windows computations retain their original producer timing.",
+  "cutoff_utc": "2026-11-23T20:10:01.855447+00:00",
+  "fitted_risk_models": 0,
+  "inventory_sha256": "ab94234621fe71f7d058dd6058d28635ab8f990c9d1309bd1fdf9564433ce80c",
+  "mac_archive_receiving": {
+    "scope": "Archive.receive on the Mac, including storage preflight, local copying and recursive verification of the producer's parents.",
+    "sum_of_local_archive_receipt_times_s": 204.85670599900914,
+    "verified_originals": 12
+  },
+  "missing": "Blank CSV cells indicate unmeasured or inapplicable counters. A process RSS sample excludes the OS and GPU. Device-wide GPU use includes other processes. CUDA allocator allocated/reserved peaks are separate.",
+  "model_training_runs": 0,
+  "network": {
+    "dispatch_logical_B": 2458653,
+    "linux_container_rx_B": 426466254,
+    "linux_container_tx_B": 1237749,
+    "official_DTU_HTTP_body_B": 79839006,
+    "returns_logical_B": 73637884,
+    "scope": "Linux interface counters include release assets and dependencies. DTU counts are HTTP response body bytes. For the mounted exchange only logical container and receipt bytes were observed. These counters describe different boundaries.",
+    "wire_bytes_Google_Drive": null
+  },
+  "producer_dispositions": {
+    "quarantined": 1,
+    "sealed": 71
+  },
+  "public_files": {
+    "runs.csv": {
+      "bytes": 30352,
+      "sha256": "aab20a833e805babe69015b9cef7b1919ab5827a52ec238c59f6b804c70edc85"
+    },
+    "stages.csv": {
+      "bytes": 4034,
+      "sha256": "93b9d616a5b5a62430a50526221ed26056873bfb1c47c4c8895e5c4ab6b6e3d6"
+    },
+    "transfers.csv": {
+      "bytes": 5160,
+      "sha256": "94e930a35c14cc3540f519286b9ffe3071a642243cdb5ee0e7a7cba5b94c78b3"
+    }
+  },
+  "recorded_pipeline_wall_time": "Each run is timed on its producer's monotonic clock. Stage sums measure recorded work. Some producers ran concurrently on separate host clocks.",
+  "risk_threshold_recalibrations": 0,
+  "run_counts": {
+    "D0": {
+      "cancelled": 0,
+      "failed": 1,
+      "interrupted": 0,
+      "succeeded": 2
+    },
+    "D1": {
+      "cancelled": 0,
+      "failed": 7,
+      "interrupted": 0,
+      "succeeded": 62
+    }
+  },
+  "schema": "el-dtu-resource-summary-1",
+  "source_self_render_views": 18,
+  "storage_at_cutoff": {
+    "active_store_target_B": 21474836480,
+    "mac_active_store_B": 13699346015,
+    "mac_free_floor_B": 32212254720,
+    "mac_volume_free_B": 34711425024,
+    "meaning": "Point-in-time local filesystem measurement, distinct from per-run sum of logical archived file bytes."
+  },
+  "storage_preflights_by_host": {
+    "Mac": {
+      "max_observed_active_store_B": 13698993428,
+      "min_volume_free_B": 34357698560,
+      "preflights": 49
+    },
+    "Windows": {
+      "max_observed_active_store_B": 62264644,
+      "min_volume_free_B": 520646488064,
+      "preflights": 12
+    }
+  },
+  "successful_reconstructions": 6,
+  "target_prediction_views": 36,
+  "training_label": "Gaussian parameter optimization fits the scene. The released four risk scorers are frozen.",
+  "true_gaussian_optimizer_updates": 3072
+}

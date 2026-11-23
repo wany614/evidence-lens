@@ -1,0 +1,266 @@
+{
+  "camera_plan_sha256": "e688ed923a57c65bc73be6a2ca794e8cc23ea554474ee825d65a92450fddbdbd",
+  "development_objects": [
+    "set1"
+  ],
+  "exposure": [
+    "Before freeze: official index, ReadMe, calibration, catalogue numeric IDs and development scan1, including its independent reference images and scores. No scan6 photographs were decoded.",
+    "Source opening: four scan6 source photographs, camera poses and self/target predictions and frozen scores. Six target photographs absent from reconstruction or risks.",
+    "Reference gate: after terminal M2/M4 four-method score originals, opened the six scan6 target photographs in one batch and checked the original catalogue illustrations for object identity."
+  ],
+  "external_objects": [
+    "set6"
+  ],
+  "frozen_scientific_files": {
+    "protocol/stage3-optimizer-v1.json": "2d1a704a8c93922326663edb3e27b047e05b1916bc47795d9a43771900fdf122",
+    "scripts/dtu_camera.py": "370c38de5917f706f856b15993d336ed26534956287c18125fd093fba30de6b7",
+    "scripts/dtu_camera_checkerboard.py": "850edd53af23bc6b6584c64a6a8893d756e45e14248d1b518981d74ea335034b",
+    "scripts/dtu_case.py": "c4a8385a01d22e0206a596e2dc438c46b001979a8fb87fbf3545228601831d92",
+    "scripts/dtu_case_record.py": "678ab76000dced404375fa721b5505bd21431bec451e1b4ba7001f985721e40c",
+    "scripts/dtu_convert.py": "a1e5a782621894eebf48ed47692a5f5a54fe6b00ebfeeb38429778dc502b7cfb",
+    "scripts/dtu_eval.py": "481a56481068f148401db465c99446c2e72c18896af06b0024a677a843aaa3fd",
+    "scripts/dtu_eval_board.py": "c43e9147b89733aecf037fa2f8f4c6d07d6c5f725c87bdb46fa9ccddfee2c29b",
+    "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+    "scripts/dtu_eval_record.py": "5e43eead8900c40dc655924fa30438551cacd02b1f76113c412c5dfaa619074a",
+    "scripts/dtu_eval_regression.py": "d89923c18b365e452b14dca3dadb72f051be809d6e9d6f5885c7468459d3b6a0",
+    "scripts/dtu_eval_replay.py": "1b77797c3c1064847581011aaa8b97ae1c6987b965d0240132ca40a3af264fdc",
+    "scripts/dtu_gate.py": "33441a1816029982584a0e85cf6c2f56f73fc0187011de28660a2e7685ba0d63",
+    "scripts/dtu_handoff.py": "1e026c9da10a97d82c1b03338336d83dc73a4fcfa947be292d9e5f3c979fd788",
+    "scripts/dtu_photo_probe.py": "4ba2af51430b23206f6860ba271eaf04a0f44606a59be3b22410d6bd9686303a",
+    "scripts/dtu_reconstruct_windows.py": "82d13f0a3c67f983a7b11866bb5aa0ed9b4e386aeec638440903851f01b06669",
+    "scripts/dtu_record_gate.py": "3c315bc27fa6fd1da24861f4cea8c5d789ca57bfbb9aa3261894a0b7abf15529",
+    "scripts/dtu_render.py": "f88e0ea03fda8b87d56979358949049016d70834fd8c91addd5e8b2cafa87693",
+    "scripts/dtu_report.py": "ba9e13a28ee50cba65f1879eb4ec8683d37c6d5bfc9691afe98aba8242527227",
+    "scripts/dtu_sample.py": "22ec2384061fce7993728ac6f9e0c61e34f50d2b4004faf4b1e59277b8232c7e",
+    "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+    "scripts/dtu_score_assets.py": "344b49d291d6a513330019609226f54cce99955e4cc60be195815d91ac767ae8",
+    "scripts/dtu_score_record.py": "3d93acddde69af9ef7ad102434498b23f660bcbce7330b57071a22334521d9b3",
+    "scripts/worker_jobs.py": "6f7cda07302c6052d1dcde935d7451ae799f581d35fd974dc18542bd89084a0b",
+    "src/evidence_lens/dtu_camera.py": "b6bb3a6bc5e1b2c1f90cf2563aefe1e0c2843201223760d75e5fd10e29884da0",
+    "src/evidence_lens/stage3_gaussians.py": "4fb9f7153ea96e5e6c8255d88e92f2ed56fd484320e7e2c665088c2441bf7b95"
+  },
+  "gates": {
+    "freeze": {
+      "manifest_sha256": "a90a08799089c1f934c94ae80eead2f5ef316d6571ca308d1360c0c03df1e942",
+      "member_sha256": "49be35c4f44dd35075945cfbeffc1d8a8b39f2624b54603b605659c05f71955b",
+      "run_id": "20261123T195524386855Z-2ea8b1e8f0e94d3a",
+      "utc": "2026-11-23T19:55:25.342574Z"
+    },
+    "opening": {
+      "manifest_sha256": "1bfe02bc577c5650f69d59a0062eb97e6dc0058ebae740c65438a31e91d5c6d5",
+      "member_sha256": "08ccc5fc2ba51fb7312c1013693d3e9418237121c5823f98fbb601ceffe02779",
+      "run_id": "20261123T195537041849Z-73b3e71e31c04f0b",
+      "utc": "2026-11-23T19:55:37.981905Z"
+    },
+    "reference-gate": {
+      "manifest_sha256": "e53909e4d762caf500b8212fec7cddff8866078e5ba8864c9ae0780e55f66e36",
+      "member_sha256": "515c5fd53a6cfc8066d78060253198d5b32d374037c7729ebb0d5fa28401cc3b",
+      "run_id": "20261123T200327409646Z-6ec1dae4241a4963",
+      "utc": "2026-11-23T20:03:28.355841Z"
+    }
+  },
+  "method_scopes": {
+    "B-L1-transfer": "one",
+    "MS-L1": "all",
+    "MS-frozen": "all",
+    "MS-ft": "all"
+  },
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "physical_identity": {
+    "conclusion": "different physical foreground objects; one externally evaluated object",
+    "original_sha256": "6f5e8fbbdc3962dca4acde1d9e6ac896df72829dd032ebfbcd2efa6606130dce",
+    "post_score_identity_readback": "20261123T200438365648Z-f7916765e6e44576",
+    "provider_index": "SampleSet/Datasets included.pdf page 1, cells 1 and 6",
+    "set1": "painted tapered container with lettering",
+    "set6": "miniature building with a dark roof and an adjoining red roof",
+    "shared": "brick supports and calibrated robotic rig"
+  },
+  "postopening_recorder_change": {
+    "change": "Permit FileNotFoundError for disappearing entries in a live capacity scan, retain other filesystem errors; serialize final run rename with the existing capacity writer lock. The same six-member request proceeded with all 26 scientific hashes unchanged.",
+    "exposure_at_fix": "Debug set1 results, set6 source/geometry engineering receipts and both score receipt hashes. No set6 reference files, error labels or performance metrics had been seen.",
+    "failed_run_ids": [
+      "20261123T200338919476Z-e45043f592e14fee",
+      "20261123T200339001422Z-0419b7b1bbee474b"
+    ],
+    "first_real_target_download": "20261123T200433204331Z-79fbfc90e48e4543",
+    "ordering": "After the 20:03:28 UTC reference gate and both unsuccessful preflights, before any successful retrieval of the six target photographs.",
+    "run_snapshots": {
+      "20261123T200338919476Z-e45043f592e14fee": {
+        "recorder_files": {
+          "src/evidence_lens/_capacity.py": "8d995b310078ebc5ece881de4dfd6f9c29f24a9f3bb6a79dace921a6ff2e6187",
+          "src/evidence_lens/recorder.py": "284270fbb15ae56fbc6438d2b5215f3f61dd4c944a7b8c7ff784849d4a1858ec"
+        },
+        "snapshot_sha256": "a9efd12b9823c1471db39df951075d16c9fe3b02fa37400d71d2e08d095293cd"
+      },
+      "20261123T200339001422Z-0419b7b1bbee474b": {
+        "recorder_files": {
+          "src/evidence_lens/_capacity.py": "8d995b310078ebc5ece881de4dfd6f9c29f24a9f3bb6a79dace921a6ff2e6187",
+          "src/evidence_lens/recorder.py": "284270fbb15ae56fbc6438d2b5215f3f61dd4c944a7b8c7ff784849d4a1858ec"
+        },
+        "snapshot_sha256": "a9efd12b9823c1471db39df951075d16c9fe3b02fa37400d71d2e08d095293cd"
+      },
+      "20261123T200433204331Z-79fbfc90e48e4543": {
+        "recorder_files": {
+          "src/evidence_lens/_capacity.py": "6e2b6f3a9b4195fd15f2e1f2a8566c3d3486ccd15bd46c2a4575e184e82519b5",
+          "src/evidence_lens/recorder.py": "5645e682664a2a35c7b32c22223e339f2973609869ed56b1c86edb8db220733c"
+        },
+        "snapshot_sha256": "5bf5e77fde37c93a2f661017a39204c830ab13f56da059d32c924526f095f05c"
+      },
+      "20261123T200438365648Z-f7916765e6e44576": {
+        "recorder_files": {
+          "src/evidence_lens/_capacity.py": "6e2b6f3a9b4195fd15f2e1f2a8566c3d3486ccd15bd46c2a4575e184e82519b5",
+          "src/evidence_lens/recorder.py": "5645e682664a2a35c7b32c22223e339f2973609869ed56b1c86edb8db220733c"
+        },
+        "snapshot_sha256": "752e352b4f34c201cf9d1a478b5fa017953bee61ea11079a79f159702dc750dc"
+      }
+    },
+    "trigger": "Two concurrent Mac preflights encountered vanished temporary directories. Neither worker started or read a reference."
+  },
+  "postopening_report_packaging": {
+    "change": "Catalogued a standalone object-identification document as documentary evidence and retained failed-run pins in the report configuration. The frozen export implementation and all four scientific evaluations were unchanged.",
+    "exposure": "All registered external scientific scores, labels, AP and denominators had been produced and replayed before these attempts.",
+    "initial_report_failure": "20261123T200554619963Z-ce41ea40604d4526",
+    "retry_request_refused": "20261123T200718124875Z-1c7f0083fce64d7d",
+    "revised_wrapper_preflight_refused": "20261123T200732205798Z-a9df8117aba14d39",
+    "successful_report": "20261123T200813869919Z-97b72eadb1034a81"
+  },
+  "postopening_scientific_changes": [],
+  "preopening_evidence": {
+    "acquired_archive_index": {
+      "manifest_sha256": "ac256a5d08abad7fae4d1572ba526bc1bb1e04e15a96478ec510adf1b8db5e27",
+      "member": "payload/archive.json",
+      "run_id": "20261123T193512888729Z-8f881159624847fc",
+      "sha256": "ada899f15df9e41924297f6460890d20c1e4c66ba0258dd11fa4243d39158f0e"
+    },
+    "case_readback_M2": {
+      "manifest_sha256": "f23a4dcf3537c2971a294314792106e101b4306d38910342dc7f65b05ec42ab4",
+      "member": "payload/reconstruction-readback.json",
+      "run_id": "20261123T194703262811Z-78c86ae90c4e4233",
+      "sha256": "f75d30deb1bf94bdf928570ce45b98f484a9f97957bb7f53a2472e79d1b92e2c"
+    },
+    "case_readback_M4": {
+      "manifest_sha256": "4242c70a43af425b9acdf5e9bbd3518e72a32cced7016f8ef73e64bdb3bf545d",
+      "member": "payload/reconstruction-readback.json",
+      "run_id": "20261123T194819091990Z-4b3483b969bb47f6",
+      "sha256": "ca84c0736ddbb3fbc76fa7ee4479793ac6ed77fafd6a18d79f65af1f879262ca"
+    },
+    "development_diagnostic_only": {
+      "manifest_sha256": "68a00ee094abdb87060ae24116ba8b51c4e6a9804bd811181e13a067f9d508fe",
+      "member": "payload/diagnostic.json",
+      "run_id": "20261123T195423457817Z-2a6cbd6753144b99",
+      "sha256": "9b4d34ecf0674603a9e61f02d6009cdaa54f96f59af68793402adef8406d84cc"
+    },
+    "diagnostic_decision": {
+      "manifest_sha256": "dfc00645ab730246790c6e5762035e6415c7b1699f005615c82cc2b00f93badf",
+      "member": "payload/diagnostic-decision.json",
+      "run_id": "20261123T194928787292Z-adc6aa0155074a27",
+      "sha256": "e5ff509f7079b42c0d742c774e5b469dfa7e73258eca24e66391419f3395a927"
+    },
+    "documentation": {
+      "manifest_sha256": "9c8bc2d2efd103a690eaac5379d8ea6ebec834fefda938b61358b58794c1ccb1",
+      "member": "payload/members.json",
+      "run_id": "20261123T193531676986Z-00929ff98dfe450f",
+      "sha256": "143049a27e6cd80e506521c25de27c3f1623197ff4fd492ca95e3a1f5613730b"
+    },
+    "evaluate_M2": {
+      "manifest_sha256": "efdfad4c1ca93bf401213a0a8f7ca04361a92ee635c64da262c344a1a19f6a15",
+      "member": "payload/evaluation.json",
+      "run_id": "20261123T194920844222Z-bf04f066cc284865",
+      "sha256": "94bfda6a5b8fba9938e6b0a325b2899169e496a6f2b8504aa45c02ea8cafe599"
+    },
+    "evaluate_M4": {
+      "manifest_sha256": "725a6b8f8714decb8d2ddb030e26b6413095f7f3c6869e25793fd08581029e0a",
+      "member": "payload/evaluation.json",
+      "run_id": "20261123T194927496119Z-e36844a7ca1a4ded",
+      "sha256": "5ad39530e444cc46b9e84fcf0ffceedb019066f0d1b9a08fc3482fce1de47422"
+    },
+    "measured_calibration_targets": {
+      "manifest_sha256": "182e27f6fa0496bb25176da909e4adbbdc974e2746e27b2da8848d2fa3a5635f",
+      "member": "payload/checkerboard.json",
+      "run_id": "20261123T194656748106Z-1f110eab7f0c48d1",
+      "sha256": "85eed8054caf25101a34da3d5210e92ce184fd5f11cfdb79e78f19f13577a3c0"
+    },
+    "native_case_regression": {
+      "manifest_sha256": "f81957e442675ca1fa3cbe1037d8eedb626461efc8c63bb4ca25b112d286af5d",
+      "member": "payload/regression.json",
+      "run_id": "20261123T194514844207Z-e6eaab65a988432d",
+      "sha256": "d683ae54583ac439085ec79a0c7ff9f0f01e31c2da1e31f58b4ee74880ff028b"
+    },
+    "native_feature_and_scores": {
+      "manifest_sha256": "5f0d8d006a3e1e934575b476f2c9ed63c81d16a26dfb24c49705ac5adc33ab6c",
+      "member": "payload/regression.json",
+      "run_id": "20261123T193716838088Z-65265d16e37041f0",
+      "sha256": "a90b566e9fccce9ce3e2bc0542747eebb34eb8564dcb90f357b16775adbe9cd6"
+    },
+    "optical_projection": {
+      "manifest_sha256": "8fe4dde3b7e95e5b49d6d43bbe9f57e123c00954e4fe3b49e41860880b7269ac",
+      "member": "payload/projection-checks.json",
+      "run_id": "20261123T193804778622Z-622e5e9ca6ef434b",
+      "sha256": "d118d2193c4608667a8e2e8c3b2772f925995eba7c263ce2f4154fb53da0955f"
+    },
+    "photographic_source_pairs": {
+      "manifest_sha256": "4bdebba38e6454fe1586c7383e8c9b2f718d63239c4d50d01440601132facfbb",
+      "member": "payload/photo-probe.json",
+      "run_id": "20261123T194613129626Z-5b7d19c936b14bdd",
+      "sha256": "5c5dcec366a72f4f1d13d68b0c84ac2a4a5921465aa1749903596043652de5ed"
+    },
+    "public_input_replay": {
+      "manifest_sha256": "5b538bbfe83180560e91509a2ce4292832af33ddda3686a779af9a11292075dc",
+      "member": "payload/camera-plan.json",
+      "run_id": "20261123T195250474262Z-52cccd6eccc54ef2",
+      "sha256": "e688ed923a57c65bc73be6a2ca794e8cc23ea554474ee825d65a92450fddbdbd"
+    },
+    "replay_M2": {
+      "manifest_sha256": "6f787d89e12a8d131f6c0370f5b09198b41713693d09a7a840c001bc92cc1cb6",
+      "member": "payload/replay.json",
+      "run_id": "20261123T194933346307Z-a46c28b1f2f94fc8",
+      "sha256": "98a58be962d121e964fd12393df344938ae89fec9d15e25ea35eac9f7afd04d3"
+    },
+    "replay_M4": {
+      "manifest_sha256": "ff53a8000b35ad00184c1de010105513cb5c68534873c2559e26bbaf3db372da",
+      "member": "payload/replay.json",
+      "run_id": "20261123T194942816949Z-042e3690dcbf4cf7",
+      "sha256": "52e9250260fd69f13f322dad91ebd8a5b5e86208639e77bceb8efd9a175a20bb"
+    }
+  },
+  "protocol_sha256": "7460bff77c65709cf2bd3f1273ff67a71fa9a400b80c809e9343e637a08d012b",
+  "registered_model_release": {
+    "candidate_sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669",
+    "commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+    "cpu_zip_sha256": "f555956840870309217cc85fe9b339ef53762679bbd2138b7f149d8ea451a7b7",
+    "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+    "method_sha256": "1a2cbdb0ea3a52dfbde2e518c833b18d677209444c6aa345314ba3757aa3c9db",
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "repository": "https://github.com/wany614/evidence-lens",
+    "version": "v0.3.0-rc.1"
+  },
+  "schema": "el-dtu-public-protocol-receipt-1",
+  "source_commit": "d70547673ae871e390e797c1a99ab29bf6bb7248",
+  "source_snapshot_sha256": "92a6f36b9917cec4233dc9504f27190fd82aa7031f51c0f5ce7a929335fc0ce0",
+  "view_set_sha256": "11b9da336f3cdef53d5703d7496ea11ab5694bb0656e31e8b53d2eac386be440"
+}

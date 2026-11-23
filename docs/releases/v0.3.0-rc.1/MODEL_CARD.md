@@ -21,3 +21,7 @@ The four held-out families contributed 48 native target renders. Under two-sourc
 ## Installations verified after publication
 
 The public archives were downloaded anonymously and run on macOS arm64, Windows AMD64 and Debian 13 Linux arm64 under OrbStack. The two arm64 checks used Python 3.12.16 and the Windows check used Python 3.12.10. Each replay compared all four methods in 120 distinct native outputs and independently checked 12 reference targets. Against the published CPU maps, macOS had zero threshold crossings, Windows had two and Linux had one. [Public verification receipts, numerical differences and exact environments](../../verification/v0.3.0-rc.1/README.md)
+
+## Subsequent frozen photographic evaluation
+
+The published CPU package and all four sets of parameters and thresholds were used unchanged on one external physical object, DTU scan6. With four sources the default MS-L1 common-domain AP was 0.91090 against view-equal prevalence 0.89892, and its frozen low group covered 2,378 of 393,216 pixels. Of those, 1,958 exceeded RGB MAE 0.05. The 256-pixel crop used known calibration, with high target reconstruction error before scoring. The study registered no risk training or recalibration. [Complete measurements and scope](../../results/dtu-external/README.md)

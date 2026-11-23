@@ -1,0 +1,44 @@
+{
+  "schema": "el-dtu-development-budget-appendix-1",
+  "run_id": "20261123T195718090596Z-ffdb32a35309402e",
+  "diagnostic": {
+    "manifest_sha256": "68a00ee094abdb87060ae24116ba8b51c4e6a9804bd811181e13a067f9d508fe",
+    "member": "payload/diagnostic.json",
+    "run_id": "20261123T195423457817Z-2a6cbd6753144b99",
+    "sha256": "9b4d34ecf0674603a9e61f02d6009cdaa54f96f59af68793402adef8406d84cc"
+  },
+  "main_evaluations": {
+    "M2": {
+      "manifest_sha256": "efdfad4c1ca93bf401213a0a8f7ca04361a92ee635c64da262c344a1a19f6a15",
+      "member": "payload/evaluation.json",
+      "run_id": "20261123T194920844222Z-bf04f066cc284865",
+      "sha256": "94bfda6a5b8fba9938e6b0a325b2899169e496a6f2b8504aa45c02ea8cafe599"
+    },
+    "M4": {
+      "manifest_sha256": "725a6b8f8714decb8d2ddb030e26b6413095f7f3c6869e25793fd08581029e0a",
+      "member": "payload/evaluation.json",
+      "run_id": "20261123T194927496119Z-e36844a7ca1a4ded",
+      "sha256": "5ad39530e444cc46b9e84fcf0ffceedb019066f0d1b9a08fc3482fce1de47422"
+    }
+  },
+  "models_scored": 0,
+  "frozen_main_views_checked": 12,
+  "files": {
+    "budget.md": {
+      "bytes": 956,
+      "sha256": "d55c58d2ffff925e02abe4bff673a95f2e3615d37e3a8ac7fa13c44182569e5a"
+    },
+    "endpoints.csv": {
+      "bytes": 1529,
+      "sha256": "b0fd0c1a8c8a716570ebdc61c3a7b14ea42ca7222b6e56f1611287289a8fb648"
+    },
+    "source-budget.csv": {
+      "bytes": 904,
+      "sha256": "f7bb5d27e4a7801aa17915e9da9113142ca21fd28f092fb329f5fdb2644354ab"
+    },
+    "target-budget.csv": {
+      "bytes": 5823,
+      "sha256": "4f346243be73547649fe0be32e2f8e9f545dcb08782beedf39e437306f5e5fa1"
+    }
+  }
+}

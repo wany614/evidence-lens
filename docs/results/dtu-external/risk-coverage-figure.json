@@ -1,0 +1,1246 @@
+{
+  "arm": "main-256",
+  "domain": "full_crop",
+  "file": {
+    "bytes": 43493,
+    "path": "risk-coverage.svg",
+    "sha256": "22d71e8dd652e5efc175dec1206d81418b6b2a16d8c024d7b9d133d40a48630a"
+  },
+  "panels": {
+    "set1-M2": {
+      "B-L1-transfer": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 211745,
+          "positive": 194714
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 19401
+          },
+          {
+            "accepted": 39322,
+            "positive": 38268
+          },
+          {
+            "accepted": 58982,
+            "positive": 56812
+          },
+          {
+            "accepted": 78643,
+            "positive": 75451
+          },
+          {
+            "accepted": 98304,
+            "positive": 93215
+          },
+          {
+            "accepted": 117965,
+            "positive": 111175
+          },
+          {
+            "accepted": 137626,
+            "positive": 128864
+          },
+          {
+            "accepted": 157286,
+            "positive": 146532
+          },
+          {
+            "accepted": 176947,
+            "positive": 164288
+          },
+          {
+            "accepted": 196608,
+            "positive": 181753
+          },
+          {
+            "accepted": 216269,
+            "positive": 198604
+          },
+          {
+            "accepted": 235930,
+            "positive": 215450
+          },
+          {
+            "accepted": 255590,
+            "positive": 232405
+          },
+          {
+            "accepted": 275251,
+            "positive": 249218
+          },
+          {
+            "accepted": 294912,
+            "positive": 265216
+          },
+          {
+            "accepted": 314573,
+            "positive": 282287
+          },
+          {
+            "accepted": 334234,
+            "positive": 300204
+          },
+          {
+            "accepted": 353894,
+            "positive": 318033
+          },
+          {
+            "accepted": 373555,
+            "positive": 335467
+          },
+          {
+            "accepted": 393186,
+            "positive": 352553
+          }
+        ],
+        "tau": 0.43483029305934906
+      },
+      "MS-L1": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 12751,
+          "positive": 9365
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 14443
+          },
+          {
+            "accepted": 39322,
+            "positive": 28554
+          },
+          {
+            "accepted": 58982,
+            "positive": 43594
+          },
+          {
+            "accepted": 78643,
+            "positive": 59726
+          },
+          {
+            "accepted": 98304,
+            "positive": 76867
+          },
+          {
+            "accepted": 117965,
+            "positive": 94485
+          },
+          {
+            "accepted": 137626,
+            "positive": 112101
+          },
+          {
+            "accepted": 157286,
+            "positive": 129786
+          },
+          {
+            "accepted": 176947,
+            "positive": 147529
+          },
+          {
+            "accepted": 196607,
+            "positive": 165351
+          },
+          {
+            "accepted": 216269,
+            "positive": 183430
+          },
+          {
+            "accepted": 235930,
+            "positive": 201802
+          },
+          {
+            "accepted": 255591,
+            "positive": 220259
+          },
+          {
+            "accepted": 262339,
+            "positive": 226688
+          }
+        ],
+        "tau": 0.06428983435034752
+      },
+      "MS-frozen": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 27991,
+          "positive": 18792
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 13060
+          },
+          {
+            "accepted": 39322,
+            "positive": 27012
+          },
+          {
+            "accepted": 58982,
+            "positive": 42579
+          },
+          {
+            "accepted": 78643,
+            "positive": 59563
+          },
+          {
+            "accepted": 98304,
+            "positive": 76779
+          },
+          {
+            "accepted": 117965,
+            "positive": 94064
+          },
+          {
+            "accepted": 137626,
+            "positive": 111164
+          },
+          {
+            "accepted": 157286,
+            "positive": 128671
+          },
+          {
+            "accepted": 176947,
+            "positive": 146546
+          },
+          {
+            "accepted": 196608,
+            "positive": 164439
+          },
+          {
+            "accepted": 216269,
+            "positive": 182809
+          },
+          {
+            "accepted": 235929,
+            "positive": 201440
+          },
+          {
+            "accepted": 255590,
+            "positive": 220105
+          },
+          {
+            "accepted": 262339,
+            "positive": 226688
+          }
+        ],
+        "tau": 0.11090798303484917
+      },
+      "MS-ft": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 39700,
+          "positive": 26612
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 12502
+          },
+          {
+            "accepted": 39322,
+            "positive": 26324
+          },
+          {
+            "accepted": 58982,
+            "positive": 42451
+          },
+          {
+            "accepted": 78643,
+            "positive": 59004
+          },
+          {
+            "accepted": 98304,
+            "positive": 75770
+          },
+          {
+            "accepted": 117965,
+            "positive": 92768
+          },
+          {
+            "accepted": 137626,
+            "positive": 110167
+          },
+          {
+            "accepted": 157286,
+            "positive": 127842
+          },
+          {
+            "accepted": 176947,
+            "positive": 145825
+          },
+          {
+            "accepted": 196608,
+            "positive": 164095
+          },
+          {
+            "accepted": 216269,
+            "positive": 182564
+          },
+          {
+            "accepted": 235930,
+            "positive": 201292
+          },
+          {
+            "accepted": 255590,
+            "positive": 220074
+          },
+          {
+            "accepted": 262339,
+            "positive": 226688
+          }
+        ],
+        "tau": 0.1158289834856987
+      }
+    },
+    "set1-M4": {
+      "B-L1-transfer": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 209689,
+          "positive": 185477
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 18868
+          },
+          {
+            "accepted": 39322,
+            "positive": 37451
+          },
+          {
+            "accepted": 58982,
+            "positive": 55816
+          },
+          {
+            "accepted": 78643,
+            "positive": 73857
+          },
+          {
+            "accepted": 98304,
+            "positive": 91504
+          },
+          {
+            "accepted": 117965,
+            "positive": 109076
+          },
+          {
+            "accepted": 137626,
+            "positive": 125650
+          },
+          {
+            "accepted": 157286,
+            "positive": 141557
+          },
+          {
+            "accepted": 176947,
+            "positive": 158050
+          },
+          {
+            "accepted": 196608,
+            "positive": 174680
+          },
+          {
+            "accepted": 216269,
+            "positive": 190943
+          },
+          {
+            "accepted": 235930,
+            "positive": 207834
+          },
+          {
+            "accepted": 255590,
+            "positive": 224787
+          },
+          {
+            "accepted": 275251,
+            "positive": 241455
+          },
+          {
+            "accepted": 294912,
+            "positive": 257921
+          },
+          {
+            "accepted": 314573,
+            "positive": 274252
+          },
+          {
+            "accepted": 334234,
+            "positive": 291384
+          },
+          {
+            "accepted": 353894,
+            "positive": 309161
+          },
+          {
+            "accepted": 373555,
+            "positive": 327699
+          },
+          {
+            "accepted": 393216,
+            "positive": 344182
+          }
+        ],
+        "tau": 0.43483029305934906
+      },
+      "MS-L1": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 13913,
+          "positive": 7319
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 11014
+          },
+          {
+            "accepted": 39322,
+            "positive": 25325
+          },
+          {
+            "accepted": 58982,
+            "positive": 40110
+          },
+          {
+            "accepted": 78643,
+            "positive": 55271
+          },
+          {
+            "accepted": 98304,
+            "positive": 71327
+          },
+          {
+            "accepted": 117965,
+            "positive": 88213
+          },
+          {
+            "accepted": 137626,
+            "positive": 105354
+          },
+          {
+            "accepted": 157286,
+            "positive": 122610
+          },
+          {
+            "accepted": 176947,
+            "positive": 139931
+          },
+          {
+            "accepted": 196608,
+            "positive": 157304
+          },
+          {
+            "accepted": 216269,
+            "positive": 174989
+          },
+          {
+            "accepted": 235930,
+            "positive": 193117
+          },
+          {
+            "accepted": 255590,
+            "positive": 211562
+          },
+          {
+            "accepted": 275251,
+            "positive": 230142
+          },
+          {
+            "accepted": 294912,
+            "positive": 248820
+          },
+          {
+            "accepted": 314572,
+            "positive": 267722
+          },
+          {
+            "accepted": 325960,
+            "positive": 278811
+          }
+        ],
+        "tau": 0.06428983435034752
+      },
+      "MS-frozen": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 36351,
+          "positive": 23495
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 13130
+          },
+          {
+            "accepted": 39322,
+            "positive": 25259
+          },
+          {
+            "accepted": 58982,
+            "positive": 38993
+          },
+          {
+            "accepted": 78643,
+            "positive": 54793
+          },
+          {
+            "accepted": 98304,
+            "positive": 71086
+          },
+          {
+            "accepted": 117965,
+            "positive": 87904
+          },
+          {
+            "accepted": 137626,
+            "positive": 105022
+          },
+          {
+            "accepted": 157286,
+            "positive": 122484
+          },
+          {
+            "accepted": 176947,
+            "positive": 140070
+          },
+          {
+            "accepted": 196608,
+            "positive": 157755
+          },
+          {
+            "accepted": 216269,
+            "positive": 175715
+          },
+          {
+            "accepted": 235930,
+            "positive": 193814
+          },
+          {
+            "accepted": 255590,
+            "positive": 212094
+          },
+          {
+            "accepted": 275251,
+            "positive": 230529
+          },
+          {
+            "accepted": 294912,
+            "positive": 249023
+          },
+          {
+            "accepted": 314573,
+            "positive": 267756
+          },
+          {
+            "accepted": 325960,
+            "positive": 278811
+          }
+        ],
+        "tau": 0.11090798303484917
+      },
+      "MS-ft": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 46983,
+          "positive": 30880
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 13949
+          },
+          {
+            "accepted": 39322,
+            "positive": 25970
+          },
+          {
+            "accepted": 58982,
+            "positive": 39450
+          },
+          {
+            "accepted": 78643,
+            "positive": 54707
+          },
+          {
+            "accepted": 98304,
+            "positive": 71015
+          },
+          {
+            "accepted": 117965,
+            "positive": 87785
+          },
+          {
+            "accepted": 137626,
+            "positive": 105042
+          },
+          {
+            "accepted": 157286,
+            "positive": 122509
+          },
+          {
+            "accepted": 176947,
+            "positive": 140121
+          },
+          {
+            "accepted": 196608,
+            "positive": 157714
+          },
+          {
+            "accepted": 216269,
+            "positive": 175586
+          },
+          {
+            "accepted": 235930,
+            "positive": 193697
+          },
+          {
+            "accepted": 255590,
+            "positive": 211917
+          },
+          {
+            "accepted": 275251,
+            "positive": 230367
+          },
+          {
+            "accepted": 294912,
+            "positive": 248947
+          },
+          {
+            "accepted": 314573,
+            "positive": 267726
+          },
+          {
+            "accepted": 325960,
+            "positive": 278811
+          }
+        ],
+        "tau": 0.1158289834856987
+      }
+    },
+    "set6-M2": {
+      "B-L1-transfer": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 203740,
+          "positive": 193599
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 19169
+          },
+          {
+            "accepted": 39322,
+            "positive": 38130
+          },
+          {
+            "accepted": 58982,
+            "positive": 56806
+          },
+          {
+            "accepted": 78643,
+            "positive": 75348
+          },
+          {
+            "accepted": 98304,
+            "positive": 93905
+          },
+          {
+            "accepted": 117965,
+            "positive": 112380
+          },
+          {
+            "accepted": 137626,
+            "positive": 130996
+          },
+          {
+            "accepted": 157286,
+            "positive": 149639
+          },
+          {
+            "accepted": 176947,
+            "positive": 168252
+          },
+          {
+            "accepted": 196608,
+            "positive": 186830
+          },
+          {
+            "accepted": 216269,
+            "positive": 205534
+          },
+          {
+            "accepted": 235930,
+            "positive": 224340
+          },
+          {
+            "accepted": 255590,
+            "positive": 243153
+          },
+          {
+            "accepted": 275251,
+            "positive": 261904
+          },
+          {
+            "accepted": 294912,
+            "positive": 280683
+          },
+          {
+            "accepted": 314573,
+            "positive": 299294
+          },
+          {
+            "accepted": 334234,
+            "positive": 317808
+          },
+          {
+            "accepted": 353894,
+            "positive": 336335
+          },
+          {
+            "accepted": 373555,
+            "positive": 355123
+          },
+          {
+            "accepted": 391300,
+            "positive": 371625
+          }
+        ],
+        "tau": 0.43483029305934906
+      },
+      "MS-L1": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 9370,
+          "positive": 8354
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 17984
+          },
+          {
+            "accepted": 39322,
+            "positive": 36390
+          },
+          {
+            "accepted": 58982,
+            "positive": 54798
+          },
+          {
+            "accepted": 78643,
+            "positive": 73189
+          },
+          {
+            "accepted": 98304,
+            "positive": 91757
+          },
+          {
+            "accepted": 117965,
+            "positive": 110343
+          },
+          {
+            "accepted": 137626,
+            "positive": 128964
+          },
+          {
+            "accepted": 157286,
+            "positive": 147600
+          },
+          {
+            "accepted": 176947,
+            "positive": 166472
+          },
+          {
+            "accepted": 196608,
+            "positive": 185277
+          },
+          {
+            "accepted": 216269,
+            "positive": 204083
+          },
+          {
+            "accepted": 235930,
+            "positive": 222986
+          },
+          {
+            "accepted": 255590,
+            "positive": 241821
+          },
+          {
+            "accepted": 275280,
+            "positive": 260580
+          },
+          {
+            "accepted": 280191,
+            "positive": 265355
+          }
+        ],
+        "tau": 0.06428983435034752
+      },
+      "MS-frozen": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 7021,
+          "positive": 6050
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 17886
+          },
+          {
+            "accepted": 39322,
+            "positive": 36519
+          },
+          {
+            "accepted": 58982,
+            "positive": 55144
+          },
+          {
+            "accepted": 78643,
+            "positive": 73653
+          },
+          {
+            "accepted": 98303,
+            "positive": 92107
+          },
+          {
+            "accepted": 117965,
+            "positive": 110589
+          },
+          {
+            "accepted": 137626,
+            "positive": 128998
+          },
+          {
+            "accepted": 157286,
+            "positive": 147616
+          },
+          {
+            "accepted": 176947,
+            "positive": 166352
+          },
+          {
+            "accepted": 196608,
+            "positive": 185189
+          },
+          {
+            "accepted": 216269,
+            "positive": 204002
+          },
+          {
+            "accepted": 235930,
+            "positive": 222789
+          },
+          {
+            "accepted": 255590,
+            "positive": 241615
+          },
+          {
+            "accepted": 275251,
+            "positive": 260603
+          },
+          {
+            "accepted": 280191,
+            "positive": 265355
+          }
+        ],
+        "tau": 0.11090798303484917
+      },
+      "MS-ft": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 6845,
+          "positive": 5816
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 17852
+          },
+          {
+            "accepted": 39322,
+            "positive": 36343
+          },
+          {
+            "accepted": 58982,
+            "positive": 54789
+          },
+          {
+            "accepted": 78643,
+            "positive": 73157
+          },
+          {
+            "accepted": 98304,
+            "positive": 91554
+          },
+          {
+            "accepted": 117965,
+            "positive": 109999
+          },
+          {
+            "accepted": 137626,
+            "positive": 128654
+          },
+          {
+            "accepted": 157286,
+            "positive": 147392
+          },
+          {
+            "accepted": 176947,
+            "positive": 166170
+          },
+          {
+            "accepted": 196608,
+            "positive": 184926
+          },
+          {
+            "accepted": 216269,
+            "positive": 203785
+          },
+          {
+            "accepted": 235930,
+            "positive": 222677
+          },
+          {
+            "accepted": 255590,
+            "positive": 241586
+          },
+          {
+            "accepted": 275251,
+            "positive": 260564
+          },
+          {
+            "accepted": 280191,
+            "positive": 265355
+          }
+        ],
+        "tau": 0.1158289834856987
+      }
+    },
+    "set6-M4": {
+      "B-L1-transfer": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 189681,
+          "positive": 173613
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 18850
+          },
+          {
+            "accepted": 39322,
+            "positive": 37524
+          },
+          {
+            "accepted": 58982,
+            "positive": 55543
+          },
+          {
+            "accepted": 78643,
+            "positive": 73118
+          },
+          {
+            "accepted": 98304,
+            "positive": 91051
+          },
+          {
+            "accepted": 117965,
+            "positive": 109114
+          },
+          {
+            "accepted": 137626,
+            "positive": 127061
+          },
+          {
+            "accepted": 157286,
+            "positive": 144807
+          },
+          {
+            "accepted": 176947,
+            "positive": 162364
+          },
+          {
+            "accepted": 196608,
+            "positive": 179752
+          },
+          {
+            "accepted": 216269,
+            "positive": 197252
+          },
+          {
+            "accepted": 235930,
+            "positive": 214839
+          },
+          {
+            "accepted": 255590,
+            "positive": 232638
+          },
+          {
+            "accepted": 275251,
+            "positive": 250234
+          },
+          {
+            "accepted": 294912,
+            "positive": 268161
+          },
+          {
+            "accepted": 314573,
+            "positive": 286194
+          },
+          {
+            "accepted": 334234,
+            "positive": 304209
+          },
+          {
+            "accepted": 353894,
+            "positive": 322294
+          },
+          {
+            "accepted": 373555,
+            "positive": 340176
+          },
+          {
+            "accepted": 393216,
+            "positive": 357822
+          }
+        ],
+        "tau": 0.43483029305934906
+      },
+      "MS-L1": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 2378,
+          "positive": 1958
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 16880
+          },
+          {
+            "accepted": 39322,
+            "positive": 33944
+          },
+          {
+            "accepted": 58982,
+            "positive": 51202
+          },
+          {
+            "accepted": 78643,
+            "positive": 68596
+          },
+          {
+            "accepted": 98304,
+            "positive": 86230
+          },
+          {
+            "accepted": 117965,
+            "positive": 103962
+          },
+          {
+            "accepted": 137626,
+            "positive": 121726
+          },
+          {
+            "accepted": 157286,
+            "positive": 139500
+          },
+          {
+            "accepted": 176947,
+            "positive": 157158
+          },
+          {
+            "accepted": 196608,
+            "positive": 174878
+          },
+          {
+            "accepted": 216269,
+            "positive": 192698
+          },
+          {
+            "accepted": 235930,
+            "positive": 210519
+          },
+          {
+            "accepted": 255590,
+            "positive": 228447
+          },
+          {
+            "accepted": 275251,
+            "positive": 246309
+          },
+          {
+            "accepted": 294912,
+            "positive": 264405
+          },
+          {
+            "accepted": 314513,
+            "positive": 282431
+          }
+        ],
+        "tau": 0.06428983435034752
+      },
+      "MS-frozen": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 1916,
+          "positive": 1447
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 16577
+          },
+          {
+            "accepted": 39322,
+            "positive": 34024
+          },
+          {
+            "accepted": 58982,
+            "positive": 51344
+          },
+          {
+            "accepted": 78643,
+            "positive": 68898
+          },
+          {
+            "accepted": 98304,
+            "positive": 86561
+          },
+          {
+            "accepted": 117965,
+            "positive": 104190
+          },
+          {
+            "accepted": 137626,
+            "positive": 121829
+          },
+          {
+            "accepted": 157286,
+            "positive": 139501
+          },
+          {
+            "accepted": 176947,
+            "positive": 157249
+          },
+          {
+            "accepted": 196608,
+            "positive": 175067
+          },
+          {
+            "accepted": 216269,
+            "positive": 192724
+          },
+          {
+            "accepted": 235930,
+            "positive": 210479
+          },
+          {
+            "accepted": 255590,
+            "positive": 228371
+          },
+          {
+            "accepted": 275252,
+            "positive": 246401
+          },
+          {
+            "accepted": 294912,
+            "positive": 264460
+          },
+          {
+            "accepted": 314513,
+            "positive": 282431
+          }
+        ],
+        "tau": 0.11090798303484917
+      },
+      "MS-ft": {
+        "V": 393216,
+        "frozen": {
+          "accepted": 1766,
+          "positive": 1289
+        },
+        "groups": [
+          {
+            "accepted": 19661,
+            "positive": 16779
+          },
+          {
+            "accepted": 39322,
+            "positive": 33974
+          },
+          {
+            "accepted": 58982,
+            "positive": 51355
+          },
+          {
+            "accepted": 78643,
+            "positive": 68803
+          },
+          {
+            "accepted": 98304,
+            "positive": 86385
+          },
+          {
+            "accepted": 117965,
+            "positive": 104041
+          },
+          {
+            "accepted": 137626,
+            "positive": 121655
+          },
+          {
+            "accepted": 157286,
+            "positive": 139346
+          },
+          {
+            "accepted": 176947,
+            "positive": 157008
+          },
+          {
+            "accepted": 196608,
+            "positive": 174672
+          },
+          {
+            "accepted": 216269,
+            "positive": 192438
+          },
+          {
+            "accepted": 235930,
+            "positive": 210362
+          },
+          {
+            "accepted": 255590,
+            "positive": 228327
+          },
+          {
+            "accepted": 275251,
+            "positive": 246314
+          },
+          {
+            "accepted": 294912,
+            "positive": 264455
+          },
+          {
+            "accepted": 314513,
+            "positive": 282431
+          }
+        ],
+        "tau": 0.1158289834856987
+      }
+    }
+  },
+  "run_id": "20261123T200845049623Z-f964bff4ee824019",
+  "schema": "el-dtu-numeric-curve-figure-1",
+  "source_csv_sha256": "239f9bd55af8c82448b190dcee7e88e315cbca3545a1ff60d3b33b4ff2542cdc"
+}

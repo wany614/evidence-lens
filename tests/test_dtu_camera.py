@@ -91,3 +91,24 @@ def test_set1_scoped_diagnostic_does_not_mutate_original_source():
     assert b'"optimization_steps":1024' in variant and b'd1-dtu-debug-only-1024' in variant
     assert (ROOT/RUNNER).read_bytes()==original
     with pytest.raises(Exception):source_variant(original+b"\n")
+
+
+def test_nested_worker_job_rejects_unauthorized_photo_even_with_matching_outer_sha(tmp_path):
+    import hashlib
+    import zipfile
+    from evidence_lens._bundle import encoded
+    from evidence_lens._bundle import sha
+    good_names={"source_cameras.json","render_cameras.json","optimization.json","sources/s00.png","sources/s03.png"}
+    job={"schema":"el-dtu-job-1","condition":"M2","trial_id":"d1-dtu-set1-M2-256","experiment_id":"d1-dtu-source-only-256",
+         "generator_source_ids":["s00","s03"],"optimization_steps":256,"target_ids":list(TARGETS),"object_id":"set1",
+         "files":{n:{"bytes":1,"sha256":OPT_SHA} for n in good_names}}
+    raw=encoded(job)
+    for extra in ("targets/v01.png","sources/s01.png"):
+        z=tmp_path/extra.replace("/","_")
+        with zipfile.ZipFile(z,"w") as archive:
+            archive.writestr("job.json",raw)
+            for n in good_names|{extra}:archive.writestr(n,b"G")
+        entry={"bytes":z.stat().st_size,"sha256":sha(z),"job_sha256":hashlib.sha256(raw).hexdigest(),"trial_id":job["trial_id"]}
+        with pytest.raises(Exception,match="Target image, unauthorized source"):
+            unpack(z,tmp_path/"staging",entry)
+        assert not (tmp_path/"staging").exists()

@@ -1,0 +1,31 @@
+batch,direction,item,items,logical_bytes,sha256,wire_bytes,mac_archive_status,mac_archive_elapsed_s,mac_linked_input_B,mac_receipt_sha256
+d1-dtu-set1-1024-diagnostic,Mac to Windows,source-only job container,1,792060,5e33cbed5454d07fda5c15210c5e6387163de202c9076a09e47d5021cb87130a,,,,,
+d1-dtu-set1-1024-diagnostic,Windows to Mac,worker receipt,1,545,9cf9a104c8a33f2a257f33e9c97a98d8c999ffd6fc05744117e0152dbaa4e0d7,,,,,
+d1-dtu-set1-1024-diagnostic,Windows to Mac,sealed run ZIP,1,1274025,d97329a5ff69a764c3c130c84c2b3f6392994ec3d5be05a2fb7a96e0eba42036,,accepted,1.164950291000423,241378,199d238fd128e3472e95ee5d065f03f882d1ba3e0808520ab76781c6edc089d5
+d1-dtu-set1-1024-diagnostic,Windows to Mac,worker receipt,1,541,38929262376fbc8550ad83eb744c30bf08b6f4ea30f10436b67ad31640d81592,,,,,
+d1-dtu-set1-1024-diagnostic,Windows to Mac,sealed run ZIP,1,9885039,a99b953a1f31f6e85af5b1955bbbffafde1e99372b3526e029d8c351967e328e,,accepted,0.948539917000744,230650,a50913fe46499b45ed1dd695f9ba15d872a901d3223bdc3ab36387f5c3910854
+d1-dtu-set1-1024-diagnostic,Windows to Mac,worker receipt,1,545,98b7f3d40e0e07df7a3501ee1ba6f4faba78a0014f5fdb58dfd4b4264ecab803,,,,,
+d1-dtu-set1-1024-diagnostic,Windows to Mac,sealed run ZIP,1,1524082,4d11b403b1b21d774efded4b3c47c4f70d09ff9447d92a05f5b260585fdc7be1,,accepted,0.9649943330005044,488285,6985dff0755f23a757fe14db5c16c88ff14980fabf2017b5f12ee11ce246b49b
+d1-dtu-set1-1024-diagnostic,Windows to Mac,worker receipt,1,542,f820b972848a86c37ff833c4319cedbb46e4a9544547d62ce140f29213bec583,,,,,
+d1-dtu-set1-1024-diagnostic,Windows to Mac,sealed run ZIP,1,12223807,fd1f9383db7762d82ba9143ab439f46f235a6102b2c426db732911483fe0c5ff,,accepted,0.9571770839975215,230650,7a15e28ae9f9d942d085624cc7e499cabcaae6c4be595119bfeea7d4e1df9e37
+d1-dtu-set1-1024-diagnostic,Windows to Mac,worker summary,1,3134,76a37b35c19a25355bdfbdade78343b1263da9901ebb103375d9b388a12d9f20,,,,,
+d1-dtu-set1-256,Mac to Windows,source-only job container,1,790650,784a12587fa698e764abb84fb5cbbf14a6b7699ad9cb1d5850bd0de6a95c742e,,,,,
+d1-dtu-set1-256,Windows to Mac,worker receipt,1,532,96874238ce0b29eb0a39149703b2a1153910198514f5b143380a13c44eef9c4f,,,,,
+d1-dtu-set1-256,Windows to Mac,sealed run ZIP,1,984355,8dc65148793bbbde21eff24ebe402f8bf18688c857061ca0cae9533414017bed,,accepted,1.0384548750007525,241378,1c4d485920b20481bfba245f97db89559e21b1a828616353e4b719911673cd4a
+d1-dtu-set1-256,Windows to Mac,worker receipt,1,529,c97e5d27b29f1f3e802448eaa3e284183c014e15ce779f61c7148b2ecd9ce8ae,,,,,
+d1-dtu-set1-256,Windows to Mac,sealed run ZIP,1,9843984,2742abf5c43b7235adcaf0dd7e21276a2d8d0eb679ec28ad8f4f716e6d411477,,accepted,0.8706007920045522,230650,0a9230cd509266e8a4850d1fbeb82a3312c2dd938169d4b088aaffb7f601e117
+d1-dtu-set1-256,Windows to Mac,worker receipt,1,533,15364d0026253faa027ad5d62beeec2297cef9671606bf4670bcf5553d909157,,,,,
+d1-dtu-set1-256,Windows to Mac,sealed run ZIP,1,1236107,335f61badd23ce3a1e0f7c6cd268edd11c1cd53f2cba1f959f1177fe56141ac6,,accepted,0.8878872500063153,488285,ad1ce36587db44dc8bc093527a015fc834c14ab95146fa368e2818afd7607f9f
+d1-dtu-set1-256,Windows to Mac,worker receipt,1,530,0c4297320ef4225c76a7d63fea18bd40927a36c5dfd2b6691d23813420bf415f,,,,,
+d1-dtu-set1-256,Windows to Mac,sealed run ZIP,1,12208963,4e0ae11f35b4261f86cccbe598a63ac0e7b317499af6568db6602040e807cd40,,accepted,1.0451215409993893,230650,01f7e14e68aea5054a7b1b0f879cd63dd97c95e7297861893b58d5df23f976f6
+d1-dtu-set1-256,Windows to Mac,worker summary,1,3049,1dfca0bad9d12a25d9de9b9dd71dee2fa1434db780ee18e213ecc4bed7ec925b,,,,,
+d1-dtu-set6-256,Mac to Windows,source-only job container,1,875943,92e6ab1b6dc96da1411ee905078363ace1a7221d491bd8f51b6de744f88e594c,,,,,
+d1-dtu-set6-256,Windows to Mac,worker receipt,1,533,32048beeb7ada9ebdd6222e83450dd559f6e7407e53b9196f81c4e37eba33590,,,,,
+d1-dtu-set6-256,Windows to Mac,sealed run ZIP,1,1012956,b921894c63b2e30f2882cc92c2814724d061e0dd342a8491632660af0f43e65f,,accepted,49.82868425000197,269198,988106e67c8f16a9ef2cda700d03a4b5a44c44a45525eb432ccf820208ad9763
+d1-dtu-set6-256,Windows to Mac,worker receipt,1,529,65d20463d1fd492a8c113a65a04aede7226209e37ddc924e9499a51ab95de750,,,,,
+d1-dtu-set6-256,Windows to Mac,sealed run ZIP,1,9928139,d0a0716781d62275e229ebe3efc5e7bf0a0a76dfecf46d219096c1a6af53f69b,,accepted,49.114855708001414,230650,297b7df46676b97123ecc8e4b0fd3dfcf2d3815ff033e864206880e04f9c860d
+d1-dtu-set6-256,Windows to Mac,worker receipt,1,533,28ad340696f6098f7a2c57798f8551214dc6781b3530c74e954a5ac8c0cb8108,,,,,
+d1-dtu-set6-256,Windows to Mac,sealed run ZIP,1,1294205,6752798ef1a94677ca0fdb2b2249eda18e721cae12058566d5aaaec0d2e4a3fa,,accepted,48.98530520799977,545455,9ab3c886af2b7a35394e6018742689a9fb100de5e97a955156ab517fb4f5fdcb
+d1-dtu-set6-256,Windows to Mac,worker receipt,1,530,cf52b2b54a6266a178247f6865282a6e95ac38708f110bb06b8fc7c8eb9e798e,,,,,
+d1-dtu-set6-256,Windows to Mac,sealed run ZIP,1,12206567,24a94149b9b33b6a5d7e3fc6abffe8f91ba771a3cdad5e8aa631c3f279167e0f,,accepted,49.05013474999578,230650,c39dcc9fac3de995450aecdf68dcaba1d7687d3c21f744451171f6414f8650a9
+d1-dtu-set6-256,Windows to Mac,worker summary,1,3050,896e79a2d5d00f39a7ae7e97531832ad60431690c528e7af0bee0d1a050755c3,,,,,

@@ -446,7 +446,8 @@ def record(args: argparse.Namespace) -> dict:
             storage_reuse = compact_inputs(root, bundle, result)
         final = root / ("quarantine" if rejected else "runs") / rid
         final.parent.mkdir(exist_ok=True)
-        bundle.rename(final)
+        with writer_gate(root):
+            bundle.rename(final)
         return {"run_id": rid, "path": str(final), "execution_status": status, "exit_code": code,
                 "producer_disposition": "quarantined" if rejected else "sealed",
                 "failure_reason": reason, "manifest_sha256": result["manifest_sha256"],

@@ -1,0 +1,58 @@
+{
+  "schema": "el-dtu-numerical-package-1",
+  "report_run_id": "20261123T200813869919Z-97b72eadb1034a81",
+  "files": {
+    "cohort-metrics.csv": {
+      "bytes": 21065,
+      "sha256": "a4d0f635c2c59871ab39c7654a5ea001e0012d54ddc823c1745a9534d7fe5007"
+    },
+    "matrix.csv": {
+      "bytes": 508,
+      "sha256": "e4b57297f67efc8d3c80bb86c39594024c282873fffc0cf2e8946411179607e7"
+    },
+    "object-metrics.csv": {
+      "bytes": 15239,
+      "sha256": "b9a7a8fc93fa6d32ce2f74f90d47701b93fc3781e583b786466db242490c4f8e"
+    },
+    "paired-conditions.csv": {
+      "bytes": 5407,
+      "sha256": "757727dcf8ebb7d48c96895bab8d8f1db039af9481f4ada07826dbc496bff660"
+    },
+    "provenance.json": {
+      "bytes": 16415,
+      "sha256": "b1f71ea036e2a86bf8f2fcdee802d1687338c4617ca6029d94447bc63af8c0d6"
+    },
+    "reconstruction.csv": {
+      "bytes": 1234,
+      "sha256": "0cd806fe6b590fad9ab9f1fe94acdb8520ef2dd4f03364ec70b209d2f38ec19e"
+    },
+    "render-diagnostics.csv": {
+      "bytes": 5244,
+      "sha256": "b7e8f9bd8bcb2e94594ce29282dec5fd3ea40f35c4577422d75cdc1b0b07e0ed"
+    },
+    "resource-readback.csv": {
+      "bytes": 5306,
+      "sha256": "bffcc147f1612d8ffba052cc9d58f041a1523fb77bf9c6c3d112f4889a94eba5"
+    },
+    "risk-coverage.csv": {
+      "bytes": 52331,
+      "sha256": "239f9bd55af8c82448b190dcee7e88e315cbca3545a1ff60d3b33b4ff2542cdc"
+    },
+    "score-bins.csv": {
+      "bytes": 18928,
+      "sha256": "4f9fd388b31ed88c287404d8cce01724e17e84fe90163780624bed8483039273"
+    },
+    "source-supervision.csv": {
+      "bytes": 1422,
+      "sha256": "81dc8aec2e04be91667894537bce61a6bb415a0e24a3b7abeb881369500b5f8a"
+    },
+    "study.md": {
+      "bytes": 5056,
+      "sha256": "63c2d9c87cc82675f1d4537791aebb9437486ccd8c0d9b8ccc36ef7b0ad4a620"
+    },
+    "target-metrics.csv": {
+      "bytes": 97475,
+      "sha256": "003473de7a56c53263e4390e7441bf622b14008dbaedb2428f8cf6bb38d678b4"
+    }
+  }
+}

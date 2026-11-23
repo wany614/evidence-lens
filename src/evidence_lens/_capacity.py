@@ -31,10 +31,16 @@ def bytes_on_tree(path: Path, *, count_links: bool = False) -> int:
     count = 0
     seen = set()
     def fail(error: OSError) -> None:
-        raise error
+        # Another recorder may seal (rename) its work directory during this sample.
+        if not isinstance(error, FileNotFoundError):
+            raise error
     for parent, _, names in os.walk(path, onerror=fail):
         for name in names:
-            item = (Path(parent) / name).lstat()
+            try:
+                item = (Path(parent) / name).lstat()
+            except FileNotFoundError:
+                # A disappearing entry consumed no bytes at its old path at stat time.
+                continue
             inode = (item.st_dev, item.st_ino)
             if stat.S_ISREG(item.st_mode) and (count_links or not item.st_ino or inode not in seen):
                 count += item.st_size

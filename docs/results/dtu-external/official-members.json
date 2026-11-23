@@ -1,0 +1,644 @@
+{
+  "provider": "Technical University of Denmark, official 2014 MVS SampleSet",
+  "rights": "Original data obtained directly from the provider for research evaluation. See the official site and bundled ReadMe. Only file identifiers and measurements are included here.",
+  "schema": "el-dtu-public-acquisition-1",
+  "source": "https://roboimagedata.compute.dtu.dk/?page_id=36",
+  "study_acquisitions": {
+    "catalog": {
+      "http_body_bytes": 29237,
+      "manifest_sha256": "39ac569861ed22e0279401f6a6163cbecb8534cb74776695df4f6b4915a48991",
+      "official_page_sha256": "734e3fc0aa1bb5ac65a784de2f553140a5df32310d54168d8b28c6345fbfc257",
+      "run_id": "20261123T193448456721Z-ca3d4e98ace84302"
+    },
+    "sample-documentation": {
+      "http_body_bytes": 2598241,
+      "manifest_sha256": "8aed80f797f4d20f1baa2a3ddfcdc583345b0feaec4cdd4c2ace27269eae9141",
+      "members": [
+        {
+          "bytes": 1579419,
+          "crc32": "d64f7a75",
+          "member": "SampleSet/Datasets included.pdf",
+          "sha256": "6f5e8fbbdc3962dca4acde1d9e6ac896df72829dd032ebfbcd2efa6606130dce"
+        },
+        {
+          "bytes": 1501,
+          "crc32": "9b62cae5",
+          "member": "SampleSet/Matlab evaluation code/BaseEval2Obj_web.m",
+          "sha256": "cad47b8e7aa35240d2117ac50ceaf18d519d8e7ab9eea1a5e02758b54ef8eddd"
+        }
+      ],
+      "run_id": "20261123T193645613413Z-3523700512504f33"
+    },
+    "sample-index": {
+      "archive": {
+        "bytes": 6905656531,
+        "directory_sha256": "50f79f108a0fc7f54a79dcec02108bb61c5b4c1d5d120d567329ff1b69349acc",
+        "etag": "\"19b9bf4d3-5652d3a88539d\"",
+        "last_modified": "Wed, 14 Feb 2018 14:50:13 GMT",
+        "url": "https://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip"
+      },
+      "http_body_bytes": 780616,
+      "manifest_sha256": "ac256a5d08abad7fae4d1572ba526bc1bb1e04e15a96478ec510adf1b8db5e27",
+      "run_id": "20261123T193512888729Z-8f881159624847fc"
+    },
+    "sample-metadata": {
+      "http_body_bytes": 4615409,
+      "manifest_sha256": "9c8bc2d2efd103a690eaac5379d8ea6ebec834fefda938b61358b58794c1ccb1",
+      "members": [
+        {
+          "bytes": 227,
+          "crc32": "8a4cf0e0",
+          "member": "SampleSet/CVPR2014bib.txt",
+          "sha256": "970c9cd2b16911f08ff609ee363a913f824cd65cd9dee97222b1a348ed324374"
+        },
+        {
+          "bytes": 2288,
+          "crc32": "a13225df",
+          "member": "SampleSet/Matlab evaluation code/BaseEvalMain_web.m",
+          "sha256": "f63f79138bc3039e7b9ce2768b1dda31d94fb4849d08dd4b9afffb101dd03487"
+        },
+        {
+          "bytes": 380,
+          "crc32": "4e06d036",
+          "member": "SampleSet/Matlab evaluation code/GetUsedSets.m",
+          "sha256": "6a9ce66833782ff5cdea0b9fd6190d99d4666dd06f95dd2585f8c6bef6daf6fc"
+        },
+        {
+          "bytes": 2103,
+          "crc32": "baa3a65b",
+          "member": "SampleSet/Matlab evaluation code/PointCompareMain.m",
+          "sha256": "bf8c6ba59e3a6b4aaf175a7ebdde3e8f87cb9ea78cf7ef387e5a12ba717e3e58"
+        },
+        {
+          "bytes": 269020,
+          "crc32": "527bcda5",
+          "member": "SampleSet/MVS Data/Calibration/cal18/calib_data.mat",
+          "sha256": "4252acf6794444353998856b203e092078e7fbec189578ca5f98080d91c92b28"
+        },
+        {
+          "bytes": 26959,
+          "crc32": "b63dfeae",
+          "member": "SampleSet/MVS Data/Calibration/cal18/Calib_Results_left.m",
+          "sha256": "f09ad4bbbe88f48dcf69618c85921472d24caa27bc39e8918b0ee6f16f32551a"
+        },
+        {
+          "bytes": 1192582,
+          "crc32": "1eef03d5",
+          "member": "SampleSet/MVS Data/Calibration/cal18/Calib_Results_left.mat",
+          "sha256": "dd287b01dccb9f3a09669ca4f974b72565d121dcf5476a9ab97332fcbcbe1760"
+        },
+        {
+          "bytes": 26994,
+          "crc32": "28bebd4e",
+          "member": "SampleSet/MVS Data/Calibration/cal18/Calib_Results_right.m",
+          "sha256": "f7a7fad3b491831f2e57739509b4f1eb7a7aa0840f32c62fa78f83776ae6a640"
+        },
+        {
+          "bytes": 1194048,
+          "crc32": "45b32460",
+          "member": "SampleSet/MVS Data/Calibration/cal18/Calib_Results_right.mat",
+          "sha256": "bba1b705a5046cad4b73f54778bbaa0184f6bd09f1477c3b1c1ff8091d7be957"
+        },
+        {
+          "bytes": 139,
+          "crc32": "1d2e855c",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_001.txt",
+          "sha256": "892234b937d511d0e10ab80f7832f2e3316a032aa0221db264c795169273ba20"
+        },
+        {
+          "bytes": 142,
+          "crc32": "496ae13d",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_002.txt",
+          "sha256": "ad57a8e6042f616d7c225d944fe5b01ecbfedfcb8fea3148e776139c0a79045a"
+        },
+        {
+          "bytes": 144,
+          "crc32": "5cfd1414",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_003.txt",
+          "sha256": "2ae1bd34ae18b7595cf0c3125aa5d669f69775a885b69ee9e8426cabcba491cb"
+        },
+        {
+          "bytes": 144,
+          "crc32": "519721e7",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_004.txt",
+          "sha256": "b34fbd8b584ee6085ed59ad2656e46dc3abe9fdc0d09b310228a87bd141ff34d"
+        },
+        {
+          "bytes": 147,
+          "crc32": "76a14f6a",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_005.txt",
+          "sha256": "54d049c6e0b234ec949e1902d89eec33587f8ad4a53fd7df648ae3707d493642"
+        },
+        {
+          "bytes": 146,
+          "crc32": "5e51a3e9",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_006.txt",
+          "sha256": "d51df3a6d0055c8a01cad8f2f50811594e64360b561ece2f25b54d2bfe1c88b0"
+        },
+        {
+          "bytes": 146,
+          "crc32": "cf31e638",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_007.txt",
+          "sha256": "eba9bcfb252b997348c9cae16a39dad829a29969bc939e681b55cfc0a36dbe46"
+        },
+        {
+          "bytes": 145,
+          "crc32": "cc2c4437",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_008.txt",
+          "sha256": "a04b1d0ea0d80980585b562dad17c283cc6e9564996b9fca352bbe6cdf9e3893"
+        },
+        {
+          "bytes": 144,
+          "crc32": "77daf6ef",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_009.txt",
+          "sha256": "db1e23ced12f7bf5ca24e46b402dcaace98481a4ff2158d53747bcdac91184c2"
+        },
+        {
+          "bytes": 145,
+          "crc32": "88552adb",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_010.txt",
+          "sha256": "ecc3a331d36a3bc4d8b1c739fb24184a590f017498d2268ab0d52e42a56f6a23"
+        },
+        {
+          "bytes": 144,
+          "crc32": "7df3c829",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_011.txt",
+          "sha256": "a64e9a8a2f4e3408740366f7047c6c9b8b6acd86444ec18af75a07e96fd760d1"
+        },
+        {
+          "bytes": 144,
+          "crc32": "a3e79c81",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_012.txt",
+          "sha256": "67858dd75353b8ddaa837d11cfb193d14afb68af7f184274bd55fe3ea5631591"
+        },
+        {
+          "bytes": 145,
+          "crc32": "e7882328",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_013.txt",
+          "sha256": "8f8975bb6e790a4b81a2d9adc62b9c2c074228558e7baae2b3fb4948ff7eb93b"
+        },
+        {
+          "bytes": 145,
+          "crc32": "88cd0002",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_014.txt",
+          "sha256": "52df3cbc7fb79d2f4e010158f495a144778e899d7a35618ec43177c162ecdb27"
+        },
+        {
+          "bytes": 145,
+          "crc32": "e8dc79a1",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_015.txt",
+          "sha256": "267e5f2517fefc205492668df0d7585d9d1d3ceafa68f75712988a40a6479148"
+        },
+        {
+          "bytes": 144,
+          "crc32": "2756080f",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_016.txt",
+          "sha256": "622056133b5268797c11f7a2f9b26ada9de9afc02e992f50ea32aa0a691ec0e8"
+        },
+        {
+          "bytes": 146,
+          "crc32": "cf711456",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_017.txt",
+          "sha256": "10be00b1e1321d0e7308dfb63e3355db51899bfc1b5a5283d881bc1243e86783"
+        },
+        {
+          "bytes": 146,
+          "crc32": "e2fcd85d",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_018.txt",
+          "sha256": "f8add6c54af0fc99d08e6c3f234767ae1eaa06f936a9bdb5d40838dd1cc60cfa"
+        },
+        {
+          "bytes": 146,
+          "crc32": "b7019094",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_019.txt",
+          "sha256": "570333481a91c7776e8da0e3e2228c542a512eb1ee202d5d931aa93d368fd966"
+        },
+        {
+          "bytes": 144,
+          "crc32": "260d5af5",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_020.txt",
+          "sha256": "bf2344171ffa41969c9761ddbe1c1c097e12070b749673afe4022d959083bcd1"
+        },
+        {
+          "bytes": 145,
+          "crc32": "7b625871",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_021.txt",
+          "sha256": "a2e29b287e903d097c8e8673cfa9af29610e92cfb7d148163f59f01f6535fbe4"
+        },
+        {
+          "bytes": 146,
+          "crc32": "4bfc7de2",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_022.txt",
+          "sha256": "0472bff960feb6e256949e9376de19875b6f1311d4ece06d0eb97f292513e5c6"
+        },
+        {
+          "bytes": 145,
+          "crc32": "515c504e",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_023.txt",
+          "sha256": "7b6e4f73b727ef3c83947f09f2a9d74d6eb0d7071ec375eeb380e2eb39882014"
+        },
+        {
+          "bytes": 144,
+          "crc32": "6925708f",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_024.txt",
+          "sha256": "cb030dcd9eff73a611c7bd986ca1be5d050905d789ee9f36e2a473b53ddaacd3"
+        },
+        {
+          "bytes": 145,
+          "crc32": "4fe374a6",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_025.txt",
+          "sha256": "a6773cd522ad09d663bb9612477342cda3a930c223ec10493935ef4cf00f549a"
+        },
+        {
+          "bytes": 146,
+          "crc32": "0e1cd33b",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_026.txt",
+          "sha256": "cffb3b8bdda10f8509d457ae23e2841a81d93ba75d878552e8aeb37feea21d10"
+        },
+        {
+          "bytes": 144,
+          "crc32": "bc658343",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_027.txt",
+          "sha256": "52a871abf5aaf2956603339d87b6baeb6576eaf14ee910582a699e09e5069660"
+        },
+        {
+          "bytes": 146,
+          "crc32": "954dd0c8",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_028.txt",
+          "sha256": "e0b30d843e30842e7525adbef54fdecc916b68ba7b07997b1cd480bc1583eae1"
+        },
+        {
+          "bytes": 146,
+          "crc32": "56cbe420",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_029.txt",
+          "sha256": "fd40437296bca421aeb75a9a82f09c772d96d41725077994a639f09f7a98c037"
+        },
+        {
+          "bytes": 147,
+          "crc32": "45af0fba",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_030.txt",
+          "sha256": "998e13d9b6daea39e071690834b38c4295152095dde92ef32b79d125bca5a9ae"
+        },
+        {
+          "bytes": 147,
+          "crc32": "be7e9523",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_031.txt",
+          "sha256": "9c716db26fdb3efd45dde164ec138c6e3c06b5e5723f9aaf4b2effb9b6432eb3"
+        },
+        {
+          "bytes": 147,
+          "crc32": "a1d720d9",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_032.txt",
+          "sha256": "65f67822f110120233daa92539efe761b3c3e9ac11020dc03aac527a3a2563f6"
+        },
+        {
+          "bytes": 145,
+          "crc32": "c7b5b141",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_033.txt",
+          "sha256": "21b3210c9c20c8630bc8266f31a1b963457da99f9e465bebe54d4ab83cec64d8"
+        },
+        {
+          "bytes": 144,
+          "crc32": "0086959c",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_034.txt",
+          "sha256": "0691a51e3064fc67fe03bbfce187dca504bb868fd3916086fd02a62fbc31dfd3"
+        },
+        {
+          "bytes": 144,
+          "crc32": "8b21d414",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_035.txt",
+          "sha256": "ff44bd66caf7d030df84339d918b491968b0793860eee0b13bea4eed72221ed4"
+        },
+        {
+          "bytes": 146,
+          "crc32": "7854fed9",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_036.txt",
+          "sha256": "daab32a8b8a9ff58fc9958ebc8fc59be0314e6da7b52799e03f5d1b6c678ece9"
+        },
+        {
+          "bytes": 146,
+          "crc32": "cfe535b6",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_037.txt",
+          "sha256": "fb110d34849d380b071c8e970e4274895643eeb4693254017a502a1baa43329a"
+        },
+        {
+          "bytes": 144,
+          "crc32": "efea3c9c",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_038.txt",
+          "sha256": "e234e914afa7c250f4370d6035165e5af4287fdbfc6db5a739dbf0696f8c0e0b"
+        },
+        {
+          "bytes": 146,
+          "crc32": "ff5700f2",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_039.txt",
+          "sha256": "5e5a9ebcf83d96ef6f1deab22d26f2fefd74879980057d2cd8d46217c9a3b8d4"
+        },
+        {
+          "bytes": 145,
+          "crc32": "d9cdf754",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_040.txt",
+          "sha256": "2296c1c806b01721f19fde0fa3057f59e4d1e1ece0cd739641e4528281e6d14b"
+        },
+        {
+          "bytes": 146,
+          "crc32": "023e4acf",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_041.txt",
+          "sha256": "2d012ab992a1c84a28d292b9b0077fbad0707ff7b64a206e845dfd14acbbe30f"
+        },
+        {
+          "bytes": 147,
+          "crc32": "d36ed33a",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_042.txt",
+          "sha256": "f6338e4136557be009565161eba2236c33dec5940be052d7410a10542680a66a"
+        },
+        {
+          "bytes": 147,
+          "crc32": "c80ebfff",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_043.txt",
+          "sha256": "259147e0fd812dacc824b693312309617f93ec43f75db2431d7bcd3f74a70c23"
+        },
+        {
+          "bytes": 146,
+          "crc32": "7f4d1344",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_044.txt",
+          "sha256": "5440f8c5b5081fb61e04b3dafb5ae9a345a3b61f08aa3156c02500a00e61cfeb"
+        },
+        {
+          "bytes": 146,
+          "crc32": "d8513bf4",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_045.txt",
+          "sha256": "4716b2adc88789e93e574a5e001edf933a55d3e774a7276604e906ceee061b27"
+        },
+        {
+          "bytes": 147,
+          "crc32": "22269a35",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_046.txt",
+          "sha256": "c8bf3ba303628fec3a3b3a36cb7830e7aa7e9897d19fde70eb857de225167fda"
+        },
+        {
+          "bytes": 147,
+          "crc32": "1e7faf40",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_047.txt",
+          "sha256": "a56286759d372597b23c91083de74d84ca349b56c191aa1a5fc64609028c15de"
+        },
+        {
+          "bytes": 146,
+          "crc32": "e925d449",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_048.txt",
+          "sha256": "d61d7d07f188c28e9dc512830878e94f91bac1b7564440e78485d69e6621d302"
+        },
+        {
+          "bytes": 146,
+          "crc32": "99169220",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_049.txt",
+          "sha256": "5c9a1c167a539895b57c2a6894e875e519544a8870635efefa270f7bc06d7c94"
+        },
+        {
+          "bytes": 145,
+          "crc32": "dacb92c1",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_050.txt",
+          "sha256": "9d952c852416cedfe93e61b4854ba39ed20b954bb4601cdb337c3b896f491ce7"
+        },
+        {
+          "bytes": 145,
+          "crc32": "bedc8f3d",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_051.txt",
+          "sha256": "51449d2b47054ad499a2ee8cc59e2a0e50c45bb2f952507186cb5696f016dc03"
+        },
+        {
+          "bytes": 144,
+          "crc32": "e0c38de3",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_052.txt",
+          "sha256": "68a45b64444348bcc2401f67d5ae4af44fb5e029b65ba7bb01d35266333f66b1"
+        },
+        {
+          "bytes": 145,
+          "crc32": "cf2e4347",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_053.txt",
+          "sha256": "f6cbad24653bc46ea6e510e42f2fc92db7864efb75dd1fdfd2cf1ba0a659b657"
+        },
+        {
+          "bytes": 146,
+          "crc32": "4b38d068",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_054.txt",
+          "sha256": "c4693ceca5a5d6b94079ad0b9e1f09b33ea94524e0e347b50ee9e0c267c2d6e3"
+        },
+        {
+          "bytes": 142,
+          "crc32": "cf8403a8",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_055.txt",
+          "sha256": "8de7f421a4ed7283d467a0a1269245acd90dec1cc30a84e689c02e6dc0ed0c51"
+        },
+        {
+          "bytes": 144,
+          "crc32": "8924675d",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_056.txt",
+          "sha256": "c07613165bd303d99018327ff461f804fe55048b9115018ad23faeb28bdea20d"
+        },
+        {
+          "bytes": 143,
+          "crc32": "776e9ac9",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_057.txt",
+          "sha256": "c8c8beca900334177692bac7661534730a668ec55a3510c429cab4ff584a53f8"
+        },
+        {
+          "bytes": 145,
+          "crc32": "48cb2907",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_058.txt",
+          "sha256": "782f768ac6cfc9690b437b4c59fd9c2cac26c54ae5a954e15f63693c047be3da"
+        },
+        {
+          "bytes": 147,
+          "crc32": "ba8feb52",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_059.txt",
+          "sha256": "d081a36584ec26d03f39aa04e166db9fbd3d6b03f4f38eec272252ee8b0b6945"
+        },
+        {
+          "bytes": 146,
+          "crc32": "35c4c38e",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_060.txt",
+          "sha256": "46fdaaea4b9bc94dbf6bd55896a85c880ec5f8a45f57f2a506ec387dfc008d15"
+        },
+        {
+          "bytes": 147,
+          "crc32": "d0a167a3",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_061.txt",
+          "sha256": "7f7f6b08a82cbe003de5458edc00fe309d58d605cc443b817136d605dba7d54c"
+        },
+        {
+          "bytes": 145,
+          "crc32": "454d7a9a",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_062.txt",
+          "sha256": "5d113b12ea28581e60abcdf8c2833a313e4221005a42d95a00d6d8c60cd05e4c"
+        },
+        {
+          "bytes": 146,
+          "crc32": "641343e1",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_063.txt",
+          "sha256": "165ca919c0220db61628b9e4d022cca46f1429daf175cc055b4b3474a48e688b"
+        },
+        {
+          "bytes": 145,
+          "crc32": "2a0f5648",
+          "member": "SampleSet/MVS Data/Calibration/cal18/pos_064.txt",
+          "sha256": "f459a3c90e819bb7333d3b8d661fdd4018d746b7cff24c6968a44f06f420cd99"
+        },
+        {
+          "bytes": 3648,
+          "crc32": "eab38388",
+          "member": "SampleSet/ReadMe.txt",
+          "sha256": "2d437c34541be6110f2bbfafb399681e823d8ed775f461575e9ba941a3e08ea3"
+        }
+      ],
+      "run_id": "20261123T193531676986Z-00929ff98dfe450f"
+    },
+    "set1-source-download": {
+      "http_body_bytes": 13074062,
+      "manifest_sha256": "50ffb417ee30b76bee8910a082245016a9d0d6d680e938c6f3696608f08b9b72",
+      "members": [
+        {
+          "bytes": 3038542,
+          "crc32": "e87263a0",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_017_3_r5000.png",
+          "sha256": "4b3a4ebc0d638f8aae6d748822318c5e36f01946de4fa11d69278514842c9d20"
+        },
+        {
+          "bytes": 2914698,
+          "crc32": "8ad60771",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_022_3_r5000.png",
+          "sha256": "5dd0df829a7bf0e1217b3e294f91121bb78e2d4e7ece0cf474cdd26a7ba2972d"
+        },
+        {
+          "bytes": 2899926,
+          "crc32": "2aef8414",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_023_3_r5000.png",
+          "sha256": "5d7b907336c474488a356bb16f8f2ba698fac7a899aa6b0d1c22fef263a8b11e"
+        },
+        {
+          "bytes": 2806555,
+          "crc32": "2e67def0",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_024_3_r5000.png",
+          "sha256": "448e4fedf2994d15d40d24deb879fe74814ac7d01b1b3af9751e5523e32fb623"
+        }
+      ],
+      "run_id": "20261123T193923708039Z-067903b0f7a6480b"
+    },
+    "set1-truth-download": {
+      "http_body_bytes": 18613007,
+      "manifest_sha256": "7257c10c82f8f1d06c3c3079a71e1e54e3c4e20f1ba7aea6df4c250837a2a939",
+      "members": [
+        {
+          "bytes": 2890546,
+          "crc32": "57d745f3",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_016_3_r5000.png",
+          "sha256": "eb19e0c2bd1b31cc2b9876965cc08b1d503aa5439a70160b5f4f6dd63e4282cc"
+        },
+        {
+          "bytes": 2958242,
+          "crc32": "d3fe60b8",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_018_3_r5000.png",
+          "sha256": "8633a647cc839a28258b6079433ab7a671a5998bd4f2d5fa52f0fa2be1f4628f"
+        },
+        {
+          "bytes": 2728820,
+          "crc32": "46ad9157",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_025_3_r5000.png",
+          "sha256": "b12dd34309df958e05400e6f27a7365fe76a69f71feff83636afc950d522c73c"
+        },
+        {
+          "bytes": 2773969,
+          "crc32": "023ec80c",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_035_3_r5000.png",
+          "sha256": "7a74a456d232b1bb61a19d11378b70fd92f86c0e8e892cee2f1273c8104c4178"
+        },
+        {
+          "bytes": 2833640,
+          "crc32": "651a0613",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_036_3_r5000.png",
+          "sha256": "cd8259ec76ca70f6cdca81e1909b3375b22034dc729f1a03c0bd29cd1bda7bf7"
+        },
+        {
+          "bytes": 2792486,
+          "crc32": "d683f133",
+          "member": "SampleSet/MVS Data/Rectified/scan1/rect_037_3_r5000.png",
+          "sha256": "2b6ac7e2f1e77e95cc5f68fb25cf5ce085fb9f6b832c5f2d2786f4e33a6461c2"
+        }
+      ],
+      "run_id": "20261123T193923708036Z-a2e5c8e0c18b4da7"
+    },
+    "set6-source-download": {
+      "http_body_bytes": 13226697,
+      "manifest_sha256": "214933faf550848981c17b86b9c43b14ba19c78ec398a4e932d2ec6bc8f43d43",
+      "members": [
+        {
+          "bytes": 3170149,
+          "crc32": "08a53268",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_017_3_r5000.png",
+          "sha256": "00cf1fa727d08c4a7b3cefa26ca33afb03485907d8812bb132ac9c426f447f52"
+        },
+        {
+          "bytes": 3102716,
+          "crc32": "92b7f0aa",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_022_3_r5000.png",
+          "sha256": "1f82adae2b209680cc524a0f0c23061c1fe2619b7ec3443a412edb6ddc4827b2"
+        },
+        {
+          "bytes": 3128789,
+          "crc32": "da6cbbec",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_023_3_r5000.png",
+          "sha256": "8ab19a059b636cc24b15f815b8cd518353bef10f824e2d60cd3717448a0adbcd"
+        },
+        {
+          "bytes": 3044087,
+          "crc32": "cd94e72b",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_024_3_r5000.png",
+          "sha256": "5f8d9bbc5b61914875ccffc51cc12cd81fcab7f7c10073f4570f51b6daf055ed"
+        }
+      ],
+      "run_id": "20261123T195544269000Z-97e0bd0023e44174"
+    },
+    "set6-truth-download": {
+      "http_body_bytes": 18878234,
+      "manifest_sha256": "803983ef1d4e1fa015847d68ea48e43bfe6231da7ca5f1f21d3e598aaffc2812",
+      "members": [
+        {
+          "bytes": 3025397,
+          "crc32": "f1fb8697",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_016_3_r5000.png",
+          "sha256": "e07305b73ccc8b99dbfbcdae437a5e58def0ec3bf89c76bdd0dfa5ada4032948"
+        },
+        {
+          "bytes": 3042539,
+          "crc32": "b6115e57",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_018_3_r5000.png",
+          "sha256": "202d036c6c0c605fc7e9656abbcd3f12c4825127f0eef3229a5f55365c74da27"
+        },
+        {
+          "bytes": 2959275,
+          "crc32": "05a6f741",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_025_3_r5000.png",
+          "sha256": "6a8b78457092c2f24a667e88006b256399cea0c151ae34b264e6b827cead38ff"
+        },
+        {
+          "bytes": 3009554,
+          "crc32": "5731760b",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_035_3_r5000.png",
+          "sha256": "8d2598b03d8e95594141d5a85ce28624f1224106247c74d972a33ab38c04671a"
+        },
+        {
+          "bytes": 3060083,
+          "crc32": "461a222f",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_036_3_r5000.png",
+          "sha256": "f4357f5650d433ba23665642bfbd5ce18cd08f1be0e0c2cb0f0e0bacdc2d968a"
+        },
+        {
+          "bytes": 3000260,
+          "crc32": "fea69866",
+          "member": "SampleSet/MVS Data/Rectified/scan6/rect_037_3_r5000.png",
+          "sha256": "d863b8328d0a2137c851571838d10072f6cf5745c507ab43858673e6b7c7d1d9"
+        }
+      ],
+      "run_id": "20261123T200433204331Z-79fbfc90e48e4543"
+    }
+  }
+}

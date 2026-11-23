@@ -69,3 +69,21 @@ def test_external_sources_and_truth_require_distinct_pinned_gates(tmp_path):
 def test_metadata_role_rejects_unregistered_movie():
     with pytest.raises(ValueError):
         verify_members({"members":["SampleSet/1895.mp4"]}, None, None, None)
+
+
+def test_capacity_keeps_counting_after_ephemeral_entries_disappear(tmp_path, monkeypatch):
+    from evidence_lens import _capacity
+
+    (tmp_path / "still-here").write_bytes(b"x" * 41)
+    def walk(_root, onerror):
+        onerror(FileNotFoundError("ephemeral directory"))
+        yield tmp_path, [], ["already-moved", "still-here"]
+    monkeypatch.setattr(_capacity.os, "walk", walk)
+    assert _capacity.bytes_on_tree(tmp_path) == 41
+
+    def denied(_root, onerror):
+        onerror(PermissionError("unreadable directory"))
+        yield tmp_path, [], []
+    monkeypatch.setattr(_capacity.os, "walk", denied)
+    with pytest.raises(PermissionError):
+        _capacity.bytes_on_tree(tmp_path)
