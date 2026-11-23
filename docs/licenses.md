@@ -2,6 +2,8 @@
 
 This inventory covers the v1.1 implementation and its separate research artifacts. There is no project-wide grant for third-party material. The public release must state the owner's chosen terms for each original asset class. Local development can proceed while that choice is open.
 
+The v0.1.1-rc.1 private candidate includes its own notice at `docs/licenses.md` inside the ZIP. It links to the four included notices for original software, fitted parameters, the authored example and research measurements. The candidate includes numerical formal results and the separate authored plane example. [Packaged notices and material boundaries](releases/v0.1.1-rc.1/docs/licenses.md)
+
 | Material | P0 finding | Distribution decision |
 | --- | --- | --- |
 | Original Evidence Lens code, documentation, configuration and procedural scene recipe | Written for this project. No third-party source or model file is vendored. | Owner's source license pending. MIT is a candidate. The local audit classifies these files as original, with public export pending. |

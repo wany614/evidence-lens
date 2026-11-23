@@ -195,7 +195,7 @@ def check_npz(path, layout):
                 )
 
 
-def check_example_media(folder):
+def check_example_media(folder, graded_views=("v01",)):
     cameras = load_cameras(folder / "example/cameras.json", ReadAudit())
     for view, name in (("source", "input.png"), ("v01", "v01-prediction.png")):
         h, w = cameras[view].shape
@@ -206,10 +206,11 @@ def check_example_media(folder):
             folder / "example/predictions" / (view + ".npz"),
             {"rgb": (np.float32, (*shape, 3)), "z": (np.float32, shape), "alpha": (np.float32, shape)},
         )
-    shape = cameras["v01"].shape
-    expected = {"l0_reason": (np.uint8, shape)}
-    for key in KEYS.values():
-        expected.update(
-            {key: (np.float32, shape), key + "_valid": (np.bool_, shape), key + "_state": (np.uint8, shape)}
-        )
-    check_npz(folder / "expected/v01.npz", expected)
+    for view in graded_views:
+        shape = cameras[view].shape
+        expected = {"l0_reason": (np.uint8, shape)}
+        for key in KEYS.values():
+            expected.update(
+                {key: (np.float32, shape), key + "_valid": (np.bool_, shape), key + "_state": (np.uint8, shape)}
+            )
+        check_npz(folder / "expected" / (view + ".npz"), expected)

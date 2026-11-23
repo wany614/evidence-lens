@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-lens"
-version = "0.1.0"
+version = "0.1.1rc1"
 description = "CPU diagnostics for single-image novel-view synthesis"
 readme = "README.md"
 requires-python = ">=3.11"

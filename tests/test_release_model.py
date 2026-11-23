@@ -408,7 +408,8 @@ def scientific_report(work, f, capsys):
     return report
 
 
-def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
+@pytest.mark.parametrize("rc", (False, True), ids=("stable-format", "private-rc"))
+def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, rc):
     if os.environ.get("EL_TEST_CLEAN_WHEEL") != "1":
         pytest.skip("set EL_TEST_CLEAN_WHEEL=1 for the offline wheel/recorder/release integration")
     pytest.importorskip("sklearn", minversion="1.9.1")
@@ -429,14 +430,19 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
     report = scientific_report(tmp_path, f, capsys)
     for name in ("README.md", "pyproject.toml"):
         shutil.copyfile(REPO / name, repo / name)
-    version = "v0.0.1"
+    version = "v0.1.1-rc.1" if rc else "v0.0.1"
+    project = repo / "pyproject.toml"
+    import re
+    project.write_text(re.sub(r'^version = "[^"]+"$', f'version = "{release.python_version(version)}"',
+                              project.read_text(), flags=re.M))
     docs = repo / "docs/releases" / version
     docs.mkdir(parents=True)
-    for name in ("MODEL_CARD.md", "RELEASE_NOTES.md", "README.md"):
-        (docs / name).write_text(
-            "# Private synthetic fixture\n\nThis package tests the release implementation.\n"
-        )
-    terms = dict(release.LICENSES, research_records="licenses/REPORT-LICENSE.txt")
+    if rc:
+        shutil.copytree(REPO / "docs/releases" / version, docs, dirs_exist_ok=True)
+    else:
+        for name in ("MODEL_CARD.md", "RELEASE_NOTES.md", "README.md"):
+            (docs / name).write_text("# Private synthetic fixture\n\nThis package tests the release implementation.\n")
+    terms = dict(release.LICENSES, research_records="licenses/RESEARCH-RECORDS.txt" if rc else "licenses/REPORT-LICENSE.txt")
     for name in terms.values():
         p = repo / name
         p.parent.mkdir(parents=True, exist_ok=True)
@@ -464,6 +470,9 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
         "protocol/analysis-addendum-v1.json",
         "protocol/operating-points-v1.json",
     }
+    if rc:
+        names.update("scripts/" + n for n in ("build_prerelease.py", "release_model.py", "release_identity.py",
+                     "release_media.py", "release_scope.py", "release_wheel.py", "release_smoke.py"))
     # The later distribution's comparison roster changes in this disposable git repo.
     # Method verification must read its earlier committed declaration.
     later = repo / "src/evidence_lens/formal_inputs.py"
@@ -522,11 +531,27 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
         output=output,
         fixture=False,
     )
+    scope_args = []
+    if rc:
+        a.scope = tmp_path / "scope.json"
+        method = load(f["method"])
+        pin = {k: report[k] for k in ("run_id", "manifest_sha256")}
+        result_file = store / "runs" / report["run_id"] / "payload/report.json"
+        save(a.scope, {"schema":"el-prerelease-scope-1", "version":version, "publication_status":"private_candidate",
+                      "preview_class":"technical_preview", "formal_evidence_status":"original_study_under_review",
+                      "model_id":method["model_id"], "model_index_sha256":method["model_index_sha256"],
+                      "method_freeze_sha256":sha(f["method"]), "report":pin,
+                      "example_scores":{k:score[k] for k in pin},
+                      "diagnostics":[dict(pin,path="payload/report.json",sha256=sha(result_file))],
+                      "finding":"Synthetic software exercise.", "limitations":["Synthetic fixture."]})
+        a.scope_sha256 = sha(a.scope)
+        scope_args = ["--scope", a.scope, "--scope-sha256", a.scope_sha256]
     with pytest.raises(ValueError, match="completed held-out study"):
         release.build(a)
     built = cli(
         "build",
         "--fixture",
+        *scope_args,
         "--store",
         store,
         "--method",
@@ -566,11 +591,11 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
             "source_sha256": sha(store / "runs" / parent["run_id"] / rel),
         }
     members = release.check(output, built["release_sha256"], built["checksums_sha256"])
-    archive = tmp_path / "fixture-model.zip"
+    archive = tmp_path / (f"evidence-lens-{version}-cpu.zip" if rc else "fixture-model.zip")
     pins = ["--release-sha256", built["release_sha256"], "--checksums-sha256", built["checksums_sha256"]]
     packed = cli("zip", "--folder", output, "--output", archive, *pins)
     assert packed == release.package(output, archive) and packed["sha256"] == sha(archive)
-    assert (tmp_path / packed["checksum_file"]).read_text() == packed["sha256"] + "  fixture-model.zip\n"
+    assert (tmp_path / packed["checksum_file"]).read_text() == packed["sha256"] + "  " + archive.name + "\n"
     verified = cli(
         "verify", "--folder", output, *pins, "--archive", archive, "--archive-sha256", packed["sha256"]
     )
@@ -581,6 +606,23 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
     unpacked = tmp_path / "extracted-only"
     with zipfile.ZipFile(archive) as zipf:
         zipf.extractall(unpacked)
+    if rc:
+        from build_prerelease import build_candidate
+        import build_prerelease
+        monkeypatch.setattr(build_prerelease, "ROOT", repo)
+        smoke_dir = tmp_path/"clean-rc-smoke"
+        subprocess.run([sys.executable,"-I",str(unpacked/"smoke.py"),"--output",str(smoke_dir),
+                        "--release-sha256",built["release_sha256"],"--archive",str(archive),"--archive-sha256",
+                        packed["sha256"],"--offline-uv"],cwd=tmp_path,check=True,capture_output=True)
+        grade = load(smoke_dir/"smoke.json")
+        assert grade["state_arrays_equal"] and grade["finite_masks_equal"] and len(grade["methods"])==5 and len(grade["views"])==6
+        assert grade["runtime"]["packages"]["evidence-lens"]=="0.1.1rc1"
+        assert grade["verified_zip_sha256"]==packed["sha256"] and grade["grade_seconds"]>0
+        assert len(load(unpacked/"demo.json")["expected_views"])==6 and (unpacked/"docs/licenses.md").is_file()
+        a.fixture,a.offline,a.rebuild_of,a.output=True,True,None,tmp_path/"first-build"
+        initial=build_candidate(a)
+        a.rebuild_of=a.output/"candidate.json";a.output=tmp_path/"rebuild"
+        assert initial==build_candidate(a)
     env = tmp_path / "wheel-only-env"
     subprocess.run(["uv", "venv", "--python", sys.executable, str(env)], check=True, capture_output=True)
     exe = env / ("Scripts/python.exe" if os.name == "nt" else "bin/python")

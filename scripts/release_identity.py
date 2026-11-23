@@ -9,6 +9,7 @@ from evidence_lens._bundle import HASH, RUN_ID, load, local_path, sha
 from evidence_lens.l1 import KEYS, MODELS, load_package
 from evidence_lens.l1_demo import ABS_TOL, compare, public_inputs
 from evidence_lens.scoring_io import TARGETS, VIEWS
+from release_scope import graded_views
 
 
 def require(ok, message):
@@ -465,8 +466,9 @@ def check_identity(folder, index, tables):
         and demo["model_index_sha256"]
         == index["model_index_sha256"]
         == score["model_files"]["model_index"]["sha256"]
-        and demo["expected_views"] == {"v01": signature(folder / "expected/v01.npz")}
-        and demo["expected_views"]["v01"]["sha256"] == score["views"]["v01"]["sha256"],
+        and demo["expected_views"] == {v: signature(folder / "expected" / (v + ".npz"))
+                                       for v in graded_views(index["version"])}
+        and all(row["sha256"] == score["views"][v]["sha256"] for v, row in demo["expected_views"].items()),
         "original example or expected scores differ",
     )
     expected = folder / "expected/v01.npz"

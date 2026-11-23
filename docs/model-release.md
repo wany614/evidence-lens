@@ -1,8 +1,10 @@
 # Building and checking the model release
 
+For v0.1.1-rc.1, the operator recipe builds the wheel from an explicit Git commit, binds the candidate to selected diagnostic evidence, reproduces its ZIP and exercises it from a fresh CPU environment. The historical v0.1.0 payload retains its original one-view grading manifest. [Private RC build and rebuild](releases/v0.1.1-rc.1/BUILD.md) · [Extracted CPU example](releases/v0.1.1-rc.1/README.md)
+
 The builder takes separately sealed model, authored example, score and report receipts. It verifies the complete training and development rosters, original class counts, per-fold class counts, exported parameters, and the 12 comparison-run pins across the four held-out families. The model ZIP includes its CPU wheel, frozen model, threshold and fit proofs, original example, expected numerical scores, curated report tables and the committed release texts.
 
-The release commit supplies `protocol/`, `configs/formal-freeze-v1.json`, the owner’s license files and `docs/releases/<version>/{MODEL_CARD.md,RELEASE_NOTES.md,README.md}`. The wheel's package version and the model release version are recorded separately. Build the wheel from the exact release commit into a directory separate from the checkout.
+The release commit supplies `protocol/`, `configs/formal-freeze-v1.json`, the owner’s license files and `docs/releases/<version>/{MODEL_CARD.md,RELEASE_NOTES.md,README.md}`. The software tag determines the Python version in the wheel. The scientific model has its own recorded fit and threshold-selection identifiers. Build the wheel from the exact release commit into a directory separate from the checkout.
 
 The owner records four material classes in `licenses/ASSET-SCOPE.json`. The following template illustrates a separate notice for published measurements, provenance and report files. The owner may instead choose the same committed document as one of the other classes. The research-record notice describes the released measurements, hashes and documentation. Referenced private training data and upstream images have their own provenance and terms.
 

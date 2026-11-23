@@ -1,4 +1,4 @@
-Evidence Lens v0.1.0 original textured-plane demonstration
+Evidence Lens original textured-plane demonstration
 
 The project authored the tabletop scene and rendered its input. A separate
 plane projection produced the example views, depth and opacity. This notice

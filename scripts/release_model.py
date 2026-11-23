@@ -21,17 +21,18 @@ from release_identity import (
     signature,
 )
 from release_media import check_example_media
+from release_scope import (CPU_SOURCE, DOCS, SCOPE, SUMMARY, VERSION, check_scope, graded_views, python_version, scope_origin,
+                           summary_bytes, summary_origin)
 from release_wheel import aggregate, read_wheel
 
 from evidence_lens._bundle import HASH, RUN_ID, encoded, load, local_path, sha
 from evidence_lens._bundle import files as regular_files
 from evidence_lens.formal_inputs import PinnedRun
 from evidence_lens.l1 import load_package, run as score_model
-from evidence_lens.l1_demo import seal
+from evidence_lens.l1_demo import compare, seal
 from evidence_lens.scoring_io import TARGETS, VIEWS, new_output
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = re.compile(r"v[0-9]+\.[0-9]+\.[0-9]+")
 PRIVATE = re.compile(
     r"(?i)(?:/(?:Users|home|Volumes|private/var|var/folders|mnt)/[^/\s]+|file://|\\\\[\w.-]+\\[^\s\\]+|(?<![A-Za-z0-9])[A-Z]:[\\/][^\s]+|(?:ghp_|github_pat_|sk-ant-|sk-proj-)[A-Za-z0-9_-]{8,}|-----BEGIN [^\n]*PRIVATE KEY|X-(?:Goog|Amz)-Signature=|access_token=)"
 )
@@ -96,6 +97,8 @@ def scope_members(names, terms, wheel):
         elif name.startswith(("training/", "proofs/", "results/")) or name in (
             "protocol/method-freeze.json",
             "protocol/formal-freeze-v1.json",
+            SCOPE,
+            SUMMARY,
             "release.json",
             "SHA256SUMS",
         ):
@@ -109,6 +112,9 @@ def scope_members(names, terms, wheel):
                     "README.md",
                     "MODEL_CARD.md",
                     "RELEASE_NOTES.md",
+                    *DOCS,
+                    "smoke.py",
+                    *CPU_SOURCE,
                     "distribution/pyproject.toml",
                     "model/feature_schema.json",
                 ),
@@ -323,6 +329,16 @@ def build(a):
         "example_scores": ref(a.scores),
         "report": ref(a.report),
     }
+    rc = "-rc." in a.version
+    scope_path = getattr(a, "scope", None)
+    scope_sha = getattr(a, "scope_sha256", None)
+    if rc:
+        require(scope_path and scope_sha and HASH.fullmatch(scope_sha) and sha(scope_path) == scope_sha,
+                "an RC requires --scope and the independently selected --scope-sha256")
+        check_scope(load(scope_path), a.version, method_sha, method["model_id"], method["model_index_sha256"],
+                    pins, store=a.store.resolve())
+    else:
+        require(not scope_path and not scope_sha, "the prerelease scope belongs to an RC version")
     runs = {role: PinnedRun(a.store.resolve(), pin) for role, pin in pins.items()}
     require(
         all(r.run["execution_status"] == "succeeded" for r in runs.values()),
@@ -425,6 +441,7 @@ def build(a):
         )
     project_toml = blob(a.commit, "pyproject.toml")
     wheel_meta = read_wheel(a.wheel, project_toml, checkout=ROOT, commit=a.commit, text_check=safe_text)
+    require(wheel_meta["version"] == python_version(a.version), "release tag and wheel version differ")
     method_commit = method["method_code_commit"]
     historical_files = comparison_files_at_freeze(blob(method_commit, "src/evidence_lens/formal_inputs.py"))
     commit_protocol = {
@@ -455,7 +472,7 @@ def build(a):
         def include(name, raw, origin):
             name = local_path(name)
             require(name not in entries, "duplicate release member")
-            if Path(name).suffix in {".md", ".txt", ".csv", ".json"} or name == "LICENSE":
+            if Path(name).suffix in {".md", ".txt", ".csv", ".json", ".py", ".toml"} or name == "LICENSE":
                 safe_text(name, raw, terms.values())
             target = out / name
             target.parent.mkdir(exist_ok=True, parents=True)
@@ -491,10 +508,11 @@ def build(a):
         original_scores = runs["example_scores"].open("payload/l1_score.json")
         for view in TARGETS:
             runs["example_scores"].open("payload/" + view + ".npz")
-        seal(out, original_scores.parent, sha(original_scores), ["v01"])
+        selected_views = graded_views(a.version)
+        seal(out, original_scores.parent, sha(original_scores), list(selected_views))
         demo_path = out / "demo.json"
         demo_path.write_bytes(demo_path.read_bytes().replace(b"\r\n", b"\n"))
-        for name in ("demo.json", "expected/v01.npz"):
+        for name in ("demo.json", *("expected/" + v + ".npz" for v in selected_views)):
             raw = (out / name).read_bytes()
             entries[name] = {
                 "bytes": len(raw),
@@ -561,6 +579,15 @@ def build(a):
             committed("protocol/" + name, "protocol/" + name)
         for name in ("MODEL_CARD.md", "RELEASE_NOTES.md", "README.md"):
             committed(name, "docs/releases/" + a.version + "/" + name)
+        if rc:
+            for name in DOCS:
+                committed(name, "docs/releases/" + a.version + "/" + name)
+            committed("smoke.py", "scripts/release_smoke.py")
+            for name in CPU_SOURCE:
+                committed(name, "src/" + name.removeprefix("source/"))
+            include(SCOPE, scope_path.read_bytes(), scope_origin(scope_sha))
+            table = out / "results/family-results.csv"
+            include(SUMMARY, summary_bytes(load(out / SCOPE), table), summary_origin(scope_sha, sha(table)))
         for name in sorted(set(terms.values())):
             committed(name, name)
         include(LICENSE_SCOPE, scope_doc, {"commit": a.commit, "path": LICENSE_SCOPE})
@@ -607,6 +634,8 @@ def build(a):
                 {n: {k: v[k] for k in ("bytes", "sha256")} for n, v in entries.items()}
             ),
         }
+        if rc:
+            index["scope_sha256"] = scope_sha
         (out / "release.json").write_bytes(encoded(index))
         members = sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file())
         checks = [f"{sha(out / name)}  {name}" for name in members]
@@ -624,7 +653,7 @@ def build(a):
     }
 
 
-def asset_names(wheel, terms):
+def asset_names(wheel, terms, version="v0.1.0"):
     return {
         "MODEL_CARD.md",
         "README.md",
@@ -632,7 +661,8 @@ def asset_names(wheel, terms):
         LICENSE_SCOPE,
         *terms.values(),
         "demo.json",
-        "expected/v01.npz",
+        *("expected/" + v + ".npz" for v in graded_views(version)),
+        *((SCOPE, SUMMARY, "smoke.py", *DOCS, *CPU_SOURCE) if "-rc." in version else ()),
         wheel,
         "distribution/pyproject.toml",
         *("model/" + n for n in MODEL),
@@ -677,13 +707,17 @@ def asset_names(wheel, terms):
 
 def asset_origin(index, name):
     ids = {role: pin["run_id"] for role, pin in index["sources"].items()}
-    if name in {"demo.json", "expected/v01.npz"}:
+    if name == "demo.json" or name in {"expected/" + v + ".npz" for v in graded_views(index["version"])}:
         return {
             "score_run_id": ids["example_scores"],
             "score_receipt_sha256": index["example_score_receipt_sha256"],
         }
     if name == "protocol/method-freeze.json":
         return {"method_freeze_sha256": index["method_freeze_sha256"]}
+    if name == SCOPE:
+        return scope_origin(index["scope_sha256"])
+    if name == SUMMARY:
+        return summary_origin(index["scope_sha256"], index["files"]["results/family-results.csv"]["sha256"])
     if name == index["wheel"]["path"]:
         return {"commit": index["code_commit"], "source_modules_sha256": index["wheel"]["modules_sha256"]}
     if name == "proofs/report-public.json":
@@ -712,8 +746,12 @@ def asset_origin(index, name):
         role, original = proofs[tail]
         return {"run_id": ids[role], "path": original}
     source = name
-    if name in ("MODEL_CARD.md", "README.md", "RELEASE_NOTES.md"):
+    if name in ("MODEL_CARD.md", "README.md", "RELEASE_NOTES.md", *DOCS):
         source = "docs/releases/" + index["version"] + "/" + name
+    elif name == "smoke.py":
+        source = "scripts/release_smoke.py"
+    elif name in CPU_SOURCE:
+        source = "src/" + name.removeprefix("source/")
     elif name == "protocol/formal-freeze-v1.json":
         source = "configs/formal-freeze-v1.json"
     elif name == "distribution/pyproject.toml":
@@ -750,6 +788,34 @@ def check_real_example_guide(folder, release):
                        model_sha, release["wheel"]["name"], counts[[0, 1, 255]])
 
 
+def check_prerelease(folder, release):
+    from urllib.parse import unquote, urlsplit
+
+    root = folder.resolve()
+    require((root / SUMMARY).read_bytes() == summary_bytes(load(root / SCOPE), root / "results/family-results.csv"),
+            "human-readable scope differs from selected diagnostic or formal populations")
+    for name in ("README.md", "MODEL_CARD.md", "RELEASE_NOTES.md", SUMMARY, *DOCS):
+        path = root / name
+        content = path.read_text(encoding="utf-8")
+        for target in re.findall(r"\[[^]\n]+\]\(([^)\s]+)\)", content):
+            url = urlsplit(target)
+            if url.scheme == "https" and url.netloc:
+                continue
+            local = (path.parent / unquote(url.path)).resolve()
+            require(not url.scheme and not url.netloc and not url.query and local.is_relative_to(root)
+                    and local.is_file(), "unavailable relative release link in " + name)
+    guide = (root / "README.md").read_text(encoding="utf-8")
+    require("python -I smoke.py" in guide and "RELEASE_SCOPE.json" in guide and release["version"] in guide,
+            "RC guide must identify the version, scoped evidence and executable smoke command")
+    with tempfile.TemporaryDirectory() as temp:
+        scores, example = Path(temp) / "scores", root / "example"
+        score_model(example / "input.png", example / "cameras.json", example / "predictions",
+                    root / "model", scores, model_sha256=release["model_index_sha256"])
+        for view in TARGETS:
+            require(compare(root / "expected" / (view + ".npz"), scores / (view + ".npz"))["passed"],
+                    "RC example differs from the original five-method CPU scores for " + view)
+
+
 def check(folder, release_sha=None, sums_sha=None):
     actual = set(regular_files(folder))
     require("release.json" in actual and "SHA256SUMS" in actual, "missing release manifest or checksums")
@@ -774,7 +840,7 @@ def check(folder, release_sha=None, sums_sha=None):
     wheel = release["wheel"]
     require(
         wheel["path"] == "distribution/" + wheel["name"]
-        and set(release["files"]) == asset_names(wheel["path"], terms)
+        and set(release["files"]) == asset_names(wheel["path"], terms, release["version"])
         and actual == set(release["files"]) | {"release.json", "SHA256SUMS"},
         "unexpected or missing public asset",
     )
@@ -791,7 +857,7 @@ def check(folder, release_sha=None, sums_sha=None):
             and row["origin"] == asset_origin(release, name),
             "changed public member " + name,
         )
-        if path.suffix in (".md", ".txt", ".csv", ".json", ".toml") or name == "LICENSE":
+        if path.suffix in (".md", ".txt", ".csv", ".json", ".toml", ".py") or name == "LICENSE":
             safe_text(name, path.read_bytes(), terms.values())
     safe_text("release.json", (folder / "release.json").read_bytes())
     expected = [f"{sha(folder / n)}  {n}" for n in sorted(actual - {"SHA256SUMS"})]
@@ -806,18 +872,29 @@ def check(folder, release_sha=None, sums_sha=None):
     )
     require(
         wheel == dict(measured_wheel, path=wheel["path"], **signature(folder / wheel["path"]))
+        and measured_wheel["version"] == python_version(release["version"])
         and measured_wheel["source_license_sha256"] == sha(folder / LICENSES["source"]),
         "wheel or module aggregate differs",
     )
-    check_example_media(folder)
+    check_example_media(folder, graded_views(release["version"]))
     check_identity(folder, release, TABLES)
-    if release["kind"] == "heldout_study":
+    if "-rc." in release["version"]:
+        require(release.get("scope_sha256") == sha(folder / SCOPE), "scope differs from release manifest")
+        require(all(sha(folder / n) == measured_wheel["modules"][n.removeprefix("source/")] for n in CPU_SOURCE),
+                "readable CPU source differs from installed wheel modules")
+        check_scope(load(folder / SCOPE), release["version"], release["method_freeze_sha256"], release["model_id"],
+                    release["model_index_sha256"], release["sources"])
+        check_prerelease(folder, release)
+    elif release["kind"] == "heldout_study":
         check_real_example_guide(folder, release)
     return sorted(actual)
 
 
 def check_zip(folder, archive, names, expected=None):
     require(archive.is_file() and not archive.is_symlink(), "missing regular release ZIP")
+    version = load(folder / "release.json")["version"]
+    if "-rc." in version:
+        require(archive.name == f"evidence-lens-{version}-cpu.zip", "RC asset filename must match its release tag")
     actual_sha = sha(archive)
     require(not expected or expected == actual_sha, "ZIP differs from its external pin")
     with zipfile.ZipFile(archive) as z:
@@ -885,6 +962,8 @@ def main():
     for key in ("version", "commit", "example", "scores", "report"):
         b.add_argument("--" + key, required=True)
     b.add_argument("--method-sha256", help="expected immutable method.json SHA-256")
+    b.add_argument("--scope", type=Path, help="selected public-safe prerelease scope JSON")
+    b.add_argument("--scope-sha256", help="independently pinned digest of the prerelease scope")
     b.add_argument(
         "--example-source", help="independent run_id=manifest_sha256 pin for the original Blender reference"
     )
