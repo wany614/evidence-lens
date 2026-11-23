@@ -1,19 +1,20 @@
 """Private, deterministic unit fixtures. These tests produce no engineering-trial results."""
 
-import io
 import json
 import os
 import subprocess
 import sys
+from importlib.util import find_spec
 from pathlib import Path
 
 import numpy as np
 import pytest
 from PIL import Image
 
+from evidence_lens.comparison_board import INVALID_COLOR, RISK_COLORS, render_board
 from evidence_lens.evaluation import _ap, _groups, run_evaluation
 from evidence_lens.features import extract_features
-from evidence_lens.labels import ReferenceBundle
+from evidence_lens.labels import ReferenceBundle, label_view
 from evidence_lens.risk_model import run_score, score_features
 from evidence_lens.scoring_io import (
     TARGETS, VIEWS, Camera, PredictionBundle, ReadAudit, file_hash, load_cameras, load_source_png, write_json,
@@ -129,6 +130,8 @@ def reference(root):
         views[view] = {"reference_sha256": file_hash(path)}
     write_json(directory / "reference.json", {
         "schema": "el-reference-1", "input_sha256": file_hash(root / "input.png"),
+        "scene_id": "synthetic-fixture-only", "scene_family_id": "synthetic-fixture-only",
+        "rgb_encoding": "display_srgb_0_1", "depth_semantics": "positive_optical_axis_camera_z_m",
         "camera_sha256": file_hash(root / "cameras.json"), "views": views, "validation_passed": True,
         "validation_sha256": file_hash(directory / "validation" / "results.json")})
     return directory
@@ -147,7 +150,26 @@ def test_isolated_cli_and_independent_denominators(tmp_path):
     s, out = tmp_path / "scores", tmp_path / "evaluation"
     # Unrelated poison file must never be discovered/decoded. No reference exists in the subprocess inputs.
     (p / "unrelated.npz").write_bytes(b"deliberately invalid")
-    subprocess.run([sys.executable, "-m", "evidence_lens.risk_model", "--input", str(tmp_path / "input.png"),
+    guarded_main = """
+import os, runpy, sys
+from pathlib import Path
+root = Path.cwd()
+allowed = {root / "cameras.json", root / "input.png", root / "prediction" / "prediction.json"}
+allowed.update(root / "prediction" / (v + ".npz") for v in ("source","v01","v02","v03","v04","v05","v06"))
+def check(event, args):
+    if event in ("os.listdir", "os.scandir") and isinstance(args[0], (str, bytes)):
+        if Path(os.fsdecode(args[0])).resolve() == root / "prediction":
+            raise AssertionError("must not discover files in prediction bundle")
+    if event != "open" or not isinstance(args[0], (str, bytes)):
+        return
+    p = Path(os.fsdecode(args[0])).resolve()
+    if p.is_relative_to(root) and p not in allowed and not p.relative_to(root).parts[0].startswith(".scores-"):
+        raise AssertionError("undeclared scoring file " + str(p))
+sys.addaudithook(check)
+runpy.run_module("evidence_lens.risk_model", run_name="__main__")
+assert not any(k in sys.modules for k in ("evidence_lens.labels", "evidence_lens.evaluation", "torch", "bpy", "pyarrow"))
+"""
+    subprocess.run([sys.executable, "-c", guarded_main, "--input", str(tmp_path / "input.png"),
                     "--cameras", str(tmp_path / "cameras.json"), "--predictions", str(p), "--output", str(s)],
                    check=True, cwd=tmp_path, env=dict(os.environ, PYTHONPATH=str(Path(__file__).resolve().parents[1] / "src")))
     receipts = json.loads((s / "score.json").read_text())
@@ -177,9 +199,25 @@ def test_isolated_cli_and_independent_denominators(tmp_path):
         assert curves["l0_accepted"].tolist() == [0, 2, 4] and np.isnan(curves["l0_error_rate"][0])
     board = json.loads((out / "board_v01.json").read_text())
     assert board["board_sha256"] == file_hash(out / "board_v01.png")
+    for name in ("v01_l0_state.png", "v01_rgb_error.png"):
+        assert board["native_preview_sha256"][name] == file_hash(out / name)
     cross = json.loads((out / "reason_visibility_counts.json").read_text())["family"]
     assert sum(cell["count"] for cell in cross) == 36
     assert all(cell["reason_total"] >= cell["count"] <= cell["visibility_total"] for cell in cross)
+    verify = [sys.executable, str(Path(__file__).resolve().parents[1] / "scripts/recompute_view.py"),
+              "--cameras", str(tmp_path / "cameras.json"), "--metadata", str(p / "prediction.json"),
+              "--source-prediction", str(p / "source.npz"), "--prediction", str(p / "v01.npz"),
+              "--reference", str(ref / "reference/v01.npz"), "--score", str(s / "v01.npz"),
+              "--labels", str(out / "labels/v01.npz"), "--metrics", str(out / "metrics.csv")]
+    subprocess.run([*verify, "--out", str(tmp_path / "verified")], check=True)
+    proof = json.loads((tmp_path / "verified/independent-view-check.json").read_text())
+    assert proof["scalar_l0_witnesses"] == proof["pixel_labels_checked"] == 6
+    with np.load(s / "v01.npz") as original:
+        corrupted_score = {key: original[key] for key in original.files}
+    corrupted_score["l0"][0, 0] = 0
+    np.savez(s / "v01.npz", **corrupted_score)
+    rejected = subprocess.run([*verify, "--out", str(tmp_path / "corrupt")], capture_output=True, text=True)
+    assert rejected.returncode and "stored L0 risk" in rejected.stderr
     with pytest.raises(FileExistsError):
         run_score(tmp_path / "input.png", tmp_path / "cameras.json", p, s)
 
@@ -195,6 +233,65 @@ def test_recorded_render_failure_has_real_denominators(tmp_path):
     assert data["L0", "overall_low_risk_coverage"]["value"] == 0
     assert data["output", "rgb_mae"]["value"] is None and data["output", "rgb_mae"]["denominator"] == 0
     assert data["L0", "average_precision_common"]["missing_reason"] == "synthetic_fixture_render_failure"
+    assert json.loads((out / "board_v01.json").read_text())["native_preview_sha256"] == {}
+
+
+def test_risk_tile_and_native_previews_distinguish_unknown_from_invalid_rgb(tmp_path):
+    cam = camera()
+    source, target = arrays(cam), arrays(cam)
+    yy, xx = np.indices(cam.shape)
+    pos = ((np.stack((xx, yy, np.ones(cam.shape)), axis=-1) @ np.linalg.inv(cam.K).T) * 2).astype(np.float32)
+    ref = dict(rgb=source["rgb"].copy(), z=source["z"], position=pos, edge=np.zeros(cam.shape, bool),
+               visibility=np.ones(cam.shape, np.uint8))
+    ref["rgb"][0, 1] = np.nan
+    target["rgb"][1, 0] = np.nan
+    target["rgb"][1, 2] = 0.3
+    target["alpha"][:] = [[1, 0.25, np.nan], [0.25, 0.25, 1]]
+    scores = score_features(extract_features(source["rgb"], source, target, cam, cam, True), True)
+    labs = label_view(ref, target, True)
+    render_board(tmp_path / "board.png", source["rgb"], ref, target, labs, scores, "synthetic-fixture-only")
+    assert scores["l0"][0, 1] == scores["l0"][1, 0] == 1  # the raw diagnostic is preserved
+    with Image.open(tmp_path / "v01_l0_state.png") as state:
+        assert state.mode == "P"
+        np.testing.assert_array_equal(np.asarray(state), [[0, 255, 2], [255, 1, 0]])
+        assert state.convert("RGB").getpixel((2, 0)) == RISK_COLORS["unknown"]
+        assert state.convert("RGB").getpixel((1, 0)) == INVALID_COLOR
+    with Image.open(tmp_path / "v01_rgb_error.png") as err:
+        np.testing.assert_array_equal(np.asarray(err), [[0, 255, 0], [255, 0, 254]])
+    with Image.open(tmp_path / "board.png") as board:
+        assert board.getpixel((800, 845)) == INVALID_COLOR
+        assert board.getpixel((970, 845)) == RISK_COLORS["unknown"]
+
+
+def test_partial_source_target_failure_and_typed_output(tmp_path):
+    p, ref = deployable(tmp_path), reference(tmp_path)
+    meta = json.loads((p / "prediction.json").read_text())
+    meta["failed_views"] = {"source": "fixture_source_failure", "v06": "fixture_target_failure"}
+    for v in meta["failed_views"]:
+        (p / f"{v}.npz").unlink()
+    meta["views"] = {v: {"sha256": file_hash(p / f"{v}.npz")} for v in VIEWS if v not in meta["failed_views"]}
+    write_json(p / "depth-probe.json", {"role": "synthetic-fixture-only", "depth_checks": meta["depth_validation"]})
+    meta["depth_validation_receipt_sha256"] = file_hash(p / "depth-probe.json")
+    write_json(p / "prediction.json", meta)
+    s, out = tmp_path / "precreated_score", tmp_path / "precreated_evaluation"
+    s.mkdir()
+    out.mkdir()
+    run_score(tmp_path / "input.png", tmp_path / "cameras.json", p, s)
+    parquet = find_spec("pyarrow") is not None
+    receipt = run_evaluation(tmp_path / "input.png", tmp_path / "cameras.json", ref, p, s, out, IDENTITY, parquet=parquet)
+    assert receipt["completed_target_views"] == 5
+    assert receipt["depth_validation_receipt_sha256"] == meta["depth_validation_receipt_sha256"]
+    assert receipt["views"]["v06"]["render_failure_reason"] == "fixture_target_failure"
+    assert all_metrics(out)["L0", "unknown_fraction"]["value"] == pytest.approx(4 / 5)
+    if parquet:
+        import pyarrow.parquet as pq
+        from evidence_lens._metrics import SCHEMA
+        table = pq.read_table(out / "metrics.parquet")
+        assert table.schema.equals(SCHEMA) and table.num_rows == len((out / "metrics.jsonl").read_text().splitlines())
+    with (p / "v01.npz").open("ab") as f:
+        f.write(b"modified")
+    with pytest.raises(ValueError, match="digest differs from prediction.json"):
+        run_score(tmp_path / "input.png", tmp_path / "cameras.json", p, tmp_path / "wrong-prediction")
 
 
 def test_linkage_and_schema_rejects_wrong_bytes(tmp_path):

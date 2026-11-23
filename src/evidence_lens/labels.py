@@ -20,7 +20,8 @@ class ReferenceBundle:
         self.audit = audit
         self.meta = json.loads(audit.read("reference_metadata", directory / "reference.json"))
         for key, expected in (("schema", "el-reference-1"), ("camera_sha256", audit.sha("cameras")),
-                              ("input_sha256", audit.sha("input_png"))):
+                              ("input_sha256", audit.sha("input_png")), ("rgb_encoding", "display_srgb_0_1"),
+                              ("depth_semantics", "positive_optical_axis_camera_z_m")):
             if self.meta.get(key) != expected:
                 raise ValueError(f"reference.json: incompatible {key}")
         validation = json.loads(audit.read("reference_validation", directory / "validation" / "results.json"))

@@ -1,0 +1,15 @@
+{
+  "protocol_version": "1.0",
+  "condition_id": "B0",
+  "label_version": "el-labels-1",
+  "rgb_encoding": "display_srgb_0_1",
+  "rgb_mae_threshold": 0.05,
+  "rgb_sensitivity_thresholds": [0.025,0.05,0.1],
+  "depth_absolute_tolerance_m": 0.02,
+  "depth_relative_tolerance": 0.02,
+  "alpha_threshold": 0.5,
+  "l0_relative_behind_tolerance": 0.1,
+  "nearest_source_sample": "floor of boundary-origin coordinates",
+  "comparison_camera": "v01",
+  "model_id": null
+}

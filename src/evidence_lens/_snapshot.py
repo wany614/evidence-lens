@@ -6,6 +6,7 @@ import hashlib
 import os
 import shutil
 import subprocess
+import tempfile
 import uuid
 from pathlib import Path
 
@@ -23,7 +24,7 @@ SOURCE_FILES = {"pyproject.toml", "requirements.txt", "uv.lock"}
 
 def source_name(name: str) -> bool:
     path = Path(name)
-    if any(part.startswith(".") or part.lower() in {"private", "local", "__pycache__"}
+    if any(part.startswith(".") or ".local." in part.lower() or part.lower() in {"private", "local", "__pycache__"}
            for part in path.parts):
         return False
     return (name in SOURCE_FILES or (len(path.parts) > 1
@@ -40,7 +41,16 @@ def git_command(root: Path, *args: str) -> bytes | None:
 
 
 def snapshot(source: Path, bundle: Path) -> dict:
-    target = bundle / "source"
+    with tempfile.TemporaryDirectory(dir=bundle.parent, prefix="source-") as scratch:
+        temp = Path(scratch)
+        record = _collect_source(source, temp)
+        (temp / "source").rename(bundle / "source")
+    save(bundle / "code_snapshot.json", record)
+    return record
+
+
+def _collect_source(source: Path, temp: Path) -> dict:
+    target = temp / "source"
     target.mkdir()
     top = git_command(source, "rev-parse", "--show-toplevel")
     is_repo = top is not None and Path(os.fsdecode(top).strip()).resolve() == source
@@ -79,7 +89,6 @@ def snapshot(source: Path, bundle: Path) -> dict:
               "git_dirty": bool(status) if status is not None else None,
               "snapshot_sha256": hashlib.sha256(encoded(rows)).hexdigest(), "files": rows}
     freeze_tree(target)
-    save(bundle / "code_snapshot.json", record)
     return record
 
 
@@ -93,13 +102,17 @@ def bindings(specifications: list[str]) -> dict[str, str]:
     return result
 
 
-def commit_shared(source: Path, store: Path) -> Path:
+def commit_shared(source: Path, store: Path, expected: str | None = None) -> Path:
+    if source.is_symlink() or not source.is_file():
+        raise BundleError("shared asset must be a regular file")
     pool = store / "assets" / "sha256"
     pool.mkdir(parents=True, exist_ok=True)
     incoming = pool / ("." + uuid.uuid4().hex + ".tmp")
     try:
         shutil.copyfile(source, incoming)
         digest = sha(incoming)
+        if expected is not None and digest != expected:
+            raise BundleError("shared asset does not match the supplied SHA-256")
         final = asset_path(store, digest)
         final.parent.mkdir(exist_ok=True)
         incoming.chmod(0o444)
@@ -128,9 +141,21 @@ def commit_shared(source: Path, store: Path) -> Path:
 
 def input_snapshot(root: Path, bundle: Path, embedded: dict[str, str], shared: dict[str, str],
                    claimed: dict[str, str], parents: dict[str, str]) -> tuple[list, dict]:
+    with tempfile.TemporaryDirectory(dir=bundle.parent, prefix="inputs-") as scratch:
+        temp = Path(scratch)
+        records = _collect_inputs(root, temp, embedded, shared, claimed, parents)
+        if (temp / "inputs").exists():
+            (temp / "inputs").rename(bundle / "inputs")
+    paths = {f"input:{row['role']}": str((root if row["storage"] == "shared" else bundle) / row["path"])
+             for row in records}
+    return records, paths
+
+
+def _collect_inputs(root: Path, bundle: Path, embedded: dict[str, str], shared: dict[str, str],
+                    claimed: dict[str, str], parents: dict[str, str]) -> list:
     if set(embedded) & set(shared) or not set(claimed) <= (embedded.keys() | shared.keys()):
         raise BundleError("duplicate input role or parent binding for an unknown role")
-    records, substitutions = [], {}
+    records = []
     for role, value in {**embedded, **shared}.items():
         source = Path(value).expanduser().absolute()
         if source.is_symlink() or not source.exists():
@@ -180,5 +205,4 @@ def input_snapshot(root: Path, bundle: Path, embedded: dict[str, str], shared: d
         records.append({"role": role, "kind": "directory" if is_dir else "file",
                         "storage": storage, "name": source.name, "path": rel, "files": rows,
                         "parent_run_id": parent})
-        substitutions[f"input:{role}"] = str(location)
-    return records, substitutions
+    return records

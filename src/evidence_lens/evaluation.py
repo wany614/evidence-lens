@@ -29,6 +29,7 @@ class ScoreBundle:
         self.bundle = bundle
         self.meta = json.loads(audit.read("score_metadata", directory / "score.json"))
         if (self.meta.get("schema") != "el-score-1" or self.meta.get("depth_verified") is not bundle.depth_verified
+                or self.meta.get("depth_validation_receipt_sha256") != bundle.depth_receipt
                 or self.meta.get("producer_run_id") != bundle.meta["producer_run_id"]
                 or set(self.meta["views"]) != set(TARGETS)):
             raise ValueError("incompatible score.json")
@@ -138,7 +139,7 @@ def _ap(sizes, errors):
     return float(np.dot(cumulative_p / cumulative_n, errors[::-1]) / positives)
 
 
-def _view_metrics(labels, scores, identity, sources, failure_reason):
+def _view_metrics(labels, scores, identity, sources, failure_reason, depth_verified):
     rows, curves = [], {}
     y = labels["rgb_high_error"] == 1
     for region, mask in _regions(labels):
@@ -153,7 +154,7 @@ def _view_metrics(labels, scores, identity, sources, failure_reason):
             count = np.count_nonzero(e & (labels["rgb_error"] > np.float32(threshold)))
             m.add("output", f"rgb_error_fraction_gt_{threshold:g}", "E", e, numerator=int(count), empty=no_rgb)
         z_eval = mask & labels["depth_evaluable"]
-        z_empty = failure_reason or "no_evaluable_depth"
+        z_empty = failure_reason or ("no_evaluable_depth" if depth_verified else "depth_validation_not_passed")
         m.add("output", "depth_mae", "depth_evaluable", z_eval, unit="m", empty=z_empty,
               numerator=float(labels["depth_error"][z_eval].sum(dtype=np.float64)))
         m.add("output", "depth_error_fraction", "depth_evaluable", z_eval, empty=z_empty,
@@ -239,14 +240,9 @@ def _tables(rows, output, parquet):
     if parquet:
         import pyarrow as pa
         import pyarrow.parquet as pq
+        from ._metrics import SCHEMA
 
-        text_cols = ("run_id", "trial_id", "scene_family_id", "scene_id", "condition_id", "camera_id",
-                     "method_id", "model_id", "metric_name", "metric_version", "unit", "status", "missing_reason",
-                     "mask_id", "mask_hash", "region_name", "label_version", "threshold_version")
-        count_cols = ("denominator", "reference_pixel_count", "prediction_valid_count", "scoreable_count")
-        schema = pa.schema([(k, pa.string()) for k in text_cols] + [(k, pa.int64()) for k in count_cols] +
-                           [("value", pa.float64()), ("numerator", pa.float64()), ("source_artifact_ids", pa.list_(pa.string()))])
-        pq.write_table(pa.Table.from_pylist(rows, schema=schema), output / "metrics.parquet")
+        pq.write_table(pa.Table.from_pylist(rows, schema=SCHEMA), output / "metrics.parquet", compression="zstd")
 
 
 def run_evaluation(input_path, camera_path, reference_path, prediction_path, score_path, output, identity,
@@ -259,9 +255,14 @@ def run_evaluation(input_path, camera_path, reference_path, prediction_path, sco
     cameras = load_cameras(camera_path, audit)
     image = load_source_png(input_path, cameras["source"], audit)
     refs = ReferenceBundle(reference_path, audit)
+    if any(refs.meta.get(key) != identity[key] for key in ("scene_id", "scene_family_id")):
+        raise ValueError("scene identity differs from reference.json")
     predictions = scores = None
     if render_failed is None:
         predictions = PredictionBundle(prediction_path, audit)
+        for key in ("scene_id", "scene_family_id", "trial_id", "condition_id"):
+            if key in predictions.meta and predictions.meta[key] != identity[key]:
+                raise ValueError(f"{key} differs from prediction.json")
         predictions.read("source", cameras["source"])
         scores = ScoreBundle(score_path, predictions, audit)
     rows, cross_rows = [], []
@@ -279,7 +280,7 @@ def run_evaluation(input_path, camera_path, reference_path, prediction_path, sco
             label_path = out / "labels" / f"{view}.npz"
             np.savez_compressed(label_path, **labels)
             label_sha = file_hash(label_path)
-            input_roles = ["input_png", "cameras", "reference_metadata", f"reference/{view}"]
+            input_roles = ["input_png", "cameras", "reference_metadata", "reference_validation", f"reference/{view}"]
             if predictions:
                 input_roles.extend(["prediction_metadata", "score_metadata"])
                 if "source" not in predictions.failed:
@@ -288,7 +289,8 @@ def run_evaluation(input_path, camera_path, reference_path, prediction_path, sco
                     input_roles.extend([f"prediction/{view}", f"score/{view}"])
             sources = [f"{role}:sha256:{audit.sha(role)}" for role in input_roles]
             sources.append(f"labels/{view}:sha256:{label_sha}")
-            rowset, curves = _view_metrics(labels, score, dict(identity, camera_id=view), sources, failure)
+            rowset, curves = _view_metrics(labels, score, dict(identity, camera_id=view), sources, failure,
+                                           predictions.depth_verified if predictions else False)
             rows.extend(rowset)
             np.savez_compressed(out / "curves" / f"{view}.npz", **curves)
             counts = _cross_counts(labels, score)
@@ -298,14 +300,20 @@ def run_evaluation(input_path, camera_path, reference_path, prediction_path, sco
                            "label_sha256": label_sha, "reference_valid": int(labels["reference_valid"].sum()),
                            "rgb_evaluable": int(labels["rgb_evaluable"].sum()),
                            "depth_evaluable": int(labels["depth_evaluable"].sum())}
+            reason_counts = (np.bincount(score["l0_reason"][labels["rgb_evaluable"]], minlength=len(REASONS))
+                             if score is not None else np.zeros(len(REASONS), dtype=int))
+            views[view]["l0_reasons_in_evaluable_rgb"] = {name: int(reason_counts[i]) for i, name in REASONS.items()}
             if view == "v01":
                 board = out / "board_v01.png"
-                render_board(board, image, ref, pred, labels, score, identity["run_id"])
+                previews = render_board(board, image, ref, pred, labels, score, identity["run_id"])
                 write_json(out / "board_v01.json", {
-                    "schema": "el-p2-board-1", **identity, "camera_id": view,
+                    "schema": "el-p2-board-2", **identity, "camera_id": view,
                     "selection": "first planned target camera v01", "source_artifact_ids": sources,
                     "rgb_error_palette_stops": [0, 0.025, 0.05, 0.10, 0.20],
-                    "error_out_of_range": "saturate at 0.20", "risk_codes": ["low", "high", "unknown"],
+                    "error_png_codes": "0..254 = rounded 254 * clip(RGB MAE, 0, 0.20) / 0.20; 255 = RGB unevaluable",
+                    "risk_png_codes": {"0": "low", "1": "high", "2": "unknown on E", "255": "outside E"},
+                    "risk_display_mask": "E = finite reference RGB and finite predicted RGB",
+                    "native_preview_sha256": previews,
                     "visibility_codes": VISIBILITY, "board_sha256": file_hash(board),
                 })
         _tables(rows, out, parquet)
@@ -318,6 +326,7 @@ def run_evaluation(input_path, camera_path, reference_path, prediction_path, sco
             "producer_run_id": predictions.meta["producer_run_id"] if predictions else None,
             "scoring_run_id": scores.meta["run_id"] if scores else None,
             "depth_verified": predictions.depth_verified if predictions else False,
+            "depth_validation_receipt_sha256": predictions.depth_receipt if predictions else None,
             "planned_target_views": len(TARGETS), "completed_target_views": sum(v["render_status"] == "completed" for v in views.values()),
             "metric_version": METRIC_VERSION, "label_version": LABEL_VERSION,
             "methods_in_common_ranking": list(METHODS), "metrics_parquet": parquet,
@@ -335,7 +344,7 @@ def main(argv=None):
     group.add_argument("--predictions", type=Path, help="same prediction directory used for scoring")
     group.add_argument("--render-failed", metavar="REASON", help="document a known failed render; evaluation still requires its references")
     p.add_argument("--scores", type=Path, help="directory containing score.json and scored arrays")
-    p.add_argument("--output", required=True, type=Path, help="new evaluation directory")
+    p.add_argument("--output", required=True, type=Path, help="new or empty evaluation directory")
     p.add_argument("--parquet", action="store_true", help="also export typed Parquet (requires the record extra)")
     keys = ("run_id", "trial_id", "scene_family_id", "scene_id", "condition_id")
     for key in keys:

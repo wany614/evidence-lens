@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -14,9 +15,11 @@ import uuid
 import zipfile
 from pathlib import Path
 
+from . import _capacity
 from ._bundle import (BundleError, HASH, RUN_ID, SCHEMA, files, freeze_tree, load,
                       local_path, save, sha, utc)
 from ._index import connect, index_receipt, index_run, writer_gate
+from ._snapshot import commit_shared
 from ._verify import require, verify_bundle, verify_dependencies, verify_shared
 
 
@@ -70,12 +73,27 @@ def remove_stage(path: Path) -> None:
     shutil.rmtree(path, onerror=writable_then_retry)
 
 
-def receive(source: Path, root: Path, expected: str | None = None) -> dict:
+def project_receipt(root: Path, receipt: Path, out: Path | None = None, result: dict | None = None,
+                    upstreams: dict | None = None) -> None:
+    db = connect(root / "index" / "index.sqlite3")
+    try:
+        with db:
+            for rid, entry in (upstreams or {}).items():
+                index_run(db, root, root / "runs" / rid, entry)
+            if out is not None:
+                index_run(db, root, out, result)
+            index_receipt(db, root, receipt)
+    finally:
+        db.close()
+
+
+def receive(source: Path, root: Path, expected: str | None = None, storage_policy: Path | None = None) -> dict:
     source, root = source.absolute(), root.resolve()
     require(not source.is_symlink() and (source.is_dir() or source.is_file()),
             "source must be a run directory or ZIP")
     require(not root.is_relative_to(source.resolve()), "destination store is inside the source")
     require(expected is None or HASH.fullmatch(expected), "invalid expected container SHA-256")
+    limits = _capacity.policy(storage_policy, Path.cwd())
     start = time.monotonic()
     staging = root / "staging"
     staging.mkdir(parents=True, exist_ok=True)
@@ -86,6 +104,20 @@ def receive(source: Path, root: Path, expected: str | None = None) -> dict:
     source_kind = "directory" if source.is_dir() else "zip"
     with writer_gate(root):
         try:
+            estimate = _capacity.bytes_on_tree(source)
+            if source.is_file() and zipfile.is_zipfile(source):
+                with zipfile.ZipFile(source) as remote:
+                    estimate += sum(i.file_size for i in remote.infolist())
+            space = _capacity.check(root, estimate, limits)
+            if space["reason"]:
+                remove_stage(stage)
+                receipt, record = make_receipt(
+                    root, "transfer", run_id=None, manifest_sha256=None, status="deferred_capacity",
+                    reason=space["reason"], storage_preflight=space, source_kind=source_kind,
+                    source_name=source.name, container_sha256=None, bytes=None,
+                    elapsed_seconds=time.monotonic() - start)
+                project_receipt(root, receipt)
+                return record
             if source.is_dir():
                 require(expected is None, "--sha256 applies to an archive container")
                 shutil.copytree(source, copy, symlinks=True)
@@ -111,7 +143,8 @@ def receive(source: Path, root: Path, expected: str | None = None) -> dict:
                 existing = verify_bundle(out)
                 require(existing["manifest_sha256"] == digest and existing["run"]["run_id"] == rid,
                         "conflict: this run ID already has a different manifest")
-            verify_dependencies(result, root)
+            upstreams = {}
+            verify_dependencies(result, root, upstreams)
             if out.exists():
                 status = "identical"
             else:
@@ -128,23 +161,12 @@ def receive(source: Path, root: Path, expected: str | None = None) -> dict:
                                       quarantine_path=quarantine.relative_to(root).as_posix(),
                                       source_kind=source_kind, container_sha256=container_hash,
                                       bytes=size, elapsed_seconds=time.monotonic() - start)
-            db = connect(root / "index" / "index.sqlite3")
-            try:
-                with db:
-                    index_receipt(db, root, receipt)
-            finally:
-                db.close()
+            project_receipt(root, receipt)
             return record
         receipt, record = make_receipt(root, "transfer", run_id=rid, manifest_sha256=digest, status=status,
                                       reason=None, source_kind=source_kind, container_sha256=container_hash,
                                       bytes=size, elapsed_seconds=time.monotonic() - start)
-        db = connect(root / "index" / "index.sqlite3")
-        try:
-            with db:
-                index_run(db, root, out, result)
-                index_receipt(db, root, receipt)
-        finally:
-            db.close()
+        project_receipt(root, receipt, out, result, upstreams)
         remove_stage(stage)
         return record
 
@@ -156,20 +178,43 @@ def pack(bundle: Path, output: Path, root: Path) -> dict:
     require(not output.exists(), "container destination already exists")
     result = verify_bundle(bundle)
     verify_shared(result, root)
+    members = {row["path"]: row["sha256"] for row in result["manifest"]["files"]}
+    members.update({"manifest.json": result["manifest_sha256"], "completion.json": sha(bundle / "completion.json")})
     output.parent.mkdir(parents=True, exist_ok=True)
     temp = output.with_name("." + output.name + "." + uuid.uuid4().hex)
     try:
         with zipfile.ZipFile(temp, "x", compression=zipfile.ZIP_STORED, allowZip64=True) as archive:
-            for name, path in files(bundle).items():
+            actual = files(bundle)
+            require(actual.keys() == members.keys(), "bundle changed during packaging")
+            for name, path in actual.items():
                 info = zipfile.ZipInfo(name, (1980, 1, 1, 0, 0, 0))
                 info.create_system = 3
                 info.external_attr = (stat.S_IFREG | 0o444) << 16
                 info.file_size = path.stat().st_size
+                h = hashlib.sha256()
                 with path.open("rb") as src, archive.open(info, "w", force_zip64=True) as dst:
-                    shutil.copyfileobj(src, dst, 1024 * 1024)
+                    while chunk := src.read(1024 * 1024):
+                        dst.write(chunk)
+                        h.update(chunk)
+                require(h.hexdigest() == members[name], f"file changed during packaging: {name}")
         digest = sha(temp)
         # An exclusive hard link makes concurrent packs no-overwrite as well.
-        os.link(temp, output)
+        try:
+            os.link(temp, output)
+        except FileExistsError:
+            raise
+        except OSError:
+            # FAT/exFAT and some mounted providers cannot create hard links.
+            with output.open("xb") as dst:
+                try:
+                    with temp.open("rb") as src:
+                        shutil.copyfileobj(src, dst, 1024 * 1024)
+                    dst.flush()
+                    os.fsync(dst.fileno())
+                except OSError:
+                    dst.close()
+                    output.unlink()
+                    raise
     finally:
         temp.unlink(missing_ok=True)
     with writer_gate(root):
@@ -177,12 +222,7 @@ def pack(bundle: Path, output: Path, root: Path) -> dict:
                                        manifest_sha256=result["manifest_sha256"], status="packed_local",
                                        reason=None, container_sha256=digest, bytes=output.stat().st_size,
                                        container_name=output.name, elapsed_seconds=time.monotonic() - start)
-        db = connect(root / "index" / "index.sqlite3")
-        try:
-            with db:
-                index_receipt(db, root, receipt)
-        finally:
-            db.close()
+        project_receipt(root, receipt)
     return record
 
 
@@ -237,12 +277,18 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("source", type=Path)
     r.add_argument("--root", type=Path, required=True)
     r.add_argument("--sha256", help="expected ZIP SHA-256 from the producer")
+    r.add_argument("--storage-policy", type=Path, help="override configs/storage.json")
     p = commands.add_parser("pack")
     p.add_argument("bundle", type=Path)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--root", type=Path)
     b = commands.add_parser("rebuild")
     b.add_argument("--root", type=Path, required=True)
+    a = commands.add_parser("add-asset", help="import one independently obtained shared file with a pinned SHA-256")
+    a.add_argument("file", type=Path)
+    a.add_argument("--root", type=Path, required=True)
+    a.add_argument("--sha256", required=True)
+    a.add_argument("--storage-policy", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.action == "verify":
@@ -257,14 +303,25 @@ def main(argv: list[str] | None = None) -> int:
                    "manifest_sha256": result["manifest_sha256"], "integrity": "verified",
                    "manifest_bytes": result["bytes"]}
         elif args.action == "receive":
-            out = receive(args.source, args.root, args.sha256)
+            out = receive(args.source, args.root, args.sha256, args.storage_policy)
         elif args.action == "pack":
             bundle = args.bundle.resolve()
             out = pack(bundle, args.output, (args.root or store_of(bundle)).resolve())
+        elif args.action == "add-asset":
+            require(HASH.fullmatch(args.sha256) is not None, "invalid asset SHA-256")
+            root = args.root.resolve()
+            root.mkdir(parents=True, exist_ok=True)
+            with writer_gate(root):
+                limits = _capacity.policy(args.storage_policy, Path.cwd())
+                cap = _capacity.check(root, args.file.stat().st_size, limits)
+                require(not cap["reason"], cap["reason"] or "")
+                installed = commit_shared(args.file, root, args.sha256)
+            out = {"asset_id": "sha256:" + args.sha256, "bytes": installed.stat().st_size,
+                   "path": installed.relative_to(root).as_posix()}
         else:
             out = rebuild(args.root)
         print(json.dumps(out, ensure_ascii=False))
-        return 1 if out.get("status") == "quarantined" else 0
+        return 1 if out.get("status") in {"quarantined", "deferred_capacity"} else 0
     except (OSError, ValueError, KeyError, TypeError, RuntimeError, zipfile.BadZipFile) as error:
         print(f"archive error: {error}", file=sys.stderr)
         return 2

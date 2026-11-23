@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import re
 import shutil
 import tempfile
 from contextlib import contextmanager
@@ -56,13 +57,21 @@ class ReadAudit:
 def new_output(directory: Path):
     """Commit a complete new derived product; existing results are immutable."""
     directory = Path(directory)
-    if directory.exists() or directory.is_symlink():
-        raise FileExistsError(f"output already exists: {directory}")
+    precreated = directory.exists()
+    if directory.is_symlink() or (precreated and (not directory.is_dir() or any(directory.iterdir()))):
+        raise FileExistsError(f"output must be a new or empty directory: {directory}")
     directory.parent.mkdir(parents=True, exist_ok=True)
     temporary = Path(tempfile.mkdtemp(prefix=f".{directory.name}-", dir=directory.parent))
     try:
         yield temporary
-        temporary.rename(directory)
+        if precreated:
+            directory.rmdir()  # Fails safely if another writer populated the stage.
+        try:
+            temporary.rename(directory)
+        except OSError:
+            if precreated and not directory.exists():
+                directory.mkdir()
+            raise
     finally:
         if temporary.exists():
             shutil.rmtree(temporary)
@@ -86,6 +95,9 @@ def load_cameras(path: Path, audit: ReadAudit) -> dict[str, Camera]:
         "el-camera-1", "m", "integer"
     ):
         raise ValueError("expected el-camera-1, metres, integer pixel centres")
+    if (bundle.get("image_origin", "top_left") != "top_left" or
+            bundle.get("axis_convention", "OpenCV x right, y down, z forward") != "OpenCV x right, y down, z forward"):
+        raise ValueError("incompatible camera axes or image origin")
     if set(bundle["views"]) != set(VIEWS):
         raise ValueError("camera bundle must contain source and v01 through v06")
     cameras = {}
@@ -105,6 +117,11 @@ def load_cameras(path: Path, audit: ReadAudit) -> dict[str, Camera]:
         R = pose[:3, :3]
         if not np.allclose(R.T @ R, np.eye(3), atol=1e-5) or not np.isclose(np.linalg.det(R), 1, atol=1e-5):
             raise ValueError(f"{view}: c2w must be a proper rigid transform")
+        if "w2c" in spec and not np.allclose(spec["w2c"], np.linalg.inv(pose), atol=1e-5):
+            raise ValueError(f"{view}: w2c disagrees with c2w")
+        to_edge = np.array([[1, 0, 0.5], [0, 1, 0.5], [0, 0, 1]])
+        if "K_edge" in spec and not np.allclose(spec["K_edge"], to_edge @ K, atol=1e-5):
+            raise ValueError(f"{view}: K_edge disagrees with integer-centre intrinsics")
         cameras[view] = Camera(width, height, K, pose)
     return cameras
 
@@ -164,11 +181,18 @@ class PredictionBundle:
         if not isinstance(validation, dict) or any(type(validation.get(key)) is not bool for key in checks):
             raise ValueError(f"prediction.json requires boolean depth checks {checks}")
         self.depth_verified = all(validation[key] for key in checks)
+        self.depth_receipt = self.meta.get("depth_validation_receipt_sha256")
+        if self.depth_receipt is not None and (
+            not isinstance(self.depth_receipt, str) or not re.fullmatch("[0-9a-f]{64}", self.depth_receipt)
+        ):
+            raise ValueError("invalid depth_validation_receipt_sha256")
         self.failed = self.meta.get("failed_views", {})
         if not isinstance(self.failed, dict) or not set(self.failed).issubset(VIEWS) or any(
             not isinstance(reason, str) or not reason.strip() for reason in self.failed.values()
         ):
             raise ValueError("invalid failed_views mapping in prediction.json")
+        if "views" in self.meta and not isinstance(self.meta["views"], dict):
+            raise ValueError("prediction.json views must be an object")
 
     def read(self, view: str, camera: Camera) -> dict[str, np.ndarray] | None:
         if view not in VIEWS:
@@ -180,6 +204,10 @@ class PredictionBundle:
             return None
         role = f"prediction/{view}"
         data = self.audit.read(role, path)
+        if "views" in self.meta:
+            entry = self.meta["views"].get(view)
+            if not isinstance(entry, dict) or entry.get("sha256") != self.audit.sha(role):
+                raise ValueError(f"{role}: file digest differs from prediction.json")
         with np.load(io.BytesIO(data), allow_pickle=False) as archive:
             if len(archive.files) != 3 or set(archive.files) != {"rgb", "z", "alpha"}:
                 raise ValueError(f"{role}: expected exactly rgb, z, alpha")

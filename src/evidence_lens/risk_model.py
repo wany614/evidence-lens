@@ -1,6 +1,8 @@
 """CPU-only L0 and 1-alpha inference. Run with python -m evidence_lens.risk_model."""
 
 import argparse
+import os
+import time
 from pathlib import Path
 
 import numpy as np
@@ -90,24 +92,36 @@ def run_score(input_path: Path, camera_path: Path, predictions: Path, output: Pa
             "schema": "el-score-1", "run_id": run_id, "stage": "P2",
             "methods": ["L0", "1-alpha"], "l0_reason_codes": REASONS,
             "l0_high_codes": list(HIGH), "l0_low_code": 0, "missing_scores": "NaN",
+            "l0_rgb_scope": "Raw geometry and opacity diagnostics may warn on invalid predicted RGB. The evaluator uses E (finite reference and predicted RGB) for risk decisions and the full valid-reference mask for overall coverage.",
             "1-alpha_operating_point": "high if score > 0.5; P2 diagnostic threshold",
             "producer_run_id": bundle.meta["producer_run_id"],
             "depth_verified": bundle.depth_verified,
+            "depth_validation_receipt_sha256": bundle.depth_receipt,
             "feature_schema_sha256": file_hash(out / "feature_schema.json"),
             "source_comparison": _source_comparison(out, input_rgb, source) if source is not None
                                  else {"status": "render_failed", "reason": bundle.failed["source"]},
             "views": {},
         }
         for view in TARGETS:
+            read_start = time.perf_counter()
             target = bundle.read(view, cameras[view])
             if target is None:
                 receipt["views"][view] = {"status": "render_failed", "reason": bundle.failed[view]}
                 continue
+            feature_start = time.perf_counter()
             features = extract_features(input_rgb, source, target, cameras["source"], cameras[view], bundle.depth_verified)
+            scoring_start = time.perf_counter()
             scores = score_features(features, bundle.depth_verified)
+            write_start = time.perf_counter()
             path = out / f"{view}.npz"
             np.savez_compressed(path, **features, **scores)
-            receipt["views"][view] = {"status": "scored", "score_sha256": file_hash(path)}
+            receipt["views"][view] = {
+                "status": "scored", "score_sha256": file_hash(path),
+                "prediction_read_seconds": feature_start - read_start,
+                "features_seconds": scoring_start - feature_start,
+                "scoring_seconds": write_start - scoring_start,
+                "output_write_and_hash_seconds": time.perf_counter() - write_start,
+            }
         receipt["inputs"] = audit.files
         write_json(out / "score.json", receipt)
     return receipt
@@ -118,8 +132,8 @@ def main(argv=None):
     parser.add_argument("--input", required=True, type=Path, help="the condition's exact source PNG")
     parser.add_argument("--cameras", required=True, type=Path, help="el-camera-1 JSON")
     parser.add_argument("--predictions", required=True, type=Path, help="directory containing prediction.json and per-view NPZ")
-    parser.add_argument("--output", required=True, type=Path, help="new score directory")
-    parser.add_argument("--run-id", help="ID assigned by the recording stage")
+    parser.add_argument("--output", required=True, type=Path, help="new or empty score directory")
+    parser.add_argument("--run-id", default=os.environ.get("EL_RUN_ID"), help="ID assigned by the recording stage")
     args = parser.parse_args(argv)
     run_score(args.input, args.cameras, args.predictions, args.output, args.run_id)
 

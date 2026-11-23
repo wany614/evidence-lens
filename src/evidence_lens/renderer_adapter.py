@@ -72,6 +72,8 @@ def depth_probe(cfg, device):
 def render(config, input_path, camera_path, ply, generation_meta, out):
     cfg = read(config)
     rid = run_id()
+    if cfg["renderer"]["mode"] != "RGB+ED" or cfg["renderer"]["background"] != "black":
+        raise ValueError("Calibration applies to RGB+ED with a black background.")
     generation = read(generation_meta)
     camera_hash, input_hash = digest(camera_path), digest(input_path)
     if (generation["camera_sha256"], generation["input_sha256"], generation["ply_sha256"]) != (camera_hash, input_hash, digest(ply)):
@@ -82,6 +84,8 @@ def render(config, input_path, camera_path, ply, generation_meta, out):
     from sharp.utils.gaussians import load_ply
 
     cameras = read(camera_path)
+    if cameras.get("axis_convention") != "OpenCV x right, y down, z forward":
+        raise ValueError("Camera-to-world matrices must use the calibrated OpenCV axes.")
     views = cameras["views"]
     if (cameras["schema"], cameras["unit"], cameras["pixel_center"], set(views)) != (
             "el-camera-1", "m", "integer", set(VIEWS)):
@@ -104,7 +108,7 @@ def render(config, input_path, camera_path, ply, generation_meta, out):
              "camera_sha256": camera_hash, "generation_run_id": generation["producer_run_id"],
              "ply_sha256": generation["ply_sha256"], "rgb_encoding": "display_srgb_0_1",
              "depth_semantics": "expected_camera_z_m", "alpha_semantics": "accumulated_opacity",
-             "depth_validation": probe, "depth_probe_sha256": digest(out/"depth-probe.json"),
+             "depth_validation": probe, "depth_validation_receipt_sha256": digest(out/"depth-probe.json"),
              "runtime": runtime_info(device), "render_settings": cfg["renderer"],
              "array_layout": {"rgb": "H,W,RGB FP32 display sRGB", "z": "H,W FP32 metres along target +Z; NaN at zero alpha or unverified semantics",
                               "alpha": "H,W FP32 dimensionless accumulated opacity"},

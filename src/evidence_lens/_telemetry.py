@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import csv
 import json
-import os
 import platform
 import shutil
 import subprocess
@@ -27,7 +26,7 @@ FIELDS = {
     "system_memory_used_percent": "psutil.virtual_memory().percent, percent",
     "mac_memory_pressure_level": "kern.memorystatus_vm_pressure_level integer, if exported",
     "gpu_devices": "JSON device-wide nvidia-smi samples, MiB / percent / degC / W",
-    "gpu_process_memory_bytes": "per-process GPU memory; unavailable in this sampler",
+    "gpu_process_memory_bytes": "sum of reported nvidia-smi GPU bytes for observed payload PIDs",
     "missing_reason": "JSON field-to-reason map; blank measurements are null",
 }
 
@@ -92,7 +91,7 @@ class Sampler:
         clock = time.monotonic()
         row = {"utc": utc(), "monotonic_seconds": clock,
                "elapsed_seconds": clock - self.start, "pid": pid}
-        reasons = {"gpu_process_memory_bytes": "per_process_counter_not_collected"}
+        reasons = {}
         children = []
         if process is not None:
             try:
@@ -155,8 +154,24 @@ class Sampler:
                 row["gpu_devices"] = json.dumps(devices)
             else:
                 reasons["gpu_devices"] = error or "no_device_sample"
+            counters, counter_error = _read([self.nvidia, "--query-compute-apps=pid,used_gpu_memory",
+                                             "--format=csv,noheader,nounits"])
+            reported = []
+            missing = False
+            for pair in csv.reader(counters.splitlines(), skipinitialspace=True):
+                if len(pair) == 2 and pair[0].isdigit() and int(pair[0]) in pids:
+                    if pair[1].isdigit():
+                        reported.append(int(pair[1]) * 2**20)
+                    else:
+                        missing = True
+            if reported and not missing and not counter_error:
+                row["gpu_process_memory_bytes"] = sum(reported)
+            else:
+                reasons["gpu_process_memory_bytes"] = counter_error or (
+                    "driver_process_counter_unavailable" if missing else "no_matching_process_counter")
         else:
             reasons["gpu_devices"] = "nvidia_smi_unavailable"
+            reasons["gpu_process_memory_bytes"] = "nvidia_smi_unavailable"
         row["missing_reason"] = json.dumps(reasons, sort_keys=True)
         self.rows.writerow(row)
         self.log.flush()

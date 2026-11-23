@@ -3,13 +3,19 @@
 from __future__ import annotations
 
 import hashlib
+import math
+from datetime import datetime, timezone
 from pathlib import Path
 
+from . import _metrics
 from ._bundle import (BundleError, HASH, KINDS, LABEL, PROJECT, REQUIRED, RUN_ID, SCHEMA,
                       TERMINAL, asset_path, encoded, files, items, load, local_path, sha)
 
 PARENT_REQUIRED = {"derivation", "render", "dataset_build", "evaluation", "features",
                    "model_fit", "threshold_select", "model_score", "report"}
+IDENTITY_FIELDS = ("scene_family_id", "scene_id", "scene_version", "scene_hash", "camera_set_id",
+                   "camera_set_hash", "dataset_id", "dataset_hash", "model_id", "model_hash",
+                   "condition_id", "split")
 
 
 def require(condition: bool, message: str) -> None:
@@ -19,6 +25,19 @@ def require(condition: bool, message: str) -> None:
 
 def matches(pattern, value: object) -> bool:
     return isinstance(value, str) and pattern.fullmatch(value) is not None
+
+
+def validate_identity_fields(identity: dict) -> None:
+    for key in IDENTITY_FIELDS:
+        value = identity.get(key)
+        require(value is None or isinstance(value, str), f"{key} must be a string or null")
+        if value is not None and key.endswith("_hash"):
+            require(matches(HASH, value), f"invalid {key} SHA-256")
+
+
+def timestamp(value: object) -> datetime:
+    require(isinstance(value, str) and value.endswith("Z"), "expected UTC timestamp")
+    return datetime.fromisoformat(value).astimezone(timezone.utc)
 
 
 def file_map(record: dict) -> dict:
@@ -69,6 +88,18 @@ def verify_bundle(bundle: Path) -> dict:
             and ((run["exit_code"] == 0) == (status == "succeeded"))
             and (status == "succeeded" or bool(run.get("failure_reason"))),
             "inconsistent execution or completion state")
+    for stamp in (run.get("started_at_utc"), run.get("ended_at_utc"), completion.get("sealed_at_utc")):
+        timestamp(stamp)
+    require(type(run.get("elapsed_seconds_monotonic")) in {int, float} and
+            math.isfinite(run["elapsed_seconds_monotonic"]) and run["elapsed_seconds_monotonic"] >= 0
+            and (run.get("failure_reason") is None or isinstance(run["failure_reason"], str)),
+            "invalid elapsed time or failure metadata")
+    validate_identity_fields(run)
+    command = load(actual["command.json"])
+    require(command.get("shell") is False and isinstance(command.get("argv_template"), list) and
+            all(isinstance(s, str) for s in command["argv_template"]) and isinstance(command.get("cwd"), str)
+            and (command.get("argv") is None or (isinstance(command["argv"], list) and
+                 all(isinstance(s, str) for s in command["argv"]))), "malformed command")
     require(run.get("config_sha256") == listed["config.resolved.yaml"]["sha256"],
             "resolved configuration hash mismatch")
     snapshot = load(actual["code_snapshot.json"])
@@ -127,7 +158,22 @@ def verify_bundle(bundle: Path) -> dict:
                 shared.append(row)
     require(embedded == {n for n in listed if n.startswith("inputs/")}
             and manifest.get("shared_assets") == shared, "input catalog mismatch")
+    _metrics.verify(bundle, run, {v["sha256"] for v in listed.values()} | {r["sha256"] for r in shared})
+    reference = None
+    if run["run_kind"] == "scene_render" and status == "succeeded" and "payload/reference.json" in artifacts:
+        meta = load(actual["payload/reference.json"])
+        if meta.get("schema") == "el-reference-1":
+            scene = "payload/" + local_path(meta.get("scene_path"))
+            require(scene in artifacts and artifacts[scene]["sha256"] == meta.get("blend_sha256")
+                    and artifacts.get("payload/cameras.json", {}).get("sha256") == meta.get("camera_sha256"),
+                    "reference scene or camera asset digest mismatch")
+            reference = meta
+    for name in artifacts:
+        if status == "succeeded" and Path(name).name == "cameras.json":
+            cameras = load(actual[name])
+            require(isinstance(cameras.get("views", {}), dict), "invalid camera catalog")
     return {"run": run, "manifest_sha256": digest, "manifest": manifest, "inputs": dependencies,
+            "command": command, "reference": reference,
             "artifacts": artifacts, "bytes": sum(r["bytes"] for r in listed.values()),
             "shared": shared}
 
@@ -139,15 +185,30 @@ def verify_shared(result: dict, store: Path) -> None:
                 and sha(path) == row["sha256"], f"missing or changed shared input: {row['sha256']}")
 
 
-def retry_matches(previous: dict, run: dict, inputs: dict) -> None:
+def retry_inputs(inputs: list[dict]) -> list[dict]:
+    result = []
+    for inp in inputs:
+        if inp["storage"] == "embedded" and inp["kind"] == "directory":
+            # The wrapper may be a new temporary directory. All child names,
+            # metadata and content hashes remain part of the comparison.
+            prefix = inp["path"] + "/"
+            children = [dict(row, path=row["path"].removeprefix(prefix)) for row in inp["files"]]
+            result.append(dict(inp, name=None, path=None, files=children))
+        else:
+            result.append(inp)
+    return result
+
+
+def retry_matches(previous: dict, run: dict, inputs: dict, command: list[str]) -> None:
     old = previous["run"]
     require(old["execution_status"] in {"failed", "cancelled", "interrupted"}
             and old["retry_of_run_id"] is None
             and all(old[k] == run[k] for k in ("trial_id", "experiment_id", "run_kind",
                                                 "config_sha256", "code_snapshot_sha256"))
             and previous["inputs"]["parents"] == inputs["parents"]
-            and previous["inputs"]["inputs"] == inputs["inputs"],
-            "retry changes frozen identity/configuration/code/inputs or exceeds first retry")
+            and retry_inputs(previous["inputs"]["inputs"]) == retry_inputs(inputs["inputs"])
+            and previous["command"]["argv_template"] == command,
+            "retry changes frozen identity/configuration/code/inputs/command or exceeds first retry")
 
 
 def verify_dependencies(result: dict, store: Path, cache: dict | None = None,
@@ -179,4 +240,4 @@ def verify_dependencies(result: dict, store: Path, cache: dict | None = None,
             require(all(row["sha256"] in parents[inp["parent_run_id"]] for row in inp["files"]),
                     f"input assets missing from declared parent: {inp['role']}")
     if deps.get("retry_of"):
-        retry_matches(cache[deps["retry_of"]["run_id"]], result["run"], deps)
+        retry_matches(cache[deps["retry_of"]["run_id"]], result["run"], deps, result["command"]["argv_template"])

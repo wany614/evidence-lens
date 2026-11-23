@@ -1,7 +1,6 @@
-"""Audit staged public-source candidates and export exactly the named Git blobs."""
+"""Audit the staged public-source tree and export its explicitly licensed Git blobs."""
 
 import argparse
-import io
 import json
 import subprocess
 import zipfile
@@ -10,31 +9,49 @@ from pathlib import Path, PurePosixPath
 POLICY = "configs/public-source.json"
 
 
-def index_bytes(root, name):
-    return subprocess.check_output(["git", "-C", str(root), "show", f":{name}"])
+def git(root, *args):
+    return subprocess.check_output(["git", "-C", str(root), *args])
 
 
-def audit(root):
-    # Read both the policy and content from the index to avoid exporting a different revision.
-    policy = json.loads(index_bytes(root, POLICY))
-    names = {bytes_name.decode() for bytes_name in subprocess.check_output(
-        ["git", "-C", str(root), "ls-files", "-z"]).split(b"\0") if bytes_name}
+def staged_tree(root):
+    tree = git(root, "write-tree").decode("ascii").strip()
+    entries = {}
+    for item in git(root, "ls-tree", "-rz", tree).split(b"\0"):
+        if item:
+            header, path = item.split(b"\t", 1)
+            mode, kind, oid = header.split()
+            if kind != b"blob" or mode not in (b"100644", b"100755"):
+                raise ValueError(f"expected regular file in staged tree: {path!r}")
+            entries[path.decode("utf-8")] = (int(mode, 8), oid.decode("ascii"))
+    return tree, entries
+
+
+def unique_keys(pairs):
+    obj = dict(pairs)
+    if len(obj) != len(pairs):
+        raise ValueError("duplicate key in the source allowlist")
+    return obj
+
+
+def audit(root, entries=None):
+    if entries is None:
+        _, entries = staged_tree(root)
+    if POLICY not in entries:
+        raise ValueError("staged tree has no source allowlist")
+    policy = json.loads(git(root, "cat-file", "blob", entries[POLICY][1]), object_pairs_hook=unique_keys)
     declared = policy["files"]
-    if len(declared) != len(set(declared)) or names != set(declared):
-        raise ValueError(f"index differs from explicit file list: {sorted(names ^ set(declared))}")
+    if set(entries) != set(declared):
+        raise ValueError(f"index differs from explicit file list: {sorted(set(entries) ^ set(declared))}")
     blobs = {}
     for name, license_id in declared.items():
         rel = PurePosixPath(name)
         if rel.is_absolute() or ".." in rel.parts or str(rel) != name or "\\" in name or ":" in name:
             raise ValueError(f"nonportable path {name}")
-        if license_id not in policy["license_status"] or not policy["license_status"][license_id]:
+        if not policy["license_status"].get(license_id):
             raise ValueError(f"missing license record for {name}")
-        mode = subprocess.check_output(["git", "-C", str(root), "ls-files", "--stage", "--", name]).split()[0]
-        if mode not in {b"100644", b"100755"}:
-            raise ValueError(f"expected regular tracked file: {name}")
-        content = index_bytes(root, name)
-        content.decode("utf-8")  # P0 source-only; binary examples have their own future release manifest.
-        blobs[name] = content
+        data = git(root, "cat-file", "blob", entries[name][1])
+        data.decode("utf-8")  # Binary release assets have their own inventory.
+        blobs[name] = data
     return policy, blobs
 
 
@@ -43,14 +60,19 @@ def main():
     p.add_argument("--root", type=Path, default=Path.cwd())
     p.add_argument("--export", type=Path, help="write a new source ZIP when all licenses permit public export")
     args = p.parse_args()
-    policy, blobs = audit(args.root)
+    tree, entries = staged_tree(args.root)
+    policy, blobs = audit(args.root, entries)
     if args.export:
         if any(policy["license_status"][v]["public_export"] is not True for v in set(policy["files"].values())):
             raise SystemExit("Source licensing decision is pending; the local audit is available.")
-        with zipfile.ZipFile(args.export, mode="x", compression=zipfile.ZIP_DEFLATED) as bundle:
+        with zipfile.ZipFile(args.export, mode="x") as bundle:
+            bundle.comment = f"git-tree {tree}".encode("ascii")
             for name, data in sorted(blobs.items()):
-                bundle.writestr(name, data)
-    print(f"Audited {len(blobs)} exact staged source paths.")
+                entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+                entry.create_system = 3
+                entry.external_attr = entries[name][0] << 16
+                bundle.writestr(entry, data, compress_type=zipfile.ZIP_DEFLATED)
+    print(f"Audited {len(blobs)} exact staged source paths in Git tree {tree}.")
 
 
 if __name__ == "__main__":

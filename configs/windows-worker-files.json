@@ -1,0 +1,24 @@
+{
+  "schema": "el-worker-files-1",
+  "files": [
+    "README.md",
+    "pyproject.toml",
+    "configs/windows-b0.json",
+    "configs/storage.json",
+    "scripts/windows_stage.py",
+    "scripts/windows_environment.py",
+    "src/evidence_lens/__init__.py",
+    "src/evidence_lens/_bundle.py",
+    "src/evidence_lens/_index.py",
+    "src/evidence_lens/_metrics.py",
+    "src/evidence_lens/_snapshot.py",
+    "src/evidence_lens/_telemetry.py",
+    "src/evidence_lens/_verify.py",
+    "src/evidence_lens/_worker.py",
+    "src/evidence_lens/archive.py",
+    "src/evidence_lens/recorder.py",
+    "src/evidence_lens/generator_adapter.py",
+    "src/evidence_lens/renderer_adapter.py",
+    "src/evidence_lens/_capacity.py"
+  ]
+}

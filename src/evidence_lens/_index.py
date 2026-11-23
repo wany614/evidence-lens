@@ -68,6 +68,11 @@ def connect(path: Path):
 def index_run(db, root: Path, bundle: Path, verified: dict) -> None:
     run = verified["run"]
     rid = run["run_id"]
+    existing = db.execute("SELECT manifest_sha256 FROM runs WHERE run_id=?", (rid,)).fetchone()
+    if existing:
+        if existing[0] != verified["manifest_sha256"]:
+            raise ValueError("SQLite projection conflicts with the verified bundle; rebuild the index")
+        return
     db.execute("INSERT OR IGNORE INTO runs VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                (rid, run["experiment_id"], run["trial_id"], run["run_kind"], run["execution_status"],
                 "sealed", "not_archived", verified["manifest_sha256"], bundle.relative_to(root).as_posix(),
@@ -87,15 +92,21 @@ def index_run(db, root: Path, bundle: Path, verified: dict) -> None:
         if run["run_kind"] == "dataset_build" and role != "output":
             db.execute("INSERT OR IGNORE INTO dataset_members VALUES(?,?,?,?)",
                        (rid, role, row["path"], row["asset_id"]))
-        if role == "output" and Path(row["path"]).name == "cameras.json":
+        if role == "output" and run["execution_status"] == "succeeded" and Path(row["path"]).name == "cameras.json":
             camera_set = load(bundle / row["path"])
+            set_id = camera_set.get("camera_set_id") or run.get("camera_set_id") or (
+                str(camera_set.get("schema", "cameras")) + "/" + row["sha256"])
             for camera_id in camera_set.get("views", {}):
                 db.execute("INSERT OR IGNORE INTO cameras VALUES(?,?,?,?)", (
-                    rid, camera_set.get("camera_set_id", run.get("camera_set_id")),
-                    camera_id, row["asset_id"]))
+                    rid, set_id, camera_id, row["asset_id"]))
+    scene_hash, version = run.get("scene_hash"), run.get("scene_version")
+    if verified["reference"]:
+        scene_hash = verified["reference"]["blend_sha256"]
+        if not version and "/" in str(run.get("scene_id")):
+            version = run["scene_id"].rsplit("/", 1)[-1]
     if run.get("scene_id"):
         db.execute("INSERT OR IGNORE INTO scenes VALUES(?,?,?,?,?)", (
-            rid, run.get("scene_family_id"), run["scene_id"], run.get("scene_version"), run.get("scene_hash")))
+            rid, run.get("scene_family_id"), run["scene_id"], version, scene_hash))
     if run.get("dataset_id"):
         db.execute("INSERT OR IGNORE INTO datasets VALUES(?,?,?)", (rid, run["dataset_id"], run.get("dataset_hash")))
     if run.get("model_id"):
@@ -106,7 +117,8 @@ def index_run(db, root: Path, bundle: Path, verified: dict) -> None:
         refs = row["source_artifact_ids"]
         row["source_artifact_ids"] = json.dumps(refs) if refs is not None else None
         values = [number, *(row[k] for k in keys)]
-        db.execute("INSERT OR IGNORE INTO metrics VALUES(" + ",".join("?" for _ in values) + ")", values)
+        db.execute("INSERT OR IGNORE INTO metrics(row_number," + ",".join(keys) + ") VALUES(" +
+                   ",".join("?" for _ in values) + ")", values)
 
 
 def index_receipt(db, root: Path, path: Path) -> None:

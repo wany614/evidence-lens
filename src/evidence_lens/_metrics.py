@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import math
+from itertools import zip_longest
 from pathlib import Path
 
 import pyarrow as pa
@@ -52,3 +53,40 @@ def export(bundle: Path, identity: dict, *, empty: bool = False) -> None:
             if row["source_artifact_ids"] is not None:
                 row["source_artifact_ids"] = json.dumps(row["source_artifact_ids"])
             writer.writerow(row)
+
+
+def verify(bundle: Path, identity: dict, hashes: set[str]) -> None:
+    parquet = pq.ParquetFile(bundle / "metrics.parquet")
+    columns = parquet.schema_arrow
+    if set(columns.names) != set(SCHEMA.names) or len(columns.names) != len(SCHEMA):
+        raise BundleError("unexpected metric columns")
+    for field in SCHEMA:
+        actual = columns.field(field.name).type
+        # Early P0 smoke bundles contained an empty integer numerator column.
+        legacy_empty = field.name == "numerator" and parquet.metadata.num_rows == 0 and actual == pa.int64()
+        if actual != field.type and not legacy_empty:
+            raise BundleError(f"invalid metric column type: {field.name}")
+    expected_rows = (row for batch in parquet.iter_batches(batch_size=4096) for row in batch.to_pylist())
+    with (bundle / "metrics.csv").open(encoding="utf-8", newline="") as handle:
+        records = csv.DictReader(handle)
+        if records.fieldnames != columns.names:
+            raise BundleError("CSV and Parquet metric columns differ")
+        for row, human in zip_longest(expected_rows, records):
+            if row is None or human is None:
+                raise BundleError("CSV and Parquet metric counts differ")
+            if row["run_id"] != identity["run_id"] or row["trial_id"] != identity["trial_id"]:
+                raise BundleError("metric belongs to a different run/trial")
+            for ref in row["source_artifact_ids"] or []:
+                if ":sha256:" in ref:
+                    digest = ref.rsplit(":sha256:", 1)[1]
+                elif ref.startswith("sha256:"):
+                    digest = ref[7:]
+                else:
+                    raise BundleError("metric lacks a content-addressed source asset")
+                if digest not in hashes:
+                    raise BundleError(f"metric source asset missing from bundle: {digest}")
+            for key, actual in row.items():
+                if key == "source_artifact_ids" and actual is not None:
+                    actual = json.dumps(actual)
+                if human[key] != ("" if actual is None else str(actual)):
+                    raise BundleError(f"CSV and Parquet metric values differ: {key}")

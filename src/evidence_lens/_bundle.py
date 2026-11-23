@@ -87,7 +87,7 @@ def local_path(name: str) -> str:
                    {"CON", "PRN", "AUX", "NUL", *(f"LPT{i}" for i in range(1, 10)),
                     *(f"COM{i}" for i in range(1, 10))}
                    for part in parts)
-            or any(ord(c) < 32 or c in '<>:"\\|?*' for c in name)):
+            or any(ord(c) < 32 or 0xD800 <= ord(c) <= 0xDFFF or c in '<>:"\\|?*' for c in name)):
         raise BundleError(f"nonportable relative path: {name!r}")
     return name
 
