@@ -138,7 +138,8 @@ def test_report_cli_from_sealed_chain_and_seven_containers(tmp_path, monkeypatch
     counts = result["metrics"]["family_sum"]
     assert (counts["V"], counts["E"], counts["invalid_output"]) == (36, 25, 11)
     assert all(s["archive"]["bytes"] > 0 for s in result["stages"].values())
-    assert result["failed_started_stage_count"] == 1 and len(result["preflights"]) == 1
+    assert result["failed_started_stage_count"] == 2 and len(result["preflights"]) == 1
+    assert {a["kind"] for a in result["attempts"] if a["status"] == "failed"} == {"generation", "render"}
     evaluation = store / "runs" / frozen["selected"]["evaluation"]["run_id"] / "payload"
     for label, name in (("Evaluation metrics CSV", "metrics.csv"), ("Evaluation metrics Parquet", "metrics.parquet")):
         assert (out / result["links"][label]).resolve() == evaluation / name
