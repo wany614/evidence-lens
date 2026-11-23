@@ -1,0 +1,9 @@
+{
+  "schema": "el-public-license-scope-1",
+  "license_files": {
+    "source": "LICENSE",
+    "parameters": "licenses/MODEL-LICENSE.txt",
+    "example": "licenses/EXAMPLE-LICENSE.txt",
+    "research_records": "licenses/RESEARCH-RECORDS.txt"
+  }
+}

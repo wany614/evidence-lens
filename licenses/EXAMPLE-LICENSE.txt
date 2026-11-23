@@ -1,0 +1,7 @@
+Evidence Lens v0.1.0 original textured-plane demonstration
+
+The project authored the tabletop scene and rendered its input. A separate
+plane projection produced the example views, depth and opacity. This notice
+covers the original example inputs, expected scores and numerical grading
+manifest identified in release.json. Selection of an outbound example
+license is pending. The current copy is a private evaluation candidate.

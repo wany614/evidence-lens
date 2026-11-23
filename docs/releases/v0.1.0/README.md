@@ -1,5 +1,7 @@
 # Run Evidence Lens v0.1.0 on a CPU
 
+**Private release candidate.** The project owner is reviewing the distribution terms and GitHub destination.
+
 This release scores nearby views synthesized from a single image. Its L1-full model assigns a per-pixel risk score and a low, high or unknown decision. The study used static opaque Blender scenes, Apple SHARP at commit `aed6527499ef91cba3b54c18d49a870f25947190` and gsplat 1.5.3. It tested the original 512-pixel input, a half-resolution input and a colour-only FP16 round trip. Scores target mean absolute display-sRGB error above 0.05. Expected depth uses optical-axis metres. The bundled demonstration uses an independently authored plane projection and a 128-pixel input.
 
 ## Install and grade the example

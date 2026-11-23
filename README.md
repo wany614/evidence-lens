@@ -12,6 +12,8 @@ The illustration comes from a project-authored textured-plane adapter. Quantitat
 
 ## Run the model on a CPU
 
+The v0.1.0 package is a private release candidate pending the owner’s repository and license selections.
+
 The versioned model ZIP contains a Python wheel, coefficients, preprocessing parameters, camera calibration, seven small prediction arrays, a numerical expectation and its checksums. Use the commands below in the extracted ZIP. The base package requires Python 3.11 or later, NumPy and Pillow. [Versioned installation and verification guide](docs/releases/v0.1.0/README.md)
 
 ```sh

@@ -1,0 +1,8 @@
+Evidence Lens research measurements and provenance
+
+This private evaluation copy contains descriptive measurements, method and
+file identifiers, training and evaluation receipts, and project-authored
+documentation of the study. The project owner will specify terms for the
+original explanatory material when authorizing public distribution. Access
+to the original research archive and the rights in external data, software,
+weights and rendered predictions are governed separately.

@@ -1,0 +1,6 @@
+Evidence Lens v0.1.0 fitted parameters
+
+This notice applies to the project-trained L1 coefficients, intercepts,
+imputation and standardization parameters, model index and frozen thresholds
+identified by release.json. The project owner is evaluating this private
+candidate. Selection of an outbound parameter license is pending.

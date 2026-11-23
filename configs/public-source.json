@@ -12,6 +12,7 @@
   },
   "files": {
     ".gitignore": "original-source-pending",
+    "LICENSE": "original-source-pending",
     "README.md": "original-source-pending",
     "configs/cpu-example.json": "original-source-pending",
     "configs/formal-cameras-v1.json": "original-source-pending",
@@ -43,6 +44,10 @@
     "examples/tabletop-plane/v01-prediction.png": "original-example-pending",
     "examples/tabletop-plane/v01-risk.png": "original-example-pending",
     "examples/tabletop-plane/v01-state.png": "original-example-pending",
+    "licenses/ASSET-SCOPE.json": "original-source-pending",
+    "licenses/EXAMPLE-LICENSE.txt": "original-source-pending",
+    "licenses/MODEL-LICENSE.txt": "original-source-pending",
+    "licenses/RESEARCH-RECORDS.txt": "original-source-pending",
     "protocol/analysis-addendum-v1.json": "original-source-pending",
     "protocol/families-v1.json": "original-source-pending",
     "protocol/operating-points-v1.json": "original-source-pending",
