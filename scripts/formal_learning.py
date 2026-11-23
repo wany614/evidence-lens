@@ -236,14 +236,30 @@ def record_score(store, catalog, freeze_file, study, method_file, family_id, con
     schema = "el-p2-trial-selection-1" if condition == "B0" else "el-condition-selection-1"
     require(s.get("schema") == schema and s["trial_id"] == trial and s["selection_status"] == "selected" and s["scene_family_id"] == family_id
             and s["scene_id"] == family["scene_id"] and s["condition_id"] == condition, "condition differs from pinned trial")
+    render_trial = trial
     render_ref = run_pin(s["selected"]["render"])
+    producer = s["selected"]["generation" if condition == "B0" else "producer"]["run_id"]
+    timing_file = None
+    if repeat is not None:
+        render_trial = f"{trial}-timing-{repeat:02}"
+        timing_file = store / "formal" / family["dataset_hash"] / "conditions/timing" / (render_trial + ".json")
+        timing_marker = load(timing_file)
+        require(timing_marker.get("schema") == "el-timing-repeat-1" and timing_marker["trial_id"] == render_trial
+                and timing_marker["timing_repeat"] == repeat and timing_marker["scene_family_id"] == family_id
+                and timing_marker["condition_id"] == condition and timing_marker["catalog_sha256"] == family["dataset_hash"]
+                and timing_marker["method_freeze_sha256"] == gate["method_freeze_sha256"]
+                and timing_marker["included_in_quality_or_training"] is False
+                and timing_marker["warmup"]["selection_sha256"] == sha(selected_file)
+                and timing_marker["render"]["run_id"] != render_ref["run_id"],
+                "timed CPU scoring requires this repeat's independent Windows render")
+        render_ref = run_pin(timing_marker["render"])
+        producer = timing_marker["producer"]["run_id"]
     source_ref = run_pin(s["selected"]["preparation" if condition == "R1" else "reference"])
     model_ref = {"run_id": gate["threshold_select_run_id"], "manifest_sha256": gate["threshold_select_manifest_sha256"]}
     rr, sr, mr = (PinnedRun(store, pin) for pin in (render_ref, source_ref, model_ref))
     meta = load(rr.open("payload/prediction.json"))
     image, cameras = sr.open("payload/input.png"), sr.open("payload/cameras.json")
     expected_source_kind = "derivation" if condition == "R1" else "scene_render"
-    producer = s["selected"]["generation" if condition == "B0" else "producer"]["run_id"]
     require(sr.run["run_kind"] == expected_source_kind and sr.run["scene_family_id"] == family_id
             and sr.run["dataset_hash"] == family["dataset_hash"] and sr.run["scene_id"] == family["scene_id"]
             and set(rr.run["parent_run_ids"]) == {source_ref["run_id"], producer}, "render has different source or producer parents")
@@ -256,7 +272,7 @@ def record_score(store, catalog, freeze_file, study, method_file, family_id, con
             require(run_pin(source_pin) == source_ref and source_pin["path"] == "payload/" + path.name
                     and source_pin["sha256"] == sha(path), "stress source asset disagrees with condition selection")
     require(rr.run["run_kind"] == "render" and rr.run["execution_status"] == sr.run["execution_status"] == "succeeded"
-            and all(rr.run[k] == v for k, v in {"dataset_hash":family["dataset_hash"], "scene_family_id":family_id, "trial_id":trial,
+            and all(rr.run[k] == v for k, v in {"dataset_hash":family["dataset_hash"], "scene_family_id":family_id, "trial_id":render_trial,
                     "scene_id": family["scene_id"], "condition_id":condition, "split":family["split"]}.items())
             and meta["producer_run_id"] == render_ref["run_id"] and meta["input_sha256"] == sha(image) and meta["camera_sha256"] == sha(cameras),
             "condition source or camera disagrees with the selected render")
@@ -268,6 +284,8 @@ def record_score(store, catalog, freeze_file, study, method_file, family_id, con
     config = {"schema": "el-heldout-l1-score-1", "run_kind": "model_score", "trial_id": trial, "experiment_id": experiment,
               "timing_repeat": repeat, "quality_result": repeat is None and not development_parity,
               "identity": identity, "render": render_ref, "source": source_ref, "model": model_ref, "selection_sha256": sha(selected_file), **gate}
+    if timing_file is not None:
+        config["timing_marker_sha256"] = sha(timing_file)
     with tempfile.TemporaryDirectory(dir=store, prefix="five-method-inputs-") as tmp:
         files = ["prediction.json", *(v + ".npz" for v in ("source", *TARGETS) if v not in meta.get("failed_views", {}))]
         for name in files:
@@ -275,6 +293,8 @@ def record_score(store, catalog, freeze_file, study, method_file, family_id, con
         pred = select_files(rr.root / "payload", Path(tmp) / "predictions", files)
         inputs = {"source": (image, source_ref["run_id"]), "cameras": (cameras, source_ref["run_id"]),
                   "predictions": (pred, render_ref["run_id"]), "model": (model, model_ref["run_id"]), "method": (method_file, None)}
+        if timing_file is not None:
+            inputs["timing-marker"] = (timing_file, None)
         cmd = [str(python.absolute()), "-m", "evidence_lens.l1", "--input", "{input:source}", "--cameras", "{input:cameras}",
                "--predictions", "{input:predictions}", "--model", "{input:model}", "--model-sha256", method["model_index_sha256"],
                "--output", "{out}", "--run-id", "{run_id}"]
