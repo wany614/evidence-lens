@@ -117,6 +117,8 @@ def test_synthetic_training_and_four_method_evaluation(tmp_path):
     assert fr["status"] == "fit" and fr["C"] == 0.1 and fr["parity_rows"] == 2304
     pre = json.loads((tmp_path / "fit/package/preprocessing.json").read_bytes())
     assert pre["training_dataset_sha256"] == th
+    for original in (tmp_path / "fit/package").iterdir():
+        original.chmod(0o444)
     ff = freeze(
         ds, dh, tmp_path / "fit/package", fr["model_index_sha256"], tmp_path / "frozen", "fixture-only-freeze"
     )

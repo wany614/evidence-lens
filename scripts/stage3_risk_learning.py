@@ -427,7 +427,13 @@ def freeze(root, ds_sha, fit_dir, fit_sha, out, run_id):
     cutoff = threshold_for({k: np.concatenate(v) for k, v in vals.items()}, den)
     with new_output(out) as dst:
         package = dst / "package"
-        shutil.copytree(fit_dir, package)
+        package.mkdir()
+        for name in ("coefficients.json", "preprocessing.json"):
+            shutil.copyfile(Path(fit_dir) / name, package / name)
+            require(
+                file_hash(package / name) == model["files"][name]["sha256"],
+                "frozen model member changed during copy",
+            )
         m = {
             **model,
             "status": "frozen",
