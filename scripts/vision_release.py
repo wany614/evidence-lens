@@ -563,6 +563,7 @@ def release_notes(doc,summary,costs,assets):
     from vision_control_attachment import CASE_INDEX, NAME
 
     cohorts=(("new_confirmation","New confirmation"),("historical_regression","Historical regression"))
+    cpu_name="evidence-lens-"+TAG+"-cpu.zip"
     lines=["# Evidence Lens "+TAG,"","Native-view risk scoring with the original logistic model and two DINOv2 ViT-S/14 variants. "
            "The development-frozen default is **"+doc["default_method"]+"**.","",
            "| Cohort | Families | Planned family / condition pairs | Scheduled views | Original render dispositions |",
@@ -573,12 +574,14 @@ def release_notes(doc,summary,costs,assets):
         dispositions=", ".join(n+" "+str(v) for n,v in sorted(c["scientific_view_dispositions"].items()))
         disp+=". Scientific dispositions " + dispositions
         lines.append(f"| {label} | {len(c['families'])} | {c['planned_family_conditions']} | {c['planned_views']} | {disp} |")
-    lines+=["","## B0 results","","Each estimate gives equal weight to its contributing families. "
+    lines+=["","## B0 results","","This table shows the three fitted model packages among seven methods. "
+            "The numerical report includes all seven methods under B0, R1 and Q1. Each estimate gives equal weight to its contributing families. "
             "Parentheses show families with a defined estimate / scheduled families. "
             "Average precision (AP) ranks high RGB error among RGB-evaluable pixels with finite scores from all seven methods. "
             "Each family first averages target views containing both error classes on that shared domain.","",
+            "A pixel is low risk when its RGB error is evaluable and its finite score is strictly below the method's development threshold (score < τ). "
             "Low-risk coverage is the number of pixels assigned low risk divided by all reference-valid pixels (L/V). "
-            "Error in low risk is the number of low-risk pixels with mean absolute display-sRGB channel error above 0.05 "
+            "Error in low risk is the number of low-risk pixels with mean absolute display-sRGB channel error strictly greater than 0.05 "
             "divided by all low-risk pixels (LY/L). Each family pools its six views before computing either rate. "
             "An empty denominator yields an undefined estimate.","",
             "| B0 cohort | Method | Seven-method common-domain AP | Low-risk coverage (L/V) | Error in low risk (LY/L) |",
@@ -607,19 +610,25 @@ def release_notes(doc,summary,costs,assets):
     lines+=["","Source commit `"+doc["code_commit"]+"`. Full-precision safetensors contain the complete visual backbones. "
             "The original Meta base is identified by `"+BASE+"`.","",
             "## Reproduce the 128- and 512-pixel controls","",
-            "Use Python 3.11 or 3.12. Download the CPU ZIP and `"+NAME+"` into the same directory, extract the CPU ZIP "
-            "into a subdirectory, and run the commands below from that subdirectory. On Windows PowerShell use "
-            "`py -3.12` in place of `python3` for each command.","",
-            "Check the control ZIP before extraction. The public GitHub release metadata lists a `sha256:` digest "
-            "and byte size under the asset's exact filename. Compare the two printed values with that entry. "
-            "The metadata endpoint accepts requests without a GitHub account. "
+            "Use Python 3.11 or 3.12. Download `"+cpu_name+"` and `"+NAME+"` into one directory. Save the following "
+            "as `verify-downloads.py` there. It anonymously obtains the release's current GitHub asset metadata and checks the byte size "
+            "and SHA-256 of both local archives before extraction. "
             "[Public release asset digests](https://api.github.com/repos/wany614/evidence-lens/releases/tags/"+TAG+")","",
-            "```sh",
-            "python3 -I -B -c \"from pathlib import Path; import hashlib, sys; p = Path(sys.argv[1]); print(p.stat().st_size, 'sha256:' + hashlib.file_digest(p.open('rb'), 'sha256').hexdigest())\" ../"+NAME,
+            "```python","import hashlib","import json","from pathlib import Path","from urllib.request import ProxyHandler, build_opener","",
+            'url = "https://api.github.com/repos/wany614/evidence-lens/releases/tags/'+TAG+'"',
+            "with build_opener(ProxyHandler({})).open(url, timeout=30) as response:",
+            '    assets = {a["name"]: a for a in json.load(response)["assets"]}',
+            'for name in ("'+cpu_name+'", "'+NAME+'"):',
+            "    path = Path(name)","    with path.open(\"rb\") as stream:",
+            '        digest = "sha256:" + hashlib.file_digest(stream, "sha256").hexdigest()',
+            "    asset = assets[name]",'    if (path.stat().st_size, digest) != (asset["size"], asset["digest"]):',
+            '        raise SystemExit(f"Size or SHA-256 differs for {name}")','    print(f"{name}  {digest}")',
             "```","","The first run scores the bundled 128-pixel authored plane. The second scores the 512-pixel "
-            "`public-plane` control using its registered bottle-carrier input and cameras. Use a new output directory for each.","",
-            "```sh","python3 -I -B smoke.py --output ../vision-plane-128",
-            "python3 -m zipfile -e ../"+NAME+" ../vision-control",
+            "`public-plane` control using its registered bottle-carrier input and cameras. In the download directory run the "
+            "commands below, continuing after the verifier prints both file digests and exits successfully. On Windows PowerShell "
+            "use `py -3.12` in place of `python3` in each command. Use a new output directory for each scoring run.","",
+            "```sh","python3 -I -B verify-downloads.py","python3 -m zipfile -e "+cpu_name+" vision-cpu",
+            "python3 -m zipfile -e "+NAME+" vision-control","cd vision-cpu","python3 -I -B smoke.py --output ../vision-plane-128",
             "python3 -I -B smoke.py --case ../vision-control/CASE --case-sha256 "+CASE_INDEX+" --output ../vision-plane-512",
             "```","","| Asset | Bytes | SHA-256 |",
             "| --- | ---: | --- |"]

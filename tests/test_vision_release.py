@@ -18,7 +18,9 @@ import vision_public_smoke as smoke
 import vision_release as release
 
 
-def test_release_notes_use_only_all_family_b0_rates_and_list_both_replays():
+def test_release_notes_use_only_all_family_b0_rates_and_list_both_replays(tmp_path,monkeypatch):
+    import io
+    import urllib.request
     import vision_control_attachment as control
 
     cohorts={}
@@ -43,9 +45,27 @@ def test_release_notes_use_only_all_family_b0_rates_and_list_both_replays():
         for method in ("L1-full",*release.BRANCHES):
             low="3.12% (2/4)" if (name,method)==("Historical regression","L2-vision-ft") else f"undefined (0/{n})"
             assert f"| {name} | {method} | 0.3142 ({n-1}/{n}) | 0.00% ({n}/{n}) | {low} |" in text
-    assert "LY/L" in text and "L/V" in text and "both error classes" in text
+    assert all(s in text for s in ("LY/L","L/V","both error classes","score < τ","strictly greater than 0.05",
+                                    "three fitted model packages among seven","all seven methods under B0, R1 and Q1"))
     assert "smoke.py --output ../vision-plane-128" in text and f"--case-sha256 {control.CASE_INDEX}" in text
-    assert "file_digest" in text and control.NAME in text and "/releases/tags/"+release.TAG in text
+    assert "--case ../vision-control/CASE" in text
+    snippet=text.split("```python\n",1)[1].split("\n```",1)[0]
+    cpu="evidence-lens-"+release.TAG+"-cpu.zip"; names=(cpu,control.NAME);monkeypatch.chdir(tmp_path)
+    for name in names:Path(name).write_bytes(name.encode())
+    assets=[{"name":n,"size":Path(n).stat().st_size,"digest":"sha256:"+release.sha(Path(n))} for n in names]
+    def anonymous(handler):
+        assert handler.proxies=={}
+        def open_release(url,timeout):
+            assert url=="https://api.github.com/repos/wany614/evidence-lens/releases/tags/"+release.TAG and timeout>0
+            return io.BytesIO(json.dumps({"assets":assets}).encode())
+        return SimpleNamespace(open=open_release)
+    monkeypatch.setattr(urllib.request,"build_opener",anonymous)
+    exec(compile(snippet,"release-note-checksums","exec"),{})
+    for name in names:
+        Path(name).write_bytes(name.upper().encode())
+        with pytest.raises(SystemExit,match=name):
+            exec(compile(snippet,"release-note-checksums","exec"),{})
+        Path(name).write_bytes(name.encode())
     duplicate=cohorts["new_confirmation"]["family_equal"][-1]
     cohorts["new_confirmation"]["family_equal"].append(duplicate)
     with pytest.raises(ValueError,match="one family-equal B0"):
