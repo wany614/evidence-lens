@@ -1,0 +1,62 @@
+{
+  "schema": "el-recovery-recipe-1",
+  "seed": 43171,
+  "stop_step": 5000,
+  "checkpoints": [
+    0,
+    500,
+    1500,
+    3000,
+    5000
+  ],
+  "wall_seconds": 1800,
+  "eps2d": 0.3,
+  "adam": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08
+  },
+  "learning_rates": {
+    "means": [
+      0.00016,
+      1.6e-06
+    ],
+    "log_scales": [
+      0.005,
+      0.0005
+    ],
+    "quats": [
+      0.001,
+      0.001
+    ],
+    "opacity_logits": [
+      0.05,
+      0.05
+    ],
+    "color_logits": [
+      0.01,
+      0.01
+    ]
+  },
+  "loss": {
+    "display_l1": 0.8,
+    "one_minus_ssim": 0.2
+  },
+  "topology": {
+    "cap": 20000,
+    "start": 500,
+    "stop": 3000,
+    "every": 100,
+    "reset_steps": [
+      1500
+    ],
+    "reset_opacity": 0.01,
+    "prune_opacity": 0.005,
+    "grow_grad2d": 0.0002,
+    "clone_scale_fraction": 0.01,
+    "prune_scale_fraction": 0.1,
+    "prune_scale_from": 1600
+  }
+}

@@ -1,6 +1,7 @@
 """Seal a recipe admission, control interpretation or final stopping rule using the study recorder."""
 
 import argparse
+import copy
 import fcntl
 import json
 import os
@@ -69,11 +70,31 @@ def decide(source, cfg, paths, out):
         recipe_file = source / name
         require(sha(recipe_file) == cfg["recipe_sha256"], "recipe file differs from the request")
         probe = load(paths["resource_probe"])
+        recipe = load(recipe_file)
         require(probe["schema"] == "el-recovery-resource-probe-1" and probe["passed"] is True
                 and probe["worker_zip_sha256"] == cfg["inputs"]["worker_source"]["sha256"]
-                and probe["candidate_recipe_sha256"] == cfg["recipe_sha256"]
-                and probe["density"]["cap"] >= load(recipe_file)["topology"]["cap"],
+                and probe["density"]["cap"] >= recipe["topology"]["cap"],
                 "the short resource and interface tests did not qualify this worker and budget")
+        if probe["candidate_recipe_sha256"] != cfg["recipe_sha256"]:
+            require({"prior_recipe", "prior_admission", "capacity_confirmation", "quality_M2", "quality_M4",
+                     "extent_057", "extent_set1", "prior_control"} <= paths.keys(),
+                    "a revised schedule needs an original candidate, measured bottleneck and fresh capacity confirmation")
+            base = load(paths["prior_recipe"])
+            prior = load(paths["prior_admission"])
+            compared = copy.deepcopy(recipe)
+            compared["learning_rates"]["log_scales"][1] = base["learning_rates"]["log_scales"][1]
+            require(base == compared and 0 < recipe["learning_rates"]["log_scales"][1] < base["learning_rates"]["log_scales"][1]
+                    and sha(paths["prior_recipe"]) == prior["recipe_sha256"] == probe["candidate_recipe_sha256"]
+                    and prior["inputs"]["worker_source"] == cfg["inputs"]["worker_source"],
+                    "only a lower terminal log-scale rate can inherit this renderer and capacity control")
+            actual = load(paths["capacity_confirmation"])
+            require(actual["passed"] is True and actual["nominal_resolution"] == [256, 256]
+                    and max(r["after"] for r in actual["steps"]) == recipe["topology"]["cap"]
+                    and actual["runtime"]["torch_reserved_peak_bytes"] > 0, "missing revised-recipe 20K measurement")
+            decision["resource_basis"] = {"unchanged_renderer_and_resume": cfg["inputs"]["resource_probe"],
+                                          "fresh_capacity": cfg["inputs"]["capacity_confirmation"],
+                                          "original_log_scale_rate": base["learning_rates"]["log_scales"],
+                                          "revised_log_scale_rate": recipe["learning_rates"]["log_scales"]}
         (out / "recipe.json").write_bytes(recipe_file.read_bytes())
         decision.update(schema="el-recovery-recipe-admission-1", recipe_id=cfg["recipe_id"],
                         recipe_sha256=sha(recipe_file), R1=cfg["R1"], reason_for_candidate=cfg["candidate_reason"])
@@ -105,6 +126,16 @@ def record_once(store, project, request):
     trial = cfg["trial_id"]
     require(trial.startswith("r-") and "/" not in trial and "\\" not in trial, "invalid decision identity")
     roles = {role: verified_member(store, pin) for role, pin in cfg["inputs"].items()}
+    if cfg["decision_type"] == "recipe" and "capacity_confirmation" in roles:
+        proof = cfg["inputs"]["capacity_confirmation"]
+        root = store / "runs" / proof["run_id"]
+        inputs = load(root / "inputs.json")["inputs"]
+        probe = load(roles["resource_probe"])
+        require(proof["member"] == "payload/forced-topology.json" and
+                load(root / "code_snapshot.json")["snapshot_sha256"] == probe["actual_worker_snapshots"]["topology"]
+                and any(r["role"] in {"recipe", "candidate"} and len(r["files"]) == 1 and
+                        r["files"][0]["sha256"] == cfg["recipe_sha256"] for r in inputs),
+                "capacity confirmation used another executable or optimizer recipe")
     parents = {p["run_id"]: p["manifest_sha256"] for p in cfg["inputs"].values()}
     args = [sys.executable, "-m", "evidence_lens.recorder", "--source-root", str(project),
             "--root", str(store), "--kind", "archive_verify", "--config", str(request.resolve())]
