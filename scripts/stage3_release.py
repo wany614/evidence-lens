@@ -20,7 +20,10 @@ FORMAL_WORKER = "3cba08e523112084ad352dadcb104d3bbd9a97ec503966dc1efb8eec9cbed04
 FORMAL_WORKER_INDEX = "eef4b94b574af15ff03091bab9c9b3bf5f8ab82c15878b48051f1668553bf8d2"
 FAMILY = "scene_057_offset_bell_cage"
 LICENSES = {"Apache-2.0", "CC-BY-4.0"}
-PERMISSIONS = ("LICENSE", "NOTICE", "licenses/CC-BY-4.0.txt")
+PERMISSIONS = (
+    "LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "licenses/CC-BY-4.0.txt",
+    "licenses/ASSET-SCOPE.json", "licenses/multisource-assets.json",
+)
 DOCS = ("README.md", "MODEL_CARD.md", "REBUILD.md")
 PROOFS = (
     "training.json",
@@ -57,6 +60,19 @@ LIGHT = {
 def require(ok, reason):
     if not ok:
         raise ValueError(reason)
+
+
+def add_notices(repository, commit, directories):
+    from vision_release import git_blob, sig, write
+
+    files = {}
+    for name in PERMISSIONS:
+        data = git_blob(repository, commit, name)
+        for directory in directories:
+            write(directory, name, data)
+        files[name] = {**sig(directories[0] / name), "role": "license_and_attribution",
+                       "source": {"commit": commit, "path": name}}
+    return files
 
 
 def public_maps(root, owner, release_type, original):
@@ -651,9 +667,9 @@ def build(a):
         write(cpu, "cpu.py", git_blob(a.repository, a.commit, "scripts/stage3_public_cpu.py"))
         for name in ("requirements.txt", "requirements-light.txt"):
             write(cpu, name, git_blob(a.repository, a.commit, prefix + name))
-        for location in (cpu, case, numerical):
-            for n in PERMISSIONS:
-                write(location, n, git_blob(a.repository, a.commit, n))
+        notices = add_notices(a.repository, a.commit, (cpu, case, numerical))
+        require(not (notices.keys() & (example_table.keys() | report_table.keys())),
+                "archived research member collides with a tagged license or notice")
         for k in (
             "catalog",
             "study",
@@ -710,7 +726,7 @@ def build(a):
             "case_sha256": case_hash,
             "source": example.pin,
             "allowlist_sha256": sha(example.file("payload/public-members.json")),
-            "files": example_table,
+            "files": {**example_table, **notices},
         }
         write(case, "example.json", entries(example_meta))
         write(
@@ -722,7 +738,7 @@ def build(a):
                     "schema": "el-stage3-public-numerical-1",
                     "source": report.pin,
                     "heldout": report_receipt,
-                    "files": report_table,
+                    "files": {**report_table, **notices},
                     "allowlist_sha256": sha(report.file("payload/public-members.json")),
                 }
             ),
