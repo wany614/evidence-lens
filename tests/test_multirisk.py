@@ -10,6 +10,9 @@ from types import SimpleNamespace
 import numpy as np
 import pytest
 
+pytest.importorskip("torch")
+pytest.importorskip("safetensors")
+
 from evidence_lens.multisource import COLUMNS, NUMERIC, schema_sha256
 from evidence_lens_multirisk.data import Dataset, source_ids
 from evidence_lens_multirisk.model import B_INDEX, B_WEIGHTS, transform

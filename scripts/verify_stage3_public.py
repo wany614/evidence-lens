@@ -52,7 +52,7 @@ def inspect_source(op, tree, public, records):
     blobs = {x["path"]: x for x in doc["tree"] if x["type"] == "blob"}
     pairs = [(public/"cpu.py", "scripts/stage3_public_cpu.py")]
     release_dir = "docs/releases/" + TAG + "/"
-    for n in ("README.md", "REBUILD.md", "MODEL_CARD.md", "requirements.txt"):
+    for n in ("README.md", "REBUILD.md", "MODEL_CARD.md", "requirements.txt", "requirements-light.txt"):
         pairs.append((public/n, release_dir+n))
     sources = read(public/"evidence/model-sources.json")
     for method, row in sources.items():
@@ -125,8 +125,6 @@ def grade(args):
             cpu = root/"cpu"
             if remote:
                 inspect_source(op, tree, cpu, record)
-            exe = install(root, cpu/"requirements.txt", args.wheelhouse)
-            shutil.copyfile(root/"installation.json", out/"installation.json")
             profile = root/"scoring-process"
             profile.mkdir()
             env = installer_environment(profile)
@@ -141,9 +139,19 @@ def grade(args):
             hidden = root/"example"
             shutil.rmtree(hidden)  # This verifier created the temporary extraction above.
             case_sha = sha(deploy/"case.json")
-            cmd = [str(exe), "-I", "-B", str(cpu/"cpu.py")]
-            subprocess.run([*cmd,"run","--release-sha256",release_sha,"--case",str(deploy),"--case-sha256",case_sha,
-                            "--view","v01","--scope","all","--output",str(out/"example")], env=env, cwd=profile, check=True)
+            with tempfile.TemporaryDirectory(prefix="light-only-", dir=root) as scratch:
+                light_root = Path(scratch)
+                light = install(light_root, cpu/"requirements-light.txt", args.wheelhouse, pytorch_cpu=False)
+                receipt = read(light_root/"installation.json")
+                names = {n.lower() for n in receipt["installed_distributions"]}
+                require({"pillow","numpy"} <= names <= {"pillow","numpy","pip","setuptools","wheel"},
+                        "The lightweight scorer installation includes unexpected packages")
+                shutil.copyfile(light_root/"installation.json", out/"installation-light.json")
+                subprocess.run([str(light),"-I","-B",str(cpu/"cpu.py"),"run","--release-sha256",release_sha,
+                                "--case",str(deploy),"--case-sha256",case_sha,"--view","v01","--scope","all",
+                                "--output",str(out/"example")], env=env, cwd=profile, check=True)
+                require(read(out/"example"/"score.json")["method"] == c["default_method"] == "MS-L1",
+                        "The lightweight process did not run the frozen default")
             for name in ("risk.png", "state.png"):
                 with (out/"example"/name).open("rb") as f:
                     header = f.read(24)
@@ -151,6 +159,9 @@ def grade(args):
                         "Expected native risk or state visualization")
             example_asset = c["assets"]["example"]
             extract_checked(downloads/example_asset["name"], hidden, example_asset)
+            exe = install(root, cpu/"requirements.txt", args.wheelhouse)
+            shutil.copyfile(root/"installation.json", out/"installation.json")
+            cmd = [str(exe), "-I", "-B", str(cpu/"cpu.py")]
             subprocess.run([*cmd,"replay","--release-sha256",release_sha,"--example",str(hidden),"--example-sha256",ex_sha,
                             "--output",str(root/"scores")], env=env, cwd=profile, check=True)
             src = root/"scores"/"grade.json"
@@ -163,7 +174,8 @@ def grade(args):
                           default_method=c["default_method"], scheduled_comparisons=144,
                           distinct_method_scope_views=120, threshold_crossings=proof["threshold_crossings"],
                           max_abs_risk_difference=proof["max_abs_error"], example_sha256=ex_sha,
-                          standalone_case_sha256=case_sha, installation_sha256=sha(out/"installation.json"))
+                          standalone_case_sha256=case_sha, installation_sha256=sha(out/"installation.json"),
+                          lightweight_installation_sha256=sha(out/"installation-light.json"))
     except Exception as e:
         record.update(status="failed", failure_type=type(e).__name__, failure_stage=str(e)[:220])
         raise

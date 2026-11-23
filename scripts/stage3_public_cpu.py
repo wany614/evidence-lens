@@ -81,14 +81,10 @@ class Runtime:
             if n.startswith("runtime/"):
                 require(member(first, s) == first / n, "runtime path differs from index")
         sys.path.insert(0, str(first / "runtime"))
-        import torch
-
-        torch.set_num_threads(threads)
         self.threads = threads
 
     def load(self, name):
         from evidence_lens.multisource_model import load_light, load_transfer
-        from evidence_lens_multirisk.deploy import load_model
 
         require(name in self.specs, "unavailable risk model")
         if name not in self.models:
@@ -107,6 +103,10 @@ class Runtime:
                 )
                 self.models[name] = (coef, pre)
             else:
+                import torch
+                from evidence_lens_multirisk.deploy import load_model
+
+                torch.set_num_threads(self.threads)
                 obj = load_model(folder, target)
                 require(
                     obj[2]["phase"] == "formal"
@@ -124,7 +124,6 @@ class Runtime:
         import numpy as np
         from evidence_lens.l1 import risk_state
         from evidence_lens.multisource_model import light_risk, transfer_risk
-        from evidence_lens_multirisk.deploy import score_grid
 
         require(view in VIEWS and scope in SCOPES, "undeclared target or source scope")
         params = self.load(name)
@@ -141,6 +140,8 @@ class Runtime:
             if name == "MS-L1":
                 risk = light_risk(feat, *params)
             else:
+                from evidence_lens_multirisk.deploy import score_grid
+
                 return score_grid(params, rgb, feat["X"], feat["scoreable"], "cpu")
         return {"risk": risk, "valid": np.isfinite(risk), "state": risk_state(risk, spec["threshold"])}
 

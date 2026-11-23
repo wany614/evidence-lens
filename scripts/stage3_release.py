@@ -647,7 +647,8 @@ def build(a):
         for n in DOCS:
             write(cpu, n, git_blob(a.repository, a.commit, prefix + n))
         write(cpu, "cpu.py", git_blob(a.repository, a.commit, "scripts/stage3_public_cpu.py"))
-        write(cpu, "requirements.txt", git_blob(a.repository, a.commit, prefix + "requirements.txt"))
+        for name in ("requirements.txt", "requirements-light.txt"):
+            write(cpu, name, git_blob(a.repository, a.commit, prefix + name))
         for location in (cpu, case, numerical):
             for n in PERMISSIONS:
                 write(location, n, git_blob(a.repository, a.commit, n))

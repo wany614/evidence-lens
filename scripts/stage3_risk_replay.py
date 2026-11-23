@@ -64,6 +64,13 @@ def independent_counts(v, e, y, risk, state, finite_common, tau):
     return out, ap
 
 
+def array_member(run, spec):
+    path, _ = member(run, "payload/" + spec["path"], spec)
+    values = json.loads(path.read_bytes())
+    require(isinstance(values, list), "expected a native observation table")
+    return values
+
+
 def same_metric(a, b):
     return (a is None and b is None) or (a is not None and b is not None and abs(a - b) <= 1e-12)
 
@@ -108,7 +115,7 @@ def grade(roots, request, opening, destination, rid):
     )
     ds_cells = {(c["family"], c["condition"]): c for c in d["cells"]}
     original_keys = {
-        n: json_member(er, "payload/" + spec["path"], spec)[0]
+        n: array_member(er, spec)
         for n, spec in ev["files"].items()
         if n in ("views", "families", "macros", "same-pixels-across-scopes")
     }

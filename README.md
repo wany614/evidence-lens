@@ -1,6 +1,18 @@
 # Evidence Lens
 
-Evidence Lens estimates where a nearby synthesized view is likely to disagree with the scene that produced the input image. Its CPU scorer reads one source image, calibrated cameras and a generator's predicted RGB, opacity and expected camera depth. It produces continuous risk and low, high or unknown decisions for every target pixel.
+Evidence Lens estimates where a synthesized view is likely to disagree with an independent image from the same camera. Its CPU scorer reads calibrated source images and predicted RGB, opacity and expected camera depth. It returns a continuous risk map and a low, high or unknown state for each target pixel. Researchers can compare the maps with Blender references through a separate evaluation command.
+
+## Run the two- and four-image models
+
+The multi-source release includes four trained risk models and both reconstructions of an authored bell cage. The same six cameras view each reconstruction. The default multi-source logistic model uses NumPy and Pillow. The two DINOv2 models add PyTorch for CPU inference. [Download v0.3.0-rc.1](https://github.com/wany614/evidence-lens/releases/tag/v0.3.0-rc.1) · [Install and score a target](docs/releases/v0.3.0-rc.1/README.md) · [Weights, training and measured CPU cost](docs/releases/v0.3.0-rc.1/MODEL_CARD.md)
+
+| One of four source images | Reconstructed target | Independent target reference |
+| --- | --- | --- |
+| ![Bell cage from the first source camera](examples/offset-bell-cage/source-s00.png) | ![First target view from the four-image Gaussian fit](examples/offset-bell-cage/m4-target-v01.png) | ![First target view from the original Blender world](examples/offset-bell-cage/reference-v01.png) |
+
+In this target, 5,149 of 65,536 pixels exceed mean absolute RGB error 0.05. The comparison board shows where these errors occur and how each scorer responds when it receives one, two or all four images from the same reconstruction. This example was selected by family and view before scoring. [Open the full comparison board](examples/offset-bell-cage/four-method-comparison-v01.png) · [Camera, source and figure provenance](examples/offset-bell-cage/README.md)
+
+## Single-image models
 
 The single-image release includes a lightweight logistic model (L1-full), a DINOv2 ViT-S/14 with a trained risk head (L2-frozen), and a supervised model that also updates the last two transformer blocks and final LayerNorm (L2-vision-ft). All three score on a CPU. The source checkout installs the NumPy and Pillow path with `python -m pip install .`. The optional visual path adds PyTorch and safetensors. [Run L1 with only NumPy and Pillow](docs/releases/v0.2.0-rc.1/README.md#run-the-default-l1-model-with-numpy-and-pillow)
 

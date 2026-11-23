@@ -196,7 +196,7 @@ def native_rows(parity, originals):
     return out
 
 
-def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
+def readable(summary, learn, parity, acquisition, qa, case, per_family, strata, timings, neural_cpu):
     def v(x, percent=False):
         return "undefined" if x is None else (f"{100 * x:.2f}%" if percent else f"{x:.4f}")
 
@@ -206,6 +206,8 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         "# Four risk methods on two multiview Gaussian reconstructions",
         "",
         f"The frozen deployment choice is **{method}**. The four held-out procedural families were opened after the method and operating thresholds were recorded. All targets are native 256 × 256 images. M2 trains one scene from the two endpoint cameras. M4 starts the same scene and optimizer from the same parameters with all four source cameras.",
+        "",
+        f"With all generator sources available to the scorer, {method} reached common-domain AP {v(addr['M2', 'all', method]['common_ap']['mean'])} on M2 and {v(addr['M4', 'all', method]['common_ap']['mean'])} on M4. Its low-risk region covered {v(addr['M2', 'all', method]['low_coverage']['mean'], True)} and {v(addr['M4', 'all', method]['low_coverage']['mean'], True)} of valid reference pixels. Error incidence within those low-risk regions was {v(addr['M2', 'all', method]['low_error']['mean'], True)} and {v(addr['M4', 'all', method]['low_error']['mean'], True)}, respectively.",
         "",
         "## Held-out operating points",
         "",
@@ -315,7 +317,7 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         "",
         "## Changes on the same target",
         "",
-        "Switching scorer inputs preserves the optimized scene and its target RGB. M2 score-two and score-all share the same score bytes. The B transfer always reads s00. The matched-scope table compares scores on the intersection of all four methods and all three scorer scopes on the same pixels. [Scorer-source differences](source-ablation.csv) · [Matched-pixel AP and prevalence counts](matched-all-scope-ap.csv)",
+        "Switching scorer inputs preserves the optimized scene and its target RGB. Score-one reads s00, score-two reads s00 and s03, and score-all reads every generator source. The new models trained with the complete source set for each reconstruction. The one-source setting tests how those fitted models extrapolate. M2 score-two and score-all share the same score bytes. The B transfer always reads s00. The matched-scope table compares scores on the intersection of all four methods and all three scorer scopes on the same pixels. [Scorer-source differences](source-ablation.csv) · [Matched-pixel AP and prevalence counts](matched-all-scope-ap.csv)",
         "",
         "The following M4 minus M2 differences use the same reference pixels within each family. RGB error incidence and RGB MAE use the paired RGB domain. Depth MAE uses the separate paired positive optical-axis expected-depth domain with valid opacity of at least 0.5 and valid reference geometry. Target camera distance, opacity, expected-depth and background coverage are available per view. [Per-target reconstruction measures](paired-reconstruction.csv)",
         "",
@@ -327,6 +329,19 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         s.append(
             f"| {f} | {z['paired_E']:,} | {z['paired_Z']:,} | {v(d['rgb_mae'])} | {v(d['rgb_error_fraction'], True)} | {v(d['depth_mae_m'])} |"
         )
+    decisions = learn["decision"]["comparisons"]
+    diffs = {
+        k: ", ".join(
+            "undefined" if z is None else f"{z:+.4f}" for z in decisions[k]["paired_seed_differences"]
+        )
+        for k in ("MS-frozen", "MS-L1")
+    }
+    s.extend(
+        [
+            "",
+            f"Across the two development seeds, fine-tuning changed common-domain AP by {diffs['MS-frozen']} versus the matched frozen encoder and by {diffs['MS-L1']} versus MS-L1. The registered promotion rule required a positive gain for both seeds and a mean gain of at least 0.01 against each comparator, together with the coverage and low-error limits. The development decision selected {method}.",
+        ]
+    )
     recovered = [r for r in learn["neural_candidates"] if r["optimizer_steps_in_this_record"] == 0]
     if recovered:
         rr = recovered[0]
@@ -350,6 +365,52 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         "",
         f"Four held-out families support a paired descriptive comparison. Counts and per-family outcomes show the range that the macro averages combine. The accompanying public example uses the preregistered development family {case['family']} and its six target cameras under each reconstruction. [Independent raw-pixel and scikit-learn AP check](heldout-pixel-recheck.json) · [Scientific provenance](provenance.json) · [Held-out table checksums](confirmation-manifest.json)",
     ]
+    s.extend(
+        [
+            "",
+            "### Measured reconstruction and native scoring cost",
+            "",
+            "Per-condition medians below use every scientific reconstruction with the identified measurement. Optimizer time includes the synchronized GPU update loop. Reconstruction and rendering wall times use their separate recorder clocks.",
+            "",
+            "| Condition | Runs with timing | GPU optimization median (s) | Reconstruction wall median (s) | Render wall median (s) |",
+            "|---|---:|---:|---:|---:|",
+        ]
+    )
+    for c in CONDITIONS:
+        costs = budget["by_condition"].get(c, {})
+        vals = [
+            costs.get(k, {})
+            for k in ("optimization_seconds", "generation_wall_seconds", "render_wall_seconds")
+        ]
+        s.append(f"| {c} | {vals[0].get('n', 0)} | " + " | ".join(v(z.get("median")) for z in vals) + " |")
+    s.extend(
+        [
+            "",
+            "Each cold native score below launched a fresh Mac process, read the authorized source frames and calibration, performed inference and wrote the completed map. The extra M2 alias incurred no second call.",
+            "",
+            "| Method | Measured / planned calls | End-to-end median (s) | End-to-end p95 (s) |",
+            "|---|---:|---:|---:|",
+        ]
+    )
+    for m in METHODS:
+        q = timings[m]
+        s.append(
+            f"| {m} | {q['measured']}/{q['scheduled']} | {v(q['p50_seconds'])} | {v(q['p95_seconds'])} |"
+        )
+    s.extend(
+        [
+            "",
+            "The independent warm CPU runs kept the model in memory while reading native source evidence for each target.",
+            "",
+            "| Method | Condition | Scorer inputs | Warm measured targets | Warm median (s) | Warm p95 (s) | Peak process-tree RSS (MiB) |",
+            "|---|---|---|---:|---:|---:|---:|",
+        ]
+    )
+    for q in neural_cpu:
+        for scope, zz in q["warm_views"].items():
+            s.append(
+                f"| {q['method']} | {q['condition']} | {scope} | {zz['timed_native_views']} | {v(zz['median_seconds'])} | {v(zz['p95_seconds'])} | {q['warm_process']['sampled_peak_process_tree_rss_bytes'] / (1024**2):.1f} |"
+            )
     return "\n".join(s) + "\n"
 
 
@@ -572,7 +633,10 @@ def run_report(roots, request, opening, out, rid):
     sources["method_freeze"] = proof(freeze, "payload/method-freeze.json", mk["method_sha256"])
     roles.setdefault(freeze.pin["run_id"], []).append("method_freeze")
     runs[freeze.pin["run_id"]] = freeze
-    failures = list(neural_recoveries)
+    from stage3_risk_engineering import observations
+
+    engineering = observations(roots, request["engineering"])
+    failures = [*neural_recoveries, *engineering]
     correction = load(br.open("config.resolved.yaml")).get("engineering_correction")
     if correction:
         fr = find_run(roots, correction["previous_failed"])
@@ -734,6 +798,12 @@ def run_report(roots, request, opening, out, rid):
                 "acquisition_failed_attempts": len(acquisition_attempts),
                 "lightweight_threshold_packaging_failures": int(correction is not None),
                 "neural_export_failures": len(neural_recoveries),
+                "engineering_readback_and_public_export_failures": sum(
+                    r["status"] == "failed" for r in engineering
+                ),
+                "local_engineering_incidents_without_a_recorder_run": sum(
+                    r["status"] == "local_engineering_incident" for r in engineering
+                ),
                 "scientific_dispositions": he["dispositions"],
                 "coverage": "Acquisition attempt failures, recorded learning packaging correction and formal scientific target return counts are separate.",
             },
@@ -757,9 +827,23 @@ def run_report(roots, request, opening, out, rid):
         with (pub / "family-metrics.csv").open(encoding="utf-8", newline="") as handle:
             per_family = list(csv.DictReader(handle))
         macros_spec = he["files"]["macros"]
-        strata, _ = json_member(held, "payload/" + macros_spec["path"], macros_spec)
+        from stage3_risk_replay import array_member
+
+        strata = array_member(held, macros_spec)
         (pub / "study.md").write_text(
-            readable(summary, learn, parity, cost["summary"], qa, ex, per_family, strata), encoding="utf-8"
+            readable(
+                summary,
+                learn,
+                parity,
+                cost["summary"],
+                qa,
+                ex,
+                per_family,
+                strata,
+                {m: q["timing"] for m, q in original.items()},
+                cpu_cost,
+            ),
+            encoding="utf-8",
         )
         for public_file in pub.iterdir():
             require(

@@ -143,7 +143,7 @@ def installed_wheels(report, source, wheelhouse):
     return {"source":source,"pip_version":doc["pip_version"],"pip_report_sha256":rel.sha(report),"wheels":packages}
 
 
-def install(temp,requirements,wheelhouse):
+def install(temp,requirements,wheelhouse,*,pytorch_cpu=True):
     env=temp/"clean-cpu";venv.EnvBuilder(with_pip=False).create(env)
     exe=env/("Scripts/python.exe" if os.name=="nt" else "bin/python")
     config=installer_environment(temp)
@@ -151,7 +151,7 @@ def install(temp,requirements,wheelhouse):
     pip=[str(exe),"-I","-m","pip","--isolated","install","--disable-pip-version-check","--no-input","--no-cache-dir",
          "--keyring-provider","disabled","--only-binary",":all:"]
     steps=[]
-    if platform.system() in ("Linux","Windows") and not wheelhouse:
+    if pytorch_cpu and platform.system() in ("Linux","Windows") and not wheelhouse:
         steps.append(("https://download.pytorch.org/whl/cpu",["--index-url","https://download.pytorch.org/whl/cpu","torch==2.8.0"]))
     if wheelhouse:
         wheelhouse=wheelhouse.resolve()

@@ -43,3 +43,27 @@ def test_reject_broken_native_domain(bad):
         y[0, 0] = 255
     with pytest.raises(ValueError, match="native V/E/common"):
         independent_counts(v, e, y, risk, state, cm, 0.5)
+
+
+def test_hash_bound_scientific_observation_list(tmp_path):
+    import json
+    from stage3_risk_replay import array_member
+    from evidence_lens.formal_inputs import signature, verified_file
+
+    loc = tmp_path / "payload"
+    loc.mkdir()
+    table = loc / "views.json"
+    table.write_text(json.dumps([{"V": 4, "E": 0}]))
+
+    class Run:
+        files = {"payload/views.json": signature(table)}
+
+        def open(self, n):
+            return verified_file(tmp_path, n, self.files[n])
+
+    spec = {"path": "views.json", **signature(table)}
+    assert array_member(Run(), spec) == [{"V": 4, "E": 0}]
+    table.write_text("{}")
+    Run.files["payload/views.json"] = signature(table)
+    with pytest.raises(ValueError, match="observation table"):
+        array_member(Run(), {"path": "views.json", **signature(table)})

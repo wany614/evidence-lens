@@ -40,6 +40,18 @@
       },
       "bytes": 36826,
       "license": "CC-BY-4.0"
+    },
+    {
+      "file": "four-method-comparison-v01.png",
+      "release_example_member": "EXPECTED/cases/scene_057_offset_bell_cage/M4/v01.png",
+      "source": {
+        "run_id": "20261123T165426488625Z-7efe80bbd1fb4b83",
+        "manifest_sha256": "e2b27e110c521e9cf64c57fcfc16dcbad950875e55b9da4f52ec7783d9d5f0c1",
+        "member": "payload/cases/scene_057_offset_bell_cage/M4/v01.png",
+        "sha256": "bb46dc2935ec89ceaa19fd45e79c65b62932da2cdab5092fd9c086b9a5c427cf"
+      },
+      "bytes": 1024468,
+      "license": "CC-BY-4.0"
     }
   ]
 }

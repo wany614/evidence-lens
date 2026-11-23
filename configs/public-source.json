@@ -132,6 +132,7 @@
     "docs/releases/v0.3.0-rc.1/MODEL_CARD.md": "cc-original",
     "docs/releases/v0.3.0-rc.1/README.md": "cc-original",
     "docs/releases/v0.3.0-rc.1/REBUILD.md": "cc-original",
+    "docs/releases/v0.3.0-rc.1/requirements-light.txt": "apache-original",
     "docs/releases/v0.3.0-rc.1/requirements.txt": "cc-original",
     "docs/results/README.md": "cc-original",
     "docs/results/family-methods.csv": "cc-original",
@@ -164,6 +165,8 @@
     "examples/native-plane-control/prediction-v01.png": "cc-original",
     "examples/native-plane-control/rgb-error-v01.png": "cc-original",
     "examples/native-plane-control/v01-L2-vision-ft-state.png": "cc-original",
+    "examples/offset-bell-cage/README.md": "cc-original",
+    "examples/offset-bell-cage/four-method-comparison-v01.png": "cc-original",
     "examples/offset-bell-cage/m4-target-v01.png": "cc-original",
     "examples/offset-bell-cage/origins.json": "cc-original",
     "examples/offset-bell-cage/reference-v01.png": "cc-original",
@@ -320,6 +323,7 @@
     "scripts/stage3_risk_caption.py": "apache-original",
     "scripts/stage3_risk_control.py": "apache-original",
     "scripts/stage3_risk_data.py": "apache-original",
+    "scripts/stage3_risk_engineering.py": "apache-original",
     "scripts/stage3_risk_evaluate.py": "apache-original",
     "scripts/stage3_risk_example.py": "apache-original",
     "scripts/stage3_risk_input_qa.py": "apache-original",
@@ -532,6 +536,11 @@
       "format": "rgb8-png",
       "bytes": 4156,
       "sha256": "fec323ae18774814dfd66a0c98bbe429503566e41a773a3e6b1dff7ea09b5d6e"
+    },
+    "examples/offset-bell-cage/four-method-comparison-v01.png": {
+      "format": "rgb8-png",
+      "bytes": 1024468,
+      "sha256": "bb46dc2935ec89ceaa19fd45e79c65b62932da2cdab5092fd9c086b9a5c427cf"
     },
     "examples/offset-bell-cage/m4-target-v01.png": {
       "format": "rgb8-png",

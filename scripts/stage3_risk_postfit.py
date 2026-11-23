@@ -338,6 +338,16 @@ class Post:
             r = find_run(self.roots, p)
             roles[key] = (member(r, sc["member"], sc["sha256"])[0], p)
             parents.append(p)
+        require(
+            "engineering" in extra,
+            "joint study requires explicit independently confirmed engineering observations",
+        )
+        for key, obs in extra["engineering"]["recorded"].items():
+            rc = obs["recovery"]
+            p = compact_pin(rc)
+            r = find_run(self.roots, p)
+            roles["engineering_" + key] = (member(r, rc["member"], rc["sha256"])[0], p)
+            parents.append(p)
         sources["freeze"] = {
             **mk["method"],
             "member": "payload/method-freeze.json",
@@ -352,6 +362,7 @@ class Post:
             "catalog_sha256": CATALOG,
             "opening_sha256": opening,
             "additional_evidence_sha256": evidence_sha,
+            "engineering": extra["engineering"],
             "sources": sources,
         }
         register = self.state / "joint-report" / "originals.json"

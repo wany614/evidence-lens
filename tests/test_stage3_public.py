@@ -90,6 +90,8 @@ def test_release_notes_show_unavailable_and_real_defined_denominators():
 
 
 def test_comparator_independently_checks_data_and_states(tmp_path):
+    pytest.importorskip("torch")
+    pytest.importorskip("safetensors")
     from stage3_neural_evidence import compare_maps
 
     one = np.zeros((256, 256), np.float32)
