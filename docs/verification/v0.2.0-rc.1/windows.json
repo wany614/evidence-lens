@@ -1,0 +1,117 @@
+{
+  "builtin": {
+    "maps": 36,
+    "maximum_score_difference": 1.621246337890625e-05,
+    "passed_method_views": 42,
+    "smoke_sha256": "6845dc432cfc9a7633b13ecb637cbe0719455767478cf727b28371abc61dc55f"
+  },
+  "code_commit": "fb2fbdc232cf2be706ca88e4ad9ddfe884013cc3",
+  "cpu_runtime": {
+    "architecture": "",
+    "device": "cpu",
+    "numpy": "2.2.6",
+    "python": "3.11.5",
+    "system": "Windows",
+    "torch": "2.8.0+cpu"
+  },
+  "exit_code": 1,
+  "manifest_sha256": "dd44c50587c1819d6a22b80eac148708daa9fc9022e3da86b33bd84ca8ae5daf",
+  "native_control": {
+    "checked_coordinates": 11010048,
+    "failed_method_views": [
+      {
+        "absolute_tolerance": 0.0002,
+        "finite_expected": 244827,
+        "finite_observed": 244827,
+        "l0_reason_codes_equal": null,
+        "maximum_absolute_difference": 3.635883331298828e-06,
+        "method": "L2-frozen",
+        "passed": false,
+        "pixels": 262144,
+        "support_difference": 0,
+        "threshold_state_difference": 1,
+        "view": "v05"
+      }
+    ],
+    "figures_pixel_equal": {
+      "prediction-v01.png": true,
+      "reference-v01.png": true,
+      "rgb-error-v01.png": true
+    },
+    "maps": 36,
+    "max_abs_score_difference_all": 1.1801719665527344e-05,
+    "measurement_differences": [
+      {
+        "path": "/views/v05/methods/L2-frozen/low_evaluable",
+        "reference": 209247,
+        "windows": 209248
+      },
+      {
+        "path": "/views/v05/methods/L2-frozen/low_valid",
+        "reference": 209247,
+        "windows": 209248
+      },
+      {
+        "path": "/views/v05/methods/L2-frozen/warnings",
+        "reference": 35580,
+        "windows": 35579
+      }
+    ],
+    "measurement_exact": false,
+    "passed_method_views": 41,
+    "pixel_differences": [
+      {
+        "reference_score": 0.5428744554519653,
+        "reference_state": 1,
+        "windows_score": 0.5428719520568848,
+        "windows_state": 0,
+        "x": 91,
+        "y": 260
+      }
+    ],
+    "scored_method_views": 42,
+    "scoring_receipt_sha256": "d42bfc774f584677a5fe4d7388f42def2146206a1062d0c7df78dfb9fe39ca84",
+    "tau": 0.5428733229637146
+  },
+  "private_execution_receipt_sha256": "6ba88a05d165f1756e3717d0ccf490d73354f3c782e2629a043d3f29ef482118",
+  "public_assets": {
+    "RELEASE_NOTES.md": {
+      "bytes": 6293,
+      "sha256": "af7c1d944a26f443e7fadeffc0d8a3edea5a6d405778b3c7a166945068a9bf60"
+    },
+    "SHA256SUMS": {
+      "bytes": 299,
+      "sha256": "c86f40b44a6cf9745c3be0f6229600be58cc4dc4060a3505ebc2da1692172f1d"
+    },
+    "candidate.json": {
+      "bytes": 3735,
+      "sha256": "52a13598378813fca132f122d8f7bc6d8b6ca47a57cff81bc40b1a3e9707289d"
+    },
+    "dinov2_vits14_pretrain.pth": {
+      "bytes": 88283115,
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+    },
+    "evidence-lens-v0.2.0-rc.1-cpu.zip": {
+      "bytes": 166532365,
+      "sha256": "f18508a019583961c0141d7a780d47d768f6d49dbb2764df7d89e0816e593320"
+    },
+    "evidence-lens-v0.2.0-rc.1-numerical.zip": {
+      "bytes": 258301,
+      "sha256": "e09341d065836054a0fd9a665db1ab3c8e4e2db75ebc6cd30411df33d0705001"
+    },
+    "evidence-lens-v0.2.0-rc.1-public-plane-512.zip": {
+      "bytes": 46423486,
+      "sha256": "0a2c80c15e9ad6eb15e15707880bdd269fe70899c07ae91cf9ffc3a13fd7d0db"
+    }
+  },
+  "public_dependency_mode": "online_public_indices",
+  "public_native_readback_sha256": "38d0204cf7058dc0fbb4a56b5a7b17825a74aa91a720cb77313ab16b04a4e52d",
+  "release_url": "https://github.com/wany614/evidence-lens/releases/tag/v0.2.0-rc.1",
+  "repository": "wany614/evidence-lens",
+  "run_id": "20261123T154033371799Z-78c6f6eaa3dc4162",
+  "sampled_process_tree_peak_rss_bytes": 448319488,
+  "schema": "el-b-public-windows-replay-observation-1",
+  "strict_status": "failed",
+  "tag": "v0.2.0-rc.1",
+  "wall_seconds": 134.32799999999406
+}

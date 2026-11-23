@@ -120,6 +120,8 @@
     "docs/stage2-confirmation-operations.md": "cc-original",
     "docs/verification/v0.2.0-rc.1/README.md": "cc-original",
     "docs/verification/v0.2.0-rc.1/macos.json": "cc-original",
+    "docs/verification/v0.2.0-rc.1/windows-control-readback.json": "cc-original",
+    "docs/verification/v0.2.0-rc.1/windows.json": "cc-original",
     "docs/vision-data.md": "cc-original",
     "docs/vision-postfit.md": "cc-original",
     "docs/vision-rights.md": "cc-original",

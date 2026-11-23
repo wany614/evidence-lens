@@ -15,6 +15,12 @@ On 23 November 2026 an Apple silicon Mac downloaded all seven files from the pub
 
 The receipt includes the downloaded byte counts and SHA-256 for all seven assets, the sources and digests of the dependency wheels, the deployed model identities and the independent evaluation digest. [Mac replay receipt](macos.json)
 
+## Windows CPU replay
+
+Windows completed the public downloads and produced all risk and state maps for both examples. The 128 × 128 case passed all 42 method–view checks. In the 512 × 512 case, 41 of 42 passed. At pixel (91, 260) of view v05, L2-frozen scored 0.5428744555 on the reference Mac and 0.5428719521 on Windows. Its frozen threshold was 0.5428733230. This changed one high decision to low among 11,010,048 checked method–pixel positions. The finite masks and the source, prediction and measured-error figures agreed. The verifier requires identical states and exited with code 1.
+
+The clean Windows run used Python 3.11.5, PyTorch 2.8.0+cpu and NumPy 2.2.6. It took 134.33 seconds and reached a sampled process-tree peak of 448,319,488 bytes. Recorder `20261123T154033371799Z-78c6f6eaa3dc4162` preserves the attempt. The largest observed native-case numerical discrepancy was 0.00001181. The attached machine-readable files record the affected counts and the exact reference comparison. [Windows run summary](windows.json) · [Original Windows comparison](windows-control-readback.json)
+
 ## Repeat on a CPU
 
 Use Python 3.11 or 3.12. Clone the public repository, check out the exact commit below and run the verifier from that checkout. The output path must be empty. The verifier downloads and checks the assets, installs the dependencies, runs both original examples and writes `public-verification.json`. On Windows, run the same arguments with a single-line PowerShell command and the selected Python interpreter.
