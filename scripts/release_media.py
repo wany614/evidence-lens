@@ -35,8 +35,8 @@ def check_png(path, size):
     allowed = set(fixed_sizes) | {b"PLTE", b"IDAT"}
     offset, chunks = 8, []
     decoder = zlib.decompressobj()
-    # Three bytes per RGB sample plus a scanline filter byte per interlace pass.
-    remaining = 3 * size[0] * size[1] + 7 * size[1]
+    # The example producer writes noninterlaced RGB8 with one filter byte per row.
+    remaining = (3 * size[0] + 1) * size[1]
     while offset < len(data):
         require(offset + 12 <= len(data), f"truncated PNG chunk in {path.name}")
         length, kind = struct.unpack_from(">I4s", data, offset)
@@ -51,7 +51,7 @@ def check_png(path, size):
         if kind == b"IHDR":
             w, h, depth, colour, comp, filt, interlace = struct.unpack(">IIBBBBB", payload)
             require(
-                (w, h) == size and (depth, colour, comp, filt) == (8, 2, 0, 0) and interlace in (0, 1),
+                (w, h) == size and (depth, colour, comp, filt, interlace) == (8, 2, 0, 0, 0),
                 f"invalid RGB8 example header in {path.name}",
             )
         if kind == b"PLTE":
@@ -79,7 +79,8 @@ def check_png(path, size):
         and chunks.count(b"IHDR") == 1
         and chunks[-1] == b"IEND"
         and b"IDAT" in chunks
-        and decoder.eof,
+        and decoder.eof
+        and remaining == 0,
         f"incomplete PNG in {path.name}",
     )
     with Image.open(io.BytesIO(data), formats=["PNG"]) as img:
@@ -89,31 +90,88 @@ def check_png(path, size):
         img.load()
 
 
+def member_offsets(stream, packed, members):
+    """Account for every container byte, including NumPy's optional local ZIP64 sizes."""
+    stream.seek(-22, 2)
+    end_offset = stream.tell()
+    marker, disk, directory_disk, on_disk, total, directory_size, directory_start, comment = struct.unpack(
+        "<4s4H2IH", stream.read(22)
+    )
+    require(
+        (marker, disk, directory_disk, on_disk, total, comment)
+        == (b"PK\x05\x06", 0, 0, len(members), len(members), 0)
+        and directory_start == packed.start_dir
+        and directory_start + directory_size == end_offset,
+        "NPZ has extra data or an invalid directory boundary",
+    )
+    # Each ASCII name follows a 46-byte central header. The public layout permits no central extra/comment.
+    require(
+        directory_size == sum(46 + len(i.filename) for i in members)
+        and all(not i.extra and not i.comment for i in members),
+        "NPZ has unapproved central metadata",
+    )
+    offsets = []
+    position = 0
+    for info in members:
+        require(position == info.header_offset, "NPZ local members are not contiguous")
+        stream.seek(position)
+        header = stream.read(30)
+        require(len(header) == 30, "incomplete NPZ local header")
+        tag, version, flags, method, _, _, crc, comp, size, name_len, extra_len = struct.unpack(
+            "<4s5H3I2H", header
+        )
+        require(
+            tag == b"PK\x03\x04"
+            and version == info.extract_version
+            and flags == info.flag_bits == 0
+            and method == info.compress_type
+            and method in (zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED)
+            and crc == info.CRC
+            and stream.read(name_len) == info.filename.encode("ascii"),
+            "NPZ local header differs from its directory",
+        )
+        extra = stream.read(extra_len)
+        if extra_len:
+            require(
+                comp == size == 0xFFFFFFFF
+                and extra == struct.pack("<HHQQ", 1, 16, info.file_size, info.compress_size),
+                "unapproved NPZ local extra field or inconsistent ZIP64 sizes",
+            )
+        else:
+            require((comp, size) == (info.compress_size, info.file_size), "incorrect NPZ local sizes")
+        offsets.append(stream.tell())
+        position = stream.tell() + info.compress_size
+    require(position == directory_start, "NPZ local data and central directory are not contiguous")
+    return offsets
+
+
 def check_npz(path, layout):
     require(path.stat().st_size >= 22, f"truncated NPZ in {path.name}")
-    with path.open("rb") as stream:
-        stream.seek(-22, 2)
-        end = stream.read()
-    require(
-        end[:4] == b"PK\x05\x06" and end[-2:] == b"\0\0",
-        f"NPZ has trailing data or a ZIP comment in {path.name}",
-    )
-    with zipfile.ZipFile(path) as packed:
+    with path.open("rb") as stream, zipfile.ZipFile(stream) as packed:
         members = packed.infolist()
         names = {k + ".npy" for k in layout}
         require(
             not packed.comment and len(members) == len(names) and {i.orig_filename for i in members} == names,
             f"unapproved or missing numerical NPZ member in {path.name}",
         )
-        for info in members:
-            require(
-                not info.comment and not info.extra and not info.is_dir(),
-                f"unapproved NPZ member metadata in {path.name}",
-            )
+        for info, offset in zip(members, member_offsets(stream, packed, members), strict=True):
             kind, shape = layout[info.filename[:-4]]
             nbytes = np.dtype(kind).itemsize * int(np.prod(shape))
             require(nbytes < info.file_size <= nbytes + 1040, f"NPZ member length differs in {path.name}")
-            with io.BytesIO(packed.read(info)) as raw:
+            stream.seek(offset)
+            data = stream.read(info.compress_size)
+            if info.compress_type == zipfile.ZIP_DEFLATED:
+                inflater = zlib.decompressobj(-15)
+                data = inflater.decompress(data, nbytes + 1041)
+                require(
+                    inflater.eof and not inflater.unused_data and not inflater.unconsumed_tail,
+                    f"NPZ has extra or incomplete compressed data in {path.name}",
+                )
+            require(
+                len(data) == info.file_size and zlib.crc32(data) == info.CRC,
+                f"invalid numerical member bytes in {path.name}",
+            )
+            with io.BytesIO(data) as raw:
                 version = np.lib.format.read_magic(raw)
                 require(version in ((1, 0), (2, 0), (3, 0)), f"unknown NPY version in {path.name}")
                 length = int.from_bytes(raw.read(2 if version[0] == 1 else 4), "little")

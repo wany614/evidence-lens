@@ -10,6 +10,8 @@ import tempfile
 import zipfile
 from pathlib import Path
 
+import numpy as np
+
 from release_identity import (
     PAIR_ROLES,
     check_identity,
@@ -24,7 +26,7 @@ from release_wheel import aggregate, read_wheel
 from evidence_lens._bundle import HASH, RUN_ID, encoded, load, local_path, sha
 from evidence_lens._bundle import files as regular_files
 from evidence_lens.formal_inputs import PinnedRun
-from evidence_lens.l1 import load_package
+from evidence_lens.l1 import load_package, run as score_model
 from evidence_lens.l1_demo import seal
 from evidence_lens.scoring_io import TARGETS, VIEWS, new_output
 
@@ -490,6 +492,8 @@ def build(a):
         for view in TARGETS:
             runs["example_scores"].open("payload/" + view + ".npz")
         seal(out, original_scores.parent, sha(original_scores), ["v01"])
+        demo_path = out / "demo.json"
+        demo_path.write_bytes(demo_path.read_bytes().replace(b"\r\n", b"\n"))
         for name in ("demo.json", "expected/v01.npz"):
             raw = (out / name).read_bytes()
             entries[name] = {
@@ -606,7 +610,7 @@ def build(a):
         (out / "release.json").write_bytes(encoded(index))
         members = sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file())
         checks = [f"{sha(out / name)}  {name}" for name in members]
-        (out / "SHA256SUMS").write_text("\n".join(checks) + "\n", encoding="utf-8")
+        (out / "SHA256SUMS").write_bytes(("\n".join(checks) + "\n").encode("utf-8"))
         check(out)
     return {
         "model_id": method["model_id"],
@@ -717,6 +721,35 @@ def asset_origin(index, name):
     return {"commit": index["code_commit"], "path": source}
 
 
+def check_guide_values(guide, demo_sha, model_sha, wheel_name, state_counts):
+    """Check the commands and six-view outcome printed in the shipped guide."""
+    for option, expected in (("--manifest-sha256", demo_sha), ("--model-sha256", model_sha)):
+        values = re.findall(re.escape(option) + r"\s+(\S+)", guide)
+        require(values and set(values) == {expected}, "README has a missing or stale " + option)
+    wheels = re.findall(r"distribution[/\\]([\w.-]+\.whl)", guide)
+    require(wheels and set(wheels) == {wheel_name}, "README wheel differs from the release")
+    low, high, unknown = state_counts
+    require(
+        f"{low:,} low, {high:,} high and {unknown:,} unknown" in guide,
+        "README six-view decision counts differ from CPU outputs",
+    )
+
+
+def check_real_example_guide(folder, release):
+    model_sha = sha(folder / "model/model.json")
+    counts = np.zeros(256, dtype=np.int64)
+    with tempfile.TemporaryDirectory() as temp:
+        scores = Path(temp) / "scores"
+        example = folder / "example"
+        score_model(example / "input.png", example / "cameras.json", example / "predictions",
+                    folder / "model", scores, model_sha256=model_sha)
+        for view in TARGETS:
+            with np.load(scores / (view + ".npz"), allow_pickle=False) as data:
+                counts += np.bincount(data["l1_full_state"].ravel(), minlength=256)
+    check_guide_values((folder / "README.md").read_text(encoding="utf-8"), sha(folder / "demo.json"),
+                       model_sha, release["wheel"]["name"], counts[[0, 1, 255]])
+
+
 def check(folder, release_sha=None, sums_sha=None):
     actual = set(regular_files(folder))
     require("release.json" in actual and "SHA256SUMS" in actual, "missing release manifest or checksums")
@@ -761,9 +794,9 @@ def check(folder, release_sha=None, sums_sha=None):
         if path.suffix in (".md", ".txt", ".csv", ".json", ".toml") or name == "LICENSE":
             safe_text(name, path.read_bytes(), terms.values())
     safe_text("release.json", (folder / "release.json").read_bytes())
-    rows = (folder / "SHA256SUMS").read_text(encoding="utf-8").splitlines()
     expected = [f"{sha(folder / n)}  {n}" for n in sorted(actual - {"SHA256SUMS"})]
-    require(rows == expected, "checksum list differs from exact release contents")
+    expected_bytes = ("\n".join(expected) + "\n").encode("utf-8")
+    require((folder / "SHA256SUMS").read_bytes() == expected_bytes, "checksum list differs from exact release contents")
     require(
         release["payload_members_sha256"] == aggregate({n: signature(folder / n) for n in release["files"]}),
         "release payload aggregate differs",
@@ -778,6 +811,8 @@ def check(folder, release_sha=None, sums_sha=None):
     )
     check_example_media(folder)
     check_identity(folder, release, TABLES)
+    if release["kind"] == "heldout_study":
+        check_real_example_guide(folder, release)
     return sorted(actual)
 
 

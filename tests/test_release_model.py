@@ -92,6 +92,44 @@ def test_binary_public_assets_reject_hidden_text_and_extra_arrays(tmp_path):
         check_npz(data, schema)
 
 
+def test_rgb_scanlines_and_numpy_zip_boundaries(tmp_path):
+    png = tmp_path / "image.png"
+    Image.new("RGB", (2, 3)).save(png)
+    original = png.read_bytes()
+    idat = original.index(b"IDAT") - 4
+    end = idat + 12 + int.from_bytes(original[idat : idat + 4], "big")
+    for count in (20, 22):
+        content = b"IDAT" + zlib.compress(bytes(count))
+        chunk = struct.pack(">I", len(content) - 4) + content + struct.pack(">I", zlib.crc32(content))
+        png.write_bytes(original[:idat] + chunk + original[end:])
+        with pytest.raises(ValueError, match="incomplete PNG|oversized compressed data"):
+            check_png(png, (2, 3))
+    npz = tmp_path / "archive.npz"
+    values = np.arange(6, dtype=np.float32).reshape(2, 3)
+    schema = {"z": (np.float32, values.shape)}
+    np.savez_compressed(npz, z=values)
+    check_npz(npz, schema)
+    base = npz.read_bytes()
+    name_len, extra_len = struct.unpack_from("<HH", base, 26)
+    assert extra_len == 20 and struct.unpack_from("<HH", base, 30 + name_len) == (1, 16)
+    wrong_sizes = bytearray(base)
+    wrong_sizes[30 + name_len + 4] ^= 1
+    npz.write_bytes(wrong_sizes)
+    with pytest.raises(ValueError, match="ZIP64 sizes"):
+        check_npz(npz, schema)
+    central = struct.unpack_from("<I", base, -6)[0]
+    gap = bytearray(base[:central] + b"\0" + base[central:])
+    struct.pack_into("<I", gap, len(gap) - 6, central + 1)
+    npz.write_bytes(gap)
+    with pytest.raises(ValueError, match="not contiguous"):
+        check_npz(npz, schema)
+    encoded_value = io.BytesIO()
+    np.save(encoded_value, values)
+    with zipfile.ZipFile(npz, "w", compression=zipfile.ZIP_STORED) as archive:
+        archive.writestr("z.npy", encoded_value.getvalue())
+    check_npz(npz, schema)
+
+
 def test_readback_thresholds_and_q1_same_family_pins(tmp_path):
     def pin(i):
         return {"run_id": f"20200101T000000000000Z-{i:016x}", "manifest_sha256": f"{i:064x}"}

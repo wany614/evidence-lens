@@ -153,6 +153,7 @@
     "tests/test_recorded_l1.py": "original-source-pending",
     "tests/test_recording.py": "original-source-pending",
     "tests/test_release_model.py": "original-source-pending",
+    "tests/test_release_reader_guide.py": "original-source-pending",
     "tests/test_rolling_archive.py": "original-source-pending",
     "tests/test_score_maps.py": "original-source-pending",
     "tests/test_stress_conditions.py": "original-source-pending",
