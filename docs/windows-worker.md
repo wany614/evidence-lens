@@ -68,3 +68,41 @@ The project retains its 20 GiB active target and 30 GiB free-space floor. Stagin
 python scripts/formal_archive.py copy --store "$STORE" --family "$FAMILY" --vault "$ARCHIVE"
 python scripts/formal_archive.py verify --vault "$RETRIEVED" --manifest "$RETRIEVED_MANIFEST" --sha256 "$MANIFEST_SHA" --receipt "$OUT/$FAMILY.readback.json"
 ```
+
+## Held-out conditions and timing
+
+After the P5 method freeze, each stress condition starts with the same family's selected B0 trial. Keep the original Windows B0 generation in its research store for Q1. The condition handoff extends the frozen B0 worker with the condition dispatcher, registered numeric transformation and PLY reader. It carries one source PNG, its seven cameras, private-job identifiers and source code. The R1 private source-bound reference metadata stays on the Mac. The Q1 worker opens the exact baseline generation already in its store.
+
+```sh
+python scripts/condition_mac.py prepare --store "$STORE" --family "$FAMILY" --condition R1
+python scripts/condition_jobs.py --store "$STORE" --family "$FAMILY" --condition R1 --preparation-run "$R1_SOURCE_ID" --out "$OUT/R1.zip"
+python scripts/condition_jobs.py --store "$STORE" --family "$FAMILY" --condition Q1 --out "$OUT/Q1.zip"
+```
+
+Match the handoff SHA before extraction. On the Windows research volume run the corresponding first stage and then render using its reported producer ID. Each command outputs the same durable run/container receipt format as the B0 worker. The dedicated dispatch reserves each trial/stage, reuses its sealed result, and preserves recorded failures and explicit retries.
+
+```powershell
+& $Python "$R1/code/scripts/condition_stage.py" generate --handoff $R1 --store $Store --return-dir $Outgoing --weights $Weights
+& $Python "$R1/code/scripts/condition_stage.py" render --handoff $R1 --store $Store --return-dir $Outgoing --producer-run $R1GenerationId
+& $Python "$Q1/code/scripts/condition_stage.py" derive --handoff $Q1 --store $Store --return-dir $Outgoing
+& $Python "$Q1/code/scripts/condition_stage.py" render --handoff $Q1 --store $Store --return-dir $Outgoing --producer-run $Q1DerivationId
+```
+
+Receive the producer and render packages, in that order, using their verified SHA values. `PRODUCER_ID` identifies the R1 generation or Q1 colour derivation. The following example uses Q1. For R1, change the condition argument and add `--preparation-run "$R1_SOURCE_ID"` to every Mac invocation. The explicit method file defaults to `STORE/protocol/method-freeze-v1.json`.
+
+```sh
+python scripts/condition_mac.py score --store "$STORE" --family "$FAMILY" --condition Q1 --producer-run "$PRODUCER_ID" --render-run "$RENDER_ID"
+python scripts/condition_mac.py evaluate --store "$STORE" --family "$FAMILY" --condition Q1 --producer-run "$PRODUCER_ID" --render-run "$RENDER_ID" --score-run "$SCORE_ID"
+python scripts/condition_mac.py verify --store "$STORE" --family "$FAMILY" --condition Q1 --producer-run "$PRODUCER_ID" --render-run "$RENDER_ID" --score-run "$SCORE_ID" --evaluation-run "$EVALUATION_ID"
+python scripts/condition_mac.py select --store "$STORE" --family "$FAMILY" --condition Q1 --producer-run "$PRODUCER_ID" --render-run "$RENDER_ID" --score-run "$SCORE_ID" --evaluation-run "$EVALUATION_ID" --recompute-run "$CHECK_ID"
+```
+
+The selection records the actual source asset owner and hashes, original reference and readback, preparation and Gaussian producer, seven products, calibration, and independent v01 measurement. Q1 checks every colour scalar against an independent Python `struct` binary16 conversion, and compares all protected fields and the file envelope byte for byte with the selected B0 PLY. R1 independently checks integer rounding for every output pixel, the source intrinsics and the six unchanged target cameras. Its selection records the measured focal length divided by source width and the effective focal length at the fixed 1536-pixel network width for both B0 and R1. Zero supported target pixels remain part of the output counts. Each condition's fixed board uses v01.
+
+For the lexicographically first held-out family, supply `--timing-repeat 1`, `2`, or `3` to `condition_jobs.py` after that condition's quality trial has been selected. Create a distinct handoff for each repeat. B0 timing and R1 start with `generate`, Q1 with `derive`. Use the same explicit R1 preparation as the warm-up. Run the same Windows render and receive both packages. Document the transferred run IDs and phase measurements under `STORE/formal/<catalog SHA>/conditions/timing`.
+
+```sh
+python scripts/condition_mac.py timing --store "$STORE" --family "$FAMILY" --condition Q1 --timing-repeat 1 --producer-run "$TIMED_PRODUCER_ID" --render-run "$TIMED_RENDER_ID"
+```
+
+The timing manifest ties the repeat to the warm-up and frozen generator/renderer settings. Each timing trial has its own ID and belongs to the timing experiment. Quality evaluation and trial selection accept only the scientific condition dispatch.

@@ -1,0 +1,10 @@
+{
+  "schema": "el-operating-points-clarification-1",
+  "parent_study_sha256": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+  "parent_addendum_sha256": "cf5c061d5412453a7f9993e74ff35e7e5aec84c61cbc0c8c472f68891f66f124",
+  "L0": "Keep the preregistered physical support and depth rules, with their high, low and unknown states. For the binary risk scores 0 or 1 the decision boundary is 0.5. L0 contributes its actual attainable rule point to coverage comparisons.",
+  "other_methods": ["constant", "1-alpha", "L1-full", "L1-geometry"],
+  "thresholds": "Each listed method gets its own development-only low-risk operating threshold using the study rule. Report the attained coverage. Full tie groups determine the available coverage choices.",
+  "system_counts": "L, H and U partition E, the reference-and-prediction-valid RGB population. Low-risk coverage is L/V. A pixel with reference-valid and prediction-invalid RGB is reported as invalid output in V outside E.",
+  "ranking": "The five-method common-score mask is intersected with E for ranking comparisons. Every method also has its own system coverage."
+}

@@ -99,3 +99,14 @@ The immutable local output is `STORE/trials/TRIAL_ID/trial_selection.json`. It i
 A live worker receives an independent snapshot of every embedded input. After its process has stopped, the Mac verifies the new bundle and sets its file modes read-only. Before publishing a new bundle, it may replace an embedded input of at least 64 KiB with a same-volume hard link to identical read-only bytes in its declared local parent. It checks the parent manifest pin, both byte counts and both file hashes. The receiver applies the same operation to a fully verified staging copy. Unsupported links retain the independent snapshot. Local receipts report linked bytes and elapsed time. The store still charges the full temporary working copy at preflight and counts a shared inode once in the published active tree.
 
 The operation only touches the new package's incoming link before publication. Earlier recorder bundles keep their original content, inode, permissions and scientific manifest. A hard-linked asset's link count increases as later verified packages reuse it.
+
+## Rolling the active batch
+
+The initial storage profile caps the active store at 20 GiB and reserves 30 GiB of free space on the volume. Once a family is no longer needed for fitting, the Mac can park its complete sealed runs on a separate cold shelf on the same filesystem. Each move requires a provider-verified archive receipt, the original run ID and manifest SHA-256. The manifest and all members are checked before an atomic directory rename. The private shelf retains the sealed files and their placement catalog. Moving files on the same filesystem releases the active quota while whole-volume free space is still measured for every run.
+
+```sh
+python scripts/working_set.py --store "$ACTIVE" --shelf "$COLD" park \
+  --run "$RUN" --manifest "$MANIFEST_SHA" --archive-receipt "$RECEIPT"
+```
+
+Use `restore` with the same arguments to return a parked directory. For the aggregate report, run `report-view --out "$REPORT_VIEW"` with the same store and shelf. Pass that view as the `--store` for the `roster` and `assemble` steps in the formal evaluation guide. This private view holds the original manifest, operational metadata, numerical summaries, pooled curves and fixed boards. The report checks every consumed file against its original manifest. Full research recovery uses the archived package and the upstream checkpoint.
