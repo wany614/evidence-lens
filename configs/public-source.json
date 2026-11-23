@@ -197,6 +197,7 @@
     "scripts/phase1_matched_sources.py": "apache-original",
     "scripts/phase1_source_reference.py": "apache-original",
     "scripts/pilot_budget.py": "apache-original",
+    "scripts/plot_vision_risk_coverage.py": "apache-original",
     "scripts/portable_family.py": "apache-original",
     "scripts/process_b0.py": "apache-original",
     "scripts/rebuild_study.py": "apache-original",
@@ -361,6 +362,7 @@
     "tests/test_vision_public_download.py": "apache-original",
     "tests/test_vision_public_study.py": "apache-original",
     "tests/test_vision_release.py": "apache-original",
+    "tests/test_vision_risk_plot.py": "apache-original",
     "tests/test_vision_source_pack.py": "apache-original",
     "tests/test_vision_worker.py": "apache-original",
     "tests/vision_gate_fixture.py": "apache-original"

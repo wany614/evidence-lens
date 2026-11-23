@@ -74,3 +74,13 @@ python3 -I -B scripts/vision_control_attachment.py grade-download --archive "$CO
 ```
 
 The readback compares the six native maps of every method, finite support, threshold states, the L0 reason codes, RGB/depth measurements and fixed image pixels. Full error counts and thresholds are retained on a numerical discrepancy.
+
+## Draw the family risk–coverage curves
+
+The numerical archive contains `study-summary.json`. Its SHA-256 is listed under `files["study/study-summary.json"]` in the CPU archive's `release.json`. From a source checkout with Matplotlib and Pillow installed, supply that digest and an empty output directory.
+
+```sh
+python3 scripts/plot_vision_risk_coverage.py --summary path/to/study-summary.json --sha256 "$SUMMARY_SHA" --output ../family-curves
+```
+
+The six sheets cover each cohort and condition. Each panel represents one family. The horizontal coordinate divides accepted pixels by all reference-valid pixels. The vertical coordinate divides RGB errors in the accepted set by its size. Points come from the 21 registered requests for coverage, with equal scores kept together. Hollow diamonds show the deployment thresholds frozen on development. Zero accepted pixels give an undefined error rate and no point.

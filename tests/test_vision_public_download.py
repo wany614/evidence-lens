@@ -135,6 +135,12 @@ def test_external_body_uses_actual_cohorts_failures_and_frozen_default():
                               "render_status":{"completed":35,"render_failed":1},"scientific_view_dispositions":{"evaluated":35,"terminal_upstream_failure":1}},
           "historical_regression":{"families":["old"],"planned_family_conditions":3,"planned_views":18,
                                "render_status":{"completed":18},"scientific_view_dispositions":{"evaluated":18}}}
+    for cohort in rows.values():
+        n=len(cohort["families"])
+        rate={"value":.5,"defined_families":n,"total_families":n}
+        cohort["family_equal"]=[{"condition":"B0","cohort":"all","methods":{
+            m:{key:rate for key in ("seven_common_ap","low_coverage","low_risk_error")}
+            for m in ("L1-full",*rel.BRANCHES)}}]
     outcome={"default_method":"L1-full","code_commit":"e"*40,"models":{"L1":{"run_id":"unit-source","model_sha256":"d"*64}}}
     costs={"observed_runs":[{"run_id":"explicit-failed-run","run_kind":"render","status":"failed"}]}
     notes=rel.release_notes(outcome,{"cohorts":rows},costs,{"unit.zip":{"bytes":123,"sha256":"d"*64}})
