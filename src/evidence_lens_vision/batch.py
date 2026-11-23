@@ -12,12 +12,14 @@ def dataset_scores(a):
     branch=idx["branch"]
     method=None
     marker_sha=None
+    require((a.split=="test")==bool(a.method_freeze) and (a.split=="test")==bool(a.method_sha256),
+            "the study test split and its pinned method freeze must be supplied together")
     if a.split=="test":
         from vision_evaluate import test_access, model_matches
         require(a.store and a.shelf and a.catalog and a.catalog_sha256 and a.method_freeze and a.method_sha256 and
                 digest(a.method_freeze)==a.method_sha256,"study test scoring requires the canonical opening and exact freeze")
         marker_sha,method=test_access([a.store,a.shelf],[a.catalog,a.catalog_sha256])
-        require(method==read(a.method_freeze) and method["models"][branch]["model_sha256"]==a.model_sha256
+        require(isinstance(method,dict) and bool(method) and method==read(a.method_freeze) and method["models"][branch]["model_sha256"]==a.model_sha256
                 and method["models"][branch]["run_id"]==idx["model_id"] and idx["seed"]==method["primary_seed"]==SEEDS[0]
                 and method["thresholds"][branch]["domain"]=="development-B0" and method["thresholds"][branch]["tau"]==idx["threshold"],
                 "test model or threshold differs from registered joint freeze")
@@ -25,6 +27,7 @@ def dataset_scores(a):
     else:
         require(a.split=="development" and idx["development_dataset_sha256"]==a.dataset_sha256,
                 "development run refers to a different selection dataset")
+    require((a.split=="test")==bool(method),"test scoring requires its verified method")
     require(digest(a.dataset)==a.dataset_sha256,"dataset differs from the explicit pin")
     ds=read(a.dataset)
     root=Path(a.dataset).parent

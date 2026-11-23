@@ -8,7 +8,7 @@ import zipfile
 from pathlib import Path
 
 VISION=("__init__","base","batch","configure","contract","deploy","model","native","selection","train")
-CORE=("__init__","_bundle","evaluation","features","formal_inputs","formal_metrics","l1","l1_data","l1_freeze",
+CORE=("__init__","_bundle","comparison_board","evaluation","features","formal_inputs","formal_metrics","l1","l1_data","l1_freeze",
       "labels","risk_model","scoring_io")
 
 

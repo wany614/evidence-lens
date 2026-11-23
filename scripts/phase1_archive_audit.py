@@ -7,6 +7,7 @@ from pathlib import Path
 
 from evidence_lens._bundle import asset_path, load, save, sha
 from evidence_lens._verify import require, verify_bundle, verify_dependencies
+from working_set import verify_receipt
 
 
 def audit(catalog, store, shelf, expected, out):
@@ -16,10 +17,20 @@ def audit(catalog, store, shelf, expected, out):
              "restore/family-tabletop-v1": store / "restore/family-tabletop-v1/runs"}
     checked, shared = {}, {}
     counts = Counter()
+    current_counts = Counter()
     manifest_bytes = members = 0
     for rid, pin in index["original_runs"].items():
-        root = roots[pin["location"]]
+        location = pin["location"]
+        root = roots[location]
         bundle = root / rid
+        if location in {"active", "cold"} and not bundle.is_dir():
+            # A working-set rotation moves the complete original and records its exact archive seal.
+            marker = load(shelf / "catalog" / (rid + ".json"))
+            require(marker["run_id"] == rid and marker["manifest_sha256"] == pin["manifest_sha256"],
+                    "cold-shelf lookup differs from the source catalog")
+            verify_receipt(store, rid, pin["manifest_sha256"], marker["archive_receipt_id"])
+            location = "cold" if location == "active" else "active"
+            bundle = roots[location] / rid
         result = verify_bundle(bundle)
         require(result["run"]["run_id"] == rid and result["manifest_sha256"] == pin["manifest_sha256"]
                 and result["run"]["execution_status"] == pin["execution_status"], "Changed original run")
@@ -37,6 +48,7 @@ def audit(catalog, store, shelf, expected, out):
         members += len(manifest["files"])
         checked[rid] = result
         counts[pin["location"]] += 1
+        current_counts[location] += 1
     graph = {rid: {x["run_id"] for x in result["inputs"]["parents"]} for rid, result in checked.items()}
     for rid, result in checked.items():
         retry = result["inputs"].get("retry_of")
@@ -47,7 +59,7 @@ def audit(catalog, store, shelf, expected, out):
         # Shared objects have already been byte-verified above for every distinct digest.
         verify_dependencies({**checked[rid], "shared": []}, store, checked)
     report = {"schema": "el-phase1-local-archive-verification-1", "catalog_sha256": expected,
-              "original_runs": len(checked), "locations": dict(counts),
+              "original_runs": len(checked), "locations": dict(counts), "current_locations": dict(current_counts),
               "execution_status": dict(Counter(r["run"]["execution_status"] for r in checked.values())),
               "verified_manifest_members": members, "logical_member_bytes_including_repetition": manifest_bytes,
               "distinct_shared_objects": len(shared), "distinct_shared_bytes": sum(shared.values()),

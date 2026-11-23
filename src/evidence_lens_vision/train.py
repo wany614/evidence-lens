@@ -1,6 +1,7 @@
 """Bounded, paired vision risk fitting. Only train and development manifests are accepted."""
 import collections
 import hashlib
+import importlib
 import math
 import os
 import random
@@ -41,6 +42,59 @@ def tensor_sha(t):
 
 def hashes(model):
     return {n:tensor_sha(t) for n,t in model.state_dict().items()}
+
+
+def witness_parameters(model, branch):
+    named=dict(model.named_parameters())
+    require(set(GRAD_WITNESS)<=named.keys(),"registered BCE gradient witness is missing from this model")
+    groups=("projection.","head.")
+    if branch=="L2-vision-ft":
+        groups+=("backbone.blocks.10.","backbone.blocks.11.","backbone.norm.")
+    expected=tuple(n for n in GRAD_WITNESS if n.startswith(groups))
+    require(all(sum(n.startswith(g) for n in expected)==1 for g in groups),"every trainable group needs its registered gradient witness")
+    require(branch in BRANCHES and all(named[n].requires_grad==(n in expected) for n in GRAD_WITNESS),
+            "gradient witnesses disagree with trainable blocks, normalization, projection or head")
+    return {n:named[n] for n in expected}
+
+
+def tensor_readback(readback, changes):
+    expected={**changes["frozen_after"],**{n:r["after_sha256"] for n,r in changes["trainable"].items()}}
+    actual=hashes(readback)
+    require(actual==expected,"reloaded safetensors differ from the selected parameters")
+    return {"all_tensor_sha256_equal":True,"tensor_count":len(actual),
+            "tensor_table_sha256":hashlib.sha256(json_bytes(actual)).hexdigest()}
+
+
+def scientific_sources():
+    # Resolve modules through the interpreter that actually performs the experiment.
+    # Source and metric modules loaded via an editable install must match the handoff.
+    import evidence_lens
+    from .contract import bound
+    vision=Path(__file__).resolve().parent
+    core=Path(evidence_lens.__file__).resolve().parent
+    root=vision.parents[1]
+    modules={"evidence_lens":(core,("__init__","_bundle","comparison_board","evaluation","features","formal_inputs","formal_metrics","l1","l1_data",
+                                  "l1_freeze","labels","risk_model","scoring_io")),
+             "evidence_lens_vision":(vision,("__init__","base","batch","configure","contract","deploy","model","native","selection","train"))}
+    sources={}
+    for pkg,(folder,names) in modules.items():
+        for name in names:
+            module=importlib.import_module(pkg if name=="__init__" else pkg+"."+name)
+            actual=Path(module.__file__).resolve()
+            require(actual==folder/(name+".py"),"unexpected scientific import for "+pkg+"."+name)
+            sources[f"src/{pkg}/{name}.py"]=digest(actual)
+    for name in ("scripts/vision_worker.py","scripts/vision_worker_pack.py","configs/vision-base-v1.json"):
+        sources[name]=digest(root/name)
+    handoff=root/"worker-source.json"
+    if handoff.is_file():
+        doc=read(handoff)
+        require(doc["schema"]=="el-vision-worker-source-1","wrong transported worker inventory")
+        for n,entry in doc["files"].items():
+            bound(root,dict(entry,path=n))
+        require(all(n in doc["files"] and doc["files"][n]["sha256"]==sha for n,sha in sources.items()),
+                "loaded scientific source differs from the frozen handoff")
+        sources["worker-source.json"]=digest(handoff)
+    return sources
 
 
 def delta_state(model):
@@ -116,8 +170,11 @@ def development(model, ds, pre, device, choose=False, score_dir=None):
     aps=collections.defaultdict(list)
     denominators=collections.Counter()
     lists=collections.defaultdict(list)
+    seen=set()
     for row in ds.rows:
         f,v=row["family"],row["view"]
+        require(row["condition"]=="B0" and (f,v) not in seen,"development contains a duplicate or non-B0 view")
+        seen.add((f,v))
         with np.load(ds.file(row["full"]["truth"]),allow_pickle=False) as z:
             V,E,labels=z["reference_valid"],z["rgb_evaluable"],z["rgb_high_error"]
         shape=(row["height"],row["width"])
@@ -134,7 +191,13 @@ def development(model, ds, pre, device, choose=False, score_dir=None):
             with np.load(ds.file(row["full"]["deploy"]),allow_pickle=False) as z:
                 require(set(z.files)=={"X","scoreable","l0","alpha_score"},"unknown deploy feature role")
                 raw,ok,l0,alpha=z["X"],z["scoreable"],z["l0"],z["alpha_score"]
+            require(ok.dtype==np.bool_ and ok.shape==l0.shape==alpha.shape==shape,
+                    "development deployment grid or scoreable bool mask differs")
             arrays,_=score(model,ds.rgb(row),raw,ok,pre,device)
+            risk,valid=arrays["risk"],arrays["valid"]
+            require(risk.dtype==np.float32 and valid.dtype==np.bool_ and valid.shape==risk.shape==shape and
+                    np.array_equal(valid,np.isfinite(risk)) and not np.any(valid & ~ok),
+                    "development validity must equal finite risk inside original scoreable support")
             if score_dir:
                 path=score_dir/f/"B0"/(v+".npz")
                 path.parent.mkdir(parents=True,exist_ok=True)
@@ -174,7 +237,7 @@ def development(model, ds, pre, device, choose=False, score_dir=None):
     return result
 
 
-def train_group(model, opt, pre, train, loaded, weights, ids, device, state):
+def train_group(model, opt, pre, train, loaded, weights, ids, device, state, witnesses):
     opt.zero_grad(set_to_none=True)
     sums=0.0
     for i in ids:
@@ -197,9 +260,8 @@ def train_group(model, opt, pre, train, loaded, weights, ids, device, state):
                     grads[n]={"l2_norm":float(torch.linalg.vector_norm(unscaled)),"max_abs":float(unscaled.abs().max()),
                               "nonzero_coordinates":int(torch.count_nonzero(unscaled))}
                 return capture
-            for n,p in model.named_parameters():
-                if p.requires_grad and n in GRAD_WITNESS:
-                    hooks.append(p.register_hook(hook_for(n)))
+            for n,p in witnesses.items():
+                hooks.append(p.register_hook(hook_for(n)))
         try:
             (loss*weight).backward()
         finally:
@@ -207,6 +269,7 @@ def train_group(model, opt, pre, train, loaded, weights, ids, device, state):
                 handle.remove()
         value=float(loss.detach())
         if witness:
+            require(grads.keys()==witnesses.keys(),"a registered data-only gradient hook did not run")
             state["witnesses"].append({"family":row["family"],"view":row["view"],"epoch":state["epoch"],
                 "upcoming_optimizer_step":state["steps"]+1,"samples_sha256":row["samples"]["sha256"],
                 "n":len(y),"positive":int(y.sum()),"bce":value,"gradients_of_unregularized_view_mean_bce":grads})
@@ -269,6 +332,7 @@ def run_fit(args, phase):
         if isinstance(layer,torch.nn.Linear):
             layer.reset_parameters()
     model.configure(cfg["branch"])
+    witnesses=witness_parameters(model,cfg["branch"])
     initial_hash=hashes(model)
     initial=delta_state(model)
     head_initial={n:p for n,p in initial.items() if n.startswith(("projection.","head."))}
@@ -280,19 +344,7 @@ def run_fit(args, phase):
               "development_dataset_sha256":None if not dev else dev.sha,"feature_schema_digest":train.schema,
               "preprocessing_sha256":digest(args.preprocessing),"base_pin_sha256":digest(args.base_pin),
               "base_checkpoint_sha256":audit["base"]["checkpoint_sha256"]}
-    source_dir=Path(__file__).resolve().parent
-    worker_root=source_dir.parents[1]
-    source_hash={p.name:digest(p) for p in sorted(source_dir.glob("*.py"))}
-    handoff=worker_root/"worker-source.json"
-    if handoff.is_file():
-        from .contract import bound
-        handoff_doc=read(handoff)
-        require(handoff_doc["schema"]=="el-vision-worker-source-1","wrong transported worker inventory")
-        for n,entry in handoff_doc["files"].items():
-            bound(worker_root,dict(entry,path=n))
-        source_hash["worker-source.json"]=digest(handoff)
-    for name in ("scripts/vision_worker.py","configs/vision-base-v1.json"):
-        source_hash[name]=digest(worker_root/name)
+    source_hash=scientific_sources()
     pairing={"epochs":cfg["epochs"],"patience":cfg["patience"],"accumulate":cfg["accumulate"],
              "microbatch":cfg["microbatch"],"weight_decay":cfg["weight_decay"],"precision":cfg["precision"],
              "seed":cfg["seed"],"training":train.sha,"development":dev.sha if dev else None,"ordering":"numpy SeedSequence(seed,epoch)"}
@@ -323,6 +375,15 @@ def run_fit(args, phase):
               "epoch_objective":"equal supervised families, then supervised views, then sampled pixels; view-mean BCE",
               "precision":{"forward":"float32","gradient":"float32","optimizer":"float32","TF32":False,"AMP":False},
               "torch":str(torch.__version__),"numpy":np.__version__,"safetensors":__import__("safetensors").__version__,"device":str(device),"resume":resumed,"frozen_feature_cache":"none"}
+    flags={"cuda_matmul_allow_tf32":torch.backends.cuda.matmul.allow_tf32,"cudnn_allow_tf32":torch.backends.cudnn.allow_tf32,
+           "cudnn_benchmark":torch.backends.cudnn.benchmark,"deterministic_algorithms":torch.are_deterministic_algorithms_enabled(),
+           "deterministic_warn_only":torch.is_deterministic_algorithms_warn_only_enabled(),
+           "CUBLAS_WORKSPACE_CONFIG":os.environ.get("CUBLAS_WORKSPACE_CONFIG")}
+    require(not any(flags[k] for k in ("cuda_matmul_allow_tf32","cudnn_allow_tf32","cudnn_benchmark","deterministic_warn_only"))
+            and flags["deterministic_algorithms"] and (device.type!="cuda" or flags["CUBLAS_WORKSPACE_CONFIG"] in (":4096:8",":16:8")),
+            "effective PyTorch/CUBLAS precision or determinism differs")
+    evidence["precision"]["backend_readback"]=flags
+    evidence["gradient_witness_names"]=list(witnesses)
     if device.type=="cuda":
         evidence.update(gpu=torch.cuda.get_device_name(device),cuda=str(torch.version.cuda))
     put(out/"setup.json",evidence)
@@ -332,7 +393,7 @@ def run_fit(args, phase):
         cursor=state["cursor"]
         while cursor<len(order):
             ids=order[cursor:cursor+4]
-            state["epoch_weighted_loss"]+=train_group(model,opt,pre,train,loaded,weights,ids,device,state)
+            state["epoch_weighted_loss"]+=train_group(model,opt,pre,train,loaded,weights,ids,device,state,witnesses)
             state["steps"]+=1
             cursor+=len(ids)
             state["cursor"]=cursor
@@ -364,9 +425,11 @@ def run_fit(args, phase):
         put(out/"curves.json",state["curve"])
     if best is not None:
         restore_delta(model,best)
-    required_names=[n for n in GRAD_WITNESS if n in initial]
-    require(len(state["witnesses"])>=3 and all(sum(w["gradients_of_unregularized_view_mean_bce"][n]["l2_norm"]>0
-            for w in state["witnesses"])>=3 for n in required_names),"insufficient nonzero task-BCE gradient evidence")
+    history=state["witnesses"]
+    require(len(history)==8 and all(w["gradients_of_unregularized_view_mean_bce"].keys()==witnesses.keys() for w in history)
+            and all(sum(w["gradients_of_unregularized_view_mean_bce"][n]["l2_norm"]>0 and
+                        w["gradients_of_unregularized_view_mean_bce"][n]["nonzero_coordinates"]>0
+                        for w in history)>=3 for n in witnesses),"insufficient registered eight-minibatch data-only BCE gradient evidence")
     changes=change_record(model,initial,initial_hash,cfg["branch"])
     put(out/"parameter-changes.json",changes)
     put(out/"gradient-witnesses.json",state["witnesses"])
@@ -389,6 +452,7 @@ def run_fit(args, phase):
     sample_row,ix,x,_=loaded[0]
     rgb=train.rgb(sample_row)
     readback,reader_pre,_=open_model(package,device="cpu")
+    tensor_check=tensor_readback(readback,changes)
     def sampled(net,p,d):
         net.eval()
         with torch.inference_mode():
@@ -405,7 +469,7 @@ def run_fit(args, phase):
             "best_development_family_equal_ap":state["best_ap"],"stop_reason":state["stop_reason"],"threshold":tau,
             "initial_head_sha256":evidence["initial_head_sha256"],"package":file_record(package/"model.json",out),
             "frozen_identical":True,"task_gradient_minibatches":len(state["witnesses"]),
-            "cpu_export":{"max_abs_error":float(np.max(np.abs(source-cpu))),"support_equal":True,"counts":len(ix),
+            "cpu_export":{**tensor_check,"max_abs_error":float(np.max(np.abs(source-cpu))),"support_equal":True,"counts":len(ix),
                           "sample_sha256":sample_row["samples"]["sha256"],"rgb_sha256":sample_row["rgb"]["sha256"]},
             "peak_cuda_allocated":torch.cuda.max_memory_allocated(device) if device.type=="cuda" else None,
             "peak_cuda_reserved":torch.cuda.max_memory_reserved(device) if device.type=="cuda" else None,

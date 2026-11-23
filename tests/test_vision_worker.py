@@ -97,9 +97,15 @@ def test_trainable_groups_and_malformed_features():
     m=RiskModel()
     m.configure("L2-frozen")
     assert all(not p.requires_grad for p in m.backbone.parameters())
+    assert set(training.witness_parameters(m,"L2-frozen"))=={"head.2.weight","projection.weight"}
+
     m.configure("L2-vision-ft")
     assert all(p.requires_grad==n.startswith(("backbone.blocks.10.","backbone.blocks.11.","backbone.norm.","head.","projection."))
                for n,p in m.named_parameters())
+    assert set(training.witness_parameters(m,"L2-vision-ft"))==set(training.GRAD_WITNESS)
+    m.backbone.norm.weight.requires_grad_(False)
+    with pytest.raises(ValueError,match="disagree with trainable"):
+        training.witness_parameters(m,"L2-vision-ft")
     assert 21_000_000 < sum(p.numel() for p in m.parameters()) < 25_000_000
     raw=matrix(np.random.default_rng(4),(15,))
     p=preprocess_doc("a"*64)
@@ -154,7 +160,7 @@ def test_synthetic_finetune_restore_export_and_blind_inference(tmp_path,monkeypa
     prep=tmp_path/"preprocessing.json";put(prep,preprocess_doc(digest(train)))
     pin=tmp_path/"base.json";put(pin,{"synthetic_weight_identity":"fixture only"})
     src=tmp_path/"synthetic-source";src.mkdir();(src/"LICENSE").write_text("synthetic test")
-    cfg={"schema":"el-vision-run-1","phase":"train","branch":"L2-vision-ft","seed":1729,"epochs":1,"patience":3,
+    cfg={"schema":"el-vision-run-1","phase":"train","branch":"L2-vision-ft","seed":1729,"epochs":2,"patience":3,
          "head_lr":.0003,"backbone_lr":.00001,"weight_decay":.01,"microbatch":1,"accumulate":4,"precision":"float32",
          "base_pin_sha256":digest(pin),"preprocessing_sha256":digest(prep),"training_dataset_sha256":digest(train),
          "development_dataset_sha256":digest(dev)}
@@ -170,8 +176,19 @@ def test_synthetic_finetune_restore_export_and_blind_inference(tmp_path,monkeypa
     a=SimpleNamespace(config=config_file,base=tmp_path/"fake",base_pin=pin,official_source=src,train=train,development=dev,
                       preprocessing=prep,lr_selection=None,resume=None,resume_sha256=None,output=tmp_path/"fit",device="cpu",run_id=rid)
     result=training.run_fit(a,"train")
-    assert result["optimizer_steps"]==2 and result["task_gradient_minibatches"]==6 and result["frozen_identical"]
+    assert result["optimizer_steps"]==4 and result["task_gradient_minibatches"]==8 and result["frozen_identical"]
     assert result["cpu_export"]["max_abs_error"]<1e-6
+    assert result["cpu_export"]["all_tensor_sha256_equal"] and result["cpu_export"]["tensor_count"]==181
+    setup=read(a.output/"setup.json")
+    flags=setup["precision"]["backend_readback"]
+    assert flags["deterministic_algorithms"] and not any(flags[n] for n in ("cudnn_benchmark","cuda_matmul_allow_tf32","cudnn_allow_tf32","deterministic_warn_only"))
+    assert flags["CUBLAS_WORKSPACE_CONFIG"]==os.environ.get("CUBLAS_WORKSPACE_CONFIG")
+    assert set(setup["gradient_witness_names"])==set(training.GRAD_WITNESS)
+    assert {"src/evidence_lens/formal_metrics.py","src/evidence_lens/l1_freeze.py","src/evidence_lens_vision/train.py"}<=result["source_sha256"].keys()
+    checkpoint=torch.load(a.output/"training-state.pt",weights_only=True,map_location="cpu")
+    assert json.loads(json.dumps(checkpoint["state"]["curve"],allow_nan=False))==read(a.output/"curves.json")
+    assert checkpoint["state"]["curve"][0]["development"]["views"]["synthetic-development"]["v01"]["status"]=="two_class"
+
     frozen_dev=read(a.output/"development-scores/scores.json")
     assert len(frozen_dev["views"])==6 and frozen_dev["model_sha256"]==result["package"]["sha256"]
     for vr in frozen_dev["views"]:
@@ -181,6 +198,13 @@ def test_synthetic_finetune_restore_export_and_blind_inference(tmp_path,monkeypa
             assert np.array_equal(expected,z["state"])
     package=a.output/"package"
     changes=read(a.output/"parameter-changes.json")
+    full_backbone,_,_=open_model(package,result["package"]["sha256"])
+    assert training.tensor_readback(full_backbone,changes)["tensor_table_sha256"]==result["cpu_export"]["tensor_table_sha256"]
+    with torch.no_grad():
+        full_backbone.head[2].bias.add_(1)
+    with pytest.raises(ValueError,match="differ from the selected"):
+        training.tensor_readback(full_backbone,changes)
+    del full_backbone
     assert changes["frozen_before"]==changes["frozen_after"] and all(changes["trainable"][n]["changed"]>0 for n in training.GRAD_WITNESS)
     assert (a.output/"training-state.pt").is_file() and 80_000_000<(package/"weights.safetensors").stat().st_size<110*2**20
     full=dev.parent/"synthetic-development/B0/v01"
@@ -219,5 +243,31 @@ def test_synthetic_finetune_restore_export_and_blind_inference(tmp_path,monkeypa
     a.resume=a.output/"training-state.pt";a.resume_sha256=digest(a.resume)
     a.output=tmp_path/"replayed"
     replay=training.run_fit(a,"train")
-    assert result["package"]["sha256"]==replay["package"]["sha256"] and replay["optimizer_steps"]==2
+    assert result["package"]["sha256"]==replay["package"]["sha256"] and replay["optimizer_steps"]==4
     assert old_setup["initial_tensors"]==read(a.output/"setup.json")["initial_tensors"]
+
+def test_development_fails_on_boolean_support_or_duplicate_view(tmp_path,monkeypatch):
+    manifest=make_data(tmp_path/"dev","development",93)
+    ds=Dataset(manifest,"development",digest(manifest))
+    pre=preprocess_doc("7"*64)
+    def scored(*args):
+        risk=np.full((8,12),.25,np.float32)
+        return {"risk":risk,"valid":np.isfinite(risk)},{}
+    monkeypatch.setattr(training,"score",scored)
+    with pytest.raises(ValueError,match="original scoreable support"):
+        training.development(None,ds,pre,"cpu")
+    def legal(*args):
+        risk=np.full((8,12),.25,np.float32);risk[0,0]=np.nan
+        return {"risk":risk,"valid":np.isfinite(risk)},{}
+    monkeypatch.setattr(training,"score",legal)
+    ds.rows.append(ds.rows[0])
+    with pytest.raises(ValueError,match="non-B0 view"):
+        training.development(None,ds,pre,"cpu")
+    ds.rows.pop()
+    wrong=tmp_path/"dev/invalid-scoreable.npz"
+    original=ds.file(ds.rows[0]["full"]["deploy"])
+    with np.load(original,allow_pickle=False) as values:
+        np.savez(wrong,**{k:values[k].astype(np.uint8) if k=="scoreable" else values[k] for k in values.files})
+    ds.rows[0]["full"]["deploy"]=file_record(wrong,manifest.parent)
+    with pytest.raises(ValueError,match="scoreable bool"):
+        training.development(None,ds,pre,"cpu")
