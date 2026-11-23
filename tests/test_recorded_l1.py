@@ -29,10 +29,12 @@ import formal_lineage
 from verify_l1_development import pilot_masks, record_audit
 
 
-def fixture_commit(repo, names):
+def fixture_commit(repo, names, parent=None):
     """Create a temporary Git object for the method-byte check without staging a working tree."""
     subprocess.run(["git", "init", "-q", str(repo)], check=True)
     text = bytearray(b"commit refs/heads/fixture\ncommitter Fixture <fixture@example.invalid> 1000000000 +0000\ndata 7\nfixture\n")
+    if parent:
+        text.extend(b"from " + parent.encode() + b"\n")
     for name in sorted(names):
         content = (repo / name).read_bytes()
         text.extend(f"M 100644 inline {name}\ndata {len(content)}\n".encode() + content + b"\n")
@@ -114,7 +116,7 @@ def prepare_recorded_development(store, project, repo, catalog, cfg, starter, ra
     return output
 
 
-def test_recorded_fit_threshold_freeze_and_score(tmp_path, capsys, monkeypatch):
+def build_recorded_learning_fixture(tmp_path, capsys, monkeypatch, *, full_protocol=False):
     repo, project, store = tmp_path / "source", tmp_path / "fixture-producer", tmp_path / "fixture-store"
     repo.mkdir()
     store.mkdir()
@@ -124,21 +126,32 @@ def test_recorded_fit_threshold_freeze_and_score(tmp_path, capsys, monkeypatch):
     shutil.copytree(REPO / "scripts", repo / "scripts", ignore=shutil.ignore_patterns("__pycache__"))
     (repo / "protocol").mkdir()
     # The compact comparator here tests publication and digest binding. Scientific metrics have separate fixtures.
-    comparison_names = ("protocol/study-v1.json", "src/evidence_lens/formal_inputs.py")
+    comparison_names = tuple(formal_inputs.PROTOCOL_FILES) if full_protocol else ("protocol/study-v1.json", "src/evidence_lens/formal_inputs.py")
     monkeypatch.setattr(formal_inputs, "PROTOCOL_FILES", comparison_names)
     monkeypatch.setattr(fl, "ROOT", repo)
     monkeypatch.setattr(formal_lineage, "__file__", str(repo / "scripts/formal_lineage.py"))
     study = repo / "protocol/study-v1.json"
     save(study, {"schema": "el-study-preregistration-1", "kind": "synthetic_fixture",
+                 "numerical_protocol_version":"1.0", "labels":{"version":"el-labels-1"},
+                 "test_methods":["constant","1-alpha","L0","L1-full","L1-geometry"],
                  "timing_repeats":{"family":"lexicographically first test family", "repetitions":3, "conditions":["B0","R1","Q1"]}})
+    if full_protocol:
+        add = repo / "protocol/analysis-addendum-v1.json"
+        save(add, {"schema":"el-preregistered-analysis-clarifications-1", "study_sha256":sha(study)})
+        save(repo / "protocol/operating-points-v1.json", {"schema":"el-operating-points-clarification-1",
+             "parent_study_sha256":sha(study),"parent_addendum_sha256":sha(add)})
     (repo / "configs").mkdir()
     catalog, lock, cfg = repo / "protocol/families-v1.json", repo / "configs/formal-freeze-v1.json", tmp_path / "config.json"
+    camera_probe = tmp_path / "fixture-calibration"
+    camera_probe.mkdir()
+    deployable(camera_probe)
+    camera_sha = sha(camera_probe / "cameras.json")
     rows = []
-    for i in range(21):
+    for i in range(24):
         name = f"unit-family-{i:02}"
         rows.append({"scene_family_id":name, "scene_id":name + "/v001", "scene_version":"v001", "trial_id":name + "-B0",
                      "split":"train" if i < 16 else ("development" if i < 20 else "test"), "cv_fold":i % 4 if i < 16 else None,
-                     "example_view":"v01", "trials":{c:name + "-" + c for c in ("B0","R1","Q1")}, "camera_sha256":"0"*64, "recipe_sha256":"1"*64})
+                     "example_view":"v01", "trials":{c:name + "-" + c for c in (("B0","R1","Q1") if i >= 20 else ("B0",))}, "camera_sha256":camera_sha, "recipe_sha256":"1"*64})
     save(catalog, {"schema":"el-formal-families-1", "dataset_id":"unit-only", "families":rows})
     digest = sha(catalog)
     save(lock, {"catalog_sha256":digest, "preregistration_sha256":sha(study)})
@@ -243,3 +256,9 @@ def test_recorded_fit_threshold_freeze_and_score(tmp_path, capsys, monkeypatch):
         pinned = fl.record_score(store, catalog, lock, study, method_file, f["scene_family_id"], condition, cpu)
         result = load(store / "runs" / pinned["run_id"] / "payload/l1_score.json")
         assert result["producer_run_id"] == rendered["run_id"] and result["inputs"]["input_png"]["sha256"] == source_pins["input_png"]["sha256"]
+    return dict(store=store, repo=repo, catalog=catalog, study=study, freeze=lock, method=method_file,
+                fit=fl.run_pin(fitted), threshold=fl.run_pin(frozen), commit=commit)
+
+
+def test_recorded_fit_threshold_freeze_and_score(tmp_path, capsys, monkeypatch):
+    build_recorded_learning_fixture(tmp_path, capsys, monkeypatch)
