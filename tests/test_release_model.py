@@ -7,15 +7,17 @@ import io
 import json
 import os
 import shutil
+import struct
 import subprocess
 import sys
 import zipfile
+import zlib
 from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
 import pytest
-from PIL import Image
+from PIL import Image, PngImagePlugin
 
 from evidence_lens._bundle import encoded, load, save, sha
 from evidence_lens.scoring_io import VIEWS
@@ -23,6 +25,8 @@ from evidence_lens.scoring_io import VIEWS
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 import release_model as release
+from release_identity import check_q1_pairings, check_report_thresholds
+from release_media import check_npz, check_png
 
 
 def test_private_paths_and_email_are_excluded():
@@ -44,6 +48,90 @@ def test_private_paths_and_email_are_excluded():
                 "demo.json",
                 json.dumps({"notes": [value]}).replace("/", r"\/").replace("@", r"\u0040").encode(),
             )
+
+
+def test_binary_public_assets_reject_hidden_text_and_extra_arrays(tmp_path):
+    png = tmp_path / "public.png"
+    image = Image.new("RGB", (2, 3))
+    image.save(png)
+    clean = png.read_bytes()
+    check_png(png, (2, 3))
+    metadata = PngImagePlugin.PngInfo()
+    metadata.add_text("comment", "private notes")
+    image.save(png, pnginfo=metadata)
+    with pytest.raises(ValueError, match="unapproved"):
+        check_png(png, (2, 3))
+    for kind in (b"eXIf", b"zzZz", b"iCCP"):
+        raw = kind + b"unknown content"
+        chunk = struct.pack(">I", len(raw) - 4) + raw + struct.pack(">I", zlib.crc32(raw))
+        png.write_bytes(clean[:-12] + chunk + clean[-12:])
+        with pytest.raises(ValueError, match="unapproved"):
+            check_png(png, (2, 3))
+    png.write_bytes(clean + b"trailing content")
+    with pytest.raises(ValueError, match="trailing"):
+        check_png(png, (2, 3))
+    data = tmp_path / "values.npz"
+    schema = {"z": (np.float32, (2, 3))}
+    np.savez_compressed(data, z=np.ones((2, 3), np.float32))
+    check_npz(data, schema)
+    np.savez_compressed(data, z=np.ones((2, 3), np.float32), unexpected=np.array("extra note"))
+    with pytest.raises(ValueError, match="unapproved"):
+        check_npz(data, schema)
+    np.savez_compressed(data, z=np.full((2, 3), "abc"))
+    with pytest.raises(ValueError, match="dtype"):
+        check_npz(data, schema)
+    stream = io.BytesIO()
+    np.save(stream, np.ones((2, 3), np.float32))
+    numerical = stream.getvalue()
+    header_end = 10 + int.from_bytes(numerical[8:10], "little")
+    filled = numerical[:header_end].replace(b"        \n", b"#hidden \n", 1) + numerical[header_end:]
+    assert filled != numerical
+    with zipfile.ZipFile(data, "w") as member:
+        member.writestr("z.npy", filled)
+    with pytest.raises(ValueError, match="NPY header"):
+        check_npz(data, schema)
+
+
+def test_readback_thresholds_and_q1_same_family_pins(tmp_path):
+    def pin(i):
+        return {"run_id": f"20200101T000000000000Z-{i:016x}", "manifest_sha256": f"{i:064x}"}
+
+    trials = [dict(pin(i), scene_family_id="unit", condition_id=c) for i, c in enumerate(("B0", "Q1"), 1)]
+    baseline = {k: pin(i) for i, k in enumerate(("learned", "prediction", "rules"), 4)}
+    projection = {
+        "unit": {
+            r["condition_id"]: {
+                "comparison_run": {k: r[k] for k in ("run_id", "manifest_sha256")},
+                "receipt_sha256": "f" * 64,
+                "whole_render_failure": False,
+                "score_parents": dict(baseline),
+            }
+            for r in trials
+        }
+    }
+    check_q1_pairings(projection, trials)
+    q = projection["unit"]["Q1"]
+    q["score_parents"]["rules"] = pin(20)
+    with pytest.raises(ValueError, match="same-family B0"):
+        check_q1_pairings(projection, trials)
+    del q["score_parents"]["rules"]
+    with pytest.raises(ValueError, match="same-family B0"):
+        check_q1_pairings(projection, trials)
+    q["whole_render_failure"] = True
+    check_q1_pairings(projection, trials)
+    values = {"constant": 0.7, "1-alpha": 0.2, "L1-full": 0.81, "L1-geometry": 0.93}
+    csv_file = tmp_path / "families.csv"
+    correct = "family,condition,method,region,tau\n" + "".join(
+        f"unit,{c},{m},all,{t}\n" for c in ("B0", "Q1") for m, t in dict(values, L0=0.5).items()
+    )
+    csv_file.write_text(correct)
+    check_report_thresholds(csv_file, values, trials)
+    for key in (",L0,all,0.5", ",L1-full,all,0.81"):
+        csv_file.write_text(correct.replace(key, key.rsplit(",", 1)[0] + ",0.1111", 1))
+        with pytest.raises(ValueError, match="incorrect frozen threshold"):
+            check_report_thresholds(csv_file, values, trials)
+    reused = dict(release.LICENSES, research_records=release.LICENSES["source"])
+    assert release.license_files({"schema": "el-public-license-scope-1", "license_files": reused}) == reused
 
 
 def test_reference_proof_requires_the_sealed_native_scene_and_validation(tmp_path):
@@ -310,12 +398,14 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
         (docs / name).write_text(
             "# Private synthetic fixture\n\nThis package tests the release implementation.\n"
         )
-    for name in release.LICENSES.values():
+    terms = dict(release.LICENSES, research_records="licenses/REPORT-LICENSE.txt")
+    for name in terms.values():
         p = repo / name
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(
             "Private synthetic fixture wording supplied for this test. No license decision for the owner's work.\n"
         )
+    save(repo / release.LICENSE_SCOPE, {"schema": "el-public-license-scope-1", "license_files": terms})
     addendum = repo / "protocol/analysis-addendum-v1.json"
     save(addendum, {"schema": "el-preregistered-analysis-clarifications-1", "study_sha256": sha(f["study"])})
     save(
@@ -329,12 +419,20 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
     names = {str(p.relative_to(repo)) for p in (repo / "src/evidence_lens").rglob("*.py")}
     names |= {str(p.relative_to(repo)) for p in (repo / "docs/releases").rglob("*.md")}
     names |= {
-        *release.LICENSES.values(),
+        *terms.values(),
+        release.LICENSE_SCOPE,
         "README.md",
         "pyproject.toml",
         "protocol/analysis-addendum-v1.json",
         "protocol/operating-points-v1.json",
     }
+    # The later distribution's comparison roster changes in this disposable git repo.
+    # Method verification must read its earlier committed declaration.
+    later = repo / "src/evidence_lens/formal_inputs.py"
+    before = later.read_text()
+    after = before.replace('    "protocol/study-v1.json",', '    "protocol/unit-later-roster.json",', 1)
+    assert after != before
+    later.write_text(after)
     commit = fixture_commit(repo, names, parent=f["commit"])
     wheels = tmp_path / "wheel-out"
     wheel_source = tmp_path / "committed-wheel-source"
@@ -415,6 +513,20 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch):
         output,
     )
     assert built["kind"] == "synthetic_fixture" and built["wheel_sha256"] == sha(wheel)
+    index = load(output / "release.json")
+    assert index["license_scope"]["research_records"]["license_file"] == terms["research_records"]
+    assert "results/family-results.csv" in index["license_scope"]["research_records"]["members"]
+    assert index["wheel"]["path"] in index["license_scope"]["source"]["members"]
+    for name, parent, rel in (
+        ("report-public", report, "payload/report.json"),
+        ("example-source", example, "inputs.json"),
+    ):
+        assert index["files"][f"proofs/{name}.json"]["origin"] == {
+            "kind": "projection",
+            **parent,
+            "path": rel,
+            "source_sha256": sha(store / "runs" / parent["run_id"] / rel),
+        }
     members = release.check(output, built["release_sha256"], built["checksums_sha256"])
     archive = tmp_path / "fixture-model.zip"
     pins = ["--release-sha256", built["release_sha256"], "--checksums-sha256", built["checksums_sha256"]]

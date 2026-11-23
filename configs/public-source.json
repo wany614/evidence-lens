@@ -74,6 +74,7 @@
     "scripts/rebuild_study.py": "original-source-pending",
     "scripts/recompute_view.py": "original-source-pending",
     "scripts/release_identity.py": "original-source-pending",
+    "scripts/release_media.py": "original-source-pending",
     "scripts/release_model.py": "original-source-pending",
     "scripts/release_wheel.py": "original-source-pending",
     "scripts/report_study.py": "original-source-pending",

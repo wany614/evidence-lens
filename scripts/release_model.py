@@ -10,10 +10,17 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-from release_identity import check_identity, link_report, signature
+from release_identity import (
+    PAIR_ROLES,
+    check_identity,
+    check_q1_pairings,
+    comparison_files_at_freeze,
+    link_report,
+    signature,
+)
+from release_media import check_example_media
 from release_wheel import aggregate, read_wheel
 
-from evidence_lens import formal_inputs
 from evidence_lens._bundle import HASH, RUN_ID, encoded, load, local_path, sha
 from evidence_lens._bundle import files as regular_files
 from evidence_lens.formal_inputs import PinnedRun
@@ -52,6 +59,62 @@ LICENSES = {
     "parameters": "licenses/MODEL-LICENSE.txt",
     "example": "licenses/EXAMPLE-LICENSE.txt",
 }
+LICENSE_SCOPE = "licenses/ASSET-SCOPE.json"
+
+
+def license_files(scope):
+    roles = scope["license_files"]
+    require(
+        scope["schema"] == "el-public-license-scope-1"
+        and set(roles) == {*LICENSES, "research_records"}
+        and all(roles[k] == v for k, v in LICENSES.items()),
+        "missing owner license scope or existing material roles",
+    )
+    research = local_path(roles["research_records"])
+    require(
+        research in LICENSES.values()
+        or research.startswith("licenses/")
+        and research.count("/") == 1
+        and research.endswith(".txt"),
+        "choose a committed project license or a separate research notice",
+    )
+    return roles
+
+
+def scope_members(names, terms, wheel):
+    groups = {k: {"license_file": v, "members": []} for k, v in terms.items()}
+    groups["notices"] = {"members": []}
+    for name in sorted(names):
+        if name == LICENSE_SCOPE or name in terms.values():
+            role = "notices"
+        elif name.startswith(("example/", "expected/")) or name == "demo.json":
+            role = "example"
+        elif name.startswith("model/") and name != "model/feature_schema.json":
+            role = "parameters"
+        elif name.startswith(("training/", "proofs/", "results/")) or name in (
+            "protocol/method-freeze.json",
+            "protocol/formal-freeze-v1.json",
+            "release.json",
+            "SHA256SUMS",
+        ):
+            role = "research_records"
+        else:
+            require(
+                name == wheel
+                or name.startswith("protocol/")
+                or name
+                in (
+                    "README.md",
+                    "MODEL_CARD.md",
+                    "RELEASE_NOTES.md",
+                    "distribution/pyproject.toml",
+                    "model/feature_schema.json",
+                ),
+                "public member has no material class: " + name,
+            )
+            role = "source"
+        groups[role]["members"].append(name)
+    return groups
 
 
 def require(ok, message):
@@ -82,13 +145,14 @@ def blob(commit, relative):
     return subprocess.check_output([*git, "cat-file", "blob", oid.decode()])
 
 
-def safe_text(name, raw):
+def safe_text(name, raw, notice_files=()):
     def screen(value):
         require(
             not PRIVATE.search(value), f"possible private machine path, credential or signed URL in {name}"
         )
         require(
-            name in LICENSES.values() or not EMAIL.search(value), f"possible personal email address in {name}"
+            name in LICENSES.values() or name in notice_files or not EMAIL.search(value),
+            f"possible personal email address in {name}",
         )
 
     string = raw.decode("utf-8")
@@ -170,6 +234,59 @@ def original_reference_proof(run, sources, kind):
     return dict(proof, native_blend_sha256=meta["blend_sha256"], validation_sha256=meta["validation_sha256"])
 
 
+def pairing_proof(store, report, inputs, science, selection):
+    manifests = [
+        row
+        for role in inputs.values()
+        for row in role["files"]
+        if Path(row["path"]).name == "report_inputs.json" and row["sha256"] == science["report_input_sha256"]
+    ]
+    require(len(manifests) == 1, "report did not bind a unique staged input manifest")
+    staged = load(report.open(manifests[0]["path"]))
+    rows = {}
+    for trial in selection["comparison_trials"]:
+        family, condition = trial["scene_family_id"], trial["condition_id"]
+        if condition not in ("B0", "Q1"):
+            continue
+        pin = {k: trial[k] for k in ("run_id", "manifest_sha256")}
+        parent = PinnedRun(store, pin)
+        original = parent.open("payload/formal_evaluation.json")
+        rec = load(original)
+        rel = f"trials/{family}/{condition}/formal_evaluation.json"
+        require(
+            parent.run["run_kind"] == "evaluation"
+            and parent.run["execution_status"] == "succeeded"
+            and staged["files"][rel] == signature(original)
+            and rec["schema"] == "el-formal-comparison-1"
+            and (rec["run_id"], rec["scene_family_id"], rec["condition_id"])
+            == (pin["run_id"], family, condition)
+            and rec["model_id"] == selection["model_id"]
+            and rec["method_freeze_sha256"] == selection["method_freeze_sha256"],
+            "paired comparison differs from the selected sealed report input",
+        )
+        prefix = "paired_" if condition == "Q1" else ""
+        rows.setdefault(family, {})[condition] = {
+            "comparison_run": pin,
+            "receipt_sha256": sha(original),
+            "whole_render_failure": bool(rec["render_failure_reason"]),
+            "score_parents": {
+                k: rec["parents"][prefix + k] for k in PAIR_ROLES if prefix + k in rec["parents"]
+            },
+        }
+    check_q1_pairings(rows, selection["comparison_trials"])
+    return rows
+
+
+def projection(parent, path, digest):
+    return {
+        "kind": "projection",
+        "run_id": parent["run_id"],
+        "manifest_sha256": parent["manifest_sha256"],
+        "path": path,
+        "source_sha256": digest,
+    }
+
+
 def build(a):
     method = load(a.method)
     method_sha = sha(a.method)
@@ -181,6 +298,8 @@ def build(a):
         and VERSION.fullmatch(a.version),
         "invalid method or release identity",
     )
+    scope_doc = blob(a.commit, LICENSE_SCOPE)
+    terms = license_files(json.loads(scope_doc))
     subprocess.run(
         [
             "git",
@@ -304,9 +423,10 @@ def build(a):
         )
     project_toml = blob(a.commit, "pyproject.toml")
     wheel_meta = read_wheel(a.wheel, project_toml, checkout=ROOT, commit=a.commit, text_check=safe_text)
+    method_commit = method["method_code_commit"]
+    historical_files = comparison_files_at_freeze(blob(method_commit, "src/evidence_lens/formal_inputs.py"))
     commit_protocol = {
-        name: hashlib.sha256(blob(method["method_code_commit"], name)).hexdigest()
-        for name in sorted(formal_inputs.PROTOCOL_FILES)
+        name: hashlib.sha256(blob(method_commit, name)).hexdigest() for name in historical_files
     }
     require(
         commit_protocol == method["comparison_files"]
@@ -323,14 +443,10 @@ def build(a):
         all(
             (p["run_id"], p["manifest_sha256"]) in registered_parents
             for p in report_selection["comparison_trials"]
-        )
-        and any(
-            Path(row["path"]).name == "report_inputs.json" and row["sha256"] == science["report_input_sha256"]
-            for inp in report_inputs.values()
-            for row in inp["files"]
         ),
-        "report did not bind the selected comparison parents and staged input manifest",
+        "report did not bind all the selected comparison parents",
     )
+    pairings = pairing_proof(a.store, runs["report"], report_inputs, science, report_selection)
     with new_output(a.output) as out:
         entries = {}
 
@@ -338,7 +454,7 @@ def build(a):
             name = local_path(name)
             require(name not in entries, "duplicate release member")
             if Path(name).suffix in {".md", ".txt", ".csv", ".json"} or name == "LICENSE":
-                safe_text(name, raw)
+                safe_text(name, raw, terms.values())
             target = out / name
             target.parent.mkdir(exist_ok=True, parents=True)
             target.write_bytes(raw)
@@ -390,22 +506,24 @@ def build(a):
         recorded("fit", "proofs/fitted-model-index.json", "payload/model/model.json")
         recorded("model", "proofs/development.json", "payload/development.json")
         recorded("example_scores", "proofs/example-score.json", "payload/l1_score.json")
+        original_inputs_sha = sha(runs["example"].open("inputs.json"))
         include(
             "proofs/example-source.json",
             encoded(
                 {
+                    "schema": "el-example-source-projection-1",
+                    "original_inputs_sha256": original_inputs_sha,
                     "parent": orig_parents[0],
                     "input_sha256": source_signatures["rgb"]["sha256"],
                     "camera_sha256": source_signatures["cameras"]["sha256"],
                     "reference": reference_proof,
                 }
             ),
-            {"run_id": pins["example"]["run_id"], "path": "inputs.json"},
+            projection(pins["example"], "inputs.json", original_inputs_sha),
         )
         report_public = {
             k: science[k]
             for k in (
-                "schema",
                 "run_id",
                 "kind",
                 "quality_trials",
@@ -416,6 +534,9 @@ def build(a):
             )
         }
         report_public.update(
+            schema="el-public-report-projection-1",
+            source_schema=science["schema"],
+            q1_baseline_bindings=pairings,
             selected_trials=report_selection["comparison_trials"],
             files={"public-numerical/" + n: v for n, v in signatures.items()},
             original_report_sha256=sha(runs["report"].open("payload/report.json")),
@@ -423,7 +544,7 @@ def build(a):
         include(
             "proofs/report-public.json",
             encoded(report_public),
-            {"run_id": pins["report"]["run_id"], "path": "payload/report.json"},
+            projection(pins["report"], "payload/report.json", report_public["original_report_sha256"]),
         )
         for name in TABLES:
             recorded("report", "results/" + name, "payload/public-numerical/" + name)
@@ -436,8 +557,9 @@ def build(a):
             committed("protocol/" + name, "protocol/" + name)
         for name in ("MODEL_CARD.md", "RELEASE_NOTES.md", "README.md"):
             committed(name, "docs/releases/" + a.version + "/" + name)
-        for name in LICENSES.values():
+        for name in sorted(set(terms.values())):
             committed(name, name)
+        include(LICENSE_SCOPE, scope_doc, {"commit": a.commit, "path": LICENSE_SCOPE})
         committed("protocol/formal-freeze-v1.json", "configs/formal-freeze-v1.json")
         include("protocol/method-freeze.json", a.method.read_bytes(), {"method_freeze_sha256": method_sha})
         committed("distribution/pyproject.toml", "pyproject.toml")
@@ -462,6 +584,7 @@ def build(a):
             "training_manifest_sha256": sha(train),
             "feature_schema_sha256": sha(out / "model/feature_schema.json"),
             "original_report_receipt_sha256": sha(runs["report"].open("payload/report.json")),
+            "original_example_inputs_sha256": original_inputs_sha,
             "fit_receipt_sha256": sha(out / "proofs/model-fit.json"),
             "example_score_receipt_sha256": sha(original_scores),
             "catalog_sha256": method["catalog_sha256"],
@@ -471,7 +594,8 @@ def build(a):
             "protocol_version": study_protocol["numerical_protocol_version"],
             "label_version": study_protocol["labels"]["version"],
             "feature_version": load(out / "model/feature_schema.json")["schema"],
-            "license_files": LICENSES,
+            "license_files": terms,
+            "license_scope": scope_members(set(entries) | {"release.json", "SHA256SUMS"}, terms, wheel_name),
             "wheel": wheel_meta,
             "sources": pins,
             "files": entries,
@@ -496,12 +620,13 @@ def build(a):
     }
 
 
-def asset_names(wheel):
+def asset_names(wheel, terms):
     return {
         "MODEL_CARD.md",
         "README.md",
         "RELEASE_NOTES.md",
-        *LICENSES.values(),
+        LICENSE_SCOPE,
+        *terms.values(),
         "demo.json",
         "expected/v01.npz",
         wheel,
@@ -557,6 +682,12 @@ def asset_origin(index, name):
         return {"method_freeze_sha256": index["method_freeze_sha256"]}
     if name == index["wheel"]["path"]:
         return {"commit": index["code_commit"], "source_modules_sha256": index["wheel"]["modules_sha256"]}
+    if name == "proofs/report-public.json":
+        return projection(
+            index["sources"]["report"], "payload/report.json", index["original_report_receipt_sha256"]
+        )
+    if name == "proofs/example-source.json":
+        return projection(index["sources"]["example"], "inputs.json", index["original_example_inputs_sha256"])
     roots = {
         "model": ("model", "payload/model/"),
         "training": ("fit", "payload/"),
@@ -571,8 +702,6 @@ def asset_origin(index, name):
         "model-fit.json": ("fit", "payload/fit.json"),
         "fitted-model-index.json": ("fit", "payload/model/model.json"),
         "development.json": ("model", "payload/development.json"),
-        "report-public.json": ("report", "payload/report.json"),
-        "example-source.json": ("example", "inputs.json"),
         "example-score.json": ("example_scores", "payload/l1_score.json"),
     }
     if folder == "proofs":
@@ -599,20 +728,26 @@ def check(folder, release_sha=None, sums_sha=None):
         not sums_sha or sha(folder / "SHA256SUMS") == sums_sha, "SHA256SUMS differs from the external pin"
     )
     release = load(folder / "release.json")
+    require(LICENSE_SCOPE in actual, "missing committed asset class and license scope")
+    terms = license_files(load(folder / LICENSE_SCOPE))
     require(
         release.get("schema") == "el-public-model-release-1"
         and release["kind"] in ("heldout_study", "synthetic_fixture")
         and VERSION.fullmatch(release["version"])
         and re.fullmatch(r"[a-f0-9]{40}", release["code_commit"])
-        and release["license_files"] == LICENSES,
+        and release["license_files"] == terms,
         "invalid release identity or license map",
     )
     wheel = release["wheel"]
     require(
         wheel["path"] == "distribution/" + wheel["name"]
-        and set(release["files"]) == asset_names(wheel["path"])
+        and set(release["files"]) == asset_names(wheel["path"], terms)
         and actual == set(release["files"]) | {"release.json", "SHA256SUMS"},
         "unexpected or missing public asset",
+    )
+    require(
+        release["license_scope"] == scope_members(actual, terms, wheel["path"]),
+        "license asset coverage differs from the owner scope",
     )
     for name, row in release["files"].items():
         path = folder / local_path(name)
@@ -624,7 +759,7 @@ def check(folder, release_sha=None, sums_sha=None):
             "changed public member " + name,
         )
         if path.suffix in (".md", ".txt", ".csv", ".json", ".toml") or name == "LICENSE":
-            safe_text(name, path.read_bytes())
+            safe_text(name, path.read_bytes(), terms.values())
     safe_text("release.json", (folder / "release.json").read_bytes())
     rows = (folder / "SHA256SUMS").read_text(encoding="utf-8").splitlines()
     expected = [f"{sha(folder / n)}  {n}" for n in sorted(actual - {"SHA256SUMS"})]
@@ -641,6 +776,7 @@ def check(folder, release_sha=None, sums_sha=None):
         and measured_wheel["source_license_sha256"] == sha(folder / LICENSES["source"]),
         "wheel or module aggregate differs",
     )
+    check_example_media(folder)
     check_identity(folder, release, TABLES)
     return sorted(actual)
 

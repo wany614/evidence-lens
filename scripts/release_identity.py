@@ -1,5 +1,7 @@
 """Check the public provenance documents and numerical artifacts against one model and one study."""
 
+import ast
+import csv
 import hashlib
 import json
 
@@ -18,6 +20,63 @@ def signature(path):
     return {"bytes": path.stat().st_size, "sha256": sha(path)}
 
 
+def comparison_files_at_freeze(source):
+    """Read the historical protocol's static paths and path template without executing historical code."""
+    entries = [
+        n.value
+        for n in ast.parse(source).body
+        if isinstance(n, ast.Assign)
+        and any(isinstance(t, ast.Name) and t.id == "PROTOCOL_FILES" for t in n.targets)
+    ]
+    require(
+        len(entries) == 1 and isinstance(entries[0], (ast.Tuple, ast.List)),
+        "missing frozen comparison file list",
+    )
+    paths = []
+    for entry in entries[0].elts:
+        if isinstance(entry, ast.Constant):
+            paths.append(local_path(entry.value))
+            continue
+        require(
+            isinstance(entry, ast.Starred) and isinstance(entry.value, ast.GeneratorExp),
+            "unsupported frozen comparison path declaration",
+        )
+        gen = entry.value
+        require(
+            isinstance(gen.elt, ast.JoinedStr) and len(gen.generators) == 1,
+            "invalid frozen comparison path template",
+        )
+        loop = gen.generators[0]
+        require(
+            isinstance(loop.target, ast.Name)
+            and not loop.ifs
+            and not loop.is_async
+            and isinstance(loop.iter, (ast.Tuple, ast.List)),
+            "comparison path iteration must use frozen literals",
+        )
+        parts = gen.elt.values
+        require(
+            all(
+                isinstance(p, ast.Constant)
+                and isinstance(p.value, str)
+                or isinstance(p, ast.FormattedValue)
+                and isinstance(p.value, ast.Name)
+                and p.value.id == loop.target.id
+                and p.conversion == -1
+                and p.format_spec is None
+                for p in parts
+            ),
+            "invalid comparison template field",
+        )
+        for value in ast.literal_eval(loop.iter):
+            require(isinstance(value, str), "invalid comparison path component")
+            paths.append(
+                local_path("".join(p.value if isinstance(p, ast.Constant) else value for p in parts))
+            )
+    require(paths and len(paths) == len(set(paths)), "empty or duplicate frozen comparison paths")
+    return sorted(paths)
+
+
 def link_report(report, selection, method, method_sha, catalog, table_files, kind):
     trials = selection["comparison_trials"]
     expected = {
@@ -27,10 +86,16 @@ def link_report(report, selection, method, method_sha, catalog, table_files, kin
         for c in ("B0", "R1", "Q1")
     }
     require(
-        report["schema"] == "el-study-report-1"
+        (
+            report["schema"] == "el-study-report-1"
+            or report["schema"] == "el-public-report-projection-1"
+            and report["source_schema"] == "el-study-report-1"
+        )
         and selection["schema"] == "el-numerical-study-release-candidate-1"
         and report["kind"] == selection["kind"] == kind
         and report["model_id"] == selection["model_id"] == method["model_id"]
+        and selection["model_index_sha256"] == method["model_index_sha256"]
+        and selection["method_code_commit"] == method["method_code_commit"]
         and report["comparison_protocol_sha256"]
         == selection["comparison_protocol_sha256"]
         == method["comparison_protocol_sha256"]
@@ -64,6 +129,71 @@ def link_report(report, selection, method, method_sha, catalog, table_files, kin
         all(report["files"]["public-numerical/" + n] == sig for n, sig in table_files.items()),
         "numerical table differs from the original report manifest",
     )
+
+
+def check_report_thresholds(path, thresholds, trials):
+    frozen = dict(thresholds, L0=0.5)
+    conditions = {(r["scene_family_id"], r["condition_id"]) for r in trials}
+    groups, seen = set(), set()
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = csv.DictReader(handle)
+        require(
+            rows.fieldnames and len(rows.fieldnames) == len(set(rows.fieldnames)),
+            "invalid family-results header",
+        )
+        for row in rows:
+            family, condition, region, method = (row[k] for k in ("family", "condition", "region", "method"))
+            key = family, condition, region, method
+            require(
+                (family, condition) in conditions
+                and region
+                and method in frozen
+                and key not in seen
+                and float(row["tau"]) == frozen[method],
+                "family-results row uses an incorrect frozen threshold or identity",
+            )
+            groups.add((family, condition, method))
+            seen.add(key)
+    require(
+        groups == {(f, c, m) for f, c in conditions for m in frozen},
+        "family-results omits a registered condition or method",
+    )
+
+
+PAIR_ROLES = ("learned", "prediction", "rules")
+
+
+def check_q1_pairings(rows, trials):
+    selected = {
+        (r["scene_family_id"], r["condition_id"]): {k: r[k] for k in ("run_id", "manifest_sha256")}
+        for r in trials
+    }
+    require(set(rows) == {f for f, c in selected if c == "Q1"}, "incomplete Q1 pairing projection")
+    for family, pair in rows.items():
+        require(set(pair) == {"B0", "Q1"}, "each Q1 pairing needs one baseline")
+        for condition, row in pair.items():
+            require(
+                row["comparison_run"] == selected[family, condition]
+                and HASH.fullmatch(row["receipt_sha256"])
+                and type(row["whole_render_failure"]) is bool
+                and set(row["score_parents"]) <= set(PAIR_ROLES),
+                "Q1 pairing identifies a different original comparison",
+            )
+            for pin in row["score_parents"].values():
+                require(
+                    set(pin) == {"run_id", "manifest_sha256"}
+                    and RUN_ID.fullmatch(pin["run_id"])
+                    and HASH.fullmatch(pin["manifest_sha256"]),
+                    "invalid Q1 score-parent pin",
+                )
+        baseline = pair["B0"]["score_parents"]
+        paired = pair["Q1"]["score_parents"]
+        require(
+            "prediction" in paired
+            and all(baseline.get(role) == pin for role, pin in paired.items())
+            and (pair["Q1"]["whole_render_failure"] or set(paired) == set(PAIR_ROLES)),
+            "Q1 paired learned, prediction or rules pin differs from its same-family B0",
+        )
 
 
 def check_cv(cv, families):
@@ -277,16 +407,24 @@ def check_identity(folder, index, tables):
         index["kind"],
     )
     require(
-        report["run_id"] == runs["report"]["run_id"]
+        report["schema"] == "el-public-report-projection-1"
+        and report["run_id"] == runs["report"]["run_id"]
         and HASH.fullmatch(report["original_report_sha256"])
         and report["original_report_sha256"] == index["original_report_receipt_sha256"],
         "public report proof identifies another run or receipt",
     )
+    check_q1_pairings(report["q1_baseline_bindings"], report["selected_trials"])
     demo = load(folder / "demo.json")
     score = load(folder / "proofs/example-score.json")
     origin = load(folder / "example/provenance.json")
     pred = load(folder / "example/predictions/prediction.json")
     source = load(folder / "proofs/example-source.json")
+    require(
+        source["schema"] == "el-example-source-projection-1"
+        and source["original_inputs_sha256"] == index["original_example_inputs_sha256"]
+        and HASH.fullmatch(source["original_inputs_sha256"]),
+        "incorrect example source projection digest",
+    )
     original = source["reference"]
     require(HASH.fullmatch(original["metadata_sha256"]), "missing original reference producer digest")
     if original["schema"] == "el-synthetic-plane-source-1":
@@ -301,6 +439,9 @@ def check_identity(folder, index, tables):
             "missing original Blender scene or validation digest",
         )
     package, roles, inputs = public_inputs(folder)
+    check_report_thresholds(
+        folder / "results/family-results.csv", package["thresholds"], report["selected_trials"]
+    )
     require(
         demo["schema"] == "el-clean-demo-1"
         and score["schema"] == "el-l1-score-1"
