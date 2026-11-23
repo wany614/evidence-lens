@@ -1,0 +1,15 @@
+{
+  "schema": "el-stage3-risk-learning-protocol-1",
+  "catalog_sha256": "f14ca80777cf72e6f99075fb860e24cd38a6b4d9db342011173e9b216d3c66f5",
+  "study_sha256": "dd227c25648af4ab5e4e42d3fdd07702a8e46b3def36810ac9d65c55b07a7b23",
+  "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+  "training_scope": "all",
+  "sample": {"cap": 4096, "base": 9184, "key": "SHA256(UTF8(9184 + LF + catalog_sha256 + LF + family + LF + condition + '/' + view)) first 16 bytes as unsigned big-endian integer, NumPy PCG64, uniform without replacement, C-order indices stored sorted", "eligible": "native RGB-evaluable and score-all scoreable", "applies_to": "same row identities for all learned models"},
+  "preprocessing": "Numeric finite unweighted training-sample median; zero only for an everywhere-missing column. Family/condition/view-equal weighted mean and population standard deviation after imputation. Exactly constant or zero-variance column uses scale 1. Keep missing and empty flags as 0/1. Each CV fold learns its own transform.",
+  "light": {"method": "MS-L1", "C": [0.1, 1.0, 10.0], "loss": "binary cross entropy, L2 penalty, unpenalized intercept, lbfgs, no class weights", "folds": "Sorted training family IDs, ordinal modulo 4, grouped across all views and both reconstructions. If any training complement lacks either class or fold is empty, repeat modulo 3 then 2. No supported fold or no defined AP = record not fit.", "cv_selection": "Grouped original-score ties; AP only in two-class validation cell; average defined views inside condition, then defined conditions inside family, then defined held-out families across all folds. Within 1e-6 of maximum choose smallest C."},
+  "eligibility": "A declared failed reconstruction or target contributes known reference V, E=0 and no score; invalid RGB and absent scores carry independent counts. A finite score with no matching reference RGB does not enter risk metrics.",
+  "visibility": "For an allowed scorer source set, observed if any observed, else disoccluded if any disoccluded, else outside if any outside, else invalid/background. Also retain each original oracle code. Reconstruction geometry uses the generator's full set.",
+  "threshold": "For each new method one all-source development threshold nearest to 0.80 L/V, never split score ties and prefer lower coverage on equal distance. Pool all six views in a family/condition for operating counts, weight the positive-V conditions equally per family and eligible families equally. The fixed B transfer uses the published original threshold.",
+  "selection_domain": "Dev all-source E, finite transferred B-L1 score and deployable MS features scoreable. Both neural and light outputs must yield finite values on their declared scoreability; report any per-method support loss.",
+  "heldout": "Require verified el-stage3-test-opening-1 via evidence_lens.stage3_gate before any test reference, reconstruction, dataset or score is consumed."
+}

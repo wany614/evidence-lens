@@ -1,0 +1,473 @@
+{
+  "camera_path": "configs/stage3-cameras-v1.json",
+  "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+  "dataset_id": "evidence-lens-stage3-multiview-v1",
+  "families": [
+    {
+      "authored_parts": 19,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "7b854e07495de3247b8dc8e89987b8325ec5c542695fdd24a26cfd137aec7975",
+      "material_ids": [
+        "blue",
+        "chalk",
+        "cream",
+        "legs",
+        "teal",
+        "terracotta"
+      ],
+      "occlusion": "Two fan planes support an asymmetric deck. A raised rear ballast block is seen between near stays.",
+      "pair_structure_sha256": "47f4df6e5586cb277b2675f25b3e15c12062b2bc6f5c76649d6c66aaf5122c30",
+      "pilot": true,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_049_cable_stayed_gantry.json",
+      "recipe_sha256": "2f1741fab4f477daa48fe4255708e3e3cc51b7b9e2766011c92e779bdf8b6b42",
+      "scene_family_id": "scene_049_cable_stayed_gantry",
+      "scene_id": "scene_049_cable_stayed_gantry/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Fan-stayed loading gantry",
+      "trials": {
+        "M2": "scene_049_cable_stayed_gantry-M2",
+        "M4": "scene_049_cable_stayed_gantry-M4"
+      }
+    },
+    {
+      "authored_parts": 12,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "45bac9c2906f1602a48be9540a400d31454b64ebeda34cbf8613046ea628bd47",
+      "material_ids": [
+        "blue",
+        "cream",
+        "legs",
+        "rose",
+        "teal",
+        "terracotta"
+      ],
+      "occlusion": "Three flat proscenia have progressively narrower, asymmetrically shifted windows. A crescent of the rear scene shows through both front masks.",
+      "pair_structure_sha256": "9aef349efc5138ba845edf76babd41f83ec3d6374bcda35c638180b3583392ca",
+      "pilot": true,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_050_nested_paper_theatre.json",
+      "recipe_sha256": "54f339892ee40ad6e6aec9baa8725e7ee1c4541f5dd84d92bb45ea03c8d803a0",
+      "scene_family_id": "scene_050_nested_paper_theatre",
+      "scene_id": "scene_050_nested_paper_theatre/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Offset paper theatre",
+      "trials": {
+        "M2": "scene_050_nested_paper_theatre-M2",
+        "M4": "scene_050_nested_paper_theatre-M4"
+      }
+    },
+    {
+      "authored_parts": 35,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "0e71f6f2d0ec25f9255fbbba8ba10d583cd6f9a6c345de842d2e88f9f79a32d1",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "rose"
+      ],
+      "occlusion": "A segmented descending spiral wraps a central column. Beads on upper and lower turns overlap across the source arc.",
+      "pair_structure_sha256": "11ae5f54cab9a8262d8de7786f5a8e4ebc1a99274b823c2fe2046143f3923578",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_051_spiral_ball_track.json",
+      "recipe_sha256": "7c3cb2d5980b31eade66fc1d61688e24dd223b13583896d529b70d78359fbbd6",
+      "scene_family_id": "scene_051_spiral_ball_track",
+      "scene_id": "scene_051_spiral_ball_track/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Stepped marble spiral",
+      "trials": {
+        "M2": "scene_051_spiral_ball_track-M2",
+        "M4": "scene_051_spiral_ball_track-M4"
+      }
+    },
+    {
+      "authored_parts": 22,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "3884f2078e2da0456d0b1b9f7ba2fab44124929743c8750188d18b1d22c65e40",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "rose",
+        "teal",
+        "terracotta",
+        "timber"
+      ],
+      "occlusion": "An angled front beater crosses coloured parallel warps seated between separate end beams.",
+      "pair_structure_sha256": "781312d4fb5902524886f67f3e30e105a90098708e06a44514cecd2cd98c4394",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_052_loom_beater.json",
+      "recipe_sha256": "adee50dbe496547b573ef405f42edd9d1e6b84545b56bcb345dfe1c78f1b86bf",
+      "scene_family_id": "scene_052_loom_beater",
+      "scene_id": "scene_052_loom_beater/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Table loom and suspended beater",
+      "trials": {
+        "M2": "scene_052_loom_beater-M2",
+        "M4": "scene_052_loom_beater-M4"
+      }
+    },
+    {
+      "authored_parts": 20,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "99eca8eef1d72ffc524e544fe46609968a00690cf161e15ef10491ce6865f083",
+      "material_ids": [
+        "chalk",
+        "teal",
+        "terracotta",
+        "timber"
+      ],
+      "occlusion": "Triangular king-post frames repeat at distinct depths, with offset ridge height, longitudinal timbers and visible internal braces.",
+      "pair_structure_sha256": "3813b5eb85543aebc7ae394ddd8200c184049869c9c551db0b51b02c48106fbe",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_053_staggered_roof_trusses.json",
+      "recipe_sha256": "cd525f4126adfb84dc55572f49ebf761eb9ea3dc73463b56c4b733ea94d30702",
+      "scene_family_id": "scene_053_staggered_roof_trusses",
+      "scene_id": "scene_053_staggered_roof_trusses/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Three staggered roof trusses",
+      "trials": {
+        "M2": "scene_053_staggered_roof_trusses-M2",
+        "M4": "scene_053_staggered_roof_trusses-M4"
+      }
+    },
+    {
+      "authored_parts": 20,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "3dee78c3a31f2aba979b7ceb23cd7ee6e98c3f2791b6bea87b7af23e519d9675",
+      "material_ids": [
+        "chalk",
+        "cream",
+        "dark",
+        "rose",
+        "teal"
+      ],
+      "occlusion": "A diagonal ramp separates three staggered banks of falling dominoes and hides the central connectors.",
+      "pair_structure_sha256": "9702cbace320bb42b72da7544f8ebbdd08990a977ec6009ecc091aa33e9c3377",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_054_domino_switchback.json",
+      "recipe_sha256": "5e0dfe983099b4dff1a3af0af93493a7624ad093cbf12bb65551f193ba0c5f05",
+      "scene_family_id": "scene_054_domino_switchback",
+      "scene_id": "scene_054_domino_switchback/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Domino switchback with a turning ramp",
+      "trials": {
+        "M2": "scene_054_domino_switchback-M2",
+        "M4": "scene_054_domino_switchback-M4"
+      }
+    },
+    {
+      "authored_parts": 11,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "123d3b9530da081663bfbb870330319472fe23c2e96808aafb539109ec158b9c",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "teal",
+        "terracotta",
+        "timber"
+      ],
+      "occlusion": "Two unequal wide mouths at opposite elevations narrow into offset chutes and partially cover a receiving tray.",
+      "pair_structure_sha256": "a1a9aefdbd3340d1ef7d2354afcf09084f06289f939dfe75b1e1deddbe1b987d",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_055_paired_hopper_chutes.json",
+      "recipe_sha256": "d2a00930aa393cb42e923760c6b39803f57e793aecf4c9eed4df6ee9f745a396",
+      "scene_family_id": "scene_055_paired_hopper_chutes",
+      "scene_id": "scene_055_paired_hopper_chutes/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Stepped hopper-chute line",
+      "trials": {
+        "M2": "scene_055_paired_hopper_chutes-M2",
+        "M4": "scene_055_paired_hopper_chutes-M4"
+      }
+    },
+    {
+      "authored_parts": 9,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "ef72d1854a06b808d63555e87f53c41d7356db363672866a31c3813affb6c4f1",
+      "material_ids": [
+        "blue",
+        "chalk",
+        "cream",
+        "dark",
+        "rose",
+        "teal"
+      ],
+      "occlusion": "Two oblique press arms meet above the platen. The upright rear rail and movable type bed sit at different depths.",
+      "pair_structure_sha256": "6de4ea62da6b22e91fda8254f2ba46833226ced4c86525df3a129f310406860e",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_056_crossed_letterpress.json",
+      "recipe_sha256": "efb6f4c1f1011d408aaa7c90ad819798406dccb23b666844efa8a0808445adfc",
+      "scene_family_id": "scene_056_crossed_letterpress",
+      "scene_id": "scene_056_crossed_letterpress/v001",
+      "scene_version": "v001",
+      "split": "train",
+      "title": "Crossed lever letterpress",
+      "trials": {
+        "M2": "scene_056_crossed_letterpress-M2",
+        "M4": "scene_056_crossed_letterpress-M4"
+      }
+    },
+    {
+      "authored_parts": 15,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "70bfec2f07917094591d1e9ca2fe0c342de035df55f7e5ebcaa8b7c765fbf4d9",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "rose",
+        "teal",
+        "timber"
+      ],
+      "occlusion": "An asymmetric strut cage encloses three suspended stepped bells at different heights and a low striking ball.",
+      "pair_structure_sha256": "857d7b919244a1290a55bf9c9acb9b16d6a44b0338e841b316226ab1da7e25f9",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_057_offset_bell_cage.json",
+      "recipe_sha256": "09a07eb285af5929b143001d808c2020b81240da783451481fc5c0a62105c576",
+      "scene_family_id": "scene_057_offset_bell_cage",
+      "scene_id": "scene_057_offset_bell_cage/v001",
+      "scene_version": "v001",
+      "split": "development",
+      "title": "Offset struck bell cage",
+      "trials": {
+        "M2": "scene_057_offset_bell_cage-M2",
+        "M4": "scene_057_offset_bell_cage-M4"
+      }
+    },
+    {
+      "authored_parts": 12,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "5bcb3526e28cda1bc093132be1224d8b67ca1b952982e256b40898b227c11ac1",
+      "material_ids": [
+        "cream",
+        "dark",
+        "rose",
+        "teal",
+        "timber"
+      ],
+      "occlusion": "Five faceted bellows connect an offset lens standard to a tall ground-glass back with a braced tripod.",
+      "pair_structure_sha256": "0be40ac72b5d2db593782d15ccccf9d31010fa36ae455cfcee93ca22a3ebb87d",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_058_accordion_field_camera.json",
+      "recipe_sha256": "9cc2bdd247690b912dae542f88fed8c1c3c10f57602ed8d23f60e5b5ca0eeaea",
+      "scene_family_id": "scene_058_accordion_field_camera",
+      "scene_id": "scene_058_accordion_field_camera/v001",
+      "scene_version": "v001",
+      "split": "development",
+      "title": "Folding field camera",
+      "trials": {
+        "M2": "scene_058_accordion_field_camera-M2",
+        "M4": "scene_058_accordion_field_camera-M4"
+      }
+    },
+    {
+      "authored_parts": 11,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "f57d4c8977e29ec3a8fe61b5c5ae3543018cd8b9009027f58307f065417fbbea",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "rose",
+        "teal"
+      ],
+      "occlusion": "Radial slanted fins sweep above a two-tier platform. Several broad blades cover an eccentrically located rear chair.",
+      "pair_structure_sha256": "a55764b3803dd1af8fa55bd29c7673eb8cd9c736b40c78bae817a9bd8fb754a3",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_059_offset_vane_carousel.json",
+      "recipe_sha256": "fdb1df333a84fa8c64fb9f49ec3a868f341b13600a0a76fe925ca48933011208",
+      "scene_family_id": "scene_059_offset_vane_carousel",
+      "scene_id": "scene_059_offset_vane_carousel/v001",
+      "scene_version": "v001",
+      "split": "development",
+      "title": "Offset vane carousel",
+      "trials": {
+        "M2": "scene_059_offset_vane_carousel-M2",
+        "M4": "scene_059_offset_vane_carousel-M4"
+      }
+    },
+    {
+      "authored_parts": 9,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "3b0d813354edea4ea66f42064f5e3524497ddb583fba8a86d8867745bf651480",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "rose",
+        "teal",
+        "timber"
+      ],
+      "occlusion": "A spindle and stepped chuck run along the x axis. The front tool carriage cuts across them in projection.",
+      "pair_structure_sha256": "c2eec5bf703bf6cc7c99dd5a9fe8c7070cad9247c8c6f915f06eab0ced33ea2b",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_060_tiered_sample_lathe.json",
+      "recipe_sha256": "1357ea3f5d1927faa122729951d51ebd8dfa81e6b5c6f9bdde455f43c184cb6b",
+      "scene_family_id": "scene_060_tiered_sample_lathe",
+      "scene_id": "scene_060_tiered_sample_lathe/v001",
+      "scene_version": "v001",
+      "split": "development",
+      "title": "Miniature lathe with stepped stock",
+      "trials": {
+        "M2": "scene_060_tiered_sample_lathe-M2",
+        "M4": "scene_060_tiered_sample_lathe-M4"
+      }
+    },
+    {
+      "authored_parts": 13,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "b64668248ebc2fe1d691741b6663eb63efc119e75a667f0c73ce194d54a0bb81",
+      "material_ids": [
+        "chalk",
+        "cream",
+        "rose",
+        "teal"
+      ],
+      "occlusion": "Alternating dam walls bound an opaque stepped cascade. A high central partition hides low spillways.",
+      "pair_structure_sha256": "c1f444a13d8cb640ed7b57fe25de36c2995011f280aaed77fef9411878b056c0",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_061_cascade_weir_model.json",
+      "recipe_sha256": "a7345119eae722636d816a18b304eeab88213b2d5669a8c0c0fc53b014b0e614",
+      "scene_family_id": "scene_061_cascade_weir_model",
+      "scene_id": "scene_061_cascade_weir_model/v001",
+      "scene_version": "v001",
+      "split": "test",
+      "title": "Serpentine stepped weir",
+      "trials": {
+        "M2": "scene_061_cascade_weir_model-M2",
+        "M4": "scene_061_cascade_weir_model-M4"
+      }
+    },
+    {
+      "authored_parts": 10,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "2ff0cea15f5276a1ef5c7dec5b941bf8a44cffc0da8e0db24e95936a69882131",
+      "material_ids": [
+        "blue",
+        "chalk",
+        "dark",
+        "rose",
+        "teal"
+      ],
+      "occlusion": "Two masts of different height carry opposing arms. Parallel drive links lie behind a foreground signal cabinet.",
+      "pair_structure_sha256": "13cd42169323aa75c7e993c63cd5e92d423c764f79c4ad30d2dd707fbffb4d0e",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_062_semaphore_interlock.json",
+      "recipe_sha256": "75f408d28777fbdc9ed79587728609f523182be72a734d6c8d4fd33b703055e5",
+      "scene_family_id": "scene_062_semaphore_interlock",
+      "scene_id": "scene_062_semaphore_interlock/v001",
+      "scene_version": "v001",
+      "split": "test",
+      "title": "Mechanical semaphore interlock",
+      "trials": {
+        "M2": "scene_062_semaphore_interlock-M2",
+        "M4": "scene_062_semaphore_interlock-M4"
+      }
+    },
+    {
+      "authored_parts": 17,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "c9d17172d797d2e36cb2afb8fcb6e5fd1e906130d10ccf154534eee6340b945a",
+      "material_ids": [
+        "blue",
+        "cream",
+        "dark",
+        "rose",
+        "teal",
+        "timber"
+      ],
+      "occlusion": "Unequal cantilevers on a single mast suspend three overlapping shallow pans by converging lines.",
+      "pair_structure_sha256": "aef228d9e2082828c997bbe8aa0c893c8918642ce275c08f88c146f3530a4c43",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_063_offset_beam_balance.json",
+      "recipe_sha256": "b25daefd4ad7d828d168b6970377129b7952463723edc8cf62426f399d28ad1d",
+      "scene_family_id": "scene_063_offset_beam_balance",
+      "scene_id": "scene_063_offset_beam_balance/v001",
+      "scene_version": "v001",
+      "split": "test",
+      "title": "Three-pan torsion balance",
+      "trials": {
+        "M2": "scene_063_offset_beam_balance-M2",
+        "M4": "scene_063_offset_beam_balance-M4"
+      }
+    },
+    {
+      "authored_parts": 20,
+      "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+      "geometry_fingerprint": "e774c8f16ec38b3fefef4c3eb144a56651f7fbce69c4b2a9766c8a96a5737d5c",
+      "material_ids": [
+        "chalk",
+        "cream",
+        "dark",
+        "rose",
+        "teal",
+        "timber"
+      ],
+      "occlusion": "A concave mosaic sweeps backward from two offset uprights. A small front receiver masks different facets between the source endpoints.",
+      "pair_structure_sha256": "0ca461be4aa17324b0b6e6c4f8b79e69b3eb3b182a503dcc65079549fdb75096",
+      "pilot": false,
+      "recipe_path": "configs/c-reference-v1/recipes/scene_064_parabolic_facet_mount.json",
+      "recipe_sha256": "056ee2f2ee8998e88cdd68fbfde94e267a922c74ada0e9b30534f3135a37e8ae",
+      "scene_family_id": "scene_064_parabolic_facet_mount",
+      "scene_id": "scene_064_parabolic_facet_mount/v001",
+      "scene_version": "v001",
+      "split": "test",
+      "title": "Faceted acoustic reflector",
+      "trials": {
+        "M2": "scene_064_parabolic_facet_mount-M2",
+        "M4": "scene_064_parabolic_facet_mount-M4"
+      }
+    }
+  ],
+  "pilot_families": [
+    "scene_049_cable_stayed_gantry",
+    "scene_050_nested_paper_theatre"
+  ],
+  "preregistration_path": "protocol/stage3-reference-v1.json",
+  "preregistration_sha256": "c6050753daab10aa5b216b92e3da3b013f748102e9152a108f777523cba04ca2",
+  "primary_view": "v01",
+  "reference_settings_path": "configs/stage3-reference-v1.json",
+  "reference_settings_sha256": "63bf5ad9596e77bfa7509404251739c79a6f801ce3fc7a2345b67fcc1b132051",
+  "registered_utc": "2026-11-23T15:42:53.325137Z",
+  "schema": "el-stage3-family-roster-1",
+  "source_ids": [
+    "s00",
+    "s01",
+    "s02",
+    "s03"
+  ],
+  "source_sets": {
+    "M2": [
+      "s00",
+      "s03"
+    ],
+    "M4": [
+      "s00",
+      "s01",
+      "s02",
+      "s03"
+    ]
+  },
+  "target_ids": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "test_families": [
+    "scene_061_cascade_weir_model",
+    "scene_062_semaphore_interlock",
+    "scene_063_offset_beam_balance",
+    "scene_064_parabolic_facet_mount"
+  ]
+}

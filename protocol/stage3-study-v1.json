@@ -1,0 +1,177 @@
+{
+  "catalog_sha256": "f14ca80777cf72e6f99075fb860e24cd38a6b4d9db342011173e9b216d3c66f5",
+  "display": {
+    "conditions": [
+      "M2",
+      "M4"
+    ],
+    "family_order": "registered order",
+    "native_example": "Registered first development family, v01 primary and all six retained. The independent evaluation directory holds reference fields. No success-based reselection.",
+    "source_subsets": [
+      "one",
+      "two",
+      "all"
+    ],
+    "target_views": "all six in v01 through v06 order"
+  },
+  "family_counts": {
+    "development": 4,
+    "pilot_within_train": 2,
+    "test": 4,
+    "train": 8
+  },
+  "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+  "methods": [
+    "B-L1-transfer",
+    "MS-L1",
+    "MS-frozen",
+    "MS-ft"
+  ],
+  "neural": {
+    "balance_order": [
+      "family",
+      "reconstruction condition",
+      "target view",
+      "sampled valid pixel"
+    ],
+    "branches": [
+      "MS-frozen",
+      "MS-ft"
+    ],
+    "candidate_seeds": [
+      1729,
+      2718
+    ],
+    "configuration_count_per_branch": 1,
+    "early_stopping": "Largest defined four-method-common development all-source AP with earliest epoch on exact tie. Supervised optimization uses only training families.",
+    "finetune_backbone_lr": 1e-05,
+    "gradient_accumulation": 4,
+    "head_and_projection_lr": 0.0003,
+    "init": "Both branches load only the same 175 Stage B fine-tuned encoder tensors. Within each seed, head, projection, sample order and budgets are paired.",
+    "max_epochs": 12,
+    "max_formal_fits": 4,
+    "maximum_sampled_pixels_per_view": 4096,
+    "microbatch": 1,
+    "optimizer": "AdamW",
+    "patience_epochs": 3,
+    "precision": "float32",
+    "release_seed": 1729,
+    "tf32": false,
+    "train_scope": "all",
+    "trainable_in_ft": "last transformer block and final layer normalization in addition to the new projection and head",
+    "weight_decay": 0.01
+  },
+  "opening": "One atomic test opening after both the real reconstruction and the multi-source risk pipelines, selected models, operating thresholds, camera rules, score subsets, outputs and analysis are frozen. Scientific training/test artifacts use the recorder before work starts.",
+  "operating_point": {
+    "B-L1-transfer": "Use original threshold, model parameters, original feature schema and s00 for all modes.",
+    "comparison": "finite score strictly below threshold is low",
+    "per_method_single_threshold": true,
+    "target_low_coverage": 0.8,
+    "ties": "Equal scores never split; when equally close to requested macro L/V choose lower coverage.",
+    "use_scope": "all",
+    "use_split": "development"
+  },
+  "pairing": {
+    "coverage": "Report common/E and common/V, common error prevalence, L/V, LY/L, missed high-error and unknown mass. Across M2/M4 report changes in real error prevalence and availability alongside any AP change.",
+    "outcomes": "Preserve every scheduled family-condition-view, missing predictions, OOM, numeric or initialization failures, support losses and unknown. Unknown scores have no AP and their evaluation errors count separately.",
+    "positive": "RGB finite and in [0,1] for reference and prediction; display-RGB channel mean absolute error strictly greater than float32(.05).",
+    "primary": "Within the same reconstruction condition and scorer source subset, compare all four methods on the intersection of evaluable finite scores. Report own domains and native operating outcomes alongside.",
+    "statistical_unit": "Family. Equal mean over six target views with defined AP in each condition. Development score-all selection averages conditions equally within family then families equally. Operating rates use pixel counts within family and condition, with undefined denominators reported.",
+    "strata": [
+      "predicted source support count",
+      "predicted conflict",
+      "oracle visible",
+      "newly revealed",
+      "outside source frame",
+      "edge",
+      "interior"
+    ],
+    "undefined_ap": "No finite pixels, no confirmed errors, or all positives give null AP. Report counts of defined views and participating families."
+  },
+  "promotion": {
+    "candidate": "MS-ft",
+    "common_domain": "all four methods",
+    "competitors": [
+      "MS-frozen",
+      "MS-L1"
+    ],
+    "decision_time": "Before opening any of the four new test families. Both evaluated visual weights ship regardless of gain.",
+    "every_seed_difference_strictly_positive": true,
+    "initial_default": "MS-L1",
+    "maximum_low_coverage_loss_vs_light": 0.02,
+    "maximum_low_error_increase_vs_light": 0.01,
+    "minimum_mean_ap_gain_against_each": 0.01,
+    "otherwise": "MS-L1",
+    "paired_seeds": [
+      1729,
+      2718
+    ],
+    "primary_weight_seed": 1729,
+    "require_complete_defined_comparisons": true,
+    "scope": "all",
+    "split": "development"
+  },
+  "reconstruction": {
+    "backend": "gsplat==1.5.3 RGB+ED; original joint fitter",
+    "evaluation": "Compare the same family and fixed target across M2 and M4. Include comparable pixel counts, RGB mean absolute error and fraction above .05, auxiliary depth and support, failure and measured cost. Give signed paired changes for each family. The direction is empirical.",
+    "forbidden_inputs": [
+      "target RGB",
+      "unprovided source RGB",
+      "true mesh/bounding box/surface points",
+      "reference depth, Position, object identity or visibility"
+    ],
+    "initialization": "One registered shared world-volume prior. Each family uses identical initial Gaussian parameters in M2 and M4. Record the actual initialization SHA and sampling counts.",
+    "limits": {
+      "expected_native_prediction_files": 288,
+      "max_gaussians": 50000,
+      "max_updates_per_condition": 5000,
+      "total_conditions": 32
+    },
+    "pilot": "Two registered training families, both input counts. Decide the single production configuration from their engineering and source-loss results before production. Count both in their original split.",
+    "source_budget": "One source per update on the complete native grid. Equal total updates and input pixels for paired M2/M4. Source schedule and checkpoint fixed before the official matrix."
+  },
+  "resolution": [
+    256,
+    256
+  ],
+  "schema": "el-stage3-study-1",
+  "scorer_subsets": {
+    "M2_equivalence": "two and all have the same files, expected scores and denominator; count this result once in comparisons.",
+    "all": "all sources supplied to this reconstruction",
+    "one": "s00",
+    "two": [
+      "s00",
+      "s03"
+    ]
+  },
+  "sources": {
+    "M2": [
+      "s00",
+      "s03"
+    ],
+    "M4": [
+      "s00",
+      "s01",
+      "s02",
+      "s03"
+    ]
+  },
+  "stage": "Original static opaque Blender worlds with joint open multi-source 3D reconstruction and learned risk",
+  "stage_b": {
+    "code_commit": "fb2fbdc232cf2be706ca88e4ad9ddfe884013cc3",
+    "encoder_parent_branch": "L2-vision-ft",
+    "encoder_parent_weights_sha256": "f372bd34faa1b345ae2486fe6c96aea00d8d9ac5749b0b2c237f9ed08d50f228",
+    "release": "v0.2.0-rc.1",
+    "transfer_model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+    "transfer_threshold": 0.43483029305934906,
+    "transfer_weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+  },
+  "targets": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ]
+}
