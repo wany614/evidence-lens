@@ -1,0 +1,13 @@
+{
+  "schema": "el-stage3-native-risk-parity-protocol-1",
+  "catalog_sha256": "f14ca80777cf72e6f99075fb860e24cd38a6b4d9db342011173e9b216d3c66f5",
+  "study_sha256": "dd227c25648af4ab5e4e42d3fdd07702a8e46b3def36810ac9d65c55b07a7b23",
+  "family": "scene_057",
+  "family_rule": "First registered development family, both reconstructions, all six targets and every source subset. M2 two/all counted once for totals; published alias retained.",
+  "scores": "Original recorded producer score grids vs independent Mac CPU end-to-end native inference with the same model metadata, exact weights, case assets, and single frozen threshold.",
+  "scope": "Every native deployment pixel including pixels without scientific evaluation labels; no real labels or threshold fitting enters the runtime comparison.",
+  "exact": "Compare finite support mask, rational low/high/unknown decisions computed with float64 comparison of float32 score against the stored threshold, and bit patterns on common finite floats. Report all three separately.",
+  "bounded": "Support difference must be exactly zero and at least one common finite value in every successful real view. Absolute score difference <= 0.0001 on all common finite pixels. A changed decision is recorded even when the bounded numerical check passes.",
+  "threshold_crossings": "Publish per view low-to-high, high-to-low and all state changes including changes involving unknown. For each side report finite pixels within 1e-6,1e-5,1e-4 absolute score of its frozen threshold; show maximum distance of any crossing from that same threshold. No readjustment.",
+  "summaries": "Report maximum absolute error, mean absolute error, 50th/95th/99th absolute percentiles, maximum nonnegative float32 ULP distance and exact-bit count; one paired comparison per method, reconstruction, target and nonredundant subset. Missing views remain explicit with a null numerical assessment."
+}

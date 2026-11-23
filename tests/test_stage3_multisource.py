@@ -233,9 +233,34 @@ def test_scientific_selection_rejects_engineering_and_repeat(tmp_path):
         for c in CONDITIONS:
             trial, path, phase = trial_location(tmp_path, row, c, cohort)
             path.parent.mkdir(parents=True)
-            write_json(
-                path, {"family": family, "condition": c, "trial_id": trial, "selected": {}, "phase": phase}
-            )
+            from stage3_risk_sources import CATALOG
+
+            doc = {
+                "family": family,
+                "condition": c,
+                "trial_id": trial,
+                "selected": {},
+                "phase": phase,
+                "optimizer_sha256": "a" * 64,
+                "job_sha256": "b" * 64,
+                "worker_sha256": "c" * 64,
+                "production_budget": None,
+            }
+            write_json(path, doc)
+            if cohort == "formal":
+                with pytest.raises(ValueError, match="audit unavailable"):
+                    pin_selections(roots, [row], cohort)
+                write_json(
+                    path.with_name("postreview-input-audit.json"),
+                    {
+                        **doc,
+                        "schema": "el-stage3-postreview-input-audit-1",
+                        "passed": True,
+                        "catalog_sha256": CATALOG,
+                        "selection_sha256": file_hash(path),
+                        "audit_code_sha256": "e" * 64,
+                    },
+                )
         out = pin_selections(roots, [row], cohort)
         assert all(x["cohort"] == cohort for x in out)
     trial, path, _ = trial_location(tmp_path, row, "M2", "formal")
@@ -246,3 +271,105 @@ def test_scientific_selection_rejects_engineering_and_repeat(tmp_path):
         pin_selections(roots, [row], "formal")
     with pytest.raises(ValueError, match="pilot"):
         trial_location(tmp_path, {**row, "split": "development"}, "M2", "pilot")
+
+
+def test_paired_scope_reference_partition_and_unknown_scores():
+    from stage3_risk_data import union_visibility
+    from stage3_risk_evaluate import measurement, pooled, regions
+    from evidence_lens.multisource import METHODS
+
+    shape = (1, 5)
+    e = np.array([[1, 1, 1, 1, 0]], bool)
+    y = np.array([[0, 1, 1, 0, 255]], np.uint8)
+    t = {
+        "reference_valid": np.ones(shape, bool),
+        "rgb_evaluable": e,
+        "rgb_high_error": y,
+        "reference_surface": np.ones(shape, bool),
+        "rgb_error": np.array([[0, 0.1, 0.2, 0.01, np.nan]], np.float32),
+        "depth_evaluable": e.copy(),
+        "depth_error": np.ones(shape, np.float32),
+        "depth_high_error": y.copy(),
+        "relative_depth_error": np.ones(shape, np.float32),
+        "signed_depth_error": np.ones(shape, np.float32),
+        "edge": ~e,
+    }
+    p = np.array([[0.1, 0.8, np.nan, 0.4, 0.9]], np.float32)
+    for s, v in zip(
+        ("s00", "s01", "s02", "s03"), ([0, 1, 2, 3, 0], [1, 0, 0, 2, 0], [0, 2, 1, 3, 0], [3, 0, 0, 3, 0])
+    ):
+        t["visibility_" + s] = np.array([v], np.uint8)
+    assert list(union_visibility(t, source_ids("M4", "all"))[0]) == [1, 1, 1, 2, 0]
+    scores = {m: p.copy() for m in METHODS}
+    scores["MS-frozen"][0, 1] = np.nan
+    tmp = measurement(t, scores, {m: 0.4 for m in METHODS}, np.ones(shape, bool))
+    c = tmp["MS-L1"]["counts"]
+    assert (c["V"], c["E"], c["Y"], c["S"], c["SY"]) == (5, 4, 2, 2, 0)
+    assert (c["L"], c["H"], c["U"], c["LY"], c["HY"], c["UY"]) == (1, 2, 1, 0, 1, 1)
+    assert tmp["MS-L1"]["ranking"]["common"]["ap"] is None and tmp["MS-L1"]["ranking"]["own"]["ap"] == 1
+    rr = regions(t, ("s00",), None, scores)
+    assert rr["unknown_support"].all() and not rr["support_0"].any()
+    u = measurement(t, scores, {m: 0.4 for m in METHODS}, rr["all_four_unknown"])
+    assert (
+        u["MS-L1"]["counts"]["U"] == 1
+        and u["MS-L1"]["counts"]["UY"] == 1
+        and u["MS-L1"]["ranking"]["own"]["ap"] is None
+    )
+    agg = pooled([tmp["MS-L1"], tmp["MS-L1"]])
+    assert agg["counts"]["V"] == 10 and agg["rates"]["low_coverage"] == 0.2
+
+
+def test_parity_close_threshold_can_pass_numbers_and_change_state():
+    from stage3_risk_parity import compare
+    from evidence_lens.l1 import risk_state
+
+    tau = 0.5
+    lo = np.nextafter(np.float32(0.5), np.float32(0.0))
+    hi = np.float32(0.5)
+
+    def sc(v):
+        x = np.array([lo, v, np.nan, 0.75], np.float32)
+        return {"risk": x, "valid": np.isfinite(x), "state": risk_state(x, tau)}
+
+    result = compare(sc(lo), sc(hi), tau)
+    assert result["common_finite"] == 3 and result["bounded_numeric_pass"]
+    assert not result["state_exact"] and result["threshold_crossings"] == 1 and result["max_float32_ulp"] == 1
+    assert result["near_threshold_on_common_finite"]["1e-06"] == {"producer": 2, "cpu": 2}
+    assert not compare(sc(lo), sc(np.nan), tau)["bounded_numeric_pass"]
+    assert not compare(sc(lo), sc(np.float32(0.5002)), tau)["bounded_numeric_pass"]
+
+
+def test_default_requires_both_paired_seeds_and_operating_rates():
+    from stage3_risk_selection import promoted
+
+    rule = {
+        "initial_default": "MS-L1",
+        "candidate": "MS-ft",
+        "paired_seeds": [1729, 2718],
+        "scope": "all",
+        "competitors": ["MS-frozen", "MS-L1"],
+        "minimum_mean_ap_gain_against_each": 0.01,
+        "maximum_low_coverage_loss_vs_light": 0.02,
+        "maximum_low_error_increase_vs_light": 0.01,
+        "primary_weight_seed": 1729,
+    }
+
+    def base():
+        return {
+            str(s): {
+                m: {"ap": a, "low_coverage": 0.8, "low_error": 0.1, "complete": True}
+                for m, a in (("MS-ft", 0.62), ("MS-frozen", 0.6), ("MS-L1", 0.605))
+            }
+            for s in (1729, 2718)
+        }
+
+    d = base()
+    assert promoted(d, rule)["default"] == "MS-ft"
+    d["2718"]["MS-ft"]["ap"] = 0.6001
+    assert promoted(d, rule)["default"] == "MS-L1"
+    d = base()
+    d["1729"]["MS-ft"]["low_coverage"] = 0.779
+    assert promoted(d, rule)["default"] == "MS-L1"
+    d = base()
+    d["2718"]["MS-ft"]["complete"] = False
+    assert promoted(d, rule)["default"] == "MS-L1"

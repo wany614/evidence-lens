@@ -199,6 +199,7 @@ def train(x, y, g, c):
 
 def fit(root, ds_sha, out, run_id):
     from evidence_lens.l1_fit import CANDIDATES, choose_c
+
     d = dataset(root, ds_sha, "train")
     require(
         d["cohort"] == "formal" and len(d["families"]) == 8,

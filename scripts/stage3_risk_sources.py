@@ -3,6 +3,8 @@
 import json
 import os
 import shutil
+
+import numpy as np
 from pathlib import Path
 
 from evidence_lens.formal_inputs import compact_pin, require, signature
@@ -72,6 +74,47 @@ def trial_location(store, row, condition, cohort):
     return trial, path, ("engineering-pilot" if pilot else "production")
 
 
+def postreview(selection_path, selection, phase):
+    path = selection_path.with_name("postreview-input-audit.json")
+    if phase != "production":
+        return None
+    require(
+        path.is_file() and not path.is_symlink(),
+        "production acquisition audit unavailable: " + selection["trial_id"],
+    )
+    record = json.loads(path.read_bytes())
+    require(
+        record.get("schema") == "el-stage3-postreview-input-audit-1"
+        and record.get("passed") is True
+        and record["trial_id"] == selection["trial_id"]
+        and record["phase"] == phase
+        and record["catalog_sha256"] == CATALOG
+        and record["selection_sha256"] == file_hash(selection_path)
+        and record["selected"] == selection["selected"]
+        and record["optimizer_sha256"] == selection["optimizer_sha256"]
+        and record["job_sha256"] == selection["job_sha256"]
+        and record["worker_sha256"] == selection["worker_sha256"]
+        and record["production_budget"] == selection["production_budget"]
+        and len(record["audit_code_sha256"]) == 64,
+        "postreview did not authenticate this exact selection and production optimizer",
+    )
+    return {"path": path.name, **signature(path)}
+
+
+def nearest_sources(cams, ids):
+    out = {}
+    for v in TARGETS:
+        d = {s: float(np.linalg.norm(cams[v].c2w[:3, 3] - cams[s].c2w[:3, 3])) for s in ids}
+        m = min(d.values())
+        out[v] = {
+            "distances_m": d,
+            "nearest_distance_m": m,
+            "nearest_ids": [s for s in ids if d[s] == m],
+            "nearest_source_id": min((distance, s) for s, distance in d.items())[1],
+        }
+    return out
+
+
 def pin_selections(roots, rows, cohort):
     """Bind exactly the caller-authorized registered cells; never enumerate the run store."""
     records = []
@@ -88,6 +131,7 @@ def pin_selections(roots, rows, cohort):
                 and q["phase"] == phase,
                 "wrong trial selection",
             )
+            review = postreview(p, q, phase)
             records.append(
                 {
                     "family": f,
@@ -95,6 +139,7 @@ def pin_selections(roots, rows, cohort):
                     "phase": phase,
                     "condition": cond,
                     "production_budget": q.get("production_budget"),
+                    **({"postreview": review} if review else {}),
                     "trial_id": trial,
                     "sha256": file_hash(p),
                     "selected": {k: compact_pin(v) for k, v in q["selected"].items()},
@@ -149,6 +194,8 @@ def case_sources(roots, record, row, destination):
         require(
             q.get("production_budget") is None and q["optimization_steps"] == 64, "engineering pilot impostor"
         )
+    review = postreview(p, q, phase)
+    require(review == record.get("postreview"), "production audit changed after recording configuration")
     pins = {k: compact_pin(v) for k, v in q["selected"].items()}
     require(pins == record["selected"], "selected run changed")
     ref, back = (find_run(roots, pins[k]) for k in ("reference", "readback"))
@@ -221,6 +268,8 @@ def case_sources(roots, record, row, destination):
         "condition": c,
         "selection_sha256": record["sha256"],
         "selected": pins,
+        "postreview": review,
+        "nearest_source_by_target": nearest_sources(cams, ids),
         "cameras_sha256": full_spec["sha256"],
         "source_camera_sha256": camera_files["source_cameras"][1]["sha256"],
         "render_camera_sha256": camera_files["render_cameras"][1]["sha256"],
@@ -228,6 +277,39 @@ def case_sources(roots, record, row, destination):
         "reference_sha256": refspec["sha256"],
         "readback_sha256": readback_spec["sha256"],
     }
+    if review:
+        audited = signed(p.with_name(review["path"]), review["sha256"])
+        measured = audited["measurements"]
+        require(
+            audited["selection_status"] == q["selection_status"]
+            and audited.get("failure_disposition") == q.get("failure")
+            and measured["source_images_sha256"] == common["source_rgb_sha256"]
+            and measured["source_camera_sha256"] == common["source_camera_sha256"]
+            and measured["render_camera_sha256"] == common["render_camera_sha256"]
+            and measured["clip_matches_optimizer_float32"] is True,
+            "strengthened audit disagrees with consumed source frames, failure or calibration",
+        )
+        for v, dist in common["nearest_source_by_target"].items():
+            a = measured["nearest_source_by_target"][v]
+            require(
+                a["source_id"] == dist["nearest_source_id"]
+                and abs(a["distance_m"] - dist["nearest_distance_m"]) <= 1e-10,
+                "camera centre distances disagree with independent review",
+            )
+        if "reconstruction" in pins:
+            require(
+                measured["initial_mac_max_abs"]
+                and all(x == 0 for x in measured["initial_mac_max_abs"].values())
+                and measured["optimization_steps"] == q["optimization_steps"],
+                "unverified production initialization or step count",
+            )
+        if "render" in pins:
+            require(
+                set(measured["final_loss_by_source"]) == set(ids)
+                and measured["final_loss_comparison_max_abs"] <= 1e-5,
+                "source final photometric loss audit is incomplete",
+            )
+        common["postreview_measurements"] = measured
     if q["schema"] == "el-stage3-failed-trial-1":
         fail = q["failure"]
         run = find_run(roots, compact_pin(fail))

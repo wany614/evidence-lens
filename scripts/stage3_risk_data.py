@@ -127,6 +127,15 @@ def pack_view(out, cell, view, case, original, cam, transfer, split, group, fold
         "selection_support": None,
         "reference_rgb": None,
         "prediction_member_sha256": None,
+        "source_camera_distances": cell.get("nearest_source_by_target", {}).get(view),
+        "surface": int(labels["reference_surface"].sum()),
+        "depth_comparable": int(labels["depth_evaluable"].sum()),
+        "predicted_ed_valid": int((~labels["invalid_depth"]).sum()),
+        "alpha_valid": int(labels["alpha_valid"].sum()),
+        "alpha_at_least_half": int((labels["alpha_valid"] & ~labels["low_alpha"]).sum()),
+        "alpha_mean": float(pred["alpha"][labels["alpha_valid"]].mean(dtype=np.float64))
+        if pred is not None and labels["alpha_valid"].any()
+        else None,
     }
     # The independent evaluation and six-view boards can use these lossless native reference pixels.
     if split != "train":
