@@ -50,6 +50,15 @@ def test_private_paths_and_email_are_excluded():
             )
 
 
+def test_public_rights_profile_requires_author_and_original_asset_terms():
+    rights = load(REPO / release.LICENSE_SCOPE)
+    assert release.license_files(rights)["documentation"] == "licenses/CC-BY-4.0.txt"
+    for broken in (dict(rights,attribution="other"), dict(rights,assets=[]),
+                   dict(rights,license_expressions=dict(rights["license_expressions"],parameters="CC-BY-4.0"))):
+        with pytest.raises(ValueError, match="authorized terms"):
+            release.license_files(broken)
+
+
 def test_binary_public_assets_reject_hidden_text_and_extra_arrays(tmp_path):
     png = tmp_path / "public.png"
     image = Image.new("RGB", (2, 3))
@@ -408,7 +417,7 @@ def scientific_report(work, f, capsys):
     return report
 
 
-@pytest.mark.parametrize("rc", (False, True), ids=("stable-format", "private-rc"))
+@pytest.mark.parametrize("rc", (False, True), ids=("historical-stable-format", "public-prerelease-format"))
 def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, rc):
     if os.environ.get("EL_TEST_CLEAN_WHEEL") != "1":
         pytest.skip("set EL_TEST_CLEAN_WHEEL=1 for the offline wheel/recorder/release integration")
@@ -430,11 +439,15 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
     report = scientific_report(tmp_path, f, capsys)
     for name in ("README.md", "pyproject.toml"):
         shutil.copyfile(REPO / name, repo / name)
-    version = "v0.1.1-rc.2" if rc else "v0.0.1"
+    version = "v0.1.1-rc.3" if rc else "v0.0.1"
     project = repo / "pyproject.toml"
     import re
+    project_text = project.read_text()
+    if not rc:
+        project_text = re.sub(r'^(?:authors|license|license-files) = .*\n', '', project_text, flags=re.M)
+        project_text = re.sub(r'^\[project\.urls\]\nRepository = .*\n', '', project_text, flags=re.M)
     project.write_text(re.sub(r'^version = "[^"]+"$', f'version = "{release.python_version(version)}"',
-                              project.read_text(), flags=re.M))
+                              project_text, flags=re.M))
     docs = repo / "docs/releases" / version
     docs.mkdir(parents=True)
     if rc:
@@ -442,14 +455,19 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
     else:
         for name in ("MODEL_CARD.md", "RELEASE_NOTES.md", "README.md"):
             (docs / name).write_text("# Private synthetic fixture\n\nThis package tests the release implementation.\n")
-    terms = dict(release.LICENSES, research_records="licenses/RESEARCH-RECORDS.txt" if rc else "licenses/REPORT-LICENSE.txt")
-    for name in terms.values():
-        p = repo / name
-        p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(
-            "Private synthetic fixture wording supplied for this test. No license decision for the owner's work.\n"
-        )
-    save(repo / release.LICENSE_SCOPE, {"schema": "el-public-license-scope-1", "license_files": terms})
+    if rc:
+        terms = dict(release.LICENSES, research_records="licenses/RESEARCH-RECORDS.txt",
+                     documentation="licenses/CC-BY-4.0.txt")
+        for name in {*terms.values(), *release.PUBLIC_NOTICES, release.LICENSE_SCOPE}:
+            (repo / name).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(REPO / name, repo / name)
+    else:
+        terms = dict(release.LICENSES, research_records="licenses/REPORT-LICENSE.txt")
+        for name in terms.values():
+            path = repo / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("Private synthetic fixture wording supplied for this test.\n")
+        save(repo / release.LICENSE_SCOPE, {"schema": "el-public-license-scope-1", "license_files": terms})
     addendum = repo / "protocol/analysis-addendum-v1.json"
     save(addendum, {"schema": "el-preregistered-analysis-clarifications-1", "study_sha256": sha(f["study"])})
     save(
@@ -471,6 +489,7 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
         "protocol/operating-points-v1.json",
     }
     if rc:
+        names.update(release.PUBLIC_NOTICES)
         names.update("scripts/" + n for n in ("build_prerelease.py", "release_model.py", "release_identity.py",
                      "release_media.py", "release_scope.py", "release_wheel.py", "release_smoke.py"))
     # The later distribution's comparison roster changes in this disposable git repo.
@@ -537,7 +556,8 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
         method = load(f["method"])
         pin = {k: report[k] for k in ("run_id", "manifest_sha256")}
         result_file = store / "runs" / report["run_id"] / "payload/report.json"
-        save(a.scope, {"schema":"el-prerelease-scope-1", "version":version, "publication_status":"private_candidate",
+        save(a.scope, {"schema":"el-prerelease-scope-1", "version":version, "publication_status":"public_prerelease",
+                      "repository":"wany614/evidence-lens", "attribution":"wany614",
                       "preview_class":"technical_preview", "formal_evidence_status":"original_study_under_review",
                       "model_id":method["model_id"], "model_index_sha256":method["model_index_sha256"],
                       "method_freeze_sha256":sha(f["method"]), "report":pin,
@@ -579,7 +599,24 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
     index = load(output / "release.json")
     assert index["license_scope"]["research_records"]["license_file"] == terms["research_records"]
     assert "results/family-results.csv" in index["license_scope"]["research_records"]["members"]
-    assert index["wheel"]["path"] in index["license_scope"]["source"]["members"]
+    if rc:
+        rights = index["license_scope"]
+        assert index["license_expressions"] == release.PUBLIC_LICENSES
+        assert rights["wheel_distribution"]["members"] == [index["wheel"]["path"]]
+        assert rights["wheel_distribution"]["license_expression"] == "Apache-2.0 AND CC-BY-4.0"
+        assert {"README.md","MODEL_CARD.md","docs/licenses.md","THIRD_PARTY_NOTICES.md"} <= set(rights["documentation"]["members"])
+        assert "source/evidence_lens/l1.py" in rights["source"]["members"]
+        assert set(rights["parameters"]["members"]) == {"model/"+n for n in release.MODEL}
+        assert "example/input.png" in rights["example"]["members"]
+        assert index["wheel"]["attribution"]=="wany614" and index["wheel"]["repository"]=="wany614/evidence-lens"
+        from release_wheel import PUBLIC_WHEEL_NOTICES
+        assert index["wheel"]["license_file_sha256"] == {n:sha(output/n) for n in PUBLIC_WHEEL_NOTICES}
+        for name in {*terms.values(), *release.PUBLIC_NOTICES, release.LICENSE_SCOPE}:
+            assert (output/name).read_bytes() == (REPO/name).read_bytes()
+        assert index["publication"] == {"publication_status":"synthetic_fixture"} == built["publication"]
+    else:
+        assert index["wheel"]["path"] in index["license_scope"]["source"]["members"]
+        assert "publication" not in index
     for name, parent, rel in (
         ("report-public", report, "payload/report.json"),
         ("example-source", example, "inputs.json"),
@@ -619,7 +656,8 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
                         packed["sha256"],"--offline-uv","--fixture"],cwd=tmp_path,check=True,capture_output=True)
         grade = load(smoke_dir/"smoke.json")
         assert grade["state_arrays_equal"] and grade["finite_masks_equal"] and len(grade["methods"])==5 and len(grade["views"])==6
-        assert grade["runtime"]["packages"]["evidence-lens"]=="0.1.1rc2" and grade["scope"]=="synthetic_fixture"
+        assert grade["runtime"]["packages"]["evidence-lens"]=="0.1.1rc3" and grade["scope"]=="synthetic_fixture"
+        assert grade["publication"] == index["publication"]
         assert sum(map(len,grade["comparisons"].values()))==30 and len(grade["map_pngs"])==12
         assert grade["verified_zip_sha256"]==packed["sha256"] and grade["grade_seconds"]>0
         import release_smoke
@@ -648,6 +686,7 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
         initial=build_candidate(a)
         a.rebuild_of=a.output/"candidate.json";a.output=tmp_path/"rebuild"
         assert initial["schema"]=="el-synthetic-cpu-fixture-1" and initial["kind"]=="synthetic_fixture"
+        assert initial["publication"]==index["publication"] and "synthetic-fixture" in initial["name"]
         dirty = repo/"src/evidence_lens/l1.py"; old_text=dirty.read_bytes()
         dirty.write_text("raise RuntimeError('dirty editable file must never be imported when packaging')\n")
         with monkeypatch.context() as changed:

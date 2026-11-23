@@ -1,9 +1,96 @@
 {
-  "schema": "el-public-license-scope-1",
+  "schema": "el-public-license-scope-2",
+  "attribution": "wany614",
   "license_files": {
     "source": "LICENSE",
     "parameters": "licenses/MODEL-LICENSE.txt",
     "example": "licenses/EXAMPLE-LICENSE.txt",
-    "research_records": "licenses/RESEARCH-RECORDS.txt"
-  }
+    "research_records": "licenses/RESEARCH-RECORDS.txt",
+    "documentation": "licenses/CC-BY-4.0.txt"
+  },
+  "license_expressions": {
+    "source": "Apache-2.0",
+    "parameters": "Apache-2.0",
+    "example": "CC-BY-4.0",
+    "research_records": "CC-BY-4.0",
+    "documentation": "CC-BY-4.0"
+  },
+  "assets": [
+    {
+      "material": "Original software, adapters, training and evaluation code, recorder, tests, procedural scene recipes, software configuration and prescriptive protocol specifications",
+      "origin": "Written for Evidence Lens",
+      "outbound": "Apache-2.0",
+      "distribution": "Source checkout and selected software in the CPU distribution",
+      "locations": ["src/", "scripts/", "tests/", "configs/", "pyproject.toml", "requirements/", "protocol/", "smoke.py", "source/", "distribution/"]
+    },
+    {
+      "material": "Two independently fitted logistic classifiers, intercepts, imputation and standardization, geometry/full feature schema, training prior, model index and operating thresholds",
+      "origin": "16-family logistic fit with four development families used for threshold selection. The target is measured display-sRGB error in an independent Blender reference. The input features use previously rendered SHARP/gsplat outputs. No SHARP weights, hidden teacher tensors or architecture changes enter the five exported model files.",
+      "outbound": "Apache-2.0",
+      "distribution": "Five JSON files in the downloadable model package",
+      "model_id": "20261123T042819219876Z-27eaa01eba29489d",
+      "model_index_sha256": "b3c65130bf803611e3904ac69a270f6944b48a8d78ce049bdc1424c15ba6cb54",
+      "locations": ["model/L1-full.json", "model/L1-geometry.json", "model/feature_schema.json", "model/model.json", "model/thresholds.json"]
+    },
+    {
+      "material": "Project-authored README files, explanatory reports, figures, model and data documentation",
+      "outbound": "CC-BY-4.0",
+      "origin": "Original Evidence Lens authorship and project presentation of measured results",
+      "distribution": "Source checkout, selected model-package guides and the wheel description",
+      "locations": ["README.md", "docs/", "examples/study-figures/", "MODEL_CARD.md", "RELEASE_NOTES.md", "KNOWN_ISSUES.md", "SCIENTIFIC_SCOPE.md"]
+    },
+    {
+      "material": "Authored single-image two-metre plane example, cameras as data, numerical arrays, expected results, PNG previews and provenance",
+      "outbound": "CC-BY-4.0",
+      "origin": "A procedural Blender source and the project's independent textured-plane projection. Score maps apply the published L1 parameters.",
+      "distribution": "Selected source examples and the model ZIP's runnable seven-view example",
+      "locations": ["examples/tabletop-plane/", "example/", "expected/", "demo.json"]
+    },
+    {
+      "material": "Selected drum-kit reference source and first target, accompanying explanation and provenance",
+      "outbound": "CC-BY-4.0",
+      "origin": "Original procedural Blender scene and recorded truth render 20261123T042832083384Z-a8a2585e6ee541ed",
+      "distribution": "Source checkout. The two selected images contain only original Blender data.",
+      "locations": ["examples/heldout-drum/input.png", "examples/heldout-drum/blender-v01.png", "examples/heldout-drum/provenance.json", "examples/heldout-drum/README.md"]
+    },
+    {
+      "material": "Published research measurements, aggregate tables, figures, comparative results, training/evaluation records, freeze and provenance receipts",
+      "origin": "Project measurements with upstream research methods identified in the records",
+      "outbound": "CC-BY-4.0 for the project owner's copyright and applicable database rights. Facts and unprotected numbers remain freely usable.",
+      "distribution": "Curated numerical and explanatory records in the source and model distribution",
+      "locations": ["docs/results/", "docs/phase1/", "results/", "proofs/", "training/", "protocol/formal-freeze-v1.json", "protocol/method-freeze.json", "release.json", "SHA256SUMS"]
+    },
+    {
+      "material": "Apple SHARP software and separately licensed subcomponents",
+      "origin": "Apple and identified contributors. Pinned source aed6527499ef91cba3b54c18d49a870f25947190",
+      "outbound": "Apple software LICENSE and component terms in ACKNOWLEDGEMENTS",
+      "distribution": "External research dependency, installed separately"
+    },
+    {
+      "material": "SHARP checkpoint and any covered model derivatives",
+      "origin": "Apple SHARP",
+      "outbound": "Apple Machine Learning Research Model License Agreement, limited to the defined non-commercial research purposes",
+      "distribution": "Excluded from project distribution"
+    },
+    {
+      "material": "Formal SHARP Gaussian PLY files, rendered RGB/depth/opacity predictions, prediction-containing comparison boards and per-pixel training or evaluation caches",
+      "origin": "Fixed SHARP scene predictions with external gsplat rendering and project-generated measurements",
+      "outbound": "No project grant for upstream assets or raw prediction bundles. Apple assigns the user responsibility for evaluating output reuse. No explicit permissive redistribution grant for these raw assets was established.",
+      "distribution": "Private research archive"
+    },
+    {
+      "material": "Original full Blender scene bundles, complete reference RGB/Position/depth/visibility data, registered family-wide inputs, and underlying recorded runs",
+      "origin": "Original project procedural assets and private experiment records",
+      "outbound": "Selected original media and data actually supplied under this publication carry CC-BY-4.0",
+      "distribution": "Private archive except for the specific published examples, recipes and records identified above"
+    },
+    {
+      "material": "External runtime packages, fonts, drivers, CUDA tooling and operating systems",
+      "origin": "Third-party rights holders identified in THIRD_PARTY_NOTICES.md and licenses/DEPENDENCY-SOURCES.json",
+      "outbound": "Respective upstream terms",
+      "distribution": "Installed separately. Fonts used in published raster figures are embedded only as rendered pixels."
+    }
+  ],
+  "asset_scope_rule": "Paths are relative to the source checkout or model ZIP in which they occur. A precise file entry takes precedence over a containing directory. The public release manifest identifies the files and roles actually included. Full legal texts and upstream notices retain their own terms.",
+  "history": "Current terms for the newly assembled public distribution. Earlier sealed candidates retain their historical bytes and notices."
 }

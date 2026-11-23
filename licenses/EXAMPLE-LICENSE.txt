@@ -1,7 +1,16 @@
-Evidence Lens original textured-plane demonstration
+Evidence Lens authored examples
+Copyright 2026 wany614
+SPDX-License-Identifier: CC-BY-4.0
 
-The project authored the tabletop scene and rendered its input. A separate
-plane projection produced the example views, depth and opacity. This notice
-covers the original example inputs, expected scores and numerical grading
-manifest identified in release.json. Selection of an outbound example
-license is pending. The current copy is a private evaluation candidate.
+wany614 licenses the original example images, scene descriptions, camera
+data and predictions produced by the project's textured-plane example,
+including their depictions and grading data, under Creative Commons
+Attribution 4.0 International to the extent these rights apply. Give
+appropriate credit, link the license and indicate changes when sharing.
+A suggested credit is “Evidence Lens, wany614, CC BY 4.0”.
+https://creativecommons.org/licenses/by/4.0/
+
+The full legal text accompanies this notice as CC-BY-4.0.txt. The example
+adapter and scripts are Apache-2.0. Separately selected original Blender
+reference images follow the same media terms. SHARP-generated predictions
+from the formal experiment are excluded from the public data distribution.

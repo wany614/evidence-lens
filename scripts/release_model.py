@@ -21,9 +21,9 @@ from release_identity import (
     signature,
 )
 from release_media import check_example_media
-from release_scope import (CPU_SOURCE, DOCS, SCOPE, SUMMARY, VERSION, archive_name, check_scope, graded_views, python_version, scope_origin,
+from release_scope import (ATTRIBUTION, CPU_SOURCE, DOCS, SCOPE, SUMMARY, VERSION, archive_name, check_scope, graded_views, publication, python_version, scope_origin,
                            summary_bytes, summary_origin)
-from release_wheel import aggregate, read_wheel
+from release_wheel import PUBLIC_WHEEL_LICENSE, aggregate, read_wheel
 
 from evidence_lens._bundle import HASH, RUN_ID, encoded, load, local_path, sha
 from evidence_lens._bundle import files as regular_files
@@ -63,10 +63,19 @@ LICENSES = {
     "example": "licenses/EXAMPLE-LICENSE.txt",
 }
 LICENSE_SCOPE = "licenses/ASSET-SCOPE.json"
+PUBLIC_NOTICES = ("NOTICE", "CITATION.cff", "THIRD_PARTY_NOTICES.md", "licenses/DEPENDENCY-SOURCES.json")
+PUBLIC_LICENSES = {"source":"Apache-2.0","parameters":"Apache-2.0","example":"CC-BY-4.0",
+                   "research_records":"CC-BY-4.0","documentation":"CC-BY-4.0"}
 
 
 def license_files(scope):
     roles = scope["license_files"]
+    if scope["schema"]=="el-public-license-scope-2":
+        require(roles==dict(LICENSES,research_records="licenses/RESEARCH-RECORDS.txt",documentation="licenses/CC-BY-4.0.txt")
+                and scope.get("license_expressions")==PUBLIC_LICENSES and scope.get("attribution")==ATTRIBUTION
+                and isinstance(scope.get("assets"),list) and scope["assets"],
+                "public notices must cover source, model, example, research and documentation with the authorized terms")
+        return roles
     require(
         scope["schema"] == "el-public-license-scope-1"
         and set(roles) == {*LICENSES, "research_records"}
@@ -87,12 +96,24 @@ def license_files(scope):
 def scope_members(names, terms, wheel):
     groups = {k: {"license_file": v, "members": []} for k, v in terms.items()}
     groups["notices"] = {"members": []}
+    public = "documentation" in terms
+    if public:
+        for role,expr in PUBLIC_LICENSES.items():
+            groups[role]["license_expression"]=expr
+        groups["wheel_distribution"]={"license_expression":PUBLIC_WHEEL_LICENSE,
+                                      "license_files":[terms["source"],terms["documentation"]],"members":[]}
     for name in sorted(names):
-        if name == LICENSE_SCOPE or name in terms.values():
+        if name == LICENSE_SCOPE or name in terms.values() or (public and name=="NOTICE"):
             role = "notices"
+        elif public and name==wheel:
+            role = "wheel_distribution"
+        elif public and (name.endswith(".md") or name=="CITATION.cff"):
+            role = "documentation"
+        elif public and name=="licenses/DEPENDENCY-SOURCES.json":
+            role = "research_records"
         elif name.startswith(("example/", "expected/")) or name == "demo.json":
             role = "example"
-        elif name.startswith("model/") and name != "model/feature_schema.json":
+        elif name.startswith("model/") and (public or name != "model/feature_schema.json"):
             role = "parameters"
         elif name.startswith(("training/", "proofs/", "results/")) or name in (
             "protocol/method-freeze.json",
@@ -339,8 +360,11 @@ def build(a):
         scope = json.loads(scope_bytes)
         check_scope(scope, a.version, method_sha, method["model_id"], method["model_index_sha256"],
                     pins, store=a.store.resolve())
+        require(("documentation" in terms)==(scope["publication_status"]=="public_prerelease"),
+                "selected prerelease distribution differs from the committed asset license profile")
     else:
         require(not scope_path and not scope_sha, "the prerelease scope belongs to an RC version")
+        require("documentation" not in terms,"public distribution requires a pinned prerelease scope")
     runs = {role: PinnedRun(a.store.resolve(), pin) for role, pin in pins.items()}
     require(
         all(r.run["execution_status"] == "succeeded" for r in runs.values()),
@@ -474,8 +498,8 @@ def build(a):
         def include(name, raw, origin):
             name = local_path(name)
             require(name not in entries, "duplicate release member")
-            if Path(name).suffix in {".md", ".txt", ".csv", ".json", ".py", ".toml"} or name == "LICENSE":
-                safe_text(name, raw, terms.values())
+            if Path(name).suffix in {".md", ".txt", ".csv", ".json", ".py", ".toml", ".cff"} or name in {"LICENSE","NOTICE"}:
+                safe_text(name, raw, (*terms.values(),*PUBLIC_NOTICES))
             target = out / name
             target.parent.mkdir(exist_ok=True, parents=True)
             target.write_bytes(raw)
@@ -592,6 +616,9 @@ def build(a):
             include(SUMMARY, summary_bytes(scope, table, kind), summary_origin(scope_sha, sha(table)))
         for name in sorted(set(terms.values())):
             committed(name, name)
+        if "documentation" in terms:
+            for name in PUBLIC_NOTICES:
+                committed(name,name)
         include(LICENSE_SCOPE, scope_doc, {"commit": a.commit, "path": LICENSE_SCOPE})
         committed("protocol/formal-freeze-v1.json", "configs/formal-freeze-v1.json")
         include("protocol/method-freeze.json", a.method.read_bytes(), {"method_freeze_sha256": method_sha})
@@ -638,12 +665,15 @@ def build(a):
         }
         if rc:
             index["scope_sha256"] = scope_sha
+        if "documentation" in terms:
+            index["license_expressions"]=PUBLIC_LICENSES
+            index["publication"]=(publication(a.version) if kind=="heldout_study" else {"publication_status":"synthetic_fixture"})
         (out / "release.json").write_bytes(encoded(index))
         members = sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file())
         checks = [f"{sha(out / name)}  {name}" for name in members]
         (out / "SHA256SUMS").write_bytes(("\n".join(checks) + "\n").encode("utf-8"))
         check(out)
-    return {
+    product = {
         "model_id": method["model_id"],
         "version": a.version,
         "commit": a.commit,
@@ -653,6 +683,9 @@ def build(a):
         "wheel_sha256": wheel_meta["sha256"],
         "kind": kind,
     }
+    if "publication" in index:
+        product["publication"]=index["publication"]
+    return product
 
 
 def asset_names(wheel, terms, version="v0.1.0"):
@@ -662,6 +695,7 @@ def asset_names(wheel, terms, version="v0.1.0"):
         "RELEASE_NOTES.md",
         LICENSE_SCOPE,
         *terms.values(),
+        *(PUBLIC_NOTICES if "documentation" in terms else ()),
         "demo.json",
         *("expected/" + v + ".npz" for v in graded_views(version)),
         *((SCOPE, SUMMARY, "smoke.py", *DOCS, *CPU_SOURCE) if "-rc." in version else ()),
@@ -797,7 +831,8 @@ def check_prerelease(folder, release):
     root = folder.resolve()
     require((root / SUMMARY).read_bytes() == summary_bytes(load(root / SCOPE), root / "results/family-results.csv", release["kind"]),
             "human-readable scope differs from selected diagnostic or formal populations")
-    for name in ("README.md", "MODEL_CARD.md", "RELEASE_NOTES.md", SUMMARY, *DOCS):
+    public_notices = ("THIRD_PARTY_NOTICES.md",) if "publication" in release else ()
+    for name in ("README.md", "MODEL_CARD.md", "RELEASE_NOTES.md", SUMMARY, *DOCS, *public_notices):
         path = root / name
         content = path.read_text(encoding="utf-8")
         for target in re.findall(r"\[[^]\n]+\]\(([^)\s]+)\)", content):
@@ -811,6 +846,16 @@ def check_prerelease(folder, release):
     require("python3 -I smoke.py" in guide and "py -3 -I smoke.py" in guide and f"]({SCOPE})" in guide and
             release["version"] in guide and set(re.findall(r"distribution[/\\]([\w.-]+\.whl)",guide))=={release["wheel"]["name"]},
             "RC guide must identify the version, scoped evidence and executable smoke command")
+    if release.get("publication",{}).get("publication_status")=="public_prerelease":
+        public=publication(release["version"])
+        require(public["release_url"] in guide and public["attribution"] in guide and
+                all(f"`{release['model_id']}`" in (root/n).read_text(encoding="utf-8") for n in ("MODEL_CARD.md","RELEASE_NOTES.md")),
+                "public documentation differs from the selected GitHub destination, author or frozen model")
+        public_pages=["README.md","RELEASE_NOTES.md","MODEL_CARD.md",SUMMARY,*DOCS]
+        stale=("private release candidate","private candidate for owner","outbound software license is pending",
+               "grants for original asset classes and public-address download verification remain pending")
+        require(not any(t in (root/n).read_text(encoding="utf-8").lower() for n in public_pages for t in stale),
+                "public reader documentation contains a superseded owner-only distribution claim")
     with tempfile.TemporaryDirectory() as temp:
         scores, example = Path(temp) / "scores", root / "example"
         score_model(example / "input.png", example / "cameras.json", example / "predictions",
@@ -831,7 +876,8 @@ def check(folder, release_sha=None, sums_sha=None):
     )
     release = load(folder / "release.json")
     require(LICENSE_SCOPE in actual, "missing committed asset class and license scope")
-    terms = license_files(load(folder / LICENSE_SCOPE))
+    asset_scope = load(folder / LICENSE_SCOPE)
+    terms = license_files(asset_scope)
     require(
         release.get("schema") == "el-public-model-release-1"
         and release["kind"] in ("heldout_study", "synthetic_fixture")
@@ -860,8 +906,8 @@ def check(folder, release_sha=None, sums_sha=None):
             and row["origin"] == asset_origin(release, name),
             "changed public member " + name,
         )
-        if path.suffix in (".md", ".txt", ".csv", ".json", ".toml", ".py") or name == "LICENSE":
-            safe_text(name, path.read_bytes(), terms.values())
+        if path.suffix in (".md", ".txt", ".csv", ".json", ".toml", ".py", ".cff") or name in {"LICENSE","NOTICE"}:
+            safe_text(name, path.read_bytes(), (*terms.values(),*PUBLIC_NOTICES))
     safe_text("release.json", (folder / "release.json").read_bytes())
     expected = [f"{sha(folder / n)}  {n}" for n in sorted(actual - {"SHA256SUMS"})]
     expected_bytes = ("\n".join(expected) + "\n").encode("utf-8")
@@ -885,8 +931,23 @@ def check(folder, release_sha=None, sums_sha=None):
         require(release.get("scope_sha256") == sha(folder / SCOPE), "scope differs from release manifest")
         require(all(sha(folder / n) == measured_wheel["modules"][n.removeprefix("source/")] for n in CPU_SOURCE),
                 "readable CPU source differs from installed wheel modules")
-        check_scope(load(folder / SCOPE), release["version"], release["method_freeze_sha256"], release["model_id"],
+        scope=load(folder / SCOPE)
+        check_scope(scope, release["version"], release["method_freeze_sha256"], release["model_id"],
                     release["model_index_sha256"], release["sources"])
+        public="documentation" in terms
+        require(public==(scope["publication_status"]=="public_prerelease")==("publication" in release)
+                and public==("license_expression" in measured_wheel),"wheel, study scope and release distribution differ")
+        if public:
+            official=(publication(release["version"]) if release["kind"]=="heldout_study" else {"publication_status":"synthetic_fixture"})
+            require(release["publication"]==official and release["license_expressions"]==PUBLIC_LICENSES and
+                    all(d==sha(folder / n) for n,d in measured_wheel["license_file_sha256"].items()),
+                    "release metadata, wheel license notices or rights inventory differ")
+            if release["kind"]=="heldout_study":
+                model_rights=[r for r in asset_scope["assets"] if r.get("model_id")==release["model_id"]]
+                require(len(model_rights)==1 and model_rights[0].get("model_index_sha256")==release["model_index_sha256"]
+                        and model_rights[0].get("outbound")==PUBLIC_LICENSES["parameters"]
+                        and set(model_rights[0].get("locations",()))=={"model/"+n for n in MODEL},
+                        "public license inventory must identify the exact five distributed model files and their index")
         check_prerelease(folder, release)
     elif release["kind"] == "heldout_study":
         check_real_example_guide(folder, release)

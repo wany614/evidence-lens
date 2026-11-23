@@ -1,26 +1,14 @@
 # Building and checking the model release
 
-For v0.1.1-rc.2, the operator recipe builds the wheel from an explicit Git commit, binds the candidate to selected diagnostic evidence, reproduces its ZIP and exercises it from a fresh CPU environment. The historical v0.1.0 payload retains its original one-view grading manifest. [Private RC build and rebuild](releases/v0.1.1-rc.2/BUILD.md) · [Extracted CPU example](releases/v0.1.1-rc.2/README.md)
+Build the wheel from the release's exact source commit. The model ZIP binds it to the frozen parameters, selected diagnostic evidence and six-view CPU example. Match the ZIP, checksum and instructions to the same release tag. The earlier v0.1.1-rc.2 instructions document its private verification. The historical v0.1.0 payload contained one reference view. [Historical rc.2 build](releases/v0.1.1-rc.2/BUILD.md) · [Phase-one verification](phase1/README.md)
 
 The builder takes separately sealed model, authored example, score and report receipts. It verifies the complete training and development rosters, original class counts, per-fold class counts, exported parameters, and the 12 comparison-run pins across the four held-out families. The model ZIP includes its CPU wheel, frozen model, threshold and fit proofs, original example, expected numerical scores, curated report tables and the committed release texts.
 
 The release commit supplies `protocol/`, `configs/formal-freeze-v1.json`, the owner’s license files and `docs/releases/<version>/{MODEL_CARD.md,RELEASE_NOTES.md,README.md}`. The software tag determines the Python version in the wheel. The scientific model has its own recorded fit and threshold-selection identifiers. Build the wheel from the exact release commit into a directory separate from the checkout.
 
-The owner records four material classes in `licenses/ASSET-SCOPE.json`. The following template illustrates a separate notice for published measurements, provenance and report files. The owner may instead choose the same committed document as one of the other classes. The research-record notice describes the released measurements, hashes and documentation. Referenced private training data and upstream images have their own provenance and terms.
+The owner chose Apache-2.0 for original software, configurations and the independently licensable fitted L1 coefficients, preprocessing and thresholds. Original narrative documentation, authored example media and licensable portions of the released research records use CC BY 4.0. Third-party assets retain their own terms. The original SHARP checkpoint and formal raw prediction arrays remain in the research archive. [Asset notices and provenance](licenses.md) · [Distribution scope](../licenses/ASSET-SCOPE.json)
 
-```json
-{
-  "schema": "el-public-license-scope-1",
-  "license_files": {
-    "source": "LICENSE",
-    "parameters": "licenses/MODEL-LICENSE.txt",
-    "example": "licenses/EXAMPLE-LICENSE.txt",
-    "research_records": "licenses/REPORT-LICENSE.txt"
-  }
-}
-```
-
-`release.json.license_scope` lists every file under its material class. Source covers the installed wheel, code and geometry specifications, feature layout and user documentation. Parameters cover model indices, fitted coefficients, preprocessing and thresholds. The example class covers the original plane files, demo manifest and expected output. Research records include `training/`, `proofs/`, `results/`, the method and formal freeze receipts, and the two release inventory files. The license and scope documents are identified as notices.
+The built package's `release.json.license_scope` maps actual files to their notices. Check the map, the wheel's license files and the separately identified parameter, example and research-record documents when verifying a new candidate. A new software release can retain the existing scientific model ID when the exported parameters and thresholds match.
 
 ```sh
 PYTHONPATH=src python scripts/release_model.py build \

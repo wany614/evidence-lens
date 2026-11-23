@@ -49,3 +49,7 @@ __pycache__/
 !/examples/study-figures/risk-coverage-B0.png
 !/examples/study-figures/risk-coverage-Q1.png
 !/examples/study-figures/risk-coverage-R1.png
+
+# Original formal Blender case, pinned by the explicit source inventory.
+!/examples/heldout-drum/input.png
+!/examples/heldout-drum/blender-v01.png

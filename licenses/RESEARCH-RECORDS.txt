@@ -1,8 +1,18 @@
-Evidence Lens research measurements and provenance
+Evidence Lens documentation, research measurements and records
+Copyright 2026 wany614
+SPDX-License-Identifier: CC-BY-4.0
 
-This private evaluation copy contains descriptive measurements, method and
-file identifiers, training and evaluation receipts, and project-authored
-documentation of the study. The project owner will specify terms for the
-original explanatory material when authorizing public distribution. Access
-to the original research archive and the rights in external data, software,
-weights and rendered predictions are governed separately.
+wany614 licenses the original project documentation, report text,
+visualizations, and the copyright and applicable database rights the owner
+holds in the selection and arrangement of published research records under
+Creative Commons Attribution 4.0 International. Give appropriate credit,
+link the license and indicate changes when sharing covered material.
+https://creativecommons.org/licenses/by/4.0/
+Full legal text: CC-BY-4.0.txt in this directory.
+
+Individual facts, numbers, run identifiers and digests may be reused without
+permission where no applicable right restricts that use. Third-party
+software, weights, quotations and material identified with separate terms
+remain subject to their own rights. The public release contains selected
+records and aggregate results. Raw formal predictions and the private
+research archive are separate assets.

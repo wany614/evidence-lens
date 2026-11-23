@@ -1,4 +1,4 @@
-"""Build a private CPU prerelease from committed source and explicitly pinned evidence."""
+"""Build a versioned CPU prerelease from committed source, license notices and pinned evidence."""
 
 import argparse
 import hashlib
@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,6 +30,12 @@ def build_candidate(args):
     this_entry = subprocess.check_output([*git, "show", args.commit + ":scripts/build_prerelease.py"])
     require(this_entry == Path(__file__).read_bytes(), "running release entry point differs from the specified commit")
     paths = ["src/evidence_lens", "README.md", "LICENSE", "pyproject.toml", *("scripts/" + n for n in TOOLS)]
+    project=tomllib.loads(subprocess.check_output([*git,"show",args.commit+":pyproject.toml"],text=True))["project"]
+    for name in project.get("license-files",[]):
+        require(isinstance(name,str) and name and all(re.fullmatch(r"[A-Za-z0-9_.-]+",p) and p not in (".","..") for p in name.split("/")),
+                "wheel license files must be literal, repository-relative paths")
+        if name not in paths:
+            paths.append(name)
     with tempfile.TemporaryDirectory() as scratch:
         work = Path(scratch).resolve()
         tree = work / "source"
@@ -69,10 +76,9 @@ def staged_main(code, repository):
             setattr(args,key,Path(getattr(args,key)))
     python_version(args.version)
     kind = "synthetic_fixture" if args.fixture else "heldout_study"
-    schema = "el-synthetic-cpu-fixture-1" if args.fixture else "el-private-cpu-candidate-1"
     if args.rebuild_of:
         previous = load(args.rebuild_of)
-        require(previous["schema"] == schema and previous["kind"] == kind and previous["version"] == args.version
+        require(previous["kind"] == kind and previous["version"] == args.version
                 and previous["code_commit"] == args.commit, "rebuild pin identifies another source, release or study kind")
     for name, module in list(sys.modules.items()):
         if name == "evidence_lens" or name.startswith("evidence_lens.") or name + ".py" in TOOLS:
@@ -90,6 +96,9 @@ def staged_main(code, repository):
         options.output, options.wheel = temp / "payload", wheel
         product = release_model.build(options)
         require(product["kind"] == kind, "fixture and held-out result types differ")
+        distribution=product.get("publication")
+        schema=("el-synthetic-cpu-fixture-1" if args.fixture else "el-public-cpu-prerelease-1"
+                if distribution else "el-private-cpu-candidate-1")
         name = archive_name(args.version, kind)
         archive = out / name
         packed = release_model.package(options.output, archive, product["release_sha256"], product["checksums_sha256"])
@@ -100,6 +109,8 @@ def staged_main(code, repository):
                   "demo_sha256": product["demo_sha256"], "name": name, "sha256": packed["sha256"],
                   "bytes": packed["bytes"], "zip_members": packed["members"], "source_date_epoch": int(epoch),
                   "build_tools_sha256": tools}
+        if distribution:
+            record["publication"]=distribution
         if args.rebuild_of:
             require(record == previous, "rebuilt ZIP, wheel, documentation or pinned inputs differ from the selected build")
         (out / "candidate.json").write_bytes(encoded(record))

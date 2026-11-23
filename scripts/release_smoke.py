@@ -151,6 +151,13 @@ def smoke(folder, output, *, release_sha=None, wheelhouse=None, offline_uv=False
     release, pinned, demo_sha = verify_files(folder, release_sha)
     require(release["kind"] == ("synthetic_fixture" if fixture else "heldout_study"),
             "official CPU smoke requires a held-out study release; synthetic tests require the explicit --fixture switch")
+    if "publication" in release:
+        scope=read(folder/"RELEASE_SCOPE.json")
+        expected={"publication_status":"public_prerelease","repository":"wany614/evidence-lens","attribution":"wany614",
+                  "tag":release["version"],"release_url":"https://github.com/wany614/evidence-lens/releases/tag/"+release["version"]}
+        require(scope.get("publication_status")=="public_prerelease" and all(scope.get(k)==expected[k] for k in ("repository","attribution"))
+                and release["publication"]==({"publication_status":"synthetic_fixture"} if fixture else expected),
+                "public release and its scope identify a different destination or attribution")
     measured_archive = verified_archive(folder, release, archive, archive_sha)
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=output.parent, prefix=".evidence-lens-smoke-") as scratch, \
@@ -204,6 +211,8 @@ def smoke(folder, output, *, release_sha=None, wheelhouse=None, offline_uv=False
                   "state_arrays_equal": True, "l0_reason_arrays_equal": True, "absolute_tolerance": 1e-6,
                   "max_absolute_score_difference": max(m["max_absolute_score_difference"] for row in compared.values() for m in row.values()),
                   "grade_sha256": digest(staged / "grade/grade.json"), "map_index_sha256": digest(staged / "maps/index.json")}
+        if "publication" in release:
+            report["publication"]=release["publication"]
         (staged / "smoke.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         require(not output.exists(), "smoke output destination was filled concurrently")
         staged.rename(output)

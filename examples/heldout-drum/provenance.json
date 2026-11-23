@@ -1,0 +1,26 @@
+{
+  "schema": "el-formal-case-public-media-1",
+  "family": "scene_021_drum_kit",
+  "split": "original held-out",
+  "condition": "B0",
+  "view": "v01",
+  "creator": "wany614",
+  "reference_run_id": "20261123T042832083384Z-a8a2585e6ee541ed",
+  "manifest_sha256": "06240e936785b45a11f6103fd8bd4b8ad31e1814fdf2aa816a5dc3458ffbc276",
+  "files": {
+    "input.png": {
+      "member": "payload/input.png",
+      "sha256": "bf0ce4e2515fef11737910046773102435a23b324bce7aaacdf307c00ccb3305",
+      "bytes": 111556,
+      "license": "CC-BY-4.0"
+    },
+    "blender-v01.png": {
+      "member": "payload/reference/v01.png",
+      "sha256": "ac404836c55433b07257e5414f1b4e69792a17d209624294283e46111a04a041",
+      "bytes": 111096,
+      "license": "CC-BY-4.0"
+    }
+  },
+  "measurement_run_id": "20261123T083324355926Z-726b2c1ce0a8498a",
+  "measurement_manifest_sha256": "b557133305df699f5215ea311f3723e0193801486664959157ab2ce0771dd9c3"
+}

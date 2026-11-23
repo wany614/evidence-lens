@@ -151,18 +151,18 @@
     },
     {
       "issue_id": "EL-09",
-      "observation": "A public Release URL and public-download acceptance are unavailable.",
+      "observation": "At the close of rc.2, the privately verified ZIP had no public Release or public-download acceptance.",
       "original_evidence": [
         "e2b06a4c1bb6e922174b77f70df30eda070caf1b"
       ],
-      "hypothesis": "Repository identity and use terms are required for upstream-separated distribution.",
-      "confirmed_cause": null,
+      "hypothesis": "Repository identity and per-asset terms were needed for public distribution.",
+      "confirmed_cause": "The rc.2 build preceded the owner's repository and outbound licensing decisions.",
       "fix_commit": null,
       "impact": "External publication and public-address retrieval only.",
       "rerun_ids": [],
-      "validation": "Inspect configured Git remotes/tags and owner-approved terms. Candidate verification uses its own exact bytes.",
-      "conclusion": "Owner repository and separate grants pending. A local or private download is private acceptance.",
-      "status": "external_decision_pending"
+      "validation": "Inspect the exact public repository, pre-release, per-asset terms, independently published ZIP checksum and clean CPU run from an unauthenticated download. The rc.2 receipts identify the earlier private acceptance.",
+      "conclusion": "The owner authorized wany614/evidence-lens and chose Apache-2.0 for original code, configurations and independently licensable model parameters, and CC BY 4.0 for original documentation, example media and the licensable portions of released research records. Third-party assets retain their own terms.",
+      "status": "owner_authorization_recorded"
     },
     {
       "issue_id": "EL-10",

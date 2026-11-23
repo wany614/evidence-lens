@@ -1,14 +1,20 @@
 [build-system]
-requires = ["setuptools>=72"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-lens"
-version = "0.1.1rc2"
+version = "0.1.1rc3"
 description = "CPU diagnostics for single-image novel-view synthesis"
 readme = "README.md"
+authors = [{name = "wany614"}]
+license = "Apache-2.0 AND CC-BY-4.0"
+license-files = ["LICENSE", "NOTICE", "licenses/CC-BY-4.0.txt", "THIRD_PARTY_NOTICES.md", "licenses/DEPENDENCY-SOURCES.json"]
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26,<3", "Pillow>=11,<13"]
+
+[project.urls]
+Repository = "https://github.com/wany614/evidence-lens"
 
 [project.optional-dependencies]
 record = ["psutil>=6,<8", "pyarrow>=18,<27"]

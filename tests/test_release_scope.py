@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from release_scope import check_scope, graded_views, python_version, summary_bytes
+from release_scope import check_scope, graded_views, publication, python_version, summary_bytes
 from release_smoke import METHODS, VIEWS, distributions, preserve_partial, verify_files
 
 
@@ -26,6 +26,13 @@ def test_tag_and_scope_refuse_mixed_scientific_sources():
              "finding":"Test measurement.","limitations":["One fixture."]}
     args = (tag,"b"*64,pin["run_id"],"a"*64,{"report":pin,"example_scores":pin})
     check_scope(scope,*args)
+    public = dict(scope, publication_status="public_prerelease", repository="wany614/evidence-lens", attribution="wany614")
+    check_scope(public,*args)
+    assert publication("v0.1.1-rc.3")["release_url"] == "https://github.com/wany614/evidence-lens/releases/tag/v0.1.1-rc.3"
+    for change in (dict(public,repository="other/evidence-lens"),dict(public,attribution="another"),
+                   {k:v for k,v in public.items() if k!="repository"},dict(scope,repository="wany614/evidence-lens")):
+        with pytest.raises(ValueError):
+            check_scope(change,*args)
     for changed in (dict(scope,publication_status="published"),dict(scope,preview_class="experimental_research_preview"),
                     dict(scope,model_id="different"),dict(scope,diagnostics=[]),
                     dict(scope,diagnostics=[dict(pin,path="inputs/private.json",sha256="c"*64)])):

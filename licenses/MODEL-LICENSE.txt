@@ -1,6 +1,19 @@
-Evidence Lens fitted parameters
+Evidence Lens L1 parameter package
+Copyright 2026 wany614
+SPDX-License-Identifier: Apache-2.0
 
-This notice applies to the project-trained L1 coefficients, intercepts,
-imputation and standardization parameters, model index and frozen thresholds
-identified by release.json. The project owner is evaluating this private
-candidate. Selection of an outbound parameter license is pending.
+wany614 licenses the original fitted L1-full and L1-geometry coefficients,
+intercepts, preprocessing values, feature schema, model index, constant
+risk and frozen operating thresholds under the Apache License, Version 2.0.
+The full text is LICENSE at the distribution root. Retain the applicable
+attribution in NOTICE and identify modified files as provided by the license.
+https://www.apache.org/licenses/LICENSE-2.0
+
+Model ID: 20261123T042819219876Z-27eaa01eba29489d
+Model index SHA-256: b3c65130bf803611e3904ac69a270f6944b48a8d78ce049bdc1424c15ba6cb54
+
+These five JSON files were fitted or produced by Evidence Lens. The research
+used fixed SHARP scene predictions as inputs and independent Blender error
+labels. The project optimized two separate logistic models. Apple's model,
+its parameters and the scene prediction files have separate provenance and
+terms. See THIRD_PARTY_NOTICES.md and docs/licenses.md.

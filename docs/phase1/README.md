@@ -1,6 +1,6 @@
 # Stage-one evidence
 
-A raw-pixel replay matched the original RGB eligibility and decision counts on all four held-out families. Its 120 camera-by-method average-precision values differed by at most 2.22 × 10⁻¹⁶. The same raw files confirm a large auxiliary depth discrepancy. The camera, PLY and expected-depth controls passed on the recorded SHARP/gsplat pipeline. These results support a research preview for RGB-error risk on the measured synthetic scenes. The rc.2 candidate remains private pending the owner's repository and terms. [Issue and correction log](issues.json) · [Dependency and reuse record](impact.json)
+A raw-pixel replay matched the original RGB eligibility and decision counts on all four held-out families. Its 120 camera-by-method average-precision values differed by at most 2.22 × 10⁻¹⁶. The same raw files confirm a large auxiliary depth discrepancy. The camera, PLY and expected-depth controls passed on the recorded SHARP/gsplat pipeline. These results support an RGB-error risk research preview for nearby views of the measured static, opaque synthetic scenes. [Issue and correction log](issues.json) · [Original study results](../results/README.md)
 
 ## Frozen population and raw-pixel replay
 
@@ -37,4 +37,17 @@ The study used a pre-trained SHARP checkpoint and gsplat 1.5.3. The formal cases
 
 The independent local archive audit rechecked all 296 historical run manifests, 37,902 members and one shared checkpoint against the existing catalog, including its one recorded deliberate failure. The archive includes 144 cold-shelf runs and one previously restored replay. Full study imagery, geometric arrays, logs, active databases and SHARP weights stay in the private research archive. The internal rc.1 delivered identical decisions and decoded risk/state maps across macOS, Windows and Debian. A subsequent packaging review led to rc.2. Its isolated builder and grader bind the release to the exact commit, all 30 finite comparisons and the 12 output maps. The detached acceptance supplies the tested ZIP digest and platform runs. The owner has four fixed formal case boards with source, truth, prediction, observed RGB error, L1 risk, operating state, depth and visibility. The study's original model, parameters, predictions, labels and thresholds retain their identities.
 
-Stage one supplies no new independent model-quality cohort. The technical prerequisites for a new, separately frozen RGB-risk pilot are listed in the handoff. No second-stage acquisitions or training are part of this release. [Stage-two entry](phase2-entry.md) · [Original study results](../results/README.md)
+The owner archive identifies each formal case by the sealed run `20261123T083324355926Z-726b2c1ce0a8498a`, condition B0 and target v01. The digest identifies the exact private board. The shareable plane demonstration has its own inputs and checksum.
+
+| Held-out family | Private board SHA-256 |
+| --- | --- |
+| `scene_021_drum_kit` | `28233f5c7f6ec8b619be3e9d401fdd3b84852223757a47718493c7ae111296ad` |
+| `scene_022_picket_gate` | `cbb5302bb0ce75192086716af06e401d2bc94c77ee03d88e368d7806131984dc` |
+| `scene_023_potters_wheel` | `9295ed0e64f33ad7549c8992e72fce8db4abb82e484862f7930979f04a49be58` |
+| `scene_024_orbital_mobile` | `08e99734a069b40c47a19d2a200d34c4e0dc1a800fc6f1f2fc6f294facadb25d` |
+
+The rc.2 ZIP was a privately verified candidate. Its SHA-256 is `2c949bfb1073dccda175e491e86c7f831006669f788f610ff99ba68db486e016`. The publication items in the dependency record describe that historical snapshot. The original fitted L1 retains model ID `20261123T042819219876Z-27eaa01eba29489d` and parameter-index SHA-256 `b3c65130bf803611e3904ac69a270f6944b48a8d78ce049bdc1424c15ba6cb54`. [Historical rc.2 notes](../releases/v0.1.1-rc.2/RELEASE_NOTES.md) · [Dependency and reuse record](impact.json)
+
+The owner, **wany614**, has authorized publication to `wany614/evidence-lens`. The chosen terms are Apache-2.0 for original software, configuration and independently licensable L1 parameters, and CC BY 4.0 for original documentation, authored example media and the licensable parts of the released research records. Third-party components retain their own terms. The release check uses the new candidate's public URL, external checksum and a clean CPU run. [Asset terms](../licenses.md) · [Build and verification](../model-release.md)
+
+The original four test families now serve as historical regression cases. The next experiments have separate budgets for a genuinely fine-tuned single-image visual model and for two- and four-source joint reconstruction with a separately trained risk model. [Research handoff and test boundaries](phase2-entry.md)

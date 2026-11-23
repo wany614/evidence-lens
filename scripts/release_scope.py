@@ -1,4 +1,4 @@
-"""Bind a private prerelease to its selected reports, model and recorded diagnostics."""
+"""Bind a prerelease to its distribution scope, selected reports, model and recorded diagnostics."""
 
 import csv
 import re
@@ -17,6 +17,14 @@ CPU_SOURCE = tuple("source/evidence_lens/" + n + ".py" for n in
 PREVIEWS = {"technical_preview", "experimental_research_preview"}
 EVIDENCE = {"original_frozen_study_rechecked", "historical_benchmark_regression", "original_study_under_review",
             "historical_results_withdrawn"}
+REPOSITORY = "wany614/evidence-lens"
+ATTRIBUTION = "wany614"
+REPOSITORY_URL = "https://github.com/" + REPOSITORY
+
+
+def publication(version):
+    return {"publication_status":"public_prerelease", "repository":REPOSITORY, "attribution":ATTRIBUTION,
+            "tag":version, "release_url":f"{REPOSITORY_URL}/releases/tag/{version}"}
 
 
 def require(ok, message):
@@ -53,7 +61,10 @@ def summary_bytes(scope, table, kind="heldout_study"):
                 "original_study_under_review": "The original formal measurements remain under review.",
                 "historical_results_withdrawn": "The historical formal results are withdrawn as evidence for current performance."}
     preview = {"technical_preview": "Technical Preview", "experimental_research_preview": "Experimental Research Preview"}
-    lines = [f"# {preview[scope['preview_class']]} · {scope['version']}", "", "**Private candidate for owner evaluation.**", "",
+    audience = (f"Public prerelease by {ATTRIBUTION}. [Release and assets]({publication(scope['version'])['release_url']})"
+                if scope.get("publication_status")=="public_prerelease" and kind!="synthetic_fixture" else
+                "**Synthetic software test.**" if kind=="synthetic_fixture" else "**Private candidate for owner evaluation.**")
+    lines = [f"# {preview[scope['preview_class']]} · {scope['version']}", "", audience, "",
              evidence[scope["formal_evidence_status"]], "", scope["finding"], "", "## Remaining limits", "",
              *("- " + limit for limit in scope["limitations"]), "", "## Selected records", "",
              f"- Frozen model `{scope['model_id']}`, index SHA-256 `{scope['model_index_sha256']}`.",
@@ -102,9 +113,14 @@ def check_scope(scope, version, method_sha, model_id, model_sha, sources, *, sto
     fields = {"schema", "version", "publication_status", "preview_class", "formal_evidence_status",
               "model_id", "model_index_sha256", "method_freeze_sha256", "example_scores", "report",
               "diagnostics", "finding", "limitations"}
-    require(isinstance(scope, dict) and set(scope) == fields and scope["schema"] == "el-prerelease-scope-1"
-            and scope["version"] == version and "-rc." in version and scope["publication_status"] == "private_candidate",
-            "invalid private prerelease scope or tag")
+    require(isinstance(scope,dict),"a prerelease scope object is required")
+    public = scope.get("publication_status")=="public_prerelease"
+    require(set(scope) == (fields | {"repository","attribution"} if public else fields) and scope["schema"] == "el-prerelease-scope-1"
+            and scope["version"] == version and "-rc." in version and (public or scope["publication_status"]=="private_candidate"),
+            "invalid prerelease scope or tag")
+    if public:
+        require(scope["repository"]==REPOSITORY and scope["attribution"]==ATTRIBUTION,
+                "public scope must identify the authorized project and attribution")
     require(scope["preview_class"] in PREVIEWS and scope["formal_evidence_status"] in EVIDENCE and
             (scope["preview_class"] != "experimental_research_preview" or scope["formal_evidence_status"] in
              {"original_frozen_study_rechecked", "historical_benchmark_regression"}), "preview exceeds its scientific scope")

@@ -14,6 +14,9 @@ from email.parser import BytesParser
 
 from evidence_lens._bundle import local_path
 
+PUBLIC_WHEEL_LICENSE = "Apache-2.0 AND CC-BY-4.0"
+PUBLIC_WHEEL_NOTICES = ("LICENSE", "NOTICE", "licenses/CC-BY-4.0.txt", "THIRD_PARTY_NOTICES.md", "licenses/DEPENDENCY-SOURCES.json")
+
 
 def require(ok, message):
     if not ok:
@@ -49,6 +52,18 @@ def requirement(raw):
 def read_wheel(path, project_toml, *, checkout=None, commit=None, text_check=None):
     py = tomllib.loads(project_toml.decode())["project"]
     dist, version = py["name"].replace("-", "_"), py["version"]
+    public = isinstance(py.get("license"),str)
+    notices = set(py.get("license-files", ()))
+    if public:
+        require(py["license"]==PUBLIC_WHEEL_LICENSE and notices==set(PUBLIC_WHEEL_NOTICES)
+                and py.get("authors")==[{"name":"wany614"}] and py.get("urls",{}).get("Repository")=="https://github.com/wany614/evidence-lens",
+                "public project license, attribution, notices or repository differs")
+    else:
+        require(not notices, "PEP 639 license files require an explicit expression")
+    allowed = {"RECORD","WHEEL","METADATA","top_level.txt","licenses/LICENSE"}
+    allowed.update("licenses/"+n for n in notices)
+    if not public:
+        allowed.add("LICENSE")
     expected_name = f"{dist}-{version}-py3-none-any.whl"
     require(
         path.name == expected_name and path.is_file() and not path.is_symlink(),
@@ -85,17 +100,10 @@ def read_wheel(path, project_toml, *, checkout=None, commit=None, text_check=Non
                 modules[name] = sha(data)
                 if text_check:
                     text_check(name, data)
-            elif name.startswith(info) and name[len(info) :] in (
-                "RECORD",
-                "WHEEL",
-                "METADATA",
-                "top_level.txt",
-                "licenses/LICENSE",
-                "LICENSE",
-            ):
+            elif name.startswith(info) and name[len(info) :] in allowed:
                 metadata[name[len(info) :]] = data
                 if text_check:
-                    text_check("LICENSE" if name.endswith("/LICENSE") else name, data)
+                    text_check("LICENSE" if name.startswith(info+"licenses/") or name.endswith("/LICENSE") else name, data)
             else:
                 raise ValueError(f"unexpected wheel member {name}")
         wheel, desc = (BytesParser().parsebytes(metadata[k]) for k in ("WHEEL", "METADATA"))
@@ -124,6 +132,11 @@ def read_wheel(path, project_toml, *, checkout=None, commit=None, text_check=Non
         )
         licenses = [metadata[name] for name in ("licenses/LICENSE", "LICENSE") if name in metadata]
         require(len(licenses) == 1, "standalone CPU wheel needs its committed source license")
+        if public:
+            require(desc["License-Expression"]==PUBLIC_WHEEL_LICENSE and desc["Author"]=="wany614" and
+                    "Repository, https://github.com/wany614/evidence-lens" in desc.get_all("Project-URL",[]) and
+                    sorted(desc.get_all("License-File",[]))==sorted(notices) and
+                    all("licenses/"+n in metadata for n in notices),"wheel public licensing and author metadata differ")
         if "top_level.txt" in metadata:
             require(
                 metadata["top_level.txt"].splitlines() == [b"evidence_lens"],
@@ -158,12 +171,15 @@ def read_wheel(path, project_toml, *, checkout=None, commit=None, text_check=Non
         git = ["git", "-C", str(checkout), "show"]
         original = subprocess.check_output([*git, commit + ":LICENSE"])
         require(licenses[0] == original, "wheel license differs from the release commit")
+        for name in notices:
+            require(metadata["licenses/"+name] == subprocess.check_output([*git,commit+":"+name]),
+                    "wheel notice differs from Git: "+name)
         path = local_path(py["readme"])
         committed_readme = (
             subprocess.check_output([*git, commit + ":" + path]).replace(b"\r\n", b"\n").rstrip(b"\n")
         )
         require(readme == committed_readme, "wheel description differs from the committed project README")
-    return {
+    result = {
         "name": expected_name,
         "distribution": py["name"],
         "version": version,
@@ -176,3 +192,7 @@ def read_wheel(path, project_toml, *, checkout=None, commit=None, text_check=Non
         "modules_sha256": aggregate(modules),
         "modules": modules,
     }
+    if public:
+        result.update(license_expression=PUBLIC_WHEEL_LICENSE,attribution="wany614",repository="wany614/evidence-lens",
+                      license_file_sha256={n:sha(metadata["licenses/"+n]) for n in sorted(notices)})
+    return result
