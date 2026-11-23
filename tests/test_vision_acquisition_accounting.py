@@ -14,11 +14,13 @@ def test_repeated_generation_failed_attempt_and_reused_inputs(tmp_path):
     g = {"run_id": "20030101T000000000000Z-0000000000000010", "manifest_sha256": "1" * 64}
     retry = {"run_id": "20030101T000000000000Z-0000000000000011", "manifest_sha256": "2" * 64}
 
-    def render(n, wrong=False):
+    def render(n, wrong=False, missing_bytes=False):
         filenames = ("source", *(f"v{i:02}" for i in range(1, 7)))
         views = {v: {"sha256": file_hash(native), "bytes": native.stat().st_size} for v in filenames}
         if wrong:
             views["source"]["sha256"] = "c" * 64
+        if missing_bytes:
+            del views["source"]["bytes"]
         return seal_fixture(
             store,
             f"20030101T000000000000Z-{n:016x}",
@@ -31,11 +33,12 @@ def test_repeated_generation_failed_attempt_and_reused_inputs(tmp_path):
             },
         )
 
-    r1, r2, no = render(1), render(2), render(3, True)
+    r1, r2, no, missing = render(1), render(2), render(3, True), render(4, missing_bytes=True)
 
     def c(cond, pin, cohort="new_confirmation"):
         return {
             "cohort": cohort,
+            "family": "synthetic_family",
             "condition": cond,
             "status": "selected",
             "roles": {"generation": g, "prediction": pin},
@@ -44,7 +47,7 @@ def test_repeated_generation_failed_attempt_and_reused_inputs(tmp_path):
     rows = [
         c("B0", r1),
         c("Q1", r2),
-        {"cohort": "new_confirmation", "condition": "R1", "status": "failed"},
+        {"cohort": "new_confirmation", "family": "synthetic_family", "condition": "R1", "status": "failed"},
         c("B0", r1, "historical_regression"),
     ]
     history = [
@@ -65,11 +68,13 @@ def test_repeated_generation_failed_attempt_and_reused_inputs(tmp_path):
             (r1, "render", "succeeded", 1.1),
             (r2, "render", "succeeded", 1.2),
             (no, "render", "succeeded", 1.5),
+            (missing, "render", "succeeded", 1.5),
         )
     }
     sampling = lambda f, sec: {
         "selected_unique_runs": f,
         "attempts_including_failures": f,
+        "attempts_with_wall_reading": f,
         "sum_attempt_wall_seconds": sec,
     }
     led = [
@@ -99,6 +104,25 @@ def test_repeated_generation_failed_attempt_and_reused_inputs(tmp_path):
     assert data["confirmation_selected_runs"] == 1 and data["confirmation_unsuccessful_attempts"] == 1
     assert data["new_acquisition_attempts"] == 4 and data["new_acquisition_attempt_wall_seconds"] == 16.0
     assert np.isclose(result["workers"]["render"]["new_acquisition_attempt_wall_seconds"], 12.3)
-    assert acquisition_accounting(roots, [], rows, history, cost) is None
+    assert data["new_acquisition_attempts_with_wall_reading"] == 4
+    cost[retry["run_id"]]["elapsed_seconds_monotonic"] = None
+    gstat = acquisition_accounting(roots, led, rows, history, cost)["workers"]["generation"]
+    assert gstat["new_acquisition_attempt_wall_seconds"] == 15.0
+    assert gstat["new_acquisition_attempts_with_wall_reading"] == 3
+    assert gstat["new_acquisition_attempts_missing_wall_reading"] == 1
+    assert acquisition_accounting(roots, [], rows, history, cost, allow_fixture_without_learning=True) is None
+    with pytest.raises(ValueError, match="pre-opening acquisition resources"):
+        acquisition_accounting(roots, [], rows, history, cost)
+    with pytest.raises(ValueError, match="duplicate new confirmation"):
+        acquisition_accounting(roots, led, [*rows, rows[0]], history, cost)
+    with pytest.raises(ValueError, match="original byte count"):
+        acquisition_accounting(roots, led, [c("B0", missing)], history, cost)
     with pytest.raises(ValueError, match="native view receipt differs"):
         acquisition_accounting(roots, led, [c("B0", no)], history, cost)
+    # A one-byte change to the actual NPZ preserves both signed indexes and its byte count.
+    source = store / "runs" / r1["run_id"] / "payload/source.npz"
+    raw = source.read_bytes()
+    source.unlink()
+    source.write_bytes(raw[:-1] + bytes([raw[-1] ^ 1]))
+    with pytest.raises(ValueError, match="(checksum|hash|changed|mismatch|identity)"):
+        acquisition_accounting(roots, led, [c("B0", r1)], history, cost)

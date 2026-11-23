@@ -74,6 +74,7 @@ def test_opening_to_pinned_public_report_no_private_results(tmp_path, monkeypatc
         "method_sha256": mh,
         "cohorts": {},
         "engineering": [],
+        "fixture_allow_missing_preopening": True,
     }
     t = fixture_truth()
     scores = base_scores()
@@ -213,8 +214,33 @@ def test_opening_to_pinned_public_report_no_private_results(tmp_path, monkeypatc
         "paired-changes.csv",
         "execution-costs.json",
     }
-    assert "Historical four-family regression" in (out / "study.md").read_text()
+    text = (out / "study.md").read_text()
+    assert all(
+        s in text
+        for s in (
+            "Historical four-family regression",
+            "strictly below",
+            "strictly exceeds 0.05",
+            "families with a defined value",
+            "N/A (0/8 families)",
+        )
+    )
     assert not any("private/path" in p.read_text() or str(tmp_path) in p.read_text() for p in pub.iterdir())
+    with monkeypatch.context() as formal:
+        formal.setattr(public, "CATALOG_SHA", file_hash(new))
+        with pytest.raises(ValueError, match="formal catalog requires"):
+            public.publish_report(
+                (store, shelf), spec, new, old, tmp_path / "formal-no-ledger", "synthetic-policy"
+            )
+    with pytest.raises(ValueError, match="pre-opening acquisition resources are required"):
+        public.publish_report(
+            (store, shelf),
+            dict(spec, fixture_allow_missing_preopening=False),
+            new,
+            old,
+            tmp_path / "no-ledger",
+            "synthetic-explicit",
+        )
     spec["method_sha256"] = "3" * 64
     with pytest.raises(ValueError, match="another method"):
         public.publish_report((store, shelf), spec, new, old, tmp_path / "bad", "synthetic-local-bad")

@@ -8,6 +8,7 @@ from statistics import mean
 
 from evidence_lens.formal_inputs import compact_pin, require, signature
 from evidence_lens.scoring_io import new_output, write_json
+from evidence_lens.stage2_parity import CATALOG_SHA
 from vision_confirmation import COHORTS, CONDITIONS, PRIOR_REPORT, authenticated, catalog_grid, successful
 from vision_evaluate import RATES
 from vision_sources import METHODS, find_run, member, signed
@@ -239,6 +240,24 @@ def engineering_readback(run):
             and len({r["family"] for r in public}) == len(public),
             "duplicate or missing learning family",
         )
+        for group in summaries:
+            cells = [
+                c for c in ledger["cells"] if (c["origin"], c["split"]) == (group["origin"], group["split"])
+            ]
+            for role, stats in group["workers"].items():
+                source_attempts = {a["run_id"]: a for c in cells for a in c["attempts"] if a["kind"] == role}
+                measured = [
+                    a["wall_seconds"] for a in source_attempts.values() if a["wall_seconds"] is not None
+                ]
+                require(
+                    len(source_attempts) == stats["attempts_including_failures"]
+                    and all(type(v) in (int, float) and math.isfinite(v) and v >= 0 for v in measured)
+                    and math.isclose(
+                        sum(measured), stats["sum_attempt_wall_seconds"], abs_tol=1e-9, rel_tol=1e-12
+                    ),
+                    "pre-opening attempt timing differs from original receipts",
+                )
+                stats["attempts_with_wall_reading"] = len(measured)
         data.update(
             description="Pre-opening B0 acquisition costs",
             scope="preopening_resources",
@@ -359,16 +378,23 @@ def engineering_readback(run):
     return data
 
 
-def acquisition_accounting(roots, engineering, acquisitions, attempts, cost_rows):
+def acquisition_accounting(
+    roots, engineering, acquisitions, attempts, cost_rows, *, allow_fixture_without_learning=False
+):
     """Count distinct workers and actual selected view files across new learning and confirmation."""
     inputs = [r for r in engineering if r.get("scope") == "preopening_resources"]
     if not inputs:
+        require(allow_fixture_without_learning, "recorded pre-opening acquisition resources are required")
         return None
     require(len(inputs) == 1, "duplicate learning acquisition ledger")
     learning = inputs[0]["learning_summary"]
     new = [r for r in learning if r["origin"] == "v11_new"]
     reused = [r for r in learning if r["origin"] == "original_learning"]
     held = [c for c in acquisitions if c["cohort"] == "new_confirmation"]
+    require(
+        len({(c["family"], c["condition"]) for c in held}) == len(held),
+        "duplicate new confirmation family and condition",
+    )
     chosen = {}
     actual_views = 0
     target_names = ("source", *(f"v{i:02}" for i in range(1, 7)))
@@ -385,15 +411,22 @@ def acquisition_accounting(roots, engineering, acquisitions, attempts, cost_rows
         doc = signed(p, spec["sha256"])
         for v in target_names:
             claim = doc["views"].get(v, {})
-            if claim.get("sha256"):
-                item = pred.files.get("payload/" + v + ".npz")
-                require(
-                    item
-                    and item["sha256"] == claim["sha256"]
-                    and item["bytes"] == claim.get("bytes", item["bytes"]),
-                    "selected native view receipt differs",
-                )
-                actual_views += 1
+            if not claim.get("sha256") and "bytes" not in claim:
+                continue
+            require(
+                type(claim.get("bytes")) is int
+                and claim["bytes"] > 0
+                and isinstance(claim.get("sha256"), str),
+                "selected view must have original byte count and SHA-256",
+            )
+            name = "payload/" + v + ".npz"
+            item = pred.files.get(name)
+            require(
+                item and item["sha256"] == claim["sha256"] and item["bytes"] == claim["bytes"],
+                "selected native view receipt differs",
+            )
+            member(pred, name, {"bytes": claim["bytes"], "sha256": claim["sha256"]})
+            actual_views += 1
     workers = {}
     for stage in ("generation", "render"):
         seen = {
@@ -408,9 +441,20 @@ def acquisition_accounting(roots, engineering, acquisitions, attempts, cost_rows
             for r in seen.values()
             if r["elapsed_seconds_monotonic"] is not None
         ]
+        require(
+            all(type(t) in (int, float) and math.isfinite(t) and t >= 0 for t in times),
+            "confirmation attempt timing is invalid",
+        )
+        pre_total = sum(z["workers"][stage]["attempts_including_failures"] for z in new)
+        pre_measured = sum(z["workers"][stage]["attempts_with_wall_reading"] for z in new)
+        total = pre_total + len(seen)
+        measured = pre_measured + len(times)
         workers[stage] = {
+            "preopening_attempts_with_wall_reading": pre_measured,
+            "new_acquisition_attempts_with_wall_reading": measured,
+            "new_acquisition_attempts_missing_wall_reading": total - measured,
             "preopening_selected_runs": sum(z["workers"][stage]["selected_unique_runs"] for z in new),
-            "preopening_attempts": sum(z["workers"][stage]["attempts_including_failures"] for z in new),
+            "preopening_attempts": pre_total,
             "confirmation_selected_runs": len(selected),
             "confirmation_attempts": len(seen),
             "confirmation_unsuccessful_attempts": sum(r["status"] != "succeeded" for r in seen.values()),
@@ -419,8 +463,7 @@ def acquisition_accounting(roots, engineering, acquisitions, attempts, cost_rows
                 z["workers"][stage]["sum_attempt_wall_seconds"] for z in new
             )
             + sum(times),
-            "new_acquisition_attempts": sum(z["workers"][stage]["attempts_including_failures"] for z in new)
-            + len(seen),
+            "new_acquisition_attempts": total,
         }
     return {
         "preopening_new_B0": sum(x["families"] for x in new),
@@ -430,6 +473,7 @@ def acquisition_accounting(roots, engineering, acquisitions, attempts, cost_rows
         "selected_native_prediction_views": sum(x["prediction_views"] for x in new) + actual_views,
         "workers": workers,
         "preopening_evidence_sha256": inputs[0]["receipt_sha256"],
+        "wall_time_scope": "Sum of available recorder wall readings for distinct attempts. A missing reading contributes no elapsed duration to this sum.",
     }
 
 
@@ -437,11 +481,15 @@ def scientific_text(path, summary, paired, cpu, training, attempts, engineering,
     """A standalone reading copy beside the portable numeric inventory."""
 
     def fmt(v, pct=False):
+        suffix = ""
         if isinstance(v, dict):
+            defined, total = v.get("defined_families"), v.get("total_families")
+            if defined is not None and total is not None and defined < total:
+                suffix = f" ({defined}/{total} families)"
             v = v["value"]
         if v is None:
-            return "N/A"
-        return f"{v * 100:.2f}%" if pct else f"{v:.4f}"
+            return "N/A" + suffix
+        return (f"{v * 100:.2f}%" if pct else f"{v:.4f}") + suffix
 
     def fv(v):
         return "N/A" if v is None else f"{v:.3e}"
@@ -451,7 +499,11 @@ def scientific_text(path, summary, paired, cpu, training, attempts, engineering,
         "",
         f"Recorded report `{summary['run_id']}`. Method freeze `{summary['method_sha256']}`. The primary visual models used the preregistered seed 1729.",
         "",
-        "Each family contributes equally to the summaries. AP first averages its defined two-class target views within a family. Operating rates divide pooled native pixel counts within each family. Low coverage uses reference-valid pixels as its denominator. Error in low uses pixels assigned low risk.",
+        "A reference pixel is valid (V) when all three display-RGB channels are finite and within [0, 1]. The evaluable set E is the subset of V whose predicted RGB is also valid. An evaluable pixel is a confirmed error when its channel-mean absolute RGB difference strictly exceeds 0.05.",
+        "",
+        "Low risk requires a finite method score strictly below its frozen threshold inside E. Scores at or above that threshold are high. Nonfinite scores inside E are unknown. V outside E contributes to the invalid-output count. Low coverage is low pixels divided by V. Error in low is confirmed errors among the low pixels.",
+        "",
+        "Seven-common AP ranks E pixels with finite scores from all seven methods. Equal scores remain together. AP averages target views containing both classes within each family. Operating rates pool the six target counts within each family. Each mean gives equal weight to families with a defined value. Cells with missing family estimates show the contributing count over the number scheduled.",
         "",
     ]
     for cohort, title in zip(COHORTS, ("New eight-family confirmation", "Historical four-family regression")):
@@ -574,7 +626,7 @@ def scientific_text(path, summary, paired, cpu, training, attempts, engineering,
                 "",
                 f"The {acquisition['new_acquisition_conditions']} new scheduled conditions comprised {acquisition['preopening_new_B0']} pre-opening B0 conditions and {acquisition['confirmation_scheduled_conditions']} confirmation conditions. The learning datasets also reused {acquisition['preopening_reused_B0']} earlier B0 acquisitions. Selected new renders supplied {acquisition['selected_native_prediction_views']} source and target view files.",
                 "",
-                f"The Windows ledger records {g['new_acquisition_attempts']} distinct generation attempts and {r['new_acquisition_attempts']} distinct render attempts. Their observed recorder wall times sum to {g['new_acquisition_attempt_wall_seconds'] / 60:.2f} and {r['new_acquisition_attempt_wall_seconds'] / 60:.2f} minutes, respectively. A shared generation counts once across condition references. These totals exclude earlier acquisitions reused for learning, historical regression and model fitting.",
+                f"The Windows ledger records {g['new_acquisition_attempts']} distinct generation attempts and {r['new_acquisition_attempts']} distinct render attempts. Generation wall times sum to {g['new_acquisition_attempt_wall_seconds'] / 60:.2f} minutes across {g['new_acquisition_attempts_with_wall_reading']}/{g['new_acquisition_attempts']} timed attempts. Render wall times sum to {r['new_acquisition_attempt_wall_seconds'] / 60:.2f} minutes across {r['new_acquisition_attempts_with_wall_reading']}/{r['new_acquisition_attempts']} timed attempts. Missing clock readings contribute no duration to the sum. A shared generation counts once across condition references.",
                 "",
             ]
         )
@@ -665,6 +717,7 @@ def publish_report(roots, spec, new, old, output, run_id):
         materials = signed(mat, msha)
         require(
             materials["test_unlock_sha256"] == marker
+            and len(materials["cells"]) == len(grids[cohort])
             and {(c["family"], c["condition"]) for c in materials["cells"]} == set(grids[cohort]),
             "materials refer to another opening or cohort",
         )
@@ -846,7 +899,14 @@ def publish_report(roots, spec, new, old, output, run_id):
     for pin in spec.get("engineering", []):
         trusted = cost(pin)
         engineering.append(engineering_readback(find_run(roots, trusted)))
-    acquisition = acquisition_accounting(roots, engineering, acquisitions, attempts, costs)
+    fixture_optional = spec.get("fixture_allow_missing_preopening", False)
+    require(
+        type(fixture_optional) is bool and (not fixture_optional or spec["catalog_sha256"] != CATALOG_SHA),
+        "the formal catalog requires recorded pre-opening acquisition resources",
+    )
+    acquisition = acquisition_accounting(
+        roots, engineering, acquisitions, attempts, costs, allow_fixture_without_learning=fixture_optional
+    )
     for upstream in method["models"].values():
         cost(upstream)
     for c in method["cpu_costs"].values():
@@ -874,7 +934,9 @@ def publish_report(roots, spec, new, old, output, run_id):
             "test_opening_sha256": marker,
             "methods": list(METHODS),
             "cohorts": meta,
-            "units": "Families are independent units. AP averages two-class target results within families. Operating rates use per-family pooled counts and equal family means.",
+            "units": "Families are independent units. AP averages two-class target views within each family. Operating rates use per-family pooled counts. Each mean gives equal weight to families with a defined value.",
+            "rgb_event": "E is a subset of reference-valid V with valid predicted RGB. The event is channel-mean absolute display-RGB difference strictly greater than 0.05 in E.",
+            "operating_rule": "Low is E with a finite method score strictly below its frozen threshold. Finite scores at or above the threshold are high.",
             "rank_domains": {
                 "own": "finite method scores in E",
                 "five_common": "five original methods finite in E, reported for the five originals",
