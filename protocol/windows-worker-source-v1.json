@@ -402,6 +402,56 @@
     },
     "src/evidence_lens/recorder.py": {
       "checkout_sha256": "f3031ded890e89bbbc0ea4a0d79fd16c9e4e33c5ae1262791859d55732c67c63",
+      "checkout_variants": {
+        "284270fbb15ae56fbc6438d2b5215f3f61dd4c944a7b8c7ff784849d4a1858ec": [
+          {
+            "insert": [],
+            "line": 28,
+            "remove": [
+              "from ._index import writer_gate\n"
+            ]
+          },
+          {
+            "insert": [
+              "    from ._index import writer_gate\n"
+            ],
+            "line": 135,
+            "remove": []
+          },
+          {
+            "insert": [
+              "                        _capacity.bytes_on_tree(Path(path).expanduser()) for path in [*embedded.values(), *staged_shared])\n",
+              "                    space = _capacity.check(root, expected, limits)\n"
+            ],
+            "line": 317,
+            "remove": [
+              "                        _capacity.bytes_on_tree(Path(path).expanduser(), count_links=True) for path in [*embedded.values(), *staged_shared])\n",
+              "                    # A cooperating archive move can rename a whole run during the active-store walk.\n",
+              "                    with writer_gate(root):\n",
+              "                        space = _capacity.check(root, expected, limits)\n"
+            ]
+          },
+          {
+            "insert": [],
+            "line": 443,
+            "remove": [
+              "        storage_reuse = {}\n",
+              "        if sys.platform == \"darwin\" and not rejected:\n",
+              "            from ._dedup import compact_inputs\n",
+              "            storage_reuse = compact_inputs(root, bundle, result)\n"
+            ]
+          },
+          {
+            "insert": [
+              "                \"manifest_files\": len(manifest[\"files\"]), \"manifest_bytes\": result[\"bytes\"]}\n"
+            ],
+            "line": 453,
+            "remove": [
+              "                \"manifest_files\": len(manifest[\"files\"]), \"manifest_bytes\": result[\"bytes\"], \"local_input_storage\": storage_reuse}\n"
+            ]
+          }
+        ]
+      },
       "edits": [
         {
           "insert": [

@@ -36,9 +36,12 @@ def worker_from_source(project):
         require(path.is_file() and not path.is_symlink(), f"missing worker source {name}; provide the historical Git checkout or --worker-zip")
         data = entry["historical_text"].encode("utf-8") if "historical_text" in entry else path.read_bytes()
         if sha_bytes(data) != entry["sha256"]:
-            require(sha_bytes(data) == entry.get("checkout_sha256"), f"{name} differs from both recorded versions; supply the pinned checkout or --worker-zip")
+            checkout_sha = sha_bytes(data)
+            edits = (entry.get("edits") if checkout_sha == entry.get("checkout_sha256") else
+                     entry.get("checkout_variants", {}).get(checkout_sha))
+            require(edits is not None, f"{name} differs from both recorded versions; supply the pinned checkout or --worker-zip")
             lines = data.decode("utf-8").splitlines(keepends=True)
-            for edit in reversed(entry["edits"]):
+            for edit in reversed(edits):
                 start = edit["line"] - 1
                 end = start + len(edit["remove"])
                 require(lines[start:end] == edit["remove"], f"worker reconstruction line mismatch in {name}")
