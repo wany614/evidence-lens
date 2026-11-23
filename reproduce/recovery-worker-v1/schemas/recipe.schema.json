@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "el-recovery-recipe-1"
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "stop_step": {
+      "const": 5000
+    },
+    "wall_seconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1800
+    },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 5000
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "eps2d": {
+      "type": "number",
+      "minimum": 1e-10,
+      "maximum": 10
+    },
+    "adam": {
+      "type": "object",
+      "properties": {
+        "betas": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.999999999999
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "eps": {
+          "type": "number",
+          "minimum": 1e-15,
+          "maximum": 0.01
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "betas",
+        "eps"
+      ]
+    },
+    "learning_rates": {
+      "type": "object",
+      "properties": {
+        "means": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 1e-15,
+            "maximum": 10
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "log_scales": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 1e-15,
+            "maximum": 10
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "quats": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 1e-15,
+            "maximum": 10
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "opacity_logits": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 1e-15,
+            "maximum": 10
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "color_logits": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 1e-15,
+            "maximum": 10
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "means",
+        "log_scales",
+        "quats",
+        "opacity_logits",
+        "color_logits"
+      ]
+    },
+    "loss": {
+      "type": "object",
+      "properties": {
+        "display_l1": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "one_minus_ssim": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "display_l1",
+        "one_minus_ssim"
+      ]
+    },
+    "topology": {
+      "type": "object",
+      "properties": {
+        "cap": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20000
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000
+        },
+        "stop": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000
+        },
+        "every": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000
+        },
+        "reset_steps": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4999
+          },
+          "uniqueItems": true
+        },
+        "reset_opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "prune_opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "grow_grad2d": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        },
+        "clone_scale_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        },
+        "prune_scale_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        },
+        "prune_scale_from": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "cap",
+        "start",
+        "stop",
+        "every",
+        "reset_steps",
+        "reset_opacity",
+        "prune_opacity",
+        "grow_grad2d",
+        "clone_scale_fraction",
+        "prune_scale_fraction",
+        "prune_scale_from"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "seed",
+    "stop_step",
+    "wall_seconds",
+    "checkpoints",
+    "eps2d",
+    "adam",
+    "learning_rates",
+    "loss",
+    "topology"
+  ]
+}

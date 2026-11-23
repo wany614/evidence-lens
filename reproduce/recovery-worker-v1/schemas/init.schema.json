@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "actual_method",
+    "scene_scale_m"
+  ],
+  "properties": {
+    "actual_method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene_scale_m": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  },
+  "description": "init.npz has exactly five FP32 arrays: means[N,3] metres, log_scales[N,3], quats[N,4] wxyz, opacity_logits[N], color_logits[N,3] (linear RGB logits)."
+}

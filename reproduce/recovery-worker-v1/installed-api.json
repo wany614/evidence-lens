@@ -1,0 +1,157 @@
+{
+  "api": {
+    "_update_state": {
+      "arguments": [
+        "self",
+        "params",
+        "state",
+        "info",
+        "packed"
+      ],
+      "line": 203,
+      "module": "strategy/default.py"
+    },
+    "duplicate": {
+      "arguments": [
+        "params",
+        "optimizers",
+        "state",
+        "mask"
+      ],
+      "line": 93,
+      "module": "strategy/ops.py"
+    },
+    "initialize_state": {
+      "arguments": [
+        "self",
+        "scene_scale"
+      ],
+      "line": 96,
+      "module": "strategy/default.py"
+    },
+    "rasterization": {
+      "arguments": [
+        "means",
+        "quats",
+        "scales",
+        "opacities",
+        "colors",
+        "viewmats",
+        "Ks",
+        "width",
+        "height",
+        "near_plane",
+        "far_plane",
+        "radius_clip",
+        "eps2d",
+        "sh_degree",
+        "packed",
+        "tile_size",
+        "backgrounds",
+        "render_mode",
+        "sparse_grad",
+        "absgrad",
+        "rasterize_mode",
+        "channel_chunk",
+        "distributed",
+        "camera_model",
+        "segmented",
+        "covars",
+        "with_ut",
+        "with_eval3d",
+        "radial_coeffs",
+        "tangential_coeffs",
+        "thin_prism_coeffs",
+        "ftheta_coeffs",
+        "rolling_shutter",
+        "viewmats_rs"
+      ],
+      "line": 33,
+      "module": "rendering.py"
+    },
+    "remove": {
+      "arguments": [
+        "params",
+        "optimizers",
+        "state",
+        "mask"
+      ],
+      "line": 184,
+      "module": "strategy/ops.py"
+    },
+    "reset_opa": {
+      "arguments": [
+        "params",
+        "optimizers",
+        "state",
+        "value"
+      ],
+      "line": 214,
+      "module": "strategy/ops.py"
+    },
+    "split": {
+      "arguments": [
+        "params",
+        "optimizers",
+        "state",
+        "mask",
+        "revised_opacity"
+      ],
+      "line": 124,
+      "module": "strategy/ops.py"
+    },
+    "step_pre_backward": {
+      "arguments": [
+        "self",
+        "params",
+        "optimizers",
+        "state",
+        "step",
+        "info"
+      ],
+      "line": 138,
+      "module": "strategy/default.py"
+    }
+  },
+  "gsplat": "1.5.3",
+  "installed_files": {
+    "csrc.pyd": {
+      "bytes": 12508672,
+      "sha256": "4ebffc03b4598609cfa89e2e069dfab5a3c2f1d7fbe7ce356ae22a64c7854539"
+    },
+    "cuda/_wrapper.py": {
+      "bytes": 85727,
+      "sha256": "b710953ca19e47ac93583e67cb44ea4bb92b97d06ba67ae5d950a71c878dc4e4"
+    },
+    "rendering.py": {
+      "bytes": 71778,
+      "sha256": "6b5e4101035031afbb26bed7e496382c7502f9d8bc7cc9a432f290674a4d9133"
+    },
+    "strategy/__init__.py": {
+      "bytes": 95,
+      "sha256": "9c95da567cb34601963ce1230b7f60104924935068fb30641c417f7152fbeeb7"
+    },
+    "strategy/base.py": {
+      "bytes": 1488,
+      "sha256": "f0e92bab7d567c671992b795337bbab36d4aabf32d618bd71fc9e1c63647c3c0"
+    },
+    "strategy/default.py": {
+      "bytes": 13773,
+      "sha256": "8f9cf7d5cb02999cdb3abfb85d796e6989d5249c25ed7b08ee58538a4288a622"
+    },
+    "strategy/ops.py": {
+      "bytes": 13476,
+      "sha256": "b30fa9e4d60a97ec619eb54d43d158d3e9dc8102c3d971acbb46da8385b53074"
+    }
+  },
+  "license": {
+    "bytes": 11345,
+    "sha256": "96a4f89293c0df19880da9b0e35f67589f5885ea61b224ef16bb2bd599a8a44d",
+    "type": "Apache-2.0",
+    "upstream": "https://github.com/nerfstudio-project/gsplat/blob/v1.5.3/LICENSE"
+  },
+  "numpy": "2.3.3",
+  "python": "3.11.5",
+  "schema": "el-recovery-installed-api-1",
+  "torch": "2.8.0+cu128"
+}

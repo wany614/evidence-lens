@@ -1,0 +1,159 @@
+{
+  "candidate_recipe_sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b",
+  "files": {
+    "LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "README.md": {
+      "bytes": 7732,
+      "sha256": "43eb8f006c2dc12f3b13a8a4a9497372c43ad147e87a123a668bc0ae907b285c"
+    },
+    "configs/candidate-recipe.json": {
+      "bytes": 923,
+      "sha256": "2572e6d6d8e257d530bf0b21b586baa979cb83c1b4da020d4338bac581da981b"
+    },
+    "configs/storage.json": {
+      "bytes": 281,
+      "sha256": "2887ba3816934f1fc92b0abefaf2c74eaef745e7ad95f43272174fd9a48b8c60"
+    },
+    "examples/write_cell.py": {
+      "bytes": 1600,
+      "sha256": "d83ba342be4cd64b2b7566a31cc1028539de01224ba2b5620bc93484ddfc4bc1"
+    },
+    "installed-api.json": {
+      "bytes": 3530,
+      "sha256": "2f6cd029b2330634db568ac5aec74a0dca3e9bf7fc977a6ddf59fb1600ff7185"
+    },
+    "licenses/NOTICE.txt": {
+      "bytes": 838,
+      "sha256": "b285f43819f9d23c1393e3edee2b40e4bc7f8328b16804d778e73b480efb6960"
+    },
+    "licenses/gsplat-1.5.3-LICENSE": {
+      "bytes": 11345,
+      "sha256": "96a4f89293c0df19880da9b0e35f67589f5885ea61b224ef16bb2bd599a8a44d"
+    },
+    "schemas/cell.schema.json": {
+      "bytes": 11056,
+      "sha256": "83abbcf4e72b5a6aba4aeddf907cabbbf79bd28993d1f458d133cdd209ec5ee9"
+    },
+    "schemas/init.schema.json": {
+      "bytes": 495,
+      "sha256": "2f4785b05c7bc86ce4220c231f25083bd550d582eaf4269326b21b9fd4ab5eeb"
+    },
+    "schemas/outputs.schema.json": {
+      "bytes": 1282,
+      "sha256": "cdf46684590d50b7f47f04a1a1a9c719284e842ad119ba12439485c8adde22a1"
+    },
+    "schemas/recipe.schema.json": {
+      "bytes": 4995,
+      "sha256": "aa79a62567c6ce04815f01e938953edb13798bb2c6985ee1a08fec9b6a18953c"
+    },
+    "scripts/preflight_api.py": {
+      "bytes": 2401,
+      "sha256": "ec9c7fcd2a4675feb1703a1d0a2d25e63f7f7637b6ae1b09eafdc13ffe3ba0a3"
+    },
+    "scripts/recovery_windows.py": {
+      "bytes": 14347,
+      "sha256": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27"
+    },
+    "src/evidence_lens/__init__.py": {
+      "bytes": 85,
+      "sha256": "19713bea9a3b23e84c20fd6128c62853e41507d4dcdfb0e7d8a0543da5a7ee0c"
+    },
+    "src/evidence_lens/_bundle.py": {
+      "bytes": 5076,
+      "sha256": "024d7d3ce9a6c9d78839c60b2a55c07fde0f3887a96495cfe4ba7ae8ba576708"
+    },
+    "src/evidence_lens/_capacity.py": {
+      "bytes": 2053,
+      "sha256": "8d995b310078ebc5ece881de4dfd6f9c29f24a9f3bb6a79dace921a6ff2e6187"
+    },
+    "src/evidence_lens/_dedup.py": {
+      "bytes": 4867,
+      "sha256": "1e401651afda285ac7fdfa3cb72f3eae8867a78b13bc85f0512a8a2059b3db72"
+    },
+    "src/evidence_lens/_index.py": {
+      "bytes": 7964,
+      "sha256": "da8d64adbf1653795f1d60b0fb3506c1dbac25bf5c9c4338768c0c0b0eff14ae"
+    },
+    "src/evidence_lens/_metrics.py": {
+      "bytes": 4972,
+      "sha256": "d36030b201a207bd574d7e975147ffeeb6a6c58c013f5e43e6fbdca00ea61ed6"
+    },
+    "src/evidence_lens/_snapshot.py": {
+      "bytes": 10030,
+      "sha256": "54598f8f848cb2867589d349cd3442fdf76c9146a43f1bc5741ac1c788201b0c"
+    },
+    "src/evidence_lens/_telemetry.py": {
+      "bytes": 7968,
+      "sha256": "9f7000598cef1be5b7a63c89c82b233069c23e37ca27737e0cb105ffec564860"
+    },
+    "src/evidence_lens/_verify.py": {
+      "bytes": 15413,
+      "sha256": "e2d90fc7ec4f42afdcc6186dc09c7d846a807e7665345c63a8386e9486da357b"
+    },
+    "src/evidence_lens/archive.py": {
+      "bytes": 18025,
+      "sha256": "04fca78955e5a4070b57b3619d5cc7ce29a3711bee3bd0ebdc5c485b2230b6bf"
+    },
+    "src/evidence_lens/recorder.py": {
+      "bytes": 24809,
+      "sha256": "284270fbb15ae56fbc6438d2b5215f3f61dd4c944a7b8c7ff784849d4a1858ec"
+    },
+    "src/recovery/__init__.py": {
+      "bytes": 72,
+      "sha256": "a62f0a24b32a6eef358b53d9bd8daf69ba776abd13248e9c17e95f00e4e97ef2"
+    },
+    "src/recovery/contract.py": {
+      "bytes": 5763,
+      "sha256": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1"
+    },
+    "src/recovery/engine.py": {
+      "bytes": 13691,
+      "sha256": "8b3972de08da0e7c42d5c9445d3dbff95659195abfdaf19d9a90284e54a5bbab"
+    },
+    "src/recovery/scene.py": {
+      "bytes": 6137,
+      "sha256": "ebcc72e3360e57ca8cb85b680415cf7a5144963bc7e46cff9e1fd098fc365917"
+    },
+    "src/recovery/topology.py": {
+      "bytes": 5902,
+      "sha256": "e7667706cf952841dd9388ab478108fbddab079248b0275670b292eb211bbd32"
+    },
+    "src/recovery/transport.py": {
+      "bytes": 7336,
+      "sha256": "b669202a4e89727a347e72d849564623c2ad13c04e344379eaebe3118fac801d"
+    },
+    "tests/compare_resume.py": {
+      "bytes": 3770,
+      "sha256": "6412c62d559d64a11a39b9b962f8bf003a796c4f4590ee169dde92c22f46f84f"
+    },
+    "tests/ed_probe.py": {
+      "bytes": 2867,
+      "sha256": "7e7050e4a2191eabaa3552ab178b60efb513d7f4516ed44afe3ecd7e72c9e029"
+    },
+    "tests/engineering_registration.py": {
+      "bytes": 1013,
+      "sha256": "ce0ef698c584a67aacbeb0d09a637718fe0e79c969827995ef8d16b984f2fc29"
+    },
+    "tests/forced_topology.py": {
+      "bytes": 4162,
+      "sha256": "e499f9ea0130fdc3748e920458d1208c7598365d5fbc2a1760b65773b8d3891b"
+    },
+    "tests/make_fixture.py": {
+      "bytes": 2799,
+      "sha256": "33c76751e0feac95d8d5edb6c86b822c50d49719a02b5cc3975e4af3472237a8"
+    },
+    "tests/run_engineering_windows.py": {
+      "bytes": 8744,
+      "sha256": "943502b89732ba7bd60a3aeefbf4fe12f8d0614e0be3a29180b0873e6708fb6e"
+    }
+  },
+  "license": "Apache-2.0",
+  "recorder_provenance": "original D1 main recorder, supplied unchanged",
+  "schema": "el-recovery-worker-source-1",
+  "scope": "software and engineering fixtures; independent frozen authority is required for real objects",
+  "tree_digest_algorithm": "sha256(json.dumps(files,sort_keys=True,separators=(comma,colon)).encode(utf8))",
+  "tree_sha256": "f412bc1f49d87ebce3cdb3d3646375a5e4d4120f038ce67e0b093c8f42fadcb7"
+}

@@ -1,0 +1,5 @@
+Evidence Lens recovery worker
+
+The Evidence Lens project license is reproduced in LICENSE, taken from the public Evidence Lens repository at commit a65b1caea258d991573bddb7a65f2bc4f9945fd7. Source under src/evidence_lens and configs/storage.json is the original project recorder and storage policy from the verified D1 main worker.
+
+The recovery implementation imports gsplat 1.5.3 as an installed dependency. gsplat is distributed under the Apache License, Version 2.0. Its installed distribution license, verified against the project source tree, is included in licenses/gsplat-1.5.3-LICENSE. The runtime includes no upstream compiled binary or vendored gsplat source. Installed API and binary identifiers are in installed-api.json. Upstream source attribution is available at https://github.com/nerfstudio-project/gsplat/tree/v1.5.3 .

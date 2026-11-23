@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "object_id",
+    "condition",
+    "recipe_sha256",
+    "generator_source_ids",
+    "source_rgb_sha256",
+    "source_camera_sha256",
+    "render_camera_sha256",
+    "reconstruction_run_id",
+    "status",
+    "checkpoints"
+  ],
+  "properties": {
+    "schema": {
+      "const": "el-recovery-outputs-1"
+    },
+    "condition": {
+      "enum": [
+        "M2",
+        "M4"
+      ]
+    },
+    "checkpoints": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "object",
+          "required": [
+            "step",
+            "phase",
+            "gaussians",
+            "checkpoint_sha256",
+            "producer_run_id",
+            "views"
+          ],
+          "properties": {
+            "views": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes",
+                  "png_path",
+                  "png_sha256",
+                  "png_bytes"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

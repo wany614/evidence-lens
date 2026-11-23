@@ -1,0 +1,417 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "el-recovery-cell-1"
+    },
+    "experiment_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+    },
+    "trial_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+    },
+    "object_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+    },
+    "condition": {
+      "enum": [
+        "M2",
+        "M4"
+      ]
+    },
+    "recipe_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "pattern": "^[0-9]{8}T[0-9]{12}Z-[a-f0-9]{16}$"
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "run_id",
+          "manifest_sha256"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "bytes",
+          "sha256"
+        ]
+      }
+    },
+    "purpose": {
+      "enum": [
+        "formal",
+        "engineering"
+      ]
+    },
+    "input_parents": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9]{8}T[0-9]{12}Z-[a-f0-9]{16}$"
+      }
+    },
+    "identity": {
+      "type": "object"
+    },
+    "stop_step": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "experiment_id",
+    "trial_id",
+    "object_id",
+    "condition",
+    "recipe_sha256",
+    "parents",
+    "files"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "condition": {
+            "const": "M2"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "files": {
+            "type": "object",
+            "properties": {
+              "source_cameras.json": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "render_cameras.json": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "init.npz": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "init.json": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "sources/s00.png": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "sources/s03.png": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "source_cameras.json",
+              "render_cameras.json",
+              "init.npz",
+              "init.json",
+              "sources/s00.png",
+              "sources/s03.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "condition": {
+            "const": "M4"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "files": {
+            "type": "object",
+            "properties": {
+              "source_cameras.json": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "render_cameras.json": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "init.npz": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "init.json": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "sources/s00.png": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "sources/s01.png": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "sources/s02.png": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              },
+              "sources/s03.png": {
+                "type": "object",
+                "properties": {
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "bytes",
+                  "sha256"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "source_cameras.json",
+              "render_cameras.json",
+              "init.npz",
+              "init.json",
+              "sources/s00.png",
+              "sources/s01.png",
+              "sources/s02.png",
+              "sources/s03.png"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
