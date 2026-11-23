@@ -70,7 +70,8 @@ def test_native_counts_common_masks_and_ties():
     no = ev.system_counts(fixture_truth(np.zeros((2, 4), bool)), scores, tau, np.ones(mask.shape, bool))
     assert no["L0"]["counts"]["V"] == 8 and no["L0"]["counts"]["E"] == 0
     assert (
-        no["L0"]["rates"]["low_coverage"]["value"] == 0 and no["L0"]["rates"]["low_risk_error"]["value"] is None
+        no["L0"]["rates"]["low_coverage"]["value"] == 0
+        and no["L0"]["rates"]["low_risk_error"]["value"] is None
     )
 
 
@@ -464,86 +465,134 @@ def test_seven_method_freeze_retains_prior_five_thresholds(tmp_path, monkeypatch
 
 
 def test_confirmed_opening_needs_actual_models_and_paired_seeds(tmp_path):
-    store = tmp_path / "store"
-    names = [f"test-{i}" for i in range(8)]
-    catalog = tmp_path / "catalog.json"
-    write_json(
-        catalog,
-        {
-            "schema": "el-vision-family-roster-1",
-            "families": [{"scene_family_id": n, "split": "test"} for n in names],
-        },
-    )
-    cats = file_hash(catalog)
-    train = []
-    models = {}
-    parents = []
-    for i, m in enumerate(ev.TWO):
-        for j, seed in enumerate((1729, 2718, 3141)):
-            rid = f"20000101T000000000000Z-{100 + i * 10 + j:016x}"
-            pin = seal_fixture(
-                store,
-                rid,
-                "model_fit",
-                "succeeded",
-                {},
-                {"payload/model/model.json": {"synthetic": True, "seed": seed}},
-            )
-            parents.append(pin)
-            train.append({**pin, "seed": seed, "method": m})
-            if j == 0:
-                model = sources.find_run([store], pin)
-                models[m] = {
-                    **pin,
-                    "files": [
-                        {
-                            "path": "payload/model/model.json",
-                            "sha256": file_hash(model.open("payload/model/model.json")),
-                        }
-                    ],
-                }
-    models.update({"L1-full": models[ev.TWO[0]], "L1-geometry": models[ev.TWO[0]]})
-    method = {
-        "schema": "el-vision-method-freeze-1",
-        "catalog_sha256": cats,
-        "test_family_ids": names,
-        "methods": list(sources.METHODS),
-        "models": models,
-        "thresholds": {k: {"tau": 0.5, "domain": "development-B0"} for k in sources.METHODS},
-        "display_rule": "v01",
-        "seeds": [1729, 2718, 3141],
-        "primary_seed": 1729,
-        "training_receipts": train,
-        "deployment_rule": {"selected": "L1-full"},
-    }
+    from stage2_opening import open_cohort, verify_opening
+    from vision_gate_fixture import gate_fixture
 
-    def marker(id_, m):
-        pin = seal_fixture(
-            store,
-            id_,
-            "report",
-            "succeeded",
-            {"experiment_id": "stage2-method-freeze"},
-            {"payload/method-freeze.json": m, "inputs.json": {"parents": parents}},
-        )
-        run = sources.find_run([store], pin)
-        member = "payload/method-freeze.json"
-        return {
+    g = gate_fixture(tmp_path)
+    pin, method, method_sha = g["freeze"]()
+    store, shelf, cat, sha = (g[k] for k in ("store", "shelf", "catalog", "catalog_sha"))
+    result = open_cohort(store, cat, sha, pin["run_id"], pin["manifest_sha256"])
+    assert result["method_sha256"] == method_sha and len(method["training_receipts"]) == 8
+    assert verify_opening(store, json.loads(cat.read_bytes()), sha) == result
+    marker = store / "protocol/stage2" / sha / "test-opening.json"
+    assert sources.test_authority([store, shelf], (cat, sha)) == file_hash(marker)
+    for c in method["cpu_costs"].values():
+        assert c["native_cold_seconds"] == 2 and c["cold_seconds"] == 2.5
+        assert c["native_process_tree_peak_rss_bytes"] == 100 and c["rss_bytes"] == 115
+        assert len(c["canonical_win_to_mac"]) == 6
+
+
+@pytest.mark.parametrize(
+    ("change", "reason"),
+    [
+        ("omit_second_A", "eight-candidate"),
+        ("change_repeat_lr", "learning rate"),
+        ("replace_seed_A", "selected seed-A"),
+        ("change_native_pin", "original member digest mismatch"),
+        ("change_external_pin", "original member digest mismatch"),
+        ("forge_rss", "cold/RSS projection"),
+        ("forge_hot_p95", "wall order statistics"),
+        ("forge_device_parity", "numerical diagnostics"),
+        ("wrong_display", "thresholds, seeds or display"),
+        ("change_tau", "operating point"),
+    ],
+)
+def test_freeze_and_recheck_reject_changed_scientific_proofs(tmp_path, change, reason):
+    from stage2_opening import open_cohort
+    from vision_gate_fixture import gate_fixture
+
+    g = gate_fixture(tmp_path)
+
+    def mutate(method, roster):
+        rec = method["training_receipts"]
+        m = "L2-frozen"
+        cost = method["cpu_costs"][m]
+        if change == "omit_second_A":
+            rec.pop(1)
+            roster["candidate_runs"].pop(1)
+        elif change == "change_repeat_lr":
+            rec[2]["head_lr"] = rec[1]["head_lr"]
+        elif change == "replace_seed_A":
+            method["models"][m].update({k: rec[2][k] for k in ("run_id", "manifest_sha256", "model_sha256")})
+        elif change == "change_native_pin":
+            cost["native_cost_sha256"] = "a" * 64
+        elif change == "change_external_pin":
+            cost["process_cost_sha256"] = "9" * 64
+        elif change == "forge_rss":
+            cost["rss_bytes"] = 99
+        elif change == "forge_hot_p95":
+            cost["hot_p95_seconds"] = 0.5
+        elif change == "forge_device_parity":
+            cost["canonical_win_to_mac"]["v02"]["threshold_crossings"] = 12
+        elif change == "wrong_display":
+            method["display_rule"] = "v04"
+        elif change == "change_tau":
+            method["thresholds"]["L0"]["tau"] = 0.6
+
+    pin, _, method_sha = g["freeze"](mutate)
+    store, shelf, cat, sha = (g[k] for k in ("store", "shelf", "catalog", "catalog_sha"))
+    marker = store / "protocol/stage2" / sha / "test-opening.json"
+    with pytest.raises(ValueError, match=reason):
+        open_cohort(store, cat, sha, pin["run_id"], pin["manifest_sha256"])
+    assert not marker.exists()
+    marker.parent.mkdir(parents=True, exist_ok=True)
+    write_json(
+        marker,
+        {
             "schema": "el-stage2-test-opening-1",
-            "catalog_sha256": cats,
-            "test_family_ids": names,
+            "catalog_sha256": sha,
+            "test_family_ids": g["names"],
             "freeze_run_id": pin["run_id"],
             "freeze_manifest_sha256": pin["manifest_sha256"],
-            "method_member": member,
-            "method_sha256": file_hash(run.open(member)),
-        }
+            "method_member": "payload/method-freeze.json",
+            "method_sha256": method_sha,
+        },
+    )
+    with pytest.raises(ValueError, match=reason):
+        sources.test_authority([store, shelf], (cat, sha))
 
-    mp = store / "protocol/stage2" / cats / "test-opening.json"
-    mp.parent.mkdir(parents=True)
-    write_json(mp, marker("20000101T000000000000Z-00000000000000ff", method))
-    assert sources.test_authority([store], (catalog, cats)) == file_hash(mp)
-    assert ev.model_matches(method, "L2-vision-ft", models["L2-vision-ft"]["files"][0]["sha256"])
-    broken = {**method, "training_receipts": train[:-1]}
-    write_json(mp, marker("20000101T000000000000Z-00000000000000fe", broken))
-    with pytest.raises(ValueError, match="incomplete paired"):
-        sources.test_authority([store], (catalog, cats))
+
+@pytest.mark.parametrize(
+    ("fault", "reason"),
+    [
+        ("swapped_external", "external process cost has a different"),
+        ("wrong_raster", "native risk, support and threshold states"),
+    ],
+)
+def test_sealed_but_unrelated_or_non_native_cost_cannot_open(tmp_path, fault, reason):
+    from stage2_opening import open_cohort
+    from vision_gate_fixture import gate_fixture
+
+    g = gate_fixture(tmp_path, cost_fault=fault)
+    pin, _, _ = g["freeze"]()
+    with pytest.raises(ValueError, match=reason):
+        open_cohort(g["store"], g["catalog"], g["catalog_sha"], pin["run_id"], pin["manifest_sha256"])
+    assert not (g["store"] / "protocol/stage2" / g["catalog_sha"] / "test-opening.json").exists()
+
+
+def test_original_native_and_process_costs_reach_the_scientific_freeze(tmp_path):
+    from vision_method import cost_evidence
+    from vision_gate_fixture import gate_fixture
+
+    g = gate_fixture(tmp_path)
+    _, method, _ = g["freeze"]()
+    ds = json.loads(g["dev_data"].read_bytes())
+    for mode in ("L2-frozen", "L2-vision-ft"):
+        model = method["models"][mode]
+        prior = method["cpu_costs"][mode]
+        root = g["shelf"] / "runs" / model["run_id"] / "payload/development-scores"
+        views = json.loads((root / "scores.json").read_bytes())["views"]
+        produced = cost_evidence(
+            [g["store"], g["shelf"]],
+            prior["pin"],
+            prior["family"],
+            {"fit": {**model, "branch": mode, "threshold": 0.5}},
+            ds,
+            (root, {(r["family"], r["condition"], r["view"]): r for r in views}, None),
+        )
+        assert produced == prior
+        assert (
+            produced["external_sample_interval_seconds"]
+            == produced["native_rss_sample_interval_seconds"]
+            == 0.01
+        )

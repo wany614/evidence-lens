@@ -77,7 +77,9 @@ def historical_materials(roots, old, marker_sha, output):
     require(len(grid) == 12, "four historical families with all three conditions required")
     initial, initial_sha = successful(roots, PRIOR_REPORT, "public-numerical/selection.json")
     sealed = signed(initial, initial_sha)
-    previous = {(r["scene_family_id"], r["condition_id"]): compact_pin(r) for r in sealed["comparison_trials"]}
+    previous = {
+        (r["scene_family_id"], r["condition_id"]): compact_pin(r) for r in sealed["comparison_trials"]
+    }
     require(
         sealed["catalog_sha256"] == ORIGINAL_CATALOG_SHA and set(previous) == set(grid),
         "historical report roster changed",
@@ -125,6 +127,10 @@ def historical_materials(roots, old, marker_sha, output):
                 "previous_comparison": previous[family, condition] | {"receipt_sha256": rs},
             }
         )
+    from vision_sources import paired_render_sources
+
+    for family in {c["family"] for c in cells}:
+        paired_render_sources([x for x in cells if x["family"] == family])
     with new_output(output) as out:
         write_json(
             out / "materials.json",
@@ -177,6 +183,12 @@ def validated_dataset(roots, spec, new, old, marker_sha, method):
             {identity(r) for r in ds["views"]} == slots and len(ds["views"]) == len(slots),
             "missing historical cell/view",
         )
+    signed_inputs = method["learning_split_audit"]["source_input_sha256"]
+    learning = {h for seen in signed_inputs.values() for h in seen}
+    require(
+        learning.isdisjoint({r["source_input_sha256"] for r in ds["views"] if r["source_input_sha256"]}),
+        "confirmation or historical source PNG duplicates learning material",
+    )
     return fp.parent, ds, ds_sha
 
 
@@ -185,7 +197,9 @@ def original_package(roots, method, name):
     assert role in ("L1-full", *TWO)
     model = method["models"][role]
     if name == "original-five":
-        require(model["model_sha256"] == method["models"]["L1-geometry"]["model_sha256"], "unmatched LR models")
+        require(
+            model["model_sha256"] == method["models"]["L1-geometry"]["model_sha256"], "unmatched LR models"
+        )
     run = find_run(roots, compact_pin(model))
     for record in model["files"]:
         member(run, record["path"], record)
@@ -229,6 +243,16 @@ def score_deploy(root, ds, ds_sha, method, method_sha, tag, package, model_sha, 
             rec = {k: row[k] for k in ("family", "condition", "view", "reason")}
             rgb, dep = row["rgb"], row["full"]["deploy"]
             rec.update(
+                **{
+                    k: row[k]
+                    for k in (
+                        "source_input_sha256",
+                        "source_camera_sha256",
+                        "source_prediction_sha256",
+                        "target_prediction_sha256",
+                        "render_pin",
+                    )
+                },
                 rgb_sha256=rgb["sha256"] if rgb else None,
                 deploy_sha256=dep["sha256"] if dep else None,
                 score=None,
@@ -474,7 +498,9 @@ def boards(roots, mat, root, ds, ds_sha, sources, tau, cohort, method_sha, outpa
                 "prediction_member_sha256": (cell["views"]["v01"]["prediction"] or {}).get("sha256"),
                 "truth_sha256": row["full"]["truth"]["sha256"],
                 "method_sha256": method_sha,
-                "scores": {m: entries[identity(row)]["score"] for m, (_src, entries, _spec) in sources.items()},
+                "scores": {
+                    m: entries[identity(row)]["score"] for m, (_src, entries, _spec) in sources.items()
+                },
                 "dataset_sha256": ds_sha,
             }
             path = out / f / c
@@ -596,6 +622,20 @@ def work(action, spec, roots, new, old, outpath, approved_registry=None):
         )
     srcpins = [successful(roots, spec["scores"][tag], "scores.json") for tag in SCORE_SETS]
     sources = score_sources(ds, ds_sha, srcpins)
+    for row in ds["views"]:
+        required = (
+            "source_input_sha256",
+            "source_camera_sha256",
+            "source_prediction_sha256",
+            "target_prediction_sha256",
+            "render_pin",
+        )
+        for _, records, _ in sources.values():
+            original = records[identity(row)]
+            require(
+                all(k in row and k in original and original[k] == row[k] for k in required),
+                "confirmation/historical scorer and original condition/source hashes differ",
+            )
     for tag, (scorefile, digest) in zip(SCORE_SETS, srcpins):
         doc = signed(scorefile, digest)
         require(

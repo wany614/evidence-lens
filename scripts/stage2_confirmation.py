@@ -124,7 +124,12 @@ def authority(a):
 
 def invoke(a, script, flags):
     p = a.project / "scripts" / script
-    env = dict(os.environ, PYTHONPATH=str(a.project / "src"), PYTHONUTF8="1")
+    env = dict(
+        os.environ,
+        PYTHONPATH=str(a.project / "src"),
+        PYTHONUTF8="1",
+        EVIDENCE_LENS_ARCHIVE_SHELF=str(a.shelf),
+    )
     cmd = [str(a.python), str(p), *map(str, flags)]
     result = subprocess.run(
         cmd,
@@ -175,42 +180,81 @@ class CapacityHold(RuntimeError):
 
 def optional_archive(a, row, dest, authorization_digest):
     from stage2_confirmation_archive import snapshot
+    from stage2_cloud_restore import offer, provider_location, read_offer
 
     folder = getattr(a, "private_archive", None)
     if folder is None:
         return None
-    f = row["family"]
-    marker = dest / "archives" / (f + ".local.json")
-    family_hash = sha(dest / "families" / (f + ".json"))
+    family = row["family"]
+    marker = dest / "archives" / (family + ".local.json")
+    family_hash = sha(dest / "families" / (family + ".json"))
+    packed = folder / (family + ".zip")
     if marker.is_file():
         record = load(marker)
         require(
             record["family_sha256"] == family_hash
             and record["authorization_sha256"] == authorization_digest
-            and (folder / (f + ".zip")).is_file(),
-            "Existing family archive or authority differs",
+            and packed.is_file(),
+            "Existing private family archive or authority changed",
         )
-        return record
-    args = SimpleNamespace(
-        project=a.project,
-        catalog=a.catalog,
-        store=a.store,
-        shelf=a.shelf,
-        catalog_sha256=a.catalog_sha256,
-        family=f,
-        family_sha256=family_hash,
-        authorization_sha256=authorization_digest,
-        output=folder / (f + ".zip"),
-    )
-    proof = snapshot(args)
-    record = {
-        "schema": "el-stage2-family-local-archive-1",
-        "family_sha256": family_hash,
-        "authorization_sha256": authorization_digest,
-        "provider_status": "awaiting_independent_download",
-        **{"proof": proof},
-    }
-    publish(marker, encoded(record))
+    else:
+        args = SimpleNamespace(
+            project=a.project,
+            catalog=a.catalog,
+            store=a.store,
+            shelf=a.shelf,
+            catalog_sha256=a.catalog_sha256,
+            family=family,
+            family_sha256=family_hash,
+            authorization_sha256=authorization_digest,
+            output=packed,
+        )
+        proof = snapshot(args)
+        record = {
+            "schema": "el-stage2-family-local-archive-1",
+            "family_sha256": family_hash,
+            "authorization_sha256": authorization_digest,
+            "provider_status": "awaiting_independent_download",
+            "proof": proof,
+        }
+        publish(marker, encoded(record))
+    cloud = getattr(a, "cloud_stage_directory", None)
+    if cloud:
+        location = provider_location(
+            a.store, getattr(a, "provider_config", None), getattr(a, "provider_config_sha256", None)
+        )
+        offer_marker = dest / "archives" / (family + ".cloud-offer.json")
+        if not offer_marker.is_file():
+            offered = offer(
+                packed,
+                record["proof"]["container_sha256"],
+                cloud,
+                dest / "archives" / "offers",
+                location=location,
+            )
+            publish(
+                offer_marker,
+                encoded(
+                    {
+                        "schema": "el-stage2-family-cloud-offer-pin-1",
+                        "family": family,
+                        "authorization_sha256": authorization_digest,
+                        "archive_sha256": record["proof"]["container_sha256"],
+                        "offer_name": offered.name,
+                        "offer_sha256": sha(offered),
+                    }
+                ),
+            )
+        else:
+            ready = load(offer_marker)
+            local = dest / "archives" / "offers" / ready["offer_name"]
+            read_offer(local, ready["offer_sha256"], location)
+            require(
+                ready["authorization_sha256"] == authorization_digest
+                and ready["archive_sha256"] == record["proof"]["container_sha256"]
+                and sha(local) == ready["offer_sha256"],
+                "Cloud archive offer differs",
+            )
     return record
 
 
@@ -452,7 +496,7 @@ def step(a, plan, reg, auth):
         optional_archive(a, row, dest, ad)
         return waiting("family_complete", family=f, completed=len(families), family_sha256=sha(completed))
     trials = {
-        t: {"selection_sha256": v["selection_sha256"]}
+        t: {"selection_sha256": v["selection_sha256"], "status": v["selection_status"]}
         for item in families.values()
         for t, v in item["trials"].items()
     }
@@ -497,6 +541,19 @@ def main(argv=None):
         type=Path,
         help="Optional original family archive directory outside the active store",
     )
+    live.add_argument(
+        "--cloud-stage-directory",
+        type=Path,
+        help="Dedicated private Drive Stage B confirmation v1 folder; requires --private-archive",
+    )
+    live.add_argument(
+        "--provider-config",
+        type=Path,
+        help="Private Drive location file; default is the configured store's private protocol directory",
+    )
+    live.add_argument(
+        "--provider-config-sha256", help="Expected SHA of the explicit private Drive location"
+    )
     live.add_argument("--once", action="store_true")
     live.add_argument("--poll", type=int, default=15)
     a = p.parse_args(argv)
@@ -511,6 +568,11 @@ def main(argv=None):
         )
     require(1 <= a.poll <= 60, "Polling interval outside 1..60 seconds")
     plan, reg, op = authority(a)
+    require(not a.cloud_stage_directory or a.private_archive, "Cloud staging requires a private archive")
+    if a.cloud_stage_directory:
+        from stage2_cloud_restore import provider_location
+
+        provider_location(a.store, a.provider_config, a.provider_config_sha256)
     if a.private_archive:
         a.private_archive = a.private_archive.resolve()
         require(

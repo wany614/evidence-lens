@@ -111,7 +111,9 @@ def emit_cell(cell, catalog_hash, roots, root):
     old, history = None, None
     if "historical_extract" in cell:
         old = find_run(roots, cell["historical_extract"])
-        history = signed(old.open("payload/family.json"), cell["historical_extract"]["extract_manifest_sha256"])
+        history = signed(
+            old.open("payload/family.json"), cell["historical_extract"]["extract_manifest_sha256"]
+        )
     result = []
     for view in TARGETS:
         entry = cell["views"][view]
@@ -143,7 +145,9 @@ def emit_cell(cell, catalog_hash, roots, root):
             a = packed(fpath, (*ALL_COLUMNS, "scoreable", "alpha_score", "frame_relation", "l0"))
             raw_features(a, shape)
             eligible = a["scoreable"] & e
-            index = sample_indices(eligible, family, sample_identity(cell, view), catalog_hash).astype(np.int32)
+            index = sample_indices(eligible, family, sample_identity(cell, view), catalog_hash).astype(
+                np.int32
+            )
             x = feature_rows(a, index)
             path = directory / "rgb.npy"
             np.save(path, pred["rgb"], allow_pickle=False)
@@ -211,6 +215,18 @@ def emit_cell(cell, catalog_hash, roots, root):
                 "sample_probability": len(index) / population if population else None,
                 "sample_seed": str(seed_for(family, sample_identity(cell, view), catalog_hash)),
                 "source_input_sha256": cell["input_sha256"],
+                **(
+                    {
+                        "source_camera_sha256": cell["camera_sha256"],
+                        "source_prediction_sha256": (cell["receipts"].get("source_prediction") or {}).get(
+                            "sha256"
+                        ),
+                        "target_prediction_sha256": (entry["prediction"] or {}).get("sha256"),
+                        "render_pin": cell["parents"].get("prediction"),
+                    }
+                    if split in ("test", "historical_regression")
+                    else {}
+                ),
                 "selection_sha256": cell["selection_sha256"],
                 "historical_learning_parity": old is not None,
             }
@@ -355,7 +371,9 @@ def training_table(root, d):
 
 def combine(datasets, split, output):
     """Join disjoint pinned learning transports with identical original asset bytes."""
-    require(split in ("train", "development"), "new confirmation data is never joined to old learning material")
+    require(
+        split in ("train", "development"), "new confirmation data is never joined to old learning material"
+    )
     with new_output(output) as out:
         rows, pins, parents = [], {}, []
         keys = set()

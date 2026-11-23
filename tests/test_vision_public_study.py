@@ -12,7 +12,6 @@ from vision_confirmation import COHORTS, CONDITIONS
 from vision_evaluate import (
     METHODS,
     SCORE_SETS,
-    TWO,
     aggregate_method,
     compact_curve,
     groups,
@@ -57,107 +56,18 @@ def test_opening_to_pinned_public_report_no_private_results(tmp_path, monkeypatc
     new, newnames = catalog("syntheticnew", 8)
     old, oldnames = catalog("syntheticpast", 4)
     monkeypatch.setattr(public, "ORIGINAL_CATALOG_SHA", file_hash(old))
-    models = {}
-    training = []
-    costs = {}
-    for m in TWO:
-        for i, seed in enumerate((1729, 1729, 2718, 3141)):
-            ident = rid()
-            tr = {
-                "schema": "synthetic-fixture",
-                "seed": seed,
-                "head_lr": 1e-4,
-                "backbone_lr": 0,
-                "best_epoch": 1,
-                "epochs": 1,
-                "best_development_family_equal_ap": 0.5,
-                "wall_seconds": 1.0,
-                "optimizer_steps": 1,
-                "peak_cuda_allocated": 0,
-                "peak_cuda_reserved": 0,
-            }
-            run = seal(
-                "model_fit",
-                {"payload/training.json": tr, "payload/package/model.json": {"synthetic": True, "seed": seed}},
-                id_=ident,
-            )
-            mp = asset(run, "package/model.json")
-            mh = file_hash(mp)
-            training.append(
-                {
-                    **run,
-                    "method": m,
-                    "model_sha256": mh,
-                    "seed": seed,
-                    "training_json_sha256": file_hash(asset(run, "training.json")),
-                }
-            )
-            if i == 0:
-                models[m] = {
-                    **run,
-                    "model_sha256": mh,
-                    "files": [{"path": "payload/package/model.json", **signature(mp)}],
-                }
-        cost = seal("archive_verify", {"payload/test.json": {"synthetic": True}})
-        costs[m] = {
-            "pin": cost,
-            "canonical_win_to_mac": {},
-            "family": "engineer",
-            "cold_seconds": 2.0,
-            "hot_p50_seconds": 1.0,
-            "hot_p95_seconds": 1.0,
-            "rss_bytes": 100,
-        }
-    models["L1-full"] = models["L1-geometry"] = models[TWO[0]]
-    values = {m: 0.5 for m in METHODS}
-    mid = rid()
-    replay = doc(
-        tmp_path,
-        "replay.json",
-        {"paired": {"1729": {}}, "primary_domains": {m: {"own": {"macro": {"value": 0.5}}} for m in METHODS}},
+    from vision_gate_fixture import gate_fixture
+    from stage2_opening import open_cohort
+
+    fixture = gate_fixture(tmp_path, names=newnames)
+    new, shelf = fixture["catalog"], fixture["shelf"]
+    methodpin, method, mh = fixture["freeze"]()
+    models, values = method["models"], fixture["values"]
+    opened = open_cohort(
+        store, new, fixture["catalog_sha"], methodpin["run_id"], methodpin["manifest_sha256"]
     )
-    method = {
-        "schema": "el-vision-method-freeze-1",
-        "run_id": mid,
-        "catalog_sha256": file_hash(new),
-        "study_sha256": "2" * 64,
-        "methods": list(METHODS),
-        "models": models,
-        "thresholds": {m: {"tau": v, "domain": "development-B0"} for m, v in values.items()},
-        "test_family_ids": newnames,
-        "primary_seed": 1729,
-        "seeds": [1729, 2718, 3141],
-        "display_rule": "v01",
-        "training_receipts": training,
-        "deployment_rule": {"default": "L1-full"},
-        "baseline_development_qa": {"synthetic": True},
-        "cpu_costs": costs,
-        "development_replay_sha256": file_hash(replay),
-    }
-    methodpin = seal(
-        "report",
-        {
-            "payload/method-freeze.json": method,
-            "payload/development-replay.json": replay,
-            "inputs.json": {"parents": training},
-        },
-        {"experiment_id": "stage2-method-freeze"},
-        mid,
-    )
-    mh = file_hash(asset(methodpin, "method-freeze.json"))
-    marker = doc(
-        store / "protocol" / "stage2" / file_hash(new),
-        "test-opening.json",
-        {
-            "schema": "el-stage2-test-opening-1",
-            "catalog_sha256": file_hash(new),
-            "test_family_ids": newnames,
-            "freeze_run_id": mid,
-            "freeze_manifest_sha256": methodpin["manifest_sha256"],
-            "method_member": "payload/method-freeze.json",
-            "method_sha256": mh,
-        },
-    )
+    assert opened["method_sha256"] == mh
+    marker = store / "protocol/stage2" / fixture["catalog_sha"] / "test-opening.json"
     spec = {
         "catalog_sha256": file_hash(new),
         "method": methodpin,
@@ -248,7 +158,9 @@ def test_opening_to_pinned_public_report_no_private_results(tmp_path, monkeypatc
                 "sha256": file_hash(asset(sr, "scores.json")),
             }
         out = {
-            "schema": "el-vision-comparison-1" if cohort == COHORTS[0] else "el-vision-historical-regression-1",
+            "schema": "el-vision-comparison-1"
+            if cohort == COHORTS[0]
+            else "el-vision-historical-regression-1",
             "thresholds": values,
             "test_opening_sha256": file_hash(marker),
             "methods": list(METHODS),

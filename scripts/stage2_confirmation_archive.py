@@ -4,20 +4,13 @@ import argparse
 import hashlib
 import json
 import os
-import re
 import shutil
-import sys
 import tempfile
-import time
-import urllib.parse
-import urllib.request
 import zipfile
 from pathlib import Path
 
 from evidence_lens._bundle import HASH, RUN_ID, encoded, freeze_tree, load, local_path, sha
-from evidence_lens._index import writer_gate
 from evidence_lens._verify import require, verify_bundle
-from evidence_lens.archive import make_receipt, project_receipt
 from make_handoff import publish
 from portable_family import entry
 from working_set import locations, relocate
@@ -354,109 +347,6 @@ def snapshot(a):
     )
 
 
-def provider(a):
-    proof = verify_archive(a.container, a.sha256)
-    doc, _ = contents(a.container, a.sha256)
-    identity = doc["identity"]
-    base = a.store / "stage2" / identity["catalog_sha256"] / "confirmation"
-    f = doc["family"]
-    require(
-        isinstance(f, str) and re.fullmatch(r"scene_0[4][1-8]_[a-z0-9_]+", f), "Not a confirmation family"
-    )
-    group = win.signed(base / "families" / (f + ".json"), identity["family_sha256"])
-    auth = win.signed(base / "authorization.json", identity["authorization_sha256"])
-    require(
-        group["family"] == f
-        and f in auth["test_family_ids"]
-        and group["authorization_sha256"] == identity["authorization_sha256"]
-        and auth["opening_sha256"] == identity["opening_sha256"]
-        and auth["catalog_sha256"] == identity["catalog_sha256"],
-        "Private archive must match the selected family and opening",
-    )
-    direct = {
-        v["run_id"]: v["manifest_sha256"]
-        for cell in group["trials"].values()
-        for v in (*cell["run_pins"].values(), *cell["returns"])
-    }
-    require(
-        all(proof["run_manifests"].get(r) == d for r, d in direct.items()),
-        "Missing family run in the remote container",
-    )
-    for rid, d in proof["run_manifests"].items():
-        available = [t / "runs" / rid for t in (a.store, a.shelf) if (t / "runs" / rid).is_dir()]
-        require(
-            len(available) == 1
-            and sha(available[0] / "manifest.json") == d
-            and load(available[0] / "run.json")["scene_family_id"] == f,
-            "Remote candidate includes an unavailable or unrelated recorder bundle",
-        )
-    require(re.fullmatch(r"[a-zA-Z0-9_-]{8,200}", a.object_id), "Invalid provider object identity")
-    url = sys.stdin.readline().strip()
-    u = urllib.parse.urlsplit(url)
-    host = u.hostname or ""
-    require(
-        u.scheme == "https"
-        and (
-            host == "googleapis.com"
-            or host.endswith(".googleapis.com")
-            or host == "googleusercontent.com"
-            or host.endswith(".googleusercontent.com")
-            or host in ("drive.google.com", "drive.usercontent.google.com")
-        ),
-        "Expected a Google Drive provider download",
-    )
-    start = time.monotonic()
-    val = hashlib.sha256()
-    n = 0
-    with urllib.request.urlopen(
-        urllib.request.Request(url, headers={"User-Agent": "Evidence-Lens-Research-Integrity"}), timeout=120
-    ) as inp:
-        while block := inp.read(1 << 20):
-            n += len(block)
-            require(n <= proof["bytes"], "Unexpected provider size")
-            val.update(block)
-    require(n == proof["bytes"] and val.hexdigest() == a.sha256, "Independent provider bytes differ")
-    root = a.store / "stage2" / doc["identity"]["catalog_sha256"] / "confirmation" / "archives"
-    marker = root / (a.sha256 + ".json")
-    with writer_gate(a.store):
-        if marker.is_file():
-            prior = load(marker)
-            require(
-                prior["object_id"] == a.object_id and prior["container_sha256"] == a.sha256,
-                "Existing provider proof differs",
-            )
-            return prior
-        receipts = {}
-        for rid, m in proof["run_manifests"].items():
-            rp, rec = make_receipt(
-                a.store,
-                "archive",
-                run_id=rid,
-                manifest_sha256=m,
-                status="verified",
-                reason=None,
-                container_sha256=a.sha256,
-                bytes=n,
-                provider="Google Drive",
-                remote_object_ids=[a.object_id],
-                remote_relative_path=a.remote_name,
-                verification_method="Independent provider byte stream and verified private family object map matched the original recorder manifest.",
-            )
-            project_receipt(a.store, rp)
-            receipts[rid] = {"manifest_sha256": m, "archive_receipt_id": rec["receipt_id"]}
-        out = {
-            "schema": "el-stage2-family-cloud-archive-1",
-            "family": doc["family"],
-            "container_sha256": a.sha256,
-            "object_id": a.object_id,
-            "archive_bytes": n,
-            "elapsed_seconds": time.monotonic() - start,
-            "receipts": receipts,
-        }
-        publish(marker, encoded(out))
-        return out
-
-
 def park(a):
     proof = win.signed(a.proof, a.proof_sha256)
     require(
@@ -481,17 +371,12 @@ def main(argv=None):
         snap.add_argument("--" + k, required=True, type=Path)
     for k in ("catalog-sha256", "family", "family-sha256", "authorization-sha256"):
         snap.add_argument("--" + k, required=True)
-    for mode in ("verify", "restore", "provider"):
+    for mode in ("verify", "restore"):
         sub = subs.add_parser(mode)
         sub.add_argument("--container", type=Path, required=True)
         sub.add_argument("--sha256", required=True)
         if mode == "restore":
             sub.add_argument("--destination", required=True, type=Path)
-        if mode == "provider":
-            sub.add_argument("--store", type=Path, required=True)
-            sub.add_argument("--shelf", type=Path, required=True)
-            sub.add_argument("--object-id", required=True)
-            sub.add_argument("--remote-name", required=True)
     sub = subs.add_parser("park")
     for k in ("store", "shelf", "proof"):
         sub.add_argument("--" + k, required=True, type=Path)
@@ -499,8 +384,6 @@ def main(argv=None):
     a = p.parse_args(argv)
     if a.mode == "snapshot":
         result = snapshot(a)
-    elif a.mode == "provider":
-        result = provider(a)
     elif a.mode == "park":
         result = park(a)
     else:

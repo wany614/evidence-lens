@@ -1,0 +1,13 @@
+{
+  "schema": "el-stage2-cpu-parity-protocol-1",
+  "training_protocol_sha256": "1467a9ffaff46b35d879dfaae9ac9784fbee9f8621bbaee782e250810bc32159",
+  "pilot_training_run": "20261123T124310835228Z-18f6531be58e4137",
+  "pilot_max_score_difference": 0.000004917383193969727,
+  "case": "First registered new development family, scene_037_bottle_carrier, native v01 through v06.",
+  "finite_support_must_match": true,
+  "minimum_common_finite_per_view": 1,
+  "fp32_max_absolute_score_difference": 0.0001,
+  "threshold_crossing_policy": "Report every occurrence between native Mac CPU and canonical CUDA development outputs at the frozen threshold.",
+  "test_scoring_device": "macOS CPU",
+  "freeze_scope": "Deployment equivalence and measurement audit for existing fit outputs, fixed before opening any new test family."
+}

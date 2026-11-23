@@ -427,9 +427,112 @@ print(json.dumps(dict(runtime=runtime,**r),sort_keys=True,allow_nan=False))
         write(destination,"build-smoke.json",entries(dict(schema="el-vision-build-smoke-1",**result)))
 
 
+def checked_native(out,original,models,freeze,method,sources,get):
+    import numpy as np
+    from vision_release_native import DATA_NAMES, METHODS
+    p=original.file("payload/native-validation.json")
+    body=p.read_bytes();proof=public_json(body,"native-validation.json")
+    chosen=sorted(r["scene_family_id"] for r in read(out/"protocol/stage2-families-v1.json")["families"] if r["split"]=="development")[0]
+    want={k:{j:v[j] for j in ("model_sha256","manifest_sha256","run_id")} for k,v in models.items()}
+    require(original.run.run["run_kind"]=="archive_verify" and original.run.run["experiment_id"]=="stage2-release-native"
+            and proof["schema"]=="el-vision-formal-native-equivalence-1" and proof["passed"] is True
+            and proof["run_id"]==original.pin["run_id"] and proof["method"]==freeze.pin
+            and proof["method_sha256"]==sha(freeze.file("payload/method-freeze.json")) and proof["models"]==want
+            and proof["catalog_sha256"]==method["catalog_sha256"] and proof["family"]==chosen
+            and proof["split"]=="development" and proof["condition"]=="B0" and proof["grid"]==[512,512]
+            and proof["runtime"]["system"]=="Darwin" and proof["runtime"]["device"]=="cpu"
+            and proof["grader_sha256"]==sources["scripts/vision_release_native.py"]["sha256"]
+            and proof["smoke_source_sha256"]==sources["scripts/vision_public_smoke.py"]["sha256"]
+            and set(proof["read_roles"])==DATA_NAMES and set(proof["views"])==set(VIEWS)
+            and proof["methods"]==list(METHODS),"a complete independent Mac formal-native release grade is required")
+    for v,methods in proof["views"].items():
+        require(set(methods)==set(METHODS),"missing formal native method for "+v)
+        for m,r in methods.items():
+            tol=.000001 if m=="L1-full" else .0002
+            require(r["passed"] is True and r["pixels"]==512**2 and 0<r["finite_actual"]==r["finite_expected"]==r["finite_common"]<=512**2
+                    and r["support_difference"]==r["threshold_state_difference"]==0 and r["absolute_tolerance"]==tol
+                    and 0<=r["mean_abs"]<=r["max_abs"]<=tol,"formal native comparison failed for "+m+"/"+v)
+    inputs={r["role"]:r for r in original.json("inputs.json")["inputs"]}
+    casep=original.file(inputs["case"]["path"]);case=read(casep)
+    require(sha(casep)==proof["case_sha256"] and case["schema"]=="el-vision-native-release-case-1" and case["models"]==want and
+            all(case[k]==proof[k] for k in ("family","trial_id","condition","split","catalog_sha256","method","method_sha256","references","reference","render","selection_sha256")),
+            "formal case fingerprint or original identity differs from its seal")
+    require(all(case["files"]["input/"+n]==spec for n,spec in proof["read_roles"].items()),"recorded inference read a different input packet")
+    ref,render=get(case["reference"]),get(case["render"])
+    for n,entry in proof["read_roles"].items():
+        run=render if n.startswith("predictions/") else ref
+        member="payload/"+n.removeprefix("predictions/")
+        require(sig(run.file(member))==entry and run.run.run["scene_family_id"]==chosen and run.run.run["split"]=="development"
+                and run.run.run["condition_id"]=="B0","original formal family input differs for "+n)
+    original_roster={r["role"]:r for r in freeze.json("inputs.json")["inputs"]}["method_roster"]
+    rosterp=freeze.file(original_roster["path"]);require(sha(rosterp)==method["input_roster_sha256"],"method roster differs")
+    baseline_pin=read(rosterp)["stages"]["baseline_scores"]
+    baseline=get(baseline_pin)
+    require(proof["references"]["L1-full"]==baseline.pin,"independent logistic output is not from its frozen baseline score parent")
+    scores=baseline.json("payload/scores.json")
+    require(scores["method"]=="original-five" and scores["model_sha256"]==want["L1"]["model_sha256"]
+            and scores["dataset_sha256"]==method["development_dataset_sha256"],"incorrect original formal logistic map source")
+    bv={r["view"]:r["score"] for r in scores["views"] if r["family"]==chosen and r["condition"]=="B0"}
+    require(set(bv)==set(VIEWS),"incomplete canonical logistic score roster")
+    for b in BRANCHES:
+        require(proof["references"][b]==method["cpu_costs"][b]["pin"],"independent neural output is not its frozen native cost parent")
+    for v,checks in proof["views"].items():
+        for m,r in checks.items():
+            if m=="L1-full":
+                path=baseline.file("payload/"+safe_name(bv[v]["path"]));key="l1_full"
+                require(sig(path)=={k:bv[v][k] for k in ("bytes","sha256")},"original formal logistic NPZ changed")
+            else:
+                path=get(proof["references"][m]).file("payload/cold/"+v+".npz");key="risk"
+                require(sig(path)==case["files"]["expected/"+m+"/"+v+".npz"],"original formal visual NPZ changed")
+            with np.load(path,allow_pickle=False) as z:grid=z[key]
+            require(grid.dtype==np.float32 and grid.shape==(512,512) and HASH.fullmatch(r["actual_risk_sha256"]) and
+                    fingerprint(np.ascontiguousarray(grid,dtype="<f4").tobytes())==r["expected_risk_sha256"],
+                    "formal case used different original score values for "+m+"/"+v)
+    parents=original.parents()
+    for s in (freeze.pin,proof["reference"],proof["render"],*models.values(),*proof["references"].values()):same_parent(parents,s)
+    write(out,"evidence/formal-native-validation.json",body)
+    return dict(original.pin,sha256=fingerprint(body),family=chosen,views=6,methods=3,checked_coordinates=512**2*18)
+
+
+def release_notes(doc,summary,costs,assets):
+    lines=["# Evidence Lens "+TAG,"","Native-view risk scoring with the original logistic model and two DINOv2 ViT-S/14 variants. "
+           "The development-frozen default is **"+doc["default_method"]+"**.","",
+           "| Cohort | Families | Planned family / condition pairs | Scheduled views | Original render dispositions |",
+           "| --- | ---: | ---: | ---: | --- |"]
+    for key,label in (("new_confirmation","New confirmation"),("historical_regression","Historical regression")):
+        c=summary["cohorts"][key]
+        disp=", ".join(n+" "+str(v) for n,v in sorted(c["render_status"].items()))
+        dispositions=", ".join(n+" "+str(v) for n,v in sorted(c["scientific_view_dispositions"].items()))
+        disp+=". Scientific dispositions " + dispositions
+        lines.append(f"| {label} | {len(c['families'])} | {c['planned_family_conditions']} | {c['planned_views']} | {disp} |")
+    systems=[]
+    for r in costs["observed_runs"]:
+        if r["status"]!="succeeded":systems.append(r["run_id"]+" ("+r["run_kind"]+", "+r["status"]+")")
+    lines+=["","The public numerical attachment includes all family rows, denominator counts, paired changes and recorded costs. "
+           "The quantitative study uses the separately identified new and historical cohorts. "
+           "The CPU ZIP contains the project-authored plane input and predictions.","",
+           ("The published inventory records "+str(len(systems))+" unsuccessful runs. "+", ".join(sorted(systems))+"." if systems else "Every run in the observed inventory completed successfully."),"",
+           "The authorized example covers six native views and seven methods. An independent full-image CPU check covers all "
+           "three fitted model packages and all six 512 × 512 views of the fixed development B0 case. "
+           "The numerical proof and model identity are inside the CPU archive.","","| Model | Original run | SHA-256 of model index |",
+           "| --- | --- | --- |"]
+    for k,v in doc["models"].items():lines.append(f"| {k} | `{v['run_id']}` | `{v['model_sha256']}` |")
+    lines+=["","Source commit `"+doc["code_commit"]+"`. Full-precision safetensors contain the complete visual backbones. "
+            "The original Meta base is identified by `"+BASE+"`.","",
+            "Use Python 3.11 or 3.12. After extracting the CPU ZIP, run `python3 -I -B smoke.py --output ../vision-result` "
+            "on macOS/Linux or `py -3.12 -I -B smoke.py --output ../vision-result` on Windows. The `--case` option accepts the "
+            "independently supplied 512-pixel `public-plane` deployment control for the registered bottle-carrier cameras. "
+            "Its attachment and case manifest have separate checksums.","","| Asset | Bytes | SHA-256 |",
+            "| --- | ---: | --- |"]
+    for k,r in sorted(assets.items()):lines.append(f"| {k} | {r['bytes']} | `{r['sha256']}` |")
+    lines+=["","Project source and model additions are Apache-2.0. Original authorized documentation, plane media and quantitative "
+            "records are CC BY 4.0. Credit wany614. Meta's upstream license and base distribution are identified in the bundle."]
+    return "\n".join(lines)+"\n"
+
+
 def release_sources(repo,commit,out):
-    paths=("scripts/vision_release.py","scripts/vision_public_smoke.py",
-           "protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","configs/vision-base-v1.json",
+    paths=("scripts/vision_release.py","scripts/vision_public_smoke.py","scripts/vision_release_native.py","scripts/verify_vision_public.py",
+           "protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","configs/vision-base-v1.json","configs/vision-public-control-v1.json",
            "LICENSE","NOTICE","licenses/CC-BY-4.0.txt",*("docs/releases/"+TAG+"/"+n for n in DOCS))
     data={p:git_blob(repo,commit,p) for p in paths}
     for n in DOCS:
@@ -437,7 +540,7 @@ def release_sources(repo,commit,out):
     for n in ("LICENSE","NOTICE","licenses/CC-BY-4.0.txt"):
         write(out,n,data[n])
     write(out,"smoke.py",data["scripts/vision_public_smoke.py"])
-    for n in ("protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","configs/vision-base-v1.json"):
+    for n in ("protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","configs/vision-base-v1.json","configs/vision-public-control-v1.json"):
         write(out,n,data[n])
     return {n:{"bytes":len(v),"sha256":fingerprint(v)} for n,v in sorted(data.items())}
 
@@ -468,7 +571,7 @@ def build(a):
                      "upstream_model_card":"https://github.com/facebookresearch/dinov2/blob/"+DINO_COMMIT+"/MODEL_CARD.md",
                      "original_distribution":BASE_URL,"sha256":BASE,"bytes":88283115,"architecture":"dinov2_vits14","registers":0,
                      "license":"Apache-2.0","license_sha256":DINO_LICENSE}
-    report=get(pin(a.report));grade=get(pin(a.example_grade))
+    report=get(pin(a.report));grade=get(pin(a.example_grade));native_grade=get(pin(a.native_grade))
     with new_output(a.output) as dest,tempfile.TemporaryDirectory(prefix="evidence-lens-public-") as tmp:
         out=Path(tmp);sources=release_sources(a.repository,a.commit,out)
         require(sha(out/"protocol/stage2-families-v1.json")==method["catalog_sha256"] and
@@ -490,6 +593,7 @@ def build(a):
                 require(len(body)==v["bytes"] and fingerprint(body)==v["sha256"],"frozen source hash mismatch "+n)
         copy(out,"evidence/formal-training-source.zip",worker)
         rights=copy_models(out,models,method,get)
+        native=checked_native(out,native_grade,models,freeze,method,sources,get)
         example=write_example(out,grade,models,a.rc3_archive)
         verify_native(out,dest,models,method["thresholds"])
         write(out,"evidence/selected-training.json",entries(selection))
@@ -500,13 +604,15 @@ def build(a):
               "upstream_base":original_source,"models":rights,"example_origin":example,
               "formal_publication":"Original quantitative tables and project-authored model documentation."}))
         write(out,"BASE-SOURCE.json",entries(original_source))
+        weights={k:sig(out/"models"/"L1"/(k+".json")) for k in ("L1-full","L1-geometry")}
+        weights.update({b:sig(out/"models"/b/"weights.safetensors") for b in BRANCHES})
         provenance={n:{k:s[k] for k in ("run_id","manifest_sha256","model_sha256")} for n,s in models.items()}
         for desc in ("thresholds","deployment_rule"):
             public_json(entries(method[desc]),desc+".json")
         doc={"schema":"el-vision-public-release-1","version":TAG,"repository":"wany614/evidence-lens","attribution":"wany614",
-             "code_commit":a.commit,"scientific_status":"confirmed_heldout_report_recorded","models":provenance,
+             "code_commit":a.commit,"scientific_status":"confirmed_heldout_report_recorded","models":provenance,"weights":weights,
              "methods":method["methods"],"thresholds":method["thresholds"],"default_method":method["deployment_rule"]["default"],
-             "method_freeze":dict(freeze.pin,sha256=method_sha),"report":report.pin,"example":example,"study":scope,
+             "method_freeze":dict(freeze.pin,sha256=method_sha),"report":report.pin,"example":example,"native_validation":native,"study":scope,
              "study_sha256":method["study_sha256"],"catalog_sha256":method["catalog_sha256"],"opening_sha256":sha(marker_path),
              "upstream":original_source,"files":{p.relative_to(out).as_posix():sig(p) for p in sorted(out.rglob("*")) if p.is_file()}}
         raw=entries(doc);public_json(raw,"release.json");write(out,"release.json",raw)
@@ -515,15 +621,20 @@ def build(a):
         check_assets(out,fingerprint(raw))
         name="evidence-lens-"+TAG+"-cpu.zip"
         archive_dir(out,dest/name)
-        assets={name:sig(dest/name)}
+        numbers="evidence-lens-"+TAG+"-numerical.zip"
+        archive_dir(out/"study",dest/numbers)
+        assets={name:sig(dest/name),numbers:sig(dest/numbers)}
         if a.base_asset:
             require(sig(a.base_asset)=={"sha256":BASE,"bytes":88283115},"optional raw upstream checkpoint differs")
             n="dinov2_vits14_pretrain.pth";path=copy(dest,n,a.base_asset);assets[n]=sig(path)
         require(all(v["bytes"]<2*1024**3 for v in assets.values()),"release exceeds the single-asset size budget")
+        body=release_notes(doc,read(out/"study/study-summary.json"),read(out/"study/execution-costs.json"),assets)
+        write(dest,"RELEASE_NOTES.md",body.encode())
         write(dest,"SHA256SUMS","".join(assets[n]["sha256"]+"  "+n+"\n" for n in sorted(assets)).encode())
         receipt={"schema":"el-vision-public-candidate-1","version":TAG,"code_commit":a.commit,"assets":assets,
-                 "release_sha256":fingerprint(raw),"members":len(signatures)+1,"models":provenance,"method":freeze.pin,
-                 "report":report.pin,"example_grade":grade.pin}
+                 "release_sha256":fingerprint(raw),"members":len(signatures)+1,"models":provenance,"weights":weights,"method":freeze.pin,
+                 "report":report.pin,"example_grade":grade.pin,"native_grade":native_grade.pin,"base":original_source,
+                 "supporting_assets":{n:sig(dest/n) for n in ("SHA256SUMS","RELEASE_NOTES.md")}}
         write(dest,"candidate.json",entries(receipt))
         source_list=[]
         for rid,original in sorted(runs.items()):
@@ -534,7 +645,7 @@ def build(a):
              "committed_sources":sources,"authorized_former_example_zip_sha256":RC3_ZIP,"opening_sha256":sha(marker_path),
              "original_runs":source_list}))
         if a.rebuild_of:
-            for n in ("candidate.json","private-sources.json","SHA256SUMS",*assets):
+            for n in ("candidate.json","private-sources.json","SHA256SUMS","RELEASE_NOTES.md",*assets):
                 require(sig(dest/n)==sig(a.rebuild_of/n),"independent release rebuild differs: "+n)
     return receipt
 
@@ -577,7 +688,7 @@ def main():
     b=sub.add_parser("build")
     for k in ("repository","store","rc3-archive","output"):b.add_argument("--"+k,type=Path,required=True)
     for k in ("shelf","base-asset","rebuild-of"):b.add_argument("--"+k,type=Path)
-    for k in ("version","commit","method","report","example-grade"):b.add_argument("--"+k,required=True)
+    for k in ("version","commit","method","report","example-grade","native-grade"):b.add_argument("--"+k,required=True)
     a=p.parse_args()
     if a.action=="build":return isolated_build(a)
     sys.path.insert(0,str(HERE.parent))

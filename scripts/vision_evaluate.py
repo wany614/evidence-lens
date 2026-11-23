@@ -129,6 +129,20 @@ def read_scores(row, sources, thresholds=None, deploy=None):
     shape = row["height"], row["width"]
     for k, (root, entries, _) in sources.items():
         rec = entries[identity(row)]
+        if "target_prediction_sha256" in row and "target_prediction_sha256" in rec:
+            require(
+                all(
+                    k in rec and rec[k] == row[k]
+                    for k in (
+                        "source_input_sha256",
+                        "source_camera_sha256",
+                        "source_prediction_sha256",
+                        "target_prediction_sha256",
+                        "render_pin",
+                    )
+                ),
+                "score source/camera/condition render differs from the native row",
+            )
         rgb = row["rgb"]
         dep = row["full"]["deploy"]
         require(
@@ -331,7 +345,11 @@ def freeze_dev(root, ds_sha, source_pins, catalogs, output, run_id, baseline_onl
         vals = {f: np.concatenate(s) for f, s in collected.pop(m).items()}
         if m == "L0":
             cov = {f: int((a < 0.5).sum()) / denom[f] for f, a in vals.items() if denom[f]}
-            choices[m] = {"tau": 0.5, "coverage": float(np.mean(list(cov.values()))), "selection": "fixed rule"}
+            choices[m] = {
+                "tau": 0.5,
+                "coverage": float(np.mean(list(cov.values()))),
+                "selection": "fixed rule",
+            }
         else:
             choices[m] = threshold_for(vals, denom)
     doc = {
@@ -535,7 +553,9 @@ def evaluate(root, ds_sha, split, source_pins, threshold_pin, output, opening, c
         require(tau == official, "numerical thresholds differ from the sealed opening")
         for m in METHODS[3:]:
             model_hash = sources["original-five" if m in FIVE else m][2]["model_sha256"]
-            require(model_matches(method, m, model_hash), "deployed model identity differs from opening: " + m)
+            require(
+                model_matches(method, m, model_hash), "deployed model identity differs from opening: " + m
+            )
     else:
         require(
             tdoc["development_dataset_sha256"] == ds_sha
@@ -601,7 +621,8 @@ def evaluate(root, ds_sha, split, source_pins, threshold_pin, output, opening, c
                     }
                 )
             family_metrics = {
-                r: {m: aggregate_method([vr[r][m] for vr in view_rows]) for m in METHODS} for r in view_rows[0]
+                r: {m: aggregate_method([vr[r][m] for vr in view_rows]) for m in METHODS}
+                for r in view_rows[0]
             }
             curves = {m: compact_curve(g, sum(r["V"] for r in rows), tau[m]) for m, g in curve_groups.items()}
             write_json(folder / "curves.json", curves)
@@ -674,7 +695,9 @@ def main():
     for cmd in sub.choices.values():
         cmd.add_argument("--dataset", type=Path, required=True)
         cmd.add_argument("--sha256", required=True)
-        cmd.add_argument("--scores", nargs=2, action="append", required=True, metavar=("SCORES_JSON", "SHA256"))
+        cmd.add_argument(
+            "--scores", nargs=2, action="append", required=True, metavar=("SCORES_JSON", "SHA256")
+        )
         cmd.add_argument("--catalog", nargs=2, action="append", required=True, metavar=("CATALOG", "SHA256"))
         cmd.add_argument("--output", type=Path, required=True)
     a = parser.parse_args()

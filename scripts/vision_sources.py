@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from evidence_lens._bundle import HASH, load, local_path
+from evidence_lens._bundle import HASH, load
 from evidence_lens.formal_inputs import PinnedRun, compact_pin, quality_parents, require, signature
 from evidence_lens.l1 import FEATURE_SCHEMA
 from evidence_lens.scoring_io import TARGETS, file_hash, new_output, write_json
@@ -91,7 +91,8 @@ def failed_cell(roots, q, selection_hash, row, condition):
         with np.load(path, allow_pickle=False) as arr:
             valid = rgb_valid(arr["rgb"])
         require(
-            valid.shape == (header["height"], header["width"]) == (512, 512), "terminal reference grid differs"
+            valid.shape == (header["height"], header["width"]) == (512, 512),
+            "terminal reference grid differs",
         )
         views[view] = {
             "view": view,
@@ -147,6 +148,33 @@ def effective_reference(roots, condition, q, pins, original_run, evidence, predi
         "R1 reference must bind its reduced source while preserving six native targets and validation",
     )
     return bound, spec, original, original_spec
+
+
+def paired_render_sources(cells):
+    by = {c["condition"]: c for c in cells}
+    base = by["B0"]
+    if base.get("scientific_disposition") == "terminal_upstream_failure":
+        return
+    for condition in ("R1", "Q1"):
+        stress = by[condition]
+        if stress.get("scientific_disposition") == "terminal_upstream_failure":
+            continue
+        require(
+            compact_pin(stress["parents"]["prediction"]) != compact_pin(base["parents"]["prediction"]),
+            "a stress condition cannot use the original B0 render",
+        )
+        same = (
+            stress["input_sha256"] == base["input_sha256"],
+            stress["camera_sha256"] == base["camera_sha256"],
+        )
+        require(
+            same == ((False, False) if condition == "R1" else (True, True)),
+            "wrong input image or calibration for " + condition,
+        )
+        require(
+            compact_pin(stress["parents"]["reference"]) == compact_pin(base["parents"]["reference"]),
+            "condition reference is not its paired B0 original",
+        )
 
 
 def pinned_cell(roots, selection_path, selection_hash, row, condition, historical=None):
@@ -252,11 +280,40 @@ def pinned_cell(roots, selection_path, selection_hash, row, condition, historica
             "condition target camera differs from fixed reference",
         )
     if condition == "R1":
+        import numpy as np
+
         source, original = cameras["views"]["source"], reference_cameras["views"]["source"]
+        scaling = np.array([[0.5, 0, -0.25], [0, 0.5, -0.25], [0, 0, 1.0]])
+        require(
+            source["c2w"] == original["c2w"]
+            and np.allclose(source["K"], scaling @ np.asarray(original["K"]), rtol=0, atol=1e-10),
+            "R1 source pose or half-resolution pixel-centre intrinsics differ",
+        )
         require(
             2 * source["width"] == original["width"] and 2 * source["height"] == original["height"],
             "R1 requires its own native half-resolution source",
         )
+    if row["split"] == "test":
+        expected = {"scene_family_id": family, "trial_id": trial, "condition_id": condition}
+        require(
+            all(pr.run.get(k) == value for k, value in expected.items()),
+            "original render is from a different condition",
+        )
+    source_hash = score["inputs"].get("prediction/source")
+    if source_hash:
+        source_member = member(pr, "payload/source.npz", source_hash)[1]
+        require(
+            source_member["sha256"] == prediction["views"]["source"]["sha256"],
+            "source prediction is not from the selected condition render",
+        )
+    else:
+        require(
+            isinstance(prediction.get("failed_views", {}).get("source"), str)
+            and prediction["failed_views"]["source"].strip()
+            and "payload/source.npz" not in pr.files,
+            "missing source prediction has no sealed failure disposition",
+        )
+        source_member = None
     validation = member(rr, "payload/validation/results.json", ref["validation_sha256"])[1]
     refs = {
         "score_metadata": sm,
@@ -267,6 +324,7 @@ def pinned_cell(roots, selection_path, selection_hash, row, condition, historica
         "reference_validation": validation,
         "feature_schema": feature_spec,
         "cameras": cm,
+        "source_prediction": source_member,
     }
     views = {}
     for view in TARGETS:
@@ -333,7 +391,7 @@ METHODS = ("constant", "1-alpha", "L0", "L1-full", "L1-geometry", "L2-frozen", "
 
 def check_gate(roots, catalog_sha, families, supplied=None, expected=None):
     """Authenticate the one canonical opening marker and the sealed report it identifies."""
-    from math import isfinite
+    from evidence_lens.stage2_authority import verify_frozen_authority
 
     path = roots[0] / "protocol" / "stage2" / catalog_sha / "test-opening.json"
     require(supplied is None or Path(supplied).resolve() == path.resolve(), "unexpected test-opening path")
@@ -352,65 +410,8 @@ def check_gate(roots, catalog_sha, families, supplied=None, expected=None):
     freeze = find_run(
         roots, {"run_id": opening["freeze_run_id"], "manifest_sha256": opening["freeze_manifest_sha256"]}
     )
-    require(
-        freeze.run["run_kind"] == "report"
-        and freeze.run["experiment_id"] == "stage2-method-freeze"
-        and freeze.run["execution_status"] == "succeeded",
-        "a completed canonical method freeze is required",
-    )
-    method, _ = json_member(freeze, opening["method_member"], opening["method_sha256"])
-    require(
-        method["schema"] == "el-vision-method-freeze-1"
-        and method["catalog_sha256"] == catalog_sha
-        and sorted(method["test_family_ids"]) == sorted(families)
-        and len(method["methods"]) == 7
-        and set(method["methods"]) == set(METHODS)
-        and set(method["thresholds"]) == set(METHODS)
-        and set(method["models"]) == set(METHODS[3:])
-        and method["display_rule"] == "v01"
-        and method["seeds"] == [1729, 2718, 3141]
-        and method["primary_seed"] == 1729
-        and method["training_receipts"]
-        and method["deployment_rule"]
-        and all(method["models"].values()),
-        "incomplete model, thresholds, seeds or case-display freeze",
-    )
-    for name, value in method["thresholds"].items():
-        require(
-            isinstance(value, dict) and value.get("domain") == "development-B0",
-            "threshold lacks development B0 provenance",
-        )
-        value = value.get("tau")
-        require(
-            isinstance(value, (float, int))
-            and not isinstance(value, bool)
-            and isfinite(value)
-            and 0 <= value <= 1.000001
-            and (name != "L0" or value == 0.5),
-            "invalid frozen threshold",
-        )
-    parent_pins = {r["run_id"]: r["manifest_sha256"] for r in load(freeze.open("inputs.json"))["parents"]}
-    for name, spec in method["models"].items():
-        require(
-            parent_pins.get(spec["run_id"]) == spec["manifest_sha256"] and spec["files"],
-            "selected model is not a direct frozen parent",
-        )
-        model = find_run(roots, compact_pin(spec))
-        require(model.run["execution_status"] == "succeeded", "unsuccessful model in freeze")
-        for f in spec["files"]:
-            name = local_path(f["path"])
-            require(name.startswith("payload/"), "freeze member must be an output")
-            member(model, name, f["sha256"])
-    training = method["training_receipts"]
-    require(
-        6 <= len(training) <= 8
-        and len({r["run_id"] for r in training}) == len(training)
-        and all(parent_pins.get(r["run_id"]) == r["manifest_sha256"] for r in training)
-        and all(
-            {r["seed"] for r in training if r["method"] == m} == set(method["seeds"]) for m in METHODS[-2:]
-        ),
-        "incomplete paired seed or training lineage",
-    )
+    member(freeze, opening["method_member"], opening["method_sha256"])
+    verify_frozen_authority(roots, freeze, catalog_sha, families)
     return digest
 
 
@@ -522,6 +523,9 @@ def make_index(
                     "extract_manifest_sha256": ext["extract_manifest_sha256"]
                 }
             sources.append(cell)
+    if split == "test":
+        for row in rows:
+            paired_render_sources([s for s in sources if s["family"] == row["scene_family_id"]])
     with new_output(output) as out:
         result = {
             "schema": "el-vision-material-index-1",
@@ -563,7 +567,11 @@ def main():
     )
     print(
         json.dumps(
-            {"split": result["split"], "cells": len(result["cells"]), **signature(a.output / "materials.json")}
+            {
+                "split": result["split"],
+                "cells": len(result["cells"]),
+                **signature(a.output / "materials.json"),
+            }
         )
     )
 

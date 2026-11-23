@@ -1,9 +1,8 @@
 """Authorize the registered eight new test families with a sealed, complete method freeze."""
 import argparse
-import math
 from pathlib import Path
 
-from evidence_lens._bundle import HASH, RUN_ID, encoded, load, local_path, sha
+from evidence_lens._bundle import HASH, RUN_ID, encoded, load, sha
 from evidence_lens._verify import require, verify_bundle
 from make_handoff import publish
 
@@ -27,43 +26,14 @@ def sealed(store, rid, expected):
 
 
 def verify_methods(store, directory, checked, catalog, digest):
-    run = checked["run"]
-    require(run["execution_status"] == "succeeded" and run["run_kind"] == "report"
-            and run["experiment_id"] == "stage2-method-freeze", "Method freeze did not complete")
-    method = load(directory / MEMBER)
-    require(method["schema"] == "el-vision-method-freeze-1" and method["catalog_sha256"] == digest
-            and sorted(method["test_family_ids"]) == holdouts(catalog), "Wrong confirmation population")
-    require(set(method["methods"]) == set(METHODS) and len(method["methods"]) == 7 and
-            set(method["thresholds"]) == set(METHODS), "Missing comparison or development threshold")
-    for name in METHODS:
-        threshold = method["thresholds"][name]
-        require(isinstance(threshold, dict) and type(threshold.get("tau")) in (int, float)
-                and math.isfinite(threshold["tau"]) and threshold["domain"] == "development-B0",
-                "Missing finite development B0 threshold for " + name)
-    require(set(method["models"]) == set(WEIGHTED) and method["display_rule"] == "v01"
-            and method["seeds"] == [1729,2718,3141] and method["primary_seed"] == 1729, "Model or display rules differ")
-    parent_pins = {row["run_id"]:row["manifest_sha256"] for row in checked["inputs"]["parents"]}
-    for name in WEIGHTED:
-        spec = method["models"][name]
-        require(spec["run_id"] in parent_pins and parent_pins[spec["run_id"]] == spec["manifest_sha256"]
-                and spec["files"], "Selected model is not a direct pinned parent")
-        bundle=Path(store)/"runs"/spec["run_id"]
-        manifest=load(bundle/"manifest.json")
-        require(sha(bundle/"manifest.json") == spec["manifest_sha256"], "Selected model manifest changed")
-        members={m["path"]:m["sha256"] for m in manifest["files"]}
-        for f in spec["files"]:
-            key=local_path(f["path"])
-            require(key.startswith("payload/") and members.get(key)==f["sha256"] and HASH.fullmatch(f["sha256"]),
-                    "Weight identity is absent from the selected model")
-    require(method["deployment_rule"] and method["training_receipts"], "Training or deployment selection missing")
-    records=method["training_receipts"]
-    require(len(records)<=8 and len({r["run_id"] for r in records})==len(records), "Training budget or receipt duplicates")
-    for mode in ("L2-frozen","L2-vision-ft"):
-        require({r["seed"] for r in records if r["method"]==mode} == set(method["seeds"]),
-                "Missing matched seed records for "+mode)
-    require(all(parent_pins.get(r["run_id"]) == r["manifest_sha256"] for r in records),
-            "Candidate training attempts must be pinned parents")
-    return method
+    from evidence_lens.formal_inputs import PinnedRun
+    from evidence_lens.stage2_authority import verify_frozen_authority
+
+    root=Path(store).resolve()
+    rid=checked["run"]["run_id"]
+    require(directory.resolve()==root/"runs"/rid,"Incorrect frozen run directory")
+    freeze=PinnedRun(root,{"run_id":rid,"manifest_sha256":checked["manifest_sha256"]})
+    return verify_frozen_authority((root,root.parent/"cold-shelf"),freeze,digest,holdouts(catalog))
 
 
 def verify_opening(store, catalog, catalog_sha256):

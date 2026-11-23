@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 
 from evidence_lens.formal_inputs import compact_pin, require
+from evidence_lens import stage2_parity
 from evidence_lens.scoring_io import TARGETS, new_output, write_json
 from vision_data import file_for, open_dataset, packed
 from vision_evaluate import FIVE, TWO, score_sources, read_scores
@@ -77,7 +78,9 @@ def candidate(roots, pin, training_sha, development_sha):
         "candidate dev epoch and threshold disagree",
     )
     curves, _ = json_output(run, "curves.json")
-    require([a["epoch"] for a in curves] == list(range(1, training["epochs"] + 1)), "incomplete epoch history")
+    require(
+        [a["epoch"] for a in curves] == list(range(1, training["epochs"] + 1)), "incomplete epoch history"
+    )
     best = max(curves, key=lambda a: a["development"]["family_equal_ap"])
     require(
         best["epoch"] == training["best_epoch"]
@@ -102,6 +105,7 @@ def candidate(roots, pin, training_sha, development_sha):
             "backbone.norm.weight",
         ]
     setup, _ = json_output(run, "setup.json")
+    actual_trainable = stage2_parity.trainable_parameters(training["branch"], change, setup)
     flags = setup["precision"]["backend_readback"]
     require(
         setup["device"].startswith("cuda")
@@ -149,7 +153,9 @@ def candidate(roots, pin, training_sha, development_sha):
         weights_sha == model["files"]["weights.safetensors"]["sha256"],
         "selected tensors differ from recorded package",
     )
-    require(verify_tensor_payloads(weights, tensors) == 181, "unexpected number of learned and frozen tensors")
+    require(
+        verify_tensor_payloads(weights, tensors) == 181, "unexpected number of learned and frozen tensors"
+    )
     scorep, score_sha = payload(run, "development-scores/scores.json")
     selection = {**training, "manifest_sha256": pin["manifest_sha256"], "model_sha256": model_sha}
     return {
@@ -161,6 +167,7 @@ def candidate(roots, pin, training_sha, development_sha):
         "development_receipt_sha256": dev_sha,
         "weights_sha256": weights_sha,
         "weights_bytes": weights.stat().st_size,
+        "trainable_parameters": actual_trainable,
     }
 
 
@@ -293,6 +300,7 @@ def independent_development(dsroot, ds, ds_sha, base_pin, candidates, primary):
             own[rid][f][v] = rank
             retained[rid][f].append(s[E & ok])
             neural[rid] = s
+        support_hash = stage2_parity.supports(neural)
         for seed in SEEDS:
             scores = {m: neural[chosen[m, seed]] for m in TWO}
             mask = common_five & np.isfinite(scores[TWO[0]]) & np.isfinite(scores[TWO[1]])
@@ -301,7 +309,9 @@ def independent_development(dsroot, ds, ds_sha, base_pin, candidates, primary):
                 for m, risk in primary_scores.items():
                     support = E & np.isfinite(risk)
                     own_rank = ap_readback(risk[support], Y[support])
-                    seven_rank = own_rank if np.array_equal(support, mask) else ap_readback(risk[mask], Y[mask])
+                    seven_rank = (
+                        own_rank if np.array_equal(support, mask) else ap_readback(risk[mask], Y[mask])
+                    )
                     domains[m]["own"][f][v] = own_rank
                     domains[m]["seven_common"][f][v] = seven_rank
                     if m in FIVE:
@@ -325,6 +335,7 @@ def independent_development(dsroot, ds, ds_sha, base_pin, candidates, primary):
                     "S7": int(mask.sum()),
                     "S7Y": int(Y[mask].sum()),
                     "mask_sha256": hashlib.sha256(np.packbits(mask).tobytes()).hexdigest(),
+                    "candidate_support_sha256": support_hash,
                 }
             )
     individual = {}
@@ -351,9 +362,13 @@ def independent_development(dsroot, ds, ds_sha, base_pin, candidates, primary):
             "views": own[rid],
             "scores_sha256": sources[rid][2]["sha256"],
         }
+    independent_winners = stage2_parity.independent_choice(individual, primary)
+    compared_masks = stage2_parity.paired_domains(shared, len(ds["views"]))
     pairs = {seed: {m: macro_ap(paired[seed][m]) for m in paired[seed]} for seed in SEEDS}
     return {
         "candidates": individual,
+        "independent_winners": independent_winners,
+        "matched_48_three_seed_domains": compared_masks,
         "primary_domains": {
             m: {d: {"macro": macro_ap(views), "views": views} if views else None for d, views in by.items()}
             for m, by in domains.items()
@@ -402,7 +417,8 @@ def cost_evidence(roots, pin, family, c, ds, scores):
     run = find_run(roots, compact_pin(pin))
     rid = c["fit"]["run_id"]
     require(
-        run.run["execution_status"] == "succeeded" and run.run["run_kind"] in ("archive_verify", "model_score"),
+        run.run["execution_status"] == "succeeded"
+        and run.run["run_kind"] in ("archive_verify", "model_score"),
         "CPU cost requires a completed full-native recorder run",
     )
     result, sha = json_output(run, "native-cost.json")
@@ -444,12 +460,14 @@ def cost_evidence(roots, pin, family, c, ds, scores):
         roots[0] / "trials" / original["trial_id"] / "trial_selection.json", original["selection_sha256"]
     )
     require(
-        choice["scene_family_id"] == family and choice["condition_id"] == "B0", "unexpected benchmark condition"
+        choice["scene_family_id"] == family and choice["condition_id"] == "B0",
+        "unexpected benchmark condition",
     )
     render = find_run(roots, compact_pin(choice["selected"]["render"]))
     prediction, render_sha = json_output(render, "prediction.json")
     require(
-        str(result["platform"]).startswith(("macOS", "Darwin")), "benchmark must measure the registered Mac CPU"
+        str(result["platform"]).startswith(("macOS", "Darwin")),
+        "benchmark must measure the registered Mac CPU",
     )
     comparisons = {}
     for (rep, v), r in sorted(observed.items()):
@@ -481,15 +499,20 @@ def cost_evidence(roots, pin, family, c, ds, scores):
             "CPU states disagree with actual package threshold",
         )
         comparisons[v] = cpu_numbers(canonical, a["risk"], c["fit"]["threshold"])
+    from evidence_lens.stage2_authority import external_cost_fields
+
+    process, process_sha = json_output(run, "process-cost.json")
+    full_process = external_cost_fields(
+        result, sha, process, process_sha, observed[0, "v01"]["output_sha256"]
+    )
     return {
         "pin": compact_pin(pin),
         "native_cost_sha256": sha,
         "model_sha256": c["fit"]["model_sha256"],
         "family": family,
-        "cold_seconds": result["cold_process_to_first_output_seconds"],
+        **full_process,
         "hot_p50_seconds": result["hot_p50_seconds"],
         "hot_p95_seconds": result["hot_p95_seconds"],
-        "rss_bytes": result["process_tree_peak_rss_bytes"],
         "canonical_win_to_mac": comparisons,
     }
 
@@ -587,7 +610,18 @@ def export_lr(fit, thresholds, dev_root, dev_sha, output, run_id):
         )
 
 
-def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, outpath, run_id):
+def freeze(
+    roots,
+    roster_path,
+    roster_sha,
+    study_path,
+    study_sha,
+    catalog_path,
+    outpath,
+    run_id,
+    parity_path,
+    original_catalog_path,
+):
     from evidence_lens_vision.selection import choose
     from vision_sources import signed
     from evidence_lens.scoring_io import file_hash
@@ -595,6 +629,12 @@ def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, 
     roster = signed(roster_path, roster_sha)
     study = signed(study_path, study_sha)
     catalog = signed(catalog_path, study["catalog_sha256"])
+    parity_sha = roster["inference_parity_protocol_sha256"]
+    parity_protocol = signed(parity_path, parity_sha)
+    stage2_parity.protocol(parity_protocol, parity_sha, study_sha, study["catalog_sha256"])
+    from vision_pipeline import ORIGINAL_CATALOG_SHA
+
+    old_catalog = signed(original_catalog_path, ORIGINAL_CATALOG_SHA)
     require(
         roster["schema"] == "el-vision-postfit-roster-1"
         and roster["catalog_sha256"] == study["catalog_sha256"]
@@ -614,6 +654,9 @@ def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, 
     _, train, train_sha = stage("train_data", "dataset.json")
     _, dev, dev_sha = stage("dev_data", "dataset.json")
     d = open_dataset(dev.parent, dev_sha, "development")
+    split_check = stage2_parity.split_families(
+        open_dataset(train.parent, train_sha, "train"), d, catalog, old_catalog
+    )
     lr, lr_export, lr_export_sha = stage("lr_export", "lr-export.json")
     lr_model, lr_sha = json_output(lr, "model/model.json")
     five, scorep, score_sha = stage("baseline_scores", "scores.json")
@@ -661,6 +704,43 @@ def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, 
     selected = choose([c["fit"] for c in cands], "primary")
     by_id = {c["fit"]["run_id"]: c for c in cands}
     replay = independent_development(dev.parent, d, dev_sha, base_pin, cands, selected)
+    fit, fit_path, fit_sha = stage("baseline_fit", "model/model.json")
+    oldscore, oldsp, oldscore_sha = stage("fitted_baseline_scores", "scores.json")
+    _, origthpath, origth_sha = stage("fitted_baseline_thresholds", "thresholds.json")
+    _, newthpath, newth_sha = stage("baseline_thresholds", "thresholds.json")
+    require(
+        oldscore_sha == qa["source_sha256"]["scores"] and origth_sha == qa["source_sha256"]["thresholds"],
+        "original-five QA score or threshold receipt differs",
+    )
+    baseline_export = stage2_parity.original_scores(
+        oldscore,
+        five,
+        json.loads(oldsp.read_bytes()),
+        json.loads(scorep.read_bytes()),
+        json.loads(origthpath.read_bytes()),
+        json.loads(newthpath.read_bytes()),
+        fit_sha,
+        lr_sha,
+        qa,
+        replay,
+    )
+    fitted_index = json.loads(fit_path.read_bytes())
+    member_sha = {}
+    for name in ("L1-full.json", "L1-geometry.json", "feature_schema.json"):
+        a, ah = payload(fit, "model/" + name)
+        b, bh = payload(lr, "model/" + name)
+        require(
+            ah == bh == fitted_index["files"][name] == lr_model["files"][name],
+            "L1 coefficient/preprocessing/schema changed on packaging",
+        )
+        member_sha[name] = ah
+    baseline_export["coefficient_preprocessing_schema_sha256"] = member_sha
+    baseline_export.update(
+        fitted_scores_sha256=oldscore_sha,
+        frozen_scores_sha256=score_sha,
+        fitted_thresholds_sha256=origth_sha,
+        frozen_thresholds_sha256=newth_sha,
+    )
     cost = {}
     cpu_family = roster["cost_family"]
     require(any(r["family"] == cpu_family for r in d["views"]), "cost family must be a preregistered dev row")
@@ -673,6 +753,7 @@ def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, 
             "joint freeze differs from winning package's producer-domain threshold",
         )
         cost[m] = cost_evidence(roots, roster["cpu_costs"][m], cpu_family, c, d, entry)
+    verified_native = stage2_parity.parity(cost, parity_protocol)
     macro, _ = json_output(ev, "macro.json")
     require(
         len(macro) == 1 and macro[0]["condition"] == "B0" and macro[0]["cohort"] == "all",
@@ -721,6 +802,7 @@ def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, 
                 "training_json_sha256": c["training_receipt_sha256"],
                 "development_json_sha256": c["development_receipt_sha256"],
                 "weights_sha256": c["weights_sha256"],
+                "trainable_parameters": c["trainable_parameters"],
             }
         )
     models = {}
@@ -800,6 +882,11 @@ def freeze(roots, roster_path, roster_sha, study_path, study_sha, catalog_path, 
                 )
             },
         },
+        "inference_parity_protocol_sha256": parity_sha,
+        "original_catalog_sha256": ORIGINAL_CATALOG_SHA,
+        "native_inference_parity": verified_native,
+        "learning_split_audit": split_check,
+        "original_five_export": baseline_export,
         "fit_reuse": "Training used 16 original and 12 new families. Development selection used four original and four new families. The four historical regression families form a separate evaluation.",
     }
     with new_output(outpath) as out:
@@ -821,7 +908,7 @@ def main():
         s.add_argument("--" + n, type=Path, required=True)
     s.add_argument("--dev-sha", required=True)
     s = sub.add_parser("freeze")
-    for n in ("store", "shelf", "roster", "study", "catalog"):
+    for n in ("store", "shelf", "roster", "study", "catalog", "parity", "original-catalog"):
         s.add_argument("--" + n, type=Path, required=True)
     for n in ("roster-sha", "study-sha"):
         s.add_argument("--" + n, required=True)
@@ -841,6 +928,8 @@ def main():
             a.catalog,
             a.output,
             a.run_id,
+            a.parity,
+            a.original_catalog,
         )
 
 

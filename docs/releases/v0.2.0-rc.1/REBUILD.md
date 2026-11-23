@@ -10,13 +10,44 @@ For L2-frozen select its directory and model index hash. Run within an environme
 
 ## Original-study reconstruction
 
-`release.json` identifies the public source commit, frozen scientific method, completed quantitative report, independently recorded example and each selected model. The training protocols, model artifacts and public numerical reports are distributed in the bundle. The original sealed private training/evaluation records and provider-dependent rendered outputs remain in the owner research archive. An independent project can use the public acquisition recipe to record new inputs and receive its own run identities. Exact reconstruction of this archive uses the recorded inputs from its three supplied parents.
+`release.json` identifies the public source commit, frozen scientific method, completed quantitative report, independently recorded example and each selected model. The training protocols, model artifacts and public numerical reports are distributed in the bundle. The original sealed private training/evaluation records and provider-dependent rendered outputs remain in the owner research archive. An independent project can use the public acquisition recipe to record new inputs and receive its own run identities. Exact reconstruction of this archive uses the recorded inputs from the method, report, authored-example grade and formal-native grade.
 
-From the pinned public checkout use a Python environment with the project recording dependencies, PyTorch and safetensors. The original author uses the sealed research store and public A example ZIP to run the build. The `--method`, `--report` and `--example-grade` arguments take `RUN_ID=MANIFEST_SHA256`. The builder checks the real eight-run design, both complete FP32 exports, the current cohort opening, every numerical table row and the authored example. It reads its own source files from the specified commit.
+From the pinned public checkout use a Python environment with the project recording dependencies, PyTorch and safetensors. The original author uses the sealed research store and public A example ZIP to run the build. The `--method`, `--report`, `--example-grade` and `--native-grade` arguments take `RUN_ID=MANIFEST_SHA256`. The builder checks the real eight-run design, both complete FP32 exports, the current cohort opening, every numerical table row and the authored example. It reads its own source files from the specified commit.
 
 ```sh
-python3 scripts/vision_release.py build --version v0.2.0-rc.1 --repository . --commit "$PUBLIC_COMMIT" --store "$STORE" --shelf "$SHELF" --method "$METHOD_PIN" --report "$REPORT_PIN" --example-grade "$EXAMPLE_PIN" --rc3-archive "$PUBLIC_A_ZIP" --output output-one
-python3 scripts/vision_release.py build --version v0.2.0-rc.1 --repository . --commit "$PUBLIC_COMMIT" --store "$STORE" --shelf "$SHELF" --method "$METHOD_PIN" --report "$REPORT_PIN" --example-grade "$EXAMPLE_PIN" --rc3-archive "$PUBLIC_A_ZIP" --output output-two --rebuild-of output-one
+python3 scripts/vision_release.py build --version v0.2.0-rc.1 --repository . --commit "$PUBLIC_COMMIT" --store "$STORE" --shelf "$SHELF" --method "$METHOD_PIN" --report "$REPORT_PIN" --example-grade "$EXAMPLE_PIN" --native-grade "$NATIVE_PIN" --rc3-archive "$PUBLIC_A_ZIP" --output output-one
+python3 scripts/vision_release.py build --version v0.2.0-rc.1 --repository . --commit "$PUBLIC_COMMIT" --store "$STORE" --shelf "$SHELF" --method "$METHOD_PIN" --report "$REPORT_PIN" --example-grade "$EXAMPLE_PIN" --native-grade "$NATIVE_PIN" --rc3-archive "$PUBLIC_A_ZIP" --output output-two --rebuild-of output-one
 ```
 
 The release directory contains the public ZIP, checksum list and build receipt. `private-sources.json` is an owner-side inventory. An independently verified original DINOv2 checkpoint may be supplied with `--base-asset PATH` to emit a separate, exact upstream file. Rebuilding requires the same option and input each time. The full public models already contain their backbones.
+
+## Fixed formal native verification
+
+The owner-side comparison uses B0 on the alphabetically first new development family, all six 512 × 512 target views, and three fitted model packages. L1-full is compared with the separately recorded five-method development arrays. The two visual methods use the recorded Mac cold-run maps for their own exact models. Each check covers 4,718,592 method/pixel coordinates. Finite support and strict threshold states must agree exactly. Maximum absolute tolerances are 0.000001 for L1-full and 0.0002 for either visual model. The result retains each view’s supported denominator, error and threshold-state disagreement count. A distinct process reads only the named source image, cameras, prediction metadata, seven predicted images/depth/alpha arrays and released models. Evaluation maps are opened by the comparison process.
+
+From the study checkout and owner environment, prepare the private input packet, then seal the independent Mac CPU grade. The resulting run identity supplies `NATIVE_PIN` for both build commands above.
+
+```sh
+python3 scripts/vision_release_native.py prepare --store "$STORE" --shelf "$SHELF" --method "$METHOD_PIN" --catalog protocol/stage2-families-v1.json --output private-native-case
+python3 scripts/vision_release_native.py record --case private-native-case --case-sha256 "$CASE_SHA" --store "$STORE" --shelf "$SHELF" --project . --python "$CPU_PYTHON" --state private-native-state
+```
+
+The complete case stays in the owner archive. Its public numerical receipt is `evidence/formal-native-validation.json`. The standalone verifier can also repeat the check against the downloaded ZIP wherever the owner makes the case available.
+
+## Anonymous download
+
+Use the verifier from the exact tagged public source checkout. Obtain the full release commit and candidate index SHA-256 from the producer’s independently verified build. The candidate index binds the CPU archive, its internal manifest, four distinct learned parameter assets, numerical attachment and the published release notes. The verifier anonymously reads GitHub's repository, release and Git tree, downloads each declared attachment and obtains the original 88,283,115-byte DINOv2 weights from the release mirror or the original Meta distribution. A fresh CPU environment runs the complete authorized plane example.
+
+```sh
+python3 -I -B scripts/verify_vision_public.py --tag v0.2.0-rc.1 --commit "$PUBLIC_COMMIT" --candidate-sha256 "$CANDIDATE_SHA" --output anonymous-receipt
+```
+
+An owner with the private formal case can include it in the same clean-environment run on Windows PowerShell.
+
+```powershell
+py -3.12 -I -B scripts/verify_vision_public.py --tag v0.2.0-rc.1 --commit $PublicCommit --candidate-sha256 $CandidateSha --native-case $PrivateCase --native-case-sha256 $CaseSha --output anonymous-windows
+```
+
+The public release assets are `candidate.json`, `RELEASE_NOTES.md`, `SHA256SUMS`, the CPU ZIP and the numerical ZIP. An optional separate copy of the original upstream checkpoint carries its official hash. Additional owner-approved attachments must be independently pinned with `--attachment NAME=SHA256`. The release body comes from `RELEASE_NOTES.md`, which records the actual scored cohorts, execution failures, chosen models and all primary artifact hashes. `private-sources.json` and the raw formal case are owner records. Anonymous readback emits `public-verification.json`, actual CPU output and, if requested, a local formal equivalence receipt. Failed verification leaves downloaded or partial bytes and a phase-specific failure marker in the new output directory.
+
+For a release carrying the additional 512-pixel plane control, append `--attachment "$CONTROL_NAME=$CONTROL_ZIP_SHA" --public-case-asset "$CONTROL_NAME" --public-case-sha256 "$CASE_SHA"` to the anonymous verifier command. Supply the independently known ZIP and case manifest digests. The verifier extracts only the ten declared deployment inputs and `case.json`, runs all seven scoring methods on the six targets in the clean CPU environment, and writes `public-control/control-scores.json`. The control's producer can distribute original Blender references and a separately measured six-view evaluation alongside the input directory in the same outer ZIP.

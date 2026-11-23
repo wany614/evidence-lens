@@ -233,6 +233,15 @@ def dev_metrics(rec, pins, chosen, orig, new):
 
 def recorded_method(rec, roster, study, catalog, parents):
     """The opening verifier requires this exact experiment identity and direct recorder parents."""
+    from evidence_lens.stage2_parity import PROTOCOL_SHA
+
+    parity = rec.project / "protocol/stage2-inference-parity-v1.json"
+    original = rec.project / "protocol/families-v1.json"
+    require(
+        file_hash(parity) == roster["inference_parity_protocol_sha256"] == PROTOCOL_SHA
+        and file_hash(original) == ORIGINAL_CATALOG_SHA,
+        "different registered parity or split protocol",
+    )
     dr = rec.state / "postfit-method-freeze"
     dr.mkdir(parents=True, exist_ok=True)
     rp = dr / "input-roster.json"
@@ -243,6 +252,8 @@ def recorded_method(rec, roster, study, catalog, parents):
         "trial_id": "v11-complete-method-freeze",
         "dataset_hash": rec.catalog_sha,
         "roster_sha256": file_hash(rp),
+        "inference_parity_protocol_sha256": PROTOCOL_SHA,
+        "original_catalog_sha256": ORIGINAL_CATALOG_SHA,
         "study_sha256": rec.study_sha,
         "parents": sorted((compact_pin(p) for p in parents), key=lambda p: p["run_id"]),
         "recording": {"expected_output_bytes": 3000000},
@@ -294,6 +305,10 @@ def recorded_method(rec, roster, study, catalog, parents):
                 "study=" + str(study),
                 "--input",
                 "catalog=" + str(catalog),
+                "--input",
+                "parity=" + str(parity),
+                "--input",
+                "original_catalog=" + str(original),
             ]
             if retry:
                 argv += ["--retry-of", retry]
@@ -318,6 +333,10 @@ def recorded_method(rec, roster, study, catalog, parents):
                 rec.study_sha,
                 "--catalog",
                 "{input:catalog}",
+                "--parity",
+                "{input:parity}",
+                "--original-catalog",
+                "{input:original_catalog}",
                 "--run-id",
                 "{run_id}",
                 "--output",
@@ -401,7 +420,11 @@ def main():
                     "two original primary CPU cost runs and dev family required",
                 )
                 costs = dict(zip(TWO, [parse_pin(a.cost_frozen), parse_pin(a.cost_ft)]))
+                from evidence_lens.stage2_parity import PROTOCOL_SHA
+
                 lst = {
+                    "inference_parity_protocol_sha256": PROTOCOL_SHA,
+                    "original_catalog_sha256": ORIGINAL_CATALOG_SHA,
                     "schema": "el-vision-postfit-roster-1",
                     "study_sha256": rec.study_sha,
                     "catalog_sha256": rec.catalog_sha,

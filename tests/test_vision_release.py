@@ -130,6 +130,20 @@ def test_real_authorized_plane_with_synthetic_trained_branches(tmp_path,monkeypa
     release.verify_native(runtime,resultdir,{n:{"model_sha256":release.sha(p/"model.json")} for n,p in packages.items()},tau)
     proof=read(resultdir/"build-smoke.json")
     assert not proof["failed"] and len(proof["map_files"])==36 and proof["runtime"]["device"]=="cpu"
+    import vision_release_native as native
+    audited=tmp_path/"audited";audited.mkdir()
+    for n in ("tmp","output","runner"):(audited/n).mkdir()
+    shutil.copytree(runtime/"models",audited/"models",copy_function=os.link)
+    for n in native.DATA_NAMES:
+        dest=audited/"allowed-input"/n;dest.parent.mkdir(parents=True,exist_ok=True);os.link(runtime/"example"/n,dest)
+    shutil.copyfile(runtime/"smoke.py",audited/"runner/smoke.py")
+    pins={n:release.sha(p/"model.json") for n,p in packages.items()}
+    env=dict(os.environ,OMP_NUM_THREADS="2",TMPDIR=str(audited/"tmp"),TEMP=str(audited/"tmp"),TMP=str(audited/"tmp"))
+    proc=subprocess.run([sys.executable,"-I","-B",str(HERE/"scripts/vision_release_native.py"),"audited-scoring","--work",str(audited)],
+                        input=json.dumps(pins),env=env,cwd=audited,text=True,capture_output=True)
+    assert proc.returncode==0,proc.stderr
+    assert set(json.loads(proc.stdout)["read_roles"])==native.DATA_NAMES
+
 
 
 def test_report_projection_requires_sealed_sources_and_denominator_conservation(tmp_path,monkeypatch):

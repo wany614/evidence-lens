@@ -71,17 +71,170 @@
       "sha256": "9f7000598cef1be5b7a63c89c82b233069c23e37ca27737e0cb105ffec564860"
     },
     "src/evidence_lens/_verify.py": {
+      "checkout_sha256": "e2d90fc7ec4f42afdcc6186dc09c7d846a807e7665345c63a8386e9486da357b",
+      "edits": [
+        {
+          "insert": [
+            "def verify_shared(result: dict, store: Path) -> None:\n"
+          ],
+          "line": 181,
+          "remove": [
+            "def verify_shared(result: dict, store: Path, seen: set | None = None) -> None:\n"
+          ]
+        },
+        {
+          "insert": [
+            "        require(path.is_file() and not path.is_symlink() and path.stat().st_size == row[\"bytes\"]\n",
+            "                and sha(path) == row[\"sha256\"], f\"missing or changed shared input: {row['sha256']}\")\n"
+          ],
+          "line": 184,
+          "remove": [
+            "        require(path.is_file() and not path.is_symlink() and path.stat().st_size == row[\"bytes\"],\n",
+            "                f\"missing or changed shared input: {row['sha256']}\")\n",
+            "        stat = path.stat()\n",
+            "        identity = (row[\"sha256\"], stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)\n",
+            "        if seen is None or identity not in seen:\n",
+            "            require(sha(path) == row[\"sha256\"], f\"missing or changed shared input: {row['sha256']}\")\n",
+            "            if seen is not None:\n",
+            "                seen.add(identity)\n",
+            "\n",
+            "\n",
+            "def verify_archive_receipt(store, rid, digest, receipt_id):\n",
+            "    require(matches(RUN_ID, rid) and matches(HASH, digest) and isinstance(receipt_id, str)\n",
+            "            and len(receipt_id) == 32 and all(c in \"0123456789abcdef\" for c in receipt_id),\n",
+            "            \"invalid run, manifest or archive receipt identifier\")\n",
+            "    receipt = load(store / \"receipts/archive\" / (receipt_id + \".json\"))\n",
+            "    require(receipt[\"kind\"] == \"archive\" and receipt[\"status\"] == \"verified\"\n",
+            "            and receipt[\"receipt_id\"] == receipt_id and receipt[\"run_id\"] == rid\n",
+            "            and receipt[\"manifest_sha256\"] == digest and matches(HASH, receipt[\"container_sha256\"])\n",
+            "            and receipt.get(\"remote_object_ids\"), \"a provider-verified archive receipt is required\")\n",
+            "\n",
+            "\n",
+            "def parent_directory(store, ref, shelf):\n",
+            "    rid = ref[\"run_id\"]\n",
+            "    current = store / \"runs\" / rid\n",
+            "    if shelf is None or current.is_dir():\n",
+            "        return current\n",
+            "    marker = load(shelf / \"catalog\" / (rid + \".json\"))\n",
+            "    require(marker[\"run_id\"] == rid and marker[\"manifest_sha256\"] == ref[\"manifest_sha256\"],\n",
+            "            \"cold-shelf parent differs from the requested seal\")\n",
+            "    verify_archive_receipt(store, rid, ref[\"manifest_sha256\"], marker[\"archive_receipt_id\"])\n",
+            "    parked = shelf / \"runs\" / rid\n",
+            "    require(parked.resolve() == parked and parked.is_dir(), \"authenticated cold-shelf parent is absent\")\n",
+            "    return parked\n"
+          ]
+        },
+        {
+          "insert": [
+            "                        active: frozenset = frozenset()) -> None:\n"
+          ],
+          "line": 246,
+          "remove": [
+            "                        active: frozenset = frozenset(), *, shelf: Path | None = None,\n",
+            "                        verified_assets: set | None = None) -> None:\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 249,
+          "remove": [
+            "    verified_assets = set() if verified_assets is None else verified_assets\n"
+          ]
+        },
+        {
+          "insert": [
+            "    verify_shared(result, store)\n"
+          ],
+          "line": 252,
+          "remove": [
+            "    verify_shared(result, store, verified_assets)\n"
+          ]
+        },
+        {
+          "insert": [
+            "            path = store / \"runs\" / parent_id\n"
+          ],
+          "line": 258,
+          "remove": [
+            "            path = parent_directory(store, ref, shelf)\n"
+          ]
+        },
+        {
+          "insert": [
+            "            verify_dependencies(upstream, store, cache, active | {rid})\n"
+          ],
+          "line": 262,
+          "remove": [
+            "            verify_dependencies(upstream, store, cache, active | {rid}, shelf=shelf, verified_assets=verified_assets)\n"
+          ]
+        }
+      ],
       "sha256": "fa748988ca72925a8e3eb019909e37edb206235a58f21a33c9d5c8573e506414"
     },
     "src/evidence_lens/_worker.py": {
       "sha256": "e0131e9c3af72d901cd4be5f90838eeba478cd542330d18b5bf92c940319f0c9"
     },
     "src/evidence_lens/archive.py": {
-      "checkout_sha256": "b432a511aab9b3b9fb5b953acb53b530ac694a3ab487006989656f8ce3ebf595",
+      "checkout_sha256": "04fca78955e5a4070b57b3619d5cc7ce29a3711bee3bd0ebdc5c485b2230b6bf",
       "edits": [
+        {
+          "insert": [
+            "from ._verify import require, verify_bundle, verify_dependencies, verify_shared\n"
+          ],
+          "line": 23,
+          "remove": [
+            "from ._verify import parent_directory, require, verify_bundle, verify_dependencies, verify_shared\n"
+          ]
+        },
+        {
+          "insert": [
+            "                    upstreams: dict | None = None) -> None:\n"
+          ],
+          "line": 77,
+          "remove": [
+            "                    upstreams: dict | None = None, shelf: Path | None = None) -> None:\n"
+          ]
+        },
+        {
+          "insert": [
+            "                index_run(db, root, root / \"runs\" / rid, entry)\n"
+          ],
+          "line": 82,
+          "remove": [
+            "                bundle = parent_directory(root, {\"run_id\": rid, \"manifest_sha256\": entry[\"manifest_sha256\"]}, shelf)\n",
+            "                index_run(db, bundle.parent.parent, bundle, entry)\n"
+          ]
+        },
+        {
+          "insert": [
+            "def receive(source: Path, root: Path, expected: str | None = None, storage_policy: Path | None = None) -> dict:\n"
+          ],
+          "line": 91,
+          "remove": [
+            "def configured_shelf(root: Path, shelf: Path | None) -> Path | None:\n",
+            "    supplied = shelf or os.environ.get(\"EVIDENCE_LENS_ARCHIVE_SHELF\")\n",
+            "    if not supplied:\n",
+            "        return None\n",
+            "    path = Path(supplied).resolve()\n",
+            "    require(not path.is_relative_to(root) and not root.is_relative_to(path) and (path / \"catalog\").is_dir(),\n",
+            "            \"supply an existing cold shelf outside the active store\")\n",
+            "    return path\n",
+            "\n",
+            "\n",
+            "def receive(source: Path, root: Path, expected: str | None = None, storage_policy: Path | None = None,\n",
+            "            *, shelf: Path | None = None) -> dict:\n"
+          ]
+        },
         {
           "insert": [],
           "line": 104,
+          "remove": [
+            "    shelf = configured_shelf(root, shelf)\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 117,
           "remove": [
             "    storage_reuse = {}\n"
           ]
@@ -90,14 +243,23 @@
           "insert": [
             "            estimate = _capacity.bytes_on_tree(source)\n"
           ],
-          "line": 108,
+          "line": 121,
           "remove": [
             "            estimate = _capacity.bytes_on_tree(source, count_links=True)\n"
           ]
         },
         {
+          "insert": [
+            "            verify_dependencies(result, root, upstreams)\n"
+          ],
+          "line": 161,
+          "remove": [
+            "            verify_dependencies(result, root, upstreams, shelf=shelf)\n"
+          ]
+        },
+        {
           "insert": [],
-          "line": 154,
+          "line": 167,
           "remove": [
             "                if sys.platform == \"darwin\":\n",
             "                    from ._dedup import compact_inputs\n",
@@ -108,9 +270,128 @@
           "insert": [
             "        receipt, record = make_receipt(root, \"transfer\", run_id=rid, manifest_sha256=digest, status=status,\n"
           ],
-          "line": 170,
+          "line": 183,
           "remove": [
             "        receipt, record = make_receipt(root, \"transfer\", run_id=rid, manifest_sha256=digest, status=status, local_input_storage=storage_reuse,\n"
+          ]
+        },
+        {
+          "insert": [
+            "        project_receipt(root, receipt, out, result, upstreams)\n"
+          ],
+          "line": 186,
+          "remove": [
+            "        project_receipt(root, receipt, out, result, upstreams, shelf)\n"
+          ]
+        },
+        {
+          "insert": [
+            "def rebuild(root: Path) -> dict:\n"
+          ],
+          "line": 246,
+          "remove": [
+            "def rebuild(root: Path, shelf: Path | None = None) -> dict:\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 248,
+          "remove": [
+            "    shelf = configured_shelf(root, shelf)\n"
+          ]
+        },
+        {
+          "insert": [
+            "                for path in sorted((root / \"runs\").glob(\"*\")):\n"
+          ],
+          "line": 257,
+          "remove": [
+            "                directories = sorted((root / \"runs\").glob(\"*\"))\n",
+            "                if shelf is not None:\n",
+            "                    directories += sorted((shelf / \"runs\").glob(\"*\"))\n",
+            "                for path in directories:\n"
+          ]
+        },
+        {
+          "insert": [
+            "                    require(path.name == result[\"run\"][\"run_id\"], \"bundle directory differs from run identity\")\n"
+          ],
+          "line": 262,
+          "remove": [
+            "                    require(path.name == result[\"run\"][\"run_id\"] and path.name not in packages,\n",
+            "                            \"duplicate bundle or directory differs from run identity\")\n",
+            "                    if path.parent.parent == shelf:\n",
+            "                        pin = {\"run_id\": path.name, \"manifest_sha256\": result[\"manifest_sha256\"]}\n",
+            "                        require(parent_directory(root, pin, shelf) == path, \"cold shelf contains a second copy\")\n"
+          ]
+        },
+        {
+          "insert": [
+            "                    index_run(db, root, path, result)\n"
+          ],
+          "line": 268,
+          "remove": [
+            "                    index_run(db, path.parent.parent, path, result)\n"
+          ]
+        },
+        {
+          "insert": [
+            "                checked = set()\n"
+          ],
+          "line": 271,
+          "remove": [
+            "                checked, shared = set(), set()\n"
+          ]
+        },
+        {
+          "insert": [
+            "                    verify_dependencies(packages[rid], root, packages)\n"
+          ],
+          "line": 280,
+          "remove": [
+            "                    verify_dependencies(packages[rid], root, packages, shelf=shelf, verified_assets=shared)\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 306,
+          "remove": [
+            "    for sub in (r, v):\n",
+            "        sub.add_argument(\"--shelf\", type=Path, help=\"also verify parents in this authenticated cold shelf\")\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 314,
+          "remove": [
+            "    b.add_argument(\"--shelf\", type=Path, help=\"include every verified run in this cold shelf\")\n"
+          ]
+        },
+        {
+          "insert": [
+            "                verify_dependencies(result, root.resolve())\n"
+          ],
+          "line": 329,
+          "remove": [
+            "                verify_dependencies(result, root.resolve(), shelf=configured_shelf(root.resolve(), args.shelf))\n"
+          ]
+        },
+        {
+          "insert": [
+            "            out = receive(args.source, args.root, args.sha256, args.storage_policy)\n"
+          ],
+          "line": 334,
+          "remove": [
+            "            out = receive(args.source, args.root, args.sha256, args.storage_policy, shelf=args.shelf)\n"
+          ]
+        },
+        {
+          "insert": [
+            "            out = rebuild(args.root)\n"
+          ],
+          "line": 350,
+          "remove": [
+            "            out = rebuild(args.root, args.shelf)\n"
           ]
         }
       ],

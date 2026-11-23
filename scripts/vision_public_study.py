@@ -223,6 +223,22 @@ def scientific_text(path, summary, paired, cpu, training, attempts):
         rows.append(
             f"| {m} | {c['cold_seconds']:.2f} s | {c['hot_p50_seconds']:.2f} s | {c['hot_p95_seconds']:.2f} s | {c['rss_bytes'] / 2**30:.2f} GiB |"
         )
+    rows.extend(
+        [
+            "",
+            "Cold latency spans process creation, interpreter and library imports, model loading, source and prediction decoding, feature extraction, inference and the first complete output file. Each warm percentile uses 18 completed outputs across six views.",
+            "",
+            "The memory column uses the larger of two sampled process-tree RSS peaks. Both peaks and both cold clock readings are recorded in the numerical cost file. The two sampling intervals are shown below.",
+            "",
+            "| Model | External observer | Native scorer |",
+            "| --- | ---: | ---: |",
+        ]
+    )
+    for m, c in cpu.items():
+        rows.append(
+            f"| {m} | {1000 * c['external_sample_interval_seconds']:.1f} ms | "
+            f"{1000 * c['native_rss_sample_interval_seconds']:.1f} ms |"
+        )
     failed = len({r["run_id"] for r in attempts if r["status"] != "succeeded"})
     rows += [
         "",
@@ -307,7 +323,8 @@ def publish_report(roots, spec, new, old, output, run_id):
             name = "L1-full" if tag == "original-five" else tag
             require(
                 s["method_freeze_sha256"] == method_sha
-                and e["inputs"][tag] == {"sha256": ss, "model_sha256": method["models"][name]["model_sha256"]},
+                and e["inputs"][tag]
+                == {"sha256": ss, "model_sha256": method["models"][name]["model_sha256"]},
                 "evaluation inputs differ from original model and score",
             )
             cost(pin)
@@ -543,6 +560,20 @@ def publish_report(roots, spec, new, old, output, run_id):
                 "development_primary": {
                     m: {k: v["macro"] if v else None for k, v in z.items()}
                     for m, z in replay["primary_domains"].items()
+                },
+                "inference_parity_protocol_sha256": method["inference_parity_protocol_sha256"],
+                "native_inference_parity": method["native_inference_parity"],
+                "development_support": {
+                    "all_three_paired_seed_views": replay["matched_48_three_seed_domains"],
+                    "candidate_fits": len(replay["candidates"]),
+                },
+                "parameter_scope": {
+                    m: next(
+                        t["trainable_parameters"]
+                        for t in method["training_receipts"]
+                        if t["run_id"] == method["models"][m]["run_id"]
+                    )
+                    for m in ("L2-frozen", "L2-vision-ft")
                 },
                 "deployment_parity": {k: v["canonical_win_to_mac"] for k, v in method["cpu_costs"].items()},
             },
