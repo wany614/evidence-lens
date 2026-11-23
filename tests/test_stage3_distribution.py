@@ -9,8 +9,22 @@ import pytest
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/"scripts"))
 from stage3_training_transport import write_dataset
-from verify_stage3_public import extract_checked
+from verify_stage3_public import extract_checked, same_native_scores
 from vision_release import sig
+
+
+def test_standalone_score_matches_the_graded_native_arrays(tmp_path):
+    import numpy as np
+
+    light, full = tmp_path/"light.npz", tmp_path/"full.npz"
+    arrays = {"risk": np.array([0.2, 0.7], np.float32), "valid": np.array([True, True]),
+              "state": np.array([0, 1], np.uint8)}
+    np.savez(light, **arrays)
+    np.savez_compressed(full, **arrays)
+    assert set(same_native_scores(light, full)) == {"risk.npy", "valid.npy", "state.npy"}
+    np.savez(light, **{**arrays, "risk": np.zeros(2, np.float32)})
+    with pytest.raises(ValueError, match="Standalone and complete CPU results differ"):
+        same_native_scores(light, full)
 
 
 def test_transport_excludes_unlisted_source_and_rejects_incorrect_member(tmp_path):

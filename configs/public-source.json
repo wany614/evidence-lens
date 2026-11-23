@@ -315,6 +315,7 @@
     "scripts/stage3_public_cpu.py": "apache-original",
     "scripts/stage3_public_source_replay.py": "apache-original",
     "scripts/stage3_reconstruction_ledger.py": "apache-original",
+    "scripts/stage3_reconstruction_parity.py": "apache-original",
     "scripts/stage3_reference.py": "apache-original",
     "scripts/stage3_register_reference.py": "apache-original",
     "scripts/stage3_registration_worker.py": "apache-original",

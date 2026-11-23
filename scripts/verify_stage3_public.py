@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import platform
 import re
@@ -64,6 +65,9 @@ def inspect_source(op, tree, public, records):
             require(safe_name(v["source"]).startswith("src/") and sha(p) == v["sha256"],
                     "Model runtime differs from its research source")
             pairs.append((p, v["source"]))
+    source_paths = {p for p, _ in pairs}
+    executable_files = {p for p in (public/"models").rglob("*.py") if "runtime" in p.relative_to(public).parts}
+    require(executable_files <= source_paths, "A shipped runtime module has no matching source in the tagged commit")
     for path, name in pairs:
         b = path.read_bytes()
         require(blobs[name]["mode"] in ("100644", "100755") and len(b) == blobs[name]["size"]
@@ -71,6 +75,20 @@ def inspect_source(op, tree, public, records):
                 "Shipping runtime differs from public commit: " + name)
     records["tagged_runtime_files"] = len(pairs)
     records["verification_sources"] = {name:sig(HERE.parent/name) for name in verification_scripts}
+
+
+def same_native_scores(light, full):
+    """Compare same-host arrays after decompression, independent of ZIP metadata."""
+    names = {"risk.npy", "state.npy", "valid.npy"}
+    with zipfile.ZipFile(light) as left, zipfile.ZipFile(full) as right:
+        require(set(left.namelist()) == set(right.namelist()) == names
+                and len(left.namelist()) == len(right.namelist()) == 3, "Unexpected standalone score members")
+        hashes = {}
+        for name in sorted(names):
+            value = left.read(name)
+            require(value == right.read(name), "Standalone and complete CPU results differ: " + name)
+            hashes[name] = hashlib.sha256(value).hexdigest()
+    return hashes
 
 
 def grade(args):
@@ -120,6 +138,8 @@ def grade(args):
                 require(a["name"] == n and a["index"] == index and sig(downloads/n) == {k:a[k] for k in ("bytes", "sha256")},
                         "Candidate and attachment differ: " + n)
                 items[n] = a["sha256"]
+                if key == "numerical":
+                    continue
                 metadata[key] = extract_checked(downloads/n, root/key, a)
                 require(all(metadata[key][k] == c[k] for k in ("commit","version","study_sha256","method_sha256","opening_sha256")),
                         "Package detached from the held-out study")
@@ -141,10 +161,22 @@ def grade(args):
             # Supply the first process only a deployable case. Restore evaluation data from the tested ZIP afterward.
             deploy = profile/"case"
             shutil.copytree(root/"example"/"CASE"/"M4", deploy)
+            prefix = "CASE/M4/"
+            declared = {n.removeprefix(prefix) for n in metadata["example"]["files"] if n.startswith(prefix)}
+            require({p.relative_to(deploy).as_posix() for p in deploy.rglob("*") if p.is_file()} == declared,
+                    "Extra or missing deployment case member")
             hidden = root/"example"
             shutil.rmtree(hidden)  # This verifier created the temporary extraction above.
             case_sha = sha(deploy/"case.json")
             require(case_sha == metadata["example"]["case_sha256"]["M4"], "Example points to a different four-source case")
+            program = profile/"light-scorer"
+            program.mkdir()
+            for rel in ("cpu.py", "release.json", "models/MS-frozen/model.json"):
+                dst = program/rel
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(cpu/rel, dst)
+            for rel in ("models/MS-L1", "models/MS-frozen/runtime"):
+                shutil.copytree(cpu/rel, program/rel)
             with tempfile.TemporaryDirectory(prefix="light-only-", dir=root) as scratch:
                 light_root = Path(scratch)
                 light = install(light_root, cpu/"requirements-light.txt", args.wheelhouse, pytorch_cpu=False)
@@ -153,7 +185,7 @@ def grade(args):
                 require({"pillow","numpy"} <= names <= {"pillow","numpy","pip","setuptools","wheel"},
                         "The lightweight scorer installation includes unexpected packages")
                 shutil.copyfile(light_root/"installation.json", out/"installation-light.json")
-                subprocess.run([str(light),"-I","-B",str(cpu/"cpu.py"),"run","--release-sha256",release_sha,
+                subprocess.run([str(light),"-I","-B",str(program/"cpu.py"),"run","--release-sha256",release_sha,
                                 "--case",str(deploy),"--case-sha256",case_sha,"--view","v01","--scope","all",
                                 "--output",str(out/"example")], env=env, cwd=profile, check=True)
                 require(read(out/"example"/"score.json")["method"] == c["default_method"] == "MS-L1",
@@ -165,6 +197,10 @@ def grade(args):
                         "Expected native risk or state visualization")
             example_asset = c["assets"]["example"]
             extract_checked(downloads/example_asset["name"], hidden, example_asset)
+            numerical = c["assets"]["numerical"]
+            report = extract_checked(downloads/numerical["name"], root/"numerical", numerical)
+            require(all(report[k] == c[k] for k in ("commit","version","study_sha256","method_sha256","opening_sha256")),
+                    "Numerical package detached from the held-out study")
             exe = install(root, cpu/"requirements.txt", args.wheelhouse)
             shutil.copyfile(root/"installation.json", out/"installation.json")
             cmd = [str(exe), "-I", "-B", str(cpu/"cpu.py")]
@@ -173,14 +209,18 @@ def grade(args):
             src = root/"scores"/"grade.json"
             proof = read(src)
             require(proof["status"] == "passed" and proof["scheduled_comparisons"] == 144
-                    and proof["distinct_method_scope_views"] == 120 and len(proof["reference_evaluations"]) == 12,
+                    and proof["distinct_method_scope_views"] == 120 and len(proof["reference_evaluations"]) == 12
+                    and math.isfinite(proof["max_abs_error"]) and 0 <= proof["max_abs_error"] <= 0.0001
+                    and type(proof["threshold_crossings"]) is int and proof["threshold_crossings"] >= 0,
                     "Public native replay missed a required method, scope, view or independent evaluation")
+            same = same_native_scores(out/"example/scores.npz", root/"scores/scores/MS-L1/M4/all/v01.npz")
             shutil.copyfile(src,out/"grade.json")
             record.update(status="passed", candidate_sha256=args.candidate_sha256, grade_sha256=sha(src),
                           default_method=c["default_method"], scheduled_comparisons=144,
                           distinct_method_scope_views=120, threshold_crossings=proof["threshold_crossings"],
                           max_abs_risk_difference=proof["max_abs_error"], example_sha256=ex_sha,
                           standalone_case_sha256=case_sha, installation_sha256=sha(out/"installation.json"),
+                          standalone_matches_graded_arrays=same,
                           lightweight_installation_sha256=sha(out/"installation-light.json"))
     except Exception as e:
         record.update(status="failed", failure_type=type(e).__name__, failure_stage=str(e)[:220])
