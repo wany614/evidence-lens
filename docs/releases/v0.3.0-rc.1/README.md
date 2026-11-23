@@ -55,3 +55,7 @@ EXAMPLE_SHA=$(.venv/bin/python -c 'import json; print(json.load(open("../candida
 ```
 
 The replay checks four methods, two reconstructions, six views and three source scopes. M2 two and all share the same original score. Both the hash-verified scientific maps and the independently recomputed CPU maps enter the comparison. `grade.json` records numerical discrepancies, threshold crossings and independent checks of the 12 original reference-valid, evaluable and high-error grids. Runtime estimates and the two-condition intervention apply to these authored scenes at 256×256.
+
+## Installations verified after publication
+
+The public archives were downloaded anonymously and run on macOS on arm64 with Python 3.12.16 and Windows on AMD64 with Python 3.12.10. Both platforms checked the offset-bell-cage example at native resolution with MS-L1, B-L1-transfer, MS-frozen and MS-ft. Each replay produced 120 distinct score comparisons and 12 independent reference checks. The Linux commands are provided for installation. Linux CPU verification is pending. [Public verification receipts, numerical differences and exact environments](../../verification/v0.3.0-rc.1/README.md)

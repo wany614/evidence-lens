@@ -152,6 +152,9 @@
     "docs/verification/v0.2.0-rc.1/macos.json": "cc-original",
     "docs/verification/v0.2.0-rc.1/windows-control-readback.json": "cc-original",
     "docs/verification/v0.2.0-rc.1/windows.json": "cc-original",
+    "docs/verification/v0.3.0-rc.1/README.md": "cc-original",
+    "docs/verification/v0.3.0-rc.1/macos.json": "cc-original",
+    "docs/verification/v0.3.0-rc.1/windows.json": "cc-original",
     "docs/vision-data.md": "cc-original",
     "docs/vision-postfit.md": "cc-original",
     "docs/vision-rights.md": "cc-original",
@@ -169,6 +172,8 @@
     "examples/offset-bell-cage/README.md": "cc-original",
     "examples/offset-bell-cage/four-method-comparison-v01.png": "cc-original",
     "examples/offset-bell-cage/m4-target-v01.png": "cc-original",
+    "examples/offset-bell-cage/m4-v01-risk.png": "cc-original",
+    "examples/offset-bell-cage/m4-v01-state.png": "cc-original",
     "examples/offset-bell-cage/origins.json": "cc-original",
     "examples/offset-bell-cage/reference-v01.png": "cc-original",
     "examples/offset-bell-cage/source-s00.png": "cc-original",
@@ -549,6 +554,16 @@
       "format": "rgb8-png",
       "bytes": 38740,
       "sha256": "40433b03729b97fb1733c8d6c92f0518c91a4836552bc0c7970e0ece1db61c82"
+    },
+    "examples/offset-bell-cage/m4-v01-risk.png": {
+      "bytes": 47498,
+      "sha256": "6b6212d4a6eca9874a9b1c57e51fd07ffe062f7467795488b95f120f96cae4c6",
+      "format": "rgb8-png"
+    },
+    "examples/offset-bell-cage/m4-v01-state.png": {
+      "bytes": 2902,
+      "sha256": "445cbb0b9f349066c8c0e33f71b4f244446c01944def08bcc80f93f133c50693",
+      "format": "rgb8-png"
     },
     "examples/offset-bell-cage/reference-v01.png": {
       "format": "rgb8-png",

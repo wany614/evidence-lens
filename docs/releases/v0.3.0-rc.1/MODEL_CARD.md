@@ -17,3 +17,7 @@ On the registered offset-bell-cage development case, full score-all CPU inferenc
 ## Held-out confirmation
 
 The four held-out families contributed 48 native target renders. Under two-source reconstruction, common-domain AP for MS-L1, MS-frozen and MS-ft was 0.747, 0.727 and 0.734. Under four-source reconstruction these values were 0.704, 0.651 and 0.665. MS-L1 remained the development-selected default. Every reported target used its own prediction and reference masks. [Full counts and operating points](https://github.com/wany614/evidence-lens/blob/v0.3.0-rc.1/docs/results/multisource-confirmation.md)
+
+## Installations verified after publication
+
+The public archives were downloaded anonymously and run on macOS on arm64 with Python 3.12.16 and Windows on AMD64 with Python 3.12.10. Both platforms checked the offset-bell-cage example at native resolution with MS-L1, B-L1-transfer, MS-frozen and MS-ft. Each replay produced 120 distinct score comparisons and 12 independent reference checks. The Linux commands are provided for installation. Linux CPU verification is pending. [Public verification receipts, numerical differences and exact environments](../../verification/v0.3.0-rc.1/README.md)

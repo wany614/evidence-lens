@@ -12,7 +12,7 @@ The multi-source release includes four trained risk models and both reconstructi
 
 In this target, 5,149 of 65,536 pixels exceed mean absolute RGB error 0.05. The comparison board shows where these errors occur and how each scorer responds when it receives one, two or all four images from the same reconstruction. This example was selected by family and view before scoring. [Open the full comparison board](examples/offset-bell-cage/four-method-comparison-v01.png) · [Camera, source and figure provenance](examples/offset-bell-cage/README.md)
 
-On the four held-out families, the family-equal RGB error fraction changed from 10.66% with two source images to 6.90% with four. With four sources, common-domain AP was 0.704 for MS-L1, 0.651 for MS-frozen and 0.665 for MS-ft. The default was selected on development data. [Held-out results, operating points and denominators](docs/results/multisource-confirmation.md)
+On the four held-out families, the family-equal RGB error fraction changed from 10.66% with two source images to 6.90% with four. With four sources, common-domain AP was 0.704 for MS-L1, 0.651 for MS-frozen and 0.665 for MS-ft. The default was selected on development data. [Held-out results, operating points and denominators](docs/results/multisource-confirmation.md) · [Mac and Windows public CPU verification](docs/verification/v0.3.0-rc.1/README.md) · [Open the default risk and state maps](examples/offset-bell-cage/README.md#default-model-output-from-the-public-download)
 
 ## Single-image models
 
