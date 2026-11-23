@@ -74,3 +74,25 @@ python -I score-native.py --model-sha256 "$MODEL_SHA" --input input.png --camera
 On native 512 × 512 formal views the second command records process-to-first-output time, warm p50 and p95, process-tree sampled peak RSS, per-case support and the bytes consumed. It includes file reads, target/source camera projection, feature construction, the complete backbone, head and output serialization. The precomputed-array interface measures a different workload. A missing render or unsupported depth encoding retains its explicit status and unknown values. The independent deployment decision uses the preregistered Mac p95 ≤5 s per view and peak ≤2 GiB criteria alongside paired development performance. Preserve both neural checkpoints even if L1 stays the default.
 
 For a full development score transport use `vision_worker.py infer-dataset --split development --package PACKAGE --model-sha256 SHA --dataset DEV/dataset.json --dataset-sha256 DEV_SHA --device cpu --output NEW`. The per-view output uses `risk`, `valid` and `state`, with 255 for unknown. The Mac test entry additionally requires `--split test --store STORE --shelf SHELF --catalog CATALOG --catalog-sha256 CAT_SHA --method-freeze METHOD --method-sha256 METHOD_SHA` and the independent evaluator's frozen source. It authenticates the eight-family opening and selected model before opening the test manifest.
+
+## Recorded Windows dispatch and Mac intake
+
+Each parent argument uses the original `RUN_ID=MANIFEST_SHA256`. Prepare one directory per registered configuration on the Mac. The train/development roots on Windows contain `dataset.json` and the exact files listed beneath it. The directory survives job retries and is independently checked against the intake manifest on each execution. The external GPU lock covers the entire Windows command.
+
+```sh
+python3 scripts/vision_gpu_job.py prepare --store "$STORE" --shelf "$SHELF" --core-repo . --worker "$WORKER" --worker-sha256 "$WORKER_SHA" --config "$CONFIG" --config-sha256 "$CONFIG_SHA" --train "$TRAIN_PARENT" --development "$DEV_PARENT" --preprocessing "$PRE_PARENT" --base-pin "$BASE_PARENT" --base-check "$CHECK_PARENT" --output "$JOB"
+```
+
+Omit `--development` for a train-only pilot. For the repeat seeds, add `--lr-selection RUN_ID=MANIFEST_SHA256`. Transfer the complete prepared job and the signed split directories. Supply the SHA of `job.json` from the printed dispatch receipt. From PowerShell on the GPU worker run the local job script with its calibrated Python environment.
+
+```powershell
+python "$Job/code/scripts/vision_gpu_job.py" run --job "$Job" --job-sha256 "$JobSHA" --store "$Store" --return-dir "$Returns" --train-root "$Train" --development-root "$Dev" --official-source "$DinoCheckout" --base "$DinoPth"
+```
+
+Successful duplicate dispatches reuse the existing run and return receipt. If the original run failed, an explicit `--retry-of RUN_ID` retains the failure; to resume, add `--resume-sha256 SHA` for its sealed checkpoint. The returned `transport-audit.json` identifies the exact data/worker receipts. The selected formal checkpoint's native development arrays and strict states are listed in `payload/development-scores/scores.json`. A completed training receipt includes the CPU-reloaded digest table of all 181 tensors. The setup receipt records the actual PyTorch precision/determinism flags and the cuBLAS workspace setting. Eight data-only BCE minibatches record all required gradient groups.
+
+```sh
+python3 scripts/vision_gpu_job.py receive --job "$JOB" --job-sha256 "$JOB_SHA" --store "$STORE" --archive "$RETURN_ZIP" --receipt "$RETURN_RECEIPT"
+```
+
+The Mac independently checks the job, run seal, stage inputs and archive member hashes. Keep the original Windows archive and return receipt for provenance. The train-only pilot and formal worker have separate scientific identities.

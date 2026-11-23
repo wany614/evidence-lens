@@ -1,0 +1,12 @@
+Evidence Lens B
+Original project software, configuration and supervised model contributions by wany614.
+Original project software and model contributions are distributed under Apache License 2.0.
+The ordinary DINOv2 ViT-S/14 base model is copyright Meta Platforms, Inc. and affiliates.
+Its upstream license text is supplied in licenses/DINOv2-LICENSE.txt. The original source
+revision, checkpoint SHA-256 and distribution location appear in BASE-SOURCE.json.
+Both visual models add a supervised projection and risk head. L2-vision-ft also modifies
+the final two transformer blocks and terminal LayerNorm. Original project documentation,
+authored plane assets and released numerical records are CC BY 4.0. Attribute Evidence Lens
+and wany614, link the license, and indicate changes. See licenses/ASSET-SCOPE.json.
+PyTorch, NumPy, safetensors, psutil and Pillow are installed separately under their own
+distribution terms.

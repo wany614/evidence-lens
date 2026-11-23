@@ -178,11 +178,42 @@ def verify_bundle(bundle: Path) -> dict:
             "shared": shared}
 
 
-def verify_shared(result: dict, store: Path) -> None:
+def verify_shared(result: dict, store: Path, seen: set | None = None) -> None:
     for row in result["shared"]:
         path = asset_path(store, row["sha256"])
-        require(path.is_file() and not path.is_symlink() and path.stat().st_size == row["bytes"]
-                and sha(path) == row["sha256"], f"missing or changed shared input: {row['sha256']}")
+        require(path.is_file() and not path.is_symlink() and path.stat().st_size == row["bytes"],
+                f"missing or changed shared input: {row['sha256']}")
+        stat = path.stat()
+        identity = (row["sha256"], stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
+        if seen is None or identity not in seen:
+            require(sha(path) == row["sha256"], f"missing or changed shared input: {row['sha256']}")
+            if seen is not None:
+                seen.add(identity)
+
+
+def verify_archive_receipt(store, rid, digest, receipt_id):
+    require(matches(RUN_ID, rid) and matches(HASH, digest) and isinstance(receipt_id, str)
+            and len(receipt_id) == 32 and all(c in "0123456789abcdef" for c in receipt_id),
+            "invalid run, manifest or archive receipt identifier")
+    receipt = load(store / "receipts/archive" / (receipt_id + ".json"))
+    require(receipt["kind"] == "archive" and receipt["status"] == "verified"
+            and receipt["receipt_id"] == receipt_id and receipt["run_id"] == rid
+            and receipt["manifest_sha256"] == digest and matches(HASH, receipt["container_sha256"])
+            and receipt.get("remote_object_ids"), "a provider-verified archive receipt is required")
+
+
+def parent_directory(store, ref, shelf):
+    rid = ref["run_id"]
+    current = store / "runs" / rid
+    if shelf is None or current.is_dir():
+        return current
+    marker = load(shelf / "catalog" / (rid + ".json"))
+    require(marker["run_id"] == rid and marker["manifest_sha256"] == ref["manifest_sha256"],
+            "cold-shelf parent differs from the requested seal")
+    verify_archive_receipt(store, rid, ref["manifest_sha256"], marker["archive_receipt_id"])
+    parked = shelf / "runs" / rid
+    require(parked.resolve() == parked and parked.is_dir(), "authenticated cold-shelf parent is absent")
+    return parked
 
 
 def retry_inputs(inputs: list[dict]) -> list[dict]:
@@ -212,21 +243,23 @@ def retry_matches(previous: dict, run: dict, inputs: dict, command: list[str]) -
 
 
 def verify_dependencies(result: dict, store: Path, cache: dict | None = None,
-                        active: frozenset = frozenset()) -> None:
+                        active: frozenset = frozenset(), *, shelf: Path | None = None,
+                        verified_assets: set | None = None) -> None:
     cache = {} if cache is None else cache
+    verified_assets = set() if verified_assets is None else verified_assets
     rid = result["run"]["run_id"]
     require(rid not in active, "cyclic run provenance")
-    verify_shared(result, store)
+    verify_shared(result, store, verified_assets)
     deps = result["inputs"]
     parents = {}
     for ref in [*deps["parents"], *([deps["retry_of"]] if deps.get("retry_of") else [])]:
         parent_id = ref["run_id"]
         if parent_id not in cache:
-            path = store / "runs" / parent_id
+            path = parent_directory(store, ref, shelf)
             require(path.is_dir(), f"missing upstream run: {parent_id}")
             upstream = verify_bundle(path)
             require(upstream["run"]["run_id"] == parent_id, "parent path and identity differ")
-            verify_dependencies(upstream, store, cache, active | {rid})
+            verify_dependencies(upstream, store, cache, active | {rid}, shelf=shelf, verified_assets=verified_assets)
             cache[parent_id] = upstream
         upstream = cache[parent_id]
         require(upstream["manifest_sha256"] == ref["manifest_sha256"], f"changed upstream run: {parent_id}")

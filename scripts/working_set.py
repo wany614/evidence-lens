@@ -6,9 +6,9 @@ import os
 import tempfile
 from pathlib import Path
 
-from evidence_lens._bundle import HASH, RUN_ID, encoded, load, sha
+from evidence_lens._bundle import RUN_ID, encoded, load, sha
 from evidence_lens._index import writer_gate
-from evidence_lens._verify import require, verify_bundle
+from evidence_lens._verify import require, verify_archive_receipt as verify_receipt, verify_bundle
 from make_handoff import publish
 
 
@@ -20,17 +20,6 @@ def locations(store, shelf):
     require(store.stat().st_dev == shelf.stat().st_dev,
             "atomic parking requires folders on the same filesystem")
     return store, shelf
-
-
-def verify_receipt(store, rid, digest, receipt_id):
-    require(isinstance(rid, str) and RUN_ID.fullmatch(rid) and HASH.fullmatch(digest)
-            and len(receipt_id) == 32 and all(c in "0123456789abcdef" for c in receipt_id),
-            "invalid run, manifest or archive receipt identifier")
-    receipt = load(store / "receipts/archive" / (receipt_id + ".json"))
-    require(receipt["kind"] == "archive" and receipt["status"] == "verified"
-            and receipt["receipt_id"] == receipt_id and receipt["run_id"] == rid
-            and receipt["manifest_sha256"] == digest and HASH.fullmatch(receipt["container_sha256"])
-            and receipt.get("remote_object_ids"), "a provider-verified archive receipt is required")
 
 
 def relocate(store, shelf, rid, digest, receipt_id, *, to_shelf):

@@ -110,3 +110,5 @@ python scripts/working_set.py --store "$ACTIVE" --shelf "$COLD" park \
 ```
 
 Use `restore` with the same arguments to return a parked directory. For the aggregate report, run `report-view --out "$REPORT_VIEW"` with the same store and shelf. Pass that view as the `--store` for the `roster` and `assemble` steps in the formal evaluation guide. This private view holds the original manifest, operational metadata, numerical summaries, pooled curves and fixed boards. The report checks every consumed file against its original manifest. Full research recovery uses the archived package and the upstream checkpoint.
+
+For imports whose ancestors have already been parked, pass `--shelf "$SHELF"` to the archive `receive`, `verify` or `rebuild` command. A Mac controller that calls the receiver internally can set `EVIDENCE_LENS_ARCHIVE_SHELF` for that process. The receiver authenticates the placement record and the independent archive receipt, then verifies the full parent bundle and its dependencies. The rebuilt index keeps the logical run path relative to its store.

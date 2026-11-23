@@ -410,3 +410,26 @@ def test_directory_retry_uses_child_paths_and_hashes(tmp_path, example, capsys, 
     assert checked["run"]["retry_of_run_id"] == first.name
     assert (good / "inputs/views/temporary-input-2/camera.txt").read_text() == "same camera"
     assert archive.rebuild(store)["runs"] == 2
+
+
+def test_parked_parent_receive_and_rebuild(tmp_path, example, capsys):
+    producer, receiver, shelf = (tmp_path / s for s in ("producer", "receiver", "shelf"))
+    source = launch(example, producer, capsys)
+    child = launch(example, producer, capsys, kind="render", input_path=source / "payload/value.txt",
+                   extra=["--parent", source.name])
+    assert archive.receive(source, receiver)["status"] == "accepted"
+    digest = sha(source / "manifest.json")
+    _, receipt = archive.make_receipt(receiver, "archive", run_id=source.name, manifest_sha256=digest,
+                                      status="verified", container_sha256="1"*64, remote_object_ids=["test-object"])
+    (shelf / "runs").mkdir(parents=True)
+    (shelf / "catalog").mkdir()
+    (receiver / "runs" / source.name).rename(shelf / "runs" / source.name)
+    marker_path = shelf / "catalog" / (source.name + ".json")
+    marker = {"run_id": source.name, "manifest_sha256": digest, "archive_receipt_id": receipt["receipt_id"]}
+    save(marker_path, marker)
+    assert archive.receive(child, receiver, shelf=shelf)["status"] == "accepted"
+    assert archive.rebuild(receiver, shelf)["runs"] == 2
+    assert not (receiver / "runs" / source.name).exists()
+    save(marker_path, {**marker, "manifest_sha256": "0"*64})
+    rejected = archive.receive(child, receiver, shelf=shelf)
+    assert rejected["status"] == "quarantined" and "cold-shelf parent" in rejected["reason"]

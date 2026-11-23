@@ -20,7 +20,7 @@ from ._bundle import (BundleError, HASH, RUN_ID, SCHEMA, files, freeze_tree, loa
                       local_path, save, sha, utc)
 from ._index import connect, index_receipt, index_run, writer_gate
 from ._snapshot import commit_shared
-from ._verify import require, verify_bundle, verify_dependencies, verify_shared
+from ._verify import parent_directory, require, verify_bundle, verify_dependencies, verify_shared
 
 
 def store_of(bundle: Path) -> Path:
@@ -74,12 +74,13 @@ def remove_stage(path: Path) -> None:
 
 
 def project_receipt(root: Path, receipt: Path, out: Path | None = None, result: dict | None = None,
-                    upstreams: dict | None = None) -> None:
+                    upstreams: dict | None = None, shelf: Path | None = None) -> None:
     db = connect(root / "index" / "index.sqlite3")
     try:
         with db:
             for rid, entry in (upstreams or {}).items():
-                index_run(db, root, root / "runs" / rid, entry)
+                bundle = parent_directory(root, {"run_id": rid, "manifest_sha256": entry["manifest_sha256"]}, shelf)
+                index_run(db, bundle.parent.parent, bundle, entry)
             if out is not None:
                 index_run(db, root, out, result)
             index_receipt(db, root, receipt)
@@ -87,8 +88,20 @@ def project_receipt(root: Path, receipt: Path, out: Path | None = None, result: 
         db.close()
 
 
-def receive(source: Path, root: Path, expected: str | None = None, storage_policy: Path | None = None) -> dict:
+def configured_shelf(root: Path, shelf: Path | None) -> Path | None:
+    supplied = shelf or os.environ.get("EVIDENCE_LENS_ARCHIVE_SHELF")
+    if not supplied:
+        return None
+    path = Path(supplied).resolve()
+    require(not path.is_relative_to(root) and not root.is_relative_to(path) and (path / "catalog").is_dir(),
+            "supply an existing cold shelf outside the active store")
+    return path
+
+
+def receive(source: Path, root: Path, expected: str | None = None, storage_policy: Path | None = None,
+            *, shelf: Path | None = None) -> dict:
     source, root = source.absolute(), root.resolve()
+    shelf = configured_shelf(root, shelf)
     require(not source.is_symlink() and (source.is_dir() or source.is_file()),
             "source must be a run directory or ZIP")
     require(not root.is_relative_to(source.resolve()), "destination store is inside the source")
@@ -145,7 +158,7 @@ def receive(source: Path, root: Path, expected: str | None = None, storage_polic
                 require(existing["manifest_sha256"] == digest and existing["run"]["run_id"] == rid,
                         "conflict: this run ID already has a different manifest")
             upstreams = {}
-            verify_dependencies(result, root, upstreams)
+            verify_dependencies(result, root, upstreams, shelf=shelf)
             if out.exists():
                 status = "identical"
             else:
@@ -170,7 +183,7 @@ def receive(source: Path, root: Path, expected: str | None = None, storage_polic
         receipt, record = make_receipt(root, "transfer", run_id=rid, manifest_sha256=digest, status=status, local_input_storage=storage_reuse,
                                       reason=None, source_kind=source_kind, container_sha256=container_hash,
                                       bytes=size, elapsed_seconds=time.monotonic() - start)
-        project_receipt(root, receipt, out, result, upstreams)
+        project_receipt(root, receipt, out, result, upstreams, shelf)
         remove_stage(stage)
         return record
 
@@ -230,8 +243,9 @@ def pack(bundle: Path, output: Path, root: Path) -> dict:
     return record
 
 
-def rebuild(root: Path) -> dict:
+def rebuild(root: Path, shelf: Path | None = None) -> dict:
     root = root.resolve()
+    shelf = configured_shelf(root, shelf)
     with writer_gate(root):
         idx = root / "index"
         destination = idx / "index.sqlite3"
@@ -240,14 +254,21 @@ def rebuild(root: Path) -> dict:
         packages, count = {}, 0
         try:
             with db:
-                for path in sorted((root / "runs").glob("*")):
+                directories = sorted((root / "runs").glob("*"))
+                if shelf is not None:
+                    directories += sorted((shelf / "runs").glob("*"))
+                for path in directories:
                     result = verify_bundle(path)
-                    require(path.name == result["run"]["run_id"], "bundle directory differs from run identity")
+                    require(path.name == result["run"]["run_id"] and path.name not in packages,
+                            "duplicate bundle or directory differs from run identity")
+                    if path.parent.parent == shelf:
+                        pin = {"run_id": path.name, "manifest_sha256": result["manifest_sha256"]}
+                        require(parent_directory(root, pin, shelf) == path, "cold shelf contains a second copy")
                     packages[path.name] = result
-                    index_run(db, root, path, result)
+                    index_run(db, path.parent.parent, path, result)
                 # Each node's own edges are checked below; cached parents already
                 # have authenticated bytes. Detect cycles separately in this pass.
-                checked = set()
+                checked, shared = set(), set()
                 def visit(rid: str, active: frozenset) -> None:
                     if rid in checked:
                         return
@@ -256,7 +277,7 @@ def rebuild(root: Path) -> dict:
                     for ref in [*deps["parents"], *([deps["retry_of"]] if deps["retry_of"] else [])]:
                         require(ref["run_id"] in packages, f"missing upstream run: {ref['run_id']}")
                         visit(ref["run_id"], active | {rid})
-                    verify_dependencies(packages[rid], root, packages)
+                    verify_dependencies(packages[rid], root, packages, shelf=shelf, verified_assets=shared)
                     checked.add(rid)
                 for rid in packages:
                     visit(rid, frozenset())
@@ -282,12 +303,15 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--root", type=Path, required=True)
     r.add_argument("--sha256", help="expected ZIP SHA-256 from the producer")
     r.add_argument("--storage-policy", type=Path, help="override configs/storage.json")
+    for sub in (r, v):
+        sub.add_argument("--shelf", type=Path, help="also verify parents in this authenticated cold shelf")
     p = commands.add_parser("pack")
     p.add_argument("bundle", type=Path)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--root", type=Path)
     b = commands.add_parser("rebuild")
     b.add_argument("--root", type=Path, required=True)
+    b.add_argument("--shelf", type=Path, help="include every verified run in this cold shelf")
     a = commands.add_parser("add-asset", help="import one independently obtained shared file with a pinned SHA-256")
     a.add_argument("file", type=Path)
     a.add_argument("--root", type=Path, required=True)
@@ -302,12 +326,12 @@ def main(argv: list[str] | None = None) -> int:
             require(root is not None or not (result["inputs"]["parents"] or result["inputs"]["retry_of"]
                                              or result["shared"]), "supply --root to verify external references")
             if root is not None:
-                verify_dependencies(result, root.resolve())
+                verify_dependencies(result, root.resolve(), shelf=configured_shelf(root.resolve(), args.shelf))
             out = {"run_id": result["run"]["run_id"], "execution_status": result["run"]["execution_status"],
                    "manifest_sha256": result["manifest_sha256"], "integrity": "verified",
                    "manifest_bytes": result["bytes"]}
         elif args.action == "receive":
-            out = receive(args.source, args.root, args.sha256, args.storage_policy)
+            out = receive(args.source, args.root, args.sha256, args.storage_policy, shelf=args.shelf)
         elif args.action == "pack":
             bundle = args.bundle.resolve()
             out = pack(bundle, args.output, (args.root or store_of(bundle)).resolve())
@@ -323,7 +347,7 @@ def main(argv: list[str] | None = None) -> int:
             out = {"asset_id": "sha256:" + args.sha256, "bytes": installed.stat().st_size,
                    "path": installed.relative_to(root).as_posix()}
         else:
-            out = rebuild(args.root)
+            out = rebuild(args.root, args.shelf)
         print(json.dumps(out, ensure_ascii=False))
         return 1 if out.get("status") in {"quarantined", "deferred_capacity"} else 0
     except (OSError, ValueError, KeyError, TypeError, RuntimeError, zipfile.BadZipFile) as error:

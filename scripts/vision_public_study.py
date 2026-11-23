@@ -1,0 +1,559 @@
+"""Export the two fixed cohorts' aggregate numerical results and recorded costs for distribution."""
+
+import csv
+import json
+from collections import Counter
+from statistics import mean
+
+from evidence_lens.formal_inputs import compact_pin, require, signature
+from evidence_lens.scoring_io import new_output, write_json
+from vision_confirmation import COHORTS, CONDITIONS, PRIOR_REPORT, authenticated, catalog_grid, successful
+from vision_evaluate import RATES
+from vision_sources import METHODS, find_run, member, signed
+from vision_pipeline import ORIGINAL_CATALOG_SHA
+
+RANK_DOMAINS = ("own", "five_common", "seven_common")
+
+
+def table(path, rows):
+    require(rows and all(set(r) == set(rows[0]) for r in rows), "empty or inconsistent public rows")
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        w = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+
+
+def read_output(run, evaluation, name):
+    path, _ = member(run, "payload/" + name, evaluation["files"][name])
+    return json.loads(path.read_bytes())
+
+
+def flatten(cohort, grid, families, status, tau):
+    counts = {}
+    statuses = {}
+    for v in status:
+        key = v["family"], v["condition"]
+        require(
+            key in grid and v["view"] not in statuses.setdefault(key, {}), "unexpected/duplicated public view"
+        )
+        statuses[key][v["view"]] = v
+    rows = []
+    for family in families:
+        key = family["family"], family["condition"]
+        require(
+            key in grid and key not in counts and set(family["methods"]) == set(METHODS),
+            "wrong family metric set",
+        )
+        vv = statuses[key]
+        require(set(vv) == {f"v{i:02}" for i in range(1, 7)}, "six scheduled targets required")
+        counts[key] = len(vv)
+        for m in METHODS:
+            d = family["methods"][m]
+            n = d["counts"]
+            view_status = Counter(r["methods"][m]["status"] for r in vv.values())
+            render_ok = sum(r["render"] == "completed" for r in vv.values())
+            count = sum(r["V"] for r in vv.values())
+            e = sum(r["E"] for r in vv.values())
+            require(
+                n["V"] == count
+                and n["E"] == e
+                and n["E"] == n["L"] + n["U"] + n["H"]
+                and n["Y"] == n["HY"] + n["LY"] + n["UY"]
+                and 0 <= n["S7"] <= n["S5"] <= n["E"] <= n["V"],
+                "inconsistent denominators",
+            )
+            outcome = (
+                "completed"
+                if view_status["scored"] == 6
+                else "partial"
+                if view_status["scored"]
+                else "render_failed"
+                if not render_ok
+                else "unsupported"
+            )
+            r = {
+                "cohort": cohort,
+                "scene_family_id": key[0],
+                "condition_id": key[1],
+                "method": m,
+                "status": outcome,
+                "tau": tau[m],
+                "views_planned": 6,
+                "views_rendered": render_ok,
+                "views_scored": view_status["scored"],
+                "views_unsupported": view_status["unsupported"],
+                "views_render_failed": 6 - render_ok,
+                "terminal_upstream_views": sum(
+                    x["scientific_disposition"] == "terminal_upstream_failure" for x in vv.values()
+                ),
+                **n,
+            }
+            for domain in RANK_DOMAINS:
+                a = d["ranking"][domain]
+                r[domain + "_ap"] = a["ap"] if a else None
+                r[domain + "_defined_views"] = a["defined_views"] if a else None
+                r[domain + "_undefined_views"] = 6 - a["defined_views"] if a else None
+                r[domain + "_status"] = (
+                    ("defined" if a["ap"] is not None else "no_two_class_view")
+                    if a
+                    else "outside_method_domain"
+                )
+            r.update({name: d["rates"][name]["value"] for name in RATES})
+            rows.append(r)
+    require(set(counts) == set(grid), "a scheduled family-condition is absent")
+    return rows
+
+
+def resource(run):
+    return {
+        **compact_pin(run.pin),
+        "run_kind": run.run["run_kind"],
+        "status": run.run["execution_status"],
+        "elapsed_seconds_monotonic": run.run.get("elapsed_seconds_monotonic"),
+        "sampled_peak_tree_rss_bytes": run.run.get("sampled_peak_tree_rss_bytes"),
+        "manifest_logical_bytes": sum(z["bytes"] for z in run.files.values()),
+        "payload_logical_bytes": sum(p["bytes"] for n, p in run.files.items() if n.startswith("payload/")),
+    }
+
+
+def scientific_text(path, summary, paired, cpu, training, attempts):
+    """A standalone reading copy beside the portable numeric inventory."""
+
+    def fmt(v, pct=False):
+        if isinstance(v, dict):
+            v = v["value"]
+        if v is None:
+            return "N/A"
+        return f"{v * 100:.2f}%" if pct else f"{v:.4f}"
+
+    def fv(v):
+        return "N/A" if v is None else f"{v:.3e}"
+
+    rows = [
+        "# Stage B confirmation results",
+        "",
+        f"Recorded report `{summary['run_id']}`. Method freeze `{summary['method_sha256']}`. The primary visual models used the preregistered seed 1729.",
+        "",
+        "Each family contributes equally to the summaries. AP first averages its defined two-class target views within a family. Operating rates divide pooled native pixel counts within each family. Low coverage uses reference-valid pixels as its denominator. Error in low uses pixels assigned low risk.",
+        "",
+    ]
+    for cohort, title in zip(COHORTS, ("New eight-family confirmation", "Historical four-family regression")):
+        section = summary["cohorts"][cohort]
+        macro = {r["condition"]: r["methods"] for r in section["family_equal"] if r["cohort"] == "all"}
+        rows += [
+            "## " + title,
+            "",
+            f"{len(section['families'])} families, {section['planned_family_conditions']} family–condition pairs and {section['planned_views']} planned target views. Render dispositions were "
+            + ", ".join(f"{v} {k}" for k, v in sorted(section["render_status"].items()))
+            + ".",
+            "",
+            "| Condition | Method | Own AP | Five-common AP | Seven-common AP | Families with seven-common AP | Seven-common coverage | High error on seven-common | Low coverage | Error in low |",
+            "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        ]
+        for c in CONDITIONS:
+            for m in METHODS:
+                d = macro[c][m]
+                rows.append(
+                    "| "
+                    + " | ".join(
+                        [
+                            c,
+                            m,
+                            fmt(d["own_ap"]),
+                            fmt(d["five_common_ap"]),
+                            fmt(d["seven_common_ap"]),
+                            str(d["seven_common_ap"]["defined_families"]),
+                            fmt(d["seven_common_coverage"], True),
+                            fmt(d["seven_common_prevalence"], True),
+                            fmt(d["low_coverage"], True),
+                            fmt(d["low_risk_error"], True),
+                        ]
+                    )
+                    + " |"
+                )
+        rows += [
+            "",
+            "| Changed input | Mean paired target RGB absolute change | Largest channel change | Families with paired RGB |",
+            "| --- | ---: | ---: | ---: |",
+        ]
+        for c in ("R1", "Q1"):
+            members = [
+                r["paired"]["rgb"]
+                for r in section["paired_numerical_response"]["families"]
+                if r["condition"] == c
+            ]
+            values = [
+                m["mean_absolute_difference"] for m in members if m["mean_absolute_difference"] is not None
+            ]
+            maximum = max(
+                (m["max_absolute_difference"] for m in members if m["max_absolute_difference"] is not None),
+                default=None,
+            )
+            rows.append(
+                f"| {c} versus B0 | {fv(mean(values) if values else None)} | {fv(maximum)} | {len(values)} |"
+            )
+        rows += [
+            "",
+            "| Condition | Mean paired fine-tuned AP minus frozen encoder AP | Mean paired fine-tuned AP minus L1-full AP |",
+            "| --- | ---: | ---: |",
+        ]
+        for c in CONDITIONS:
+            pairs = [
+                r
+                for r in paired
+                if r["cohort"] == cohort
+                and r["condition_id"] == c
+                and r["scope"] == "family_equal"
+                and r["comparison"] == "same_condition"
+                and r["metric"] == "ap"
+                and r["left"] == "L2-vision-ft"
+            ]
+            result = {r["right"]: r["difference"] for r in pairs}
+            rows.append(f"| {c} | {fmt(result.get('L2-frozen'))} | {fmt(result.get('L1-full'))} |")
+        rows.append("")
+    rows += [
+        "## Development selection and resource measurements",
+        "",
+        f"The development rule selected **{summary['default_method']}** as the deployment default before opening the new families. The eight candidate fits contributed {sum(r['optimizer_steps'] for r in training):,} recorded optimizer steps and {sum(r['wall_seconds'] for r in training) / 3600:.2f} worker-hours.",
+        "",
+        "| Seed-A model | Cold process to first output | Warm p50 | Warm p95 | Peak process-tree RSS |",
+        "| --- | ---: | ---: | ---: | ---: |",
+    ]
+    for m, c in cpu.items():
+        rows.append(
+            f"| {m} | {c['cold_seconds']:.2f} s | {c['hot_p50_seconds']:.2f} s | {c['hot_p95_seconds']:.2f} s | {c['rss_bytes'] / 2**30:.2f} GiB |"
+        )
+    failed = len({r["run_id"] for r in attempts if r["status"] != "succeeded"})
+    rows += [
+        "",
+        f"The scientific selection histories list {failed} distinct unsuccessful attempts. The cost inventory records measured recovery and engineering entries separately. CUDA allocated and reserved bytes describe the PyTorch allocator. The CPU memory figure is sampled process-tree RSS.",
+        "",
+        "These results describe the registered static opaque scenes and nearby calibrated views. Risk scores rank RGB error under that protocol. The eight new families include two preregistered groups of four. Complete group estimates and native family risk–coverage points are available in the study summary.",
+        "",
+        "[Study summary and group results](public-numerical/study-summary.json) · [Per-family denominators](public-numerical/family-metrics.csv) · [Matched comparisons](public-numerical/paired-changes.csv) · [Measured costs](public-numerical/execution-costs.json) · [Development decision](public-numerical/selected-method.json) · [File hashes](public-numerical/manifest.json)",
+        "",
+    ]
+    path.write_text("\n".join(rows), encoding="utf-8")
+
+
+def publish_report(roots, spec, new, old, output, run_id):
+    require(
+        isinstance(run_id, str) and run_id and set(spec["cohorts"]) == set(COHORTS),
+        "report requires both predeclared case series",
+    )
+    marker, method, mp, method_sha = authenticated(roots, new, spec["catalog_sha256"])
+    require(
+        compact_pin(spec["method"]) == mp and spec["method_sha256"] == method_sha,
+        "aggregate uses another method freeze",
+    )
+    tau = {m: d["tau"] for m, d in method["thresholds"].items()}
+    grids = {
+        COHORTS[0]: catalog_grid(signed(new, spec["catalog_sha256"])),
+        COHORTS[1]: catalog_grid(signed(old, ORIGINAL_CATALOG_SHA)),
+    }
+    require(
+        len(grids[COHORTS[0]]) == 24
+        and len(grids[COHORTS[1]]) == 12
+        and not ({f for f, c in grids[COHORTS[0]]} & {f for f, c in grids[COHORTS[1]]}),
+        "overlapping or incomplete cohorts",
+    )
+    meta = {}
+    family_rows = []
+    paired_rows = []
+    costs = {}
+    private = {}
+    attempts = []
+    acquisitions = []
+
+    def cost(pin):
+        if pin["run_id"] not in costs:
+            run = find_run(roots, compact_pin(pin))
+            costs[pin["run_id"]] = resource(run)
+        return compact_pin(pin)
+
+    for cohort, roles in spec["cohorts"].items():
+        ev = find_run(roots, compact_pin(roles["evaluation"]))
+        ep, es = successful(roots, roles["evaluation"], "evaluation.json")
+        e = signed(ep, es)
+        expected = "el-vision-comparison-1" if cohort == COHORTS[0] else "el-vision-historical-regression-1"
+        require(
+            e["schema"] == expected
+            and e["thresholds"] == tau
+            and e["test_opening_sha256"] == marker
+            and e["methods"] == list(METHODS),
+            "wrong scientific evaluation",
+        )
+        mat, msha = successful(roots, roles["materials"], "materials.json")
+        materials = signed(mat, msha)
+        require(
+            materials["test_unlock_sha256"] == marker
+            and {(c["family"], c["condition"]) for c in materials["cells"]} == set(grids[cohort]),
+            "materials refer to another opening or cohort",
+        )
+        board, bs = successful(roots, roles["boards"], "boards.json")
+        bd = signed(board, bs)
+        require(
+            bd["cohort"] == cohort
+            and bd["method_sha256"] == method_sha
+            and bd["count"] == len(grids[cohort])
+            and bd["dataset_sha256"] == e["dataset_sha256"]
+            and {(c["family"], c["condition"], c["view"]) for c in bd["cases"]}
+            == {(f, c, "v01") for f, c in grids[cohort]},
+            "private fixed case registry incomplete",
+        )
+        for tag, pin in roles["scores"].items():
+            sp, ss = successful(roots, pin, "scores.json")
+            s = signed(sp, ss)
+            name = "L1-full" if tag == "original-five" else tag
+            require(
+                s["method_freeze_sha256"] == method_sha
+                and e["inputs"][tag] == {"sha256": ss, "model_sha256": method["models"][name]["model_sha256"]},
+                "evaluation inputs differ from original model and score",
+            )
+            cost(pin)
+        fam = read_output(ev, e, "families.json")
+        status = read_output(ev, e, "status.json")
+        gs = grids[cohort]
+        rows = flatten(cohort, gs, fam, status, tau)
+        family_rows += rows
+        pr = read_output(ev, e, "paired.json")
+        for kind, raws in pr.items():
+            for x in raws:
+                per = kind == "family_differences"
+                paired_rows.append(
+                    {
+                        "cohort": cohort,
+                        "scope": "within_family" if per else "family_equal",
+                        "scene_family_id": x["family"] if per else None,
+                        "condition_id": x["condition"],
+                        "left": x["left"],
+                        "right": x["right"],
+                        "comparison": x["comparison"],
+                        "metric": x["metric"],
+                        "left_value": x.get("left_value"),
+                        "right_value": x.get("right_value"),
+                        "difference": x["difference"] if per else x["mean_paired_difference"],
+                        "defined_families": int(x["difference"] is not None)
+                        if per
+                        else len(x["defined_families"]),
+                        "scheduled_families": 1 if per else x["scheduled_families"],
+                    }
+                )
+        macro = read_output(ev, e, "macro.json")
+        require(
+            {r["condition"] for r in macro if r["cohort"] == "all"} == set(CONDITIONS),
+            "missing family-equal estimate",
+        )
+        risk_curves = {}
+        for fr in fam:
+            key = fr["family"] + "/" + fr["condition"]
+            curve = read_output(ev, e, key + "/curves.json")
+            require(
+                set(curve) == set(METHODS)
+                and all(
+                    curve[m]["frozen_L"] == fr["methods"][m]["counts"]["L"]
+                    and curve[m]["frozen_LY"] == fr["methods"][m]["counts"]["LY"]
+                    and curve[m]["frozen_tau"] == tau[m]
+                    for m in METHODS
+                ),
+                "curve endpoint differs from frozen operating state",
+            )
+            risk_curves[key] = curve
+        br = find_run(roots, compact_pin(roles["boards"]))
+        rsp, proof = member(br, "payload/paired-response.json", bd["paired_response"])
+        sensitivity = signed(rsp, proof["sha256"])
+        require(
+            sensitivity["cohort"] == cohort
+            and sensitivity["method_sha256"] == method_sha
+            and sensitivity["dataset_sha256"] == e["dataset_sha256"],
+            "paired source evidence differs",
+        )
+        meta[cohort] = {
+            "families": sorted({f for f, c in gs}),
+            "conditions": list(CONDITIONS),
+            "planned_family_conditions": len(gs),
+            "planned_views": len(gs) * 6,
+            "scientific_view_dispositions": dict(Counter(r["scientific_disposition"] for r in status)),
+            "render_status": dict(Counter(r["render"] for r in status)),
+            "family_equal": macro,
+            "family_risk_coverage": risk_curves,
+            "paired_numerical_response": sensitivity,
+            "evaluation": {**cost(roles["evaluation"]), "sha256": es},
+            "materials": {**cost(roles["materials"]), "sha256": msha},
+        }
+        for cell in materials["cells"]:
+            q = signed(
+                roots[0] / "trials" / cell["trial_id"] / "trial_selection.json", cell["selection_sha256"]
+            )
+            chosen_ids = {r["run_id"] for r in q.get("selected", {}).values()}
+            acquisitions.append(
+                {
+                    "cohort": cohort,
+                    "family": cell["family"],
+                    "condition": cell["condition"],
+                    "selection_sha256": cell["selection_sha256"],
+                    "status": q["selection_status"],
+                    "roles": {role: cost(pin) for role, pin in cell["parents"].items()},
+                }
+            )
+            for a in q.get("attempts", []):
+                ar = find_run(roots, compact_pin(a))
+                require(
+                    ar.run["execution_status"] == a["execution_status"], "condition attempt receipt differs"
+                )
+                attempts.append(
+                    {
+                        "cohort": cohort,
+                        "family": cell["family"],
+                        "condition": cell["condition"],
+                        **cost(a),
+                        "status": ar.run["execution_status"],
+                        "stage": ar.run["run_kind"],
+                        "selected": a["run_id"] in chosen_ids,
+                        "retry_of_run_id": ar.run.get("retry_of_run_id"),
+                        "requested_retry_of_run_id": ar.run.get("requested_retry_of_run_id"),
+                        "exit_code": ar.run.get("exit_code"),
+                    }
+                )
+            if q["selection_status"] == "failed" and not q.get("attempts"):
+                pin = compact_pin(q["failure"])
+                ar = find_run(roots, pin)
+                attempts.append(
+                    {
+                        "cohort": cohort,
+                        "family": cell["family"],
+                        "condition": cell["condition"],
+                        **cost(pin),
+                        "status": ar.run["execution_status"],
+                        "stage": ar.run["run_kind"],
+                        "selected": True,
+                        "retry_of_run_id": ar.run.get("retry_of_run_id"),
+                        "requested_retry_of_run_id": ar.run.get("requested_retry_of_run_id"),
+                        "exit_code": ar.run.get("exit_code"),
+                    }
+                )
+        for role in ("dataset", "boards"):
+            cost(roles[role])
+        private[cohort] = {**compact_pin(roles["boards"]), "boards_sha256": bs}
+    training = []
+    for t in method["training_receipts"]:
+        p, sha = successful(roots, t, "training.json")
+        require(sha == t["training_json_sha256"], "training source differs from sealed model")
+        tr = signed(p, sha)
+        training.append(
+            {
+                **cost(t),
+                "model_sha256": t["model_sha256"],
+                "selected_primary": t["run_id"] == method["models"][t["method"]]["run_id"],
+                "method": t["method"],
+                **{
+                    k: tr[k]
+                    for k in (
+                        "seed",
+                        "head_lr",
+                        "backbone_lr",
+                        "epochs",
+                        "optimizer_steps",
+                        "best_epoch",
+                        "best_development_family_equal_ap",
+                        "wall_seconds",
+                        "peak_cuda_allocated",
+                        "peak_cuda_reserved",
+                    )
+                },
+            }
+        )
+    engineering = [cost(p) for p in spec.get("engineering", [])]
+    for upstream in method["models"].values():
+        cost(upstream)
+    for c in method["cpu_costs"].values():
+        cost(c["pin"])
+    mr = find_run(roots, mp)
+    dev, dr = member(mr, "payload/development-replay.json", method["development_replay_sha256"])
+    replay = json.loads(dev.read_bytes())
+    public_docs = (
+        "study-summary.json",
+        "family-metrics.csv",
+        "paired-changes.csv",
+        "execution-costs.json",
+        "selected-method.json",
+    )
+    with new_output(output) as out:
+        pr = out / "public-numerical"
+        pr.mkdir()
+        summary = {
+            "schema": "el-vision-public-study-1",
+            "run_id": run_id,
+            "method_freeze": mp | {"sha256": method_sha},
+            "method_sha256": method_sha,
+            "catalog_sha256": spec["catalog_sha256"],
+            "study_sha256": method["study_sha256"],
+            "test_opening_sha256": marker,
+            "methods": list(METHODS),
+            "cohorts": meta,
+            "units": "Families are independent units. AP averages two-class target results within families. Operating rates use per-family pooled counts and equal family means.",
+            "rank_domains": {
+                "own": "finite method scores in E",
+                "five_common": "five original methods finite in E, reported for the five originals",
+                "seven_common": "all seven finite in E",
+            },
+            "unknown": "Nonfinite method scores inside E are unknown. V minus E counts invalid outputs.",
+            "display_rule": "v01",
+            "private_boards": private,
+            "default_method": method["deployment_rule"]["default"],
+            "historical_scope": "Previously reported four families scored using the frozen Stage B packages. This series does not enter the new eight-family confirmation.",
+            "original_report": PRIOR_REPORT,
+        }
+        write_json(pr / "study-summary.json", summary)
+        table(pr / "family-metrics.csv", family_rows)
+        table(pr / "paired-changes.csv", paired_rows)
+        cpu = {
+            k: {a: v for a, v in c.items() if a != "canonical_win_to_mac"}
+            for k, c in method["cpu_costs"].items()
+        }
+        write_json(
+            pr / "execution-costs.json",
+            {
+                "schema": "el-vision-public-costs-1",
+                "model_training": training,
+                "acquisitions": acquisitions,
+                "scientific_selection_attempts": attempts,
+                "independently_pinned_engineering": engineering,
+                "native_primary_cpu": cpu,
+                "observed_runs": sorted(costs.values(), key=lambda d: d["run_id"]),
+                "memory_units": "Bytes. CUDA allocated and reserved describe the PyTorch allocator. Process RSS is a separate operating-system measurement.",
+                "storage_units": "Logical bytes. Each parent shared across conditions appears once. Hard links and archive compression affect occupied disk space.",
+            },
+        )
+        write_json(
+            pr / "selected-method.json",
+            {
+                "schema": "el-vision-public-method-1",
+                "method_sha256": method_sha,
+                "default_method": method["deployment_rule"]["default"],
+                "deployment_rule": method["deployment_rule"],
+                "thresholds": method["thresholds"],
+                "models": {
+                    m: {**compact_pin(src), "model_sha256": src["model_sha256"]}
+                    for m, src in method["models"].items()
+                },
+                "development_replay_sha256": dr["sha256"],
+                "baseline_development_qa": method["baseline_development_qa"],
+                "development_seed_comparisons": replay["paired"],
+                "development_primary": {
+                    m: {k: v["macro"] if v else None for k, v in z.items()}
+                    for m, z in replay["primary_domains"].items()
+                },
+                "deployment_parity": {k: v["canonical_win_to_mac"] for k, v in method["cpu_costs"].items()},
+            },
+        )
+        scientific_text(out / "study.md", summary, paired_rows, cpu, training, attempts)
+        write_json(
+            pr / "manifest.json",
+            {
+                "schema": "el-vision-public-numerical-1",
+                "report_run_id": run_id,
+                "method_sha256": method_sha,
+                "files": {n: signature(pr / n) for n in public_docs},
+            },
+        )
