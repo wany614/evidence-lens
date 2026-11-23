@@ -74,7 +74,8 @@ if __name__ == "__main__":
         interpreter, package_dir, runner_sha = sys.argv[2:5]
         entry = Path(package_dir) / "score-native.py"
         require(sha(entry) == runner_sha, "portable inference entry differs from its scientific seal")
-        os.execv(interpreter, [interpreter, "-I", str(entry), *sys.argv[5:]])
+        # Isolated mode ignores PYTHONDONTWRITEBYTECODE. Preserve the sealed package on import.
+        os.execv(interpreter, [interpreter, "-I", "-B", str(entry), *sys.argv[5:]])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", type=Path, default=Path.cwd())
     parser.add_argument("--store", type=Path, required=True)

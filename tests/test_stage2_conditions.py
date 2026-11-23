@@ -81,6 +81,10 @@ def fixture_context(ctx, root):
     """Build a temporary input-only staged worker; the test method marker exists only in this temp dir."""
     from make_handoff import sha_bytes, source_files, zip_bytes
 
+    # The real project's work tree also has named intake folders with summary run.json files.
+    note = ctx["store"] / "work" / "unrelated-intake"
+    note.mkdir(parents=True, exist_ok=True)
+    save(note / "run.json", {"execution_status": "succeeded", "manifest_bytes": 123})
     ref = ctx["store"] / "runs" / ctx["b0_ids"]["reference"] / "payload"
     family = ctx["family"]["scene_family_id"]
     catalog = ctx["family"]["dataset_hash"]

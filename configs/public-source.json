@@ -197,6 +197,7 @@
     "scripts/segment_transfer.py": "apache-original",
     "scripts/select_trial.py": "apache-original",
     "scripts/source_candidate.py": "apache-original",
+    "scripts/stage2_candidate_selection.py": "apache-original",
     "scripts/stage2_conditions.py": "apache-original",
     "scripts/stage2_jobs.py": "apache-original",
     "scripts/stage2_learning_transport.py": "apache-original",

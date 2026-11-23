@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from evidence_lens._bundle import encoded, load, save
+from evidence_lens._bundle import RUN_ID, encoded, load, save
 from evidence_lens._index import writer_gate
 from evidence_lens._verify import require
 from evidence_lens.recorder import worker_started
@@ -39,6 +39,8 @@ def stage(ctx, role, kind, parents, inputs, command, camera_sha, retry=None, int
         matches = []
         for directory in ("runs", "work"):
             for p in sorted((store / directory).glob("*/run.json")):
+                if not RUN_ID.fullmatch(p.parent.name):
+                    continue
                 meta = load(p)
                 if (meta["experiment_id"], meta["trial_id"], meta["run_kind"]) != (ctx.get("quality_experiment", QUALITY), trial, kind):
                     continue
