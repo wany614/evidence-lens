@@ -138,6 +138,7 @@
     "protocol/phase1-rgb-replay-v1.json": "apache-original",
     "protocol/stage2-families-v1.json": "apache-original",
     "protocol/stage2-reference-v1.json": "apache-original",
+    "protocol/stage2-training-v1.json": "apache-original",
     "protocol/study-v1.json": "apache-original",
     "protocol/windows-worker-source-v1.json": "apache-original",
     "pyproject.toml": "apache-original",

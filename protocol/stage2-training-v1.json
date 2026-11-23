@@ -1,0 +1,105 @@
+{
+  "schema": "el-vision-training-preregistration-1",
+  "recorded_utc": "2026-11-23T12:28:00.499055+00:00",
+  "catalog_sha256": "543adef7b3b3f0dbc11434738f5a7a6d4c6178622b63f452a5133eed6446dc79",
+  "reference_contract_sha256": "b593e7ffd444d649f0de3077bf9c644f6ef0d19488983c2a0c8b0818186888e2",
+  "scientific_questions": {
+    "ranking": "Compare each of seven methods on its stated domain, the original five common domain and the common seven-method domain. A non-positive family-macro change falsifies an observed improvement on that cohort.",
+    "fine_tuning": "The designated suffix has finite nonzero task gradients across at least three minibatches before AdamW and changes after training. Skill gains require independent empirical evidence. A changed file alone is insufficient.",
+    "resolution": "Expect paired R1 minus B0 to raise RGB error and potentially lower coverage. Zero and negative changes are retained, including the least favourable family.",
+    "color_rounding": "Expect a much smaller change in RGB error for Q1 minus B0 than for R1 minus B0. Record identical tensors or scores as ties and report negative results.",
+    "novelty": "Report four novel-template and four familiar-category layouts separately without representing either group as a general population."
+  },
+  "target": "Mean absolute display-sRGB error across three channels strictly above 0.05 on finite paired RGB. Depth is an auxiliary physical evaluation.",
+  "matrix": {
+    "new_B0": 24,
+    "new_test_R1": 8,
+    "new_test_Q1": 8,
+    "expected_conditions": 40,
+    "expected_generation_calls": 32,
+    "views_per_cell": 7,
+    "original_test": "separate historical regression only"
+  },
+  "input": {
+    "official_entry": "dinov2_vits14",
+    "revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "checkpoint_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+    "upstream_license_sha256": "600cc67cc4cb2f5ea317dcfc687ad1c74dc4bec8782bbe9db0afd83513b935b7",
+    "grid": 252,
+    "policy": "Whole condition-specific predicted target RGB, aspect-preserving bilinear letterbox, centered padding, pixel-center inverse map and support mask. Never crop. Numerical features use original calibrated camera grids.",
+    "patch": 14,
+    "features": "384 to 32 visual channels, then concatenate 26 legal numerical channels, 58 to 32 to one logit. Family and split are unavailable to the scorer."
+  },
+  "supervision": {
+    "family_weight": "equal family mass; equal supported view mass within family, fixed eligible samples per view",
+    "pixels_per_view_max": 4096,
+    "training_targets_max": 168,
+    "maximum_sampled_rows": 688128,
+    "augmentation": false,
+    "loss": "binary_cross_entropy_with_logits",
+    "pilot": "Four designated new train families only; fine-tune branch seed A. At most 32 optimizer updates. Pilot excluded from model selection."
+  },
+  "fit": {
+    "candidates_max": 8,
+    "seeds": [
+      1729,
+      2718,
+      3141
+    ],
+    "primary_seed": 1729,
+    "frozen_head_lrs": [
+      0.0001,
+      0.0003
+    ],
+    "finetuned_backbone_lrs": [
+      1e-05,
+      3e-05
+    ],
+    "finetuned_head_lr": 0.0003,
+    "trainable": "L2-frozen projection plus head; L2-vision-ft also pretrained blocks 10 and 11 plus terminal norm. Frozen state must be bitwise stable.",
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "scheduler": "constant",
+    "precision": "float32",
+    "maximum_epochs": 20,
+    "patience": 3,
+    "microbatch": 1,
+    "accumulation": 4,
+    "replication": "Both modes run both respective learning rates at seed A. For each mode retain the LR of highest development family-equal shared-domain AP, tie lower LR and earliest maximum epoch. Refit both selected configurations at seeds B and C. Report all eight fits. Primary package for each mode is its selected A run."
+  },
+  "logistic_baselines": {
+    "C": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "preprocessing": "Training-fold-only within grouped family cross-validation; refit on training only.",
+    "methods": [
+      "constant",
+      "1-alpha",
+      "L0",
+      "L1-full",
+      "L1-geometry",
+      "L2-frozen",
+      "L2-vision-ft"
+    ]
+  },
+  "evaluation": {
+    "threshold_domain": "development-B0",
+    "low_rule": "finite score < tau. Target 0.8 family-macro coverage of reference-valid pixels over full development images, whole score ties, prefer lower coverage on a tie; score failure is unknown.",
+    "statistics": "AP by target then family over defined two-class views; publish count of undefined views. Pool raw counts per family for rates, then equal-weight families. Report V, evaluable E, supported and unknown, low/error/positive/warnings, invalid output and acquisition failures.",
+    "new_confirmations": "Unlock all eight simultaneously after formal model identity, three seeds per method, thresholds, default selection, CPU cost and display rule have been fixed. No changes using new test results.",
+    "show": "v01 per family and condition, full index v01 to v06, no quality filter."
+  },
+  "deployment_decision": {
+    "default_when_inconclusive": "L1-full",
+    "rule": "Select seed-A L2-vision-ft as default only if each of its three development AP values exceeds the refitted L1-full AP, mean paired FT minus frozen AP exceeds the across-seed sample standard deviation of the paired differences, all three paired results exist, and measured Mac 512-square full-view hot p95 <= 5 s and process-tree peak RSS <= 2147483648 bytes. Otherwise keep L1-full. Publish and test the two neural modes in either case.",
+    "cpu_cost": "Fresh process to first written output, six full views then warm repeats, per-view wall p50 and p95, peak process plus children RSS. Include IO, projection, numerical features, full encoder, head and writing."
+  },
+  "rights": "Original code and grantable risk params Apache-2.0, original writing/media/grantable data CC BY 4.0 with attribution wany614. Retain the exact generic Meta license. Raw SHARP captures and its checkpoint remain in the research archive."
+}
