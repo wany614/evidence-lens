@@ -1,0 +1,333 @@
+{
+  "schema": "el-b-independent-roster-and-averaging-1",
+  "run_id": "20261123T155238188735Z-4525bc74104c4b77",
+  "cohort": "new_confirmation",
+  "method_sha256": "68d2035135ccd2e928fd3202ec755c3a3d4da29c7eee9b56970b609fd429a35d",
+  "report_summary_sha256": "b4c81223c41ecd0758be5a76352716953e7b391059c90057cd71300783684a31",
+  "registered_family_ids": [
+    "scene_041_rotated_book_display",
+    "scene_042_twin_spool_pulleys",
+    "scene_043_corner_plant_steps",
+    "scene_044_bent_pipe_wall",
+    "scene_045_folded_canopy",
+    "scene_046_basalt_steps",
+    "scene_047_twin_helices",
+    "scene_048_antiprism_lantern"
+  ],
+  "registered_targets": 144,
+  "cell_count": 24,
+  "defined_view_aps": {
+    "constant": 144,
+    "1-alpha": 144,
+    "L0": 144,
+    "L1-full": 144,
+    "L1-geometry": 144,
+    "L2-frozen": 144,
+    "L2-vision-ft": 144
+  },
+  "undefined_view_aps": {
+    "constant": 0,
+    "1-alpha": 0,
+    "L0": 0,
+    "L1-full": 0,
+    "L1-geometry": 0,
+    "L2-frozen": 0,
+    "L2-vision-ft": 0
+  },
+  "undefined_reasons": {
+    "empty_common": 0,
+    "zero_positives": 0,
+    "all_positives": 0
+  },
+  "exact_rgb_threshold_ties": 0,
+  "exact_score_threshold_ties": {
+    "constant": 0,
+    "1-alpha": 0,
+    "L0": 0,
+    "L1-full": 0,
+    "L1-geometry": 0,
+    "L2-frozen": 2,
+    "L2-vision-ft": 1
+  },
+  "seven_common_ap": {
+    "B0": {
+      "constant": {
+        "family_mean": 0.3310592305998528,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "1-alpha": {
+        "family_mean": 0.3795135703266486,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L0": {
+        "family_mean": 0.37612901177028735,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L1-full": {
+        "family_mean": 0.8193794914463182,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L1-geometry": {
+        "family_mean": 0.7982794040291391,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L2-frozen": {
+        "family_mean": 0.8807931593092726,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L2-vision-ft": {
+        "family_mean": 0.8992560586546823,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      }
+    },
+    "Q1": {
+      "constant": {
+        "family_mean": 0.3310592311148324,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "1-alpha": {
+        "family_mean": 0.37951492609456766,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L0": {
+        "family_mean": 0.3761287322066181,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L1-full": {
+        "family_mean": 0.819383807356461,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L1-geometry": {
+        "family_mean": 0.7982811610293508,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L2-frozen": {
+        "family_mean": 0.8807988650853171,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L2-vision-ft": {
+        "family_mean": 0.8992576943058855,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      }
+    },
+    "R1": {
+      "constant": {
+        "family_mean": 0.3369786027749154,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "1-alpha": {
+        "family_mean": 0.4052978486077071,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L0": {
+        "family_mean": 0.3833938352819881,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L1-full": {
+        "family_mean": 0.8241039468908539,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L1-geometry": {
+        "family_mean": 0.797063639451576,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L2-frozen": {
+        "family_mean": 0.8785395431910501,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      },
+      "L2-vision-ft": {
+        "family_mean": 0.8925472412204147,
+        "defined_views_by_family": {
+          "scene_041_rotated_book_display": 6,
+          "scene_042_twin_spool_pulleys": 6,
+          "scene_043_corner_plant_steps": 6,
+          "scene_044_bent_pipe_wall": 6,
+          "scene_045_folded_canopy": 6,
+          "scene_046_basalt_steps": 6,
+          "scene_047_twin_helices": 6,
+          "scene_048_antiprism_lantern": 6
+        }
+      }
+    }
+  }
+}

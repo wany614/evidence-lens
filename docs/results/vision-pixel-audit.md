@@ -33,3 +33,14 @@ The worker opens original runs by manifest hash. Researchers with lawful access 
 ```
 
 The historical request runs through the same worker. The public numerical tables and audit counts can be read independently of the private research originals. [New cohort request](../../configs/vision-audit/new_confirmation.json) · [Historical request](../../configs/vision-audit/historical_regression.json) · [Executed worker](../../scripts/verify_vision_native_metrics.py)
+
+## Family means and render identity
+
+A second independent calculation matched every reported seven-common family-equal AP using the native scores and reference pixels. It verified the exact 8- and 4-family rosters, their separation from training and development, three conditions and six distinct targets per condition, and the frozen model index behind each score. Each dataset target hash matched the original material's target prediction. All 216 views had both classes in the common set. The constant scorer's AP equalled that set's error prevalence in every view.
+
+No RGB error landed exactly on the binary32 error threshold. In the new cohort two frozen-encoder scores and one fine-tuned score equalled their respective operating thresholds. The historical cohort had one such frozen-encoder score. Equality is high under the frozen rule. [New-cohort family readback](vision-roster-new_confirmation.json) · [Historical family readback](vision-roster-historical_regression.json) · [Executed verification code](../../scripts/verify_vision_roster.py)
+
+| Cohort | Recorder run | Recorder manifest SHA-256 |
+| --- | --- | --- |
+| new confirmation | `20261123T155238188735Z-4525bc74104c4b77` | `c1581ca26a2d6c85f792b1b28957de4151e41225cdaf8c406a827a3c32c6e4e2` |
+| historical regression | `20261123T155301160146Z-09b8f48a88a94f69` | `12858e6853663f54692cac2654199dc58510a9ae7809f09dfb3b72a8ad91e8fa` |

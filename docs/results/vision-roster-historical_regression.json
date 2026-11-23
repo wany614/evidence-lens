@@ -1,0 +1,245 @@
+{
+  "schema": "el-b-independent-roster-and-averaging-1",
+  "run_id": "20261123T155301160146Z-09b8f48a88a94f69",
+  "cohort": "historical_regression",
+  "method_sha256": "68d2035135ccd2e928fd3202ec755c3a3d4da29c7eee9b56970b609fd429a35d",
+  "report_summary_sha256": "b4c81223c41ecd0758be5a76352716953e7b391059c90057cd71300783684a31",
+  "registered_family_ids": [
+    "scene_021_drum_kit",
+    "scene_022_picket_gate",
+    "scene_023_potters_wheel",
+    "scene_024_orbital_mobile"
+  ],
+  "registered_targets": 72,
+  "cell_count": 12,
+  "defined_view_aps": {
+    "constant": 72,
+    "1-alpha": 72,
+    "L0": 72,
+    "L1-full": 72,
+    "L1-geometry": 72,
+    "L2-frozen": 72,
+    "L2-vision-ft": 72
+  },
+  "undefined_view_aps": {
+    "constant": 0,
+    "1-alpha": 0,
+    "L0": 0,
+    "L1-full": 0,
+    "L1-geometry": 0,
+    "L2-frozen": 0,
+    "L2-vision-ft": 0
+  },
+  "undefined_reasons": {
+    "empty_common": 0,
+    "zero_positives": 0,
+    "all_positives": 0
+  },
+  "exact_rgb_threshold_ties": 0,
+  "exact_score_threshold_ties": {
+    "constant": 0,
+    "1-alpha": 0,
+    "L0": 0,
+    "L1-full": 0,
+    "L1-geometry": 0,
+    "L2-frozen": 1,
+    "L2-vision-ft": 0
+  },
+  "seven_common_ap": {
+    "B0": {
+      "constant": {
+        "family_mean": 0.3231632245054604,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "1-alpha": {
+        "family_mean": 0.35489241847208686,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L0": {
+        "family_mean": 0.4023976864046422,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L1-full": {
+        "family_mean": 0.8028213936300881,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L1-geometry": {
+        "family_mean": 0.7694224987925311,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L2-frozen": {
+        "family_mean": 0.8369855437779328,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L2-vision-ft": {
+        "family_mean": 0.8516237239531037,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      }
+    },
+    "R1": {
+      "constant": {
+        "family_mean": 0.3350908974214558,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "1-alpha": {
+        "family_mean": 0.39853930306059926,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L0": {
+        "family_mean": 0.4082074517995484,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L1-full": {
+        "family_mean": 0.8127626546866356,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L1-geometry": {
+        "family_mean": 0.7678846940353319,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L2-frozen": {
+        "family_mean": 0.8496639893889335,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L2-vision-ft": {
+        "family_mean": 0.8624220256507474,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      }
+    },
+    "Q1": {
+      "constant": {
+        "family_mean": 0.3231624312311779,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "1-alpha": {
+        "family_mean": 0.35489145068578987,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L0": {
+        "family_mean": 0.40239728633691696,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L1-full": {
+        "family_mean": 0.8028213137740585,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L1-geometry": {
+        "family_mean": 0.7694236384841793,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L2-frozen": {
+        "family_mean": 0.836966092674808,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      },
+      "L2-vision-ft": {
+        "family_mean": 0.8516116634098554,
+        "defined_views_by_family": {
+          "scene_021_drum_kit": 6,
+          "scene_022_picket_gate": 6,
+          "scene_023_potters_wheel": 6,
+          "scene_024_orbital_mobile": 6
+        }
+      }
+    }
+  }
+}
