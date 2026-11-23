@@ -1,0 +1,26 @@
+{
+  "schema": "el-recovery-risk-comparison-1",
+  "identity": "Risk comparisons for already exposed set1 development and set6 regression, on one frozen reconstruction recipe. The original 057 M4 synthetic case is a reconstruction control.",
+  "permissions": "Scoring starts only after the complete scene-optimization schedule and stopping rule are frozen. Risk measurements cannot choose any checkpoint, initialization, recipe or update budget.",
+  "methods": ["B-L1-transfer", "MS-L1", "MS-frozen", "MS-ft"],
+  "scopes": {"B-L1-transfer": "one", "MS-L1": "all", "MS-frozen": "all", "MS-ft": "all"},
+  "model_release": "v0.3.0-rc.1",
+  "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+  "rank_and_labels": {
+    "primary": "Original D1 FP32 per-pixel three-channel display RGB MAE strictly above float32(0.05), over E within V. No exposure adjustment, segmentation from predicted opacity, spatial alignment or recalibration.",
+    "operating_point": "Keep the released thresholds and original states. Within E, finite score < tau is L, finite score >= tau is H, U is E without a finite score. Preserve V/E/Y/S/SY/C/CY/L/LY/H/HY/U/UY, missed errors, support and prevalence denominators, and positive/negative counts.",
+    "AP": "Original D1 non-interpolated grouped AP with whole equal FP32 scores. Compute per view if both classes are present, then mean the defined views per object/condition. Give the number of defined views and matched-view mean prevalence, and additionally pixel-pooled numerator and denominator. Empty, all-positive and all-negative domains are explicit. Keep own finite and within-version four-method common AP separate.",
+    "aggregate": "Use each object's six named targets v01-v06. Do not pool set1 and set6 into an estimate of generalization. Aggregate count-derived rates from summed observed numerators and denominators per object and condition. Record actual versus scheduled views and unavailable data."
+  },
+  "matched_coverage": {
+    "domains": ["within-version: E intersect the four finite score supports for the selected reconstruction", "paired-versions: E_old intersect E_new intersect finite supports of all four methods on both versions of the same object, condition, and view"],
+    "reference_denominator": "Use V of the same reference photograph for both versions. Require matching photograph bytes, reference validity mask and camera/target identity before cross-version comparison. Report eligible mask size and positive count of each version on each comparison domain.",
+    "requested_percent_V": [1, 2, 5, 10, 20, 40, 60, 80],
+    "count_rounding": "For integer percent q, k = floor((2*q*V + 99)/200), nearest integer, exact half rounded down.",
+    "frozen_anchors": "Also use the actual number of low MS-L1 pixels on the comparison domain. The within-version anchor uses that version's frozen MS-L1. On the common eight-method domain include both old and new MS-L1 frozen anchors, so every method-version comparison uses exactly the same accepted count for that anchor.",
+    "ordering": "Within each view and declared domain, accept the k lowest risk scores. For cutoff ties only, the secondary key is a fixed label-independent permutation rank. Compute seed from the first 8 bytes, big-endian unsigned, of SHA-256 of UTF-8 'el-recovery-coverage-v1|<object_id>|<condition>|<view>'. Generate permutation = numpy.random.Generator(numpy.random.PCG64(seed)).permutation(height*width) on all native grid indices, then rank[permutation] = arange(height*width); smaller rank first. Original C-order flat indices, same permutation across methods, domains and old/new. Report cutoff score, tie group size, number accepted in tie, actual accepted positives, and minimum and maximum positives possible among those tied selections. This exact-k diagnostic does not change released decisions or any AP.",
+    "failure": "If k exceeds common support, record N/A outside_support. If k=0, the accepted count is 0 and risk is N/A empty_low. Missing references preserve unknown V. Exclude undefined views only from the indicated rate, report their count; do not treat uncovered difficult pixels as correct.",
+    "reporting": "For every eligible view, report actual errors among exactly k accepted, risk=errors/k, coverage=k/V, and matchable pixels/V. Per object, also give comparable-view counts, summed errors/accepted and summed accepted/valid-reference pixels on the constituent views. A fixed 3x3 auxiliary RGB diagnostic may be reported separately. No new AP for correct pixels, AUROC, AURC, confidence bound or physical object-only claim is registered."
+  },
+  "unknown": "Within E, enumerate mutually exclusive measured causes of non-finite risk. Use the original published feature status for MS methods. For B-L1-transfer distinguish unavailable or nonpositive target Z, invalid alpha, invalid RGB, unverified ED, and any unexplained numerical abstention. An absent target render reduces E, never fabricates U. Count UY within every nonempty cause. Report support count and source conflict summaries separately from abstention causes."
+}
