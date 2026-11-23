@@ -54,6 +54,8 @@ def assemble(store, shelf, pins, run_id):
         ("thresholds", "selection", "payload/thresholds.json"),
         ("tensor_comparison", "comparison", "payload/tensor-comparison.json"),
         ("cpu_validation", "cpu", "payload/cpu-validation.json"),
+        ("native_parity", "parity", "payload/parity.json"),
+        ("supervision_readback", "supervision", "payload/input-qa.json"),
     )}
     selected, study, cutoffs = (document(k) for k in ("neural_selection", "study", "thresholds"))
     transfer = document("lightweight_development")["transfer"]["run"]
@@ -93,7 +95,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     sub = p.add_subparsers(dest="action", required=True)
     record = sub.add_parser("record")
-    names = ("references", "study", "budget", "train", "development", "light", "selection", "comparison", "cpu")
+    names = ("references", "study", "budget", "train", "development", "light", "selection", "comparison", "cpu",
+             "parity", "supervision")
     for name in names:
         record.add_argument("--"+name, required=True, type=run_pin)
     record.add_argument("--retry-of")

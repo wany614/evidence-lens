@@ -22,6 +22,14 @@ def independent_counts(v, e, y, risk, state, finite_common, tau):
 
     positives = y == 1
     eligible = e & np.isfinite(risk)
+    require(
+        v.dtype == e.dtype == finite_common.dtype == np.bool_
+        and v.shape == e.shape == finite_common.shape == y.shape == risk.shape == state.shape
+        and not (e & ~v).any()
+        and not (finite_common & ~eligible).any()
+        and np.all((y[e] == 0) | (y[e] == 1)),
+        "invalid native V/E/common domain or nonbinary supervision",
+    )
     below = eligible & (risk.astype(np.float64) < tau)
     above = eligible & ~below
     unknown = e & ~eligible

@@ -17,7 +17,7 @@ METHODS = ("B-L1-transfer", "MS-L1", "MS-frozen", "MS-ft")
 ROLES = {
     "catalog", "study", "feature_schema", "reconstruction_protocol", "learning_protocol",
     "training_dataset", "development_dataset", "lightweight_development", "neural_selection",
-    "thresholds", "tensor_comparison", "cpu_validation", "production_budget",
+    "thresholds", "tensor_comparison", "cpu_validation", "production_budget", "native_parity", "supervision_readback",
 }
 
 
@@ -180,6 +180,27 @@ def verify_method_sources(store, shelf, method, direct):
     check_selection(method, study, selection, thresholds, lightweight)
     roster = check_neural_fits(method, study, thresholds, original, store, shelf)
     check_independent_readbacks(method, study, roster, load(paths["tensor_comparison"]), load(paths["cpu_validation"]), original)
+    parity = load(paths["native_parity"])
+    family = families["development"][0]
+    schedule = {(family, c, v, m, scope) for c in CONDITIONS for v in study["targets"]
+                for m in METHODS for scope in method["scorer_scopes"]}
+    require(parity["schema"] == "el-stage3-native-risk-parity-1" and parity["family"] == family
+            and parity["run_id"] == components["native_parity"]["run_id"]
+            and parity["dataset_sha256"] == components["development_dataset"]["sha256"]
+            and parity["study_sha256"] == method["study_sha256"] and parity["catalog_sha256"] == method["catalog_sha256"]
+            and parity["planned_unique_comparisons"] == parity["measured_unique_comparisons"] == 120
+            and len(parity["results"]) == len(schedule)
+            and {(r["family"], r["condition"], r["view"], r["method"], r["scope"]) for r in parity["results"]} == schedule
+            and all(r["threshold"] == method["thresholds"][r["method"]] for r in parity["results"])
+            and parity["bounded_all"] and parity["support_disagreement"] == 0, "Incomplete native development replay")
+    supervision = load(paths["supervision_readback"])
+    require(supervision["schema"] == "el-stage3-train-input-qa-1" and supervision["passed"]
+            and supervision["run_id"] == components["supervision_readback"]["run_id"]
+            and supervision["catalog_sha256"] == method["catalog_sha256"]
+            and supervision["study_sha256"] == method["study_sha256"] and supervision["ancestry"]["heldout_acquisitions"] == 0
+            and all(all(supervision["datasets"][split][k] == components[role][k] for k in ("run_id", "manifest_sha256", "sha256"))
+                    for split, role in (("train", "training_dataset"), ("development", "development_dataset"))),
+            "Training or development supervision was not reproduced from its originals")
 
 
 @lru_cache(maxsize=16)

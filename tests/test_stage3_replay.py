@@ -24,3 +24,22 @@ def test_independent_tie_group_and_threshold_state():
     wrong[0, 1] = 0
     with pytest.raises(ValueError, match="threshold state"):
         independent_counts(v, e, y, risk, wrong, finite, 0.25)
+
+
+@pytest.mark.parametrize("bad", ("e", "common", "labels"))
+def test_reject_broken_native_domain(bad):
+    pytest.importorskip("sklearn")
+    v = np.array([[True, False]])
+    e = np.array([[True, False]])
+    cm = e.copy()
+    y = np.array([[1, 255]], np.uint8)
+    risk = np.array([[0.1, np.nan]], np.float32)
+    state = np.array([[0, 255]], np.uint8)
+    if bad == "e":
+        e[0, 1] = True
+    elif bad == "common":
+        cm[0, 1] = True
+    else:
+        y[0, 0] = 255
+    with pytest.raises(ValueError, match="native V/E/common"):
+        independent_counts(v, e, y, risk, state, cm, 0.5)

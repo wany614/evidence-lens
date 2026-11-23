@@ -1,5 +1,6 @@
 """Authenticate a four-method operating decision before admitting the held-out cohort."""
 
+import hashlib
 import math
 from pathlib import Path
 from statistics import mean
@@ -7,6 +8,7 @@ from statistics import mean
 from ._bundle import HASH, load
 from ._verify import parent_directory, require
 from .formal_inputs import PinnedRun
+from evidence_lens_vision.contract import json_bytes
 
 
 # The sole interrupted optimizer admitted by the registered four-fit comparison.
@@ -66,6 +68,31 @@ def validate_fit_origin(run, store, shelf):
     original = pinned(INTERRUPTED)
     require(original.run["execution_status"] == "failed" and original.run["run_kind"] == "model_fit"
             and original.run["experiment_id"] == "stage3-risk-neural-fit", "The interrupted optimization seal differs")
+    setup = load(original.open("payload/fit/setup.json"))
+    before = setup["identity"]
+    after = load(run.open("payload/optimization-original/corrected-export-config.json"))
+    scientific = {k: v for k, v in before.items() if k not in ("model_id", "config_sha256")}
+    require(set(scientific) == set(after)
+            and {k for k, v in scientific.items() if v != after[k]} == {"code_files", "worker_zip_sha256"}
+            and set(before["code_files"]) == set(after["code_files"])
+            and {n for n in before["code_files"] if before["code_files"][n] != after["code_files"][n]} ==
+                {"src/evidence_lens_multirisk/deploy.py"}
+            and doc["source_equivalence"]["original_optimizer_worker_sha256"] == before["worker_zip_sha256"]
+            and doc["source_equivalence"]["corrected_export_worker_sha256"] == after["worker_zip_sha256"]
+            and all(fit[k] == before[k] == after[k] for k in ("training_dataset_sha256", "development_dataset_sha256")),
+            "Original optimization and corrected export used different scientific inputs")
+    def design_id(identity):
+        keys = ("model_id", "method", "seed", "config_sha256")
+        return hashlib.sha256(json_bytes({k:v for k,v in identity.items() if k not in keys})).hexdigest()
+    require(design_id(before) == setup["paired_design_sha256"] == recovery["original_paired_design_sha256"]
+            and design_id(after) == fit["paired_design_sha256"] == recovery["corrected_worker_paired_design_sha256"],
+            "Original and corrected worker design identities cannot be reproduced")
+    selected_scores = load(run.open("payload/development-scores/scores.json"))
+    m2 = [row for row in selected_scores["views"] if row["condition"] == "M2"]
+    require(selected_scores["dataset_sha256"] == before["development_dataset_sha256"] and len(m2) == 24
+            and all(row["modes"]["two"]["file"] == row["modes"]["all"]["file"]
+                    and row["modes"]["all"]["alias_of"] == "two" for row in m2),
+            "Recovered two-source alias differs from its original Windows map")
     copies = {n: n for n in ("curves.json", "initialization.json", "gradient-witnesses.json", "parameter-changes.json",
                               "initial-head.safetensors", "development.json", "training-state.pt", "package/weights.safetensors")}
     copies.update({"setup.json": "optimization-original/setup.json", "package/model.json": "optimization-original/broken-model.json"})
