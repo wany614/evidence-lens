@@ -1,0 +1,73 @@
+{
+  "centres": {
+    "manifest_sha256": "9c799b8e2d090610882f0fb51036084d30494f6c24f9b8df619425451b3ce206",
+    "run_id": "20261123T212417800201Z-69e83557a3b9445c"
+  },
+  "cpu": {
+    "manifest_sha256": "5c80c485529556d77d4064acded9724498e6389f3994b4746634cf1c6b4b7bfc",
+    "run_id": "20261123T212232288377Z-33ef671657804848"
+  },
+  "evaluations": {
+    "set1-M2": {
+      "manifest_sha256": "efdfad4c1ca93bf401213a0a8f7ca04361a92ee635c64da262c344a1a19f6a15",
+      "run_id": "20261123T194920844222Z-bf04f066cc284865"
+    },
+    "set1-M4": {
+      "manifest_sha256": "725a6b8f8714decb8d2ddb030e26b6413095f7f3c6869e25793fd08581029e0a",
+      "run_id": "20261123T194927496119Z-e36844a7ca1a4ded"
+    },
+    "set6-M2": {
+      "manifest_sha256": "99d722558f1abc16bded193986af4cc2cefe18fd9ddada174cec5fd83ad2dd9c",
+      "run_id": "20261123T200458834531Z-25314b84850d408e"
+    },
+    "set6-M4": {
+      "manifest_sha256": "41376c68be18c2e3b95e82a10996ce47a71d9e8e1485f3b57054210f3946bc51",
+      "run_id": "20261123T200458834495Z-8c51d6efe4cd4116"
+    }
+  },
+  "expected_counts": {
+    "all_original_views_each_phase": 36,
+    "old_arms": 4,
+    "optimizer_steps": 0,
+    "source_views_each_phase": 12,
+    "synthetic_source_camera_entries": 6
+  },
+  "experiment_id": "r0-checkpoint-evidence-report",
+  "gpu": {
+    "set1-M2": {
+      "manifest_sha256": "265237b633ad1ba869dc73713cef21b50fd70a8f764aa6011c66bbd493a224e6",
+      "run_id": "20261123T211939780976Z-7786143c167b4dbb"
+    },
+    "set1-M4": {
+      "manifest_sha256": "83dcd582cd467c709ba0017c71907fa22367987af4361a1e6bfcdfe6c8541659",
+      "run_id": "20261123T211944001938Z-698936a1e48c4973"
+    },
+    "set6-M2": {
+      "manifest_sha256": "2a6b8659023ad9d0f1ebd8e3ce14a59afb7a39d81dc74bbf1dd73fc591b64a78",
+      "run_id": "20261123T211948166580Z-dc4f76cd4fe84aee"
+    },
+    "set6-M4": {
+      "manifest_sha256": "389d78f53eff22ded45e9b646182cca89b42440f5cb809a2918e372ac333b2ce",
+      "run_id": "20261123T211952333370Z-9ec0978e4812492d"
+    }
+  },
+  "readback_tolerances": {
+    "centre_absolute_px": 0.003,
+    "centre_relative": 5e-06,
+    "first_group_gradient_absolute_floor": 5e-08,
+    "first_group_gradient_relative": 0.0002,
+    "z_absolute_m": 1e-05
+  },
+  "recording": {
+    "artifact_hash": "sha256",
+    "expected_output_bytes": 4194304,
+    "scientific_stage_max_retries": 1,
+    "storage_limits": {
+      "local_active_batch_target_bytes": 21474836480,
+      "local_free_floor_bytes": 32212254720
+    },
+    "telemetry_interval_seconds": 1.0
+  },
+  "schema": "el-r0-evidence-report-config-1",
+  "trial_id": "r0-four-conditions-and-original-synthetic-geometry"
+}

@@ -1,0 +1,9 @@
+object,condition,phase,all_rows,any_parameter_changed,source_union_radius,source_union_tile,source_union_weight,source_union_weight_gt_1e_minus12,source_union_task,source_union_task_gt_1e_minus12,source_union_means,source_union_log_scales,source_union_quats,source_union_opacity_logits,source_union_color_logits,changed_and_source_weight,changed_without_source_weight_here,unchanged_with_source_weight_here,changed_and_source_task_here
+set1,M2,final,4096,453,222,222,162,162,162,162,162,162,162,162,162,162,291,0,162
+set1,M2,initial,4096,453,481,481,453,453,453,453,453,453,453,453,453,453,0,0,453
+set1,M4,final,4096,497,283,283,191,191,191,191,191,191,191,191,191,191,306,0,191
+set1,M4,initial,4096,497,530,530,497,497,497,497,497,497,497,497,497,497,0,0,497
+set6,M2,final,4096,453,211,211,152,152,152,152,152,152,152,152,152,152,301,0,152
+set6,M2,initial,4096,453,481,481,453,453,453,453,453,453,453,453,453,453,0,0,453
+set6,M4,final,4096,497,263,263,163,163,163,163,163,163,163,163,163,163,334,0,163
+set6,M4,initial,4096,497,530,530,497,497,497,497,497,497,497,497,497,497,0,0,497

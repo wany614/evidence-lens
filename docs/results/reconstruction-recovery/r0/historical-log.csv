@@ -1,0 +1,13 @@
+object,condition,source,updates,loss_initial,loss_final,means_whole_group_nonzero_steps,log_scales_whole_group_nonzero_steps,quats_whole_group_nonzero_steps,opacity_logits_whole_group_nonzero_steps,color_logits_whole_group_nonzero_steps,historical_per_row_gradients,historical_per_row_transmittance
+set1,M2,s00,128,0.3727286756038666,0.08309938758611679,128,128,128,128,128,unavailable,unavailable
+set1,M2,s03,128,0.43371880054473877,0.06603869050741196,128,128,128,128,128,unavailable,unavailable
+set1,M4,s00,64,0.3727286756038666,0.10473182052373886,64,64,64,64,64,unavailable,unavailable
+set1,M4,s01,64,0.3964694142341614,0.10161261260509491,64,64,64,64,64,unavailable,unavailable
+set1,M4,s02,64,0.33765244483947754,0.1062578558921814,64,64,64,64,64,unavailable,unavailable
+set1,M4,s03,64,0.43371880054473877,0.09546615928411484,64,64,64,64,64,unavailable,unavailable
+set6,M2,s00,128,0.28178083896636963,0.09875230491161346,128,128,128,128,128,unavailable,unavailable
+set6,M2,s03,128,0.3445788621902466,0.0846555083990097,128,128,128,128,128,unavailable,unavailable
+set6,M4,s00,64,0.28178083896636963,0.124631367623806,64,64,64,64,64,unavailable,unavailable
+set6,M4,s01,64,0.2980932593345642,0.12239670753479004,64,64,64,64,64,unavailable,unavailable
+set6,M4,s02,64,0.26688551902770996,0.12257810682058334,64,64,64,64,64,unavailable,unavailable
+set6,M4,s03,64,0.3445788621902466,0.10268166661262512,64,64,64,64,64,unavailable,unavailable

@@ -177,11 +177,118 @@ def prepare(store, output, project):
     return ready
 
 
+def prepare_centres(store, original, output, project):
+    """Package the nine selected data assets for the independent native projection."""
+    import json
+    from evidence_lens.formal_inputs import PinnedRun
+
+    r = load(original / "READY.json")
+    require(sha(original / r["zip"]) == r["zip_sha256"], "Changed original dispatch")
+    with zipfile.ZipFile(original / r["zip"]) as z:
+        raw = z.read("batch.json")
+        require(sha_bytes(raw) == r["batch_sha256"], "Wrong initial batch")
+        batch = json.loads(raw)
+        members = {n: z.read(n) for n in z.namelist() if n.startswith("worker/") and "/r0_" not in n}
+        members["worker/scripts/r0_centres.py"] = (project / "scripts/r0_centres.py").read_bytes()
+        hashes = {k.removeprefix("worker/"): sha_bytes(v) for k, v in members.items()}
+        roles = {}
+        parents = {}
+        cells = []
+
+        def add(role, filename, data, pin):
+            roles[role] = {"path": filename, "parent": pin, "sha256": sha_bytes(data), "bytes": len(data)}
+            parents[pin["run_id"]] = pin
+            members["data/" + filename] = data
+
+        for row in batch["jobs"]:
+            o, c = row["object_id"], row["condition"]
+            cell = o + "-" + c
+            base = "jobs/" + cell + "/"
+            jraw = z.read(base + "job.json")
+            require(sha_bytes(jraw) == row["sha256"], "Main job changed")
+            j = json.loads(jraw)
+            for role, filename, key in [
+                ("init", "initial.npz", "initial"),
+                ("cam-" + c, "camera-" + c + ".json", "cameras"),
+                (cell, "final-" + cell + ".npz", "final"),
+            ]:
+                spec = j["roles"][key]
+                data = z.read(base + spec["path"])
+                require(sha_bytes(data) == spec["sha256"], "Different input contents")
+                if role in roles:
+                    require(roles[role]["sha256"] == sha_bytes(data), "Different shared original")
+                else:
+                    add(role, filename, data, spec["parent"])
+            cells.append(
+                {"cell": cell, "camera_role": "cam-" + c, "phase_roles": {"initial": "init", "final": cell}}
+            )
+        names = load(next(store.glob("stage3/*/public-example/public-members.json")))
+        for c in SETS:
+            row = next(x["source"] for x in names["files"] if x["path"] == f"CASE/{c}/source_cameras.json")
+            pin = {k: row[k] for k in ("run_id", "manifest_sha256")}
+            base_store = store if (store / "runs" / pin["run_id"]).is_dir() else store.parent / "cold-shelf"
+            data = PinnedRun(base_store, pin).open(row["member"]).read_bytes()
+            require(sha_bytes(data) == row["sha256"], "Changed Stage C camera")
+            add("synthetic-" + c, "synthetic-" + c + ".json", data, pin)
+            cells.append(
+                {
+                    "cell": "StageC-057-" + c,
+                    "camera_role": "synthetic-" + c,
+                    "phase_roles": {"initial": "init"},
+                }
+            )
+    cfg = {
+        "eps2d": j["config"]["eps2d"],
+        "cells": cells,
+        "roles": roles,
+        "originals": parents,
+        "optimization_steps": 0,
+    }
+    job = {
+        "schema": "el-r0-centres-job-1",
+        "identity": {"dataset_hash": j["identity"]["dataset_hash"]},
+        "experiment_id": "r0-native-camera-projection",
+        "trial_id": "r0-dtu-stagec-pinhole",
+        "reference": next(iter(parents.values())),
+        "readback": pin,
+        "config": cfg,
+        "worker_files": hashes,
+    }
+    name = "r0-native-centres-01"
+    raw = encoded(job)
+    members["job.json"] = raw
+    pack = zip_bytes(members)
+    ticket = {
+        "schema": "el-r0-centres-delivery-1",
+        "batch": name,
+        "batch_sha256": sha_bytes(raw),
+        "zip": name + ".zip",
+        "zip_bytes": len(pack),
+        "zip_sha256": sha_bytes(pack),
+        "target_photographs": 0,
+        "source_photographs": 0,
+    }
+    publish(output / ticket["zip"], pack)
+    publish(output / "job.json", raw)
+    publish(output / "READY.json", encoded(ticket))
+    return ticket
+
+
 if __name__ == "__main__":
     import json
 
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--store", required=True, type=Path)
     p.add_argument("--output", required=True, type=Path)
+    p.add_argument(
+        "--native-centres-from",
+        type=Path,
+        help="Use the frozen original job folder for a photo-free projection readback",
+    )
     a = p.parse_args()
-    print(json.dumps(prepare(a.store.resolve(), a.output.resolve(), Path(__file__).resolve().parents[1])))
+    project = Path(__file__).resolve().parents[1]
+    if a.native_centres_from:
+        ticket = prepare_centres(a.store.resolve(), a.native_centres_from, a.output, project)
+    else:
+        ticket = prepare(a.store.resolve(), a.output, project)
+    print(json.dumps(ticket))

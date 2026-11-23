@@ -1,0 +1,183 @@
+{
+  "global_fp64_witness": {
+    "abs_axis_residual_px": 0.00221295035453295,
+    "axis": "y",
+    "cell_phase_view": "set6-M2-final-v02",
+    "image_width_height": [
+      256,
+      256
+    ],
+    "inside_frame": false,
+    "measured_xy_integer_centres": [
+      -62.026615142822266,
+      -2545.58251953125
+    ],
+    "measured_z_m": 0.05763453245162964,
+    "near_m": 0.05,
+    "original_allowed_axis_residual_px": 0.01572790153290448,
+    "point_zero_based": 1156,
+    "reference_xy_integer_centres": [
+      -62.0265357960385,
+      -2545.5803065808955
+    ],
+    "reference_z_above_near_m": 0.007634554852984185,
+    "reference_z_m": 0.05763455485298419,
+    "routes": {
+      "fp32_camera_only_fp64_arithmetic": {
+        "abs_axis_residual_px": 0.0010335765605304914,
+        "xy_integer_centres": [
+          -62.0265625433978,
+          -2545.5814859546895
+        ],
+        "z_m": 0.057634542356568286
+      },
+      "fp32_contracted_left_to_right": {
+        "abs_axis_residual_px": 0.0,
+        "xy_integer_centres": [
+          -62.026615142822266,
+          -2545.58251953125
+        ],
+        "z_m": 0.05763453245162964
+      },
+      "fp32_numpy_matmul": {
+        "abs_axis_residual_px": 0.0,
+        "xy_integer_centres": [
+          -62.026611328125,
+          -2545.58251953125
+        ],
+        "z_m": 0.05763453245162964
+      },
+      "fp32_separate_left_to_right": {
+        "abs_axis_residual_px": 0.0,
+        "xy_integer_centres": [
+          -62.026611328125,
+          -2545.58251953125
+        ],
+        "z_m": 0.05763453245162964
+      },
+      "fp64_reference": {
+        "abs_axis_residual_px": 0.00221295035453295,
+        "xy_integer_centres": [
+          -62.0265357960385,
+          -2545.5803065808955
+        ],
+        "z_m": 0.05763455485298419
+      },
+      "fp64_with_observed_cuda_z": {
+        "abs_axis_residual_px": 0.0011723563943633053,
+        "xy_integer_centres": [
+          -62.02661142668833,
+          -2545.5813471748556
+        ],
+        "z_m": 0.05763453245162964
+      }
+    }
+  },
+  "in_frame_fp64_witness": {
+    "abs_axis_residual_px": 0.00033959979833753096,
+    "axis": "y",
+    "cell_phase_view": "set1-M2-initial-v06",
+    "image_width_height": [
+      256,
+      256
+    ],
+    "inside_frame": true,
+    "measured_xy_integer_centres": [
+      132.94190979003906,
+      60.928157806396484
+    ],
+    "measured_z_m": 0.11516055464744568,
+    "near_m": 0.05,
+    "original_allowed_axis_residual_px": 0.003304639091032991,
+    "point_zero_based": 989,
+    "reference_xy_integer_centres": [
+      132.94195048085305,
+      60.92781820659815
+    ],
+    "reference_z_above_near_m": 0.06516056643108577,
+    "reference_z_m": 0.11516056643108577,
+    "routes": {
+      "fp32_camera_only_fp64_arithmetic": {
+        "abs_axis_residual_px": 0.00011004682878024141,
+        "xy_integer_centres": [
+          132.94191397091402,
+          60.928047759567704
+        ],
+        "z_m": 0.11516056221604243
+      },
+      "fp32_contracted_left_to_right": {
+        "abs_axis_residual_px": 0.0,
+        "xy_integer_centres": [
+          132.94190979003906,
+          60.928157806396484
+        ],
+        "z_m": 0.11516055464744568
+      },
+      "fp32_numpy_matmul": {
+        "abs_axis_residual_px": 3.814697265625e-06,
+        "xy_integer_centres": [
+          132.94190979003906,
+          60.92815399169922
+        ],
+        "z_m": 0.11516055464744568
+      },
+      "fp32_separate_left_to_right": {
+        "abs_axis_residual_px": 0.000316619873046875,
+        "xy_integer_centres": [
+          132.94190979003906,
+          60.92784118652344
+        ],
+        "z_m": 0.11516056209802628
+      },
+      "fp64_reference": {
+        "abs_axis_residual_px": 0.00033959979833753096,
+        "xy_integer_centres": [
+          132.94195048085305,
+          60.92781820659815
+        ],
+        "z_m": 0.11516056643108577
+      },
+      "fp64_with_observed_cuda_z": {
+        "abs_axis_residual_px": 0.0003468388685092805,
+        "xy_integer_centres": [
+          132.94195052022604,
+          60.927810967527975
+        ],
+        "z_m": 0.11516055464744568
+      }
+    }
+  },
+  "inside": 18204,
+  "optimizer_steps": 0,
+  "original_readback_tolerances": {
+    "centre_absolute_px": 0.003,
+    "centre_relative": 5e-06,
+    "first_group_gradient_absolute_floor": 5e-08,
+    "first_group_gradient_relative": 0.0002,
+    "z_absolute_m": 1e-05
+  },
+  "parents": {
+    "centres": {
+      "manifest_sha256": "9c799b8e2d090610882f0fb51036084d30494f6c24f9b8df619425451b3ce206",
+      "run_id": "20261123T212417800201Z-69e83557a3b9445c"
+    },
+    "cpu": {
+      "manifest_sha256": "5c80c485529556d77d4064acded9724498e6389f3994b4746634cf1c6b4b7bfc",
+      "run_id": "20261123T212232288377Z-33ef671657804848"
+    },
+    "report": {
+      "manifest_sha256": "435d64bf7e5a95031adee5a5ca7058344cc810e240f797858de0d6977c28422f",
+      "run_id": "20261123T212935774196Z-6fc57ff541824ed0"
+    }
+  },
+  "photos_read": 0,
+  "review_absolute_px": 0.001,
+  "route_table_sha256": "ec7f5661785536dd3ce80bcbdaa38c033a17a8cb898f98867bf9d35a2a918028",
+  "routes": "Arithmetic variants compare the same coordinates. Substituting measured CUDA Z isolates depth sensitivity. Scalar contraction is a comparison and does not identify the compiled instructions.",
+  "rows": 37868,
+  "run_id": "20261123T213534521720Z-744da690618646db",
+  "schema": "el-r0-roundoff-readback-1",
+  "scope": "Post hoc localization of a previously accepted residual, using existing checkpoint and projection arrays.",
+  "support": "Rows with both positive native CUDA radii at each named camera and checkpoint. Frame uses the original FP64 integer-centre grid.",
+  "view_checkpoints": 78
+}

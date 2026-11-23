@@ -1,0 +1,11 @@
+object,condition,phase,inside_clip,centre_inside,ellipse_intersects,aabb_intersects
+set1,M2,initial,3284,151,1046,1079
+set1,M2,final,3282,95,786,850
+StageC-057,M2,initial,4096,2441,3144,3154
+set1,M4,initial,3301,180,1329,1366
+set1,M4,final,3301,112,1068,1153
+StageC-057,M4,initial,4096,2441,3144,3154
+set6,M2,initial,3284,151,1046,1079
+set6,M2,final,3283,114,780,842
+set6,M4,initial,3301,180,1329,1366
+set6,M4,final,3301,111,1041,1135
