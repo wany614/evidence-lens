@@ -1,5 +1,6 @@
 """Construct the procedural world and measure calibration from actual Blender objects."""
 import os
+from math import radians
 from pathlib import Path
 
 import bpy
@@ -99,14 +100,36 @@ def material(name, color, roughness=None, checker=None, checker_scale=None):
 
 
 def make_object(spec, mat):
-    if "size" in spec:
+    kind = spec.get("primitive", "box" if "size" in spec else "cylinder")
+    if kind == "box":
         bpy.ops.mesh.primitive_cube_add(size=1.0, location=spec["center"])
         obj = bpy.context.object
         obj.dimensions = spec["size"]
-    else:
+    elif kind == "cylinder":
         bpy.ops.mesh.primitive_cylinder_add(vertices=64, radius=spec["radius"], depth=spec["depth"],
                                             location=spec["center"])
         obj = bpy.context.object
+    elif kind == "frustum":
+        bpy.ops.mesh.primitive_cone_add(vertices=spec.get("vertices", 64), radius1=spec["bottom_radius"],
+                                        radius2=spec["top_radius"], depth=spec["depth"], location=spec["center"])
+        obj = bpy.context.object
+    elif kind == "rod":
+        axis = Vector(spec["axis"])
+        bpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=spec["radius"], depth=axis.length, location=spec["center"])
+        obj = bpy.context.object
+        obj.rotation_euler = axis.to_track_quat("Z", "Y").to_euler()
+    elif kind == "ellipsoid":
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=32, ring_count=16, radius=1, location=spec["center"])
+        obj = bpy.context.object
+        obj.scale = spec["radii"]
+    elif kind == "torus":
+        bpy.ops.mesh.primitive_torus_add(major_segments=48, minor_segments=12, major_radius=spec["major_radius"],
+                                         minor_radius=spec["minor_radius"], location=spec["center"])
+        obj = bpy.context.object
+    else:
+        raise ValueError(f"Unsupported frozen opaque primitive {kind}")
+    if "rotation_deg" in spec:
+        obj.rotation_euler = [radians(v) for v in spec["rotation_deg"]]
     obj.name = spec["name"]
     obj.pass_index = spec["id"]
     obj.data.materials.append(mat)
@@ -116,7 +139,7 @@ def make_object(spec, mat):
 def build_world(cfg):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scene = bpy.context.scene
-    scene.name = "scene_001_tabletop_v001"
+    scene.name = cfg.get("scene_name", "scene_001_tabletop_v001")
     configure(scene, cfg, cfg["width"], cfg["height"])
     mats = {name: material(name, spec["linear"], cfg["material_roughness"],
                            spec.get("checker_linear"), spec.get("scale"))
@@ -161,6 +184,12 @@ def camera_record(scene, obj, purpose):
             "sensor_height_mm": obj.data.sensor_height, "lens_shift": [obj.data.shift_x, obj.data.shift_y],
             "pixel_aspect": [scene.render.pixel_aspect_x, scene.render.pixel_aspect_y],
             "distortion": "none", "clip_m": [obj.data.clip_start, obj.data.clip_end]}
+
+
+def camera_bundle(views):
+    return {"schema": "el-camera-1", "unit": "m", "pixel_center": "integer",
+            "axis_convention": "OpenCV x right, y down, z forward", "world_axes": "Blender right-handed Z up",
+            "image_origin": "top_left", "K_edge_convention": "pixel (u,v) centre (u+0.5,v+0.5)", "views": views}
 
 
 def project(points, view):

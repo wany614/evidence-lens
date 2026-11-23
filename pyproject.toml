@@ -12,6 +12,7 @@ dependencies = ["numpy>=1.26,<3", "Pillow>=11,<13"]
 
 [project.optional-dependencies]
 record = ["psutil>=6,<8", "pyarrow>=18,<27"]
+train = ["scikit-learn==1.9.1", "pyarrow>=18,<27", "threadpoolctl>=3.1,<4"]
 test = ["pytest>=8,<10"]
 reference = ["bpy==4.5.16", "numpy==1.26.4", "OpenEXR==3.5.5", "Pillow==12.3.0"]
 

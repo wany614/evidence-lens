@@ -1,0 +1,15 @@
+{
+  "schema": "el-preregistered-analysis-clarifications-1",
+  "time_utc": "2026-11-23T03:42:42.801408+00:00",
+  "study_sha256": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+  "known": [
+    "P2 engineering case",
+    "Four other pilot reference and readback stages complete; no formal Windows inference or render has been dispatched"
+  ],
+  "B0_selection": "scene_001 uses the frozen prior P2 chain. Four additional pilot families and all remaining families use first interface-complete chain under the frozen protocol, independent of outcomes.",
+  "region_prediction": "Four held-out B0 families, all six views; pool pixels within each family and average family incidences equally, disclose empty strata.",
+  "R1_prediction": "Primary increase in strict RGB error incidence over all V, family-equal, with the edge subset descriptive.",
+  "Q1_geometry_tolerance": "Byte-identical alpha, ED depth, support, eligibility, geometry input features and geometry-only scores expected with deterministic execution. Report every difference and count, including repeat effects; never suppress measured differences.",
+  "timing": "Three repetitions per condition on scene_021, after its accepted B0/R1/Q1 run; timing trial IDs are distinct and excluded from selection and quality metrics.",
+  "reference_failures": "Keep failed attempts. Before a generator uses that family, record a corrected versioned recipe and any protocol deviation; do not silently alter the frozen recipe."
+}

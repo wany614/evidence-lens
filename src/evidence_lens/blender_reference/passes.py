@@ -71,12 +71,15 @@ def png_pixels(path):
         return np.array(image.convert("RGB"))
 
 
-def reduce_half(code):
-    """Exact 2x2 box average in display-sRGB uint8, round half up once; zero crop/pad."""
+def reduce_half(code, ties_to_even=False):
+    """Exact integer 2x2 box average in display-sRGB, with one final rounding."""
     h, w, c = code.shape
     if h % 2 or w % 2 or code.dtype != np.uint8:
         raise ValueError("Half resolution requires an even-sized uint8 source")
     total = code.reshape(h//2, 2, w//2, 2, c).sum(axis=(1, 3), dtype=np.uint16)
+    if ties_to_even:
+        quotient, remainder = np.divmod(total, 4)
+        return (quotient + ((remainder > 2) | ((remainder == 2) & (quotient % 2 == 1)))).astype(np.uint8)
     return ((total + 2) // 4).astype(np.uint8)
 
 
@@ -156,22 +159,45 @@ def longest_horizontal_run(mask):
     return int((end-start).max(initial=0))
 
 
+def geometric_disocclusion(obj, classes, hit_ids, edge, cfg):
+    """Find measurable bands formed by a single identified receiver/occluder pair."""
+    valid = (classes == 2) & (obj != 0) & (hit_ids != 0) & (obj != hit_ids)
+    keys = np.where(valid, (obj.astype(np.uint32) << 16) | hit_ids, 0)
+    pair_ids, counts = np.unique(keys[valid], return_counts=True)
+    if not len(pair_ids):
+        return {"pair_count": 0, "measurable_pairs": [], "meets_width_and_interior": False}
+    # The start and end arrays have identical row/run ordering, including runs at either image boundary.
+    padded = np.pad(keys, ((0, 0), (1, 1)))
+    rows, starts = np.nonzero(valid & (keys != padded[:, :-2]))
+    _, ends = np.nonzero(valid & (keys != padded[:, 2:]))
+    width = np.zeros(len(pair_ids), dtype=int)
+    np.maximum.at(width, np.searchsorted(pair_ids, keys[rows, starts]), ends - starts + 1)
+    interior = np.bincount(np.searchsorted(pair_ids, keys[valid & ~edge]), minlength=len(pair_ids))
+    qualified = (width >= cfg["band_min_width_px"]) & (interior >= cfg["band_min_interior_pixels"])
+    pairs = [{"receiver_id": int(pair_ids[i]) >> 16, "occluder_id": int(pair_ids[i]) & 65535,
+              "total_pixels": int(counts[i]), "interior_pixels": int(interior[i]),
+              "max_contiguous_horizontal_width_px": int(width[i])} for i in np.flatnonzero(qualified)]
+    return {"pair_count": len(pair_ids), "measurable_pairs": pairs, "meets_width_and_interior": bool(pairs)}
+
+
 def geometry_passes(pos, obj, view, source, bvh, cfg):
     uv, z = project(pos, view)
     surface, classes, reasons, hit_ids = visibility(pos, obj, z, source, bvh, cfg)
     y, x = np.nonzero(surface)
     err = np.linalg.norm(uv[surface] - np.column_stack((x, y)), axis=1)
     edge = edges(obj, surface, classes, cfg["edge_radius_px"])
-    revealed = (obj == cfg["revealed_object_id"]) & (classes == 2) & (hit_ids == cfg["occluder_id"])
     info = {"surface_pixels": int(surface.sum()), "edge_pixels": int(edge.sum()),
             "max_reprojection_px": float(err.max()) if len(err) else None,
             "p99_reprojection_px": float(np.percentile(err, 99)) if len(err) else None,
             "visibility_counts": np.bincount(classes.ravel(), minlength=4).tolist(),
             "visibility_reasons": {REASONS[i]: int(n) for i, n in enumerate(
-                np.bincount(reasons.ravel(), minlength=len(REASONS)))},
-            "known_occlusion_pair": {"total_pixels": int(revealed.sum()),
-                                     "interior_pixels": int((revealed & ~edge).sum()),
-                                     "max_contiguous_horizontal_width_px": longest_horizontal_run(revealed)}}
+                np.bincount(reasons.ravel(), minlength=len(REASONS)))}}
+    if cfg.get("occlusion_profile") == "opaque_mesh_pairs":
+        info["geometric_disocclusion"] = geometric_disocclusion(obj, classes, hit_ids, edge, cfg)
+    else:
+        revealed = (obj == cfg["revealed_object_id"]) & (classes == 2) & (hit_ids == cfg["occluder_id"])
+        info["known_occlusion_pair"] = {"total_pixels": int(revealed.sum()), "interior_pixels": int((revealed & ~edge).sum()),
+                                        "max_contiguous_horizontal_width_px": longest_horizontal_run(revealed)}
     numerical = {"position": np.where(surface[..., None], pos, np.nan).astype(np.float32),
                  "z": np.where(surface, z, np.nan).astype(np.float32), "object_id": obj,
                  "visibility": classes, "visibility_reason": reasons, "first_source_hit_id": hit_ids,

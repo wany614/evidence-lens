@@ -312,9 +312,9 @@ def record(args: argparse.Namespace) -> dict:
                 snap = snapshot(source, bundle)
                 run.update(code_snapshot_sha256=snap["snapshot_sha256"], code_commit=snap["git_commit"])
                 if args.kind in {"scene_render", "generation", "render"} or embedded or shared:
-                    # Shared objects may already exist; budget one full staging copy for each.
+                    staged_shared = [path for path in shared.values() if not Path(path).expanduser().resolve().is_relative_to(root / "assets/sha256")]
                     expected = config["recording"]["expected_output_bytes"] + sum(
-                        _capacity.bytes_on_tree(Path(path).expanduser()) for path in [*embedded.values(), *shared.values()])
+                        _capacity.bytes_on_tree(Path(path).expanduser()) for path in [*embedded.values(), *staged_shared])
                     space = _capacity.check(root, expected, limits)
                     events.write("storage_preflight", **space)
                     require(not space["reason"], space["reason"] or "")

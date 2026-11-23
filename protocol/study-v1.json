@@ -1,0 +1,45 @@
+{
+  "schema": "el-study-preregistration-1",
+  "master_plan_version": "1.1",
+  "numerical_protocol_version": "1.0",
+  "registered_at_utc": "2026-11-23T03:28:21.791583Z",
+  "known_at_registration": {
+    "families_seen": ["scene_001_tabletop"],
+    "engineering_selection_sha256": "32f4ea2a1b0fdc09038e7413f6461aa334d15042f807895b4bca286535e4cf15",
+    "p2_code_commit": "65eed21b204121799fce729797653cfa195c1bc9"
+  },
+  "scope": "One source per static opaque authored family, six perspective targets at 512 x 512. The model predicts thresholded display-sRGB reconstruction error.",
+  "split": {"catalog": "protocol/families-v1.json", "train": 16, "development": 4, "test": 4, "heldout_evaluation_after_method_freeze": true},
+  "conditions": {
+    "B0": {"families": 24, "source_resolution": [512,512], "generator_calls": 24, "render": "source and six targets"},
+    "R1": {"families": 4, "split": "test", "generator_calls": 4, "source_resolution": [256,256], "target_resolution":[512,512],
+           "resample": "2 by 2 nonoverlapping box mean of original 8-bit display-sRGB samples; ties to nearest even uint8; no crop or padding",
+           "camera": "multiply boundary-origin source K first two rows by 0.5, then convert back to integer-centre K; keep poses and target cameras",
+           "source_features": "exact R1 source and the R1-sized self-render"},
+    "Q1": {"families": 4, "split": "test", "generator_calls": 0, "parent": "same family's accepted B0 PLY", "render": "fresh source and six targets",
+           "fields": ["f_dc_0", "f_dc_1", "f_dc_2"], "transform": "little-endian binary32 to IEEE binary16 nearest ties to even and back to binary32; preserve order, geometry, opacity, header and metadata bytes",
+           "invalid": "fail on nonfinite input colour coefficients or FP16 overflow; retain failure"}
+  },
+  "predictions_before_formal_acquisition": [
+    {"question":"What happens to error in surfaces newly exposed at a target?", "expectation":"Mean B0 thresholded RGB error incidence is greater in physically disoccluded areas than in observed areas.", "reason":"Those surfaces lack a corresponding colour observation from the input camera.", "confidence":"moderate", "falsifier":"Family-equal incidence for disoccluded pixels is less than or equal to that of observed pixels; state empty partitions."},
+    {"question":"Can the learned predictor localize high RGB error on held-out B0 layouts?", "expectation":"L1-full improves family-equal AP over the constant prior; its advantage over L0 and 1-alpha is uncertain.", "reason":"Some correspondence, motion, colour and local depth features may predict where synthesis changes.", "confidence":"moderate for constant comparison; low for other baselines", "falsifier":"Equal or lower held-out common-mask AP; report individual families, class composition and coverage."},
+    {"question":"What does half-size R1 input change?", "expectation":"R1 may increase small-detail RGB errors while the fixed internal network resolution limits forward-time savings.", "reason":"External downsampling discards detail before SHARP resizes to its fixed network input.", "confidence":"moderate on detail, low on time", "falsifier":"No increase in measured error or a consistent measured speed-up across repeats."},
+    {"question":"How does single-pass FP16 colour rounding affect Q1?", "expectation":"Pure geometry features and eligibility should stay equal for unchanged geometry when the renderer is deterministic. RGB and full model scores may change slightly, with no guaranteed performance loss.", "reason":"Only stored degree-zero colour coefficients change.", "confidence":"high on input invariance; low on measurable image or ranking change", "falsifier":"Geometry field digests differ, or verified geometry-only features/scores change beyond recorded tolerances; report genuine zero change."}
+  ],
+  "labels": {"version":"el-labels-1","rgb_strict_gt":0.05,"rgb_sensitivity":[0.025,0.05,0.10],"depth_m":0.02,"depth_relative":0.02,"min_alpha":0.5,"l0_relative_depth":0.10},
+  "model_selection": {
+    "train_condition":"B0", "views":["v01","v02","v03","v04","v05","v06"], "max_pixels_per_view":4096,
+    "sample":"first 16 bytes SHA-256 interpreted unsigned big-endian of UTF-8 9184 LF catalog_sha256 LF family_id LF camera_id with no trailing LF; NumPy PCG64 uniform without replacement, row-major flat indices saved",
+    "c_values":[0.1,1.0,10.0], "folds":[4,3,2], "four_fold":"frozen catalog cv_fold", "fallback":"sorted training family IDs modulo 3 or 2",
+    "weight":"N/(F * nonempty_views_in_family * samples_in_view), recomputed per fit",
+    "method":"view AP on two-class validation views; mean within family, then equal among families; ties within 1e-6 take smaller C",
+    "geometry_ablation":["local_rgb_difference","source_rgb_difference","source_render_residual","their missing flags"],
+    "constant":"incidence on complete training E, pooled within family then equal across families"
+  },
+  "development_threshold": {"condition":"B0","low_rule":"score < tau","target_low_fraction_of_full_V":0.8,"ties":"complete score groups; ties in distance to 0.8 choose lower attainable coverage; include accept-none/accept-all-scoreable endpoints","aggregation":"pool V and low counts within family, equal weight among families"},
+  "test_methods":["constant","1-alpha","L0","L1-full","L1-geometry"],
+  "evaluation": {"system_denominators":["V","E","H","L","U"],"ranking":"identical per-view scoreable intersection across all five methods, two-class views only; whole ties; view then family equal","subregions":["all","observed","disoccluded","outside_input_fov","edge","interior","low_contribution","sufficient_contribution","unknown_contribution"],"primary_examples":"v01 for every test family and condition; retain all six views","calibration":"risk scores, descriptive reliability bins optional; no claim of calibrated probabilities"},
+  "timing_repeats": {"family":"lexicographically first test family","conditions":["B0","R1","Q1"],"repetitions":3,"warmup":"selected formal execution serves as warm-up; retain identical stage config, vary run ID; report stage/process timings and first compilation separately","quality_or_fit_inclusion":false},
+  "storage": {"representative_families":["scene_001_tabletop","scene_002_book_nook","scene_003_pulley_frame","scene_006_fruit_crate","scene_019_corner_booth"],"reestimate_after_batch":true,"working_margin_fraction":0.5,"working_set_bytes":21474836480,"min_volume_free_bytes":32212254720},
+  "failure_rule":"Preserve every attempt. Use the first integrity- and interface-complete scientific chain, independently of observed error. A code or scientific configuration change is versioned. Timing and transfer retries are separately identified."
+}

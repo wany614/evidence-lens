@@ -70,7 +70,7 @@ def calibration_fixture(cfg, root):
                            [0, 0, -1.5], [np.nan, 0, -2]]], dtype=np.float32)
     _, vis, reason, hit = visibility(witnesses, np.ones((1, 6), dtype=np.uint16),
                                      np.ones((1, 6)), view, evaluated_bvh(scene), cfg["validation"])
-    half = reduce_half(native_codes)
+    half = reduce_half(native_codes, cfg.get("resize_rounding") == "nearest_even")
     Image.fromarray(half).save(root/"calibration_half.png")
     resize_landmarks = {}
     marker = np.array(expected_colors[1]) * 255
@@ -104,9 +104,9 @@ def calibration_fixture(cfg, root):
             "actual_resized_landmarks": resize_landmarks}
 
 
-def source_resize(source, path, root, world_points):
+def source_resize(source, path, root, world_points, ties_to_even=False):
     full = png_pixels(path)
-    half = reduce_half(full)
+    half = reduce_half(full, ties_to_even)
     image_path = root/"source_256.png"
     Image.fromarray(half).save(image_path)
     small_camera = half_camera(source)
@@ -115,7 +115,8 @@ def source_resize(source, path, root, world_points):
     np.savez_compressed(root/"decoded_input.npz", rgb_u8=full)
     return {"source_png_sha256": sha256(path), "half_png_sha256": sha256(image_path),
             "color_encoding": "display_srgb", "source_bit_depth": 8, "half_camera": small_camera,
-            "method": "2x2 box average of decoded display-sRGB code values, round half up once, no crop/pad",
+            "method": ("2x2 box average of decoded display-sRGB code values, ties to even once, no crop/pad"
+                       if ties_to_even else "2x2 box average of decoded display-sRGB code values, round half up once, no crop/pad"),
             "max_projection_residual_px": float(np.linalg.norm((high+0.5)/2-0.5-low, axis=1).max()),
             "stored_half_matches_resampler": bool(np.array_equal(png_pixels(image_path), half))}
 

@@ -1,0 +1,7129 @@
+{
+  "families": {
+    "scene_002_book_nook": {
+      "objects": [
+        {
+          "center": [
+            -0.61,
+            0.16,
+            0.42
+          ],
+          "id": 10,
+          "material": "legs",
+          "name": "Upright -0.61",
+          "primitive": "box",
+          "size": [
+            0.042,
+            0.4,
+            0.84
+          ]
+        },
+        {
+          "center": [
+            0.03,
+            0.16,
+            0.42
+          ],
+          "id": 11,
+          "material": "legs",
+          "name": "Upright 0.03",
+          "primitive": "box",
+          "size": [
+            0.042,
+            0.4,
+            0.84
+          ]
+        },
+        {
+          "center": [
+            0.61,
+            0.16,
+            0.42
+          ],
+          "id": 12,
+          "material": "legs",
+          "name": "Upright 0.61",
+          "primitive": "box",
+          "size": [
+            0.042,
+            0.4,
+            0.84
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.16,
+            0.045
+          ],
+          "id": 13,
+          "material": "timber",
+          "name": "Shelf 0.045",
+          "primitive": "box",
+          "size": [
+            1.25,
+            0.43,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.16,
+            0.43
+          ],
+          "id": 14,
+          "material": "timber",
+          "name": "Shelf 0.43",
+          "primitive": "box",
+          "size": [
+            1.25,
+            0.43,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.16,
+            0.81
+          ],
+          "id": 15,
+          "material": "timber",
+          "name": "Shelf 0.81",
+          "primitive": "box",
+          "size": [
+            1.25,
+            0.43,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            -0.51,
+            0.13,
+            0.25
+          ],
+          "id": 16,
+          "material": "blue",
+          "name": "Bound volume 1",
+          "primitive": "box",
+          "size": [
+            0.07,
+            0.22,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            -0.42,
+            0.1,
+            0.23
+          ],
+          "id": 17,
+          "material": "cream",
+          "name": "Bound volume 2",
+          "primitive": "box",
+          "size": [
+            0.08,
+            0.22,
+            0.32
+          ]
+        },
+        {
+          "center": [
+            -0.32,
+            0.16,
+            0.24
+          ],
+          "id": 18,
+          "material": "green",
+          "name": "Bound volume 3",
+          "primitive": "box",
+          "size": [
+            0.09,
+            0.22,
+            0.34
+          ]
+        },
+        {
+          "center": [
+            -0.2,
+            0.2,
+            0.23
+          ],
+          "id": 19,
+          "material": "terracotta",
+          "name": "Bound volume 4",
+          "primitive": "box",
+          "size": [
+            0.1,
+            0.22,
+            0.32
+          ]
+        },
+        {
+          "center": [
+            0.13,
+            0.17,
+            0.61
+          ],
+          "id": 20,
+          "material": "green",
+          "name": "Bound volume 5",
+          "primitive": "box",
+          "size": [
+            0.08,
+            0.22,
+            0.31
+          ]
+        },
+        {
+          "center": [
+            0.23,
+            0.17,
+            0.62
+          ],
+          "id": 21,
+          "material": "cream",
+          "name": "Bound volume 6",
+          "primitive": "box",
+          "size": [
+            0.09,
+            0.22,
+            0.33
+          ]
+        },
+        {
+          "center": [
+            0.37,
+            0.2,
+            0.58
+          ],
+          "id": 22,
+          "material": "blue",
+          "name": "Bound volume 7",
+          "primitive": "box",
+          "size": [
+            0.11,
+            0.22,
+            0.24
+          ]
+        },
+        {
+          "center": [
+            0.5,
+            0.16,
+            0.61
+          ],
+          "id": 23,
+          "material": "terracotta",
+          "name": "Bound volume 8",
+          "primitive": "box",
+          "size": [
+            0.08,
+            0.22,
+            0.3
+          ]
+        },
+        {
+          "center": [
+            -0.12,
+            -0.14,
+            0.32
+          ],
+          "id": 24,
+          "material": "terracotta",
+          "name": "Leaning folio",
+          "primitive": "box",
+          "rotation_deg": [
+            0,
+            -19,
+            0
+          ],
+          "size": [
+            0.16,
+            0.2,
+            0.63
+          ]
+        },
+        {
+          "center": [
+            0.35,
+            -0.02,
+            0.12
+          ],
+          "id": 25,
+          "material": "blue",
+          "name": "Flat atlas",
+          "primitive": "box",
+          "size": [
+            0.38,
+            0.3,
+            0.11
+          ]
+        }
+      ],
+      "occlusion_description": "A leaning oversized volume crosses the joint between open shelf bays and masks narrow rear spines.",
+      "title": "Two-bay book nook"
+    },
+    "scene_003_pulley_frame": {
+      "objects": [
+        {
+          "center": [
+            -0.48,
+            0.12,
+            0.036
+          ],
+          "id": 10,
+          "material": "dark",
+          "name": "Gantry foot -0.48",
+          "primitive": "box",
+          "size": [
+            0.22,
+            0.46,
+            0.072
+          ]
+        },
+        {
+          "center": [
+            -0.48,
+            0.18,
+            0.43
+          ],
+          "id": 11,
+          "material": "blue",
+          "name": "Gantry post -0.48",
+          "primitive": "box",
+          "size": [
+            0.07,
+            0.09,
+            0.8
+          ]
+        },
+        {
+          "center": [
+            0.48,
+            0.12,
+            0.036
+          ],
+          "id": 12,
+          "material": "dark",
+          "name": "Gantry foot 0.48",
+          "primitive": "box",
+          "size": [
+            0.22,
+            0.46,
+            0.072
+          ]
+        },
+        {
+          "center": [
+            0.48,
+            0.18,
+            0.43
+          ],
+          "id": 13,
+          "material": "blue",
+          "name": "Gantry post 0.48",
+          "primitive": "box",
+          "size": [
+            0.07,
+            0.09,
+            0.8
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.16,
+            0.82
+          ],
+          "id": 14,
+          "material": "blue",
+          "name": "Gantry beam",
+          "primitive": "box",
+          "size": [
+            1.13,
+            0.14,
+            0.09
+          ]
+        },
+        {
+          "axis": [
+            0.94,
+            0.0,
+            0.69
+          ],
+          "center": [
+            0.0,
+            0.29,
+            0.425
+          ],
+          "id": 15,
+          "material": "legs",
+          "name": "Back diagonal",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "center": [
+            -0.22,
+            -0.1,
+            0.69
+          ],
+          "id": 16,
+          "major_radius": 0.115,
+          "material": "dark",
+          "minor_radius": 0.017,
+          "name": "Main rim",
+          "primitive": "torus",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ]
+        },
+        {
+          "bottom_radius": 0.035,
+          "center": [
+            -0.22,
+            -0.1,
+            0.69
+          ],
+          "depth": 0.055,
+          "id": 17,
+          "material": "cream",
+          "name": "Main hub",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.035
+        },
+        {
+          "axis": [
+            0.115,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.1625,
+            -0.1,
+            0.69
+          ],
+          "id": 18,
+          "material": "legs",
+          "name": "Main spoke 1",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.115
+          ],
+          "center": [
+            -0.22,
+            -0.1,
+            0.7475
+          ],
+          "id": 19,
+          "material": "legs",
+          "name": "Main spoke 2",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.115,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.2775,
+            -0.1,
+            0.69
+          ],
+          "id": 20,
+          "material": "legs",
+          "name": "Main spoke 3",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.0,
+            0.0,
+            -0.115
+          ],
+          "center": [
+            -0.22,
+            -0.1,
+            0.6325
+          ],
+          "id": 21,
+          "material": "legs",
+          "name": "Main spoke 4",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.325,
+            0.0
+          ],
+          "center": [
+            -0.22,
+            0.0375,
+            0.69
+          ],
+          "id": 22,
+          "material": "dark",
+          "name": "Main axle",
+          "primitive": "rod",
+          "radius": 0.024
+        },
+        {
+          "center": [
+            0.28,
+            0.11,
+            0.72
+          ],
+          "id": 23,
+          "major_radius": 0.078,
+          "material": "dark",
+          "minor_radius": 0.017,
+          "name": "Return rim",
+          "primitive": "torus",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ]
+        },
+        {
+          "bottom_radius": 0.035,
+          "center": [
+            0.28,
+            0.11,
+            0.72
+          ],
+          "depth": 0.055,
+          "id": 24,
+          "material": "cream",
+          "name": "Return hub",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.035
+        },
+        {
+          "axis": [
+            0.078,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.319,
+            0.11,
+            0.72
+          ],
+          "id": 25,
+          "material": "legs",
+          "name": "Return spoke 1",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.078
+          ],
+          "center": [
+            0.28,
+            0.11,
+            0.759
+          ],
+          "id": 26,
+          "material": "legs",
+          "name": "Return spoke 2",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.078,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.241,
+            0.11,
+            0.72
+          ],
+          "id": 27,
+          "material": "legs",
+          "name": "Return spoke 3",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            -0.078
+          ],
+          "center": [
+            0.28,
+            0.11,
+            0.681
+          ],
+          "id": 28,
+          "material": "legs",
+          "name": "Return spoke 4",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.115,
+            0.0
+          ],
+          "center": [
+            0.28,
+            0.1425,
+            0.72
+          ],
+          "id": 29,
+          "material": "dark",
+          "name": "Return axle",
+          "primitive": "rod",
+          "radius": 0.024
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            -0.37
+          ],
+          "center": [
+            -0.33,
+            -0.1,
+            0.505
+          ],
+          "id": 30,
+          "material": "cream",
+          "name": "Suspension line",
+          "primitive": "rod",
+          "radius": 0.01
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            -0.37
+          ],
+          "center": [
+            0.36,
+            0.11,
+            0.535
+          ],
+          "id": 31,
+          "material": "cream",
+          "name": "Counterweight line",
+          "primitive": "rod",
+          "radius": 0.01
+        },
+        {
+          "axis": [
+            0.5,
+            0.21,
+            0.0
+          ],
+          "center": [
+            0.03,
+            0.005,
+            0.8
+          ],
+          "id": 32,
+          "material": "cream",
+          "name": "Transfer line",
+          "primitive": "rod",
+          "radius": 0.01
+        },
+        {
+          "bottom_radius": 0.09,
+          "center": [
+            -0.33,
+            -0.1,
+            0.23
+          ],
+          "depth": 0.18,
+          "id": 33,
+          "material": "terracotta",
+          "name": "Hanging bucket",
+          "primitive": "frustum",
+          "top_radius": 0.14
+        },
+        {
+          "center": [
+            0.36,
+            0.11,
+            0.28
+          ],
+          "id": 34,
+          "material": "green",
+          "name": "Counterweight",
+          "primitive": "box",
+          "size": [
+            0.11,
+            0.13,
+            0.13
+          ]
+        }
+      ],
+      "occlusion_description": "A front hanging bucket masks the rear cross-brace; unequal pulley wheels and cable runs sit at separate depths.",
+      "title": "Counterweighted pulley gantry"
+    },
+    "scene_004_dish_drainer": {
+      "objects": [
+        {
+          "center": [
+            0,
+            0.04,
+            0.037
+          ],
+          "id": 10,
+          "material": "blue",
+          "name": "Drip pan",
+          "primitive": "box",
+          "size": [
+            1.05,
+            0.68,
+            0.074
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.58,
+            0.0
+          ],
+          "center": [
+            -0.46,
+            0.04,
+            0.18
+          ],
+          "id": 11,
+          "material": "dark",
+          "name": "Long rail -0.46",
+          "primitive": "rod",
+          "radius": 0.019
+        },
+        {
+          "axis": [
+            0.0,
+            0.58,
+            0.0
+          ],
+          "center": [
+            0.46,
+            0.04,
+            0.18
+          ],
+          "id": 12,
+          "material": "dark",
+          "name": "Long rail 0.46",
+          "primitive": "rod",
+          "radius": 0.019
+        },
+        {
+          "bottom_radius": 0.265,
+          "center": [
+            -0.17,
+            -0.23,
+            0.32
+          ],
+          "depth": 0.025,
+          "id": 13,
+          "material": "cream",
+          "name": "Standing plate 1",
+          "primitive": "frustum",
+          "rotation_deg": [
+            75,
+            -6,
+            14
+          ],
+          "top_radius": 0.265
+        },
+        {
+          "axis": [
+            0.92,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            -0.23,
+            0.12
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Rack crossbar 1",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "bottom_radius": 0.304,
+          "center": [
+            -0.08,
+            -0.11,
+            0.32
+          ],
+          "depth": 0.025,
+          "id": 15,
+          "material": "green",
+          "name": "Standing plate 2",
+          "primitive": "frustum",
+          "rotation_deg": [
+            75,
+            -6,
+            14
+          ],
+          "top_radius": 0.304
+        },
+        {
+          "axis": [
+            0.92,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            -0.11,
+            0.12
+          ],
+          "id": 16,
+          "material": "dark",
+          "name": "Rack crossbar 2",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "bottom_radius": 0.246,
+          "center": [
+            0.015,
+            0.015,
+            0.32
+          ],
+          "depth": 0.025,
+          "id": 17,
+          "material": "terracotta",
+          "name": "Standing plate 3",
+          "primitive": "frustum",
+          "rotation_deg": [
+            75,
+            -6,
+            14
+          ],
+          "top_radius": 0.246
+        },
+        {
+          "axis": [
+            0.92,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.015,
+            0.12
+          ],
+          "id": 18,
+          "material": "dark",
+          "name": "Rack crossbar 3",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "bottom_radius": 0.295,
+          "center": [
+            0.095,
+            0.14,
+            0.32
+          ],
+          "depth": 0.025,
+          "id": 19,
+          "material": "cream",
+          "name": "Standing plate 4",
+          "primitive": "frustum",
+          "rotation_deg": [
+            75,
+            -6,
+            14
+          ],
+          "top_radius": 0.295
+        },
+        {
+          "axis": [
+            0.92,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.14,
+            0.12
+          ],
+          "id": 20,
+          "material": "dark",
+          "name": "Rack crossbar 4",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "bottom_radius": 0.257,
+          "center": [
+            0.165,
+            0.265,
+            0.32
+          ],
+          "depth": 0.025,
+          "id": 21,
+          "material": "blue",
+          "name": "Standing plate 5",
+          "primitive": "frustum",
+          "rotation_deg": [
+            75,
+            -6,
+            14
+          ],
+          "top_radius": 0.257
+        },
+        {
+          "axis": [
+            0.92,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.265,
+            0.12
+          ],
+          "id": 22,
+          "material": "dark",
+          "name": "Rack crossbar 5",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "bottom_radius": 0.065,
+          "center": [
+            0.4,
+            -0.19,
+            0.15
+          ],
+          "depth": 0.18,
+          "id": 23,
+          "material": "green",
+          "name": "Cutlery crock",
+          "primitive": "frustum",
+          "top_radius": 0.08
+        },
+        {
+          "axis": [
+            -0.02,
+            0.01,
+            0.2
+          ],
+          "center": [
+            0.36,
+            -0.185,
+            0.28
+          ],
+          "id": 24,
+          "material": "legs",
+          "name": "Spoon handle 1",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "axis": [
+            -0.012,
+            0.01,
+            0.225
+          ],
+          "center": [
+            0.396,
+            -0.185,
+            0.2925
+          ],
+          "id": 25,
+          "material": "legs",
+          "name": "Spoon handle 2",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "axis": [
+            -0.004,
+            0.01,
+            0.25
+          ],
+          "center": [
+            0.432,
+            -0.185,
+            0.305
+          ],
+          "id": 26,
+          "material": "legs",
+          "name": "Spoon handle 3",
+          "primitive": "rod",
+          "radius": 0.008
+        }
+      ],
+      "occlusion_description": "Five inclined plates stand at increasing depths between side rails; their offset rims obscure one another.",
+      "title": "Slotted dish drainer"
+    },
+    "scene_005_stair_landing": {
+      "objects": [
+        {
+          "center": [
+            -0.09,
+            -0.39,
+            0.0525
+          ],
+          "id": 10,
+          "material": "timber",
+          "name": "Solid step 1",
+          "primitive": "box",
+          "size": [
+            0.72,
+            0.17,
+            0.105
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.468,
+            0.094
+          ],
+          "id": 11,
+          "material": "cream",
+          "name": "Contrasting nosing 1",
+          "primitive": "box",
+          "size": [
+            0.73,
+            0.018,
+            0.022
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.23,
+            0.105
+          ],
+          "id": 12,
+          "material": "timber",
+          "name": "Solid step 2",
+          "primitive": "box",
+          "size": [
+            0.72,
+            0.17,
+            0.21
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.308,
+            0.199
+          ],
+          "id": 13,
+          "material": "cream",
+          "name": "Contrasting nosing 2",
+          "primitive": "box",
+          "size": [
+            0.73,
+            0.018,
+            0.022
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.07,
+            0.1575
+          ],
+          "id": 14,
+          "material": "timber",
+          "name": "Solid step 3",
+          "primitive": "box",
+          "size": [
+            0.72,
+            0.17,
+            0.315
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.148,
+            0.304
+          ],
+          "id": 15,
+          "material": "cream",
+          "name": "Contrasting nosing 3",
+          "primitive": "box",
+          "size": [
+            0.73,
+            0.018,
+            0.022
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            0.09,
+            0.21
+          ],
+          "id": 16,
+          "material": "timber",
+          "name": "Solid step 4",
+          "primitive": "box",
+          "size": [
+            0.72,
+            0.17,
+            0.42
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            0.012,
+            0.409
+          ],
+          "id": 17,
+          "material": "cream",
+          "name": "Contrasting nosing 4",
+          "primitive": "box",
+          "size": [
+            0.73,
+            0.018,
+            0.022
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            0.25,
+            0.2625
+          ],
+          "id": 18,
+          "material": "timber",
+          "name": "Solid step 5",
+          "primitive": "box",
+          "size": [
+            0.72,
+            0.17,
+            0.525
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            0.172,
+            0.514
+          ],
+          "id": 19,
+          "material": "cream",
+          "name": "Contrasting nosing 5",
+          "primitive": "box",
+          "size": [
+            0.73,
+            0.018,
+            0.022
+          ]
+        },
+        {
+          "center": [
+            0.01,
+            0.42,
+            0.515
+          ],
+          "id": 20,
+          "material": "green",
+          "name": "Top landing",
+          "primitive": "box",
+          "size": [
+            0.94,
+            0.24,
+            0.05
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.3
+          ],
+          "center": [
+            -0.49,
+            -0.43,
+            0.245
+          ],
+          "id": 21,
+          "material": "dark",
+          "name": "Support -0.49 -0.43",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.3
+          ],
+          "center": [
+            -0.49,
+            -0.05,
+            0.46
+          ],
+          "id": 22,
+          "material": "dark",
+          "name": "Support -0.49 -0.05",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.3
+          ],
+          "center": [
+            -0.49,
+            0.31,
+            0.67
+          ],
+          "id": 23,
+          "material": "dark",
+          "name": "Support -0.49 0.31",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "center": [
+            0.44,
+            0.42,
+            0.25
+          ],
+          "id": 24,
+          "material": "dark",
+          "name": "Support 0.44 0.42",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "axis": [
+            0.0,
+            0.74,
+            0.425
+          ],
+          "center": [
+            -0.49,
+            -0.06,
+            0.6075
+          ],
+          "id": 25,
+          "material": "blue",
+          "name": "Slope handrail",
+          "primitive": "rod",
+          "radius": 0.025
+        },
+        {
+          "center": [
+            0.38,
+            0.34,
+            0.25
+          ],
+          "id": 26,
+          "material": "legs",
+          "name": "Under-landing brace",
+          "primitive": "box",
+          "size": [
+            0.08,
+            0.12,
+            0.5
+          ]
+        }
+      ],
+      "occlusion_description": "Steps rise away from a side rail. Uprights and the open side of the top landing reveal distinct treads as the camera moves.",
+      "title": "Open stair and landing"
+    },
+    "scene_006_fruit_crate": {
+      "objects": [
+        {
+          "center": [
+            0,
+            0.04,
+            0.06
+          ],
+          "id": 10,
+          "material": "timber",
+          "name": "Crate bed",
+          "primitive": "box",
+          "size": [
+            1.08,
+            0.61,
+            0.11
+          ]
+        },
+        {
+          "center": [
+            -0.5,
+            -0.22,
+            0.28
+          ],
+          "id": 11,
+          "material": "legs",
+          "name": "Corner cleat -0.5 -0.22",
+          "primitive": "box",
+          "size": [
+            0.065,
+            0.063,
+            0.47
+          ]
+        },
+        {
+          "center": [
+            -0.5,
+            0.3,
+            0.28
+          ],
+          "id": 12,
+          "material": "legs",
+          "name": "Corner cleat -0.5 0.3",
+          "primitive": "box",
+          "size": [
+            0.065,
+            0.063,
+            0.47
+          ]
+        },
+        {
+          "center": [
+            0.5,
+            -0.22,
+            0.28
+          ],
+          "id": 13,
+          "material": "legs",
+          "name": "Corner cleat 0.5 -0.22",
+          "primitive": "box",
+          "size": [
+            0.065,
+            0.063,
+            0.47
+          ]
+        },
+        {
+          "center": [
+            0.5,
+            0.3,
+            0.28
+          ],
+          "id": 14,
+          "material": "legs",
+          "name": "Corner cleat 0.5 0.3",
+          "primitive": "box",
+          "size": [
+            0.065,
+            0.063,
+            0.47
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.23,
+            0.14
+          ],
+          "id": 15,
+          "material": "timber",
+          "name": "Long slat 1 -0.23",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.027,
+            0.069
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.3,
+            0.14
+          ],
+          "id": 16,
+          "material": "timber",
+          "name": "Long slat 1 0.3",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.027,
+            0.069
+          ]
+        },
+        {
+          "center": [
+            -0.49,
+            0.035,
+            0.14
+          ],
+          "id": 17,
+          "material": "timber",
+          "name": "End slat 1 -0.49",
+          "primitive": "box",
+          "size": [
+            0.03,
+            0.54,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            0.49,
+            0.035,
+            0.14
+          ],
+          "id": 18,
+          "material": "timber",
+          "name": "End slat 1 0.49",
+          "primitive": "box",
+          "size": [
+            0.03,
+            0.54,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.23,
+            0.29
+          ],
+          "id": 19,
+          "material": "timber",
+          "name": "Long slat 2 -0.23",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.027,
+            0.069
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.3,
+            0.29
+          ],
+          "id": 20,
+          "material": "timber",
+          "name": "Long slat 2 0.3",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.027,
+            0.069
+          ]
+        },
+        {
+          "center": [
+            -0.49,
+            0.035,
+            0.29
+          ],
+          "id": 21,
+          "material": "timber",
+          "name": "End slat 2 -0.49",
+          "primitive": "box",
+          "size": [
+            0.03,
+            0.54,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            0.49,
+            0.035,
+            0.29
+          ],
+          "id": 22,
+          "material": "timber",
+          "name": "End slat 2 0.49",
+          "primitive": "box",
+          "size": [
+            0.03,
+            0.54,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.23,
+            0.44
+          ],
+          "id": 23,
+          "material": "timber",
+          "name": "Long slat 3 -0.23",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.027,
+            0.069
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.3,
+            0.44
+          ],
+          "id": 24,
+          "material": "timber",
+          "name": "Long slat 3 0.3",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.027,
+            0.069
+          ]
+        },
+        {
+          "center": [
+            -0.49,
+            0.035,
+            0.44
+          ],
+          "id": 25,
+          "material": "timber",
+          "name": "End slat 3 -0.49",
+          "primitive": "box",
+          "size": [
+            0.03,
+            0.54,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            0.49,
+            0.035,
+            0.44
+          ],
+          "id": 26,
+          "material": "timber",
+          "name": "End slat 3 0.49",
+          "primitive": "box",
+          "size": [
+            0.03,
+            0.54,
+            0.07
+          ]
+        },
+        {
+          "center": [
+            -0.32,
+            -0.02,
+            0.25
+          ],
+          "id": 27,
+          "material": "terracotta",
+          "name": "Produce 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.13,
+            0.11570000000000001,
+            0.13
+          ]
+        },
+        {
+          "center": [
+            -0.1,
+            0.03,
+            0.26
+          ],
+          "id": 28,
+          "material": "green",
+          "name": "Produce 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.15,
+            0.1335,
+            0.15
+          ]
+        },
+        {
+          "center": [
+            0.18,
+            -0.06,
+            0.27
+          ],
+          "id": 29,
+          "material": "cream",
+          "name": "Produce 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.16,
+            0.1424,
+            0.16
+          ]
+        },
+        {
+          "center": [
+            0.36,
+            0.09,
+            0.24
+          ],
+          "id": 30,
+          "material": "terracotta",
+          "name": "Produce 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.12,
+            0.10679999999999999,
+            0.12
+          ]
+        },
+        {
+          "center": [
+            -0.24,
+            0.14,
+            0.46
+          ],
+          "id": 31,
+          "material": "cream",
+          "name": "Produce 5",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.145,
+            0.12905,
+            0.145
+          ]
+        },
+        {
+          "center": [
+            0.025,
+            0.1,
+            0.48
+          ],
+          "id": 32,
+          "material": "terracotta",
+          "name": "Produce 6",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.15,
+            0.1335,
+            0.15
+          ]
+        },
+        {
+          "center": [
+            0.27,
+            0.13,
+            0.45
+          ],
+          "id": 33,
+          "material": "green",
+          "name": "Produce 7",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.13,
+            0.11570000000000001,
+            0.13
+          ]
+        }
+      ],
+      "occlusion_description": "Gaps between stacked front slats reveal irregular groups of round produce behind the same foreground fence.",
+      "title": "Slatted fruit crate"
+    },
+    "scene_007_surveyor_tripod": {
+      "objects": [
+        {
+          "center": [
+            0.18,
+            0.42,
+            0.43
+          ],
+          "id": 10,
+          "material": "cream",
+          "name": "Target board",
+          "primitive": "box",
+          "size": [
+            0.56,
+            0.035,
+            0.78
+          ]
+        },
+        {
+          "center": [
+            0.11,
+            0.394,
+            0.17
+          ],
+          "id": 11,
+          "material": "blue",
+          "name": "Target bar 0",
+          "primitive": "box",
+          "size": [
+            0.35,
+            0.012,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0.11,
+            0.394,
+            0.266
+          ],
+          "id": 12,
+          "material": "blue",
+          "name": "Target bar 1",
+          "primitive": "box",
+          "size": [
+            0.2,
+            0.012,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0.11,
+            0.394,
+            0.362
+          ],
+          "id": 13,
+          "material": "blue",
+          "name": "Target bar 2",
+          "primitive": "box",
+          "size": [
+            0.35,
+            0.012,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0.11,
+            0.394,
+            0.458
+          ],
+          "id": 14,
+          "material": "blue",
+          "name": "Target bar 3",
+          "primitive": "box",
+          "size": [
+            0.2,
+            0.012,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0.11,
+            0.394,
+            0.554
+          ],
+          "id": 15,
+          "material": "blue",
+          "name": "Target bar 4",
+          "primitive": "box",
+          "size": [
+            0.35,
+            0.012,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0.11,
+            0.394,
+            0.65
+          ],
+          "id": 16,
+          "material": "blue",
+          "name": "Target bar 5",
+          "primitive": "box",
+          "size": [
+            0.2,
+            0.012,
+            0.018
+          ]
+        },
+        {
+          "axis": [
+            0.4,
+            0.245,
+            0.595
+          ],
+          "center": [
+            -0.27,
+            -0.1075,
+            0.3125
+          ],
+          "id": 17,
+          "material": "legs",
+          "name": "Tripod leg 1",
+          "primitive": "rod",
+          "radius": 0.033
+        },
+        {
+          "axis": [
+            -0.43,
+            0.285,
+            0.595
+          ],
+          "center": [
+            0.145,
+            -0.1275,
+            0.3125
+          ],
+          "id": 18,
+          "material": "legs",
+          "name": "Tripod leg 2",
+          "primitive": "rod",
+          "radius": 0.033
+        },
+        {
+          "axis": [
+            -0.05,
+            -0.355,
+            0.595
+          ],
+          "center": [
+            -0.045,
+            0.1925,
+            0.3125
+          ],
+          "id": 19,
+          "material": "legs",
+          "name": "Tripod leg 3",
+          "primitive": "rod",
+          "radius": 0.033
+        },
+        {
+          "bottom_radius": 0.15,
+          "center": [
+            -0.07,
+            0.015,
+            0.64
+          ],
+          "depth": 0.055,
+          "id": 20,
+          "material": "dark",
+          "name": "Instrument deck",
+          "primitive": "frustum",
+          "top_radius": 0.15
+        },
+        {
+          "center": [
+            -0.06,
+            0.01,
+            0.76
+          ],
+          "id": 21,
+          "material": "green",
+          "name": "Transit body",
+          "primitive": "box",
+          "size": [
+            0.23,
+            0.17,
+            0.17
+          ]
+        },
+        {
+          "axis": [
+            0.5,
+            0.09,
+            0.03
+          ],
+          "center": [
+            -0.03,
+            0.005,
+            0.815
+          ],
+          "id": 22,
+          "material": "blue",
+          "name": "Telescope",
+          "primitive": "rod",
+          "radius": 0.055
+        },
+        {
+          "center": [
+            0.19,
+            0.045,
+            0.83
+          ],
+          "id": 23,
+          "major_radius": 0.047,
+          "material": "cream",
+          "minor_radius": 0.012,
+          "name": "Optic collar",
+          "primitive": "torus",
+          "rotation_deg": [
+            0,
+            86,
+            10
+          ]
+        }
+      ],
+      "occlusion_description": "Three splayed legs converge on an instrument deck. The instrument and legs occlude a separate ruled target behind the open base.",
+      "title": "Surveyor's tripod"
+    },
+    "scene_008_bench_vise": {
+      "objects": [
+        {
+          "center": [
+            0,
+            0.04,
+            0.07
+          ],
+          "id": 10,
+          "material": "timber",
+          "name": "Mounting slab",
+          "primitive": "box",
+          "size": [
+            1.24,
+            0.65,
+            0.14
+          ]
+        },
+        {
+          "center": [
+            -0.05,
+            0.09,
+            0.2
+          ],
+          "id": 11,
+          "material": "blue",
+          "name": "Vise base",
+          "primitive": "box",
+          "size": [
+            0.72,
+            0.36,
+            0.13
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            0.19,
+            0.39
+          ],
+          "id": 12,
+          "material": "blue",
+          "name": "Fixed rear jaw",
+          "primitive": "box",
+          "size": [
+            0.46,
+            0.12,
+            0.29
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.11,
+            0.36
+          ],
+          "id": 13,
+          "material": "blue",
+          "name": "Sliding jaw",
+          "primitive": "box",
+          "size": [
+            0.46,
+            0.115,
+            0.28
+          ]
+        },
+        {
+          "center": [
+            -0.09,
+            -0.102,
+            0.495
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Front jaw insert",
+          "primitive": "box",
+          "size": [
+            0.46,
+            0.12,
+            0.05
+          ]
+        },
+        {
+          "center": [
+            -0.1,
+            0.045,
+            0.5
+          ],
+          "id": 15,
+          "material": "cream",
+          "name": "Clamped timber",
+          "primitive": "box",
+          "rotation_deg": [
+            0,
+            9,
+            0
+          ],
+          "size": [
+            0.18,
+            0.14,
+            0.54
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.57,
+            0.0
+          ],
+          "center": [
+            -0.1,
+            -0.065,
+            0.29
+          ],
+          "id": 16,
+          "material": "dark",
+          "name": "Threaded screw",
+          "primitive": "rod",
+          "radius": 0.046
+        },
+        {
+          "axis": [
+            0.32,
+            0.0,
+            0.36
+          ],
+          "center": [
+            -0.09,
+            -0.35,
+            0.3
+          ],
+          "id": 17,
+          "material": "cream",
+          "name": "Sliding T bar",
+          "primitive": "rod",
+          "radius": 0.015
+        },
+        {
+          "bottom_radius": 0.08,
+          "center": [
+            0.4,
+            -0.13,
+            0.16
+          ],
+          "depth": 0.027,
+          "id": 18,
+          "material": "green",
+          "name": "Loose washer",
+          "primitive": "frustum",
+          "top_radius": 0.08
+        }
+      ],
+      "occlusion_description": "A sliding jaw, a fixed jaw and a steel-colored screw surround a tall clamped workpiece; the cross handle passes in front.",
+      "title": "Bench vise and workpiece"
+    },
+    "scene_009_pipe_manifold": {
+      "objects": [
+        {
+          "center": [
+            0,
+            0.03,
+            0.045
+          ],
+          "id": 10,
+          "material": "floor",
+          "name": "Plant foundation",
+          "primitive": "box",
+          "size": [
+            1.15,
+            0.65,
+            0.09
+          ]
+        },
+        {
+          "center": [
+            0.16,
+            0.34,
+            0.36
+          ],
+          "id": 11,
+          "material": "green",
+          "name": "Rear valve cabinet",
+          "primitive": "box",
+          "size": [
+            0.68,
+            0.15,
+            0.57
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.49
+          ],
+          "center": [
+            -0.41,
+            -0.17,
+            0.325
+          ],
+          "id": 12,
+          "material": "terracotta",
+          "name": "Pipe stretch 1",
+          "primitive": "rod",
+          "radius": 0.057
+        },
+        {
+          "axis": [
+            0.45,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.185,
+            -0.17,
+            0.57
+          ],
+          "id": 13,
+          "material": "terracotta",
+          "name": "Pipe stretch 2",
+          "primitive": "rod",
+          "radius": 0.057
+        },
+        {
+          "axis": [
+            0.0,
+            0.35,
+            0.0
+          ],
+          "center": [
+            0.04,
+            0.005,
+            0.57
+          ],
+          "id": 14,
+          "material": "terracotta",
+          "name": "Pipe stretch 3",
+          "primitive": "rod",
+          "radius": 0.057
+        },
+        {
+          "axis": [
+            0.33,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.205,
+            0.18,
+            0.57
+          ],
+          "id": 15,
+          "material": "terracotta",
+          "name": "Pipe stretch 4",
+          "primitive": "rod",
+          "radius": 0.057
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            -0.47
+          ],
+          "center": [
+            0.37,
+            0.18,
+            0.335
+          ],
+          "id": 16,
+          "material": "terracotta",
+          "name": "Pipe stretch 5",
+          "primitive": "rod",
+          "radius": 0.057
+        },
+        {
+          "center": [
+            -0.41,
+            -0.17,
+            0.57
+          ],
+          "id": 17,
+          "material": "terracotta",
+          "name": "Elbow coupling 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.075,
+            0.075,
+            0.075
+          ]
+        },
+        {
+          "center": [
+            0.04,
+            -0.17,
+            0.57
+          ],
+          "id": 18,
+          "material": "terracotta",
+          "name": "Elbow coupling 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.075,
+            0.075,
+            0.075
+          ]
+        },
+        {
+          "center": [
+            0.04,
+            0.18,
+            0.57
+          ],
+          "id": 19,
+          "material": "terracotta",
+          "name": "Elbow coupling 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.075,
+            0.075,
+            0.075
+          ]
+        },
+        {
+          "center": [
+            0.37,
+            0.18,
+            0.57
+          ],
+          "id": 20,
+          "material": "terracotta",
+          "name": "Elbow coupling 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.075,
+            0.075,
+            0.075
+          ]
+        },
+        {
+          "bottom_radius": 0.09,
+          "center": [
+            -0.32,
+            -0.17,
+            0.57
+          ],
+          "depth": 0.036,
+          "id": 21,
+          "material": "cream",
+          "name": "Flange -0.32",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            90,
+            0
+          ],
+          "top_radius": 0.09
+        },
+        {
+          "bottom_radius": 0.09,
+          "center": [
+            -0.12,
+            -0.17,
+            0.57
+          ],
+          "depth": 0.036,
+          "id": 22,
+          "material": "cream",
+          "name": "Flange -0.12",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            90,
+            0
+          ],
+          "top_radius": 0.09
+        },
+        {
+          "center": [
+            0.22,
+            -0.13,
+            0.36
+          ],
+          "id": 23,
+          "major_radius": 0.107,
+          "material": "dark",
+          "minor_radius": 0.017,
+          "name": "Valve handwheel rim",
+          "primitive": "torus",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ]
+        },
+        {
+          "bottom_radius": 0.035,
+          "center": [
+            0.22,
+            -0.13,
+            0.36
+          ],
+          "depth": 0.055,
+          "id": 24,
+          "material": "cream",
+          "name": "Valve handwheel hub",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.035
+        },
+        {
+          "axis": [
+            0.107,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.2735,
+            -0.13,
+            0.36
+          ],
+          "id": 25,
+          "material": "legs",
+          "name": "Valve handwheel spoke 1",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.033065,
+            0.0,
+            0.101763
+          ],
+          "center": [
+            0.236532,
+            -0.13,
+            0.410882
+          ],
+          "id": 26,
+          "material": "legs",
+          "name": "Valve handwheel spoke 2",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.086565,
+            0.0,
+            0.062893
+          ],
+          "center": [
+            0.176718,
+            -0.13,
+            0.391447
+          ],
+          "id": 27,
+          "material": "legs",
+          "name": "Valve handwheel spoke 3",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.086565,
+            0.0,
+            -0.062893
+          ],
+          "center": [
+            0.176718,
+            -0.13,
+            0.328553
+          ],
+          "id": 28,
+          "material": "legs",
+          "name": "Valve handwheel spoke 4",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.033065,
+            0.0,
+            -0.101763
+          ],
+          "center": [
+            0.236532,
+            -0.13,
+            0.309118
+          ],
+          "id": 29,
+          "material": "legs",
+          "name": "Valve handwheel spoke 5",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.43,
+            0.0
+          ],
+          "center": [
+            0.22,
+            0.085,
+            0.36
+          ],
+          "id": 30,
+          "material": "dark",
+          "name": "Valve stem",
+          "primitive": "rod",
+          "radius": 0.021
+        }
+      ],
+      "occlusion_description": "A pipe rises and crosses a rear valve bank before dropping into a lower return. Flange rims and handwheel overlap at different depths.",
+      "title": "Stepped pipe manifold"
+    },
+    "scene_010_open_drawers": {
+      "objects": [
+        {
+          "center": [
+            -0.43,
+            0.12,
+            0.42
+          ],
+          "id": 10,
+          "material": "green",
+          "name": "Cabinet side -0.43",
+          "primitive": "box",
+          "size": [
+            0.05,
+            0.51,
+            0.84
+          ]
+        },
+        {
+          "center": [
+            0.43,
+            0.12,
+            0.42
+          ],
+          "id": 11,
+          "material": "green",
+          "name": "Cabinet side 0.43",
+          "primitive": "box",
+          "size": [
+            0.05,
+            0.51,
+            0.84
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.12,
+            0.84
+          ],
+          "id": 12,
+          "material": "timber",
+          "name": "Top slab",
+          "primitive": "box",
+          "size": [
+            0.92,
+            0.53,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.36,
+            0.41
+          ],
+          "id": 13,
+          "material": "legs",
+          "name": "Back panel",
+          "primitive": "box",
+          "size": [
+            0.83,
+            0.035,
+            0.8
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.075,
+            0.14
+          ],
+          "id": 14,
+          "material": "timber",
+          "name": "Drawer 1 front",
+          "primitive": "box",
+          "size": [
+            0.82,
+            0.055,
+            0.21
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.105,
+            0.046
+          ],
+          "id": 15,
+          "material": "cream",
+          "name": "Drawer 1 floor",
+          "primitive": "box",
+          "size": [
+            0.78,
+            0.38,
+            0.025
+          ]
+        },
+        {
+          "center": [
+            -0.39,
+            0.105,
+            0.12
+          ],
+          "id": 16,
+          "material": "legs",
+          "name": "Drawer 1 cheek -0.39",
+          "primitive": "box",
+          "size": [
+            0.027,
+            0.38,
+            0.155
+          ]
+        },
+        {
+          "center": [
+            0.39,
+            0.105,
+            0.12
+          ],
+          "id": 17,
+          "material": "legs",
+          "name": "Drawer 1 cheek 0.39",
+          "primitive": "box",
+          "size": [
+            0.027,
+            0.38,
+            0.155
+          ]
+        },
+        {
+          "axis": [
+            0.18,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            -0.13,
+            0.14
+          ],
+          "id": 18,
+          "material": "dark",
+          "name": "Drawer 1 handle",
+          "primitive": "rod",
+          "radius": 0.022
+        },
+        {
+          "center": [
+            0,
+            -0.35,
+            0.395
+          ],
+          "id": 19,
+          "material": "timber",
+          "name": "Drawer 2 front",
+          "primitive": "box",
+          "size": [
+            0.82,
+            0.055,
+            0.21
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.17,
+            0.301
+          ],
+          "id": 20,
+          "material": "cream",
+          "name": "Drawer 2 floor",
+          "primitive": "box",
+          "size": [
+            0.78,
+            0.38,
+            0.025
+          ]
+        },
+        {
+          "center": [
+            -0.39,
+            -0.17,
+            0.375
+          ],
+          "id": 21,
+          "material": "legs",
+          "name": "Drawer 2 cheek -0.39",
+          "primitive": "box",
+          "size": [
+            0.027,
+            0.38,
+            0.155
+          ]
+        },
+        {
+          "center": [
+            0.39,
+            -0.17,
+            0.375
+          ],
+          "id": 22,
+          "material": "legs",
+          "name": "Drawer 2 cheek 0.39",
+          "primitive": "box",
+          "size": [
+            0.027,
+            0.38,
+            0.155
+          ]
+        },
+        {
+          "axis": [
+            0.18,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            -0.405,
+            0.395
+          ],
+          "id": 23,
+          "material": "dark",
+          "name": "Drawer 2 handle",
+          "primitive": "rod",
+          "radius": 0.022
+        },
+        {
+          "center": [
+            0,
+            -0.125,
+            0.66
+          ],
+          "id": 24,
+          "material": "timber",
+          "name": "Drawer 3 front",
+          "primitive": "box",
+          "size": [
+            0.82,
+            0.055,
+            0.21
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.055,
+            0.566
+          ],
+          "id": 25,
+          "material": "cream",
+          "name": "Drawer 3 floor",
+          "primitive": "box",
+          "size": [
+            0.78,
+            0.38,
+            0.025
+          ]
+        },
+        {
+          "center": [
+            -0.39,
+            0.055,
+            0.64
+          ],
+          "id": 26,
+          "material": "legs",
+          "name": "Drawer 3 cheek -0.39",
+          "primitive": "box",
+          "size": [
+            0.027,
+            0.38,
+            0.155
+          ]
+        },
+        {
+          "center": [
+            0.39,
+            0.055,
+            0.64
+          ],
+          "id": 27,
+          "material": "legs",
+          "name": "Drawer 3 cheek 0.39",
+          "primitive": "box",
+          "size": [
+            0.027,
+            0.38,
+            0.155
+          ]
+        },
+        {
+          "axis": [
+            0.18,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            -0.18,
+            0.66
+          ],
+          "id": 28,
+          "material": "dark",
+          "name": "Drawer 3 handle",
+          "primitive": "rod",
+          "radius": 0.022
+        },
+        {
+          "center": [
+            0.17,
+            -0.16,
+            0.4
+          ],
+          "id": 29,
+          "material": "terracotta",
+          "name": "Knitted ball in open drawer",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.078,
+            0.072,
+            0.08
+          ]
+        }
+      ],
+      "occlusion_description": "Three drawer fronts sit at unequal depths. An open middle drawer exposes an interior void and masks the lower drawer.",
+      "title": "Partly opened drawer stack"
+    },
+    "scene_011_counting_frame": {
+      "objects": [
+        {
+          "center": [
+            -0.51,
+            0.08,
+            0.39
+          ],
+          "id": 10,
+          "material": "legs",
+          "name": "Frame stile -0.51",
+          "primitive": "box",
+          "size": [
+            0.075,
+            0.14,
+            0.78
+          ]
+        },
+        {
+          "center": [
+            0.51,
+            0.08,
+            0.39
+          ],
+          "id": 11,
+          "material": "legs",
+          "name": "Frame stile 0.51",
+          "primitive": "box",
+          "size": [
+            0.075,
+            0.14,
+            0.78
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.08,
+            0.047
+          ],
+          "id": 12,
+          "material": "timber",
+          "name": "Frame rail 0.047",
+          "primitive": "box",
+          "size": [
+            1.08,
+            0.14,
+            0.075
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.08,
+            0.77
+          ],
+          "id": 13,
+          "material": "timber",
+          "name": "Frame rail 0.77",
+          "primitive": "box",
+          "size": [
+            1.08,
+            0.14,
+            0.075
+          ]
+        },
+        {
+          "axis": [
+            0.94,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.07,
+            0.18
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Counting rod 1",
+          "primitive": "rod",
+          "radius": 0.013
+        },
+        {
+          "center": [
+            -0.33,
+            0.07,
+            0.18
+          ],
+          "id": 15,
+          "material": "terracotta",
+          "name": "Row 1 bead 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            -0.22,
+            0.07,
+            0.18
+          ],
+          "id": 16,
+          "material": "terracotta",
+          "name": "Row 1 bead 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            -0.11,
+            0.07,
+            0.18
+          ],
+          "id": 17,
+          "material": "terracotta",
+          "name": "Row 1 bead 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.32,
+            0.07,
+            0.18
+          ],
+          "id": 18,
+          "material": "terracotta",
+          "name": "Row 1 bead 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "axis": [
+            0.94,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.07,
+            0.33
+          ],
+          "id": 19,
+          "material": "dark",
+          "name": "Counting rod 2",
+          "primitive": "rod",
+          "radius": 0.013
+        },
+        {
+          "center": [
+            -0.36,
+            0.07,
+            0.33
+          ],
+          "id": 20,
+          "material": "cream",
+          "name": "Row 2 bead 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.08,
+            0.07,
+            0.33
+          ],
+          "id": 21,
+          "material": "cream",
+          "name": "Row 2 bead 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.19,
+            0.07,
+            0.33
+          ],
+          "id": 22,
+          "material": "cream",
+          "name": "Row 2 bead 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.3,
+            0.07,
+            0.33
+          ],
+          "id": 23,
+          "material": "cream",
+          "name": "Row 2 bead 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "axis": [
+            0.94,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.07,
+            0.48
+          ],
+          "id": 24,
+          "material": "dark",
+          "name": "Counting rod 3",
+          "primitive": "rod",
+          "radius": 0.013
+        },
+        {
+          "center": [
+            -0.27,
+            0.07,
+            0.48
+          ],
+          "id": 25,
+          "material": "blue",
+          "name": "Row 3 bead 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            -0.16,
+            0.07,
+            0.48
+          ],
+          "id": 26,
+          "material": "blue",
+          "name": "Row 3 bead 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.19,
+            0.07,
+            0.48
+          ],
+          "id": 27,
+          "material": "blue",
+          "name": "Row 3 bead 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.3,
+            0.07,
+            0.48
+          ],
+          "id": 28,
+          "material": "blue",
+          "name": "Row 3 bead 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "axis": [
+            0.94,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.07,
+            0.63
+          ],
+          "id": 29,
+          "material": "dark",
+          "name": "Counting rod 4",
+          "primitive": "rod",
+          "radius": 0.013
+        },
+        {
+          "center": [
+            -0.31,
+            0.07,
+            0.63
+          ],
+          "id": 30,
+          "material": "green",
+          "name": "Row 4 bead 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.03,
+            0.07,
+            0.63
+          ],
+          "id": 31,
+          "material": "green",
+          "name": "Row 4 bead 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.14,
+            0.07,
+            0.63
+          ],
+          "id": 32,
+          "material": "green",
+          "name": "Row 4 bead 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "center": [
+            0.25,
+            0.07,
+            0.63
+          ],
+          "id": 33,
+          "material": "green",
+          "name": "Row 4 bead 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.056,
+            0.077,
+            0.067
+          ]
+        },
+        {
+          "axis": [
+            0.59,
+            0.19,
+            0.32
+          ],
+          "center": [
+            -0.115,
+            -0.135,
+            0.2
+          ],
+          "id": 34,
+          "material": "cream",
+          "name": "Pointer",
+          "primitive": "rod",
+          "radius": 0.018
+        }
+      ],
+      "occlusion_description": "Four rods carry different bead groups in an open frame; a crosswise pointer sits in front of the lower rows.",
+      "title": "Counting frame with sliding beads"
+    },
+    "scene_012_plant_stand": {
+      "objects": [
+        {
+          "center": [
+            -0.47,
+            0.2,
+            0.24
+          ],
+          "id": 10,
+          "material": "legs",
+          "name": "Plant bracket -0.47",
+          "primitive": "box",
+          "size": [
+            0.05,
+            0.25,
+            0.48
+          ]
+        },
+        {
+          "center": [
+            0.43,
+            0.2,
+            0.24
+          ],
+          "id": 11,
+          "material": "legs",
+          "name": "Plant bracket 0.43",
+          "primitive": "box",
+          "size": [
+            0.05,
+            0.25,
+            0.48
+          ]
+        },
+        {
+          "center": [
+            0.02,
+            0.19,
+            0.47
+          ],
+          "id": 12,
+          "material": "timber",
+          "name": "Upper shelf",
+          "primitive": "box",
+          "size": [
+            0.98,
+            0.31,
+            0.055
+          ]
+        },
+        {
+          "center": [
+            -0.18,
+            -0.14,
+            0.12
+          ],
+          "id": 13,
+          "material": "green",
+          "name": "Lower step",
+          "primitive": "box",
+          "size": [
+            0.75,
+            0.35,
+            0.23
+          ]
+        },
+        {
+          "bottom_radius": 0.0737,
+          "center": [
+            -0.34,
+            -0.15,
+            0.316
+          ],
+          "depth": 0.172,
+          "id": 14,
+          "material": "terracotta",
+          "name": "Growing pot 1",
+          "primitive": "frustum",
+          "top_radius": 0.11
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            -0.34,
+            -0.15,
+            0.485
+          ],
+          "id": 15,
+          "material": "green",
+          "name": "Plant stem 1",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "center": [
+            -0.404,
+            -0.185,
+            0.49
+          ],
+          "id": 16,
+          "material": "green",
+          "name": "Plant 1 leaf 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            24,
+            0
+          ]
+        },
+        {
+          "center": [
+            -0.27,
+            -0.138,
+            0.532
+          ],
+          "id": 17,
+          "material": "green",
+          "name": "Plant 1 leaf 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            -24,
+            45
+          ]
+        },
+        {
+          "center": [
+            -0.322,
+            -0.08,
+            0.574
+          ],
+          "id": 18,
+          "material": "green",
+          "name": "Plant 1 leaf 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            24,
+            90
+          ]
+        },
+        {
+          "bottom_radius": 0.08710000000000001,
+          "center": [
+            0.03,
+            0.18,
+            0.586
+          ],
+          "depth": 0.172,
+          "id": 19,
+          "material": "terracotta",
+          "name": "Growing pot 2",
+          "primitive": "frustum",
+          "top_radius": 0.13
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            0.03,
+            0.18,
+            0.755
+          ],
+          "id": 20,
+          "material": "green",
+          "name": "Plant stem 2",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "center": [
+            -0.034,
+            0.145,
+            0.76
+          ],
+          "id": 21,
+          "material": "green",
+          "name": "Plant 2 leaf 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            24,
+            0
+          ]
+        },
+        {
+          "center": [
+            0.1,
+            0.192,
+            0.802
+          ],
+          "id": 22,
+          "material": "green",
+          "name": "Plant 2 leaf 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            -24,
+            45
+          ]
+        },
+        {
+          "center": [
+            0.048,
+            0.25,
+            0.844
+          ],
+          "id": 23,
+          "material": "green",
+          "name": "Plant 2 leaf 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            24,
+            90
+          ]
+        },
+        {
+          "bottom_radius": 0.0536,
+          "center": [
+            0.35,
+            0.21,
+            0.586
+          ],
+          "depth": 0.172,
+          "id": 24,
+          "material": "terracotta",
+          "name": "Growing pot 3",
+          "primitive": "frustum",
+          "top_radius": 0.08
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            0.35,
+            0.21,
+            0.755
+          ],
+          "id": 25,
+          "material": "green",
+          "name": "Plant stem 3",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "center": [
+            0.286,
+            0.175,
+            0.76
+          ],
+          "id": 26,
+          "material": "green",
+          "name": "Plant 3 leaf 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            24,
+            0
+          ]
+        },
+        {
+          "center": [
+            0.42,
+            0.222,
+            0.802
+          ],
+          "id": 27,
+          "material": "green",
+          "name": "Plant 3 leaf 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            -24,
+            45
+          ]
+        },
+        {
+          "center": [
+            0.368,
+            0.28,
+            0.844
+          ],
+          "id": 28,
+          "material": "green",
+          "name": "Plant 3 leaf 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.094,
+            0.038,
+            0.023
+          ],
+          "rotation_deg": [
+            10,
+            24,
+            90
+          ]
+        }
+      ],
+      "occlusion_description": "Plants at different heights break up the contour of two open shelves; sets of ellipsoidal leaves overlap pot rims and stems.",
+      "title": "Tiered propagating stand"
+    },
+    "scene_013_awning_kiosk": {
+      "objects": [
+        {
+          "center": [
+            0,
+            -0.01,
+            0.2
+          ],
+          "id": 10,
+          "material": "green",
+          "name": "Kiosk counter",
+          "primitive": "box",
+          "size": [
+            1.03,
+            0.38,
+            0.4
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.04,
+            0.41
+          ],
+          "id": 11,
+          "material": "cream",
+          "name": "Counter lip",
+          "primitive": "box",
+          "size": [
+            1.11,
+            0.44,
+            0.044
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.31,
+            0.46
+          ],
+          "id": 12,
+          "material": "legs",
+          "name": "Rear shelf unit",
+          "primitive": "box",
+          "size": [
+            0.96,
+            0.06,
+            0.69
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.38
+          ],
+          "center": [
+            -0.49,
+            -0.17,
+            0.62
+          ],
+          "id": 13,
+          "material": "dark",
+          "name": "Canopy prop -0.49",
+          "primitive": "rod",
+          "radius": 0.02
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.38
+          ],
+          "center": [
+            0.49,
+            -0.17,
+            0.62
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Canopy prop 0.49",
+          "primitive": "rod",
+          "radius": 0.02
+        },
+        {
+          "center": [
+            -0.47,
+            0.05,
+            0.84
+          ],
+          "id": 15,
+          "material": "terracotta",
+          "name": "Awning panel 1",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            -0.313,
+            0.05,
+            0.84
+          ],
+          "id": 16,
+          "material": "cream",
+          "name": "Awning panel 2",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            -0.156,
+            0.05,
+            0.84
+          ],
+          "id": 17,
+          "material": "terracotta",
+          "name": "Awning panel 3",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0.001,
+            0.05,
+            0.84
+          ],
+          "id": 18,
+          "material": "cream",
+          "name": "Awning panel 4",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0.158,
+            0.05,
+            0.84
+          ],
+          "id": 19,
+          "material": "terracotta",
+          "name": "Awning panel 5",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0.315,
+            0.05,
+            0.84
+          ],
+          "id": 20,
+          "material": "cream",
+          "name": "Awning panel 6",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0.472,
+            0.05,
+            0.84
+          ],
+          "id": 21,
+          "material": "terracotta",
+          "name": "Awning panel 7",
+          "primitive": "box",
+          "rotation_deg": [
+            13,
+            0,
+            0
+          ],
+          "size": [
+            0.158,
+            0.63,
+            0.045
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.22,
+            0.6
+          ],
+          "id": 22,
+          "material": "timber",
+          "name": "Recessed shelf",
+          "primitive": "box",
+          "size": [
+            0.85,
+            0.18,
+            0.031
+          ]
+        },
+        {
+          "center": [
+            -0.28,
+            0.16,
+            0.67
+          ],
+          "id": 23,
+          "material": "blue",
+          "name": "Stacked package 1",
+          "primitive": "box",
+          "size": [
+            0.15,
+            0.12,
+            0.11
+          ]
+        },
+        {
+          "center": [
+            0.0,
+            0.16,
+            0.67
+          ],
+          "id": 24,
+          "material": "green",
+          "name": "Stacked package 2",
+          "primitive": "box",
+          "size": [
+            0.15,
+            0.12,
+            0.11
+          ]
+        },
+        {
+          "center": [
+            0.23,
+            0.16,
+            0.67
+          ],
+          "id": 25,
+          "material": "cream",
+          "name": "Stacked package 3",
+          "primitive": "box",
+          "size": [
+            0.15,
+            0.12,
+            0.11
+          ]
+        }
+      ],
+      "occlusion_description": "A sloping segmented roof overhangs a front counter. Recessed display shelves and stacked packages can be seen through the opening.",
+      "title": "Striped awning kiosk"
+    },
+    "scene_014_slide_ladder": {
+      "objects": [
+        {
+          "center": [
+            -0.24,
+            0.17,
+            0.61
+          ],
+          "id": 10,
+          "material": "blue",
+          "name": "Launch platform",
+          "primitive": "box",
+          "size": [
+            0.43,
+            0.34,
+            0.055
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.64
+          ],
+          "center": [
+            -0.42,
+            0.24,
+            0.32
+          ],
+          "id": 11,
+          "material": "dark",
+          "name": "Platform post -0.42",
+          "primitive": "rod",
+          "radius": 0.025
+        },
+        {
+          "axis": [
+            0.0,
+            -0.36,
+            0.62
+          ],
+          "center": [
+            -0.42,
+            0.34,
+            0.33
+          ],
+          "id": 12,
+          "material": "green",
+          "name": "Rear ladder side -0.42",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.64
+          ],
+          "center": [
+            -0.06,
+            0.24,
+            0.32
+          ],
+          "id": 13,
+          "material": "dark",
+          "name": "Platform post -0.06",
+          "primitive": "rod",
+          "radius": 0.025
+        },
+        {
+          "axis": [
+            0.0,
+            -0.36,
+            0.62
+          ],
+          "center": [
+            -0.06,
+            0.34,
+            0.33
+          ],
+          "id": 14,
+          "material": "green",
+          "name": "Rear ladder side -0.06",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            0.36,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.24,
+            0.448,
+            0.144
+          ],
+          "id": 15,
+          "material": "cream",
+          "name": "Ladder rung 1",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "axis": [
+            0.36,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.24,
+            0.376,
+            0.268
+          ],
+          "id": 16,
+          "material": "cream",
+          "name": "Ladder rung 2",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "axis": [
+            0.36,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.24,
+            0.304,
+            0.392
+          ],
+          "id": 17,
+          "material": "cream",
+          "name": "Ladder rung 3",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "axis": [
+            0.36,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.24,
+            0.232,
+            0.516
+          ],
+          "id": 18,
+          "material": "cream",
+          "name": "Ladder rung 4",
+          "primitive": "rod",
+          "radius": 0.014
+        },
+        {
+          "center": [
+            0.1,
+            -0.14,
+            0.33
+          ],
+          "id": 19,
+          "material": "terracotta",
+          "name": "Angled slide bed",
+          "primitive": "box",
+          "rotation_deg": [
+            37,
+            0,
+            47
+          ],
+          "size": [
+            0.3,
+            1.01,
+            0.058
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.19
+          ],
+          "center": [
+            -0.39,
+            0.15,
+            0.735
+          ],
+          "id": 20,
+          "material": "green",
+          "name": "Top handhold -0.39",
+          "primitive": "rod",
+          "radius": 0.022
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.19
+          ],
+          "center": [
+            -0.1,
+            0.15,
+            0.735
+          ],
+          "id": 21,
+          "material": "green",
+          "name": "Top handhold -0.1",
+          "primitive": "rod",
+          "radius": 0.022
+        }
+      ],
+      "occlusion_description": "A high platform connects a sloping chute in front to an open ladder behind. The chute partially hides the platform supports.",
+      "title": "Ladder and playground slide"
+    },
+    "scene_015_jointed_lamp": {
+      "objects": [
+        {
+          "bottom_radius": 0.175,
+          "center": [
+            -0.38,
+            -0.15,
+            0.044
+          ],
+          "depth": 0.088,
+          "id": 10,
+          "material": "dark",
+          "name": "Weighted lamp base",
+          "primitive": "frustum",
+          "top_radius": 0.175
+        },
+        {
+          "axis": [
+            -0.11,
+            0.13,
+            0.4
+          ],
+          "center": [
+            -0.435,
+            -0.085,
+            0.28
+          ],
+          "id": 11,
+          "material": "blue",
+          "name": "Lamp link 1",
+          "primitive": "rod",
+          "radius": 0.026
+        },
+        {
+          "bottom_radius": 0.043,
+          "center": [
+            -0.49,
+            -0.02,
+            0.48
+          ],
+          "depth": 0.06,
+          "id": 12,
+          "material": "cream",
+          "name": "Lamp joint 1",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.043
+        },
+        {
+          "axis": [
+            0.36,
+            -0.07,
+            0.27
+          ],
+          "center": [
+            -0.31,
+            -0.055,
+            0.615
+          ],
+          "id": 13,
+          "material": "blue",
+          "name": "Lamp link 2",
+          "primitive": "rod",
+          "radius": 0.026
+        },
+        {
+          "bottom_radius": 0.043,
+          "center": [
+            -0.13,
+            -0.09,
+            0.75
+          ],
+          "depth": 0.06,
+          "id": 14,
+          "material": "cream",
+          "name": "Lamp joint 2",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.043
+        },
+        {
+          "axis": [
+            0.23,
+            -0.05,
+            -0.07
+          ],
+          "center": [
+            -0.015,
+            -0.115,
+            0.715
+          ],
+          "id": 15,
+          "material": "blue",
+          "name": "Lamp link 3",
+          "primitive": "rod",
+          "radius": 0.026
+        },
+        {
+          "bottom_radius": 0.043,
+          "center": [
+            0.1,
+            -0.14,
+            0.68
+          ],
+          "depth": 0.06,
+          "id": 16,
+          "material": "cream",
+          "name": "Lamp joint 3",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.043
+        },
+        {
+          "bottom_radius": 0.145,
+          "center": [
+            0.12,
+            -0.14,
+            0.61
+          ],
+          "depth": 0.18,
+          "id": 17,
+          "material": "green",
+          "name": "Lamp shade",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            -17,
+            0
+          ],
+          "top_radius": 0.049
+        },
+        {
+          "center": [
+            0.18,
+            0.22,
+            0.3
+          ],
+          "id": 18,
+          "material": "timber",
+          "name": "Inclined drafting board",
+          "primitive": "box",
+          "rotation_deg": [
+            -17,
+            0,
+            0
+          ],
+          "size": [
+            0.76,
+            0.045,
+            0.58
+          ]
+        },
+        {
+          "center": [
+            0.17,
+            0.183,
+            0.34
+          ],
+          "id": 19,
+          "material": "cream",
+          "name": "Drawing paper",
+          "primitive": "box",
+          "rotation_deg": [
+            -17,
+            0,
+            0
+          ],
+          "size": [
+            0.57,
+            0.01,
+            0.38
+          ]
+        },
+        {
+          "center": [
+            0.18,
+            0.105,
+            0.052
+          ],
+          "id": 20,
+          "material": "legs",
+          "name": "Board ledge",
+          "primitive": "box",
+          "size": [
+            0.78,
+            0.11,
+            0.033
+          ]
+        }
+      ],
+      "occlusion_description": "The lamp's folded arms and overhanging conical shade cross a tilted drawing board and its narrow front ledge.",
+      "title": "Articulated drafting lamp"
+    },
+    "scene_016_weaving_loom": {
+      "objects": [
+        {
+          "center": [
+            -0.48,
+            0.1,
+            0.43
+          ],
+          "id": 10,
+          "material": "legs",
+          "name": "Loom stile -0.48",
+          "primitive": "box",
+          "size": [
+            0.06,
+            0.125,
+            0.84
+          ]
+        },
+        {
+          "center": [
+            0.48,
+            0.1,
+            0.43
+          ],
+          "id": 11,
+          "material": "legs",
+          "name": "Loom stile 0.48",
+          "primitive": "box",
+          "size": [
+            0.06,
+            0.125,
+            0.84
+          ]
+        },
+        {
+          "axis": [
+            1.06,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.1,
+            0.065
+          ],
+          "id": 12,
+          "material": "timber",
+          "name": "Warp roller 0.065",
+          "primitive": "rod",
+          "radius": 0.047
+        },
+        {
+          "axis": [
+            1.06,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.0,
+            0.1,
+            0.81
+          ],
+          "id": 13,
+          "material": "timber",
+          "name": "Warp roller 0.81",
+          "primitive": "rod",
+          "radius": 0.047
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.4,
+            0.1,
+            0.44
+          ],
+          "id": 14,
+          "material": "cream",
+          "name": "Warp thread 1",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.339,
+            0.1,
+            0.44
+          ],
+          "id": 15,
+          "material": "cream",
+          "name": "Warp thread 2",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.278,
+            0.1,
+            0.44
+          ],
+          "id": 16,
+          "material": "cream",
+          "name": "Warp thread 3",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.217,
+            0.1,
+            0.44
+          ],
+          "id": 17,
+          "material": "cream",
+          "name": "Warp thread 4",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.156,
+            0.1,
+            0.44
+          ],
+          "id": 18,
+          "material": "cream",
+          "name": "Warp thread 5",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.095,
+            0.1,
+            0.44
+          ],
+          "id": 19,
+          "material": "cream",
+          "name": "Warp thread 6",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            -0.034,
+            0.1,
+            0.44
+          ],
+          "id": 20,
+          "material": "cream",
+          "name": "Warp thread 7",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.027,
+            0.1,
+            0.44
+          ],
+          "id": 21,
+          "material": "cream",
+          "name": "Warp thread 8",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.088,
+            0.1,
+            0.44
+          ],
+          "id": 22,
+          "material": "cream",
+          "name": "Warp thread 9",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.149,
+            0.1,
+            0.44
+          ],
+          "id": 23,
+          "material": "cream",
+          "name": "Warp thread 10",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.21,
+            0.1,
+            0.44
+          ],
+          "id": 24,
+          "material": "cream",
+          "name": "Warp thread 11",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.271,
+            0.1,
+            0.44
+          ],
+          "id": 25,
+          "material": "cream",
+          "name": "Warp thread 12",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.332,
+            0.1,
+            0.44
+          ],
+          "id": 26,
+          "material": "cream",
+          "name": "Warp thread 13",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.68
+          ],
+          "center": [
+            0.393,
+            0.1,
+            0.44
+          ],
+          "id": 27,
+          "material": "cream",
+          "name": "Warp thread 14",
+          "primitive": "rod",
+          "radius": 0.0065
+        },
+        {
+          "center": [
+            0,
+            0.076,
+            0.235
+          ],
+          "id": 28,
+          "material": "blue",
+          "name": "Woven section",
+          "primitive": "box",
+          "size": [
+            0.85,
+            0.04,
+            0.3
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.052,
+            0.15
+          ],
+          "id": 29,
+          "material": "green",
+          "name": "Weft band 0",
+          "primitive": "box",
+          "size": [
+            0.84,
+            0.011,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.052,
+            0.235
+          ],
+          "id": 30,
+          "material": "green",
+          "name": "Weft band 1",
+          "primitive": "box",
+          "size": [
+            0.84,
+            0.011,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.052,
+            0.32
+          ],
+          "id": 31,
+          "material": "green",
+          "name": "Weft band 2",
+          "primitive": "box",
+          "size": [
+            0.84,
+            0.011,
+            0.018
+          ]
+        },
+        {
+          "center": [
+            -0.08,
+            -0.076,
+            0.435
+          ],
+          "id": 32,
+          "material": "terracotta",
+          "name": "Boat shuttle",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.245,
+            0.044,
+            0.033
+          ],
+          "rotation_deg": [
+            0,
+            -17,
+            0
+          ]
+        }
+      ],
+      "occlusion_description": "A thick textile covers only the lower part of a taut warp; a diagonal shuttle crosses the otherwise open strands.",
+      "title": "Partly woven hand loom"
+    },
+    "scene_017_cycle_stand": {
+      "objects": [
+        {
+          "center": [
+            -0.37,
+            0.1,
+            0.27
+          ],
+          "id": 10,
+          "major_radius": 0.243,
+          "material": "dark",
+          "minor_radius": 0.017,
+          "name": "Back rim",
+          "primitive": "torus",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ]
+        },
+        {
+          "bottom_radius": 0.035,
+          "center": [
+            -0.37,
+            0.1,
+            0.27
+          ],
+          "depth": 0.055,
+          "id": 11,
+          "material": "cream",
+          "name": "Back hub",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.035
+        },
+        {
+          "axis": [
+            0.243,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.2485,
+            0.1,
+            0.27
+          ],
+          "id": 12,
+          "material": "legs",
+          "name": "Back spoke 1",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.171827,
+            0.0,
+            0.171827
+          ],
+          "center": [
+            -0.284087,
+            0.1,
+            0.355913
+          ],
+          "id": 13,
+          "material": "legs",
+          "name": "Back spoke 2",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.243
+          ],
+          "center": [
+            -0.37,
+            0.1,
+            0.3915
+          ],
+          "id": 14,
+          "material": "legs",
+          "name": "Back spoke 3",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.171827,
+            0.0,
+            0.171827
+          ],
+          "center": [
+            -0.455913,
+            0.1,
+            0.355913
+          ],
+          "id": 15,
+          "material": "legs",
+          "name": "Back spoke 4",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.243,
+            0.0,
+            0.0
+          ],
+          "center": [
+            -0.4915,
+            0.1,
+            0.27
+          ],
+          "id": 16,
+          "material": "legs",
+          "name": "Back spoke 5",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.171827,
+            0.0,
+            -0.171827
+          ],
+          "center": [
+            -0.455913,
+            0.1,
+            0.184087
+          ],
+          "id": 17,
+          "material": "legs",
+          "name": "Back spoke 6",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.0,
+            0.0,
+            -0.243
+          ],
+          "center": [
+            -0.37,
+            0.1,
+            0.1485
+          ],
+          "id": 18,
+          "material": "legs",
+          "name": "Back spoke 7",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.171827,
+            0.0,
+            -0.171827
+          ],
+          "center": [
+            -0.284087,
+            0.1,
+            0.184087
+          ],
+          "id": 19,
+          "material": "legs",
+          "name": "Back spoke 8",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "center": [
+            0.4,
+            -0.08,
+            0.27
+          ],
+          "id": 20,
+          "major_radius": 0.243,
+          "material": "dark",
+          "minor_radius": 0.017,
+          "name": "Front rim",
+          "primitive": "torus",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ]
+        },
+        {
+          "bottom_radius": 0.035,
+          "center": [
+            0.4,
+            -0.08,
+            0.27
+          ],
+          "depth": 0.055,
+          "id": 21,
+          "material": "cream",
+          "name": "Front hub",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.035
+        },
+        {
+          "axis": [
+            0.243,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.5215,
+            -0.08,
+            0.27
+          ],
+          "id": 22,
+          "material": "legs",
+          "name": "Front spoke 1",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.171827,
+            0.0,
+            0.171827
+          ],
+          "center": [
+            0.485913,
+            -0.08,
+            0.355913
+          ],
+          "id": 23,
+          "material": "legs",
+          "name": "Front spoke 2",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.243
+          ],
+          "center": [
+            0.4,
+            -0.08,
+            0.3915
+          ],
+          "id": 24,
+          "material": "legs",
+          "name": "Front spoke 3",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.171827,
+            0.0,
+            0.171827
+          ],
+          "center": [
+            0.314087,
+            -0.08,
+            0.355913
+          ],
+          "id": 25,
+          "material": "legs",
+          "name": "Front spoke 4",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.243,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.2785,
+            -0.08,
+            0.27
+          ],
+          "id": 26,
+          "material": "legs",
+          "name": "Front spoke 5",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.171827,
+            0.0,
+            -0.171827
+          ],
+          "center": [
+            0.314087,
+            -0.08,
+            0.184087
+          ],
+          "id": 27,
+          "material": "legs",
+          "name": "Front spoke 6",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            -0.0,
+            0.0,
+            -0.243
+          ],
+          "center": [
+            0.4,
+            -0.08,
+            0.1485
+          ],
+          "id": 28,
+          "material": "legs",
+          "name": "Front spoke 7",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.171827,
+            0.0,
+            -0.171827
+          ],
+          "center": [
+            0.485913,
+            -0.08,
+            0.184087
+          ],
+          "id": 29,
+          "material": "legs",
+          "name": "Front spoke 8",
+          "primitive": "rod",
+          "radius": 0.005
+        },
+        {
+          "axis": [
+            0.33,
+            -0.07,
+            -0.05
+          ],
+          "center": [
+            -0.205,
+            0.065,
+            0.245
+          ],
+          "id": 30,
+          "material": "green",
+          "name": "Cycle frame tube 1",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            -0.12,
+            0.025,
+            0.39
+          ],
+          "center": [
+            -0.1,
+            0.0425,
+            0.415
+          ],
+          "id": 31,
+          "material": "green",
+          "name": "Cycle frame tube 2",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            -0.21,
+            0.045,
+            -0.34
+          ],
+          "center": [
+            -0.265,
+            0.0775,
+            0.44
+          ],
+          "id": 32,
+          "material": "green",
+          "name": "Cycle frame tube 3",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            0.39,
+            -0.09,
+            -0.04
+          ],
+          "center": [
+            0.035,
+            0.01,
+            0.59
+          ],
+          "id": 33,
+          "material": "green",
+          "name": "Cycle frame tube 4",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            -0.27,
+            0.065,
+            -0.35
+          ],
+          "center": [
+            0.095,
+            -0.0025,
+            0.395
+          ],
+          "id": 34,
+          "material": "green",
+          "name": "Cycle frame tube 5",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            0.17,
+            -0.045,
+            -0.3
+          ],
+          "center": [
+            0.315,
+            -0.0575,
+            0.42
+          ],
+          "id": 35,
+          "material": "green",
+          "name": "Cycle frame tube 6",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "center": [
+            -0.17,
+            0.05,
+            0.66
+          ],
+          "id": 36,
+          "material": "dark",
+          "name": "Saddle",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.105,
+            0.052,
+            0.025
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.18,
+            0.0
+          ],
+          "center": [
+            0.23,
+            -0.03,
+            0.64
+          ],
+          "id": 37,
+          "material": "dark",
+          "name": "Handlebar",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.375
+          ],
+          "center": [
+            0.27,
+            -0.22,
+            0.2025
+          ],
+          "id": 38,
+          "material": "blue",
+          "name": "Dock leg 0.27",
+          "primitive": "rod",
+          "radius": 0.019
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.375
+          ],
+          "center": [
+            0.53,
+            -0.22,
+            0.2025
+          ],
+          "id": 39,
+          "material": "blue",
+          "name": "Dock leg 0.53",
+          "primitive": "rod",
+          "radius": 0.019
+        },
+        {
+          "axis": [
+            0.26,
+            0.0,
+            0.0
+          ],
+          "center": [
+            0.4,
+            -0.22,
+            0.39
+          ],
+          "id": 40,
+          "material": "blue",
+          "name": "Dock rail",
+          "primitive": "rod",
+          "radius": 0.019
+        }
+      ],
+      "occlusion_description": "Two spoked wheels, a triangular frame and an oblique front docking brace cross at three depths.",
+      "title": "Bicycle in a docking stand"
+    },
+    "scene_018_balance_scale": {
+      "objects": [
+        {
+          "bottom_radius": 0.22,
+          "center": [
+            0,
+            0.1,
+            0.057
+          ],
+          "depth": 0.114,
+          "id": 10,
+          "material": "dark",
+          "name": "Scale base",
+          "primitive": "frustum",
+          "top_radius": 0.22
+        },
+        {
+          "bottom_radius": 0.079,
+          "center": [
+            0,
+            0.1,
+            0.34
+          ],
+          "depth": 0.49,
+          "id": 11,
+          "material": "green",
+          "name": "Scale column",
+          "primitive": "frustum",
+          "top_radius": 0.039
+        },
+        {
+          "axis": [
+            0.82,
+            0.235,
+            0.1
+          ],
+          "center": [
+            0.01,
+            0.0825,
+            0.71
+          ],
+          "id": 12,
+          "material": "cream",
+          "name": "Balance beam",
+          "primitive": "rod",
+          "radius": 0.022
+        },
+        {
+          "axis": [
+            -0.13,
+            -0.04,
+            -0.32
+          ],
+          "center": [
+            -0.465,
+            -0.055,
+            0.5
+          ],
+          "id": 13,
+          "material": "dark",
+          "name": "Left suspension 1",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "axis": [
+            0.13,
+            -0.04,
+            -0.32
+          ],
+          "center": [
+            -0.335,
+            -0.055,
+            0.5
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Left suspension 2",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "axis": [
+            0.0,
+            0.13,
+            -0.32
+          ],
+          "center": [
+            -0.4,
+            0.03,
+            0.5
+          ],
+          "id": 15,
+          "material": "dark",
+          "name": "Left suspension 3",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "bottom_radius": 0.076,
+          "center": [
+            -0.4,
+            -0.035,
+            0.31
+          ],
+          "depth": 0.06,
+          "id": 16,
+          "material": "terracotta",
+          "name": "Left pan",
+          "primitive": "frustum",
+          "top_radius": 0.16
+        },
+        {
+          "axis": [
+            -0.13,
+            -0.04,
+            -0.32
+          ],
+          "center": [
+            0.355,
+            0.18,
+            0.6
+          ],
+          "id": 17,
+          "material": "dark",
+          "name": "Right suspension 1",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "axis": [
+            0.13,
+            -0.04,
+            -0.32
+          ],
+          "center": [
+            0.485,
+            0.18,
+            0.6
+          ],
+          "id": 18,
+          "material": "dark",
+          "name": "Right suspension 2",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "axis": [
+            0.0,
+            0.13,
+            -0.32
+          ],
+          "center": [
+            0.42,
+            0.265,
+            0.6
+          ],
+          "id": 19,
+          "material": "dark",
+          "name": "Right suspension 3",
+          "primitive": "rod",
+          "radius": 0.008
+        },
+        {
+          "bottom_radius": 0.076,
+          "center": [
+            0.42,
+            0.2,
+            0.41
+          ],
+          "depth": 0.06,
+          "id": 20,
+          "material": "terracotta",
+          "name": "Right pan",
+          "primitive": "frustum",
+          "top_radius": 0.16
+        },
+        {
+          "bottom_radius": 0.105,
+          "center": [
+            -0.29,
+            0.22,
+            0.07
+          ],
+          "depth": 0.085,
+          "id": 21,
+          "material": "blue",
+          "name": "Stack weight 1",
+          "primitive": "frustum",
+          "top_radius": 0.105
+        },
+        {
+          "bottom_radius": 0.076,
+          "center": [
+            -0.29,
+            0.22,
+            0.16
+          ],
+          "depth": 0.085,
+          "id": 22,
+          "material": "blue",
+          "name": "Stack weight 2",
+          "primitive": "frustum",
+          "top_radius": 0.076
+        },
+        {
+          "bottom_radius": 0.045,
+          "center": [
+            -0.29,
+            0.22,
+            0.25
+          ],
+          "depth": 0.085,
+          "id": 23,
+          "material": "blue",
+          "name": "Stack weight 3",
+          "primitive": "frustum",
+          "top_radius": 0.045
+        }
+      ],
+      "occlusion_description": "Suspended pans form concavities on opposite sides of the pivot. The lower, nearer pan hides part of a separate weight stack.",
+      "title": "Two-pan balance scale"
+    },
+    "scene_019_corner_booth": {
+      "objects": [
+        {
+          "center": [
+            0.02,
+            0.31,
+            0.3
+          ],
+          "id": 10,
+          "material": "green",
+          "name": "Rear bench seat",
+          "primitive": "box",
+          "size": [
+            0.99,
+            0.28,
+            0.12
+          ]
+        },
+        {
+          "center": [
+            0.02,
+            0.45,
+            0.51
+          ],
+          "id": 11,
+          "material": "blue",
+          "name": "Rear upholstered back",
+          "primitive": "box",
+          "size": [
+            0.99,
+            0.09,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            -0.46,
+            -0.015,
+            0.3
+          ],
+          "id": 12,
+          "material": "green",
+          "name": "Return bench seat",
+          "primitive": "box",
+          "size": [
+            0.25,
+            0.54,
+            0.12
+          ]
+        },
+        {
+          "center": [
+            -0.58,
+            -0.015,
+            0.51
+          ],
+          "id": 13,
+          "material": "blue",
+          "name": "Return seat back",
+          "primitive": "box",
+          "size": [
+            0.07,
+            0.57,
+            0.36
+          ]
+        },
+        {
+          "center": [
+            -0.41,
+            0.25,
+            0.14
+          ],
+          "id": 14,
+          "material": "legs",
+          "name": "Seat support -0.41 0.25",
+          "primitive": "box",
+          "size": [
+            0.09,
+            0.11,
+            0.28
+          ]
+        },
+        {
+          "center": [
+            0.43,
+            0.25,
+            0.14
+          ],
+          "id": 15,
+          "material": "legs",
+          "name": "Seat support 0.43 0.25",
+          "primitive": "box",
+          "size": [
+            0.09,
+            0.11,
+            0.28
+          ]
+        },
+        {
+          "center": [
+            -0.45,
+            -0.24,
+            0.14
+          ],
+          "id": 16,
+          "material": "legs",
+          "name": "Seat support -0.45 -0.24",
+          "primitive": "box",
+          "size": [
+            0.09,
+            0.11,
+            0.28
+          ]
+        },
+        {
+          "bottom_radius": 0.3,
+          "center": [
+            0.1,
+            -0.13,
+            0.43
+          ],
+          "depth": 0.05,
+          "id": 17,
+          "material": "timber",
+          "name": "Cafe table top",
+          "primitive": "frustum",
+          "top_radius": 0.3
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.37
+          ],
+          "center": [
+            0.1,
+            -0.13,
+            0.225
+          ],
+          "id": 18,
+          "material": "dark",
+          "name": "Table pedestal",
+          "primitive": "rod",
+          "radius": 0.055
+        },
+        {
+          "bottom_radius": 0.17,
+          "center": [
+            0.1,
+            -0.13,
+            0.033
+          ],
+          "depth": 0.05,
+          "id": 19,
+          "material": "dark",
+          "name": "Foot plate",
+          "primitive": "frustum",
+          "top_radius": 0.17
+        },
+        {
+          "bottom_radius": 0.105,
+          "center": [
+            0.47,
+            0.07,
+            0.14
+          ],
+          "depth": 0.28,
+          "id": 20,
+          "material": "terracotta",
+          "name": "Extra stool",
+          "primitive": "frustum",
+          "top_radius": 0.13
+        }
+      ],
+      "occlusion_description": "Perpendicular seat backs meet at a corner. The offset table top and pedestal hide separate portions of the seat and a floor stool.",
+      "title": "Corner booth and pedestal table"
+    },
+    "scene_020_switchback_ramp": {
+      "objects": [
+        {
+          "center": [
+            0,
+            -0.17,
+            0.14
+          ],
+          "id": 10,
+          "material": "timber",
+          "name": "Lower eastbound run",
+          "primitive": "box",
+          "rotation_deg": [
+            0,
+            -14,
+            0
+          ],
+          "size": [
+            0.96,
+            0.28,
+            0.055
+          ]
+        },
+        {
+          "center": [
+            0.46,
+            0.02,
+            0.26
+          ],
+          "id": 11,
+          "material": "cream",
+          "name": "Landing",
+          "primitive": "box",
+          "size": [
+            0.27,
+            0.63,
+            0.06
+          ]
+        },
+        {
+          "center": [
+            0,
+            0.19,
+            0.4
+          ],
+          "id": 12,
+          "material": "timber",
+          "name": "Upper westbound run",
+          "primitive": "box",
+          "rotation_deg": [
+            0,
+            16,
+            0
+          ],
+          "size": [
+            0.96,
+            0.28,
+            0.055
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            -0.44,
+            -0.32,
+            0.155
+          ],
+          "id": 13,
+          "material": "dark",
+          "name": "Guard post 1",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            0.0,
+            -0.32,
+            0.265
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Guard post 2",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            0.43,
+            -0.32,
+            0.375
+          ],
+          "id": 15,
+          "material": "dark",
+          "name": "Guard post 3",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            0.43,
+            0.35,
+            0.395
+          ],
+          "id": 16,
+          "material": "dark",
+          "name": "Guard post 4",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "axis": [
+            0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            0.0,
+            0.35,
+            0.515
+          ],
+          "id": 17,
+          "material": "dark",
+          "name": "Guard post 5",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.23
+          ],
+          "center": [
+            -0.43,
+            0.35,
+            0.635
+          ],
+          "id": 18,
+          "material": "dark",
+          "name": "Guard post 6",
+          "primitive": "rod",
+          "radius": 0.012
+        },
+        {
+          "axis": [
+            0.87,
+            0.0,
+            0.22
+          ],
+          "center": [
+            -0.005,
+            -0.32,
+            0.38
+          ],
+          "id": 19,
+          "material": "blue",
+          "name": "Front railing",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "axis": [
+            -0.86,
+            0.0,
+            0.24
+          ],
+          "center": [
+            0.0,
+            0.35,
+            0.63
+          ],
+          "id": 20,
+          "material": "blue",
+          "name": "Rear railing",
+          "primitive": "rod",
+          "radius": 0.018
+        },
+        {
+          "center": [
+            0.46,
+            0.02,
+            0.12
+          ],
+          "id": 21,
+          "material": "green",
+          "name": "Landing abutment",
+          "primitive": "box",
+          "size": [
+            0.19,
+            0.57,
+            0.25
+          ]
+        },
+        {
+          "center": [
+            -0.44,
+            0.19,
+            0.25
+          ],
+          "id": 22,
+          "material": "green",
+          "name": "High abutment",
+          "primitive": "box",
+          "size": [
+            0.16,
+            0.26,
+            0.5
+          ]
+        }
+      ],
+      "occlusion_description": "Two solid inclined runs reverse direction at a landing; their railings and central barrier overlap across the return lane.",
+      "title": "Switchback display ramp"
+    },
+    "scene_021_drum_kit": {
+      "objects": [
+        {
+          "bottom_radius": 0.25,
+          "center": [
+            0,
+            -0.05,
+            0.26
+          ],
+          "depth": 0.34,
+          "id": 10,
+          "material": "terracotta",
+          "name": "Kick shell",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.25
+        },
+        {
+          "bottom_radius": 0.235,
+          "center": [
+            0,
+            -0.23,
+            0.26
+          ],
+          "depth": 0.015,
+          "id": 11,
+          "material": "cream",
+          "name": "Kick head",
+          "primitive": "frustum",
+          "rotation_deg": [
+            90,
+            0,
+            0
+          ],
+          "top_radius": 0.235
+        },
+        {
+          "bottom_radius": 0.145,
+          "center": [
+            -0.3,
+            -0.12,
+            0.44
+          ],
+          "depth": 0.16,
+          "id": 12,
+          "material": "blue",
+          "name": "Tom shell 1",
+          "primitive": "frustum",
+          "rotation_deg": [
+            -12,
+            0,
+            0
+          ],
+          "top_radius": 0.145
+        },
+        {
+          "bottom_radius": 0.1392,
+          "center": [
+            -0.3,
+            -0.136,
+            0.521
+          ],
+          "depth": 0.014,
+          "id": 13,
+          "material": "cream",
+          "name": "Tom head 1",
+          "primitive": "frustum",
+          "rotation_deg": [
+            -12,
+            0,
+            0
+          ],
+          "top_radius": 0.1392
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.33
+          ],
+          "center": [
+            -0.3,
+            -0.12,
+            0.195
+          ],
+          "id": 14,
+          "material": "dark",
+          "name": "Tom post 1",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "bottom_radius": 0.16,
+          "center": [
+            0.27,
+            0.06,
+            0.51
+          ],
+          "depth": 0.16,
+          "id": 15,
+          "material": "blue",
+          "name": "Tom shell 2",
+          "primitive": "frustum",
+          "rotation_deg": [
+            -12,
+            7,
+            0
+          ],
+          "top_radius": 0.16
+        },
+        {
+          "bottom_radius": 0.1536,
+          "center": [
+            0.27,
+            0.044,
+            0.591
+          ],
+          "depth": 0.014,
+          "id": 16,
+          "material": "cream",
+          "name": "Tom head 2",
+          "primitive": "frustum",
+          "rotation_deg": [
+            -12,
+            7,
+            0
+          ],
+          "top_radius": 0.1536
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.4
+          ],
+          "center": [
+            0.27,
+            0.06,
+            0.23
+          ],
+          "id": 17,
+          "material": "dark",
+          "name": "Tom post 2",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "bottom_radius": 0.115,
+          "center": [
+            -0.12,
+            0.17,
+            0.58
+          ],
+          "depth": 0.16,
+          "id": 18,
+          "material": "blue",
+          "name": "Tom shell 3",
+          "primitive": "frustum",
+          "rotation_deg": [
+            -12,
+            14,
+            0
+          ],
+          "top_radius": 0.115
+        },
+        {
+          "bottom_radius": 0.1104,
+          "center": [
+            -0.12,
+            0.154,
+            0.661
+          ],
+          "depth": 0.014,
+          "id": 19,
+          "material": "cream",
+          "name": "Tom head 3",
+          "primitive": "frustum",
+          "rotation_deg": [
+            -12,
+            14,
+            0
+          ],
+          "top_radius": 0.1104
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.47
+          ],
+          "center": [
+            -0.12,
+            0.17,
+            0.265
+          ],
+          "id": 20,
+          "material": "dark",
+          "name": "Tom post 3",
+          "primitive": "rod",
+          "radius": 0.021
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.69
+          ],
+          "center": [
+            -0.48,
+            0.14,
+            0.365
+          ],
+          "id": 21,
+          "material": "dark",
+          "name": "Cymbal stand 1",
+          "primitive": "rod",
+          "radius": 0.015
+        },
+        {
+          "bottom_radius": 0.19,
+          "center": [
+            -0.48,
+            0.14,
+            0.71
+          ],
+          "depth": 0.04,
+          "id": 22,
+          "material": "cream",
+          "name": "Cymbal 1",
+          "primitive": "frustum",
+          "rotation_deg": [
+            8,
+            11,
+            0
+          ],
+          "top_radius": 0.038
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.77
+          ],
+          "center": [
+            0.43,
+            -0.09,
+            0.405
+          ],
+          "id": 23,
+          "material": "dark",
+          "name": "Cymbal stand 2",
+          "primitive": "rod",
+          "radius": 0.015
+        },
+        {
+          "bottom_radius": 0.19,
+          "center": [
+            0.43,
+            -0.09,
+            0.79
+          ],
+          "depth": 0.04,
+          "id": 24,
+          "material": "cream",
+          "name": "Cymbal 2",
+          "primitive": "frustum",
+          "rotation_deg": [
+            8,
+            -11,
+            0
+          ],
+          "top_radius": 0.038
+        }
+      ],
+      "occlusion_description": "A large front-facing kick drum partly hides smaller raised drums; thin stands place tilted cymbals across the upper silhouettes.",
+      "title": "Percussion cluster with cymbals"
+    },
+    "scene_022_picket_gate": {
+      "objects": [
+        {
+          "center": [
+            -0.56,
+            -0.15,
+            0.38
+          ],
+          "id": 10,
+          "material": "legs",
+          "name": "Gate hinge post -0.56",
+          "primitive": "box",
+          "size": [
+            0.095,
+            0.095,
+            0.76
+          ]
+        },
+        {
+          "center": [
+            0.56,
+            -0.15,
+            0.38
+          ],
+          "id": 11,
+          "material": "legs",
+          "name": "Gate hinge post 0.56",
+          "primitive": "box",
+          "size": [
+            0.095,
+            0.095,
+            0.76
+          ]
+        },
+        {
+          "center": [
+            -0.45,
+            -0.16,
+            0.31
+          ],
+          "id": 12,
+          "material": "cream",
+          "name": "Picket 1",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.62
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            -0.45,
+            -0.16,
+            0.667
+          ],
+          "depth": 0.095,
+          "id": 13,
+          "material": "cream",
+          "name": "Pointed cap 1",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            -0.32,
+            -0.16,
+            0.297
+          ],
+          "id": 14,
+          "material": "cream",
+          "name": "Picket 2",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.5940000000000001
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            -0.32,
+            -0.16,
+            0.641
+          ],
+          "depth": 0.095,
+          "id": 15,
+          "material": "cream",
+          "name": "Pointed cap 2",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            -0.19,
+            -0.16,
+            0.284
+          ],
+          "id": 16,
+          "material": "cream",
+          "name": "Picket 3",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.5680000000000001
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            -0.19,
+            -0.16,
+            0.615
+          ],
+          "depth": 0.095,
+          "id": 17,
+          "material": "cream",
+          "name": "Pointed cap 3",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            -0.06,
+            -0.16,
+            0.271
+          ],
+          "id": 18,
+          "material": "cream",
+          "name": "Picket 4",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.542
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            -0.06,
+            -0.16,
+            0.589
+          ],
+          "depth": 0.095,
+          "id": 19,
+          "material": "cream",
+          "name": "Pointed cap 4",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            0.07,
+            -0.16,
+            0.272
+          ],
+          "id": 20,
+          "material": "cream",
+          "name": "Picket 5",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.544
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            0.07,
+            -0.16,
+            0.591
+          ],
+          "depth": 0.095,
+          "id": 21,
+          "material": "cream",
+          "name": "Pointed cap 5",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            0.2,
+            -0.16,
+            0.285
+          ],
+          "id": 22,
+          "material": "cream",
+          "name": "Picket 6",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.5700000000000001
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            0.2,
+            -0.16,
+            0.617
+          ],
+          "depth": 0.095,
+          "id": 23,
+          "material": "cream",
+          "name": "Pointed cap 6",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            0.33,
+            -0.16,
+            0.298
+          ],
+          "id": 24,
+          "material": "cream",
+          "name": "Picket 7",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.5960000000000001
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            0.33,
+            -0.16,
+            0.643
+          ],
+          "depth": 0.095,
+          "id": 25,
+          "material": "cream",
+          "name": "Pointed cap 7",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            0.46,
+            -0.16,
+            0.311
+          ],
+          "id": 26,
+          "material": "cream",
+          "name": "Picket 8",
+          "primitive": "box",
+          "size": [
+            0.077,
+            0.044,
+            0.622
+          ]
+        },
+        {
+          "bottom_radius": 0.055,
+          "center": [
+            0.46,
+            -0.16,
+            0.669
+          ],
+          "depth": 0.095,
+          "id": 27,
+          "material": "cream",
+          "name": "Pointed cap 8",
+          "primitive": "frustum",
+          "rotation_deg": [
+            0,
+            0,
+            45
+          ],
+          "top_radius": 0.0,
+          "vertices": 4
+        },
+        {
+          "center": [
+            0,
+            -0.122,
+            0.15
+          ],
+          "id": 28,
+          "material": "green",
+          "name": "Rear rail 0.15",
+          "primitive": "box",
+          "size": [
+            1.05,
+            0.045,
+            0.061
+          ]
+        },
+        {
+          "center": [
+            0,
+            -0.122,
+            0.45
+          ],
+          "id": 29,
+          "material": "green",
+          "name": "Rear rail 0.45",
+          "primitive": "box",
+          "size": [
+            1.05,
+            0.045,
+            0.061
+          ]
+        },
+        {
+          "axis": [
+            0.93,
+            0.0,
+            0.4
+          ],
+          "center": [
+            0.005,
+            -0.097,
+            0.3
+          ],
+          "id": 30,
+          "material": "green",
+          "name": "Diagonal brace",
+          "primitive": "rod",
+          "radius": 0.029
+        },
+        {
+          "center": [
+            0.05,
+            0.3,
+            0.19
+          ],
+          "id": 31,
+          "material": "terracotta",
+          "name": "Planter trough",
+          "primitive": "box",
+          "size": [
+            0.83,
+            0.31,
+            0.31
+          ]
+        },
+        {
+          "center": [
+            -0.24,
+            0.3,
+            0.41
+          ],
+          "id": 32,
+          "material": "green",
+          "name": "Shrub 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.16,
+            0.12,
+            0.14
+          ]
+        },
+        {
+          "center": [
+            0.0,
+            0.3,
+            0.41
+          ],
+          "id": 33,
+          "material": "green",
+          "name": "Shrub 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.16,
+            0.12,
+            0.15300000000000002
+          ]
+        },
+        {
+          "center": [
+            0.25,
+            0.3,
+            0.41
+          ],
+          "id": 34,
+          "material": "green",
+          "name": "Shrub 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.16,
+            0.12,
+            0.166
+          ]
+        }
+      ],
+      "occlusion_description": "Pointed pickets and a diagonal gate brace mask a separate deep rectangular planter and its low foliage through narrow openings.",
+      "title": "Gate and planter"
+    },
+    "scene_023_potters_wheel": {
+      "objects": [
+        {
+          "center": [
+            -0.14,
+            0.0,
+            0.11
+          ],
+          "id": 10,
+          "material": "green",
+          "name": "Wheel base",
+          "primitive": "box",
+          "size": [
+            0.64,
+            0.49,
+            0.22
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0,
+            0.13
+          ],
+          "center": [
+            -0.14,
+            0.0,
+            0.245
+          ],
+          "id": 11,
+          "material": "dark",
+          "name": "Wheel spindle",
+          "primitive": "rod",
+          "radius": 0.066
+        },
+        {
+          "bottom_radius": 0.29,
+          "center": [
+            -0.14,
+            0,
+            0.32
+          ],
+          "depth": 0.035,
+          "id": 12,
+          "material": "cream",
+          "name": "Turntable",
+          "primitive": "frustum",
+          "top_radius": 0.29
+        },
+        {
+          "bottom_radius": 0.095,
+          "center": [
+            -0.14,
+            0,
+            0.41
+          ],
+          "depth": 0.15,
+          "id": 13,
+          "material": "terracotta",
+          "name": "Thrown profile 1",
+          "primitive": "frustum",
+          "top_radius": 0.155
+        },
+        {
+          "bottom_radius": 0.155,
+          "center": [
+            -0.14,
+            0,
+            0.545
+          ],
+          "depth": 0.12,
+          "id": 14,
+          "material": "terracotta",
+          "name": "Thrown profile 2",
+          "primitive": "frustum",
+          "top_radius": 0.182
+        },
+        {
+          "bottom_radius": 0.182,
+          "center": [
+            -0.14,
+            0,
+            0.65
+          ],
+          "depth": 0.09,
+          "id": 15,
+          "material": "terracotta",
+          "name": "Thrown profile 3",
+          "primitive": "frustum",
+          "top_radius": 0.07
+        },
+        {
+          "bottom_radius": 0.07,
+          "center": [
+            -0.14,
+            0,
+            0.72
+          ],
+          "depth": 0.05,
+          "id": 16,
+          "material": "terracotta",
+          "name": "Thrown profile 4",
+          "primitive": "frustum",
+          "top_radius": 0.08
+        },
+        {
+          "center": [
+            -0.14,
+            0,
+            0.751
+          ],
+          "id": 17,
+          "major_radius": 0.073,
+          "material": "cream",
+          "minor_radius": 0.011,
+          "name": "Vessel lip",
+          "primitive": "torus",
+          "rotation_deg": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "center": [
+            0.32,
+            0.33,
+            0.19
+          ],
+          "id": 18,
+          "material": "timber",
+          "name": "Rear pottery shelf",
+          "primitive": "box",
+          "size": [
+            0.42,
+            0.24,
+            0.38
+          ]
+        },
+        {
+          "bottom_radius": 0.078,
+          "center": [
+            0.31,
+            0.32,
+            0.52
+          ],
+          "depth": 0.26,
+          "id": 19,
+          "material": "cream",
+          "name": "Unfired vase",
+          "primitive": "frustum",
+          "top_radius": 0.11
+        },
+        {
+          "center": [
+            0.33,
+            -0.22,
+            0.07
+          ],
+          "id": 20,
+          "material": "legs",
+          "name": "Front tool block",
+          "primitive": "box",
+          "size": [
+            0.25,
+            0.17,
+            0.14
+          ]
+        },
+        {
+          "axis": [
+            -0.015,
+            0.03,
+            0.31
+          ],
+          "center": [
+            0.2425,
+            -0.215,
+            0.265
+          ],
+          "id": 21,
+          "material": "dark",
+          "name": "Modelling tool 1",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "axis": [
+            -0.005,
+            0.03,
+            0.343
+          ],
+          "center": [
+            0.2925,
+            -0.215,
+            0.2815
+          ],
+          "id": 22,
+          "material": "dark",
+          "name": "Modelling tool 2",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "axis": [
+            0.005,
+            0.03,
+            0.376
+          ],
+          "center": [
+            0.3425,
+            -0.215,
+            0.298
+          ],
+          "id": 23,
+          "material": "dark",
+          "name": "Modelling tool 3",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "axis": [
+            0.015,
+            0.03,
+            0.409
+          ],
+          "center": [
+            0.3925,
+            -0.215,
+            0.3145
+          ],
+          "id": 24,
+          "material": "dark",
+          "name": "Modelling tool 4",
+          "primitive": "rod",
+          "radius": 0.009
+        }
+      ],
+      "occlusion_description": "The stack of tapered vessel sections sits on a broad spindle disk. Upright tools in front partially obscure a second vase on a rear shelf.",
+      "title": "Potter's wheel and tool rail"
+    },
+    "scene_024_orbital_mobile": {
+      "objects": [
+        {
+          "center": [
+            -0.43,
+            0.18,
+            0.045
+          ],
+          "id": 10,
+          "material": "timber",
+          "name": "Mobile foot",
+          "primitive": "box",
+          "size": [
+            0.37,
+            0.42,
+            0.09
+          ]
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            0.86
+          ],
+          "center": [
+            -0.47,
+            0.22,
+            0.5
+          ],
+          "id": 11,
+          "material": "dark",
+          "name": "Upright cantilever",
+          "primitive": "rod",
+          "radius": 0.025
+        },
+        {
+          "axis": [
+            0.63,
+            -0.15,
+            0.0
+          ],
+          "center": [
+            -0.155,
+            0.145,
+            0.93
+          ],
+          "id": 12,
+          "material": "dark",
+          "name": "Top cantilever",
+          "primitive": "rod",
+          "radius": 0.022
+        },
+        {
+          "axis": [
+            0.0,
+            0.0,
+            -0.34
+          ],
+          "center": [
+            0.16,
+            0.07,
+            0.76
+          ],
+          "id": 13,
+          "material": "cream",
+          "name": "Suspension",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "center": [
+            0.16,
+            0.07,
+            0.48
+          ],
+          "id": 14,
+          "material": "terracotta",
+          "name": "Central globe",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.118,
+            0.118,
+            0.118
+          ]
+        },
+        {
+          "center": [
+            0.16,
+            0.07,
+            0.48
+          ],
+          "id": 15,
+          "major_radius": 0.275,
+          "material": "cream",
+          "minor_radius": 0.013,
+          "name": "Inclined orbit",
+          "primitive": "torus",
+          "rotation_deg": [
+            53,
+            26,
+            12
+          ]
+        },
+        {
+          "center": [
+            0.16,
+            0.07,
+            0.48
+          ],
+          "id": 16,
+          "major_radius": 0.357,
+          "material": "green",
+          "minor_radius": 0.011,
+          "name": "Crossed orbit",
+          "primitive": "torus",
+          "rotation_deg": [
+            89,
+            -33,
+            29
+          ]
+        },
+        {
+          "axis": [
+            -0.252,
+            -0.11,
+            0.05
+          ],
+          "center": [
+            0.034,
+            0.015,
+            0.505
+          ],
+          "id": 17,
+          "material": "dark",
+          "name": "Satellite arm 1",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "center": [
+            -0.092,
+            -0.04,
+            0.53
+          ],
+          "id": 18,
+          "material": "blue",
+          "name": "Satellite 1",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.06,
+            0.06,
+            0.06
+          ]
+        },
+        {
+          "axis": [
+            0.285,
+            0.09,
+            0.14
+          ],
+          "center": [
+            0.3025,
+            0.115,
+            0.55
+          ],
+          "id": 19,
+          "material": "dark",
+          "name": "Satellite arm 2",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "center": [
+            0.445,
+            0.16,
+            0.62
+          ],
+          "id": 20,
+          "material": "cream",
+          "name": "Satellite 2",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.07,
+            0.07,
+            0.07
+          ]
+        },
+        {
+          "axis": [
+            0.13,
+            -0.19,
+            -0.22
+          ],
+          "center": [
+            0.225,
+            -0.025,
+            0.37
+          ],
+          "id": 21,
+          "material": "dark",
+          "name": "Satellite arm 3",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "center": [
+            0.29,
+            -0.12,
+            0.26
+          ],
+          "id": 22,
+          "material": "green",
+          "name": "Satellite 3",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.044,
+            0.044,
+            0.044
+          ]
+        },
+        {
+          "axis": [
+            -0.32,
+            0.16,
+            -0.1
+          ],
+          "center": [
+            0.0,
+            0.15,
+            0.43
+          ],
+          "id": 23,
+          "material": "dark",
+          "name": "Satellite arm 4",
+          "primitive": "rod",
+          "radius": 0.009
+        },
+        {
+          "center": [
+            -0.16,
+            0.23,
+            0.38
+          ],
+          "id": 24,
+          "material": "blue",
+          "name": "Satellite 4",
+          "primitive": "ellipsoid",
+          "radii": [
+            0.055,
+            0.055,
+            0.055
+          ]
+        }
+      ],
+      "occlusion_description": "A central sphere, tilted orbit hoops and satellites on crossed arms occlude one another inside a suspended frame.",
+      "title": "Mechanical orbital mobile"
+    }
+  },
+  "schema": "el-authored-opaque-scenes-1",
+  "shared_world": {
+    "area_light": {
+      "aim": [
+        0,
+        0,
+        0.3
+      ],
+      "color_linear": [
+        1.0,
+        0.96,
+        0.91
+      ],
+      "energy_w": 95.0,
+      "location": [
+        -1.2,
+        -1.1,
+        2.17
+      ],
+      "size_m": 1.1
+    },
+    "camera": {
+      "aim": [
+        0,
+        0.05,
+        0.43
+      ],
+      "clip_m": [
+        0.05,
+        30.0
+      ],
+      "development": [
+        "v01",
+        "v02"
+      ],
+      "lens_mm": 42,
+      "positions": {
+        "source": [
+          0.0,
+          -1.78,
+          0.67
+        ],
+        "v01": [
+          -0.17,
+          -1.78,
+          0.67
+        ],
+        "v02": [
+          0.17,
+          -1.78,
+          0.67
+        ],
+        "v03": [
+          -0.25,
+          -1.76,
+          0.68
+        ],
+        "v04": [
+          0.25,
+          -1.76,
+          0.68
+        ],
+        "v05": [
+          -0.12,
+          -1.82,
+          0.78
+        ],
+        "v06": [
+          0.12,
+          -1.74,
+          0.76
+        ]
+      },
+      "sensor_mm": 36
+    },
+    "objects": [
+      {
+        "center": [
+          0,
+          1.41,
+          1.42
+        ],
+        "id": 1,
+        "material": "plaster",
+        "name": "Studio back wall",
+        "primitive": "box",
+        "size": [
+          6,
+          0.08,
+          2.84
+        ]
+      },
+      {
+        "center": [
+          0,
+          0,
+          -0.04
+        ],
+        "id": 2,
+        "material": "floor",
+        "name": "Studio floor",
+        "primitive": "box",
+        "size": [
+          6,
+          6,
+          0.08
+        ]
+      }
+    ]
+  },
+  "unit": "m"
+}

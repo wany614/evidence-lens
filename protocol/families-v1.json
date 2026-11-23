@@ -1,0 +1,676 @@
+{
+  "schema": "el-formal-families-1",
+  "dataset_id": "evidence-lens-families-v1",
+  "experiment_id": "p3-formal-b0",
+  "master_plan": "1.1",
+  "numerical_protocol": "1.0",
+  "registered_at_utc": "2026-11-23T03:32:48.845640Z",
+  "preregistration_path": "protocol/study-v1.json",
+  "preregistration_sha256": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+  "geometry_path": "configs/formal-scenes-v1.json",
+  "camera_package_path": "configs/formal-cameras-v1.json",
+  "actual_reference_width_height": [
+    512,
+    512
+  ],
+  "source_view": "source",
+  "target_views": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "geometry_noise_development_views": [
+    "v01",
+    "v02"
+  ],
+  "primary_example_per_family": "v01",
+  "family_rule": "Fixed composition of named physical parts, spatial layout and occlusion relationship. Derived conditions, camera shifts and rerenders inherit their parent family.",
+  "split_rule": "Preassigned authoring ordinal 1–16 training (including reused engineering family), 17–20 development, 21–24 final test. Four contiguous unstratified training blocks of four families each. Three/two-fold fallback follows the independently registered study.",
+  "authoring_review": "All 24 designs were enumerated by physical construction before new family renders. The catalog records the distinct roles and blocking relationships. Exact geometric fingerprints ignore palette, names, object IDs and storage order. They detect duplicates in addition to the authored composition review.",
+  "prior_observations": [
+    "scene_001_tabletop"
+  ],
+  "heldout_policy": "Private reference calibration may be checked, but no test prediction, label, score, ranking or visual example is inspected for method selection; final evaluation follows P5 freeze.",
+  "representative_families": [
+    "scene_001_tabletop",
+    "scene_002_book_nook",
+    "scene_003_pulley_frame",
+    "scene_006_fruit_crate",
+    "scene_019_corner_booth"
+  ],
+  "condition_matrix": {
+    "B0": 24,
+    "R1": 4,
+    "Q1": 4
+  },
+  "generated_network_calls": {
+    "B0": 24,
+    "R1": 4,
+    "Q1": 0
+  },
+  "shared_reference_views": 168,
+  "families": [
+    {
+      "ordinal": 1,
+      "scene_family_id": "scene_001_tabletop",
+      "scene_id": "scene_001_tabletop/v001",
+      "scene_version": "v001",
+      "title": "Tabletop red block and blue box",
+      "occlusion_design": "An opaque leading block masks a rear box, with two thin stems and a separate cylindrical canister.",
+      "split": "train",
+      "cv_fold": 0,
+      "example_view": "v01",
+      "trial_id": "tabletop-v001-b0",
+      "trials": {
+        "B0": "tabletop-v001-b0"
+      },
+      "camera_set_id": "engineering-tabletop-nearby-v1",
+      "camera_sha256": "e6d0742abf5ad1d1d2dc1ca904e34fe448df105a32c0076a8ea7534b52fea101",
+      "recipe_sha256": "85219acb442a9d32b01b2515b1ecf01aaa7e3e9a4a1c83b2793d2cd97b04ff66",
+      "geometry_fingerprint": "1cb5c968ddc442b3419bba6e18d971bf594e7daccfeb7464f967962a48c7431b",
+      "mesh_count": 14,
+      "primitive_counts": {
+        "box": 10,
+        "cylinder": 4
+      },
+      "reuse": {
+        "selection_sha256": "32f4ea2a1b0fdc09038e7413f6461aa334d15042f807895b4bca286535e4cf15",
+        "reference_run_id": "20261123T023609071040Z-9fad7aa54fc84008",
+        "readback_run_id": "20261123T025531301162Z-c7dc5d6a84dc4b29",
+        "reference_manifest_sha256": "2a0f114e09ae431ec8ab7efc1efa38ea5e7de8ff7b0125635a5f6fb1881708e4",
+        "readback_manifest_sha256": "23a02522731d7aa9d3db7ebaf43e8756d88a136607cb350d76d2db97ff87e25f",
+        "input_sha256": "2112131fdeaef49a1e675e0aa4dca2a5ab4b4593f9f976ba43587029e01a5aa6",
+        "blend_sha256": "34b0e5793948573fa7efca247c9d6aa23464f84e344dfef812c5049d92adbeb7"
+      }
+    },
+    {
+      "ordinal": 2,
+      "scene_family_id": "scene_002_book_nook",
+      "scene_id": "scene_002_book_nook/v001",
+      "scene_version": "v001",
+      "title": "Two-bay book nook",
+      "occlusion_design": "A leaning oversized volume crosses the joint between open shelf bays and masks narrow rear spines.",
+      "split": "train",
+      "cv_fold": 0,
+      "example_view": "v01",
+      "trial_id": "scene_002_book_nook-B0",
+      "trials": {
+        "B0": "scene_002_book_nook-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "1990eb99d561fed81e5faa32a7198c30e36f814bdc1a65b20c97d1d4ba47776f",
+      "geometry_fingerprint": "54ab1d54ee8302983b267e5b00c4682e617a5d835edd30a4bfb6de6036840554",
+      "mesh_count": 18,
+      "primitive_counts": {
+        "box": 18
+      }
+    },
+    {
+      "ordinal": 3,
+      "scene_family_id": "scene_003_pulley_frame",
+      "scene_id": "scene_003_pulley_frame/v001",
+      "scene_version": "v001",
+      "title": "Counterweighted pulley gantry",
+      "occlusion_design": "A front hanging bucket masks the rear cross-brace; unequal pulley wheels and cable runs sit at separate depths.",
+      "split": "train",
+      "cv_fold": 0,
+      "example_view": "v01",
+      "trial_id": "scene_003_pulley_frame-B0",
+      "trials": {
+        "B0": "scene_003_pulley_frame-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "42ed1b5c32f0b565d135a69e325a077eca81b978989b2b31669b781cc9744e52",
+      "geometry_fingerprint": "1017b48fdcf7e92ace8fcf1c1b7c56e37bee112f45f1f20df21ab420f91ed7d2",
+      "mesh_count": 27,
+      "primitive_counts": {
+        "box": 8,
+        "rod": 14,
+        "torus": 2,
+        "frustum": 3
+      }
+    },
+    {
+      "ordinal": 4,
+      "scene_family_id": "scene_004_dish_drainer",
+      "scene_id": "scene_004_dish_drainer/v001",
+      "scene_version": "v001",
+      "title": "Slotted dish drainer",
+      "occlusion_design": "Five inclined plates stand at increasing depths between side rails; their offset rims obscure one another.",
+      "split": "train",
+      "cv_fold": 0,
+      "example_view": "v01",
+      "trial_id": "scene_004_dish_drainer-B0",
+      "trials": {
+        "B0": "scene_004_dish_drainer-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "67b8ee6adebb11c5cb64b0c6bd591af42cf9a58acc2fb03183bd0447f47a2b0d",
+      "geometry_fingerprint": "fe36094e08c38bc7a5d1fa0af6a173d660b29859429192d114c481d928d346a7",
+      "mesh_count": 19,
+      "primitive_counts": {
+        "box": 3,
+        "rod": 10,
+        "frustum": 6
+      }
+    },
+    {
+      "ordinal": 5,
+      "scene_family_id": "scene_005_stair_landing",
+      "scene_id": "scene_005_stair_landing/v001",
+      "scene_version": "v001",
+      "title": "Open stair and landing",
+      "occlusion_design": "Steps rise away from a side rail. Uprights and the open side of the top landing reveal distinct treads as the camera moves.",
+      "split": "train",
+      "cv_fold": 1,
+      "example_view": "v01",
+      "trial_id": "scene_005_stair_landing-B0",
+      "trials": {
+        "B0": "scene_005_stair_landing-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "688af7d9d0497a4cdeb5b690d1478a5c7bcbabd299b96674139f225c2ab2bcbc",
+      "geometry_fingerprint": "339872d4136792c66d9ee23b1a4d01bc58dfe881797cfa606f2c988aab2b18af",
+      "mesh_count": 19,
+      "primitive_counts": {
+        "box": 14,
+        "rod": 5
+      }
+    },
+    {
+      "ordinal": 6,
+      "scene_family_id": "scene_006_fruit_crate",
+      "scene_id": "scene_006_fruit_crate/v001",
+      "scene_version": "v001",
+      "title": "Slatted fruit crate",
+      "occlusion_design": "Gaps between stacked front slats reveal irregular groups of round produce behind the same foreground fence.",
+      "split": "train",
+      "cv_fold": 1,
+      "example_view": "v01",
+      "trial_id": "scene_006_fruit_crate-B0",
+      "trials": {
+        "B0": "scene_006_fruit_crate-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "d10af92a1b4383c4d84951b2439991f6b4c0104c3260374bee0b533965972831",
+      "geometry_fingerprint": "0ee5200dcdeff639520d61d55e093b1348bfe6723829d6270958ec6b1a935393",
+      "mesh_count": 26,
+      "primitive_counts": {
+        "box": 19,
+        "ellipsoid": 7
+      }
+    },
+    {
+      "ordinal": 7,
+      "scene_family_id": "scene_007_surveyor_tripod",
+      "scene_id": "scene_007_surveyor_tripod/v001",
+      "scene_version": "v001",
+      "title": "Surveyor's tripod",
+      "occlusion_design": "Three splayed legs converge on an instrument deck. The instrument and legs occlude a separate ruled target behind the open base.",
+      "split": "train",
+      "cv_fold": 1,
+      "example_view": "v01",
+      "trial_id": "scene_007_surveyor_tripod-B0",
+      "trials": {
+        "B0": "scene_007_surveyor_tripod-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "b778e13ba3f61cd501b57d8bf458e89a03091f05b25040bac726e6cfeffe6b2d",
+      "geometry_fingerprint": "9501ca2685344d6de948c33568704fb86ab3e03f9b0ad0f435ab9a9e7dec530f",
+      "mesh_count": 16,
+      "primitive_counts": {
+        "box": 10,
+        "rod": 4,
+        "frustum": 1,
+        "torus": 1
+      }
+    },
+    {
+      "ordinal": 8,
+      "scene_family_id": "scene_008_bench_vise",
+      "scene_id": "scene_008_bench_vise/v001",
+      "scene_version": "v001",
+      "title": "Bench vise and workpiece",
+      "occlusion_design": "A sliding jaw, a fixed jaw and a steel-colored screw surround a tall clamped workpiece; the cross handle passes in front.",
+      "split": "train",
+      "cv_fold": 1,
+      "example_view": "v01",
+      "trial_id": "scene_008_bench_vise-B0",
+      "trials": {
+        "B0": "scene_008_bench_vise-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "f3634337dc1918bfedba3f7b8b8c8785da4163eeb3748c1929a7c125d271272a",
+      "geometry_fingerprint": "bd28e176f4eb51afc5ebacb570d91e2a8fd844862e342cb46944e1deac5b0ba0",
+      "mesh_count": 11,
+      "primitive_counts": {
+        "box": 8,
+        "rod": 2,
+        "frustum": 1
+      }
+    },
+    {
+      "ordinal": 9,
+      "scene_family_id": "scene_009_pipe_manifold",
+      "scene_id": "scene_009_pipe_manifold/v001",
+      "scene_version": "v001",
+      "title": "Stepped pipe manifold",
+      "occlusion_design": "A pipe rises and crosses a rear valve bank before dropping into a lower return. Flange rims and handwheel overlap at different depths.",
+      "split": "train",
+      "cv_fold": 2,
+      "example_view": "v01",
+      "trial_id": "scene_009_pipe_manifold-B0",
+      "trials": {
+        "B0": "scene_009_pipe_manifold-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "67f7eeefb4be0720776d93f09d4dd5bb83c09ccfccf1a56665795ccac9d8eb27",
+      "geometry_fingerprint": "834da80311fac6b0b48c23437684e1a6711fa34b81f55ce5e179e121cdc86a04",
+      "mesh_count": 23,
+      "primitive_counts": {
+        "box": 4,
+        "rod": 11,
+        "ellipsoid": 4,
+        "frustum": 3,
+        "torus": 1
+      }
+    },
+    {
+      "ordinal": 10,
+      "scene_family_id": "scene_010_open_drawers",
+      "scene_id": "scene_010_open_drawers/v001",
+      "scene_version": "v001",
+      "title": "Partly opened drawer stack",
+      "occlusion_design": "Three drawer fronts sit at unequal depths. An open middle drawer exposes an interior void and masks the lower drawer.",
+      "split": "train",
+      "cv_fold": 2,
+      "example_view": "v01",
+      "trial_id": "scene_010_open_drawers-B0",
+      "trials": {
+        "B0": "scene_010_open_drawers-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "d5171eca8f9c79d00884a1c3b613bddbe4b0e42f194d6c94cb1e2035a78cfa88",
+      "geometry_fingerprint": "4e6e847ea2296e38b876809cd26ea7e44530c042b3ba9bc1ddcf2f97dde1934c",
+      "mesh_count": 22,
+      "primitive_counts": {
+        "box": 18,
+        "rod": 3,
+        "ellipsoid": 1
+      }
+    },
+    {
+      "ordinal": 11,
+      "scene_family_id": "scene_011_counting_frame",
+      "scene_id": "scene_011_counting_frame/v001",
+      "scene_version": "v001",
+      "title": "Counting frame with sliding beads",
+      "occlusion_design": "Four rods carry different bead groups in an open frame; a crosswise pointer sits in front of the lower rows.",
+      "split": "train",
+      "cv_fold": 2,
+      "example_view": "v01",
+      "trial_id": "scene_011_counting_frame-B0",
+      "trials": {
+        "B0": "scene_011_counting_frame-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "916c5190177e9253acf56324c188d66bbc26f6ffecd55dadb730d4eac21866d2",
+      "geometry_fingerprint": "2c3ef1564a6352a0e16d495a5a3d08f80d23b800678d2b40ddc5163cf915111b",
+      "mesh_count": 27,
+      "primitive_counts": {
+        "box": 6,
+        "rod": 5,
+        "ellipsoid": 16
+      }
+    },
+    {
+      "ordinal": 12,
+      "scene_family_id": "scene_012_plant_stand",
+      "scene_id": "scene_012_plant_stand/v001",
+      "scene_version": "v001",
+      "title": "Tiered propagating stand",
+      "occlusion_design": "Plants at different heights break up the contour of two open shelves; sets of ellipsoidal leaves overlap pot rims and stems.",
+      "split": "train",
+      "cv_fold": 2,
+      "example_view": "v01",
+      "trial_id": "scene_012_plant_stand-B0",
+      "trials": {
+        "B0": "scene_012_plant_stand-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "62548acbdd50095a9ea09c648b665d484845b60fd841785b576fe6cf33e70084",
+      "geometry_fingerprint": "b14dcce7bd5524bab3cff1ddb1dc8742c0a1d670c36b12c400abb5af6e091e21",
+      "mesh_count": 21,
+      "primitive_counts": {
+        "box": 6,
+        "frustum": 3,
+        "rod": 3,
+        "ellipsoid": 9
+      }
+    },
+    {
+      "ordinal": 13,
+      "scene_family_id": "scene_013_awning_kiosk",
+      "scene_id": "scene_013_awning_kiosk/v001",
+      "scene_version": "v001",
+      "title": "Striped awning kiosk",
+      "occlusion_design": "A sloping segmented roof overhangs a front counter. Recessed display shelves and stacked packages can be seen through the opening.",
+      "split": "train",
+      "cv_fold": 3,
+      "example_view": "v01",
+      "trial_id": "scene_013_awning_kiosk-B0",
+      "trials": {
+        "B0": "scene_013_awning_kiosk-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "433b3a126db1e0b290636c5345bb7afc8e59757096554ec5da53232d838422dc",
+      "geometry_fingerprint": "55352cc1bddd5de580be947d633d36a4351c9dbcaa8ff4ab289c5650db5c0d35",
+      "mesh_count": 18,
+      "primitive_counts": {
+        "box": 16,
+        "rod": 2
+      }
+    },
+    {
+      "ordinal": 14,
+      "scene_family_id": "scene_014_slide_ladder",
+      "scene_id": "scene_014_slide_ladder/v001",
+      "scene_version": "v001",
+      "title": "Ladder and playground slide",
+      "occlusion_design": "A high platform connects a sloping chute in front to an open ladder behind. The chute partially hides the platform supports.",
+      "split": "train",
+      "cv_fold": 3,
+      "example_view": "v01",
+      "trial_id": "scene_014_slide_ladder-B0",
+      "trials": {
+        "B0": "scene_014_slide_ladder-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "2bceb36620c95057c79371013ba8b7ed801112e87ace3ec3d933e3c570e31da7",
+      "geometry_fingerprint": "a3dc70135bfbf2e183fe2cb381f483cd5c27eb0a84fb328cec518bdcd5cb0e93",
+      "mesh_count": 14,
+      "primitive_counts": {
+        "box": 4,
+        "rod": 10
+      }
+    },
+    {
+      "ordinal": 15,
+      "scene_family_id": "scene_015_jointed_lamp",
+      "scene_id": "scene_015_jointed_lamp/v001",
+      "scene_version": "v001",
+      "title": "Articulated drafting lamp",
+      "occlusion_design": "The lamp's folded arms and overhanging conical shade cross a tilted drawing board and its narrow front ledge.",
+      "split": "train",
+      "cv_fold": 3,
+      "example_view": "v01",
+      "trial_id": "scene_015_jointed_lamp-B0",
+      "trials": {
+        "B0": "scene_015_jointed_lamp-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "d4a1d039ff72d6e038e7e3fbbf31d201f2663e8042922e8a559b84b72c616197",
+      "geometry_fingerprint": "b55a28df6d769db26e5c82738c7e13beda43eb3f6cfa3fba529b42eb81a78e6b",
+      "mesh_count": 13,
+      "primitive_counts": {
+        "box": 5,
+        "frustum": 5,
+        "rod": 3
+      }
+    },
+    {
+      "ordinal": 16,
+      "scene_family_id": "scene_016_weaving_loom",
+      "scene_id": "scene_016_weaving_loom/v001",
+      "scene_version": "v001",
+      "title": "Partly woven hand loom",
+      "occlusion_design": "A thick textile covers only the lower part of a taut warp; a diagonal shuttle crosses the otherwise open strands.",
+      "split": "train",
+      "cv_fold": 3,
+      "example_view": "v01",
+      "trial_id": "scene_016_weaving_loom-B0",
+      "trials": {
+        "B0": "scene_016_weaving_loom-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "9d1596d22d0ebb5abf742044796b934e8675e30ada146f9d90485a744235d87d",
+      "geometry_fingerprint": "310892a7aa2e3ea3acc0c1401e6d3b9a615897784e80e1f48b55bee24636fbf8",
+      "mesh_count": 25,
+      "primitive_counts": {
+        "box": 8,
+        "rod": 16,
+        "ellipsoid": 1
+      }
+    },
+    {
+      "ordinal": 17,
+      "scene_family_id": "scene_017_cycle_stand",
+      "scene_id": "scene_017_cycle_stand/v001",
+      "scene_version": "v001",
+      "title": "Bicycle in a docking stand",
+      "occlusion_design": "Two spoked wheels, a triangular frame and an oblique front docking brace cross at three depths.",
+      "split": "development",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_017_cycle_stand-B0",
+      "trials": {
+        "B0": "scene_017_cycle_stand-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "38085d7779842aa81e202d34403c72574596a1596930fe756517d56cd5c30214",
+      "geometry_fingerprint": "f5942d528e2237c61a5e9f4df1a4246f8c0bf954d06b59ec8c12e3c5532efaa5",
+      "mesh_count": 33,
+      "primitive_counts": {
+        "box": 2,
+        "torus": 2,
+        "frustum": 2,
+        "rod": 26,
+        "ellipsoid": 1
+      }
+    },
+    {
+      "ordinal": 18,
+      "scene_family_id": "scene_018_balance_scale",
+      "scene_id": "scene_018_balance_scale/v001",
+      "scene_version": "v001",
+      "title": "Two-pan balance scale",
+      "occlusion_design": "Suspended pans form concavities on opposite sides of the pivot. The lower, nearer pan hides part of a separate weight stack.",
+      "split": "development",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_018_balance_scale-B0",
+      "trials": {
+        "B0": "scene_018_balance_scale-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "e2afaaf58d8e986d6d200c8aad579055d5c8f2344765fc0a98994038d8f9d3ad",
+      "geometry_fingerprint": "458cbefcbac751d4c21bd631e62e9a7fd7fbbfc928e1fdd46fb1d26dff459a62",
+      "mesh_count": 16,
+      "primitive_counts": {
+        "box": 2,
+        "frustum": 7,
+        "rod": 7
+      }
+    },
+    {
+      "ordinal": 19,
+      "scene_family_id": "scene_019_corner_booth",
+      "scene_id": "scene_019_corner_booth/v001",
+      "scene_version": "v001",
+      "title": "Corner booth and pedestal table",
+      "occlusion_design": "Perpendicular seat backs meet at a corner. The offset table top and pedestal hide separate portions of the seat and a floor stool.",
+      "split": "development",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_019_corner_booth-B0",
+      "trials": {
+        "B0": "scene_019_corner_booth-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "7613a425eb85c198724ae9a82da1784ac1fdaab0b3f45dd3a3fc1a5b29e8c681",
+      "geometry_fingerprint": "f0bfcbfbabb5f3fa3695309bafa491bba5237fe8aadfd9318c1f28b093c1f05f",
+      "mesh_count": 13,
+      "primitive_counts": {
+        "box": 9,
+        "frustum": 3,
+        "rod": 1
+      }
+    },
+    {
+      "ordinal": 20,
+      "scene_family_id": "scene_020_switchback_ramp",
+      "scene_id": "scene_020_switchback_ramp/v001",
+      "scene_version": "v001",
+      "title": "Switchback display ramp",
+      "occlusion_design": "Two solid inclined runs reverse direction at a landing; their railings and central barrier overlap across the return lane.",
+      "split": "development",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_020_switchback_ramp-B0",
+      "trials": {
+        "B0": "scene_020_switchback_ramp-B0"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "1b7b8ece30eef2bf09d72d56ea295e1d82607ae36495c8721768c673279ce2e0",
+      "geometry_fingerprint": "246a872f6ee1e84f0a482bc59010547d0215eacbabdeac6c2f9acf24315d333b",
+      "mesh_count": 15,
+      "primitive_counts": {
+        "box": 7,
+        "rod": 8
+      }
+    },
+    {
+      "ordinal": 21,
+      "scene_family_id": "scene_021_drum_kit",
+      "scene_id": "scene_021_drum_kit/v001",
+      "scene_version": "v001",
+      "title": "Percussion cluster with cymbals",
+      "occlusion_design": "A large front-facing kick drum partly hides smaller raised drums; thin stands place tilted cymbals across the upper silhouettes.",
+      "split": "test",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_021_drum_kit-B0",
+      "trials": {
+        "B0": "scene_021_drum_kit-B0",
+        "R1": "scene_021_drum_kit-R1",
+        "Q1": "scene_021_drum_kit-Q1"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "da4ad4aa5324b9d07d4d623dd5a2b3f7a0ea15116d7d3d2a7b37554d2231a97d",
+      "geometry_fingerprint": "5ac57ba23c193d5c0f87fe293fd0f87acd45a92f1b03460fdc3e06540780147a",
+      "mesh_count": 17,
+      "primitive_counts": {
+        "box": 2,
+        "frustum": 10,
+        "rod": 5
+      }
+    },
+    {
+      "ordinal": 22,
+      "scene_family_id": "scene_022_picket_gate",
+      "scene_id": "scene_022_picket_gate/v001",
+      "scene_version": "v001",
+      "title": "Gate and planter",
+      "occlusion_design": "Pointed pickets and a diagonal gate brace mask a separate deep rectangular planter and its low foliage through narrow openings.",
+      "split": "test",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_022_picket_gate-B0",
+      "trials": {
+        "B0": "scene_022_picket_gate-B0",
+        "R1": "scene_022_picket_gate-R1",
+        "Q1": "scene_022_picket_gate-Q1"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "0f02aa5b8a1a553a3f42d40cab4d13bbd94e534de68cc61305d641290d02b331",
+      "geometry_fingerprint": "d2cc80380c30687ce5bc1c68f5e9f0ab3f557fdaa93914e7c48e06cb042515d9",
+      "mesh_count": 27,
+      "primitive_counts": {
+        "box": 15,
+        "frustum": 8,
+        "rod": 1,
+        "ellipsoid": 3
+      }
+    },
+    {
+      "ordinal": 23,
+      "scene_family_id": "scene_023_potters_wheel",
+      "scene_id": "scene_023_potters_wheel/v001",
+      "scene_version": "v001",
+      "title": "Potter's wheel and tool rail",
+      "occlusion_design": "The stack of tapered vessel sections sits on a broad spindle disk. Upright tools in front partially obscure a second vase on a rear shelf.",
+      "split": "test",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_023_potters_wheel-B0",
+      "trials": {
+        "B0": "scene_023_potters_wheel-B0",
+        "R1": "scene_023_potters_wheel-R1",
+        "Q1": "scene_023_potters_wheel-Q1"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "a5ba3c3f655308e303a4112943d1a64744b7c371227812718779b76611319181",
+      "geometry_fingerprint": "5fa71816b16afa317485eced2a742db9ad3f6846bb5f706dda1756009ddf058b",
+      "mesh_count": 17,
+      "primitive_counts": {
+        "box": 5,
+        "rod": 5,
+        "frustum": 6,
+        "torus": 1
+      }
+    },
+    {
+      "ordinal": 24,
+      "scene_family_id": "scene_024_orbital_mobile",
+      "scene_id": "scene_024_orbital_mobile/v001",
+      "scene_version": "v001",
+      "title": "Mechanical orbital mobile",
+      "occlusion_design": "A central sphere, tilted orbit hoops and satellites on crossed arms occlude one another inside a suspended frame.",
+      "split": "test",
+      "cv_fold": null,
+      "example_view": "v01",
+      "trial_id": "scene_024_orbital_mobile-B0",
+      "trials": {
+        "B0": "scene_024_orbital_mobile-B0",
+        "R1": "scene_024_orbital_mobile-R1",
+        "Q1": "scene_024_orbital_mobile-Q1"
+      },
+      "camera_set_id": "studio-seven-nearby-v1",
+      "camera_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+      "recipe_sha256": "4b80a2afb1da5cac3ee8d0e899088845557b421bdf2ff380e72e198eb283d88f",
+      "geometry_fingerprint": "05ba1e5469edb6e02644af729585c59e92441aa1f1973efe2fb7ca052fa5037a",
+      "mesh_count": 17,
+      "primitive_counts": {
+        "box": 3,
+        "rod": 7,
+        "ellipsoid": 5,
+        "torus": 2
+      }
+    }
+  ]
+}

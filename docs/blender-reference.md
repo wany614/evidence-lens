@@ -37,3 +37,20 @@
 两次渲染使用相同的降噪器和设置，测量改变采样种子带来的随机差异。估计降噪器的系统偏差需要独立的参照测量。
 
 通道语义、数据边界和颜色变换的依据见 [Blender 渲染通道](https://docs.blender.org/manual/en/4.5/render/layers/passes.html)、[Blender 颜色管理](https://docs.blender.org/manual/en/4.5/render/color_management.html) 和 [OpenEXR Python 接口](https://openexr.com/en/latest/python.html)。
+
+## 24 个家族的冻结与运行
+
+正式清单在 `protocol/families-v1.json`。训练集为家族 001–016，开发集为 017–020，最终测试集为 021–024。训练集预先按编号分成四组，每组四个完整家族。场景版本、相机、示例 v01 和各条件的 trial ID 随清单冻结。研究预测、条件矩阵、分母和模型选择规则见 `protocol/study-v1.json`。工程桌面场景复用当时封存的源图、.blend、相机、参考和独立复核，并核对原 trial 选择文件的 SHA-256。
+
+23 个新家族各自有按名称编写的物体组合和遮挡关系。在场景配置中可逐件检查书架、滑轮架、沥水架、抽屉、天平等布局的部件。它们共用一个米制摄影空间和同一套平移相机。固定的配置、相机和实现哈希在 `configs/formal-freeze-v1.json` 中；各家族另有剔除名称、编号和材质后的几何指纹，供检查重复布局。完整布局、.blend、参考图和几何数组仅在 Mac 评价端和研究归档使用。
+
+下列命令分别用于静态核验和生成一个正式参考。第一条只读清单、几何定义、相机和哈希。第二条只生成选中的家族，然后在另一个记录器运行中重开其冻结场景、独立核验。每一条终端执行记录可独立封存。完成后，同一命令校验并返回已记录的结果。
+
+```sh
+.venv/bin/python scripts/formal_reference.py --validate-only
+.venv/bin/python scripts/formal_reference.py --family scene_002_book_nook --store .research
+```
+
+正式生成写入独立的 `scene_render` 和 `archive_verify`，终端回执列出两个 run ID 和哈希。每个家族只有 source 一张实际输入，v01–v06 六张目标图均保留。v01 和 v02 用于相机几何检查与双种子噪声复核。正式场景按真实接收表面和首个遮挡物的 ID 分组计量露出宽度。两个开发视角各自至少有一对物体提供十像素连续水平宽度和二十四个非边缘像素。每个视角均保存原始像素数组、候选物体对总数及达到两项门槛的物体对统计。独立复核从存储数组逐行重新测量，并与第一遍统计比对。原工程场景保留指定红盒和蓝盒的遮挡验收。
+
+正式 R1 从实际源 PNG 对每个 2×2 显示 sRGB 像素块求均值，再取最近的整数 8 位码值。只有恰好位于相邻整数中间时才取偶数。旧工程场景校准用的半尺寸预览采用 half-up。它属于训练家族，该家族只登记 B0。试验数据清单和每个来源包跟踪实际输入文件及其哈希。

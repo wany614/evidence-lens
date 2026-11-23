@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 
 import bpy
 from mathutils import Vector
@@ -76,6 +77,30 @@ def visibility_inventory(data, recorded, name):
             "unresolved_with_finite_target_geometry_count": int(totals[7:].sum()),
             "unresolved_with_valid_rgb_count": int(np.count_nonzero((reasons >= 5) & rgb_valid)),
             "unresolved_by_reason": unresolved}
+
+
+def verify_disocclusion(data, settings, recorded, name, certified):
+    """Recompute each qualifying same-pair run from sorted disoccluded pixels."""
+    obj, blocker, region, edge = (data[k] for k in ("object_id", "first_source_hit_id", "visibility", "edge"))
+    ys, xs = np.nonzero((region == 2) & (obj != 0) & (blocker != 0) & (obj != blocker))
+    groups = {}
+    for y, x in zip(ys.tolist(), xs.tolist()):
+        pair = (int(obj[y, x]), int(blocker[y, x]))
+        stats = groups.setdefault(pair, [0, 0, 0, -1, -2, 0])
+        stats[0] += 1
+        stats[1] += int(not edge[y, x])
+        run = stats[5]+1 if stats[3] == y and stats[4] == x-1 else 1
+        stats[2] = max(stats[2], run)
+        stats[3:] = [y, x, run]
+    pairs = [{"receiver_id": r, "occluder_id": b, "total_pixels": n, "interior_pixels": m,
+              "max_contiguous_horizontal_width_px": width}
+             for (r,b), (n,m,width,*_) in sorted(groups.items())
+             if width >= settings["band_min_width_px"] and m >= settings["band_min_interior_pixels"]]
+    measured = {"pair_count": len(groups), "measurable_pairs": pairs, "meets_width_and_interior": bool(pairs)}
+    require(measured == recorded, f"{name} independent geometric disocclusion counts differ")
+    if certified:
+        require(bool(pairs), f"{name} lacks a measurable geometric disocclusion band")
+    return measured
 
 
 def native_camera(scene, graph, name, view, tolerance):
@@ -155,7 +180,8 @@ def verify(payload):
     manifest = read_json(payload/"reference.json")
     cameras = read_json(payload/"cameras.json")
     summary = read_json(payload/"validation"/"results.json")
-    cfg = read_json(payload/"scene"/"reference_config.json")["reference"]
+    source_config = read_json(payload/"scene"/"reference_config.json")
+    cfg = source_config["reference"]
     vcfg = cfg["validation"]
     pixel_limit = vcfg["render_pixel_tolerance_px"]
     require(np.isfinite(pixel_limit) and pixel_limit >= 0 and
@@ -167,10 +193,22 @@ def verify(payload):
     require(hash_file(payload/"validation"/"results.json") == manifest["validation_sha256"], "Validation hash mismatch")
     require(hash_file(payload/"input.png") == manifest["input_sha256"] == manifest["views"]["source"]["png_sha256"],
             "Model input bytes disagree with the primary source render")
-    blend = payload/"scene"/"scene_001_tabletop_v001.blend"
+    family = source_config["scene_family_id"]
+    require(re.fullmatch(r"scene_\d{3}_[a-z0-9_]+", family) and
+            source_config["scene_id"] == manifest["scene_id"] == family+"/v001" and
+            manifest["scene_family_id"] == family, "Frozen scene family identity disagrees")
+    blend_name = family + "_v001.blend"
+    require(manifest["scene_path"] == f"scene/{blend_name}", "Frozen scene pathname disagrees with family")
+    blend = payload/"scene"/blend_name
     require(hash_file(blend) == manifest["blend_sha256"], "Frozen Blender file hash mismatch")
     bpy.ops.wm.open_mainfile(filepath=str(blend), load_ui=False, use_scripts=False)
     scene = bpy.context.scene
+    require(scene.name == blend.stem, "Native scene name disagrees with frozen identity")
+    formal = source_config.get("formal")
+    if formal:
+        require(all(manifest[k] == source_config[k] for k in
+                    ("formal", "scene_version", "dataset_id", "dataset_hash", "split", "trial_id", "condition_id")),
+                "Formal family and dataset lineage disagree")
     graph = bpy.context.evaluated_depsgraph_get()
     names = ["source", *(f"v{i:02d}" for i in range(1, 7))]
     require(set(names) == set(manifest["views"]) == set(cameras["views"]), "View inventory mismatch")
@@ -240,6 +278,10 @@ def verify(payload):
                         "max_pixel_reprojection_error_px": max_px, "max_native_pixel_reprojection_error_px": max_native_px,
                         "render_pixel_tolerance_px": pixel_limit, "native_camera": native_calibration,
                         "visibility_inventory": inventory, "native_scene_ray_check": hits}
+        if formal:
+            checks[name]["geometric_disocclusion"] = verify_disocclusion(
+                a, vcfg, summary["view_geometry"][name]["geometric_disocclusion"], name,
+                summary["passed"] and name in cfg["camera"]["development"])
         if name in cfg["camera"]["development"]:
             with np.load(payload/"validation"/"second_seed"/f"{name}.npz", allow_pickle=False) as other:
                 per_pixel = np.abs(rgb.astype(np.float64)-other["rgb"]).mean(axis=-1)
@@ -264,13 +306,15 @@ def verify(payload):
                            "differing_pixel_count": int(np.any(code_delta != 0, axis=-1).sum()),
                            "differing_channel_count": int(np.count_nonzero(code_delta)),
                            "pixel_count": original.shape[0] * original.shape[1]}
-    half = np.floor(original.reshape(256, 2, 256, 2, 3).mean(axis=(1, 3))+0.5).astype(np.uint8)
+    box_means = original.reshape(256, 2, 256, 2, 3).mean(axis=(1, 3))
+    half = (np.rint(box_means) if formal else np.floor(box_means+0.5)).astype(np.uint8)
     require(np.array_equal(half, read_codes(payload/"validation"/"source_256.png")), "Half-size input mismatches")
     with np.load(payload/"validation"/"decoded_input.npz", allow_pickle=False) as stored:
         require(np.array_equal(original, stored["rgb_u8"]), "Stored input decode mismatches")
     require(manifest["validation_passed"] == summary["passed"] == all(summary["tests"].values()), "Acceptance mismatch")
-    return {"schema": "el-reference-readback-1", "verification_version": "1.1",
+    return {"schema": "el-reference-readback-1", "verification_version": "1.2" if formal else "1.1",
             "reference_json_sha256": hash_file(payload/"reference.json"),
+            **({"scene_family_id": family, "dataset_hash": manifest["dataset_hash"], "formal": formal} if formal else {}),
             "integrity_checked": True, "scientific_acceptance": summary["passed"],
             "source_png_readback": source_png_readback,
             "repeat_measurement": {"primary_seed": cfg["seed"], "repeat_seed": cfg["repeat_seed"],

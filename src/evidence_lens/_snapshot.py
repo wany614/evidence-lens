@@ -105,6 +105,17 @@ def bindings(specifications: list[str]) -> dict[str, str]:
 def commit_shared(source: Path, store: Path, expected: str | None = None) -> Path:
     if source.is_symlink() or not source.is_file():
         raise BundleError("shared asset must be a regular file")
+    # An already registered checkpoint is its own immutable source. Verify the
+    # bytes in place and avoid an unnecessary full-sized temporary copy.
+    try:
+        source_digest = source.resolve().relative_to((store / "assets" / "sha256").resolve()).parts
+    except ValueError:
+        source_digest = ()
+    if len(source_digest) == 2 and len(source_digest[1]) == 64 and source_digest[0] == source_digest[1][:2]:
+        digest = sha(source)
+        if digest != source_digest[1] or (expected is not None and digest != expected):
+            raise BundleError("shared object does not match its content address")
+        return source.resolve()
     pool = store / "assets" / "sha256"
     pool.mkdir(parents=True, exist_ok=True)
     incoming = pool / ("." + uuid.uuid4().hex + ".tmp")

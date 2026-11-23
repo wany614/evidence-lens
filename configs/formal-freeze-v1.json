@@ -1,0 +1,27 @@
+{
+  "catalog_path": "protocol/families-v1.json",
+  "catalog_sha256": "fb7fabef06d006c992bc38cb03c283a41d90238e0b174664a1357f274bb36baa",
+  "dataset_id": "evidence-lens-families-v1",
+  "frozen_files": {
+    "configs/formal-cameras-v1.json": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+    "configs/formal-scenes-v1.json": "82acab3ba09aed1d54f8f16f88b30552a349398aa5af3ca9e9cf25339dd66fe6",
+    "configs/p2-cpu.json": "7f6c4b2fe22d8e8c6fa643fb8b77432320b985e55d3d14dff80ca3a77b7de2de",
+    "configs/reference.json": "111c0dbb28fd53839f2824d0d1cb58ad8ef69bb68c5df130ed56d1ba56420a60",
+    "configs/storage.json": "2887ba3816934f1fc92b0abefaf2c74eaef745e7ad95f43272174fd9a48b8c60",
+    "configs/windows-b0.json": "868373a0b7b3c1f7cf0e99ed20f7eb071f049ed71a60ec1922917bed0c8f44f5",
+    "protocol/families-v1.json": "fb7fabef06d006c992bc38cb03c283a41d90238e0b174664a1357f274bb36baa",
+    "protocol/study-v1.json": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+    "scripts/formal_reference.py": "e884d05f630d0d9d21a4d5ab968dd8420ae20b1028b703665dda7ef4df753a58",
+    "src/evidence_lens/blender_reference/formal_catalog.py": "309973dbf756be607f2d1e9fbbcced4a1d190735d679e1bd2d1943e155b2c32d",
+    "src/evidence_lens/blender_reference/formal_designs.py": "154c22804e9c95087808bb614ce389616f309aaa0136f1a9f4cc6166d9199e5c",
+    "src/evidence_lens/blender_reference/passes.py": "420f20140d4061784bd02afd844a619c827417dd1d7b960d85451955d8d050cc",
+    "src/evidence_lens/blender_reference/produce.py": "ddadefb0848ff8069d753567607600888c3e5873de98dd21d7264281c8a3644d",
+    "src/evidence_lens/blender_reference/scene.py": "a0fe55000c0c1b903a8825b93a91496f359a634416679a835ac53fa189f882bc",
+    "src/evidence_lens/blender_reference/validation.py": "0fac806f84749e76e782d72c25fbf57c8728b1edea495214d7430331358e2d02",
+    "src/evidence_lens/blender_reference/verify_reference.py": "9cafd44db9df881c0e387a6cb2d9d060f6ec02f022bcbfa9a08704196b281a7e"
+  },
+  "preregistration_path": "protocol/study-v1.json",
+  "preregistration_sha256": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+  "registered_at_utc": "2026-11-23T03:32:48.845640Z",
+  "schema": "el-formal-freeze-1"
+}

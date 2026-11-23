@@ -4,6 +4,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+import re
 import shutil
 import sys
 import time
@@ -17,7 +18,7 @@ from PIL import __version__ as pillow_version
 CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from passes import REASONS, display_srgb, geometry_passes, png_codes, png_pixels, read_passes, save_png, sha256, write_json
-from scene import build_world, camera_record, evaluated_bvh, ocio_config_path, render_settings, validate_camera
+from scene import build_world, camera_bundle, camera_record, evaluated_bvh, ocio_config_path, render_settings, validate_camera
 from validation import calibration_fixture, render, seed_comparison, source_resize
 
 
@@ -58,6 +59,11 @@ def validate_config(config):
         raise ValueError("Scene objects require distinct positive uint16 IDs")
     if cfg["color"] != {"display": "sRGB", "view": "Standard", "look": "None", "exposure": 0, "gamma": 1}:
         raise ValueError("This release implements Standard with sRGB display, no Look, exposure 0 and gamma 1")
+    if "formal" in config:
+        family = config["scene_family_id"]
+        if (not re.fullmatch(r"scene_\d{3}_[a-z0-9_]+", family) or config["scene_id"] != family+"/v001" or
+                cfg.get("scene_name") != family+"_v001" or cfg["validation"].get("occlusion_profile") != "opaque_mesh_pairs"):
+            raise ValueError("Formal family identity and frozen scene settings disagree")
     return cfg
 
 
@@ -76,7 +82,10 @@ def produce(config_path, out):
     logs = Events(out/"reference_events.jsonl")
     for name in ["produce.py", "passes.py", "scene.py", "validation.py"]:
         shutil.copyfile(CODE/name, frozen/name)
-    write_json(frozen/"reference_config.json", {k: config[k] for k in ("scene_id", "scene_family_id", "reference")})
+    fields = ["scene_id", "scene_family_id", "reference"]
+    if "formal" in config:
+        fields += ["formal", "scene_version", "dataset_id", "dataset_hash", "split", "trial_id", "condition_id"]
+    write_json(frozen/"reference_config.json", {k: config[k] for k in fields})
     with logs.record("render_calibration_fixture"):
         fixture = calibration_fixture(cfg, validation)
         write_json(validation/"calibration.json", fixture)
@@ -90,20 +99,19 @@ def produce(config_path, out):
         actual_settings["openexr_python_version"] = OpenEXR.__version__
         actual_settings["pillow_version"] = pillow_version
         write_json(frozen/"runtime.json", actual_settings)
-        views = {v: camera_record(scene, camera, "input" if v == "source" else
-                                  "development" if v in cfg["camera"]["development"] else "nearby_held_out")
+        views = {v: camera_record(scene, camera, "input" if v == "source" else "research_target" if "formal" in config
+                                  else "development" if v in cfg["camera"]["development"] else "nearby_held_out")
                  for v, camera in cameras.items()}
-        write_json(out/"cameras.json", {"schema": "el-camera-1", "unit": "m", "pixel_center": "integer",
-                   "axis_convention": "OpenCV x right, y down, z forward", "world_axes": "Blender right-handed Z up",
-                   "image_origin": "top_left", "K_edge_convention": "pixel (u,v) centre (u+0.5,v+0.5)",
-                   "views": views})
+        write_json(out/"cameras.json", camera_bundle(views))
+        if "formal" in config and sha256(out/"cameras.json") != config["camera_set_hash"]:
+            raise ValueError("Rendered camera definitions differ from the pre-acquisition camera package")
         points = [spec["center"] for spec in cfg["objects"]]
         projections = {v: validate_camera(scene, camera, views[v], points) for v, camera in cameras.items()}
         for name, v in views.items():
             projections[name]["translation_from_source_m"] = float(np.linalg.norm(
                 np.asarray(v["c2w"])[:3, 3] - np.asarray(views["source"]["c2w"])[:3, 3]))
         bvh = evaluated_bvh(scene)
-        blend_path = frozen/"scene_001_tabletop_v001.blend"
+        blend_path = frozen/(scene.name+".blend")
         bpy.ops.wm.save_as_mainfile(filepath=str(blend_path), compress=True, copy=True, relative_remap=False)
         frozen_hash = sha256(blend_path)
         # Rendering changes the active camera, seed and output path only in this in-memory scene copy.
@@ -130,6 +138,9 @@ def produce(config_path, out):
                     "edge": "H,W bool four-neighbour ID, surface or visibility boundary, square dilation"
                 }, "ray_algorithm": "Blender BVHTree.FromPolygons from evaluated opaque world-space loop triangles",
                 "ray_triangle_count": int(len(bvh[1])), "primary_seed": cfg["seed"], "repeat_seed": cfg["repeat_seed"]}
+    if "formal" in config:
+        versions.update({k: config[k] for k in ("formal", "scene_version", "dataset_id", "dataset_hash", "split", "trial_id", "condition_id")})
+    geometry_key = "geometric_disocclusion" if "formal" in config else "known_occlusion_pair"
     for name in ["source", *(f"v{i:02d}" for i in range(1, 7))]:
         work.camera = cameras[name]
         work.cycles.seed = cfg["seed"]
@@ -144,9 +155,10 @@ def produce(config_path, out):
             if not np.isfinite(rgb).all() or not np.isfinite(linear).all():
                 raise ValueError(f"Invalid combined RGB for {name}")
             geometry, info = geometry_passes(pos, obj, views[name], views["source"], bvh, tol)
-            info["known_occlusion_pair"]["meets_width_and_interior"] = (
-                info["known_occlusion_pair"]["max_contiguous_horizontal_width_px"] >= tol["band_min_width_px"]
-                and info["known_occlusion_pair"]["interior_pixels"] >= tol["band_min_interior_pixels"])
+            if geometry_key == "known_occlusion_pair":
+                info[geometry_key]["meets_width_and_interior"] = (
+                    info[geometry_key]["max_contiguous_horizontal_width_px"] >= tol["band_min_width_px"]
+                    and info[geometry_key]["interior_pixels"] >= tol["band_min_interior_pixels"])
             result = reference/f"{name}.npz"
             np.savez_compressed(result, rgb=rgb, **geometry)
             save_png(png, rgb)
@@ -162,7 +174,7 @@ def produce(config_path, out):
                     png_pixels(source_native).astype(int) - png_pixels(input_path))))
                 summary["source_png_vs_fp32_max_abs_error"] = float(np.max(np.abs(
                     png_pixels(input_path).astype(np.float64)/255 - rgb)))
-                summary["resize"] = source_resize(views["source"], input_path, validation, points)
+                summary["resize"] = source_resize(views["source"], input_path, validation, points, cfg.get("resize_rounding") == "nearest_even")
             if name in cfg["camera"]["development"]:
                 primary[name] = rgb
     for name in cfg["camera"]["development"]:
@@ -189,7 +201,7 @@ def produce(config_path, out):
             g["max_reprojection_px"] <= tol["render_pixel_tolerance_px"] for g in geo.values()),
         "source_geometry_observed": source_geo["surface_pixels"] > 0 and
             source_geo["visibility_counts"][1]/max(1, source_geo["surface_pixels"]) >= tol["source_min_observed_fraction"],
-        "measurable_development_occlusion": all(geo[v]["known_occlusion_pair"]["meets_width_and_interior"]
+        "measurable_development_occlusion": all(geo[v][geometry_key]["meets_width_and_interior"]
             for v in cfg["camera"]["development"]),
         "native_source_display": summary["source_png_vs_blender_max_code_error"] <= tol["display_tolerance_code_values"],
         "input_bytes_preserved": versions["input_sha256"] == versions["views"]["source"]["png_sha256"],

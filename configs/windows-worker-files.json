@@ -6,6 +6,7 @@
     "configs/windows-b0.json",
     "configs/storage.json",
     "scripts/windows_stage.py",
+    "scripts/worker_jobs.py",
     "scripts/windows_environment.py",
     "src/evidence_lens/__init__.py",
     "src/evidence_lens/_bundle.py",

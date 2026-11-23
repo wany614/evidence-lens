@@ -1,0 +1,9 @@
+# Tested on macOS arm64 with CPython 3.12.16 for the first family-split study.
+numpy==2.5.5
+Pillow==12.3.0
+scikit-learn==1.9.1
+scipy==1.18.1
+pyarrow==26.0.1
+psutil==7.2.2
+threadpoolctl==3.8.0
+matplotlib==3.11.2

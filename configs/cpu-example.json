@@ -1,0 +1,11 @@
+{
+  "protocol_version": "1.0",
+  "adapter_version": "evidence-lens-textured-plane-1",
+  "scene_family_id": "scene_001_tabletop",
+  "scene_id": "scene_001_tabletop/v001",
+  "condition_id": "plane-example",
+  "purpose": "Original single-image CPU example for release grading",
+  "plane_z_m": 2.0,
+  "resolution_stride": 4,
+  "recording": {"expected_output_bytes": 2000000}
+}
