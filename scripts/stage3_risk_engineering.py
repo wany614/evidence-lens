@@ -17,6 +17,10 @@ SCOPES = {
         "stage3-neural-tensor-comparison",
         "The independent validator expected a particular JSON key order for the equivalent M2 score-two and score-all entries. The corrected validator checked the same original tensors and score arrays.",
     ),
+    "heldout_intake_capacity": (
+        "stage3-postreview-input-readback",
+        "Before the first held-out batch audit launched its worker, its recorder capacity scan encountered an inactive directory moving to the verified cold shelf. Repeating the byte-identical configuration completed the original acquisition readback.",
+    ),
     "public_case_export": (
         "stage3-public-case",
         "The first public case export named a reference control member outside the parent's payload inventory. The corrected export bound the original control-file hashes to the full signed manifest.",
@@ -58,8 +62,22 @@ def observations(roots, request):
             and success.run["experiment_id"] == experiment,
             "engineering recovery attaches to a different task",
         )
+        repeat_evidence = {}
+        if key == "heldout_intake_capacity":
+            config_sha = file_hash(regular(f, "config.resolved.yaml"))
+            audit = load(p)
+            require(
+                config_sha == file_hash(regular(success.root, "config.resolved.yaml"))
+                and failed["worker_exit_code"] is None
+                and audit["passed"] is True
+                and audit["batch"] == "v11-c-joint-test01"
+                and audit["batch_sha256"] == load(regular(f, "config.resolved.yaml"))["batch_sha256"],
+                "held-out readback did not repeat the original batch/configuration",
+            )
+            repeat_evidence = {"same_resolved_config_sha256": config_sha, "batch_sha256": audit["batch_sha256"]}
         rows.append(
             {
+                **repeat_evidence,
                 "scope": key,
                 "status": "failed",
                 "source": orig,
