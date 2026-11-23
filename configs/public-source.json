@@ -60,6 +60,7 @@
     "configs/stage2-reference-freeze-v1.json": "apache-original",
     "configs/storage.json": "apache-original",
     "configs/vision-base-v1.json": "apache-original",
+    "configs/vision-public-control-v1.json": "apache-original",
     "configs/windows-b0.json": "apache-original",
     "configs/windows-worker-files.json": "apache-original",
     "docs/blender-reference.md": "cc-original",

@@ -1,0 +1,22 @@
+{
+  "schema": "el-public-native-plane-control-1",
+  "experiment_id": "vision-public-native-control",
+  "trial_id": "development-037-plane-512",
+  "scene_family_id": "scene_037_bottle_carrier",
+  "scene_id": "scene_037_bottle_carrier/v001",
+  "split": "development",
+  "condition_id": "public-plane",
+  "role": "Independently reproducible CPU deployment and error-measurement control, outside the registered 40 SHARP conditions and model-selection data.",
+  "case_rule": "First newly registered development family, all six targets in camera order, show v01.",
+  "reference_run_id": "20261123T124705616092Z-5739968b93d64b4d",
+  "reference_manifest_sha256": "cc17f2eb753176cafac3afa3299d2fa8c427e0218d23fdc2698c3c081e4c0e53",
+  "source_rgb_sha256": "1c689d3ef4f82729082b54d148e23d7e298f4cdae2fc6ac21bcff71aacd6bbe4",
+  "source_cameras_sha256": "5e9c1ee9a1a083e50a71be7002558d40129e4f165b5725d05c859a9bf0a32eaa",
+  "adapter": "evidence-lens-textured-plane-1",
+  "adapter_sha256": "a430ce7d102b5eda58e812d532150853ac5238ea5ba0c9a3d37a297fc50cb241",
+  "plane_z_m": 2.0,
+  "resolution_stride": 1,
+  "input_roles": ["observed source RGB", "calibrated cameras"],
+  "reference_role": "Separate evaluation of RGB and auxiliary depth.",
+  "recording": {"expected_output_bytes": 50000000}
+}

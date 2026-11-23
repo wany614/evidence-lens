@@ -1,12 +1,52 @@
 """Measure the released neural scorer on six native views of the first registered new development family."""
 import argparse
 import json
-import os
+import subprocess
 import sys
+import time
+import zipfile
 from pathlib import Path
 
-from evidence_lens._bundle import load, sha
+from evidence_lens._bundle import load, save, sha
 from evidence_lens.formal_inputs import PinnedRun, require
+
+
+def monitor_process(interpreter, entry, arguments):
+    """Observe the actual scorer process including interpreter and library startup."""
+    import psutil
+
+    out = Path(arguments[arguments.index("--output") + 1])
+    first = out / "cold/v01.npz"
+    require(not first.exists(), "native timing requires a fresh output directory")
+    interval, peak, first_seconds = 0.01, 0, None
+    started = time.perf_counter()
+    # Isolated mode ignores PYTHONDONTWRITEBYTECODE. Preserve the sealed package on import.
+    with subprocess.Popen([interpreter, "-I", "-B", str(entry), *arguments]) as proc:
+        child = psutil.Process(proc.pid)
+        while proc.poll() is None:
+            try:
+                tree = [child, *child.children(recursive=True)]
+                peak = max(peak, sum(p.memory_info().rss for p in tree))
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                pass
+            if first_seconds is None and first.is_file() and zipfile.is_zipfile(first):
+                first_seconds = time.perf_counter() - started
+            time.sleep(interval)
+        if proc.returncode:
+            raise subprocess.CalledProcessError(proc.returncode, proc.args)
+    require(first_seconds is not None and peak > 0, "first complete native output or process RSS was not observed")
+    report = out / "native-cost.json"
+    runtime = load(report)
+    first_sha = sha(first)
+    require(runtime["views"][0]["output_sha256"] == first_sha, "observed a different first output")
+    save(out / "process-cost.json", {
+        "schema": "el-vision-external-process-cost-1", "model_id": runtime["model_id"],
+        "model_sha256": runtime["model_sha256"], "runtime_report_sha256": sha(report),
+        "first_output_sha256": first_sha, "launch_to_first_complete_npz_seconds": first_seconds,
+        "process_tree_peak_rss_bytes": peak, "sample_interval_seconds": interval,
+        "boundary": "Parent clock before process creation to first observation of a complete cold/v01 NPZ. "
+                    "RSS is sampled from the launched scorer and its descendants, including during torch import.",
+    })
 
 
 def record(args):
@@ -74,8 +114,8 @@ if __name__ == "__main__":
         interpreter, package_dir, runner_sha = sys.argv[2:5]
         entry = Path(package_dir) / "score-native.py"
         require(sha(entry) == runner_sha, "portable inference entry differs from its scientific seal")
-        # Isolated mode ignores PYTHONDONTWRITEBYTECODE. Preserve the sealed package on import.
-        os.execv(interpreter, [interpreter, "-I", "-B", str(entry), *sys.argv[5:]])
+        monitor_process(interpreter, entry, sys.argv[5:])
+        raise SystemExit(0)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", type=Path, default=Path.cwd())
     parser.add_argument("--store", type=Path, required=True)
