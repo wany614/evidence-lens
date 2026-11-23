@@ -40,7 +40,7 @@ def stage(ctx, role, kind, parents, inputs, command, camera_sha, retry=None, int
         for directory in ("runs", "work"):
             for p in sorted((store / directory).glob("*/run.json")):
                 meta = load(p)
-                if (meta["experiment_id"], meta["trial_id"], meta["run_kind"]) != (QUALITY, trial, kind):
+                if (meta["experiment_id"], meta["trial_id"], meta["run_kind"]) != (ctx.get("quality_experiment", QUALITY), trial, kind):
                     continue
                 previous = load(p.parent / "config.resolved.yaml")
                 if previous.get("condition_stage_role") != role:
@@ -62,7 +62,9 @@ def stage(ctx, role, kind, parents, inputs, command, camera_sha, retry=None, int
             cfg = Path(tmp) / "stage.json"
             save(cfg, config)
             cmd = [sys.executable, "-m", "evidence_lens.recorder", "--root", str(store), "--source-root", str(ROOT), "--config", str(cfg),
-                   "--experiment", QUALITY, "--trial", trial, "--kind", kind, "--input", f'method-freeze={ctx["method_file"]}']
+                   "--experiment", ctx.get("quality_experiment", QUALITY), "--trial", trial, "--kind", kind, "--input", f'method-freeze={ctx["method_file"]}']
+            if "opening_path" in ctx:
+                cmd.extend(["--input", "stage2-opening=" + str(ctx["opening_path"])])
             for rid in parent_ids:
                 cmd.extend(["--parent", rid + "=" + ctx["verified"].get(rid)["manifest_sha256"]])
             for name, (path, owner) in inputs.items():
@@ -109,7 +111,7 @@ def condition_chain(ctx, args):
            "producer":args.producer_run,"render":args.render_run}
     source_id = prep if cond == "R1" else ref
     require(dispatch["job"]["source"] == run_pin(ctx["verified"].get(source_id)) and dispatch["job"]["baseline_generation"] == run_pin(ctx["verified"].get(bgen))
-            and dispatch["job"]["experiment_id"] == QUALITY and dispatch["job"]["timing_repeat"] is None and
+            and dispatch["job"]["experiment_id"] == ctx.get("quality_experiment", QUALITY) and dispatch["job"]["timing_repeat"] is None and
             dispatch["job"]["b0_selection_sha256"] == ctx["b0_selection_sha256"] and dispatch["job"]["method_freeze_sha256"] == ctx["release"]["method_freeze_sha256"],
             "held-out render requires this condition's actual quality dispatch")
     validate_windows(ctx, ids, dispatch)

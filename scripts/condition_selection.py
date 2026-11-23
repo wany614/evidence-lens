@@ -40,7 +40,7 @@ def accepted_local(ctx, rid, kind, role, parents, dispatch):
     checked = ctx["verified"].get(rid, kind)
     meta = checked["run"]
     cfg = load(ctx["store"] / "runs" / rid / "config.resolved.yaml")
-    require(meta["condition_id"] == ctx["condition"] and meta["trial_id"] == ctx["quality_trial"] and meta["experiment_id"] == QUALITY
+    require(meta["condition_id"] == ctx["condition"] and meta["trial_id"] == ctx["quality_trial"] and meta["experiment_id"] == ctx.get("quality_experiment", QUALITY)
             and set(meta["parent_run_ids"]) == set(parents) and all(meta[k] == ctx["family"][k] for k in ("scene_id","scene_family_id","dataset_id","dataset_hash","split"))
             and cfg["condition_stage_role"] == role and cfg["formal_handoff_sha256"] == dispatch["handoff_sha256"] and
             cfg["method_freeze_sha256"] == ctx["release"]["method_freeze_sha256"] and cfg["b0_selection_sha256"] == ctx["b0_selection_sha256"],
@@ -48,6 +48,9 @@ def accepted_local(ctx, rid, kind, role, parents, dispatch):
     gate_inputs = [obj for entry in checked["inputs"]["inputs"] if entry["role"] == "method-freeze" for obj in entry["files"]]
     require(len(gate_inputs) == 1 and gate_inputs[0]["sha256"] == ctx["release"]["method_freeze_sha256"],
             "condition stage did not freeze the exact method release file")
+    if "opening_evidence" in ctx:
+        opening = [f["sha256"] for inp in checked["inputs"]["inputs"] if inp["role"] == "stage2-opening" for f in inp["files"]]
+        require(opening == [ctx["opening_evidence"]["opening_sha256"]], "Stage-two opening was not recorded")
     return checked
 
 
@@ -60,7 +63,7 @@ def validate_windows(ctx, ids, dispatch):
     for checked in (gen, rendered):
         rec = checked["run"]
         cfg = load(ctx["store"] / "runs" / rec["run_id"] / "config.resolved.yaml")
-        require(rec["experiment_id"] == QUALITY and rec["trial_id"] == ctx["quality_trial"] and rec["condition_id"] == condition and
+        require(rec["experiment_id"] == ctx.get("quality_experiment", QUALITY) and rec["trial_id"] == ctx["quality_trial"] and rec["condition_id"] == condition and
                 all(rec[k] == job["identity"][k] for k in ("scene_id","scene_family_id","scene_hash","dataset_id","dataset_hash","split","camera_set_hash")) and
                 cfg["timing_repeat"] is None and cfg["formal_handoff_sha256"] == dispatch["handoff_sha256"] and cfg["worker_source_sha256"] == job["worker_source_sha256"],
                 "Windows stage is a different condition dispatch or timing repeat")
@@ -263,13 +266,15 @@ def select(ctx, ids, owner, dispatch):
             rids = []
             for path_ in sorted((store / "runs").glob("*/run.json")):
                 r = load(path_)
-                if r["trial_id"] == trial and r["experiment_id"] == QUALITY:
+                if r["trial_id"] == trial and r["experiment_id"] == ctx.get("quality_experiment", QUALITY):
                     rids.append(r["run_id"])
         attempts = [ctx["verified"].get(rid)["run"] for rid in rids]
         terminal = first_chain(ctx, ids, attempts)
         evidence = products(ctx, ids, owner)
         if ctx["condition"] == "Q1":
             evidence["q1_field_check"] = q1_fields(ctx, ids)
+            if "q1_render_response" in ctx:
+                evidence["q1_render_response"] = ctx["q1_render_response"](ctx, ids)
         else:
             evidence["r1_focal_scaling"] = r1_focal_scaling(ctx, ids)
         def pin_asset(rid, name):
@@ -280,10 +285,12 @@ def select(ctx, ids, owner, dispatch):
                       "manifest_sha256":ctx["verified"].get(r["run_id"])["manifest_sha256"]} for r in attempts]
         out = {"schema":"el-condition-selection-1", "selection_status":"selected", "rule_version":"el-condition-first-scientific-1",
                "frozen_at_utc":old["frozen_at_utc"] if old else utc(), "selection_reason":"First completed scientific chain in recorded start, completion and run-ID order. All six targets, measured calibration and independent v01 recomputation verified.",
-               "trial_id":trial, "experiment_id":QUALITY, "condition_id":ctx["condition"], **{k:ctx["family"][k] for k in ("scene_id","scene_family_id","dataset_id","dataset_hash","split")},
+               "trial_id":trial, "experiment_id":ctx.get("quality_experiment", QUALITY), "condition_id":ctx["condition"], **{k:ctx["family"][k] for k in ("scene_id","scene_family_id","dataset_id","dataset_hash","split")},
                "selected":selected,"attempts":inventory,"terminal_dispositions":terminal,"method_freeze_sha256":ctx["release"]["method_freeze_sha256"],
                "b0_selection_sha256":ctx["b0_selection_sha256"],"handoff_sha256":dispatch["handoff_sha256"],"evidence":evidence,
                "sources":{k:pin_asset(owner,n) for k,n in (("input_png","input.png"),("cameras","cameras.json"),("reference_metadata","reference.json"))}}
+        if "opening_evidence" in ctx:
+            out["opening"] = ctx["opening_evidence"]
         if old:
             require(all(r in receipts[rid] for rid, rows in old["transfer_receipts"].items() for r in rows), "preserved condition transfer receipt differs")
             out["transfer_receipts"] = old["transfer_receipts"]

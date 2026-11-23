@@ -17,13 +17,25 @@ from worker_jobs import dispatch, frozen_json
 def read_job(base):
     job = load(base / "handoff.json")
     cond, identity = job["condition"], job["identity"]
-    require(job["schema"] == "el-condition-handoff-1" and cond in {"R1", "Q1", "B0"} and
+    require(job["schema"] in {"el-condition-handoff-1","el-stage2-condition-handoff-1"} and cond in {"R1", "Q1", "B0"} and
             identity["split"] == "test" and identity["condition_id"] == cond and identity["trial_id"] == job["trial_id"] and
             LABEL.fullmatch(job["trial_id"]) and all(HASH.fullmatch(job[k]) for k in ("method_freeze_sha256", "b0_selection_sha256", "worker_source_sha256")),
             "invalid held-out condition job")
+    if identity.get("dataset_id") == "evidence-lens-vision-families-v1":
+        require(job["schema"] == "el-stage2-condition-handoff-1", "Stage B cannot use a legacy condition gate")
     timed = job["timing_repeat"] is not None
-    require((timed and type(job["timing_repeat"]) is int and job["timing_repeat"] in (1, 2, 3) and job["warmup"] and job["experiment_id"] == "p6-timing-repeats")
-            or (not timed and cond != "B0" and job["warmup"] is None and job["experiment_id"] == "p6-heldout-conditions"), "invalid timing dispatch")
+    if job["schema"] == "el-stage2-condition-handoff-1":
+        opening = job["opening"]
+        require(not timed and cond in {"R1", "Q1"} and job["warmup"] is None
+                and job["experiment_id"] == "stage2-heldout-conditions" and LABEL.fullmatch(job["baseline_trial_id"])
+                and opening["catalog_sha256"] == identity["dataset_hash"]
+                and opening["method_sha256"] == job["method_freeze_sha256"]
+                and RUN_ID.fullmatch(opening["freeze_run_id"])
+                and all(HASH.fullmatch(opening[k]) for k in ("catalog_sha256", "opening_sha256", "freeze_manifest_sha256", "method_sha256")),
+                "Stage-two condition does not bind its Mac-opened cohort and method")
+    else:
+        require((timed and type(job["timing_repeat"]) is int and job["timing_repeat"] in (1, 2, 3) and job["warmup"] and job["experiment_id"] == "p6-timing-repeats")
+                or (not timed and cond != "B0" and job["warmup"] is None and job["experiment_id"] == "p6-heldout-conditions"), "invalid timing dispatch")
     for name in ("reference", "readback", "source", "baseline_generation"):
         pin = job[name]
         require(RUN_ID.fullmatch(pin["run_id"]) and HASH.fullmatch(pin["manifest_sha256"]), "invalid external parent pin")
@@ -51,6 +63,9 @@ def checked_producer(store, job, digest, rid=None):
     require(generation["producer_run_id"] == rid and result["artifacts"]["payload/scene.ply"]["sha256"] == generation["ply_sha256"],
             "producer metadata differs from the actual PLY")
     if baseline:
+        if job["schema"] == "el-stage2-condition-handoff-1":
+            require(rec["experiment_id"] == "stage2-single-image" and rec["trial_id"] == job["baseline_trial_id"],
+                    "Q1 baseline is not the registered Stage B B0 experimental trial")
         require(result["manifest_sha256"] == pin["manifest_sha256"] and rec["condition_id"] == "B0" and
                 generation["ply_sha256"] == job["baseline_ply_sha256"] and result["inputs"]["parents"] == [job["reference"]],
                 "Q1 requires the exact selected baseline generation")
@@ -86,6 +101,8 @@ def run(args):
     settings.update(config_version="p6-condition-1", formal_handoff_sha256=digest, worker_source_sha256=job["worker_source_sha256"],
                     method_freeze_sha256=job["method_freeze_sha256"], b0_selection_sha256=job["b0_selection_sha256"],
                     timing_repeat=job["timing_repeat"], warmup=job["warmup"], recording={"expected_output_bytes":120_000_000})
+    if "opening" in job:
+        settings.update(config_version="stage2-condition-1", stage2_opening=job["opening"])
     cfg = store / "formal" / "configs" / (digest + ".json")
     cfg.parent.mkdir(parents=True, exist_ok=True)
     frozen_json(cfg, settings)

@@ -56,7 +56,7 @@ def validate_r1(ctx, rid):
     result = v.get(rid, "derivation")
     run = result["run"]
     ref, rb = (ctx["b0_ids"][role] for role in ("reference", "readback"))
-    require(run["experiment_id"] == QUALITY and run["trial_id"] == ctx["quality_trial"] and run["condition_id"] == "R1"
+    require(run["experiment_id"] == ctx.get("quality_experiment", QUALITY) and run["trial_id"] == ctx["quality_trial"] and run["condition_id"] == "R1"
             and all(run[k] == family[k] for k in ("dataset_id", "dataset_hash", "scene_id", "scene_family_id", "split")) and
             set(run["parent_run_ids"]) == {ref, rb}, "R1 source preparation belongs to a different family or condition")
     root = ctx["store"] / "runs"
@@ -64,6 +64,11 @@ def validate_r1(ctx, rid):
     cfg = load(root / rid / "config.resolved.yaml")
     require(cfg["method_freeze_sha256"] == ctx["release"]["method_freeze_sha256"] and cfg["b0_selection_sha256"] == ctx["b0_selection_sha256"],
             "R1 derivative did not use the selected B0 and method")
+    if "opening_evidence" in ctx:
+        roles = {i["role"]:[f["sha256"] for f in i["files"]] for i in result["inputs"]["inputs"]}
+        require(roles.get("stage2-opening") == [ctx["opening_evidence"]["opening_sha256"]]
+                and roles.get("method-freeze") == [ctx["release"]["method_freeze_sha256"]],
+                "Stage-two R1 preparation did not bind the exact opening and method")
     raw_ref, meta = load(original / "reference.json"), load(payload / "source_derivation.json")
     require(meta["schema"] == "el-r1-source-1" and meta["producer_run_id"] == rid and meta["condition_id"] == "R1" and
             meta["parent_input_sha256"] == raw_ref["input_sha256"] and meta["parent_camera_sha256"] == raw_ref["camera_sha256"] and
@@ -141,7 +146,7 @@ def make_job(ctx, preparation, repeat, out):
         selection = {"trial_id":ctx["quality_trial"], "selection_sha256":sha(warm_path), "render":warm["selected"]["render"]["run_id"]}
     require((cond == "R1") == bool(preparation), "only R1 requires its explicit source preparation run")
     source = validate_r1(ctx, preparation) if preparation else ctx["verified"].get(ids["reference"], "scene_render")
-    code, worker_sha = worker_source(ctx)
+    code, worker_sha = ctx["worker_source"](ctx) if "worker_source" in ctx else worker_source(ctx)
     source_path = ctx["store"] / "runs" / source["run"]["run_id"] / "payload"
     trial = ctx["quality_trial"] if repeat is None else f'{ctx["quality_trial"]}-timing-{repeat:02}'
     ref = ctx["verified"].get(ids["reference"])
@@ -149,11 +154,14 @@ def make_job(ctx, preparation, repeat, out):
     identity = {k: family[k] for k in ("dataset_id", "dataset_hash", "split", "scene_family_id", "scene_id", "scene_version")}
     identity.update(trial_id=trial, condition_id=cond, scene_hash=ctx["baseline"]["evidence"]["scene_sha256"],
                     camera_set_hash=source["artifacts"]["payload/cameras.json"]["sha256"])
-    job = {"schema":"el-condition-handoff-1", "identity":identity, "experiment_id":TIMING if repeat else QUALITY, "trial_id":trial,
+    job = {"schema":"el-condition-handoff-1", "identity":identity, "experiment_id":TIMING if repeat else ctx.get("quality_experiment", QUALITY), "trial_id":trial,
            "condition":cond, "reference":run_pin(ref), "readback":run_pin(ctx["verified"].get(ids["readback"])), "source":run_pin(source),
            "baseline_generation":run_pin(gen), "baseline_ply_sha256":gen["artifacts"]["payload/scene.ply"]["sha256"],
            "b0_selection_sha256":ctx["b0_selection_sha256"], "method_freeze_sha256":ctx["release"]["method_freeze_sha256"],
            "worker_source_sha256":worker_sha, "timing_repeat":repeat, "warmup":selection}
+    if "opening_evidence" in ctx:
+        require(repeat is None and cond in {"R1","Q1"}, "Stage-two jobs must be quality R1/Q1")
+        job.update(schema="el-stage2-condition-handoff-1", opening=ctx["opening_evidence"], baseline_trial_id=ctx["family"]["trial_id"])
     members = {**code, **{n:(source_path / n).read_bytes() for n in ("input.png", "cameras.json")}}
     job["files"] = {n:sha_bytes(data) for n, data in members.items()}
     members["handoff.json"] = encoded(job)
