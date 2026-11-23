@@ -1,0 +1,325 @@
+{
+  "schema": "el-phase1-rgb-regression-plan-1",
+  "catalog_sha256": "fb7fabef06d006c992bc38cb03c283a41d90238e0b174664a1357f274bb36baa",
+  "report": {
+    "run_id": "20261123T050620457525Z-a311c1632b7d4b1b",
+    "manifest_sha256": "209fb7f045a7e79aaa2113eb50a8823c4f0dbf66098e058ae4b201a826653aba"
+  },
+  "method_freeze_sha256": "b077f4d4e5f64b7648d36d9de112e84444102fcbfea7e9a5a8c8939673d0290a",
+  "model_id": "20261123T042819219876Z-27eaa01eba29489d",
+  "threshold_run": {
+    "run_id": "20261123T042819219876Z-27eaa01eba29489d",
+    "manifest_sha256": "03d2d73d1115a449c5ce584596eae1f384c3177060752b14ec0f7bb1a9b1e072"
+  },
+  "thresholds_sha256": "183fc2fec4502f33a67af753dbf40d14a217cf676b9e090c5a7e9ac2668b36af",
+  "cohort": "All four preassigned original test families; original selected B0 only; all six target cameras v01..v06. No source, R1, Q1, edge subsets or model selection.",
+  "cases": [
+    {
+      "family": "scene_021_drum_kit",
+      "trial": "scene_021_drum_kit-B0",
+      "selection_sha256": "d1c6238b952a114fab7b802378d52a4dcbfe9d7ef4200323db1a428041904dab",
+      "marker_sha256": "a323bd354c10b4988f3b251cd9b076289ca4514d2df5fa131fc62955acc25cd0",
+      "reference": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:29:15.884323Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "06240e936785b45a11f6103fd8bd4b8ad31e1814fdf2aa816a5dc3458ffbc276",
+        "parent_run_ids": [],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T042832083384Z-a8a2585e6ee541ed",
+        "run_kind": "scene_render",
+        "scene_family_id": "scene_021_drum_kit",
+        "scene_id": "scene_021_drum_kit/v001",
+        "trial_id": "scene_021_drum_kit-B0"
+      },
+      "render": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:33:55.442697Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "51c24c7740a8a6991687ae76dfcf2dffab0fd3cea6f8fc227c85531ddc69fb22",
+        "parent_run_ids": [
+          "20261123T042832083384Z-a8a2585e6ee541ed",
+          "20261123T043251457453Z-dc2314eabf274113"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043348309957Z-591a8eecf7624fb9",
+        "run_kind": "render",
+        "scene_family_id": "scene_021_drum_kit",
+        "scene_id": "scene_021_drum_kit/v001",
+        "trial_id": "scene_021_drum_kit-B0"
+      },
+      "baseline_scores": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:35:02.675078Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "846860098e566e3a54b5df18a5a8dffd027ced2d425bb6510eb0187e4674d6f4",
+        "parent_run_ids": [
+          "20261123T042832083384Z-a8a2585e6ee541ed",
+          "20261123T042916228739Z-89e8835b5b8143e8",
+          "20261123T043348309957Z-591a8eecf7624fb9"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043459577630Z-d1d7bea0617c48df",
+        "run_kind": "model_score",
+        "scene_family_id": "scene_021_drum_kit",
+        "scene_id": "scene_021_drum_kit/v001",
+        "trial_id": "scene_021_drum_kit-B0"
+      },
+      "learned_scores": {
+        "manifest_sha256": "5866868cd0e22958c8ce5450299ea1c30e4d747cb5fdb70d774953a6e5f6bb94",
+        "run_id": "20261123T043515171358Z-7cfc8f91f4a14655"
+      },
+      "comparison": {
+        "manifest_sha256": "734af9fcb077329caf995642d87e0a65132318193f7f0350037fb17bb8f8cf83",
+        "run_id": "20261123T043517734554Z-513c8ab5312f44cd"
+      }
+    },
+    {
+      "family": "scene_022_picket_gate",
+      "trial": "scene_022_picket_gate-B0",
+      "selection_sha256": "9e135376655b2fecabd248615499ba209a2b13779e0d02938a48bda2aeb77005",
+      "marker_sha256": "e10651a3b51c2a4d14fa6eb89882826dec30ab864f707323673751ce1037823a",
+      "reference": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:29:57.725961Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "b69f1281b50923017a13584e35536b8e45e6c4d361ae336889cd043a527c2433",
+        "parent_run_ids": [],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T042919788702Z-572fe61ed4094ece",
+        "run_kind": "scene_render",
+        "scene_family_id": "scene_022_picket_gate",
+        "scene_id": "scene_022_picket_gate/v001",
+        "trial_id": "scene_022_picket_gate-B0"
+      },
+      "render": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:35:10.125263Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "739191adef26de7b0cfb4e5d8dbe0db824e13ecc07fdc84be4a94f6a5ac56c13",
+        "parent_run_ids": [
+          "20261123T042919788702Z-572fe61ed4094ece",
+          "20261123T043404944118Z-d21f0b6372a74011"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043502826784Z-bed20d3935ec4938",
+        "run_kind": "render",
+        "scene_family_id": "scene_022_picket_gate",
+        "scene_id": "scene_022_picket_gate/v001",
+        "trial_id": "scene_022_picket_gate-B0"
+      },
+      "baseline_scores": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:36:17.117369Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "de3f4a11c87fbfa5fcf0ba7fbdac6f1429a26ed92bd12cd3a7db380fe164630f",
+        "parent_run_ids": [
+          "20261123T042919788702Z-572fe61ed4094ece",
+          "20261123T042958058452Z-9ae3c5cb712c473c",
+          "20261123T043502826784Z-bed20d3935ec4938"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043614237873Z-03a34dbb3bc04890",
+        "run_kind": "model_score",
+        "scene_family_id": "scene_022_picket_gate",
+        "scene_id": "scene_022_picket_gate/v001",
+        "trial_id": "scene_022_picket_gate-B0"
+      },
+      "learned_scores": {
+        "manifest_sha256": "2e8f93adf1ed52065f01df8de308c39b8f71f0e8e3e9cca909b100de3b99b2ad",
+        "run_id": "20261123T043628317289Z-8c64e5d167d34bec"
+      },
+      "comparison": {
+        "manifest_sha256": "f2d0ccd3b43ea3e236b83400e3f8658dd48b1f03d4e39dde096fd2cef70d3c5f",
+        "run_id": "20261123T043630783262Z-bc8afa692e504045"
+      }
+    },
+    {
+      "family": "scene_023_potters_wheel",
+      "trial": "scene_023_potters_wheel-B0",
+      "selection_sha256": "79e74f87a749d770c11668496836233b61de2bbf36ec976cc00d577c35d532d8",
+      "marker_sha256": "e86b3658623bfc906e23f986bd80483bb18c95c44c9c22efb285040bb9ea2f44",
+      "reference": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:30:36.034561Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "b18bf51ea342d2192e4f225ab0c382b0be815d86b93b44f7b8972a2a61fbbf5a",
+        "parent_run_ids": [],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043000032013Z-934266740ee84432",
+        "run_kind": "scene_render",
+        "scene_family_id": "scene_023_potters_wheel",
+        "scene_id": "scene_023_potters_wheel/v001",
+        "trial_id": "scene_023_potters_wheel-B0"
+      },
+      "render": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:36:23.979601Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "c94108e183829fde714a601beaf6ae350534c532e56c1e38458ff94d011d45c0",
+        "parent_run_ids": [
+          "20261123T043000032013Z-934266740ee84432",
+          "20261123T043519582751Z-5f7d4436bacf44f8"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043616676097Z-c5ef17fd153d4253",
+        "run_kind": "render",
+        "scene_family_id": "scene_023_potters_wheel",
+        "scene_id": "scene_023_potters_wheel/v001",
+        "trial_id": "scene_023_potters_wheel-B0"
+      },
+      "baseline_scores": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:37:32.123021Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "21091a8fdb437b28f821a3143751a36f2ac3ae79e854fb545f32b12ceeadd14f",
+        "parent_run_ids": [
+          "20261123T043000032013Z-934266740ee84432",
+          "20261123T043036415812Z-d49a3b42cf8b4c77",
+          "20261123T043616676097Z-c5ef17fd153d4253"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043729248067Z-630ce87d58784d35",
+        "run_kind": "model_score",
+        "scene_family_id": "scene_023_potters_wheel",
+        "scene_id": "scene_023_potters_wheel/v001",
+        "trial_id": "scene_023_potters_wheel-B0"
+      },
+      "learned_scores": {
+        "manifest_sha256": "ecc735a1101d14d7e828adf8c11cfc84e88faefb394848e6f5760f340d029f41",
+        "run_id": "20261123T043741296985Z-079db12196a54c11"
+      },
+      "comparison": {
+        "manifest_sha256": "d3af5d98fecaf790a9b2d5b7332955d11afcb94ade3c668b23024fb65df1e14e",
+        "run_id": "20261123T043743870001Z-fc37aaa8ff7e4e2b"
+      }
+    },
+    {
+      "family": "scene_024_orbital_mobile",
+      "trial": "scene_024_orbital_mobile-B0",
+      "selection_sha256": "052e821ff702ec0f2bc70c41f4cc674393501ecdb2ae2428e0b46b1eff56e091",
+      "marker_sha256": "f73e70b45ebe3820499f1e8157ab72d44e23947b0955a45b4dbf777d4e3c7027",
+      "reference": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:31:15.355012Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "9ee2ab048dcdfc744cadb1c18ad4b217d9b02b5a98e6bdb3e5b156df146be028",
+        "parent_run_ids": [],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043038873348Z-e6978258df584338",
+        "run_kind": "scene_render",
+        "scene_family_id": "scene_024_orbital_mobile",
+        "scene_id": "scene_024_orbital_mobile/v001",
+        "trial_id": "scene_024_orbital_mobile-B0"
+      },
+      "render": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:37:38.480751Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "8ba50e1e5620a5182a3b016e9b35eaa7d32c0362da9cce988cdca25dbdab581b",
+        "parent_run_ids": [
+          "20261123T043038873348Z-e6978258df584338",
+          "20261123T043633544314Z-8d7f881a83a446a0"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043731351841Z-3e191e75bdfb4cdc",
+        "run_kind": "render",
+        "scene_family_id": "scene_024_orbital_mobile",
+        "scene_id": "scene_024_orbital_mobile/v001",
+        "trial_id": "scene_024_orbital_mobile-B0"
+      },
+      "baseline_scores": {
+        "condition_id": "B0",
+        "ended_at_utc": "2026-11-23T04:38:47.025561Z",
+        "execution_status": "succeeded",
+        "exit_code": 0,
+        "experiment_id": "p3-formal-b0",
+        "failure_reason": null,
+        "manifest_sha256": "03986106b46c012f6cb8075577f4700e81b33704d306fb65e77e975c66cead54",
+        "parent_run_ids": [
+          "20261123T043038873348Z-e6978258df584338",
+          "20261123T043115645814Z-b20d4eb79c654306",
+          "20261123T043731351841Z-3e191e75bdfb4cdc"
+        ],
+        "requested_retry_of_run_id": null,
+        "retry_of_run_id": null,
+        "run_id": "20261123T043844076335Z-fc03f40feb314295",
+        "run_kind": "model_score",
+        "scene_family_id": "scene_024_orbital_mobile",
+        "scene_id": "scene_024_orbital_mobile/v001",
+        "trial_id": "scene_024_orbital_mobile-B0"
+      },
+      "learned_scores": {
+        "manifest_sha256": "56c5620a6027cbbb5c61bd280477e5303267f2c8dfaab489aab7e57d2acff39f",
+        "run_id": "20261123T043858394180Z-c66f135a24fd48e6"
+      },
+      "comparison": {
+        "manifest_sha256": "dcedc1bd41f7e824626403598504590af71f21d98c7fe1e3698ed0d7e7fe9cc2",
+        "run_id": "20261123T043901188148Z-d269e710b19840ce"
+      }
+    }
+  ],
+  "views": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "methods": {
+    "constant": "constant",
+    "1-alpha": "alpha_score",
+    "L0": "l0",
+    "L1-geometry": "l1_geometry",
+    "L1-full": "l1_full"
+  },
+  "masks": "V is finite reference RGB. E is V and finite prediction RGB. Y is mean FP32 absolute RGB channel error > FP32(0.05) on E. S is E and all five scores finite.",
+  "state": "Operating states on E: high finite score >= fixed threshold, low strictly below, unknown nonfinite. Keep V as coverage denominator. Recompute constant and 1-alpha directly; cross-check L0 independent archived baseline and learned states.",
+  "AP": "Independent sklearn.metrics.average_precision_score(binary labels, unaltered finite score), grouped ties. Single class or empty S is undefined. View AP -> within-family eligible view mean -> four-family eligible mean. Coverage L/V, accepted risk LY/L pool counts within family then give eligible families equal weight. Missed errors LY+UY.",
+  "tolerance": "Counts and S/V/E mask hashes exact. Unitless metrics absolute 1e-12. No tuning. Old comparison and public summaries are read only after raw computation to test agreement."
+}
