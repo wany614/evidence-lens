@@ -235,6 +235,26 @@ def test_remote_parent_pack_and_mac_receipt(tmp_path, example, capsys):
     assert archive.rebuild(mac)["runs"] == 2
 
 
+def test_capacity_scan_excludes_concurrent_cold_shelf_moves(tmp_path, example, capsys, monkeypatch):
+    store = tmp_path / "store"
+    check = recorder._capacity.check
+    observed = []
+
+    def guarded(root, estimate, limits):
+        conn = sqlite3.connect(root / "index" / "writer-lock.sqlite3", timeout=0)
+        try:
+            with pytest.raises(sqlite3.OperationalError, match="locked"):
+                conn.execute("BEGIN IMMEDIATE")
+        finally:
+            conn.close()
+        observed.append(root)
+        return check(root, estimate, limits)
+
+    monkeypatch.setattr(recorder._capacity, "check", guarded)
+    sealed_run = launch(example, store, capsys)
+    assert observed == [store] and verify_bundle(sealed_run)["run"]["execution_status"] == "succeeded"
+
+
 def test_failed_setup_and_capacity_remain_indexable(tmp_path, example, capsys):
     store = tmp_path / "store"
     missing = launch(example, store, capsys, extra=["--input", f"absent={tmp_path / 'absent'}"])

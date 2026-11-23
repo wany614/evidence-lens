@@ -25,6 +25,7 @@ from . import _capacity, _metrics
 from ._bundle import (BundleError, HASH, KINDS, LABEL, PROJECT, RUN_ID, SCHEMA, asset, encoded,
                       entry, files, freeze_tree, load, new_id, save, sha, utc)
 from ._snapshot import bindings, input_snapshot, snapshot
+from ._index import writer_gate
 from ._telemetry import Sampler
 from ._verify import (IDENTITY_FIELDS, PARENT_REQUIRED, require, retry_matches,
                       validate_identity_fields, verify_bundle)
@@ -131,7 +132,6 @@ def worker_started(bundle: Path, run: dict) -> bool:
 
 
 def claim_retry(root: Path, previous: str, rid: str) -> Path:
-    from ._index import writer_gate
     with writer_gate(root):
         claims = root / "retry_claims"
         claims.mkdir(exist_ok=True)
@@ -315,7 +315,9 @@ def record(args: argparse.Namespace) -> dict:
                     staged_shared = [path for path in shared.values() if not Path(path).expanduser().resolve().is_relative_to(root / "assets/sha256")]
                     expected = config["recording"]["expected_output_bytes"] + sum(
                         _capacity.bytes_on_tree(Path(path).expanduser(), count_links=True) for path in [*embedded.values(), *staged_shared])
-                    space = _capacity.check(root, expected, limits)
+                    # A cooperating archive move can rename a whole run during the active-store walk.
+                    with writer_gate(root):
+                        space = _capacity.check(root, expected, limits)
                     events.write("storage_preflight", **space)
                     require(not space["reason"], space["reason"] or "")
                 inputs["inputs"], substitutions = input_snapshot(root, bundle, embedded, shared, claimed, parents)
