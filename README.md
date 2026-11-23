@@ -1,47 +1,44 @@
 # Evidence Lens
 
-Evidence Lens studies where a single photograph supports a nearby synthesized view. Its CPU scorer uses the input PNG, calibrated cameras and the generator's own predicted RGB, expected camera depth and accumulated opacity. A separate evaluator compares the prediction with a fixed Blender world.
+Evidence Lens estimates where a nearby synthesized view is likely to disagree with the scene that produced the input image. Its CPU scorer reads one source image, calibrated cameras and a generator's predicted RGB, opacity and expected camera depth. It produces continuous risk and low, high or unknown decisions for every target pixel.
 
-L0 is a deterministic rule baseline. Two L2-regularized logistic regressions, L1-full and L1-geometry, were fitted on 393,216 uniformly sampled target pixels from 16 authored scene families. Both used the same rows. The frozen training manifest identifies all 96 target views, their sampled pixel coordinates and their family folds.
+The fitted L1-full and L1-geometry models, feature schema and frozen thresholds occupy **12,387 bytes** of JSON. They were trained on 16 authored Blender scene families. On four new families, using the 512×512 baseline condition, their family-equal average precision was **0.804** and **0.771** respectively. The deterministic L0 baseline reached **0.402** on the same scoreable pixels. The registered outcome is mean absolute display-sRGB error strictly above 0.05. Six views from the same family share a scene and camera setup.
 
-## Tested configurations
+| Single input | Example projected view | L1-full risk | Low, high or unknown |
+| --- | --- | --- | --- |
+| ![Authored tabletop source](examples/tabletop-plane/input.png) | ![Original plane adapter prediction](examples/tabletop-plane/v01-prediction.png) | ![Continuous per-pixel risk](examples/tabletop-plane/v01-risk.png) | ![Teal low, orange high and grey unknown](examples/tabletop-plane/v01-state.png) |
 
-The first reference contains a single opaque procedural tabletop with a foreground occluder, two thin stems and a partly hidden rear object. Blender 4.5.16 LTS on macOS 27.2 arm64 rendered all seven 512×512 views with Cycles on CPU. An independent readback reopened the frozen scene and matched all 1,216 sampled visibility classifications. A fresh CPython 3.12 base install loaded the CPU scorer with NumPy 2.5.5 and Pillow 12.3.0. On a Windows RTX 3060 Laptop GPU with PyTorch 2.8.0+cu128, a single SHARP forward pass took 14.81 seconds and produced 1,179,648 Gaussians. The Mac verified the complete generation archive against its producer's SHA-256.
+The illustration comes from a project-authored textured-plane adapter. Quantitative study results use SHARP and gsplat. [Example inputs and provenance](examples/tabletop-plane/README.md)
 
-Windows 11 build 26200 rendered the source and six target views with gsplat 1.5.3 using expected optical-axis depth in metres. The Mac base-only CPU installation scored the six targets in a recorded stage of 3.20 seconds with a sampled process-tree peak of 195 MiB. The independent evaluator found 416,365 RGB errors above 0.05 among 1,572,864 comparable target pixels. L0 flagged 27.82% of those errors and left a 21.54% error rate among pixels it marked low risk. One fixed view was checked again from its recorded arrays, including all 262,144 pixel labels and nine metric ratios.
+## Run the model on a CPU
 
-## CPU scoring
-
-Use Python 3.11 or later. Install from a checkout in a fresh virtual environment.
+The versioned model ZIP contains a Python wheel, coefficients, preprocessing parameters, camera calibration, seven small prediction arrays, a numerical expectation and its checksums. Use the commands below in the extracted ZIP. The base package requires Python 3.11 or later, NumPy and Pillow. [Versioned installation and verification guide](docs/releases/v0.1.0/README.md)
 
 ```sh
 python -m venv .venv
 . .venv/bin/activate
-python -m pip install .
-python -m evidence_lens.risk_model --help
+python -m pip install ./distribution/evidence_lens-0.1.0-py3-none-any.whl
+python -I -m evidence_lens.l1_demo grade --bundle . --manifest-sha256 bc6c3cc8580451deab569b6778042c92d0b93180d181d20d2ba5f896b2e497cc --output grade
+python -I -m evidence_lens.score_maps --scores grade/scores --output maps
 ```
 
-On Windows, activate the environment with `.venv\Scripts\Activate.ps1`. The base installation uses NumPy and Pillow. With a compatible prediction bundle, run
+For PowerShell, use `.\.venv\Scripts\Activate.ps1` as the activation command. Open `maps/v01-risk.png` and `maps/v01-state.png`. All six targets have separate NPZs, PNGs and state counts. Scores lie between 0 and 1. The frozen operating rule marks finite scores below the threshold as low risk. Grey marks unknown pixels. To install the CPU code from a source checkout, use `python -m pip install .`. [Prediction bundle contract](docs/cpu-scoring.md)
 
-```sh
-python -m evidence_lens.risk_model --input example/input.png --cameras example/cameras.json \
-  --predictions example/predictions --output results/l0
-```
+## Study and tested scope
 
-Here `example/` denotes the input, camera and predictions supplied by a producer. The authored tabletop-plane example has a 128×128 input and seven cameras. Its complete prediction arrays accompany the model release. The six target views have separate numeric scores and high, low and unknown decisions. Their scope is single-image, nearby perspective views of static opaque scenes.
+The study uses 24 procedural families of static, opaque objects. Blender 4.5.16 LTS Cycles on an arm64 Mac rendered reference RGB, positions and camera-axis depths. SHARP commit `aed6527499ef91cba3b54c18d49a870f25947190` produced one Gaussian scene per input. On Windows 11 with an RTX 3060 Laptop, gsplat 1.5.3 rendered the source and six nearby targets using expected optical-axis depth in metres. The first engineering input produced 1,179,648 Gaussians in a 14.81-second forward pass. Mac CPU scoring was tested with CPython 3.12.16, NumPy 2.5.5 and Pillow 12.3.0.
 
-## Research reproduction
+L1-full and L1-geometry are L2-regularized logistic regressions fitted on the same 393,216 sampled target pixels. The 16 training families are the independent training units. Four separate development families set the low-risk operating thresholds. Four further families were held out until the model and metric code were frozen. The experiment covers baseline inputs, half-resolution inputs and a round-trip of only the Gaussian colour coefficients through binary16. Real photographs, transparent materials, moving scenes and other learned generators fall outside the measured scope. [Model card and per-family outcomes](docs/releases/v0.1.0/MODEL_CARD.md) · [Study protocol](protocol/study-v1.json)
 
-The recorder, Blender and Windows GPU worker use separate environments. Install recording and evaluation extras with `python -m pip install '.[record]'`. For the pinned Blender 4.5 LTS Python module use **Python 3.11** in another environment. See the environment locks in `requirements/`. Render the reference through the recorder. Pass the resulting source image and cameras to the Windows worker. Return its sealed generation and render records to the Mac, then run CPU scoring and independent evaluation. Each attempt has its own ID and checksum manifest.
+The engineering tabletop remains a reproducible failure case. Its six targets contained 416,365 RGB errors among 1,572,864 comparable pixels. L0 flagged 27.82% of those errors. Among pixels labelled low risk, 21.54% exceeded the RGB error threshold. That family belongs to training. It is reported separately from held-out performance.
 
-The original protocol is Evidence Lens master plan v1.1, numerical protocol 1.0. The engineering family belongs to training. It cannot establish cross-family performance. The preregistered split assigns 16 families to training, 4 to development and 4 to held-out testing. The CPU scorer reads the input PNG, cameras and predicted arrays. Research-only dependencies are separate.
+## Reproduce the research
 
-- [Rebuild the study in a fresh checkout](docs/rebuild-study.md) with the authored scenes, registered splits and historical Windows worker.
-- Module inputs, outputs and storage responsibilities are documented in [the data contract](docs/data-contract.md).
-- The [Blender reference guide](docs/blender-reference.md) describes the frozen scene, numeric channels and independent readback.
-- [Recording and transfer](docs/recording.md) documents how to run and receive an attempt.
-- The [CPU input and output dictionary](docs/cpu-scoring.md) specifies rule states, missing values, metric denominators and examples.
-- The [Windows worker guide](docs/windows-worker.md) covers the input handoff, dependency versions and return packages.
-- License decisions and upstream source pins are in [the license inventory](docs/licenses.md).
+The authored recipes, cameras, family split, feature specification, labels and fitting protocol are in the repository. Follow the reconstruction guide to make a new research store, render a family, run the Windows worker and fit a replication model. Full original arrays, Gaussian files, logs and the live database are kept in the research archive. Public run IDs, manifests and checksums identify their origins. The scoring entry point takes only source and prediction inputs. The independent evaluation entry point reads target references.
 
-Raw arrays, Gaussians, experiments, failure logs and the live SQLite database belong in a private research store. The public source file list is explicit. Model weights, data licensing, held-out evaluation, clean example reproduction and an identified public GitHub destination are separate release requirements.
+- [Rebuild from a fresh checkout](docs/rebuild-study.md) describes environment setup, the single-family pilot and a separate full replication.
+- [Module inputs, outputs and permissions](docs/data-contract.md) identifies each producer and its permitted data.
+- [Blender reference validation](docs/blender-reference.md) and [Windows GPU acquisition](docs/windows-worker.md) document the coordinate and rendering conventions.
+- [Recording, transfer and restore](docs/recording.md) documents immutable attempts, failed runs, local indexing and archive checks.
+- [L1 training](docs/l1-training.md) and [formal evaluation](docs/formal-evaluation.md) specify sampling, family folds, thresholds, denominators and common-mask comparisons.
+- [License and provenance inventory](docs/licenses.md) lists separate terms for original code, fitted parameters, example data and third-party research software.

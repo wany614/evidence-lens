@@ -33,11 +33,16 @@
     "docs/model-release.md": "original-source-pending",
     "docs/rebuild-study.md": "original-source-pending",
     "docs/recording.md": "original-source-pending",
+    "docs/releases/v0.1.0/README.md": "original-source-pending",
     "docs/windows-worker.md": "original-source-pending",
     "examples/tabletop-plane/README.md": "original-source-pending",
     "examples/tabletop-plane/cameras.json": "original-example-pending",
     "examples/tabletop-plane/input.png": "original-example-pending",
+    "examples/tabletop-plane/preview.json": "original-example-pending",
     "examples/tabletop-plane/provenance.json": "original-example-pending",
+    "examples/tabletop-plane/v01-prediction.png": "original-example-pending",
+    "examples/tabletop-plane/v01-risk.png": "original-example-pending",
+    "examples/tabletop-plane/v01-state.png": "original-example-pending",
     "protocol/analysis-addendum-v1.json": "original-source-pending",
     "protocol/families-v1.json": "original-source-pending",
     "protocol/operating-points-v1.json": "original-source-pending",
@@ -153,6 +158,21 @@
       "format": "rgb8-png",
       "bytes": 10275,
       "sha256": "72e32aa18d67a13e02277b0c9decd010872f8847cd8ade96e1ab1bdd04446537"
+    },
+    "examples/tabletop-plane/v01-prediction.png": {
+      "format": "rgb8-png",
+      "bytes": 10454,
+      "sha256": "80f22fad79dfb4fa47c00b744d03f3faa88b6fcc560117acd5de6d765e2057b2"
+    },
+    "examples/tabletop-plane/v01-risk.png": {
+      "format": "rgb8-png",
+      "bytes": 12467,
+      "sha256": "c992f1ed1e4c13fd78ad84d8fbbd136b8c6a5258ec2d7abca8fb77116f34baae"
+    },
+    "examples/tabletop-plane/v01-state.png": {
+      "format": "rgb8-png",
+      "bytes": 834,
+      "sha256": "94d7cb81496da1d39e5a3a88ae5c096d809afab92044569bf1cf14aec04b4405"
     }
   }
 }

@@ -57,7 +57,7 @@ def report_view(store, shelf, output):
     """Expose only the existing immutable records required by report_study roster/assemble."""
     require(not output.exists(), "choose a new report evidence directory")
     output.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(dir=output.parent, prefix=".report-view-") as temporary:
+    with writer_gate(store), tempfile.TemporaryDirectory(dir=output.parent, prefix=".report-view-") as temporary:
         tree = Path(temporary) / "view"
         tree.mkdir()
         seen = set()
@@ -69,6 +69,9 @@ def report_view(store, shelf, output):
                 require(RUN_ID.fullmatch(rid) and rid not in seen and run.is_dir() and not run.is_symlink(),
                         "ambiguous, linked or invalid evidence run")
                 seen.add(rid)
+                seal = load(run / "completion.json")
+                require(seal["run_id"] == rid and sha(run / "manifest.json") == seal["manifest_sha256"],
+                        "evidence run ID or manifest differs from its original seal")
                 if parent == shelf / "runs":
                     parked = load(shelf / "catalog" / (rid + ".json"))
                     verify_receipt(store, rid, parked["manifest_sha256"], parked["archive_receipt_id"])

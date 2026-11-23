@@ -40,3 +40,6 @@ __pycache__/
 
 # Recorded authored input explicitly listed in the source inventory.
 !/examples/tabletop-plane/input.png
+!/examples/tabletop-plane/v01-prediction.png
+!/examples/tabletop-plane/v01-risk.png
+!/examples/tabletop-plane/v01-state.png

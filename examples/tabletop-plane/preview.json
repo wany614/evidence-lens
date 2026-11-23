@@ -1,0 +1,25 @@
+{
+  "schema": "el-illustrated-inference-1",
+  "family": "scene_001_tabletop",
+  "example_derivation_run_id": "20261123T034606860802Z-acb5e6955f424043",
+  "example_manifest_sha256": "03a406991a547a5b11fa39ea528dd2e2689bab37284242548f5ca0381c14b977",
+  "model_id": "20261123T042819219876Z-27eaa01eba29489d",
+  "model_index_sha256": "b3c65130bf803611e3904ac69a270f6944b48a8d78ce049bdc1424c15ba6cb54",
+  "example_score_run_id": "20261123T042828732686Z-a16179b8f5f343f4",
+  "example_score_manifest_sha256": "bbeb1e72f2f4ba56abc97d44e5da1452a3c418b59eed64659e46ed96b9848aa8",
+  "scorer_receipt_sha256": "a4e34fedfe7e26b66b34f1c0f025860852b538dbec919fdb6fa4011e3a7a85d6",
+  "method": "L1-full",
+  "view": "v01",
+  "pngs": {
+    "v01-risk.png": {
+      "index_png_sha256": "b62005a5a15337f11c3e1253e36dce312f002767116cb57e38577903f982c9af",
+      "rgb_png_sha256": "c992f1ed1e4c13fd78ad84d8fbbd136b8c6a5258ec2d7abca8fb77116f34baae"
+    },
+    "v01-state.png": {
+      "index_png_sha256": "abf80bcddfbf20b78e82ff756c1133e35abed569939b251e58aab7912b1eb1db",
+      "rgb_png_sha256": "94d7cb81496da1d39e5a3a88ae5c096d809afab92044569bf1cf14aec04b4405"
+    }
+  },
+  "predicted_view_sha256": "80f22fad79dfb4fa47c00b744d03f3faa88b6fcc560117acd5de6d765e2057b2",
+  "display": "PNG RGB copies preserve all palette colours of the lossless score_maps output."
+}
