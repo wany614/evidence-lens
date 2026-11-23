@@ -9,6 +9,7 @@ from ._bundle import HASH, RUN_ID, load, local_path, save, sha, utc
 from ._index import writer_gate
 from ._verify import matches, parent_directory, require, verify_bundle
 from .formal_inputs import PinnedRun
+from .stage3_decision import check_independent_readbacks, check_neural_fits, check_selection
 
 MEMBER = "payload/method-freeze.json"
 CONDITIONS = ["M2", "M4"]
@@ -16,7 +17,7 @@ METHODS = ("B-L1-transfer", "MS-L1", "MS-frozen", "MS-ft")
 ROLES = {
     "catalog", "study", "feature_schema", "reconstruction_protocol", "learning_protocol",
     "training_dataset", "development_dataset", "lightweight_development", "neural_selection",
-    "thresholds", "tensor_comparison", "cpu_validation",
+    "thresholds", "tensor_comparison", "cpu_validation", "production_budget",
 }
 
 
@@ -96,19 +97,28 @@ def get_frozen_method(store, marker, shelf=None):
 
 def _check_sources(store, shelf, freeze, method):
     direct = {_pin(r)["run_id"]: _pin(r)["manifest_sha256"] for r in load(freeze.open("inputs.json"))["parents"]}
+    verify_method_sources(store, shelf, method, direct)
+
+
+def verify_method_sources(store, shelf, method, direct):
+    """Check the same original evidence during recording and at test opening."""
     cache = {}
+
+    def original(run_id):
+        require(run_id in direct, "Original fit missing from the method recorder parents")
+        if run_id not in cache:
+            cache[run_id] = _run(store, shelf, {"run_id": run_id, "manifest_sha256": direct[run_id]})
+        return cache[run_id]
 
     def source(spec):
         p = _pin(spec)
         require(direct.get(p["run_id"]) == p["manifest_sha256"] and matches(HASH, spec.get("sha256")),
                 "Missing direct scientific parent or member digest")
-        if p["run_id"] not in cache:
-            cache[p["run_id"]] = _run(store, shelf, p)
-        original = cache[p["run_id"]]
+        run = original(p["run_id"])
         name = local_path(spec["member"])
-        require(name in original.files and original.files[name]["sha256"] == spec["sha256"],
+        require(name in run.files and run.files[name]["sha256"] == spec["sha256"],
                 "Scientific member differs from its recorder inventory")
-        return original.open(name)
+        return run.open(name)
 
     components = method["components"]
     require(set(components) == ROLES, "Incomplete reconstruction and risk evidence")
@@ -120,6 +130,17 @@ def _check_sources(store, shelf, freeze, method):
             and method["feature_schema_sha256"] == components["feature_schema"]["sha256"] == study["feature_schema_sha256"]
             and study["sources"] == catalog["source_sets"] and study["targets"] == method["targets"] == catalog["target_ids"],
             "Study or source, camera, feature or roster identity differs")
+    learning, optimizer, budget = (load(paths[k]) for k in ("learning_protocol", "reconstruction_protocol", "production_budget"))
+    require(learning["schema"] == "el-stage3-risk-learning-protocol-1" and learning["study_sha256"] == method["study_sha256"]
+            and learning["catalog_sha256"] == method["catalog_sha256"] and learning["feature_schema_sha256"] == method["feature_schema_sha256"]
+            and optimizer["schema"] == "el-stage3-joint-optimizer-1" and budget["schema"] == "el-stage3-production-budget-1"
+            and budget["optimizer_sha256"] == components["reconstruction_protocol"]["sha256"]
+            and budget["catalog_sha256"] == method["catalog_sha256"] and budget["scientific_production_restarts_from_initial"] is True
+            and budget["condition_settings_identical"] is True and budget["pilot_samples_in_scientific_dataset"] == 0
+            and budget["gaussian_count"] == optimizer["initialization"]["count"]
+            and budget["optimization_steps"] in optimizer["optimization"]["production_candidate_updates"]
+            and budget["pixels_per_condition"] == budget["optimization_steps"] * math.prod(study["resolution"]),
+            "Reconstruction or learning configuration differs from registered evidence")
     families = {split: [r["scene_family_id"] for r in catalog["families"] if r["split"] == split]
                 for split in ("train", "development", "test")}
     require([len(families[k]) for k in families] == [8, 4, 4] and len(set(sum(families.values(), []))) == 16
@@ -130,6 +151,9 @@ def _check_sources(store, shelf, freeze, method):
         expected = {(f, c, v) for f in families[split] for c in CONDITIONS for v in study["targets"]}
         require(dataset["schema"] == "el-stage3-risk-dataset-1" and dataset["split"] == split
                 and dataset["catalog_sha256"] == method["catalog_sha256"]
+                and dataset["cohort"] == "formal" and dataset["families"] == families[split]
+                and dataset["learning_sha256"] == components["learning_protocol"]["sha256"]
+                and dataset["study_sha256"] == method["study_sha256"]
                 and dataset["feature_schema_sha256"] == method["feature_schema_sha256"]
                 and len(keys) == len(expected) and set(keys) == expected, "Training or development source roster differs")
     thresholds = method["thresholds"]
@@ -152,6 +176,10 @@ def _check_sources(store, shelf, freeze, method):
     require(len({m["weights_sha256"] for m in method["models"].values()}) == len(METHODS),
         "The four methods must resolve to distinct real weights")
 
+    selection, thresholds, lightweight = (load(paths[k]) for k in ("neural_selection", "thresholds", "lightweight_development"))
+    check_selection(method, study, selection, thresholds, lightweight)
+    roster = check_neural_fits(method, study, thresholds, original)
+    check_independent_readbacks(method, study, roster, load(paths["tensor_comparison"]), load(paths["cpu_validation"]), original)
 
 
 @lru_cache(maxsize=16)
