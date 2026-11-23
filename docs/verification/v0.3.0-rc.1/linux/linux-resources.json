@@ -1,0 +1,27 @@
+{
+  "candidate_sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669",
+  "commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+  "container_peak_memory_bytes": 1782894592,
+  "distribution": "Debian GNU/Linux 13 (trixie)",
+  "download_budget_bytes": 805306368,
+  "elapsed_seconds": 50.852703649000006,
+  "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+  "machine": "aarch64",
+  "network_bytes": {
+    "rx_bytes": 426466254,
+    "tx_bytes": 1237749
+  },
+  "python": "3.12.16",
+  "release_version": "v0.3.0-rc.1",
+  "sampled_minimum_tmpfs_free_bytes": 1916780544,
+  "schema": "el-d0-linux-resources-1",
+  "tmpfs_capacity_bytes": 3221225472,
+  "verifier_sources": {
+    "verify_stage3_public.py": "b4f35fcfc2788d32169030f47ec31cb7a90d084dbb05c69529d04741ae353e36",
+    "verify_vision_public.py": "f3c135954ea485fef1b014fc1cd27a04c24b28c403662ba6af03760485bc6d10",
+    "vision_control_attachment.py": "a34224b8fca5fb26d364b8de39b0d9b47cce372c603c852a706e991d1f31402a",
+    "vision_public_smoke.py": "a94ad70e48fc37d39636753ae24198233ce99a54979e34c0d36d0b0f67258d38",
+    "vision_release.py": "a5920404bb708fd63872bffa2f5de1499d0db09289c1e82db87923d6cccd3bf3",
+    "vision_release_native.py": "4cac1a4f61466760d56028c4c899bab469829ddd687a5a56269ae0af107f5cd4"
+  }
+}

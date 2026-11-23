@@ -1,0 +1,85 @@
+{
+  "assets": {
+    "RELEASE_NOTES.md": {
+      "bytes": 2862,
+      "sha256": "b9d05e425046215f8a6e75578f5709a0e6d5cba3dc476050d31f86437d80fae5"
+    },
+    "SHA256SUMS": {
+      "bytes": 310,
+      "sha256": "f77177ab0bab53cc839474d0d2cf0d4118b4218c752f853b8f3442ec7f0fab4d"
+    },
+    "candidate.json": {
+      "bytes": 3310,
+      "sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669"
+    },
+    "evidence-lens-cpu-v0.3.0-rc.1.zip": {
+      "bytes": 164854827,
+      "sha256": "f555956840870309217cc85fe9b339ef53762679bbd2138b7f149d8ea451a7b7"
+    },
+    "evidence-lens-example-v0.3.0-rc.1.zip": {
+      "bytes": 99402309,
+      "sha256": "14204986e0d598adc613dd1a9ef2e5c1584f5be001d3541531d5d9e709707548"
+    },
+    "evidence-lens-numerical-v0.3.0-rc.1.zip": {
+      "bytes": 368555,
+      "sha256": "f28f702eb4dbaa3dc86af5d5de396f554318168707d71180fb39041b00797b2b"
+    }
+  },
+  "candidate_sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669",
+  "commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+  "default_method": "MS-L1",
+  "distinct_method_scope_views": 120,
+  "elapsed_seconds": 50.56757623300001,
+  "example_sha256": "b08efe193b2e93dd6e0f9e35360130745cb64295868bfc5b8edd30dc19ae67b8",
+  "grade_sha256": "e94db6bb19f39680c5bbf669a8aeb449e4da2ec3a68b1d1e4fdf6e1fdf20a739",
+  "installation_sha256": "8f578bb479613c05e6285bad14d931bb157ac7d499a4ff40ac21b5fafba2bcee",
+  "lightweight_installation_sha256": "0963b29946160e4d6f7fa3f683f96e972cb1beeb16cbce5d44e54f02b551b271",
+  "max_abs_risk_difference": 8.553266525268555e-06,
+  "mode": "anonymous_github",
+  "platform": {
+    "machine": "aarch64",
+    "python": "3.12.16",
+    "system": "Linux",
+    "version": "7.2.12-orbstack-00394-gbecdd6130068"
+  },
+  "public_git_tree": "8f3553b617756f8cf6cbe85fd21f0feb586d06e5",
+  "release_url": "https://github.com/wany614/evidence-lens/releases/tag/v0.3.0-rc.1",
+  "scheduled_comparisons": 144,
+  "schema": "el-stage3-external-verification-1",
+  "standalone_case_sha256": "8ab6d51ec5c348fc61121478631a7ead7a9299659337cc8a8a5811922ec1d598",
+  "standalone_matches_graded_arrays": {
+    "risk.npy": "760f8a6f39864de1da31fe1a9d030709f93834e1a3117e645f21481b1fbbe61f",
+    "state.npy": "702e62a94853e0ca00b2cde32fff1c8172d2e8534bfec928e443151d83ecdc06",
+    "valid.npy": "72bf42bd9c376d68820d774b6ce353f9fd4f71523379d25ad5aca0af4510e04e"
+  },
+  "status": "passed",
+  "tagged_runtime_files": 42,
+  "threshold_crossings": 1,
+  "verification_sources": {
+    "verify_stage3_public.py": {
+      "bytes": 14520,
+      "sha256": "b4f35fcfc2788d32169030f47ec31cb7a90d084dbb05c69529d04741ae353e36"
+    },
+    "verify_vision_public.py": {
+      "bytes": 27324,
+      "sha256": "f3c135954ea485fef1b014fc1cd27a04c24b28c403662ba6af03760485bc6d10"
+    },
+    "vision_control_attachment.py": {
+      "bytes": 33531,
+      "sha256": "a34224b8fca5fb26d364b8de39b0d9b47cce372c603c852a706e991d1f31402a"
+    },
+    "vision_public_smoke.py": {
+      "bytes": 20468,
+      "sha256": "a94ad70e48fc37d39636753ae24198233ce99a54979e34c0d36d0b0f67258d38"
+    },
+    "vision_release.py": {
+      "bytes": 58787,
+      "sha256": "a5920404bb708fd63872bffa2f5de1499d0db09289c1e82db87923d6cccd3bf3"
+    },
+    "vision_release_native.py": {
+      "bytes": 24579,
+      "sha256": "4cac1a4f61466760d56028c4c899bab469829ddd687a5a56269ae0af107f5cd4"
+    }
+  },
+  "version": "v0.3.0-rc.1"
+}

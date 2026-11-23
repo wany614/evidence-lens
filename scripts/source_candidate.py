@@ -56,9 +56,11 @@ def audit(root, entries=None):
         data = git(root, "cat-file", "blob", entries[name][1])
         if name in binaries:
             pin = binaries[name]
-            if (not name.startswith("examples/") or not name.endswith(".png") or pin.get("format") != "rgb8-png"
+            numerical_plot = name == "docs/results/stage3-learning-curves/learning-curves.png"
+            required_format, ihdr = ("rgba8-png", b"\x08\x06") if numerical_plot else ("rgb8-png", b"\x08\x02")
+            if (not (name.startswith("examples/") or numerical_plot) or not name.endswith(".png") or pin.get("format") != required_format
                     or pin.get("bytes") != len(data) or pin.get("sha256") != hashlib.sha256(data).hexdigest()
-                    or not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR" or data[24:26] != b"\x08\x02"):
+                    or not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR" or data[24:26] != ihdr):
                 raise ValueError(f"original PNG example does not match its public inventory: {name}")
         else:
             data.decode("utf-8")  # All other binary assets belong to the separate Release inventory.

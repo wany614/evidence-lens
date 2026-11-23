@@ -1,0 +1,24 @@
+{
+  "action": "members",
+  "url": "https://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip",
+  "archive": {
+    "bytes": 6905656531,
+    "directory_sha256": "50f79f108a0fc7f54a79dcec02108bb61c5b4c1d5d120d567329ff1b69349acc",
+    "etag": "\"19b9bf4d3-5652d3a88539d\"",
+    "last_modified": "Wed, 14 Feb 2018 14:50:13 GMT",
+    "url": "https://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip"
+  },
+  "network_cap_bytes": 100663296,
+  "output_cap_bytes": 41943040,
+  "members": [
+    "SampleSet/MVS Data/Rectified/scan1/rect_016_3_r5000.png",
+    "SampleSet/MVS Data/Rectified/scan1/rect_018_3_r5000.png",
+    "SampleSet/MVS Data/Rectified/scan1/rect_025_3_r5000.png",
+    "SampleSet/MVS Data/Rectified/scan1/rect_035_3_r5000.png",
+    "SampleSet/MVS Data/Rectified/scan1/rect_036_3_r5000.png",
+    "SampleSet/MVS Data/Rectified/scan1/rect_037_3_r5000.png"
+  ],
+  "object_id": "set1",
+  "access_role": "truth",
+  "view_set_sha256": "11b9da336f3cdef53d5703d7496ea11ab5694bb0656e31e8b53d2eac386be440"
+}

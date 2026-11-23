@@ -1,0 +1,112 @@
+{
+  "available_common_capture_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "lighting_id": 3,
+  "objects": [
+    "set1",
+    "set6"
+  ],
+  "schema": "el-dtu-view-set-1",
+  "selection": {
+    "algorithm": "dtu-geometry-layout-v1",
+    "assigned_role_costs": {
+      "s01": 0.061079272692714806,
+      "s02": 0.5176342793815905,
+      "v01": 0.3613463979287269,
+      "v02": 0.6164328939672029,
+      "v03": 0.36517236190240465,
+      "v04": 0.3511758257100868,
+      "v05": 1.2423758663206366,
+      "v06": 0.46671792018490665
+    },
+    "dtu": {
+      "baseline_over_range": 0.40005678151798535,
+      "closest_ray_gap_m": 0.0002104008147964716,
+      "convergence_range_m": 0.6105061344575736,
+      "endpoint_angle_deg": 23.077222802344565,
+      "endpoint_distance_m": 0.24423711924808333
+    },
+    "endpoint_cost": 0.0732316195337821,
+    "rank": "endpoint angular and baseline/range squared relative errors, 4\u00d7 baseline direction squared and relative ray gap squared; plus mean squared normalized 3D positions and relative optical-angle errors. Greedy role order s01,s02,v01..v06. Ties use official ID.",
+    "roles": [
+      "s01",
+      "s02",
+      "v01",
+      "v02",
+      "v03",
+      "v04",
+      "v05",
+      "v06"
+    ],
+    "stage3": {
+      "baseline_over_range": 0.3547336161136627,
+      "closest_ray_gap_m": 9.053594779595603e-16,
+      "convergence_range_m": 2.0296921292610994,
+      "endpoint_angle_deg": 20.432842833577837,
+      "endpoint_distance_m": 0.7200000286102295
+    }
+  },
+  "source_view_ids": {
+    "s00": 24,
+    "s01": 23,
+    "s02": 17,
+    "s03": 22
+  },
+  "target_view_ids": {
+    "v01": 16,
+    "v02": 18,
+    "v03": 25,
+    "v04": 37,
+    "v05": 35,
+    "v06": 36
+  }
+}

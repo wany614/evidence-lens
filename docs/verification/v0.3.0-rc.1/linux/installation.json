@@ -1,0 +1,159 @@
+{
+  "bootstrap": "Fresh venv with the interpreter's bundled ensurepip; separately recorded from selected dependency wheels.",
+  "child_isolation": {
+    "empty_user_profile": true,
+    "inherited_proxy_or_ca_variables": false,
+    "keyring": "disabled",
+    "netrc": "null device",
+    "persistent_cache": false,
+    "pip_config_files": "disabled",
+    "system_proxy_bypass": "all hosts"
+  },
+  "declared_requirements": [
+    "torch==2.8.0",
+    "numpy==2.2.6; python_version < \"3.12\"",
+    "numpy==2.5.5; python_version >= \"3.12\"",
+    "safetensors==0.8.0",
+    "Pillow==12.3.0"
+  ],
+  "dependency_policy": "The release requirements name the direct dependencies. pip resolved the remaining wheels in this run.",
+  "installed_distributions": {
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.3",
+    "filelock": "4.2.4",
+    "fsspec": "2026.9.0",
+    "mpmath": "1.3.0",
+    "networkx": "3.7",
+    "numpy": "2.5.5",
+    "pillow": "12.3.0",
+    "pip": "25.0.1",
+    "safetensors": "0.8.0",
+    "setuptools": "78.1.0",
+    "sympy": "1.14.0",
+    "torch": "2.8.0+cpu",
+    "typing_extensions": "4.16.0"
+  },
+  "requirements_sha256": "7ac34ac56aaea8b1c0c9c1edbbcc75681f334c97389893043654d17210f2f219",
+  "schema": "el-vision-dependency-installation-1",
+  "source_mode": "online_public_indices",
+  "transactions": [
+    {
+      "pip_report_sha256": "ca06eaa4d99fb4ab2d212f99e27a3dadf6f78532d91fe9240670475d448958eb",
+      "pip_version": "25.0.1",
+      "source": "https://download.pytorch.org/whl/cpu",
+      "wheels": [
+        {
+          "distribution": "torch",
+          "origin": "download-r2.pytorch.org",
+          "requested": true,
+          "sha256": "610f600c102386e581327d5efc18c0d6edecb9820b4140d26163354a99cd800d",
+          "version": "2.8.0+cpu",
+          "wheel": "torch-2.8.0+cpu-cp312-cp312-manylinux_2_28_aarch64.whl"
+        },
+        {
+          "distribution": "sympy",
+          "origin": "files.pythonhosted.org",
+          "requested": false,
+          "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+          "version": "1.14.0",
+          "wheel": "sympy-1.14.0-py3-none-any.whl"
+        },
+        {
+          "distribution": "typing_extensions",
+          "origin": "files.pythonhosted.org",
+          "requested": false,
+          "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+          "version": "4.16.0",
+          "wheel": "typing_extensions-4.16.0-py3-none-any.whl"
+        },
+        {
+          "distribution": "filelock",
+          "origin": "files.pythonhosted.org",
+          "requested": false,
+          "sha256": "301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e",
+          "version": "4.2.4",
+          "wheel": "filelock-4.2.4-py3-none-any.whl"
+        },
+        {
+          "distribution": "fsspec",
+          "origin": "files.pythonhosted.org",
+          "requested": false,
+          "sha256": "8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f",
+          "version": "2026.9.0",
+          "wheel": "fsspec-2026.9.0-py3-none-any.whl"
+        },
+        {
+          "distribution": "Jinja2",
+          "origin": "download.pytorch.org",
+          "requested": false,
+          "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+          "version": "3.1.6",
+          "wheel": "jinja2-3.1.6-py3-none-any.whl"
+        },
+        {
+          "distribution": "networkx",
+          "origin": "files.pythonhosted.org",
+          "requested": false,
+          "sha256": "e3fd2c13a7814cee3746340d8d7f8598a67f16a58bf47fb7f8793fab6efca1b0",
+          "version": "3.7",
+          "wheel": "networkx-3.7-py3-none-any.whl"
+        },
+        {
+          "distribution": "setuptools",
+          "origin": "download.pytorch.org",
+          "requested": false,
+          "sha256": "3e386e96793c8702ae83d17b853fb93d3e09ef82ec62722e61da5cd22376dcd8",
+          "version": "78.1.0",
+          "wheel": "setuptools-78.1.0-py3-none-any.whl"
+        },
+        {
+          "distribution": "MarkupSafe",
+          "origin": "download.pytorch.org",
+          "requested": false,
+          "sha256": "3a7e8ae81ae39e62a41ec302f972ba6ae23a5c5396c8e60113e9066ef893da0d",
+          "version": "3.0.3",
+          "wheel": "markupsafe-3.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl"
+        },
+        {
+          "distribution": "mpmath",
+          "origin": "files.pythonhosted.org",
+          "requested": false,
+          "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+          "version": "1.3.0",
+          "wheel": "mpmath-1.3.0-py3-none-any.whl"
+        }
+      ]
+    },
+    {
+      "pip_report_sha256": "3bd0e963405abd53530f83eb68fdbeb0e78fdcdde7a98b631491405e5f97d7f3",
+      "pip_version": "25.0.1",
+      "source": "https://pypi.org/simple",
+      "wheels": [
+        {
+          "distribution": "numpy",
+          "origin": "files.pythonhosted.org",
+          "requested": true,
+          "sha256": "a0750f2156d53446caca85663d0b65d67214e1664b9050454a731ea1418d176a",
+          "version": "2.5.5",
+          "wheel": "numpy-2.5.5-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl"
+        },
+        {
+          "distribution": "safetensors",
+          "origin": "files.pythonhosted.org",
+          "requested": true,
+          "sha256": "7a46e5ff292c356d6991e60942ba7f79817682d3a2cef0702136448cb9c4d235",
+          "version": "0.8.0",
+          "wheel": "safetensors-0.8.0-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+        },
+        {
+          "distribution": "pillow",
+          "origin": "files.pythonhosted.org",
+          "requested": true,
+          "sha256": "d9c7f76c0673154f044e9d78c8655fb4213f6ca31a836df48b40fe5d187717b9",
+          "version": "12.3.0",
+          "wheel": "pillow-12.3.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl"
+        }
+      ]
+    }
+  ]
+}

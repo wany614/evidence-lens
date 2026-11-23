@@ -1,0 +1,17 @@
+{
+  "action": "members",
+  "url": "https://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip",
+  "archive": {
+    "bytes": 6905656531,
+    "directory_sha256": "50f79f108a0fc7f54a79dcec02108bb61c5b4c1d5d120d567329ff1b69349acc",
+    "etag": "\"19b9bf4d3-5652d3a88539d\"",
+    "last_modified": "Wed, 14 Feb 2018 14:50:13 GMT",
+    "url": "https://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip"
+  },
+  "network_cap_bytes": 12582912,
+  "output_cap_bytes": 3145728,
+  "members": [
+    "SampleSet/Datasets included.pdf",
+    "SampleSet/Matlab evaluation code/BaseEval2Obj_web.m"
+  ]
+}

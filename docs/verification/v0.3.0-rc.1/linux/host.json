@@ -1,0 +1,13 @@
+{
+  "elapsed_seconds": 51.47043341699464,
+  "free_floor_bytes": 32212254720,
+  "host_machine": "arm64",
+  "host_system": "Darwin",
+  "image_architecture": "arm64",
+  "image_id": "sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "image_repo_digests": [
+    "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b"
+  ],
+  "minimum_free_bytes": 34680041472,
+  "schema": "el-d0-linux-host-1"
+}

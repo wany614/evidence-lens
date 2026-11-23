@@ -1,0 +1,192 @@
+{
+  "schema": "el-dtu-external-study-1",
+  "converter": "dtu-crop256-v1",
+  "title": "Frozen DTU SampleSet transfer at 256 × 256",
+  "development_objects": [
+    "set1"
+  ],
+  "external_objects": [
+    "set6"
+  ],
+  "families": {
+    "development": "DTU scan1",
+    "external": "DTU scan6",
+    "selection": "The official SampleSet directory contains complete photographs and corresponding data for scans 1 and 6 only. Its other scan IDs have observability metadata without the photographs. The public catalogue identifies both scenes separately. Neither appears in the official rotated-scene groups. Check the catalogue thumbnails for physical identity independently of the test results. If unresolved, limit claims to acquisition identity; if near duplicates, group them into one family."
+  },
+  "release": {
+    "repository": "https://github.com/wany614/evidence-lens",
+    "version": "v0.3.0-rc.1",
+    "commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+    "candidate_sha256": "7e767f053f9cca09072de1259433f65c0ee550d8c14a9d968579ad1cb9623669",
+    "cpu_zip_sha256": "f555956840870309217cc85fe9b339ef53762679bbd2138b7f149d8ea451a7b7",
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "method_sha256": "1a2cbdb0ea3a52dfbde2e518c833b18d677209444c6aa345314ba3757aa3c9db",
+    "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63"
+  },
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "default": "MS-L1",
+  "scopes": {
+    "B-L1-transfer": "one",
+    "MS-L1": "all",
+    "MS-frozen": "all",
+    "MS-ft": "all"
+  },
+  "camera": {
+    "plan_sha256": "e688ed923a57c65bc73be6a2ca794e8cc23ea554474ee825d65a92450fddbdbd",
+    "views_sha256": "11b9da336f3cdef53d5703d7496ea11ab5694bb0656e31e8b53d2eac386be440",
+    "crop_sha256": "28fc8c466883f97c53bce0673e79980bc5f211db1d443c7ef5f12adec8d68350",
+    "rig_sha256": "764f81c491969dcd1dfdbbd2443ce29cba354b26af1a87ac5260422526ca235d",
+    "native_rgb": "official Rectified scanN/rect_NNN_3_r5000.png, right camera. Treat supplied RGB8 as display RGB under the released scorer convention; sensor response and transfer function were not independently measured.",
+    "light": 3,
+    "sources": {
+      "s00": 24,
+      "s01": 23,
+      "s02": 17,
+      "s03": 22
+    },
+    "targets": {
+      "v01": 16,
+      "v02": 18,
+      "v03": 25,
+      "v04": 37,
+      "v05": 35,
+      "v06": 36
+    },
+    "M2": [
+      "s00",
+      "s03"
+    ],
+    "M4": [
+      "s00",
+      "s01",
+      "s02",
+      "s03"
+    ],
+    "image": {
+      "affine": [
+        [
+          0.21333333333333335,
+          0.0,
+          -43.06
+        ],
+        [
+          0.0,
+          0.21333333333333335,
+          -0.3933333333333333
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "color": "RGB8 display values without exposure, alignment or fitted colour transformation",
+      "height": 1200,
+      "id": "dtu-crop256-v1",
+      "left": 200,
+      "output": [
+        256,
+        256
+      ],
+      "resampling": "Pillow LANCZOS in the supplied display RGB encoding; half-pixel centres",
+      "scale": 0.21333333333333335,
+      "schema": "el-dtu-crop-1",
+      "side": 1200,
+      "top": 0,
+      "width": 1600
+    }
+  },
+  "optimizer": {
+    "source": "protocol/stage3-optimizer-v1.json",
+    "sha256": "2d1a704a8c93922326663edb3e27b047e05b1916bc47795d9a43771900fdf122",
+    "seed": 43171,
+    "n": 4096,
+    "updates": 256,
+    "pixels": 16777216,
+    "dtype": "FP32",
+    "tf32": false,
+    "topology": "fixed",
+    "conditioning": "same rigid metric transform based on shared endpoints; fixed original random box, no object scale fit",
+    "source_sampling": "round robin; M2 128/source, M4 64/source",
+    "checkpoint": "terminal step only",
+    "training_risk_fits": 0
+  },
+  "engineering": {
+    "native_projection": "Verify original P against full OpenCV crop K and metric C2W, including noncentral principal point, axial depth and off-axis points, before photos. Verify gsplat ED on the actual backend.",
+    "frozen_worker": "finite parameters and gradients, 4096 fixed parameters sets, nonempty support and common-checkpoint/source-image identity per condition; finite legal RGB and alpha in [0,1]; supported ED is finite and positive, NaN is allowed off support. A constant-black image or no supported pixels invalidates reconstruction. Report failures at their original stage plus counts.",
+    "interpretation": "Assess engineering and source-reconstruction quality first, then target RGB error prevalence and frozen risk. No filtering on target errors, scores, material, confidence or alpha."
+  },
+  "evaluation": {
+    "primary": "absolute per-pixel mean in display RGB > float32(0.05), no exposure correction or target alignment",
+    "domain": "all 256x256 center-crop RGB pixels with valid reference; a nonfinite or missing prediction reduces E, never V. Prediction alpha is not a reference mask. Retain all targets, conditions and failures.",
+    "object_domain": null,
+    "object_domain_reason": "Official ObsMask is a 3D visibility volume for point-distance evaluation. No independently verified dense image silhouette is supplied. No hole-filled or predicted-alpha object mask.",
+    "V": "valid reference pixels",
+    "E": "comparable reference and prediction within V",
+    "S": "finite method support within E",
+    "U": "E minus S",
+    "L": "low state on S at released method threshold",
+    "LY": "low state with original RGB error label",
+    "rates": [
+      "E/V",
+      "(V-E) count",
+      "Y/E",
+      "L/V",
+      "LY/L",
+      "U/E",
+      "L/S"
+    ],
+    "ap": "old tied-score grouped AP on the common four-method support and separately each deployment support. Require both labels, mean of eligible views per object then equal eligible objects. Retain number of views, objects, positive/negative counts.",
+    "auxiliary": "3x3 minimum of center prediction vs valid in-domain neighbor reference RGB, bounded at crop edge with center included. Same E; no fictitious padding. Fixed 10-bin descriptive ECE and Brier if emitted.",
+    "no_inference": [
+      "cross-object confidence intervals for a single object",
+      "CRC guarantee",
+      "geometric labels",
+      "external recalibration",
+      "tuning to test results"
+    ]
+  },
+  "budget": {
+    "network_bytes": 21474836480,
+    "local_free_floor_bytes": 32212254720,
+    "active_target_bytes": 21474836480,
+    "development_main": 2,
+    "external_main": 2,
+    "development_diagnostic_max": 2,
+    "external_diagnostic": 0,
+    "risk_scopes_per_condition": 4,
+    "target_method_cells_external": 48,
+    "scientific_retry_per_issue": 1
+  },
+  "data_rights": {
+    "source": "https://roboimagedata.compute.dtu.dk/?page_id=36",
+    "source_terms": "SampleSet/ReadMe.txt asks users to cite Jensen et al., CVPR 2014. Source used for research evaluation.",
+    "raw_and_derivative_figures": "private local research archive only",
+    "public": "original code, file names and checksums, protocols, bibliographic attribution, numeric results and sanitized receipts"
+  }
+}

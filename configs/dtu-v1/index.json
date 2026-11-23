@@ -1,0 +1,6 @@
+{
+  "action": "index",
+  "url": "https://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip",
+  "network_cap_bytes": 16777216,
+  "output_cap_bytes": 10485760
+}

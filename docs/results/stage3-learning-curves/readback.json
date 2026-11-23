@@ -1,0 +1,91 @@
+{
+  "catalog_sha256": "f14ca80777cf72e6f99075fb860e24cd38a6b4d9db342011173e9b216d3c66f5",
+  "columns": {
+    "ap": "Native average precision on the registered common finite development mask.",
+    "development_family_equal_AP": "Mean of the four development family APs.",
+    "family_AP": "Mean of the two acquisition-condition means of six view APs.",
+    "n": "Comparable score-all development pixels, including both classes.",
+    "positive": "RGB high-error events on that development mask.",
+    "weighted_train_BCE": "Training binary cross entropy, equally weighted by family, acquisition condition, then view."
+  },
+  "development_dataset_sha256": "cebab5a247a553305c456b94988103288dab3b793d6369384ed286329180d47b",
+  "files": {
+    "epochs.csv": {
+      "bytes": 2842,
+      "sha256": "54455aed09106327c26f8cf1ddeb8f1e5a479ef702cd1c05f931eead42700410"
+    },
+    "families.csv": {
+      "bytes": 19671,
+      "sha256": "ca4e9d912bb44115abeae482339f8540e9130b99ee2a24ab089dc866066f1060"
+    },
+    "learning-curves.png": {
+      "bytes": 88364,
+      "sha256": "1c22e49460e47f964d63cac610cd02a834d0f800136bd049d9b26bbf8d7bbf9d"
+    },
+    "views.csv": {
+      "bytes": 231495,
+      "sha256": "397f92b205c6808d3f923202ef855c6341ab5557140c1185d47c9d99b0038389"
+    }
+  },
+  "readback": {
+    "common_pixel_denominator_per_epoch_per_fit": 3101930,
+    "family_epochs": 192,
+    "fit_epochs": 48,
+    "native_distinct_development_views": 48,
+    "positive_events_per_epoch_per_fit": 276366,
+    "view_epochs": 2304
+  },
+  "release_commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+  "retained_fits": [
+    {
+      "best_epoch": 12,
+      "curves_sha256": "3b8457ce548a45b454313b1903e2bef3f76c833c6b1d3b6c8a4ff10615eef11c",
+      "manifest_sha256": "33f36fa55fd0fce47ab68857290ae7884910135539c9ba2239c367b9a1181814",
+      "method": "MS-frozen",
+      "optimization_parent": {
+        "manifest_sha256": "2f811f866d6581f846484f089ddbeb9c36239499e213af0fff338243c149e536",
+        "run_id": "20261123T163117676676Z-81c14259dee84abf"
+      },
+      "optimizer_steps": 288,
+      "run_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "seed": 1729,
+      "training_sha256": "1104bde5a4b8da49760ac74e178ead63a8cac1ad42f06f8ff97886e27321f3bb"
+    },
+    {
+      "best_epoch": 12,
+      "curves_sha256": "85ab9637b6d152c2bd84dab392e7a9108b6ec4e56edfa8daaabe414832ad70b1",
+      "manifest_sha256": "262bd970b4ebf0014303ae20630af29762dc74b9a40478b50d99d51ae2d2e299",
+      "method": "MS-ft",
+      "optimization_parent": null,
+      "optimizer_steps": 288,
+      "run_id": "20261123T163946850310Z-7bba96f006e74705",
+      "seed": 1729,
+      "training_sha256": "f9ccc4b7cce3633c514f976f058427339dd924193b51c6edf96e0637acfe2323"
+    },
+    {
+      "best_epoch": 12,
+      "curves_sha256": "ddb6ec11605374ea6243652ec07827bfe839c01c3bf19abb29e71006754a888f",
+      "manifest_sha256": "9c003e07808fdd1791a9ccc9b0cfebd976e7c0d08b6095f8e0405617a5954be1",
+      "method": "MS-frozen",
+      "optimization_parent": null,
+      "optimizer_steps": 288,
+      "run_id": "20261123T164122126785Z-18597c1440f44e67",
+      "seed": 2718,
+      "training_sha256": "ff46690d305945e491a4cb216c39587679b73124c605e32f8840137836f767bf"
+    },
+    {
+      "best_epoch": 12,
+      "curves_sha256": "926cf7600ff3a9d9b54ffa6213af53227edffd1426cd9cc9e7f211ff6fba637d",
+      "manifest_sha256": "915f4d7aaf4cfdfa38140454ecbaed02efc1bb458d69b989cd7d495b364c716e",
+      "method": "MS-ft",
+      "optimization_parent": null,
+      "optimizer_steps": 288,
+      "run_id": "20261123T164253807791Z-33e5284dfe574bd3",
+      "seed": 2718,
+      "training_sha256": "4f6983ba66ccae283243a0b883c22947703ac6bdc5a30b5ae9267a5804d29bed"
+    }
+  ],
+  "schema": "el-d0-curve-readback-1",
+  "study_sha256": "dd227c25648af4ab5e4e42d3fdd07702a8e46b3def36810ac9d65c55b07a7b23",
+  "training_dataset_sha256": "574f6bac7f07f0ed47a21c5e6c291c57a92c065deefb32c89dbc39f4d5a50208"
+}
