@@ -50,7 +50,7 @@
       "scope": "To the extent rights apply."
     },
     {
-      "material": "Apple SHARP model, per-scene Gaussians, scientific source and target renders, full research archive and third-party runtime distributions",
+      "material": "Apple SHARP model and per-scene Gaussians, raw scientific SHARP predictions, full research bundles and third-party runtime distributions",
       "public_distribution": "excluded from Evidence Lens model assets",
       "terms": "Their applicable upstream terms and independent private archive records remain authoritative. See docs/vision-rights.md."
     }

@@ -141,7 +141,7 @@
     "licenses/EXAMPLE-LICENSE.txt": "notices",
     "licenses/MODEL-LICENSE.txt": "notices",
     "licenses/RESEARCH-RECORDS.txt": "notices",
-    "licenses/vision-assets.json": "cc-original",
+    "licenses/vision-assets.json": "notices",
     "protocol/analysis-addendum-v1.json": "apache-original",
     "protocol/families-v1.json": "apache-original",
     "protocol/operating-points-v1.json": "apache-original",
