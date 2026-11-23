@@ -110,12 +110,12 @@
       "sha256": "bcf668151f04a2e99f9f467aca16868c963f5ae77224ba3aed26c52f210f78a1"
     },
     "src/recovery/engine.py": {
-      "bytes": 13691,
-      "sha256": "8b3972de08da0e7c42d5c9445d3dbff95659195abfdaf19d9a90284e54a5bbab"
+      "bytes": 14161,
+      "sha256": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539"
     },
     "src/recovery/scene.py": {
-      "bytes": 6137,
-      "sha256": "ebcc72e3360e57ca8cb85b680415cf7a5144963bc7e46cff9e1fd098fc365917"
+      "bytes": 6885,
+      "sha256": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6"
     },
     "src/recovery/topology.py": {
       "bytes": 5902,
@@ -130,8 +130,8 @@
       "sha256": "6412c62d559d64a11a39b9b962f8bf003a796c4f4590ee169dde92c22f46f84f"
     },
     "tests/ed_probe.py": {
-      "bytes": 2867,
-      "sha256": "7e7050e4a2191eabaa3552ab178b60efb513d7f4516ed44afe3ecd7e72c9e029"
+      "bytes": 2873,
+      "sha256": "64d9e35f6d0e7ee22d45a3758a26c7907d0e3599bf5a3af4384a6a5bb4e0c3bd"
     },
     "tests/engineering_registration.py": {
       "bytes": 1013,
@@ -146,8 +146,8 @@
       "sha256": "33c76751e0feac95d8d5edb6c86b822c50d49719a02b5cc3975e4af3472237a8"
     },
     "tests/run_engineering_windows.py": {
-      "bytes": 8744,
-      "sha256": "943502b89732ba7bd60a3aeefbf4fe12f8d0614e0be3a29180b0873e6708fb6e"
+      "bytes": 10463,
+      "sha256": "cfd6bf9c89cba3666cc30d5982116366a55fc83948ade6c7ad2c3e59306d81f6"
     }
   },
   "license": "Apache-2.0",
@@ -155,5 +155,5 @@
   "schema": "el-recovery-worker-source-1",
   "scope": "software and engineering fixtures; independent frozen authority is required for real objects",
   "tree_digest_algorithm": "sha256(json.dumps(files,sort_keys=True,separators=(comma,colon)).encode(utf8))",
-  "tree_sha256": "f412bc1f49d87ebce3cdb3d3646375a5e4d4120f038ce67e0b093c8f42fadcb7"
+  "tree_sha256": "02fe9a25281a72b43a4eb038b37d0a2c5b6e291175f0ac0b1c8c0b5761247e3c"
 }

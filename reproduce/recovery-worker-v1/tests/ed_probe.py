@@ -21,7 +21,7 @@ doc = {"schema": "el-camera-1", "unit": "m", "axis_convention": "OpenCV x right,
        "views": {"s00": {**cam, "c2w": np.eye(4).tolist()}, "s03": {**cam, "c2w": other.tolist()}}}
 path = out / "analytic-cameras.json"
 save(path, doc)
-views, scale = cameras(path, ["s00", "s03"], device)
+views, scale, _, _ = cameras(path, ["s00", "s03"], device)
 x, y = 22, 12
 zs = np.array([.41, .91])
 positions = np.linalg.solve(k, [x, y, 1.])[None] * zs[:, None]

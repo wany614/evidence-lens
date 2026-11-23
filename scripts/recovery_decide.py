@@ -68,6 +68,12 @@ def decide(source, cfg, paths, out):
                 "invalid public recipe name")
         recipe_file = source / name
         require(sha(recipe_file) == cfg["recipe_sha256"], "recipe file differs from the request")
+        probe = load(paths["resource_probe"])
+        require(probe["schema"] == "el-recovery-resource-probe-1" and probe["passed"] is True
+                and probe["worker_zip_sha256"] == cfg["inputs"]["worker_source"]["sha256"]
+                and probe["candidate_recipe_sha256"] == cfg["recipe_sha256"]
+                and probe["density"]["cap"] >= load(recipe_file)["topology"]["cap"],
+                "the short resource and interface tests did not qualify this worker and budget")
         (out / "recipe.json").write_bytes(recipe_file.read_bytes())
         decision.update(schema="el-recovery-recipe-admission-1", recipe_id=cfg["recipe_id"],
                         recipe_sha256=sha(recipe_file), R1=cfg["R1"], reason_for_candidate=cfg["candidate_reason"])

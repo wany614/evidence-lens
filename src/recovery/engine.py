@@ -94,7 +94,7 @@ def generation(config, inputs, out):
     recipe = validate_recipe(load(inputs["recipe"]))
     require(cfg["role_hashes"]["recipe"] == ident["recipe_sha256"], "Recipe identity")
     method = load(inputs["initmeta"])
-    views, scale = cameras(inputs["cameras"], ids, device)
+    views, scale, source_calibration, frame = cameras(inputs["cameras"], ids, device)
     require(isinstance(method["actual_method"], str) and method["actual_method"].strip() and
             math.isclose(scale, method["scene_scale_m"], rel_tol=1e-5, abs_tol=1e-8), "Endpoint baseline or init method")
     source = {s: source_image(inputs[s], views[s], device) for s in ids}
@@ -113,6 +113,7 @@ def generation(config, inputs, out):
                 and ck["recipe"] == recipe and ck["source_order"] == list(ids)
                 and ck["next_source_index"] == first % len(ids)
                 and ck["counts"] == {s: (first + len(ids) - 1 - i) // len(ids) for i, s in enumerate(ids)}
+                and ck["endpoint_frame_sha256"] == frame and ck["source_calibration"] == source_calibration
                 and math.isclose(ck["scene_scale_m"], scale, rel_tol=1e-12), "Resume cursor/parent differs")
         params = {k: torch.nn.Parameter(x.to(device)) for k, x in ck["params"].items()}
         opts = optimizers(params, recipe, scale)
@@ -140,7 +141,8 @@ def generation(config, inputs, out):
         temp = target.with_suffix(".part")
         blob = {"schema": "el-recovery-checkpoint-1", "producer_run_id": run_id, "identity": ident, "recipe": recipe,
                 "step": step, "horizon": HORIZON, "phase": phase(step, recipe), "scene_scale_m": scale,
-                "actual_method": method["actual_method"], "source_order": list(ids), "next_source_index": step % len(ids),
+                "actual_method": method["actual_method"], "endpoint_frame_sha256": frame, "source_calibration": source_calibration,
+                "source_order": list(ids), "next_source_index": step % len(ids),
                 "counts": counts, "topology_totals": dict(totals), "params": tree(params, "cpu"),
                 "adam": {k: tree(opt.state_dict(), "cpu") for k, opt in opts.items()},
                 "strategy": tree(strategy.state, "cpu"), "rng": rng_snapshot(),
@@ -202,7 +204,7 @@ def generation(config, inputs, out):
          "job_stop_step": cfg["planned_stop_step"], "recipe_stop_step": recipe["stop_step"], "schedule_horizon": HORIZON,
          "resume_origin": cfg.get("resume_origin"), "first_completed_step": first, "last_completed_step": end,
          "updates_in_process": end - first, "sampling_counts": counts, "topology_totals": dict(totals),
-         "actual_method": method["actual_method"], "scene_scale_m": scale, "checkpoints": points,
+         "actual_method": method["actual_method"], "scene_scale_m": scale, "endpoint_frame_sha256": frame, "checkpoints": points,
          "trace_sha256": sha(out / "steps.jsonl"), "loop_wall_seconds": time.perf_counter() - started,
          "worker_wall_seconds": time.perf_counter() - begun, "resources": runtime()})
 
@@ -216,12 +218,13 @@ def render(config, inputs, out):
     ids = SOURCES[ident["condition"]]
     require(set(inputs) == {"cameras", *("c" + s for s in cfg["selected"])} and
             sha(inputs["cameras"]) == cfg["render_camera_sha256"], "Renderer inputs or camera digest")
-    views, scale = cameras(inputs["cameras"], ids + TARGETS, device)
+    views, scale, calibration, frame = cameras(inputs["cameras"], ids + TARGETS, device)
     points = {}
     for key, receipt in sorted(cfg["selected"].items(), key=lambda kv: int(kv[0])):
         ck = load_point(inputs["c" + key], receipt["checkpoint_sha256"], ident)
         require(ck["step"] == int(key) and ck["producer_run_id"] == receipt["producer_run_id"] and
-                math.isclose(ck["scene_scale_m"], scale, rel_tol=1e-5, abs_tol=1e-8), "Wrong issued checkpoint or common frame")
+                ck["endpoint_frame_sha256"] == frame and ck["source_calibration"] == {s: calibration[s] for s in ids}
+                and math.isclose(ck["scene_scale_m"], scale, rel_tol=1e-5, abs_tol=1e-8), "Wrong checkpoint, frame or source calibration")
         params = {k: t.to(device) for k, t in ck["params"].items()}
         directory = out / f"step-{int(key):04d}"
         directory.mkdir()
@@ -240,6 +243,7 @@ def render(config, inputs, out):
                        "checkpoint_sha256": receipt["checkpoint_sha256"], "producer_run_id": receipt["producer_run_id"], "views": outputs}
         del params, ck
     save(out / "outputs.json", {"schema": "el-recovery-outputs-1", **ident, "render_camera_sha256": cfg["render_camera_sha256"],
-         "reconstruction_run_id": cfg["generation"]["run_id"], "status": "completed", "checkpoints": points,
+         "reconstruction_run_id": cfg["generation"]["run_id"], "endpoint_frame_sha256": frame,
+         "scene_scale_m": scale, "status": "completed", "checkpoints": points,
          "depth_semantics": "opacity-normalized expected camera Z in metres", "rgb_encoding": "display_srgb_float32",
          "worker_wall_seconds": time.perf_counter() - begun, "resources": runtime()})

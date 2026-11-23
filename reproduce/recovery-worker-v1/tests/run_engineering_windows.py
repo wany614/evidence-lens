@@ -21,6 +21,9 @@ def main():
     for k in ("store", "returns", "work", "gpu-slot"):
         p.add_argument("--" + k, required=True, type=Path)
     p.add_argument("--series", required=True)
+    p.add_argument("--prepare-only", action="store_true", help="Seal the engineering plan and analytic input bytes")
+    p.add_argument("--reuse-setup", type=Path, help="Earlier progress JSON with verified, unchanged plan and fixture")
+    p.add_argument("--correction", action="append", default=[], metavar="LABEL=RUN=MANIFEST")
     a = p.parse_args()
     store, returns, work = (x.resolve() for x in (a.store, a.returns, a.work))
     for folder in (store, returns, work):
@@ -28,6 +31,12 @@ def main():
     candidate = CODE / "configs/candidate-recipe.json"
     env = {**os.environ, "PYTHONPATH": str(CODE / "src"), "PYTHONDONTWRITEBYTECODE": "1"}
     ledger = {}
+    originals = {}
+    for arg in a.correction:
+        label, rid, digest = arg.split("=", 2)
+        v = verify_bundle(store / "runs" / rid)
+        require(v["manifest_sha256"] == digest and v["run"]["execution_status"] != "succeeded", "Correction original")
+        originals[label] = {"run_id": rid, "manifest_sha256": digest, "status": v["run"]["execution_status"]}
     def save_result(label, receipt, expected="succeeded"):
         ledger[label] = receipt
         save(work / "progress.json", {"series": a.series, "runs": ledger})
@@ -48,6 +57,8 @@ def main():
                                  "member": path.relative_to(store / "runs" / producer["run"]).as_posix()}
         cfg = {"experiment_id": "r-recovery-engineering", "trial_id": trial, "scope": "synthetic-only",
                "artifact_origins": origins, "recording": {"expected_output_bytes": 60*1024**2}}
+        if label in originals:
+            cfg["correction_of"] = originals[label]
         cfg["request_sha256"] = hashlib.sha256(encoded(cfg)).hexdigest()
         save(fcfg, cfg)
         command = [sys.executable, "-B", "-m", "evidence_lens.recorder", "--root", str(store), "--source-root", str(CODE),
@@ -70,8 +81,23 @@ def main():
         require(run.stdout.strip(), "Recorder did not seal " + label + ": " + run.stderr[-700:])
         rid = json.loads(run.stdout.splitlines()[-1])["run_id"]
         return save_result(label, deliver(store, returns, rid))
-    reg = raw("plan", "archive_verify", "engineering_registration.py", {"candidate":(candidate, None, "--candidate")})
-    data = raw("data", "dataset_build", "make_fixture.py", {"candidate":(candidate, reg, "--candidate")}, [reg])
+    if a.reuse_setup:
+        previous = load(a.reuse_setup)["runs"]
+        for label, script in (("plan", "engineering_registration.py"), ("data", "make_fixture.py")):
+            item = previous[label]
+            root = store / "runs" / item["run"]
+            require(verify_bundle(root)["manifest_sha256"] == item["manifest_sha256"] and
+                    sha(root / "source/tests" / script) == sha(CODE / "tests" / script), "Reusable fixture code or manifest differs")
+            save_result(label, deliver(store, returns, item["run"]))
+        reg, data = ledger["plan"], ledger["data"]
+        require(load(store/"runs"/reg["run"]/"payload/registration.json")["recipe_candidate_sha256"] == sha(candidate),
+                "Original authorized fixture recipe differs")
+    else:
+        reg = raw("plan", "archive_verify", "engineering_registration.py", {"candidate":(candidate, None, "--candidate")})
+        data = raw("data", "dataset_build", "make_fixture.py", {"candidate":(candidate, reg, "--candidate")}, [reg])
+    if a.prepare_only:
+        print(json.dumps({k: v["run"] for k, v in ledger.items()}))
+        return
     raw("topology", "archive_verify", "forced_topology.py", {"candidate":(candidate, reg, "--recipe")}, [reg])
     raw("projection", "archive_verify", "ed_probe.py", {}, [reg])
     data_dir = store / "runs" / data["run"] / "payload"
@@ -133,7 +159,7 @@ def main():
         checked = verify_bundle(store / "runs" / receipt["run"])
         require(checked["manifest_sha256"] == receipt["manifest_sha256"], "Final engineering bundle readback")
     save(returns / (a.series + "-summary.json"), {"scope":"synthetic-only", "series":a.series, "status":"completed",
-         "candidate_recipe_sha256":sha(candidate), "expected_cutoff_run":cutoff["run"], "runs":ledger})
+         "candidate_recipe_sha256":sha(candidate), "expected_cutoff_run":cutoff["run"], "original_failures":originals, "runs":ledger})
     print(json.dumps({k:(v["run"],v["status"]) for k,v in ledger.items()}))
 
 if __name__ == "__main__":

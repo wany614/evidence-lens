@@ -1,6 +1,7 @@
 """FP32 pinhole projection, degree-zero color and the source photometric objective."""
 from __future__ import annotations
 
+import hashlib
 import importlib.metadata
 import math
 import platform
@@ -11,7 +12,7 @@ import torch.nn.functional as F
 from PIL import Image
 from gsplat import rasterization
 
-from evidence_lens._bundle import load
+from evidence_lens._bundle import encoded, load
 from evidence_lens._verify import require
 from recovery.contract import PARAMS, WIDTHS
 
@@ -23,6 +24,10 @@ def setup():
     torch.backends.cudnn.allow_tf32 = False
     torch.backends.cudnn.benchmark = False
     torch.set_float32_matmul_precision("highest")
+    torch.cuda.set_device(0)
+    # device_count() can use NVML without initializing PyTorch's allocator.
+    # Create the context and allocator before asking it to reset its counters.
+    torch.empty(1, dtype=torch.float32, device="cuda:0")
     torch.cuda.reset_peak_memory_stats(0)
     return torch.device("cuda:0")
 
@@ -60,7 +65,14 @@ def cameras(path, ids, device):
     centers = [np.asarray(doc["views"][s]["c2w"], dtype=np.float64)[:3, 3] for s in ("s00", "s03")]
     baseline = float(np.linalg.norm(centers[0] - centers[1]))
     require(math.isfinite(baseline) and baseline > 0, "Shared endpoint baseline must be positive in metres")
-    return views, baseline
+    calibration = {}
+    for key in ids:
+        cam = doc["views"][key]
+        physical = {name: np.asarray(cam[name], dtype=np.float64).tolist() for name in ("K", "c2w", "clip_m")}
+        physical.update(width=cam["width"], height=cam["height"])
+        calibration[key] = hashlib.sha256(encoded(physical)).hexdigest()
+    frame = {s: np.asarray(doc["views"][s]["c2w"], dtype=np.float64).tolist() for s in ("s00", "s03")}
+    return views, baseline, calibration, hashlib.sha256(encoded(frame)).hexdigest()
 
 
 def init_parameters(path, cap, device):
