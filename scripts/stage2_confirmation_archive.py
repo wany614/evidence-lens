@@ -363,6 +363,93 @@ def park(a):
     return {"family": proof["family"], "parked": len(result), "run_ids": sorted(result)}
 
 
+def retained_copy(store, shelf, base, family, certificate_sha256, *, require_parked=False, location=None):
+    """Bind the original snapshot, its cloud readback and every retained recorder identity."""
+    from stage2_cloud_restore import certify
+
+    marker = base / "archives" / (family + ".local.json")
+    local = load(marker)
+    snapshot = local["proof"]
+    digest = snapshot["container_sha256"]
+    offer_pin = base / "archives" / (family + ".cloud-offer.json")
+    pin = load(offer_pin)
+    require(
+        HASH.fullmatch(digest) and snapshot["family"] == family
+        and pin["family"] == family and pin["archive_sha256"] == digest
+        and sha(base / "families" / (family + ".json")) == local["family_sha256"]
+        and pin["authorization_sha256"] == local["authorization_sha256"] == sha(base / "authorization.json"),
+        "Local snapshot does not bind this family and opening",
+    )
+    compound = base / "archives" / (digest + ".json")
+    cert = win.signed(compound, certificate_sha256)
+    offer_name = local_path(pin["offer_name"])
+    require("/" not in offer_name, "Invalid local offer filename")
+    offer_path = base / "archives/offers" / offer_name
+    offer = win.signed(offer_path, pin["offer_sha256"])
+    provider_dir = base / "archives/provider" / family
+    cloud_proof = provider_dir / "cloud-proof.json"
+    require(
+        cert["schema"] == "el-stage2-family-cloud-archive-1" and cert["family"] == family
+        and cert["offer_sha256"] == pin["offer_sha256"] and cert["container_sha256"] == digest
+        and offer["archive_sha256"] == digest and offer["archive_bytes"] == snapshot["bytes"]
+        and offer["family"] == family and offer["fixture"] is False
+        and offer["run_manifests"] == snapshot["run_manifests"]
+        and sha(provider_dir / "independent-archive-index.json") == offer["archive_index_sha256"]
+        and snapshot["run_manifests"] == {k: v["manifest_sha256"] for k, v in cert["receipts"].items()}
+        and cert["receipts"],
+        "Cloud certificate does not cover the selected family snapshot",
+    )
+    checked = certify(store, shelf, offer_path, pin["offer_sha256"], cloud_proof, cert["provider_proof_sha256"], location)
+    require(checked == cert, "Independent restore certificate changed")
+    for rid, item in cert["receipts"].items():
+        m, receipt_id = item["manifest_sha256"], item["archive_receipt_id"]
+        receipt = load(store / "receipts/archive" / (receipt_id + ".json"))
+        shelf_record = shelf / "catalog" / (rid + ".json")
+        require(shelf_record.is_file(), "Local original must be verified and parked before snapshot release")
+        shelf_marker = load(shelf_record)
+        require(
+            receipt.get("provider") == "Google Drive" and receipt["container_sha256"] == digest
+            and receipt["provider_proof_sha256"] == cert["provider_proof_sha256"]
+            and receipt["offer_sha256"] == pin["offer_sha256"] and receipt["remote_object_ids"] == cert["object_ids"]
+            and shelf_marker == {"run_id": rid, "manifest_sha256": m, "archive_receipt_id": receipt_id}
+            and (not require_parked or (shelf / "runs" / rid).is_dir()),
+            "Retained original or independently verified provider receipt differs",
+        )
+    return {
+        "schema": "el-stage2-snapshot-release-1", "family": family, "container_sha256": digest,
+        "bytes": snapshot["bytes"], "family_sha256": local["family_sha256"],
+        "authorization_sha256": local["authorization_sha256"], "local_marker_sha256": sha(marker),
+        "offer_sha256": pin["offer_sha256"], "provider_proof_sha256": cert["provider_proof_sha256"],
+        "certificate_sha256": certificate_sha256, "sealed_runs": len(cert["receipts"]),
+    }
+
+
+def release_copy(a):
+    store, shelf = locations(a.store, a.shelf)
+    cert = win.signed(a.proof, a.proof_sha256)
+    family = local_path(cert["family"])
+    require("/" not in family and HASH.fullmatch(a.catalog_sha256), "Invalid family or catalog")
+    base = store / "stage2" / a.catalog_sha256 / "confirmation"
+    folder = a.private_archive.resolve()
+    require(
+        folder.is_dir() and folder.parent == store.parent and folder not in (store, shelf)
+        and a.proof.resolve() == base / "archives" / (cert["container_sha256"] + ".json"),
+        "Releasing a snapshot requires its canonical certificate and a dedicated sibling directory",
+    )
+    marker = base / "archives" / (family + ".released.json")
+    packed = folder / (family + ".zip")
+    require(not packed.is_symlink(), "Snapshot is a symbolic link")
+    record = retained_copy(store, shelf, base, family, a.proof_sha256, require_parked=packed.exists())
+    if packed.exists():
+        require(packed.is_file() and packed.stat().st_size == record["bytes"]
+                and sha(packed) == record["container_sha256"], "Local snapshot bytes differ")
+        publish(marker, encoded(record))
+        packed.unlink()
+    else:
+        require(marker.is_file() and marker.read_bytes() == encoded(record), "Missing local snapshot without prior release")
+    return record
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     subs = p.add_subparsers(dest="mode", required=True)
@@ -377,15 +464,21 @@ def main(argv=None):
         sub.add_argument("--sha256", required=True)
         if mode == "restore":
             sub.add_argument("--destination", required=True, type=Path)
-    sub = subs.add_parser("park")
-    for k in ("store", "shelf", "proof"):
-        sub.add_argument("--" + k, required=True, type=Path)
-    sub.add_argument("--proof-sha256", required=True)
+    for command in ("park", "release-copy"):
+        sub = subs.add_parser(command)
+        for k in ("store", "shelf", "proof"):
+            sub.add_argument("--" + k, required=True, type=Path)
+        sub.add_argument("--proof-sha256", required=True)
+        if command == "release-copy":
+            sub.add_argument("--private-archive", type=Path, required=True)
+            sub.add_argument("--catalog-sha256", required=True)
     a = p.parse_args(argv)
     if a.mode == "snapshot":
         result = snapshot(a)
     elif a.mode == "park":
         result = park(a)
+    elif a.mode == "release-copy":
+        result = release_copy(a)
     else:
         result = verify_archive(a.container, a.sha256, getattr(a, "destination", None))
     print(json.dumps(result))

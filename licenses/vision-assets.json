@@ -1,0 +1,58 @@
+{
+  "schema": "el-vision-public-rights-1",
+  "attribution": "wany614",
+  "release_series": "v0.2.0-rc.1",
+  "source_scope": "Single-image vision study and accompanying two-metre-plane CPU controls.",
+  "assets": [
+    {
+      "material": "Original source, executable protocols, scoring and control-evaluation programs",
+      "license": "Apache-2.0",
+      "notice": "LICENSE"
+    },
+    {
+      "material": "Refitted Evidence Lens logistic coefficients, preprocessing and thresholds",
+      "license": "Apache-2.0",
+      "scope": "Grantable project parameters in models/L1."
+    },
+    {
+      "material": "Generic DINOv2 ViT-S/14 weights and upstream license",
+      "license": "Apache-2.0",
+      "credit": "Meta and upstream contributors",
+      "revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "weights_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "upstream_license_url": "https://raw.githubusercontent.com/facebookresearch/dinov2/7764ea0f912e53c92e82eb78a2a1631e92725fc8/LICENSE"
+    },
+    {
+      "material": "Complete L2-frozen and L2-vision-ft model packages",
+      "license": "Apache-2.0",
+      "credit": "Meta for the pretrained backbone; wany614 for the original projection, head and grantable supervised changes",
+      "scope": "Ship both license texts, modification statement and notices."
+    },
+    {
+      "material": "CPU bundle built-in 128-pixel textured-plane media and grantable data",
+      "license": "CC-BY-4.0",
+      "credit": "wany614"
+    },
+    {
+      "material": "Native 512-pixel public-plane companion, authored Blender source, camera data, plane predictions, six independently graded Blender references, original maps, previews and measurements",
+      "license": "CC-BY-4.0",
+      "credit": "wany614",
+      "software_exception": "The original evaluation program in the companion is Apache-2.0.",
+      "condition": "public-plane",
+      "family": "scene_037_bottle_carrier",
+      "case_manifest_sha256": "1323cd8fd285eea2af58133d2b7f63fefed676fd1e44d6eb43e6795ab85a97e0",
+      "reference_manifest_sha256": "07c4fa246d6fb78fb7d59d24817d5a80f5d2311dd256faed77df07f3f0da2715"
+    },
+    {
+      "material": "Original study text, grantable numerical reports and study compilation",
+      "license": "CC-BY-4.0",
+      "credit": "wany614",
+      "scope": "To the extent rights apply."
+    },
+    {
+      "material": "Apple SHARP model, per-scene Gaussians, scientific source and target renders, full research archive and third-party runtime distributions",
+      "public_distribution": "excluded from Evidence Lens model assets",
+      "terms": "Their applicable upstream terms and independent private archive records remain authoritative. See docs/vision-rights.md."
+    }
+  ]
+}

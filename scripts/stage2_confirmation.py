@@ -179,7 +179,7 @@ class CapacityHold(RuntimeError):
 
 
 def optional_archive(a, row, dest, authorization_digest):
-    from stage2_confirmation_archive import snapshot
+    from stage2_confirmation_archive import retained_copy, snapshot
     from stage2_cloud_restore import offer, provider_location, read_offer
 
     folder = getattr(a, "private_archive", None)
@@ -193,10 +193,16 @@ def optional_archive(a, row, dest, authorization_digest):
         record = load(marker)
         require(
             record["family_sha256"] == family_hash
-            and record["authorization_sha256"] == authorization_digest
-            and packed.is_file(),
+            and record["authorization_sha256"] == authorization_digest,
             "Existing private family archive or authority changed",
         )
+        if not packed.is_file():
+            release_marker = dest / "archives" / (family + ".released.json")
+            require(release_marker.is_file(), "Local snapshot is absent without an authenticated release")
+            release = load(release_marker)
+            location = provider_location(a.store, getattr(a, "provider_config", None), getattr(a, "provider_config_sha256", None))
+            checked = retained_copy(a.store, a.shelf, dest, family, release["certificate_sha256"], location=location)
+            require(release == checked, "Snapshot release changed after cloud certification")
     else:
         args = SimpleNamespace(
             project=a.project,
