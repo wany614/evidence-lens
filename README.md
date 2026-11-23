@@ -12,6 +12,8 @@ The multi-source release includes four trained risk models and both reconstructi
 
 In this target, 5,149 of 65,536 pixels exceed mean absolute RGB error 0.05. The comparison board shows where these errors occur and how each scorer responds when it receives one, two or all four images from the same reconstruction. This example was selected by family and view before scoring. [Open the full comparison board](examples/offset-bell-cage/four-method-comparison-v01.png) · [Camera, source and figure provenance](examples/offset-bell-cage/README.md)
 
+On the four held-out families, the family-equal RGB error fraction changed from 10.66% with two source images to 6.90% with four. With four sources, common-domain AP was 0.704 for MS-L1, 0.651 for MS-frozen and 0.665 for MS-ft. The default was selected on development data. [Held-out results, operating points and denominators](docs/results/multisource-confirmation.md)
+
 ## Single-image models
 
 The single-image release includes a lightweight logistic model (L1-full), a DINOv2 ViT-S/14 with a trained risk head (L2-frozen), and a supervised model that also updates the last two transformer blocks and final LayerNorm (L2-vision-ft). All three score on a CPU. The source checkout installs the NumPy and Pillow path with `python -m pip install .`. The optional visual path adds PyTorch and safetensors. [Run L1 with only NumPy and Pillow](docs/releases/v0.2.0-rc.1/README.md#run-the-default-l1-model-with-numpy-and-pillow)
@@ -78,8 +80,9 @@ The authored recipes, cameras, family split, feature specification, labels and f
 - [Blender reference validation](docs/blender-reference.md) and [Windows GPU acquisition](docs/windows-worker.md) document the coordinate and rendering conventions.
 - [Recording, transfer and restore](docs/recording.md) documents immutable attempts, failed runs, local indexing and archive checks.
 - [L1 training](docs/l1-training.md) and [formal evaluation](docs/formal-evaluation.md) specify sampling, family folds, thresholds, denominators and common-mask comparisons.
+- To reproduce the multi-source study, start with its [data and scoring protocol](docs/stage3-risk.md), [neural training guide](docs/stage3-neural.md) and [release rebuild instructions](docs/releases/v0.3.0-rc.1/REBUILD.md).
 - [License and provenance inventory](docs/licenses.md) lists separate terms for original code, fitted parameters, example data and third-party research software.
 
 ## License and attribution
 
-Credit Evidence Lens to **wany614**. The original software, configurations and grantable model parameters use Apache-2.0. The visual models retain Meta’s DINOv2 attribution and license. Original writing, images and grantable research data use CC BY 4.0. Public assets carry a file-specific license record. [Asset and training lineage](docs/licenses.md) · [Visual model and example rights](docs/vision-rights.md) · [Software license](LICENSE) · [Citation](CITATION.cff)
+Credit Evidence Lens to **wany614**. The original software, configurations and grantable model parameters use Apache-2.0. The visual models retain Meta’s DINOv2 attribution and license. Original writing, images and grantable research data use CC BY 4.0. Public assets carry a file-specific license record. [Asset and training lineage](docs/licenses.md) · [Single-image model rights](docs/vision-rights.md) · [Multi-source model and example rights](docs/multisource-rights.md) · [Software license](LICENSE) · [Citation](CITATION.cff)

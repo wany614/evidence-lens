@@ -68,7 +68,8 @@ def worker(store, catalog, git_root, supplied_zip=None):
             data = worker_from_source(git_root)
     else:
         data = supplied_zip.read_bytes()
-    require(sha_bytes(data) == WORKER_SHA, "worker bytes differ from the original formal B0 package")
+    require(sha_bytes(data) == WORKER_SHA,
+            f"worker bytes differ from the original formal B0 package; supply --worker-zip with SHA-256 {WORKER_SHA}")
     with zipfile.ZipFile(io.BytesIO(data)) as z:
         members = {n: sha_bytes(z.read(local_path(n))) for n in z.namelist()}
     require(len(members) == 19 and "README.md" not in members, "unexpected historical worker inventory")

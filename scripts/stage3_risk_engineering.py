@@ -17,6 +17,18 @@ SCOPES = {
         "stage3-neural-tensor-comparison",
         "The independent validator expected a particular JSON key order for the equivalent M2 score-two and score-all entries. The corrected validator checked the same original tensors and score arrays.",
     ),
+    "heldout_cpu_environment": (
+        "stage3-test-ms-frozen",
+        "The private CPU scoring process stopped during opening verification because the recorder's PyArrow dependency was absent. It wrote zero scores. Installing the same local PyArrow build used by the recorder allowed the identical frozen scorer and dataset to run.",
+    ),
+    "heldout_cpu_catalog_preflight": (
+        "stage3-test-ms-frozen",
+        "The next recorder preflight rejected a registry copy inside the original run because that location implied a new undeclared parent. The registered catalog had unchanged bytes. The accepted retry supplied it from its originally declared project location.",
+    ),
+    "heldout_cpu_retry_preflight": (
+        "stage3-test-ms-frozen",
+        "The recorder rejected a first retry before starting the scorer because an unrelated reporting helper had changed in the working tree. The successful retry used the full original sealed source snapshot, original request and frozen model.",
+    ),
     "heldout_intake_capacity": (
         "stage3-postreview-input-readback",
         "Before the first held-out batch audit launched its worker, its recorder capacity scan encountered an inactive directory moving to the verified cold shelf. Repeating the byte-identical configuration completed the original acquisition readback.",
@@ -74,7 +86,60 @@ def observations(roots, request):
                 and audit["batch_sha256"] == load(regular(f, "config.resolved.yaml"))["batch_sha256"],
                 "held-out readback did not repeat the original batch/configuration",
             )
-            repeat_evidence = {"same_resolved_config_sha256": config_sha, "batch_sha256": audit["batch_sha256"]}
+            repeat_evidence = {
+                "same_resolved_config_sha256": config_sha,
+                "batch_sha256": audit["batch_sha256"],
+            }
+        if key.startswith("heldout_cpu_"):
+            config_sha = file_hash(regular(f, "config.resolved.yaml"))
+            config = load(regular(f, "config.resolved.yaml"))
+            scores = load(p)
+            old_source = failed["code_snapshot_sha256"]
+            new_source = success.run["code_snapshot_sha256"]
+            require(
+                config_sha == file_hash(regular(success.root, "config.resolved.yaml"))
+                and load(regular(f, "artifacts.json"))["files"] == []
+                and scores["schema"] == "el-stage3-risk-scores-1"
+                and scores["method"] == "MS-frozen"
+                and scores["split"] == "test"
+                and scores["model_index_sha256"] == config["roles"]["model_index"]["sha256"]
+                and scores["dataset_sha256"] == config["roles"]["test_dataset"]["sha256"]
+                and len(scores["views"]) == 48,
+                "held-out score recovery changed an original scientific identity",
+            )
+            error = regular(f, "stderr.log").read_text(encoding="utf-8")
+            if key == "heldout_cpu_environment":
+                require(
+                    failed["worker_exit_code"] == 1
+                    and "No module named 'pyarrow'" in error
+                    and old_source == new_source
+                    and success.run["retry_of_run_id"] == orig["run_id"],
+                    "scoring environment recovery was not the original scorer",
+                )
+            elif key == "heldout_cpu_catalog_preflight":
+                require(
+                    failed["worker_exit_code"] is None
+                    and "input catalog references an undeclared parent" in error
+                    and old_source == new_source,
+                    "catalog source preflight differs from the sealed outcome",
+                )
+            else:
+                require(
+                    failed["worker_exit_code"] is None
+                    and "RejectedLineage" in error
+                    and old_source != new_source,
+                    "preflight outcome is not the recorded rejection",
+                )
+            repeat_evidence = {
+                "same_resolved_config_sha256": config_sha,
+                "written_prediction_files_before_recovery": 0,
+                "original_request_sha256": config["request_sha256"],
+                "original_code_snapshot_sha256": old_source,
+                "successful_code_snapshot_sha256": new_source,
+                "recovered_target_views": len(scores["views"]),
+                "model_index_sha256": scores["model_index_sha256"],
+                "test_dataset_sha256": scores["dataset_sha256"],
+            }
         rows.append(
             {
                 **repeat_evidence,

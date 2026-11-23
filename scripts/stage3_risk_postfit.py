@@ -294,7 +294,8 @@ class Post:
         require(
             extra["schema"] == "el-stage3-joint-report-extra-1"
             and extra["catalog_sha256"] == CATALOG
-            and set(extra["sources"]) == {"input_qa", "acquisition_costs", "acquisition_quality"},
+            and set(extra["sources"])
+            == {"input_qa", "acquisition_costs", "acquisition_quality", "acquisition_dataset_qa"},
             "unexpected study supplements",
         )
         store, shelf = self.roots

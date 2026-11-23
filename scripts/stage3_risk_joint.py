@@ -348,7 +348,7 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata, 
         s.extend(
             [
                 "",
-                f"The original Windows {rr['method']} fit with seed {rr['seed']} completed {rr['optimizer_steps']} optimizer steps, then failed its deployment-schema export. The Mac recovery performed zero additional updates and inherited the exact selected weights and all 48 Windows score-all arrays. M2 score-two uses the same two sources and bytes. The remaining smaller-source maps were scored on the Mac CPU. The three other pairs of method and seed produced all development scope scores on Windows. The held-out four-method comparison used original Mac CPU inference across every source subset. [Export evidence](engineering-and-failures.json)",
+                f"The original Windows {rr['method']} fit with seed {rr['seed']} completed {rr['optimizer_steps']} optimizer steps, then failed its deployment-schema export. The Mac recovery performed zero additional updates and inherited the exact selected weights and all 48 Windows score-all arrays. M2 score-two uses the same two sources and bytes. The remaining smaller-source maps were scored on the Mac CPU. The three other pairs of method and seed produced all development scope scores on Windows. The held-out four-method comparison used original Mac CPU inference across every source subset. The first held-out frozen-encoder scoring process lacked a private recorder dependency and produced zero maps. Two subsequent recorder preflights rejected an unrelated source-tree change and a registry copy in a different parent directory. Both ended before inference. The accepted retry used the entire original scorer snapshot and its exact frozen request. [Export evidence](engineering-and-failures.json)",
             ]
         )
     budget = acquisition["production"]
@@ -473,6 +473,28 @@ def run_report(roots, request, opening, out, rid):
     )
     raw_pairs, _ = json_member(audit_run, "payload/family-pairs.json", quality["tables"]["family-pairs.json"])
     ds = {s: secondary(s + "_dataset")[1] for s in ("train", "development", "test")}
+    _, label_replay = secondary("acquisition_dataset_qa")
+    truth_hashes = {}
+    for row in ds["test"]["views"]:
+        truth_hashes.setdefault((row["family"], row["view"]), {})[row["condition"]] = row["truth"]["sha256"]
+    compared_truth = {
+        (r["family"], r["view"]): r["truth_sha256"] for r in label_replay["views"] if r["passed"]
+    }
+    require(
+        label_replay["schema"] == "el-stage3-reconstruction-parity-1"
+        and label_replay["passed"]
+        and label_replay["split"] == "test"
+        and label_replay["opening_sha256"] == opening
+        and compact_pin(label_replay["source_ledger"]) == compact_pin(sources["acquisition_quality"])
+        and compact_pin(label_replay["dataset"]) == compact_pin(sources["test_dataset"])
+        and sorted(label_replay["families"]) == sorted(mk["test_families"])
+        and compared_truth == truth_hashes
+        and len(label_replay["views"]) == len(compared_truth)
+        and label_replay["distinct_source_labels"] == 48
+        and label_replay["validated_view_pairs"] == 24
+        and label_replay["cell_and_common_count_sum_checks"] == 1248,
+        "independent held-out original reconstruction and label comparison is incomplete",
+    )
     require(
         method["study_sha256"] == STUDY
         and he["schema"] == de["schema"] == "el-stage3-risk-evaluation-1"
@@ -767,6 +789,19 @@ def run_report(roots, request, opening, out, rid):
                 "source": sources["acquisition_quality"],
                 "source_member_sha256": quality["tables"]["family-pairs.json"],
                 "family_pairs": raw_pairs,
+                "independent_heldout_dataset_comparison": {
+                    "source": sources["acquisition_dataset_qa"],
+                    **{
+                        k: label_replay[k]
+                        for k in (
+                            "passed",
+                            "validated_view_pairs",
+                            "distinct_source_labels",
+                            "cell_and_common_count_sum_checks",
+                            "quantities",
+                        )
+                    },
+                },
             },
         )
         write_json(pub / "training-and-selection.json", learn)
@@ -799,7 +834,14 @@ def run_report(roots, request, opening, out, rid):
                 "lightweight_threshold_packaging_failures": int(correction is not None),
                 "neural_export_failures": len(neural_recoveries),
                 "engineering_readback_and_public_export_failures": sum(
-                    r["status"] == "failed" for r in engineering
+                    r["status"] == "failed" and not r["scope"].startswith("heldout_cpu_") for r in engineering
+                ),
+                "heldout_scoring_environment_failures": sum(
+                    r["scope"] == "heldout_cpu_environment" for r in engineering
+                ),
+                "heldout_scoring_retry_preflight_rejections": sum(
+                    r["scope"] in {"heldout_cpu_retry_preflight", "heldout_cpu_catalog_preflight"}
+                    for r in engineering
                 ),
                 "local_engineering_incidents_without_a_recorder_run": sum(
                     r["status"] == "local_engineering_incident" for r in engineering

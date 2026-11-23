@@ -136,6 +136,7 @@
     "docs/releases/v0.3.0-rc.1/requirements.txt": "cc-original",
     "docs/results/README.md": "cc-original",
     "docs/results/family-methods.csv": "cc-original",
+    "docs/results/multisource-confirmation.md": "cc-original",
     "docs/results/paired-changes.csv": "cc-original",
     "docs/results/provenance.json": "cc-original",
     "docs/results/vision-confirmation.md": "cc-original",
