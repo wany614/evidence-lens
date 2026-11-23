@@ -1,0 +1,113 @@
+{
+  "schema": "el-phase1-impact-1",
+  "original_code_commit": "e2b06a4c1bb6e922174b77f70df30eda070caf1b",
+  "depth_and_native_truth_code": "21c33b1dfff9e3a7059348069d95e9132d808d91",
+  "probe_and_pixel_replay_code": "696b268ba0d539b1fb27cc0b1129554b0efeb4c0",
+  "release_tooling_commit": "015e745dac1fd0272f30953a7ccbc7d35707635a",
+  "run_pins": {
+    "old_report": {
+      "run_id": "20261123T050620457525Z-a311c1632b7d4b1b",
+      "manifest_sha256": "209fb7f045a7e79aaa2113eb50a8823c4f0dbf66098e058ae4b201a826653aba"
+    },
+    "fit": {
+      "run_id": "20261123T042239692597Z-0616eff18c3149a7",
+      "manifest_sha256": "9b39fc9bea10b77288721dcb8b1d1dfa155848266ced378fd8ed056377a8c3d9"
+    },
+    "model": {
+      "run_id": "20261123T042819219876Z-27eaa01eba29489d",
+      "manifest_sha256": "03d2d73d1115a449c5ce584596eae1f384c3177060752b14ec0f7bb1a9b1e072"
+    },
+    "example": {
+      "run_id": "20261123T034606860802Z-acb5e6955f424043",
+      "manifest_sha256": "03a406991a547a5b11fa39ea528dd2e2689bab37284242548f5ca0381c14b977"
+    },
+    "example_scores": {
+      "run_id": "20261123T042828732686Z-a16179b8f5f343f4",
+      "manifest_sha256": "bbeb1e72f2f4ba56abc97d44e5da1452a3c418b59eed64659e46ed96b9848aa8"
+    },
+    "depth": {
+      "run_id": "20261123T083324355926Z-726b2c1ce0a8498a",
+      "manifest_sha256": "b557133305df699f5215ea311f3723e0193801486664959157ab2ce0771dd9c3"
+    },
+    "rgb": {
+      "run_id": "20261123T084405971328Z-2ae954f7bc0d470d",
+      "manifest_sha256": "e237af84b2ac7802f656faaaab3f505576defbf1e59eb4f2ad9493a39830a337"
+    },
+    "gpu_failed": {
+      "run_id": "20261123T083607128314Z-a505be48b0924f0d",
+      "manifest_sha256": "ab418ee01ee3c74d80a7639e338e70738e9b4b0f78246612301dbc717074e281"
+    },
+    "gpu": {
+      "run_id": "20261123T084306963308Z-274b1f72b73047bc",
+      "manifest_sha256": "f9e016b3fbc0adad55759d723d39cbb62959325ec1c64b2aa554ae963cf21783"
+    },
+    "mac_grade": {
+      "run_id": "20261123T084533751662Z-b8ee608d8af144ce",
+      "manifest_sha256": "09cfb286e88d0a102c1b7f247552a2fd19de60ec10486955d0bc2a3cff4acec3"
+    },
+    "mac_grade_path_error": {
+      "run_id": "20261123T084501158900Z-f9dfcfb01a854fc5",
+      "manifest_sha256": "8df46cbeaf6f833e3a047e8b280439766348ebc248d64da1df5090bf25975836"
+    },
+    "camera_intake": {
+      "run_id": "20261123T084842695630Z-78c5dfe689b84ec8",
+      "manifest_sha256": "36215ad31cebdd094b76bf55da34571e6d912817ea33244c0647e0827c46c4c7"
+    },
+    "camera_trace": {
+      "run_id": "20261123T084917176865Z-c2f41a751f734d68",
+      "manifest_sha256": "bc7d357dfb55ec5c632571fb898503ade4df5b51a718dc71b304145f2b48993e"
+    },
+    "backdrop": {
+      "run_id": "20261123T083535134301Z-00d4050d16c7424c",
+      "manifest_sha256": "57203da1e6299781ac4c943d1219f53188c231834b7fafd14c63372bcdd4f1f4"
+    },
+    "archive": {
+      "run_id": "20261123T083810200453Z-35fb491f2c0a4b49",
+      "manifest_sha256": "3cc7ffa9f4c00c8158301bc60149d9a5daa0be2e6dae6045f19b724e570292ec"
+    },
+    "archive_launch_error": {
+      "run_id": "20261123T083739483365Z-ec8283bea57e48d7",
+      "manifest_sha256": "75c7a8691791cfcc53ef922f33b9032394906fa53101ed7f2848606d26a5eb1a"
+    },
+    "r1_native_021": {
+      "run_id": "20261123T082848750881Z-e19737c6d3624b40",
+      "manifest_sha256": "dbf77bb2fa001be0990143c3e0b8207c562f086288fd8df9ad1f8e7ebddad686"
+    },
+    "r1_native_022": {
+      "run_id": "20261123T082851618600Z-d064796cd83d4422",
+      "manifest_sha256": "79ded88d86be15854e92a1ab66bec344f030d7de3885824e3321e500b3fce40d"
+    },
+    "r1_native_023": {
+      "run_id": "20261123T082853581409Z-b76fbc3238dd4a5a",
+      "manifest_sha256": "e72bfd3a57d50a9862e26726602f24a1b7d6524e93ea092039412881146bc941"
+    },
+    "r1_native_024": {
+      "run_id": "20261123T082855525241Z-950374f6804d460b",
+      "manifest_sha256": "3175ae555a700779c8182e7fe5a589b319993d8f0b8690b380ad7571c0bc156f"
+    }
+  },
+  "historical_artifact": {
+    "version": "v0.1.0",
+    "zip_sha256": "1faa6bc99ee020c00bf9d8c7e0e8083f5d1dbe3558cb4d442aacb0f3d1e0178e",
+    "zip_bytes": 1061945
+  },
+  "reuse": {
+    "training": "Original B0 inputs, downstream features/labels, sampled fit and development threshold identities verified against the frozen study. CPU scoring and production scientific modules are byte-identical to the original commit.",
+    "model_index_sha256": "b3c65130bf803611e3904ac69a270f6944b48a8d78ce049bdc1424c15ba6cb54",
+    "protocol_sha256": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+    "method_freeze_sha256": "b077f4d4e5f64b7648d36d9de112e84444102fcbfea7e9a5a8c8939673d0290a",
+    "new_target": "Same four historical families. No new independent cohort was acquired."
+  },
+  "derived_again": [
+    "Four R1 source reference grids for diagnosis",
+    "70 native-grid depth views, 770 strata and four fixed owner boards",
+    "Original held-out B0 RGB and depth headlines",
+    "Known-geometry GPU serialization and independent check",
+    "Historical receipt verification, packaging, distribution text, CPU expectations and acceptance records"
+  ],
+  "pending": [
+    "Owner repository target and original-asset use terms",
+    "Public GitHub pre-release and independent public URL download",
+    "New families reserved for explicit second-stage authorization"
+  ]
+}

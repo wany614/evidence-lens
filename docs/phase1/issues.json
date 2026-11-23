@@ -1,0 +1,168 @@
+{
+  "schema": "el-phase1-issue-ledger-1",
+  "records": [
+    {
+      "issue_id": "EL-01",
+      "observation": "Historical B0 auxiliary MAE 1.14585 m and 99.4002% above tolerance.",
+      "original_evidence": [
+        "e2b06a4c1bb6e922174b77f70df30eda070caf1b",
+        "20261123T050620457525Z-a311c1632b7d4b1b"
+      ],
+      "hypothesis": "Possible wrong focal grid, PLY scale, frame, renderer depth semantics, reference or denominator.",
+      "confirmed_cause": null,
+      "fix_commit": null,
+      "impact": "Current scientific interpretation of expected splat Z against first-surface depth. No confirmed deployment or training defect.",
+      "rerun_ids": [
+        "20261123T083324355926Z-726b2c1ce0a8498a",
+        "20261123T084917176865Z-c2f41a751f734d68",
+        "20261123T084306963308Z-274b1f72b73047bc",
+        "20261123T084533751662Z-b8ee608d8af144ce",
+        "20261123T084405971328Z-2ae954f7bc0d470d"
+      ],
+      "validation": "Preregistered family selection and 770 region rows. All 32 acquisition chains, 1,008 Blender projections, native source references and 335 geometry checks.",
+      "conclusion": "Raw discrepancy reproduced. Remaining evidence supports a scene-dependent model, rendering-construct or data-domain limitation. A unique upstream contribution has not been identified.",
+      "status": "supported_limited_scope"
+    },
+    {
+      "issue_id": "EL-02",
+      "observation": "Half-sized R1 source predictions had only original 512-grid geometric reference data.",
+      "original_evidence": [
+        "20261123T050620457525Z-a311c1632b7d4b1b"
+      ],
+      "hypothesis": "Interpolated camera-Z would mix surfaces and sample the wrong rays.",
+      "confirmed_cause": "Original R1 protocol retained reduced input RGB, source camera and predictions but did not require a native reduced-grid source truth.",
+      "fix_commit": "21c33b1dfff9e3a7059348069d95e9132d808d91",
+      "impact": "New diagnostic source comparisons only. Formal target grids remain 512 square.",
+      "rerun_ids": [
+        "20261123T082848750881Z-e19737c6d3624b40",
+        "20261123T082851618600Z-d064796cd83d4422",
+        "20261123T082853581409Z-b76fbc3238dd4a5a",
+        "20261123T082855525241Z-950374f6804d460b",
+        "20261123T083324355926Z-726b2c1ce0a8498a"
+      ],
+      "validation": "Reopened sealed Blender files, matched actual 256 camera matrices and validated native EXR Position, native PNG and reprojected landmarks.",
+      "conclusion": "Four matched source comparisons are available.",
+      "status": "resolved"
+    },
+    {
+      "issue_id": "EL-03",
+      "observation": "The prior private Chinese handoff described 419324 errors as all missed errors.",
+      "original_evidence": [
+        "20261123T050620457525Z-a311c1632b7d4b1b"
+      ],
+      "hypothesis": "The handoff omitted errors assigned unknown.",
+      "confirmed_cause": "The prose used LY alone while outside-high is LY + UY.",
+      "fix_commit": "015e745dac1fd0272f30953a7ccbc7d35707635a",
+      "impact": "Handoff, notes, release text and counts. No changes to scores, thresholds or labels.",
+      "rerun_ids": [
+        "20261123T084405971328Z-2ae954f7bc0d470d"
+      ],
+      "validation": "Independent raw V/E/S masks, 120 camera-method AP values, operating states and pooled counts.",
+      "conclusion": "B0 HY 1608191, LY 419324, UY 15732. Outside-high errors 435056.",
+      "status": "corrected"
+    },
+    {
+      "issue_id": "EL-04",
+      "observation": "The historical system release field could display Windows 10.",
+      "original_evidence": [
+        "e2b06a4c1bb6e922174b77f70df30eda070caf1b"
+      ],
+      "hypothesis": "Kernel/compatibility fields may differ from the installed Windows product.",
+      "confirmed_cause": "The previous handoff reused a raw platform field as a product name.",
+      "fix_commit": null,
+      "impact": "Human-readable environment reporting. Raw receipts retain their original system fields.",
+      "rerun_ids": [],
+      "validation": "Direct product caption, registry display version, build and UBR on the Windows worker.",
+      "conclusion": "Windows 11 Home 25H2 build 26200.9974. Kernel version 10.0.26200.",
+      "status": "corrected_reporting"
+    },
+    {
+      "issue_id": "EL-05",
+      "observation": "The original source license referenced a file absent from the old ZIP. The only embedded expected example view was v01.",
+      "original_evidence": [
+        "e2b06a4c1bb6e922174b77f70df30eda070caf1b",
+        "20261123T042828732686Z-a16179b8f5f343f4"
+      ],
+      "hypothesis": "The original self-contained reference and parity scope were incomplete.",
+      "confirmed_cause": "Old export inventory omitted docs/licenses.md and embedded a single reference view.",
+      "fix_commit": "015e745dac1fd0272f30953a7ccbc7d35707635a",
+      "impact": "Wheel, readable CPU source, standalone documentation, all six expected maps and new ZIP. Original trained weights and authored example remain reusable.",
+      "rerun_ids": [
+        "20261123T042828732686Z-a16179b8f5f343f4"
+      ],
+      "validation": "Scope check, separate use notices, six-by-five clean CPU parity, internal manifest and independent external checksums.",
+      "conclusion": "New candidate links resolve in the extracted ZIP and six numerical references are available.",
+      "status": "corrected_in_rc"
+    },
+    {
+      "issue_id": "EL-06",
+      "observation": "The Blender World can illuminate an empty camera ray while splats composite over black.",
+      "original_evidence": [
+        "20261123T050620457525Z-a311c1632b7d4b1b"
+      ],
+      "hypothesis": "Open backgrounds or incorrect compositing might explain the closed-studio findings.",
+      "confirmed_cause": "Background contracts diverge on an exposed World. The actual studio wall and floor geometrically cover the padded frame.",
+      "fix_commit": "21c33b1dfff9e3a7059348069d95e9132d808d91",
+      "impact": "Existing closed studio study supported. Extension to open backgrounds needs an explicit matched contract.",
+      "rerun_ids": [
+        "20261123T083535134301Z-00d4050d16c7424c",
+        "20261123T084917176865Z-c2f41a751f734d68"
+      ],
+      "validation": "Check actual opaque boxes and camera frusta for all 172 grids. Compare closed scene and open World with primary-camera World visibility on and off.",
+      "conclusion": "Every B0 reference pixel hits geometry. The closed control gives zero RGB delta, exposed World changes from lit to black.",
+      "status": "verified_scope_limit"
+    },
+    {
+      "issue_id": "EL-07",
+      "observation": "The initial GPU control wrote sample arrays and then failed to encode its PLY metadata.",
+      "original_evidence": [
+        "20261123T083607128314Z-a505be48b0924f0d"
+      ],
+      "hypothesis": "A NumPy integer in the reporter may be non-serializable.",
+      "confirmed_cause": "Official PLY reader returned numpy.uint32 for the native resolution.",
+      "fix_commit": "696b268ba0d539b1fb27cc0b1129554b0efeb4c0",
+      "impact": "Probe receipt only. Original scientific renderer, geometry, frozen expectations, tolerances and fitted model are identical.",
+      "rerun_ids": [
+        "20261123T084306963308Z-274b1f72b73047bc",
+        "20261123T084533751662Z-b8ee608d8af144ce"
+      ],
+      "validation": "A scalar regression test plus a complete new native GPU run and independent CPU regrade.",
+      "conclusion": "335 of 335 checks passed on both hosts.",
+      "status": "fixed_and_verified"
+    },
+    {
+      "issue_id": "EL-08",
+      "observation": "Two local verification commands initially failed before producing a scientific measurement.",
+      "original_evidence": [
+        "20261123T083739483365Z-ec8283bea57e48d7",
+        "20261123T084501158900Z-f9dfcfb01a854fc5"
+      ],
+      "hypothesis": "Worker-relative Python and grade output modes have distinct path contracts.",
+      "confirmed_cause": "One launch supplied a relative interpreter and one supplied a directory where grade mode requires a new JSON file.",
+      "fix_commit": null,
+      "impact": "Archive-check and regrade invocation only. All attempted IDs retained.",
+      "rerun_ids": [
+        "20261123T083810200453Z-35fb491f2c0a4b49",
+        "20261123T084533751662Z-b8ee608d8af144ce"
+      ],
+      "validation": "Reran with recorder-resolved Python and a named JSON file, checked all declared hashes and thresholds.",
+      "conclusion": "296 original bundles verified and the successful Mac grade is pinned here.",
+      "status": "corrected_invocations"
+    },
+    {
+      "issue_id": "EL-09",
+      "observation": "A public Release URL and public-download acceptance are unavailable.",
+      "original_evidence": [
+        "e2b06a4c1bb6e922174b77f70df30eda070caf1b"
+      ],
+      "hypothesis": "Repository identity and use terms are required for upstream-separated distribution.",
+      "confirmed_cause": null,
+      "fix_commit": null,
+      "impact": "External publication and public-address retrieval only.",
+      "rerun_ids": [],
+      "validation": "Inspect configured Git remotes/tags and owner-approved terms. Candidate verification uses its own exact bytes.",
+      "conclusion": "Owner repository and separate grants pending. A local or private download is private acceptance.",
+      "status": "external_decision_pending"
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 # Known issues and scope
 
+The original 512 × 512 baseline had family-equal depth MAE **1.14585 m**. On the frozen depth-evaluable population, **99.4002%** of pixels exceeded the tolerance in the family-equal summary. The pooled counts are 6,214,493 above tolerance among 6,252,055 comparable pixels out of 6,291,456 reference surfaces. Frontmost Blender surfaces and opacity-weighted Gaussian expected depths can represent different contributions along a ray. The current model predicts **RGB-error risk**. Metric reconstruction accuracy and performance on open backgrounds, real photos and other generators remain unverified.
+
+A known-geometry Windows GPU control and its independent Mac regrade passed all 335 registered checks, including PLY serialization, rotated cameras, pixel centres, colour and depth/alpha semantics. Source-view depth ratios varied across the sampled families. No correction factor was fitted. The first diagnostic attempt failed while serializing metadata and is preserved in the research archive.
+
 The per-build diagnostic finding, remaining uncertainties, formal result status and original evidence digests are in [Scientific scope](SCIENTIFIC_SCOPE.md).
 
 | Question | Evidence to use |

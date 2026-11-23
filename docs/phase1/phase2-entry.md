@@ -1,0 +1,7 @@
+# Entry to the next research stage
+
+The bounded diagnostic checklist is complete for static opaque studio scenes. Input bytes and focal lengths matched all 32 acquired conditions. The original model and training lineage are intact. The closed-background check, metric PLY and expected-depth probes, independent RGB label and score replay, and archive verification passed. The persistent auxiliary depth bias limits geometric interpretation. The current scientific scope supports a separately registered nearby-view RGB-risk pilot.
+
+The next decision belongs to the project owner. On starting a second stage, register entirely new families, budgets, splits and a held-out set before acquiring training or test outputs. Keep the four original held-out families in a dedicated historical regression set. Freeze the pilot's background treatment, coverage denominators, cost measurements and failure accounting before evaluating its outputs. The stage-one work acquired no second-stage scenes, fits or test outcomes. [Evidence and populations](README.md) · [Original operating rule](../../protocol/operating-points-v1.json)
+
+Public hosting has its own gate. The first candidate needs the owner's exact repository and applicable use terms for the source and documentation, fitted coefficients, authored examples and research records. After an authorized pre-release is available, retrieve the ZIP by its public URL, verify the external digest and run the included smoke command in a fresh CPU environment.
