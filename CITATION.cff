@@ -4,9 +4,9 @@ type: software
 title: "Evidence Lens"
 authors:
   - name: "wany614"
-version: "0.1.1-rc.3"
+version: "0.2.0-rc.1"
 repository-code: "https://github.com/wany614/evidence-lens"
 license:
   - Apache-2.0
   - CC-BY-4.0
-abstract: "A CPU tool for inspecting pixel-level RGB error risk in novel-view predictions, with a study of synthetic object scenes and an independently fitted logistic model."
+abstract: "A CPU tool for inspecting pixel-level RGB error risk in novel-view predictions, with a study of synthetic object scenes, fitted logistic baselines and two supervised DINOv2 models."

@@ -1,6 +1,8 @@
 """Authentic unsuccessful run observed without declaring it a successful scientific parent."""
 
 from hashlib import sha256
+from pathlib import Path
+from shutil import copytree, ignore_patterns
 from types import SimpleNamespace
 
 import pytest
@@ -16,6 +18,7 @@ def test_failed_manifest_persists_with_recorder_parent_contract(tmp_path):
     pytest.importorskip("pyarrow")
     project = tmp_path / "project"
     store, shelf = tmp_path / "store", tmp_path / "shelf"
+    copytree(Path(recorder.__file__).parent, project / "src/evidence_lens", ignore=ignore_patterns("__pycache__", "*.pyc"))
     script = project / "scripts/vision_confirmation.py"
     script.parent.mkdir(parents=True)
     script.write_text(
