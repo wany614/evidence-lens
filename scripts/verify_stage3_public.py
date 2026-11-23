@@ -15,7 +15,7 @@ import zipfile
 
 HERE = Path(__file__).resolve()
 sys.path.insert(0, str(HERE.parent))
-from verify_vision_public import REPO, download, fetch, install, installer_environment, opener, public_metadata
+from verify_vision_public import REPO, SOURCES, download, fetch, install, installer_environment, opener, public_metadata
 from vision_release import HASH, entries, read, require, safe_name, sha, sig
 
 TAG = "v0.3.0-rc.1"
@@ -51,6 +51,9 @@ def inspect_source(op, tree, public, records):
     require(doc["sha"] == tree and doc["truncated"] is False, "Incomplete public Git tree")
     blobs = {x["path"]: x for x in doc["tree"] if x["type"] == "blob"}
     pairs = [(public/"cpu.py", "scripts/stage3_public_cpu.py")]
+    verification_scripts = (HERE.name, *SOURCES)
+    for name in verification_scripts:
+        pairs.append((HERE.parent/name, "scripts/"+name))
     release_dir = "docs/releases/" + TAG + "/"
     for n in ("README.md", "REBUILD.md", "MODEL_CARD.md", "requirements.txt", "requirements-light.txt"):
         pairs.append((public/n, release_dir+n))
@@ -67,6 +70,7 @@ def inspect_source(op, tree, public, records):
                 and hashlib.sha1(b"blob " + str(len(b)).encode() + b"\0" + b).hexdigest() == blobs[name]["sha"],
                 "Shipping runtime differs from public commit: " + name)
     records["tagged_runtime_files"] = len(pairs)
+    records["verification_sources"] = {name:sig(HERE.parent/name) for name in verification_scripts}
 
 
 def grade(args):
@@ -132,6 +136,7 @@ def grade(args):
             release_sha = c["assets"]["cpu"]["index_sha256"]
             ex_sha = c["assets"]["example"]["index_sha256"]
             require(metadata["cpu"]["expected_example_sha256"] == ex_sha
+                    and metadata["cpu"]["numerical_sha256"] == c["assets"]["numerical"]["index_sha256"]
                     and metadata["cpu"]["models"] == c["models"], "Example or model package differs")
             # Supply the first process only a deployable case. Restore evaluation data from the tested ZIP afterward.
             deploy = profile/"case"
@@ -139,6 +144,7 @@ def grade(args):
             hidden = root/"example"
             shutil.rmtree(hidden)  # This verifier created the temporary extraction above.
             case_sha = sha(deploy/"case.json")
+            require(case_sha == metadata["example"]["case_sha256"]["M4"], "Example points to a different four-source case")
             with tempfile.TemporaryDirectory(prefix="light-only-", dir=root) as scratch:
                 light_root = Path(scratch)
                 light = install(light_root, cpu/"requirements-light.txt", args.wheelhouse, pytorch_cpu=False)
