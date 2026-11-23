@@ -1,0 +1,5 @@
+# Source-only keypoints and metric triangulation, used on macOS arm64 with Python 3.12.16.
+numpy==2.2.6
+opencv-python-headless==4.11.0.86
+Pillow==11.3.0
+scipy==1.15.3

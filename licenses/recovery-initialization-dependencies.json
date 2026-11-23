@@ -1,0 +1,112 @@
+{
+  "architecture": "arm64",
+  "packages": {
+    "numpy": {
+      "explicit_license_expression": null,
+      "installed_dist_info": {
+        "METADATA": "91d66d0d60ad467c679555c0e12ac739bb395940dc22bc5a39d45780aba129ad",
+        "RECORD": "8a5b5123335c3753b1cea3c2f2097451e924ecfdf0517d8c561e3b42d34f1f5b",
+        "WHEEL": "c9205a833e45c2523ee63f7e23ee099ae0a8f4ce52f5bd09a07208776c4a19eb"
+      },
+      "licenses": {
+        "numpy-2.2.6.dist-info/LICENSE.txt": {
+          "bytes": 47786,
+          "sha256": "b4ae62887f4dd6e9430b1a8d7017a3ba84c5d7aa630b9d17ed6f25c21b0ec5b4"
+        }
+      },
+      "official_platform_wheel": {
+        "bytes": 5084103,
+        "filename": "numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl",
+        "pypi_sha256": "894b3a42502226a1cac872f840030665f33326fc3dac8e57c607905773cdcde3",
+        "url": "https://files.pythonhosted.org/packages/3c/65/4baa99f1c53b30adf0acd9a5519078871ddde8d2339dc5a7fde80d9d87da/numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl"
+      },
+      "pypi_url": "https://pypi.org/project/numpy/2.2.6/",
+      "source_license_url": "https://github.com/numpy/numpy/blob/v2.2.6/LICENSE.txt",
+      "version": "2.2.6"
+    },
+    "opencv-python-headless": {
+      "explicit_license_expression": null,
+      "installed_dist_info": {
+        "METADATA": "33b8bffb26546642a9e96d317d6e0776f041939c7c695a8ac39e566822af08f3",
+        "RECORD": "0702657315e8b2db802672ff6b92c5e83006259048146c1295b378a06265c82d",
+        "WHEEL": "07ab8c54722e3cf22cfe2f414a5122957b9604af000a7c7936c3d8e23dce5415"
+      },
+      "licenses": {
+        "cv2/LICENSE-3RD-PARTY.txt": {
+          "bytes": 152360,
+          "sha256": "4fc3c113d53e95da0f3c433655a67067b7310e53af31eb6d280e94cc6927a363"
+        },
+        "cv2/LICENSE.txt": {
+          "bytes": 1070,
+          "sha256": "09d719058e782ac7bc71ba21c944e1136cde2bb957c0e888121f0218d6b5f02c"
+        },
+        "opencv_python_headless-4.11.0.86.dist-info/LICENSE-3RD-PARTY.txt": {
+          "bytes": 152360,
+          "sha256": "4fc3c113d53e95da0f3c433655a67067b7310e53af31eb6d280e94cc6927a363"
+        },
+        "opencv_python_headless-4.11.0.86.dist-info/LICENSE.txt": {
+          "bytes": 1070,
+          "sha256": "09d719058e782ac7bc71ba21c944e1136cde2bb957c0e888121f0218d6b5f02c"
+        }
+      },
+      "official_platform_wheel": {
+        "bytes": 37326460,
+        "filename": "opencv_python_headless-4.11.0.86-cp37-abi3-macosx_13_0_arm64.whl",
+        "pypi_sha256": "48128188ade4a7e517237c8e1e11a9cdf5c282761473383e77beb875bb1e61ca",
+        "url": "https://files.pythonhosted.org/packages/dc/53/2c50afa0b1e05ecdb4603818e85f7d174e683d874ef63a6abe3ac92220c8/opencv_python_headless-4.11.0.86-cp37-abi3-macosx_13_0_arm64.whl"
+      },
+      "pypi_url": "https://pypi.org/project/opencv-python-headless/4.11.0.86/",
+      "source_license_url": "https://github.com/opencv/opencv/blob/4.11.0/LICENSE",
+      "version": "4.11.0.86"
+    },
+    "pillow": {
+      "explicit_license_expression": "MIT-CMU",
+      "installed_dist_info": {
+        "METADATA": "d53d4d78f8a8efe182396711ef76840386d2ba4ccdad421f58cc00c3b3401f73",
+        "RECORD": "abd5180a39b0a2fd888b5bc7f58501ae412031827fa2b1dc3a44f00c3e99af9e",
+        "WHEEL": "57596843a4e9c4006ed403d48343284d104ecd2293e7155cdec922cd7fa8bc25"
+      },
+      "licenses": {
+        "pillow-11.3.0.dist-info/licenses/LICENSE": {
+          "bytes": 66498,
+          "sha256": "2c40a7d8894126ff7a993a752505b915694aafe7a620889ef368acbf54b87144"
+        }
+      },
+      "official_platform_wheel": {
+        "bytes": 4686296,
+        "filename": "pillow-11.3.0-cp312-cp312-macosx_11_0_arm64.whl",
+        "pypi_sha256": "921bd305b10e82b4d1f5e802b6850677f965d8394203d182f078873851dada69",
+        "url": "https://files.pythonhosted.org/packages/2c/32/7e2ac19b5713657384cec55f89065fb306b06af008cfd87e572035b27119/pillow-11.3.0-cp312-cp312-macosx_11_0_arm64.whl"
+      },
+      "pypi_url": "https://pypi.org/project/pillow/11.3.0/",
+      "source_license_url": "https://github.com/python-pillow/Pillow/blob/11.3.0/LICENSE",
+      "version": "11.3.0"
+    },
+    "scipy": {
+      "explicit_license_expression": null,
+      "installed_dist_info": {
+        "METADATA": "98a671c6721432d60306593cdb7903477473d3b712544c666482ed113864f676",
+        "RECORD": "fbfec4cf03fb54a4161dc56a522d761358a8ec6a44e18e1617684a963dfd7208",
+        "WHEEL": "c9205a833e45c2523ee63f7e23ee099ae0a8f4ce52f5bd09a07208776c4a19eb"
+      },
+      "licenses": {
+        "scipy-1.15.3.dist-info/LICENSE.txt": {
+          "bytes": 46848,
+          "sha256": "7552d2566b7098980454bb7883385d227fbb4dfa1d622cc5c85c3e8a3f23606f"
+        }
+      },
+      "official_platform_wheel": {
+        "bytes": 22446958,
+        "filename": "scipy-1.15.3-cp312-cp312-macosx_14_0_arm64.whl",
+        "pypi_sha256": "05dc6abcd105e1a29f95eada46d4a3f251743cfd7d3ae8ddb4088047f24ea477",
+        "url": "https://files.pythonhosted.org/packages/07/9c/0ddb0d0abdabe0d181c1793db51f02cd59e4901da6f9f7848e1f96759f0d/scipy-1.15.3-cp312-cp312-macosx_14_0_arm64.whl"
+      },
+      "pypi_url": "https://pypi.org/project/scipy/1.15.3/",
+      "source_license_url": "https://github.com/scipy/scipy/blob/v1.15.3/LICENSE.txt",
+      "version": "1.15.3"
+    }
+  },
+  "python": "3.12.16",
+  "schema": "el-recovery-image-prep-runtime-rights-1",
+  "terms_basis": "Metadata and original license texts of the pinned, actually installed processing distributions. Scientific input transport contains original source photographs, camera files and project-created init parameters; it ships no Python wheels. Third-party terms govern their respective software."
+}
