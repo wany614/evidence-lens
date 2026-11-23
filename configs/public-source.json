@@ -103,6 +103,7 @@
     "docs/results/family-methods.csv": "cc-original",
     "docs/results/paired-changes.csv": "cc-original",
     "docs/results/provenance.json": "cc-original",
+    "docs/vision-data.md": "cc-original",
     "docs/windows-worker.md": "cc-original",
     "examples/heldout-drum/README.md": "cc-original",
     "examples/heldout-drum/blender-v01.png": "cc-original",
@@ -194,7 +195,10 @@
     "scripts/select_trial.py": "apache-original",
     "scripts/source_candidate.py": "apache-original",
     "scripts/stage2_jobs.py": "apache-original",
+    "scripts/stage2_learning_transport.py": "apache-original",
     "scripts/stage2_opening.py": "apache-original",
+    "scripts/stage2_pilot_budget.py": "apache-original",
+    "scripts/stage2_process.py": "apache-original",
     "scripts/stage2_reference.py": "apache-original",
     "scripts/stage2_reference_catalog.py": "apache-original",
     "scripts/stage2_register_reference.py": "apache-original",
@@ -204,6 +208,13 @@
     "scripts/verify_l1_development.py": "apache-original",
     "scripts/verify_public_prerelease.py": "apache-original",
     "scripts/verify_reference_config.py": "apache-original",
+    "scripts/vision_baselines.py": "apache-original",
+    "scripts/vision_data.py": "apache-original",
+    "scripts/vision_evaluate.py": "apache-original",
+    "scripts/vision_pipeline.py": "apache-original",
+    "scripts/vision_record.py": "apache-original",
+    "scripts/vision_registry.py": "apache-original",
+    "scripts/vision_sources.py": "apache-original",
     "scripts/windows_environment.py": "apache-original",
     "scripts/windows_stage.py": "apache-original",
     "scripts/worker_jobs.py": "apache-original",
@@ -274,7 +285,8 @@
     "tests/test_stage2_reference.py": "apache-original",
     "tests/test_stress_conditions.py": "apache-original",
     "tests/test_trial_selection.py": "apache-original",
-    "tests/test_trial_summary.py": "apache-original"
+    "tests/test_trial_summary.py": "apache-original",
+    "tests/test_vision_data.py": "apache-original"
   },
   "binary_examples": {
     "examples/heldout-drum/blender-v01.png": {
