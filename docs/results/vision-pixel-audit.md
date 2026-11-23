@@ -26,10 +26,10 @@ The first independent check of the new cohort stopped while reading its evaluati
 
 ## Reproducing the independent calculation
 
-The worker opens original runs by manifest hash. Researchers with lawful access to those records can run it in the research environment with NumPy and scikit-learn installed. The active store supplies the recorded opening, and the active and cold stores supply the sealed runs. Use a fresh recorder run for each request. Its worker calls the command below with the recorder's `EL_RUN_ID` and output directory.
+The worker opens original runs by manifest hash. Researchers with lawful access to those records can run it in the research environment with NumPy and scikit-learn installed. The active store supplies the recorded opening, and the active and cold stores supply the sealed runs. Use a fresh recorder run for each request. Pass the chosen JSON as a recorder input named `request`, and register its method and stage pins as parents. The following arguments go after the recorder’s `--` separator. Set the two store variables to your local directories. The recorder expands the three brace-delimited paths and supplies `EL_RUN_ID`.
 
 ```sh
-python scripts/verify_vision_native_metrics.py --root "$ACTIVE_STORE" --shelf "$COLD_STORE" --request configs/vision-audit/new_confirmation.json --out "$EL_OUTPUT_DIR"
+'{python}' '{source}/scripts/verify_vision_native_metrics.py' --root "$ACTIVE_STORE" --shelf "$COLD_STORE" --request '{input:request}' --out '{out}'
 ```
 
 The historical request runs through the same worker. The public numerical tables and audit counts can be read independently of the private research originals. [New cohort request](../../configs/vision-audit/new_confirmation.json) · [Historical request](../../configs/vision-audit/historical_regression.json) · [Executed worker](../../scripts/verify_vision_native_metrics.py)
