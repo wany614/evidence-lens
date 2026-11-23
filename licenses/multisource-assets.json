@@ -1,0 +1,86 @@
+{
+  "schema": "el-multisource-public-rights-1",
+  "attribution": "wany614",
+  "asset_classes": [
+    {
+      "role": "source",
+      "members": [
+        "project_code",
+        "scene_scripts",
+        "fixed_recipes",
+        "executable_protocols"
+      ],
+      "license": "Apache-2.0",
+      "credit": "wany614"
+    },
+    {
+      "role": "scene_parameters",
+      "members": [
+        "initialization.npz",
+        "M2 scene.npz",
+        "M4 scene.npz"
+      ],
+      "license": "Apache-2.0",
+      "credit": "wany614"
+    },
+    {
+      "role": "project_data",
+      "members": [
+        "original_source_rgb",
+        "recorded_camera_data",
+        "rgb_camera-z_alpha_predictions",
+        "original_blend",
+        "independent_truth",
+        "original_public_results_and_media"
+      ],
+      "license": "CC-BY-4.0",
+      "credit": "wany614"
+    },
+    {
+      "role": "linear_risk",
+      "members": [
+        "B-L1-transfer",
+        "MS-L1",
+        "preprocessing",
+        "thresholds"
+      ],
+      "license": "Apache-2.0",
+      "credit": "wany614"
+    },
+    {
+      "role": "visual_risk",
+      "members": [
+        "MS-frozen",
+        "MS-ft"
+      ],
+      "license": "Apache-2.0",
+      "credit": "Meta and upstream contributors for the inherited encoder; wany614 for grantable modifications and new parameters"
+    }
+  ],
+  "encoder": {
+    "source_release": "v0.2.0-rc.1",
+    "source_code_commit": "fb2fbdc232cf2be706ca88e4ad9ddfe884013cc3",
+    "source_weights_sha256": "f372bd34faa1b345ae2486fe6c96aea00d8d9ac5749b0b2c237f9ed08d50f228",
+    "upstream": "Meta DINOv2 ViT-S/14",
+    "upstream_source_revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "upstream_weights_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+  },
+  "separately_installed": [
+    "gsplat 1.5.3",
+    "PyTorch",
+    "Blender / bpy",
+    "CUDA tools",
+    "NumPy",
+    "Pillow",
+    "safetensors"
+  ],
+  "runtime_inventory": "licenses/DEPENDENCY-SOURCES.json",
+  "public_example_family": "scene_057_offset_bell_cage",
+  "out_of_scope": [
+    "upstream pretrained SHARP and its per-scene outputs",
+    "raw private run packages",
+    "private storage identifiers and computer information",
+    "live research databases",
+    "third-party runtime binaries"
+  ]
+}
