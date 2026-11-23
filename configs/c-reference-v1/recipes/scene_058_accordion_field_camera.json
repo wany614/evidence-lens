@@ -1,0 +1,205 @@
+{
+  "objects": [
+    {
+      "axis": [
+        0.42,
+        0.26,
+        0.385
+      ],
+      "center": [
+        -0.21,
+        -0.11,
+        0.2075
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Tripod 0",
+      "primitive": "rod",
+      "radius": 0.033
+    },
+    {
+      "axis": [
+        -0.43,
+        0.18,
+        0.385
+      ],
+      "center": [
+        0.215,
+        -0.07,
+        0.2075
+      ],
+      "id": 11,
+      "material": "timber",
+      "name": "Tripod 1",
+      "primitive": "rod",
+      "radius": 0.033
+    },
+    {
+      "axis": [
+        -0.02,
+        -0.33,
+        0.385
+      ],
+      "center": [
+        0.01,
+        0.185,
+        0.2075
+      ],
+      "id": 12,
+      "material": "timber",
+      "name": "Tripod 2",
+      "primitive": "rod",
+      "radius": 0.033
+    },
+    {
+      "center": [
+        0,
+        -0.025,
+        0.43
+      ],
+      "id": 13,
+      "material": "dark",
+      "name": "Optical bed",
+      "primitive": "box",
+      "size": [
+        0.65,
+        0.62,
+        0.065
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        -0.15,
+        0.61
+      ],
+      "id": 14,
+      "material": "teal",
+      "name": "Pleated bellows 0",
+      "primitive": "box",
+      "size": [
+        0.39,
+        0.053,
+        0.29
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        -0.085,
+        0.61
+      ],
+      "id": 15,
+      "material": "teal",
+      "name": "Pleated bellows 1",
+      "primitive": "box",
+      "size": [
+        0.40800000000000003,
+        0.053,
+        0.315
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        -0.02,
+        0.61
+      ],
+      "id": 16,
+      "material": "teal",
+      "name": "Pleated bellows 2",
+      "primitive": "box",
+      "size": [
+        0.39,
+        0.053,
+        0.29
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        0.045,
+        0.61
+      ],
+      "id": 17,
+      "material": "teal",
+      "name": "Pleated bellows 3",
+      "primitive": "box",
+      "size": [
+        0.40800000000000003,
+        0.053,
+        0.315
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        0.11,
+        0.61
+      ],
+      "id": 18,
+      "material": "teal",
+      "name": "Pleated bellows 4",
+      "primitive": "box",
+      "size": [
+        0.39,
+        0.053,
+        0.29
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        0.2,
+        0.65
+      ],
+      "id": 19,
+      "material": "cream",
+      "name": "Glass back",
+      "primitive": "box",
+      "size": [
+        0.54,
+        0.075,
+        0.47
+      ]
+    },
+    {
+      "center": [
+        0.025,
+        -0.19,
+        0.61
+      ],
+      "id": 20,
+      "material": "rose",
+      "name": "Lens standard",
+      "primitive": "box",
+      "size": [
+        0.43,
+        0.069,
+        0.34
+      ]
+    },
+    {
+      "bottom_radius": 0.102,
+      "center": [
+        0.025,
+        -0.27,
+        0.62
+      ],
+      "depth": 0.12,
+      "id": 21,
+      "material": "dark",
+      "name": "Front lens barrel",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.102
+    }
+  ],
+  "occlusion": "Five faceted bellows connect an offset lens standard to a tall ground-glass back with a braced tripod.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Folding field camera"
+}

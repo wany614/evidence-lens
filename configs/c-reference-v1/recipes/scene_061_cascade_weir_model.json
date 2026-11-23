@@ -1,0 +1,215 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.07,
+        -0.27,
+        0.045
+      ],
+      "id": 10,
+      "material": "teal",
+      "name": "Reservoir 0",
+      "primitive": "box",
+      "size": [
+        1.04,
+        0.25,
+        0.09
+      ]
+    },
+    {
+      "center": [
+        -0.54,
+        -0.27,
+        0.15
+      ],
+      "id": 11,
+      "material": "chalk",
+      "name": "Bank 0-0",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.26,
+        0.12
+      ]
+    },
+    {
+      "center": [
+        0.4,
+        -0.27,
+        0.15
+      ],
+      "id": 12,
+      "material": "chalk",
+      "name": "Bank 0-1",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.26,
+        0.12
+      ]
+    },
+    {
+      "center": [
+        0.07,
+        -0.39,
+        0.145
+      ],
+      "id": 13,
+      "material": "rose",
+      "name": "Partial weir 0",
+      "primitive": "box",
+      "size": [
+        0.65,
+        0.045,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        0.04,
+        -0.02,
+        0.11
+      ],
+      "id": 14,
+      "material": "teal",
+      "name": "Reservoir 1",
+      "primitive": "box",
+      "size": [
+        1.04,
+        0.25,
+        0.22
+      ]
+    },
+    {
+      "center": [
+        -0.43,
+        -0.02,
+        0.28
+      ],
+      "id": 15,
+      "material": "chalk",
+      "name": "Bank 1-0",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.26,
+        0.12
+      ]
+    },
+    {
+      "center": [
+        0.51,
+        -0.02,
+        0.28
+      ],
+      "id": 16,
+      "material": "chalk",
+      "name": "Bank 1-1",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.26,
+        0.12
+      ]
+    },
+    {
+      "center": [
+        -0.1,
+        -0.14,
+        0.275
+      ],
+      "id": 17,
+      "material": "rose",
+      "name": "Partial weir 1",
+      "primitive": "box",
+      "size": [
+        0.65,
+        0.045,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        -0.06,
+        0.24,
+        0.175
+      ],
+      "id": 18,
+      "material": "teal",
+      "name": "Reservoir 2",
+      "primitive": "box",
+      "size": [
+        1.04,
+        0.25,
+        0.35
+      ]
+    },
+    {
+      "center": [
+        -0.53,
+        0.24,
+        0.41
+      ],
+      "id": 19,
+      "material": "chalk",
+      "name": "Bank 2-0",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.26,
+        0.12
+      ]
+    },
+    {
+      "center": [
+        0.41,
+        0.24,
+        0.41
+      ],
+      "id": 20,
+      "material": "chalk",
+      "name": "Bank 2-1",
+      "primitive": "box",
+      "size": [
+        0.08,
+        0.26,
+        0.12
+      ]
+    },
+    {
+      "center": [
+        0.08,
+        0.12,
+        0.405
+      ],
+      "id": 21,
+      "material": "rose",
+      "name": "Partial weir 2",
+      "primitive": "box",
+      "size": [
+        0.65,
+        0.045,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        -0.06,
+        0.04,
+        0.31
+      ],
+      "id": 22,
+      "material": "cream",
+      "name": "Central divider",
+      "primitive": "box",
+      "size": [
+        0.075,
+        0.54,
+        0.61
+      ]
+    }
+  ],
+  "occlusion": "Alternating dam walls bound an opaque stepped cascade. A high central partition hides low spillways.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Serpentine stepped weir"
+}

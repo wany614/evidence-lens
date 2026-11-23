@@ -1,0 +1,284 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.28,
+      "center": [
+        0,
+        0.04,
+        0.042
+      ],
+      "depth": 0.084,
+      "id": 10,
+      "material": "dark",
+      "name": "Balance foundation",
+      "primitive": "frustum",
+      "top_radius": 0.28
+    },
+    {
+      "axis": [
+        0,
+        0.0,
+        0.68
+      ],
+      "center": [
+        0.0,
+        0.04,
+        0.42
+      ],
+      "id": 11,
+      "material": "timber",
+      "name": "Mast",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        -0.43,
+        -0.16,
+        -0.02
+      ],
+      "center": [
+        -0.215,
+        -0.04,
+        0.7
+      ],
+      "id": 12,
+      "material": "teal",
+      "name": "Arm 0",
+      "primitive": "rod",
+      "radius": 0.027
+    },
+    {
+      "axis": [
+        0.14,
+        0.0,
+        -0.425
+      ],
+      "center": [
+        -0.36,
+        -0.12,
+        0.4775
+      ],
+      "id": 13,
+      "material": "cream",
+      "name": "Line 0-0",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "axis": [
+        -0.07,
+        0.121244,
+        -0.425
+      ],
+      "center": [
+        -0.465,
+        -0.059378,
+        0.4775
+      ],
+      "id": 14,
+      "material": "cream",
+      "name": "Line 0-1",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "axis": [
+        -0.07,
+        -0.121244,
+        -0.425
+      ],
+      "center": [
+        -0.465,
+        -0.180622,
+        0.4775
+      ],
+      "id": 15,
+      "material": "cream",
+      "name": "Line 0-2",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "bottom_radius": 0.11200000000000002,
+      "center": [
+        -0.43,
+        -0.12,
+        0.24
+      ],
+      "depth": 0.045,
+      "id": 16,
+      "material": "blue",
+      "name": "Pan 0",
+      "primitive": "frustum",
+      "top_radius": 0.14
+    },
+    {
+      "axis": [
+        0.34,
+        -0.21,
+        -0.02
+      ],
+      "center": [
+        0.17,
+        -0.065,
+        0.7
+      ],
+      "id": 17,
+      "material": "teal",
+      "name": "Arm 1",
+      "primitive": "rod",
+      "radius": 0.027
+    },
+    {
+      "axis": [
+        0.16,
+        0.0,
+        -0.305
+      ],
+      "center": [
+        0.42,
+        -0.17,
+        0.5375
+      ],
+      "id": 18,
+      "material": "cream",
+      "name": "Line 1-0",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "axis": [
+        -0.08,
+        0.138564,
+        -0.305
+      ],
+      "center": [
+        0.3,
+        -0.100718,
+        0.5375
+      ],
+      "id": 19,
+      "material": "cream",
+      "name": "Line 1-1",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "axis": [
+        -0.08,
+        -0.138564,
+        -0.305
+      ],
+      "center": [
+        0.3,
+        -0.239282,
+        0.5375
+      ],
+      "id": 20,
+      "material": "cream",
+      "name": "Line 1-2",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "bottom_radius": 0.128,
+      "center": [
+        0.34,
+        -0.17,
+        0.36
+      ],
+      "depth": 0.045,
+      "id": 21,
+      "material": "rose",
+      "name": "Pan 1",
+      "primitive": "frustum",
+      "top_radius": 0.16
+    },
+    {
+      "axis": [
+        0.16,
+        0.24,
+        -0.02
+      ],
+      "center": [
+        0.08,
+        0.16,
+        0.7
+      ],
+      "id": 22,
+      "material": "teal",
+      "name": "Arm 2",
+      "primitive": "rod",
+      "radius": 0.027
+    },
+    {
+      "axis": [
+        0.12,
+        0.0,
+        -0.345
+      ],
+      "center": [
+        0.22,
+        0.28,
+        0.5175
+      ],
+      "id": 23,
+      "material": "cream",
+      "name": "Line 2-0",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "axis": [
+        -0.06,
+        0.103923,
+        -0.345
+      ],
+      "center": [
+        0.13,
+        0.331962,
+        0.5175
+      ],
+      "id": 24,
+      "material": "cream",
+      "name": "Line 2-1",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "axis": [
+        -0.06,
+        -0.103923,
+        -0.345
+      ],
+      "center": [
+        0.13,
+        0.228038,
+        0.5175
+      ],
+      "id": 25,
+      "material": "cream",
+      "name": "Line 2-2",
+      "primitive": "rod",
+      "radius": 0.009
+    },
+    {
+      "bottom_radius": 0.096,
+      "center": [
+        0.16,
+        0.28,
+        0.32
+      ],
+      "depth": 0.045,
+      "id": 26,
+      "material": "cream",
+      "name": "Pan 2",
+      "primitive": "frustum",
+      "top_radius": 0.12
+    }
+  ],
+  "occlusion": "Unequal cantilevers on a single mast suspend three overlapping shallow pans by converging lines.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Three-pan torsion balance"
+}

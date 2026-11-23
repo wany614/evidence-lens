@@ -14,7 +14,6 @@ from evidence_lens.formal_inputs import require
 from evidence_lens.multisource import COLUMNS, CONDITIONS, NUMERIC, SCOPES, TARGETS, schema_sha256, source_ids
 from evidence_lens.multisource_model import light_risk, load_light, transform, validate_rows
 from evidence_lens.l1 import risk_state
-from evidence_lens.l1_fit import CANDIDATES, choose_c
 from evidence_lens.scoring_io import file_hash, new_output, write_json
 from stage3_risk_data import dataset, read_asset
 from stage3_risk_sources import CATALOG, STUDY, LEARNING, asset
@@ -199,6 +198,7 @@ def train(x, y, g, c):
 
 
 def fit(root, ds_sha, out, run_id):
+    from evidence_lens.l1_fit import CANDIDATES, choose_c
     d = dataset(root, ds_sha, "train")
     require(
         d["cohort"] == "formal" and len(d["families"]) == 8,
@@ -281,6 +281,7 @@ def fit(root, ds_sha, out, run_id):
                 result["reason"] = "no_two_class_validation_view"
             else:
                 prep, clf, stats = train(x, y, g, best)
+                prep["training_dataset_sha256"] = ds_sha
                 package = dst / "package"
                 package.mkdir()
                 write_json(package / "preprocessing.json", prep)

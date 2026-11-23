@@ -1,0 +1,164 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0.02,
+        0.095
+      ],
+      "id": 10,
+      "material": "teal",
+      "name": "Lathe bed",
+      "primitive": "box",
+      "size": [
+        1.24,
+        0.48,
+        0.19
+      ]
+    },
+    {
+      "center": [
+        -0.43,
+        0.13,
+        0.4
+      ],
+      "id": 11,
+      "material": "blue",
+      "name": "Head 0",
+      "primitive": "box",
+      "size": [
+        0.23,
+        0.26,
+        0.42
+      ]
+    },
+    {
+      "center": [
+        0.47,
+        0.13,
+        0.35
+      ],
+      "id": 12,
+      "material": "blue",
+      "name": "Head 1",
+      "primitive": "box",
+      "size": [
+        0.17,
+        0.26,
+        0.32
+      ]
+    },
+    {
+      "bottom_radius": 0.16,
+      "center": [
+        -0.27,
+        0.12,
+        0.46
+      ],
+      "depth": 0.12,
+      "id": 13,
+      "material": "dark",
+      "name": "Coaxial stock 0",
+      "primitive": "frustum",
+      "rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "top_radius": 0.16
+    },
+    {
+      "bottom_radius": 0.12,
+      "center": [
+        -0.13,
+        0.12,
+        0.46
+      ],
+      "depth": 0.16,
+      "id": 14,
+      "material": "cream",
+      "name": "Coaxial stock 1",
+      "primitive": "frustum",
+      "rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "top_radius": 0.12
+    },
+    {
+      "bottom_radius": 0.079,
+      "center": [
+        0.04,
+        0.12,
+        0.46
+      ],
+      "depth": 0.17,
+      "id": 15,
+      "material": "timber",
+      "name": "Coaxial stock 2",
+      "primitive": "frustum",
+      "rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "top_radius": 0.079
+    },
+    {
+      "bottom_radius": 0.047,
+      "center": [
+        0.21,
+        0.12,
+        0.46
+      ],
+      "depth": 0.17,
+      "id": 16,
+      "material": "cream",
+      "name": "Coaxial stock 3",
+      "primitive": "frustum",
+      "rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "top_radius": 0.047
+    },
+    {
+      "center": [
+        0.03,
+        -0.14,
+        0.26
+      ],
+      "id": 17,
+      "material": "rose",
+      "name": "Cross slide",
+      "primitive": "box",
+      "size": [
+        0.3,
+        0.23,
+        0.13
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.338,
+        0.06
+      ],
+      "center": [
+        0.04,
+        -0.071,
+        0.43
+      ],
+      "id": 18,
+      "material": "dark",
+      "name": "Tool tip",
+      "primitive": "rod",
+      "radius": 0.026
+    }
+  ],
+  "occlusion": "A spindle and stepped chuck run along the x axis. The front tool carriage cuts across them in projection.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Miniature lathe with stepped stock"
+}

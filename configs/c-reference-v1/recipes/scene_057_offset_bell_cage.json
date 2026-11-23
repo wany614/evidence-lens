@@ -1,0 +1,242 @@
+{
+  "objects": [
+    {
+      "axis": [
+        0.0765,
+        0.0,
+        0.785
+      ],
+      "center": [
+        -0.47175,
+        -0.16,
+        0.4075
+      ],
+      "id": 10,
+      "material": "dark",
+      "name": "Cage mast 0",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "axis": [
+        -0.072,
+        0.0,
+        0.785
+      ],
+      "center": [
+        0.444,
+        -0.2,
+        0.4075
+      ],
+      "id": 11,
+      "material": "dark",
+      "name": "Cage mast 1",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "axis": [
+        0.0495,
+        0.0,
+        0.785
+      ],
+      "center": [
+        -0.30525,
+        0.31,
+        0.4075
+      ],
+      "id": 12,
+      "material": "dark",
+      "name": "Cage mast 2",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "axis": [
+        -0.0645,
+        0.0,
+        0.785
+      ],
+      "center": [
+        0.39775,
+        0.27,
+        0.4075
+      ],
+      "id": 13,
+      "material": "dark",
+      "name": "Cage mast 3",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "center": [
+        0,
+        0.05,
+        0.77
+      ],
+      "id": 14,
+      "material": "timber",
+      "name": "Top rack",
+      "primitive": "box",
+      "size": [
+        1.0,
+        0.52,
+        0.055
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        -0.24
+      ],
+      "center": [
+        -0.27,
+        0.11,
+        0.64
+      ],
+      "id": 15,
+      "material": "cream",
+      "name": "Hanger 0",
+      "primitive": "rod",
+      "radius": 0.011
+    },
+    {
+      "bottom_radius": 0.17,
+      "center": [
+        -0.27,
+        0.11,
+        0.4
+      ],
+      "depth": 0.22,
+      "id": 16,
+      "material": "cream",
+      "name": "Bell body 0",
+      "primitive": "frustum",
+      "top_radius": 0.05
+    },
+    {
+      "bottom_radius": 0.185,
+      "center": [
+        -0.27,
+        0.11,
+        0.29
+      ],
+      "depth": 0.021,
+      "id": 17,
+      "material": "dark",
+      "name": "Bell lip 0",
+      "primitive": "frustum",
+      "top_radius": 0.185
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        -0.19
+      ],
+      "center": [
+        0.05,
+        -0.15,
+        0.665
+      ],
+      "id": 18,
+      "material": "cream",
+      "name": "Hanger 1",
+      "primitive": "rod",
+      "radius": 0.011
+    },
+    {
+      "bottom_radius": 0.11,
+      "center": [
+        0.05,
+        -0.15,
+        0.45
+      ],
+      "depth": 0.22,
+      "id": 19,
+      "material": "rose",
+      "name": "Bell body 1",
+      "primitive": "frustum",
+      "top_radius": 0.05
+    },
+    {
+      "bottom_radius": 0.125,
+      "center": [
+        0.05,
+        -0.15,
+        0.34
+      ],
+      "depth": 0.021,
+      "id": 20,
+      "material": "dark",
+      "name": "Bell lip 1",
+      "primitive": "frustum",
+      "top_radius": 0.125
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        -0.1
+      ],
+      "center": [
+        0.29,
+        0.17,
+        0.71
+      ],
+      "id": 21,
+      "material": "cream",
+      "name": "Hanger 2",
+      "primitive": "rod",
+      "radius": 0.011
+    },
+    {
+      "bottom_radius": 0.125,
+      "center": [
+        0.29,
+        0.17,
+        0.54
+      ],
+      "depth": 0.22,
+      "id": 22,
+      "material": "teal",
+      "name": "Bell body 2",
+      "primitive": "frustum",
+      "top_radius": 0.05
+    },
+    {
+      "bottom_radius": 0.14,
+      "center": [
+        0.29,
+        0.17,
+        0.43
+      ],
+      "depth": 0.021,
+      "id": 23,
+      "material": "dark",
+      "name": "Bell lip 2",
+      "primitive": "frustum",
+      "top_radius": 0.14
+    },
+    {
+      "center": [
+        0.01,
+        0.08,
+        0.17
+      ],
+      "id": 24,
+      "material": "blue",
+      "name": "Striker",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.073,
+        0.064,
+        0.08
+      ]
+    }
+  ],
+  "occlusion": "An asymmetric strut cage encloses three suspended stepped bells at different heights and a low striking ball.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Offset struck bell cage"
+}

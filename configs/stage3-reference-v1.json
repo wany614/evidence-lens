@@ -1,0 +1,267 @@
+{
+  "area_light": {
+    "aim": [
+      0,
+      0,
+      0.3
+    ],
+    "color_linear": [
+      1.0,
+      0.96,
+      0.91
+    ],
+    "energy_w": 95.0,
+    "location": [
+      -1.2,
+      -1.1,
+      2.17
+    ],
+    "size_m": 1.1
+  },
+  "blender_version": [
+    4,
+    5,
+    16
+  ],
+  "camera": {
+    "aim": [
+      0,
+      0.045,
+      0.405
+    ],
+    "clip_m": [
+      0.05,
+      30.0
+    ],
+    "lens_mm": 38,
+    "positions": {
+      "s00": [
+        -0.36,
+        -1.9,
+        0.86
+      ],
+      "s01": [
+        -0.12,
+        -1.9,
+        0.86
+      ],
+      "s02": [
+        0.12,
+        -1.9,
+        0.86
+      ],
+      "s03": [
+        0.36,
+        -1.9,
+        0.86
+      ],
+      "v01": [
+        -0.23,
+        -1.83,
+        0.91
+      ],
+      "v02": [
+        0.23,
+        -1.83,
+        0.91
+      ],
+      "v03": [
+        -0.46,
+        -1.87,
+        0.82
+      ],
+      "v04": [
+        0.46,
+        -1.87,
+        0.82
+      ],
+      "v05": [
+        -0.06,
+        -1.97,
+        1.02
+      ],
+      "v06": [
+        0.07,
+        -1.79,
+        0.76
+      ]
+    },
+    "sensor_mm": 36
+  },
+  "color": {
+    "display": "sRGB",
+    "exposure": 0,
+    "gamma": 1,
+    "look": "None",
+    "view": "Standard"
+  },
+  "denoiser": "OPENIMAGEDENOISE",
+  "device": "CPU",
+  "diffuse_bounces": 1,
+  "engine": "CYCLES",
+  "filter_width": 1.5,
+  "height": 256,
+  "material_roughness": 0.65,
+  "materials": {
+    "blue": {
+      "linear": [
+        0.06,
+        0.27,
+        0.39
+      ]
+    },
+    "chalk": {
+      "checker_linear": [
+        0.7,
+        0.7,
+        0.63
+      ],
+      "linear": [
+        0.76,
+        0.73,
+        0.65
+      ],
+      "scale": 9
+    },
+    "cream": {
+      "linear": [
+        0.77,
+        0.61,
+        0.34
+      ]
+    },
+    "dark": {
+      "linear": [
+        0.055,
+        0.075,
+        0.095
+      ]
+    },
+    "floor": {
+      "linear": [
+        0.17,
+        0.17,
+        0.15
+      ]
+    },
+    "green": {
+      "linear": [
+        0.16,
+        0.32,
+        0.21
+      ]
+    },
+    "legs": {
+      "linear": [
+        0.18,
+        0.1,
+        0.05
+      ]
+    },
+    "plaster": {
+      "linear": [
+        0.54,
+        0.58,
+        0.55
+      ]
+    },
+    "rose": {
+      "linear": [
+        0.63,
+        0.13,
+        0.2
+      ]
+    },
+    "teal": {
+      "linear": [
+        0.055,
+        0.38,
+        0.33
+      ]
+    },
+    "terracotta": {
+      "linear": [
+        0.66,
+        0.16,
+        0.066
+      ]
+    },
+    "timber": {
+      "checker_linear": [
+        0.43,
+        0.28,
+        0.16
+      ],
+      "linear": [
+        0.39,
+        0.25,
+        0.13
+      ],
+      "scale": 10
+    }
+  },
+  "max_bounces": 2,
+  "objects": [
+    {
+      "center": [
+        0,
+        1.41,
+        1.42
+      ],
+      "id": 1,
+      "material": "plaster",
+      "name": "Studio back wall",
+      "primitive": "box",
+      "size": [
+        6,
+        0.08,
+        2.84
+      ]
+    },
+    {
+      "center": [
+        0,
+        0,
+        -0.04
+      ],
+      "id": 2,
+      "material": "floor",
+      "name": "Studio floor",
+      "primitive": "box",
+      "size": [
+        6,
+        6,
+        0.08
+      ]
+    }
+  ],
+  "pixel_filter": "BLACKMAN_HARRIS",
+  "preview_width": 128,
+  "repeat_seed": 5279,
+  "samples": 96,
+  "schema": "el-stage3-native-reference-settings-1",
+  "seed": 3367,
+  "validation": {
+    "band_min_interior_pixels": 6,
+    "band_min_width_px": 4,
+    "display_tolerance_code_values": 1,
+    "edge_radius_px": 2,
+    "noise_exceedance_fraction_max": 0.001,
+    "noise_mae_max": 0.005,
+    "noise_pixel_mae_threshold": 0.05,
+    "occlusion_profile": "opaque_mesh_pairs",
+    "plane_relative_tolerance": 0.0001,
+    "projection_tolerance_px": 0.1,
+    "ray_epsilon_abs_m": 0.0001,
+    "ray_epsilon_rel": 0.0001,
+    "render_pixel_tolerance_px": 1.0,
+    "source_min_observed_fraction": 0.999
+  },
+  "width": 256,
+  "world_color_linear": [
+    0.72,
+    0.77,
+    0.82
+  ],
+  "world_strength": 0.45
+}

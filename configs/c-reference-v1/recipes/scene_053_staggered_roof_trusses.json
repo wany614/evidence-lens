@@ -1,0 +1,341 @@
+{
+  "objects": [
+    {
+      "axis": [
+        1.02,
+        0.0,
+        0.0
+      ],
+      "center": [
+        -0.11,
+        -0.3,
+        0.18
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "0 tie",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        0.53,
+        0.0,
+        0.39
+      ],
+      "center": [
+        -0.355,
+        -0.3,
+        0.375
+      ],
+      "id": 11,
+      "material": "timber",
+      "name": "0 rafter L",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        -0.49,
+        0.0,
+        0.39
+      ],
+      "center": [
+        0.155,
+        -0.3,
+        0.375
+      ],
+      "id": 12,
+      "material": "timber",
+      "name": "0 rafter R",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.39
+      ],
+      "center": [
+        -0.09,
+        -0.3,
+        0.375
+      ],
+      "id": 13,
+      "material": "timber",
+      "name": "0 king",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "center": [
+        -0.49,
+        -0.3,
+        0.08
+      ],
+      "id": 14,
+      "material": "chalk",
+      "name": "Pier 0 0",
+      "primitive": "box",
+      "size": [
+        0.13,
+        0.12,
+        0.16
+      ]
+    },
+    {
+      "center": [
+        0.31,
+        -0.3,
+        0.08
+      ],
+      "id": 15,
+      "material": "chalk",
+      "name": "Pier 0 1",
+      "primitive": "box",
+      "size": [
+        0.13,
+        0.12,
+        0.16
+      ]
+    },
+    {
+      "axis": [
+        1.02,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.01,
+        0.04,
+        0.18
+      ],
+      "id": 16,
+      "material": "teal",
+      "name": "1 tie",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        0.53,
+        0.0,
+        0.61
+      ],
+      "center": [
+        -0.235,
+        0.04,
+        0.485
+      ],
+      "id": 17,
+      "material": "teal",
+      "name": "1 rafter L",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        -0.49,
+        0.0,
+        0.61
+      ],
+      "center": [
+        0.275,
+        0.04,
+        0.485
+      ],
+      "id": 18,
+      "material": "teal",
+      "name": "1 rafter R",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.61
+      ],
+      "center": [
+        0.03,
+        0.04,
+        0.485
+      ],
+      "id": 19,
+      "material": "teal",
+      "name": "1 king",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "center": [
+        -0.37,
+        0.04,
+        0.08
+      ],
+      "id": 20,
+      "material": "chalk",
+      "name": "Pier 1 0",
+      "primitive": "box",
+      "size": [
+        0.13,
+        0.12,
+        0.16
+      ]
+    },
+    {
+      "center": [
+        0.43,
+        0.04,
+        0.08
+      ],
+      "id": 21,
+      "material": "chalk",
+      "name": "Pier 1 1",
+      "primitive": "box",
+      "size": [
+        0.13,
+        0.12,
+        0.16
+      ]
+    },
+    {
+      "axis": [
+        1.02,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.09,
+        0.32,
+        0.18
+      ],
+      "id": 22,
+      "material": "timber",
+      "name": "2 tie",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        0.53,
+        0.0,
+        0.47
+      ],
+      "center": [
+        -0.155,
+        0.32,
+        0.415
+      ],
+      "id": 23,
+      "material": "timber",
+      "name": "2 rafter L",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        -0.49,
+        0.0,
+        0.47
+      ],
+      "center": [
+        0.355,
+        0.32,
+        0.415
+      ],
+      "id": 24,
+      "material": "timber",
+      "name": "2 rafter R",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.47
+      ],
+      "center": [
+        0.11,
+        0.32,
+        0.415
+      ],
+      "id": 25,
+      "material": "timber",
+      "name": "2 king",
+      "primitive": "rod",
+      "radius": 0.035
+    },
+    {
+      "center": [
+        -0.29,
+        0.32,
+        0.08
+      ],
+      "id": 26,
+      "material": "chalk",
+      "name": "Pier 2 0",
+      "primitive": "box",
+      "size": [
+        0.13,
+        0.12,
+        0.16
+      ]
+    },
+    {
+      "center": [
+        0.51,
+        0.32,
+        0.08
+      ],
+      "id": 27,
+      "material": "chalk",
+      "name": "Pier 2 1",
+      "primitive": "box",
+      "size": [
+        0.13,
+        0.12,
+        0.16
+      ]
+    },
+    {
+      "axis": [
+        0.12,
+        0.34,
+        0.22
+      ],
+      "center": [
+        -0.03,
+        -0.13,
+        0.68
+      ],
+      "id": 28,
+      "material": "terracotta",
+      "name": "Offset ridge",
+      "primitive": "rod",
+      "radius": 0.025
+    },
+    {
+      "axis": [
+        0.08,
+        0.28,
+        -0.14
+      ],
+      "center": [
+        0.07,
+        0.18,
+        0.72
+      ],
+      "id": 29,
+      "material": "terracotta",
+      "name": "Rear ridge",
+      "primitive": "rod",
+      "radius": 0.025
+    }
+  ],
+  "occlusion": "Triangular king-post frames repeat at distinct depths, with offset ridge height, longitudinal timbers and visible internal braces.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Three staggered roof trusses"
+}

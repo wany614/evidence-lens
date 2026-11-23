@@ -1,0 +1,197 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0.01,
+        0.055
+      ],
+      "id": 10,
+      "material": "legs",
+      "name": "Stage base",
+      "primitive": "box",
+      "size": [
+        1.22,
+        0.73,
+        0.11
+      ]
+    },
+    {
+      "center": [
+        -0.5,
+        -0.28,
+        0.475
+      ],
+      "id": 11,
+      "material": "rose",
+      "name": "Left paper wing 0",
+      "primitive": "box",
+      "size": [
+        0.13999999999999996,
+        0.045,
+        0.73
+      ]
+    },
+    {
+      "center": [
+        0.47,
+        -0.28,
+        0.475
+      ],
+      "id": 12,
+      "material": "rose",
+      "name": "Right paper wing 0",
+      "primitive": "box",
+      "size": [
+        0.19999999999999996,
+        0.045,
+        0.73
+      ]
+    },
+    {
+      "center": [
+        0,
+        -0.28,
+        0.84
+      ],
+      "id": 13,
+      "material": "rose",
+      "name": "Header 0",
+      "primitive": "box",
+      "size": [
+        1.14,
+        0.05,
+        0.075
+      ]
+    },
+    {
+      "center": [
+        -0.435,
+        0,
+        0.415
+      ],
+      "id": 14,
+      "material": "blue",
+      "name": "Left paper wing 1",
+      "primitive": "box",
+      "size": [
+        0.26999999999999996,
+        0.045,
+        0.61
+      ]
+    },
+    {
+      "center": [
+        0.465,
+        0,
+        0.415
+      ],
+      "id": 15,
+      "material": "blue",
+      "name": "Right paper wing 1",
+      "primitive": "box",
+      "size": [
+        0.20999999999999996,
+        0.045,
+        0.61
+      ]
+    },
+    {
+      "center": [
+        0,
+        0,
+        0.72
+      ],
+      "id": 16,
+      "material": "blue",
+      "name": "Header 1",
+      "primitive": "box",
+      "size": [
+        1.14,
+        0.05,
+        0.075
+      ]
+    },
+    {
+      "center": [
+        -0.42,
+        0.22,
+        0.37
+      ],
+      "id": 17,
+      "material": "teal",
+      "name": "Left paper wing 2",
+      "primitive": "box",
+      "size": [
+        0.29999999999999993,
+        0.045,
+        0.52
+      ]
+    },
+    {
+      "center": [
+        0.395,
+        0.22,
+        0.37
+      ],
+      "id": 18,
+      "material": "teal",
+      "name": "Right paper wing 2",
+      "primitive": "box",
+      "size": [
+        0.35,
+        0.045,
+        0.52
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.22,
+        0.63
+      ],
+      "id": 19,
+      "material": "teal",
+      "name": "Header 2",
+      "primitive": "box",
+      "size": [
+        1.14,
+        0.05,
+        0.075
+      ]
+    },
+    {
+      "center": [
+        0.12,
+        0.32,
+        0.46
+      ],
+      "id": 20,
+      "material": "cream",
+      "name": "Painted disc in back",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.215,
+        0.042,
+        0.21
+      ]
+    },
+    {
+      "bottom_radius": 0.18,
+      "center": [
+        -0.05,
+        0.12,
+        0.23
+      ],
+      "depth": 0.25,
+      "id": 21,
+      "material": "terracotta",
+      "name": "Low silhouette",
+      "primitive": "frustum",
+      "top_radius": 0
+    }
+  ],
+  "occlusion": "Three flat proscenia have progressively narrower, asymmetrically shifted windows. A crescent of the rear scene shows through both front masks.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Offset paper theatre"
+}

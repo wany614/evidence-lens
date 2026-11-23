@@ -1,0 +1,14 @@
+{
+  "schema": "el-stage3-joint-optimizer-1",
+  "backend": "gsplat==1.5.3",
+  "device": "Windows CUDA",
+  "implementation": "Original Evidence Lens photometric optimization; degree-zero diffuse linear RGB, black compositing, displayed sRGB full-grid mean L1 loss.",
+  "uses_sfm_or_external_generator": false,
+  "initialization": {"generator": "NumPy PCG64", "seed": 43171, "world_axes": "Blender z up, metric metres", "means_uniform_min": [-1.7, -0.8, -0.05], "means_uniform_max": [1.7, 1.6, 1.75], "scale_uniform_m": [0.03, 0.105], "quaternion": "independent normalized standard normals in wxyz order", "opacity_uniform": [0.28, 0.45], "linear_rgb_uniform": [0.09, 0.64], "count": 4096},
+  "optimization": {"algorithm": "Adam", "betas": [0.9, 0.999], "eps": 1e-8, "learning_rates": {"means": 0.008, "log_scales": 0.015, "quats": 0.004, "opacity_logits": 0.014, "color_logits": 0.04}, "batch": 1, "source_sampling": "address registered ordered list cyclically once per step", "crop": null, "grid": [256, 256], "topology": "fixed; no densification, pruning or merging", "precision": "FP32", "early_stopping": false, "checkpoint": "final scheduled update only", "engineering_pilot_updates": 64, "production_candidate_updates": [64, 128, 256], "production_freeze": "Separate recorder decision after both train pilots, before formal production. Each admitted condition gets exactly identical aggregate source pixels and optimizer steps."},
+  "render": {"mode": "RGB+ED", "rasterize_mode": "classic", "packed": false, "eps2d": 0.3, "background_linear_rgb": [0,0,0], "near_m": 0.05, "far_m": 30, "depth": "foreground-opacity-normalized camera-Z metres; NaN when alpha=0 or nonpositive/nonfinite", "probe_depth_tolerance_m": 0.0001, "probe_alpha_tolerance": 0.0005},
+  "failure": ["CUDA unavailable or OOM", "nonfinite gradient, parameter, loss or RGB", "empty projected support", "no source-specific nonzero geometry or colour gradient", "no measurable common-parameter update", "mismatched source/checkpoint/camera/identity", "wrong final topology or step count"],
+  "limits": {"max_gaussians": 50000, "max_updates": 5000, "local_free_floor_gib": 30, "local_hot_batch_gib": 20},
+  "upstream": "https://github.com/nerfstudio-project/gsplat/blob/v1.5.3/gsplat/rendering.py",
+  "rights": {"adapter": "original wany614 Apache-2.0", "third_party": "gsplat v1.5.3 under its upstream Apache-2.0 distribution", "training_inputs": "only the authorized original source RGB and their own native calibration"}
+}

@@ -1,0 +1,189 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.065,
+      "center": [
+        -0.27,
+        -0.1,
+        0.52
+      ],
+      "depth": 0.3,
+      "id": 10,
+      "material": "blue",
+      "name": "Hopper 0",
+      "primitive": "frustum",
+      "top_radius": 0.27
+    },
+    {
+      "center": [
+        -0.27,
+        -0.1,
+        0.67
+      ],
+      "id": 11,
+      "major_radius": 0.27,
+      "material": "cream",
+      "minor_radius": 0.017,
+      "name": "Mouth rim 0",
+      "primitive": "torus",
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": [
+        0.09,
+        -0.11,
+        -0.22
+      ],
+      "center": [
+        -0.225,
+        -0.155,
+        0.28
+      ],
+      "id": 12,
+      "material": "dark",
+      "name": "Chute 0",
+      "primitive": "rod",
+      "radius": 0.047
+    },
+    {
+      "axis": [
+        0.05,
+        0.0,
+        0.5
+      ],
+      "center": [
+        -0.405,
+        -0.1,
+        0.27
+      ],
+      "id": 13,
+      "material": "timber",
+      "name": "Hopper leg 0 -1",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        -0.05,
+        0.0,
+        0.5
+      ],
+      "center": [
+        -0.135,
+        -0.1,
+        0.27
+      ],
+      "id": 14,
+      "material": "timber",
+      "name": "Hopper leg 0 1",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "bottom_radius": 0.065,
+      "center": [
+        0.3,
+        0.18,
+        0.62
+      ],
+      "depth": 0.3,
+      "id": 15,
+      "material": "terracotta",
+      "name": "Hopper 1",
+      "primitive": "frustum",
+      "top_radius": 0.2
+    },
+    {
+      "center": [
+        0.3,
+        0.18,
+        0.77
+      ],
+      "id": 16,
+      "major_radius": 0.2,
+      "material": "cream",
+      "minor_radius": 0.017,
+      "name": "Mouth rim 1",
+      "primitive": "torus",
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "axis": [
+        0.09,
+        -0.11,
+        -0.22
+      ],
+      "center": [
+        0.345,
+        0.125,
+        0.38
+      ],
+      "id": 17,
+      "material": "dark",
+      "name": "Chute 1",
+      "primitive": "rod",
+      "radius": 0.047
+    },
+    {
+      "axis": [
+        0.05,
+        0.0,
+        0.6
+      ],
+      "center": [
+        0.165,
+        0.18,
+        0.32
+      ],
+      "id": 18,
+      "material": "timber",
+      "name": "Hopper leg 1 -1",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "axis": [
+        -0.05,
+        0.0,
+        0.6
+      ],
+      "center": [
+        0.435,
+        0.18,
+        0.32
+      ],
+      "id": 19,
+      "material": "timber",
+      "name": "Hopper leg 1 1",
+      "primitive": "rod",
+      "radius": 0.018
+    },
+    {
+      "center": [
+        0.08,
+        -0.19,
+        0.075
+      ],
+      "id": 20,
+      "material": "teal",
+      "name": "Receiving tray",
+      "primitive": "box",
+      "size": [
+        0.62,
+        0.27,
+        0.09
+      ]
+    }
+  ],
+  "occlusion": "Two unequal wide mouths at opposite elevations narrow into offset chutes and partially cover a receiving tray.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Stepped hopper-chute line"
+}

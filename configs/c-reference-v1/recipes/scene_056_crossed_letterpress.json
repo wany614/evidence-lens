@@ -1,0 +1,157 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        -0.05,
+        0.08
+      ],
+      "id": 10,
+      "material": "dark",
+      "name": "Press bed",
+      "primitive": "box",
+      "size": [
+        0.94,
+        0.63,
+        0.16
+      ]
+    },
+    {
+      "center": [
+        0.04,
+        -0.19,
+        0.194
+      ],
+      "id": 11,
+      "material": "chalk",
+      "name": "Type plate",
+      "primitive": "box",
+      "size": [
+        0.52,
+        0.27,
+        0.064
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.51
+      ],
+      "center": [
+        -0.33,
+        -0.05,
+        0.415
+      ],
+      "id": 12,
+      "material": "teal",
+      "name": "Pivot upright 0",
+      "primitive": "rod",
+      "radius": 0.053
+    },
+    {
+      "axis": [
+        0.7,
+        0.0,
+        0.15
+      ],
+      "center": [
+        0.01,
+        -0.05,
+        0.685
+      ],
+      "id": 13,
+      "material": "rose",
+      "name": "Rocker 0",
+      "primitive": "rod",
+      "radius": 0.036
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.51
+      ],
+      "center": [
+        -0.33,
+        0.23,
+        0.415
+      ],
+      "id": 14,
+      "material": "teal",
+      "name": "Pivot upright 1",
+      "primitive": "rod",
+      "radius": 0.053
+    },
+    {
+      "axis": [
+        0.7,
+        0.0,
+        -0.23
+      ],
+      "center": [
+        0.01,
+        0.23,
+        0.495
+      ],
+      "id": 15,
+      "material": "rose",
+      "name": "Rocker 1",
+      "primitive": "rod",
+      "radius": 0.036
+    },
+    {
+      "axis": [
+        0.0,
+        0.25,
+        0.0
+      ],
+      "center": [
+        0.36,
+        0.045,
+        0.76
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Handle tie",
+      "primitive": "rod",
+      "radius": 0.04
+    },
+    {
+      "axis": [
+        0.0,
+        -0.11,
+        -0.34
+      ],
+      "center": [
+        0.04,
+        -0.105,
+        0.52
+      ],
+      "id": 17,
+      "material": "cream",
+      "name": "Connecting link",
+      "primitive": "rod",
+      "radius": 0.028
+    },
+    {
+      "center": [
+        0.04,
+        -0.16,
+        0.32
+      ],
+      "id": 18,
+      "material": "blue",
+      "name": "Moving platen",
+      "primitive": "box",
+      "size": [
+        0.58,
+        0.3,
+        0.065
+      ]
+    }
+  ],
+  "occlusion": "Two oblique press arms meet above the platen. The upright rear rail and movable type bed sit at different depths.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Crossed lever letterpress"
+}

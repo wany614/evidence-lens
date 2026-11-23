@@ -1,0 +1,214 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.45,
+      "center": [
+        0,
+        0.01,
+        0.1
+      ],
+      "depth": 0.12,
+      "id": 10,
+      "material": "blue",
+      "name": "Turntable",
+      "primitive": "frustum",
+      "top_radius": 0.45
+    },
+    {
+      "bottom_radius": 0.075,
+      "center": [
+        0,
+        0.01,
+        0.41
+      ],
+      "depth": 0.52,
+      "id": 11,
+      "material": "dark",
+      "name": "Spindle",
+      "primitive": "frustum",
+      "top_radius": 0.05
+    },
+    {
+      "center": [
+        0.24,
+        0.01,
+        0.59
+      ],
+      "id": 12,
+      "material": "teal",
+      "name": "Angled rotor vane 0",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        0.0
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        0.149638,
+        0.19764,
+        0.59
+      ],
+      "id": 13,
+      "material": "cream",
+      "name": "Angled rotor vane 1",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        51.42857142857143
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.053405,
+        0.243983,
+        0.59
+      ],
+      "id": 14,
+      "material": "teal",
+      "name": "Angled rotor vane 2",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        102.85714285714286
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.216233,
+        0.114132,
+        0.59
+      ],
+      "id": 15,
+      "material": "cream",
+      "name": "Angled rotor vane 3",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        154.28571428571428
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.216233,
+        -0.094132,
+        0.59
+      ],
+      "id": 16,
+      "material": "teal",
+      "name": "Angled rotor vane 4",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        205.71428571428572
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        -0.053405,
+        -0.223983,
+        0.59
+      ],
+      "id": 17,
+      "material": "cream",
+      "name": "Angled rotor vane 5",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        257.14285714285717
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        0.149638,
+        -0.17764,
+        0.59
+      ],
+      "id": 18,
+      "material": "teal",
+      "name": "Angled rotor vane 6",
+      "primitive": "box",
+      "rotation_deg": [
+        20,
+        0,
+        308.57142857142856
+      ],
+      "size": [
+        0.29,
+        0.055,
+        0.14
+      ]
+    },
+    {
+      "center": [
+        0,
+        0.01,
+        0.67
+      ],
+      "id": 19,
+      "material": "rose",
+      "name": "Hub cap",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.12,
+        0.12,
+        0.07
+      ]
+    },
+    {
+      "center": [
+        0.29,
+        0.13,
+        0.235
+      ],
+      "id": 20,
+      "material": "rose",
+      "name": "Eccentric seat",
+      "primitive": "box",
+      "size": [
+        0.19,
+        0.16,
+        0.12
+      ]
+    }
+  ],
+  "occlusion": "Radial slanted fins sweep above a two-tier platform. Several broad blades cover an eccentrically located rear chair.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Offset vane carousel"
+}

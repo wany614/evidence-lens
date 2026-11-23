@@ -1,0 +1,377 @@
+{
+  "objects": [
+    {
+      "center": [
+        -0.46,
+        0.01,
+        0.16
+      ],
+      "id": 10,
+      "material": "timber",
+      "name": "Loom side -0.46",
+      "primitive": "box",
+      "size": [
+        0.085,
+        0.66,
+        0.13
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.15,
+        0.37
+      ],
+      "center": [
+        -0.46,
+        -0.125,
+        0.375
+      ],
+      "id": 11,
+      "material": "terracotta",
+      "name": "Beater arm -0.46",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "center": [
+        0.46,
+        0.01,
+        0.16
+      ],
+      "id": 12,
+      "material": "timber",
+      "name": "Loom side 0.46",
+      "primitive": "box",
+      "size": [
+        0.085,
+        0.66,
+        0.13
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.15,
+        0.37
+      ],
+      "center": [
+        0.46,
+        -0.125,
+        0.375
+      ],
+      "id": 13,
+      "material": "terracotta",
+      "name": "Beater arm 0.46",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        1.06,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.0,
+        -0.24,
+        0.28
+      ],
+      "id": 14,
+      "material": "dark",
+      "name": "Yarn beam -0.24",
+      "primitive": "rod",
+      "radius": 0.063
+    },
+    {
+      "axis": [
+        1.06,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.0,
+        0.27,
+        0.28
+      ],
+      "id": 15,
+      "material": "dark",
+      "name": "Yarn beam 0.27",
+      "primitive": "rod",
+      "radius": 0.063
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.38,
+        0.015,
+        0.325
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Warp 0",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.322,
+        0.015,
+        0.325
+      ],
+      "id": 17,
+      "material": "teal",
+      "name": "Warp 1",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.264,
+        0.015,
+        0.325
+      ],
+      "id": 18,
+      "material": "rose",
+      "name": "Warp 2",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.206,
+        0.015,
+        0.325
+      ],
+      "id": 19,
+      "material": "cream",
+      "name": "Warp 3",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.148,
+        0.015,
+        0.325
+      ],
+      "id": 20,
+      "material": "teal",
+      "name": "Warp 4",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.09,
+        0.015,
+        0.325
+      ],
+      "id": 21,
+      "material": "rose",
+      "name": "Warp 5",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        -0.032,
+        0.015,
+        0.325
+      ],
+      "id": 22,
+      "material": "cream",
+      "name": "Warp 6",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.026,
+        0.015,
+        0.325
+      ],
+      "id": 23,
+      "material": "teal",
+      "name": "Warp 7",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.084,
+        0.015,
+        0.325
+      ],
+      "id": 24,
+      "material": "rose",
+      "name": "Warp 8",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.142,
+        0.015,
+        0.325
+      ],
+      "id": 25,
+      "material": "cream",
+      "name": "Warp 9",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.2,
+        0.015,
+        0.325
+      ],
+      "id": 26,
+      "material": "teal",
+      "name": "Warp 10",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.258,
+        0.015,
+        0.325
+      ],
+      "id": 27,
+      "material": "rose",
+      "name": "Warp 11",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.316,
+        0.015,
+        0.325
+      ],
+      "id": 28,
+      "material": "cream",
+      "name": "Warp 12",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "axis": [
+        0.0,
+        0.51,
+        0.0
+      ],
+      "center": [
+        0.374,
+        0.015,
+        0.325
+      ],
+      "id": 29,
+      "material": "teal",
+      "name": "Warp 13",
+      "primitive": "rod",
+      "radius": 0.008
+    },
+    {
+      "center": [
+        0,
+        -0.06,
+        0.51
+      ],
+      "id": 30,
+      "material": "blue",
+      "name": "Swing reed",
+      "primitive": "box",
+      "size": [
+        1.02,
+        0.065,
+        0.095
+      ]
+    },
+    {
+      "center": [
+        0.15,
+        0.04,
+        0.361
+      ],
+      "id": 31,
+      "material": "cream",
+      "name": "Boat shuttle",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.14,
+        0.045,
+        0.031
+      ]
+    }
+  ],
+  "occlusion": "An angled front beater crosses coloured parallel warps seated between separate end beams.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Table loom and suspended beater"
+}

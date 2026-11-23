@@ -1,0 +1,593 @@
+{
+  "objects": [
+    {
+      "bottom_radius": 0.46,
+      "center": [
+        0,
+        0.03,
+        0.045
+      ],
+      "depth": 0.09,
+      "id": 10,
+      "material": "dark",
+      "name": "Round plinth",
+      "primitive": "frustum",
+      "top_radius": 0.46
+    },
+    {
+      "bottom_radius": 0.075,
+      "center": [
+        0,
+        0.03,
+        0.4
+      ],
+      "depth": 0.68,
+      "id": 11,
+      "material": "blue",
+      "name": "Central pillar",
+      "primitive": "frustum",
+      "top_radius": 0.052
+    },
+    {
+      "axis": [
+        -0.023978,
+        0.103325,
+        -0.018
+      ],
+      "center": [
+        0.303011,
+        0.081662,
+        0.711
+      ],
+      "id": 12,
+      "material": "cream",
+      "name": "Track segment 0",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.068283,
+        0.087594,
+        -0.018
+      ],
+      "center": [
+        0.25688,
+        0.177122,
+        0.693
+      ],
+      "id": 13,
+      "material": "cream",
+      "name": "Track segment 1",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.102193,
+        0.058529,
+        -0.018
+      ],
+      "center": [
+        0.171642,
+        0.250183,
+        0.675
+      ],
+      "id": 14,
+      "material": "cream",
+      "name": "Track segment 2",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.120545,
+        0.020553,
+        -0.018
+      ],
+      "center": [
+        0.060273,
+        0.289724,
+        0.657
+      ],
+      "id": 15,
+      "material": "cream",
+      "name": "Track segment 3",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.120545,
+        -0.020553,
+        -0.018
+      ],
+      "center": [
+        -0.060273,
+        0.289724,
+        0.639
+      ],
+      "id": 16,
+      "material": "cream",
+      "name": "Track segment 4",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.102193,
+        -0.058529,
+        -0.018
+      ],
+      "center": [
+        -0.171642,
+        0.250183,
+        0.621
+      ],
+      "id": 17,
+      "material": "cream",
+      "name": "Track segment 5",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.068283,
+        -0.087594,
+        -0.018
+      ],
+      "center": [
+        -0.25688,
+        0.177122,
+        0.603
+      ],
+      "id": 18,
+      "material": "cream",
+      "name": "Track segment 6",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.023978,
+        -0.103325,
+        -0.018
+      ],
+      "center": [
+        -0.303011,
+        0.081662,
+        0.585
+      ],
+      "id": 19,
+      "material": "cream",
+      "name": "Track segment 7",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.023978,
+        -0.103325,
+        -0.018
+      ],
+      "center": [
+        -0.303011,
+        -0.021662,
+        0.567
+      ],
+      "id": 20,
+      "material": "cream",
+      "name": "Track segment 8",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.068283,
+        -0.087594,
+        -0.018
+      ],
+      "center": [
+        -0.25688,
+        -0.117122,
+        0.549
+      ],
+      "id": 21,
+      "material": "cream",
+      "name": "Track segment 9",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.102193,
+        -0.058529,
+        -0.018
+      ],
+      "center": [
+        -0.171642,
+        -0.190183,
+        0.531
+      ],
+      "id": 22,
+      "material": "cream",
+      "name": "Track segment 10",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.120545,
+        -0.020553,
+        -0.018
+      ],
+      "center": [
+        -0.060273,
+        -0.229724,
+        0.513
+      ],
+      "id": 23,
+      "material": "cream",
+      "name": "Track segment 11",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.120545,
+        0.020553,
+        -0.018
+      ],
+      "center": [
+        0.060273,
+        -0.229724,
+        0.495
+      ],
+      "id": 24,
+      "material": "cream",
+      "name": "Track segment 12",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.102193,
+        0.058529,
+        -0.018
+      ],
+      "center": [
+        0.171642,
+        -0.190183,
+        0.477
+      ],
+      "id": 25,
+      "material": "cream",
+      "name": "Track segment 13",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.068283,
+        0.087594,
+        -0.018
+      ],
+      "center": [
+        0.25688,
+        -0.117122,
+        0.459
+      ],
+      "id": 26,
+      "material": "cream",
+      "name": "Track segment 14",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.023978,
+        0.103325,
+        -0.018
+      ],
+      "center": [
+        0.303011,
+        -0.021662,
+        0.441
+      ],
+      "id": 27,
+      "material": "cream",
+      "name": "Track segment 15",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.023978,
+        0.103325,
+        -0.018
+      ],
+      "center": [
+        0.303011,
+        0.081662,
+        0.423
+      ],
+      "id": 28,
+      "material": "cream",
+      "name": "Track segment 16",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.068283,
+        0.087594,
+        -0.018
+      ],
+      "center": [
+        0.25688,
+        0.177122,
+        0.405
+      ],
+      "id": 29,
+      "material": "cream",
+      "name": "Track segment 17",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.102193,
+        0.058529,
+        -0.018
+      ],
+      "center": [
+        0.171642,
+        0.250183,
+        0.387
+      ],
+      "id": 30,
+      "material": "cream",
+      "name": "Track segment 18",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.120545,
+        0.020553,
+        -0.018
+      ],
+      "center": [
+        0.060273,
+        0.289724,
+        0.369
+      ],
+      "id": 31,
+      "material": "cream",
+      "name": "Track segment 19",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.120545,
+        -0.020553,
+        -0.018
+      ],
+      "center": [
+        -0.060273,
+        0.289724,
+        0.351
+      ],
+      "id": 32,
+      "material": "cream",
+      "name": "Track segment 20",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.102193,
+        -0.058529,
+        -0.018
+      ],
+      "center": [
+        -0.171642,
+        0.250183,
+        0.333
+      ],
+      "id": 33,
+      "material": "cream",
+      "name": "Track segment 21",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.068283,
+        -0.087594,
+        -0.018
+      ],
+      "center": [
+        -0.25688,
+        0.177122,
+        0.315
+      ],
+      "id": 34,
+      "material": "cream",
+      "name": "Track segment 22",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        -0.023978,
+        -0.103325,
+        -0.018
+      ],
+      "center": [
+        -0.303011,
+        0.081662,
+        0.297
+      ],
+      "id": 35,
+      "material": "cream",
+      "name": "Track segment 23",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.023978,
+        -0.103325,
+        -0.018
+      ],
+      "center": [
+        -0.303011,
+        -0.021662,
+        0.279
+      ],
+      "id": 36,
+      "material": "cream",
+      "name": "Track segment 24",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.068283,
+        -0.087594,
+        -0.018
+      ],
+      "center": [
+        -0.25688,
+        -0.117122,
+        0.261
+      ],
+      "id": 37,
+      "material": "cream",
+      "name": "Track segment 25",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.102193,
+        -0.058529,
+        -0.018
+      ],
+      "center": [
+        -0.171642,
+        -0.190183,
+        0.243
+      ],
+      "id": 38,
+      "material": "cream",
+      "name": "Track segment 26",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.120545,
+        -0.020553,
+        -0.018
+      ],
+      "center": [
+        -0.060273,
+        -0.229724,
+        0.225
+      ],
+      "id": 39,
+      "material": "cream",
+      "name": "Track segment 27",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.120545,
+        0.020553,
+        -0.018
+      ],
+      "center": [
+        0.060273,
+        -0.229724,
+        0.207
+      ],
+      "id": 40,
+      "material": "cream",
+      "name": "Track segment 28",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "axis": [
+        0.102193,
+        0.058529,
+        -0.018
+      ],
+      "center": [
+        0.171642,
+        -0.190183,
+        0.189
+      ],
+      "id": 41,
+      "material": "cream",
+      "name": "Track segment 29",
+      "primitive": "rod",
+      "radius": 0.026
+    },
+    {
+      "center": [
+        0.120545,
+        0.279447,
+        0.713
+      ],
+      "id": 42,
+      "material": "rose",
+      "name": "Marble 3",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.043,
+        0.043,
+        0.043
+      ]
+    },
+    {
+      "center": [
+        0.120545,
+        -0.219447,
+        0.533
+      ],
+      "id": 43,
+      "material": "rose",
+      "name": "Marble 13",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.043,
+        0.043,
+        0.043
+      ]
+    },
+    {
+      "center": [
+        -0.291022,
+        -0.073325,
+        0.317
+      ],
+      "id": 44,
+      "material": "rose",
+      "name": "Marble 25",
+      "primitive": "ellipsoid",
+      "radii": [
+        0.043,
+        0.043,
+        0.043
+      ]
+    }
+  ],
+  "occlusion": "A segmented descending spiral wraps a central column. Beads on upper and lower turns overlap across the source arc.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Stepped marble spiral"
+}

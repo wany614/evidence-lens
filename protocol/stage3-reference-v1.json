@@ -1,0 +1,80 @@
+{
+  "boundary": "A reconstruction reads only its own source PNGs and source poses. A separate renderer reads frozen checkpoint and allowed poses. Reference truth is private evaluation data.",
+  "capture": {
+    "camera": "OpenCV x-right y-down z-forward, optical-axis camera Z in metres, integer pixels; gsplat K principal point +0.5.",
+    "camera_sha256": "1b6cb179e40b14c5874e4bc89ff8eecef6aa3fa94836cbf37d2b25f9f637267e",
+    "colour": "Blender Cycles Standard, no Look, exposure 0 gamma 1 sRGB. EXR linear combined to FP32 display-sRGB before 8-bit source encoding.",
+    "poses": [
+      "s00",
+      "s01",
+      "s02",
+      "s03",
+      "v01",
+      "v02",
+      "v03",
+      "v04",
+      "v05",
+      "v06"
+    ],
+    "source_endpoint_distance_m": 0.72,
+    "source_sets": {
+      "M2": [
+        "s00",
+        "s03"
+      ],
+      "M4": [
+        "s00",
+        "s01",
+        "s02",
+        "s03"
+      ]
+    },
+    "target_ids": [
+      "v01",
+      "v02",
+      "v03",
+      "v04",
+      "v05",
+      "v06"
+    ],
+    "world_and_light_sha256": "63bf5ad9596e77bfa7509404251739c79a6f801ce3fc7a2345b67fcc1b132051"
+  },
+  "cohort": {
+    "development": 4,
+    "engineering_pilot": "first two training worlds only; distinct marked run identities; production scientific run uses frozen budget",
+    "test": 4,
+    "train": 8
+  },
+  "display": "v01 fixed. Six target identifiers, all six and possible failures retained in evaluation.",
+  "hypotheses": [
+    {
+      "confidence": "moderate",
+      "prediction": "At fixed endpoint span, M4 may reduce family-wise target RGB error relative to M2 by resolving ambiguous layers.",
+      "refutation": "Nonnegative M4-minus-M2 RGB incidence or MAE in the four-family macro comparison."
+    },
+    {
+      "confidence": "moderate",
+      "prediction": "Thin near-field occupiers can remain erroneous despite extra middle sources.",
+      "refutation": "No residual edge or disoccluded errors in registered heldout evaluations."
+    },
+    {
+      "confidence": "low",
+      "prediction": "Additional images under an equal total update budget may impair some well-observed surfaces.",
+      "refutation": "Every family improves for all registered RGB-error outcomes."
+    }
+  ],
+  "native_resolution": [
+    256,
+    256
+  ],
+  "registered_utc": "2026-11-23T15:42:53.325137Z",
+  "scene_rights": {
+    "code": "Apache-2.0",
+    "creator": "wany614",
+    "original_geometry_source_media_and_allowed_reference_data": "CC-BY-4.0",
+    "privacy": "full scientific arrays private by default"
+  },
+  "schema": "el-stage3-reference-preregistration-1",
+  "test_gate": "Before registered joint reconstruction and risk freeze, the test entrance cannot instantiate a test world, render test truth, create a test job, or resolve selected test data.",
+  "visibility": "Per-source Blender opaque first-hit with 0 invalid/background 1 observed 2 disoccluded 3 outside; retain reason and first hit ID. Edge is object/surface boundary dilated by two pixels, independent of source count."
+}

@@ -1,0 +1,187 @@
+{
+  "objects": [
+    {
+      "center": [
+        0,
+        0.03,
+        0.055
+      ],
+      "id": 10,
+      "material": "dark",
+      "name": "Interlock base",
+      "primitive": "box",
+      "size": [
+        1.13,
+        0.53,
+        0.11
+      ]
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.68
+      ],
+      "center": [
+        -0.25,
+        -0.09,
+        0.45
+      ],
+      "id": 11,
+      "material": "chalk",
+      "name": "Mast 0",
+      "primitive": "rod",
+      "radius": 0.031
+    },
+    {
+      "center": [
+        -0.15,
+        -0.135,
+        0.75
+      ],
+      "id": 12,
+      "material": "rose",
+      "name": "Semaphore arm 0",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        29,
+        0
+      ],
+      "size": [
+        0.38,
+        0.055,
+        0.069
+      ]
+    },
+    {
+      "bottom_radius": 0.055,
+      "center": [
+        -0.25,
+        -0.155,
+        0.76
+      ],
+      "depth": 0.05,
+      "id": 13,
+      "material": "dark",
+      "name": "Signal hub 0",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.055
+    },
+    {
+      "axis": [
+        -0.11,
+        0.0,
+        0.6
+      ],
+      "center": [
+        -0.215,
+        -0.04,
+        0.43
+      ],
+      "id": 14,
+      "material": "teal",
+      "name": "Drive link 0",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "center": [
+        0.29,
+        0.17,
+        0.36
+      ],
+      "id": 15,
+      "material": "chalk",
+      "name": "Mast 1",
+      "primitive": "rod",
+      "radius": 0.031
+    },
+    {
+      "center": [
+        0.39,
+        0.125,
+        0.57
+      ],
+      "id": 16,
+      "material": "rose",
+      "name": "Semaphore arm 1",
+      "primitive": "box",
+      "rotation_deg": [
+        0,
+        -34,
+        0
+      ],
+      "size": [
+        0.38,
+        0.055,
+        0.069
+      ]
+    },
+    {
+      "bottom_radius": 0.055,
+      "center": [
+        0.29,
+        0.105,
+        0.58
+      ],
+      "depth": 0.05,
+      "id": 17,
+      "material": "dark",
+      "name": "Signal hub 1",
+      "primitive": "frustum",
+      "rotation_deg": [
+        90,
+        0,
+        0
+      ],
+      "top_radius": 0.055
+    },
+    {
+      "axis": [
+        -0.11,
+        0.0,
+        0.42
+      ],
+      "center": [
+        0.325,
+        0.22,
+        0.34
+      ],
+      "id": 18,
+      "material": "teal",
+      "name": "Drive link 1",
+      "primitive": "rod",
+      "radius": 0.012
+    },
+    {
+      "center": [
+        0.08,
+        -0.18,
+        0.23
+      ],
+      "id": 19,
+      "material": "blue",
+      "name": "Signal cabinet",
+      "primitive": "box",
+      "size": [
+        0.3,
+        0.18,
+        0.32
+      ]
+    }
+  ],
+  "occlusion": "Two masts of different height carry opposing arms. Parallel drive links lie behind a foreground signal cabinet.",
+  "schema": "el-stage3-world-recipe-1",
+  "title": "Mechanical semaphore interlock"
+}
