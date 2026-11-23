@@ -87,7 +87,9 @@ def test_private_deploy_read_barrier_applies_at_import(tmp_path):
     assert p.returncode and "outside isolated deployment inputs: truth.npy" in p.stderr
 
 
-def test_install_uses_new_offline_venv(tmp_path):
+def test_install_uses_new_offline_venv(tmp_path,monkeypatch):
+    for name in ("HTTP_PROXY","https_proxy","ALL_PROXY","REQUESTS_CA_BUNDLE","SSL_CERT_FILE","PIP_INDEX_URL","PIP_CONFIG_FILE","NETRC"):
+        monkeypatch.setenv(name,"invalid-inherited-value")
     wh=tmp_path/"wheels";wh.mkdir();requirements=tmp_path/"requirements.txt";requirements.write_text("vision-grade-fixture==0.0.1\n")
     di="vision_grade_fixture-0.0.1.dist-info/"
     with zipfile.ZipFile(wh/"vision_grade_fixture-0.0.1-py3-none-any.whl","w") as z:
@@ -98,6 +100,33 @@ def test_install_uses_new_offline_venv(tmp_path):
     exe=public.install(tmp_path,requirements,wh)
     out=subprocess.check_output([str(exe),"-I","-c","import vision_grade_fixture as f;print(f.VALUE)"],text=True)
     assert out.strip()=="42" and exe.is_relative_to(tmp_path/"clean-cpu")
+    receipt=rel.read(tmp_path/"installation.json");transaction=receipt["transactions"][0];wheel=next(wh.glob('*.whl'))
+    assert receipt['source_mode']=='offline_local_wheelhouse' and receipt['installed_distributions']['vision-grade-fixture']=='0.0.1'
+    assert transaction['wheels']==[{'distribution':'vision-grade-fixture','version':'0.0.1','requested':True,'wheel':wheel.name,'sha256':rel.sha(wheel),'origin':'local wheelhouse'}]
+    assert transaction['pip_report_sha256']==rel.sha(tmp_path/'pip-report-0.json')
+
+
+def test_installer_environment_and_scope_stay_distinct(tmp_path,monkeypatch):
+    for name in ('HTTP_PROXY','https_proxy','ALL_PROXY','NO_PROXY','REQUESTS_CA_BUNDLE','CURL_CA_BUNDLE','SSL_CERT_FILE','SSL_CERT_DIR','PIP_CERT','PIP_INDEX_URL','GITHUB_TOKEN'):
+        monkeypatch.setenv(name,'never-inherit')
+    monkeypatch.setenv('HOME',str(tmp_path/'existing-profile'))
+    env=public.installer_environment(tmp_path)
+    assert 'never-inherit' not in env.values() and env['HOME']==env['USERPROFILE'] and not list(Path(env['HOME']).iterdir())
+    assert env['NETRC']==env['PIP_CONFIG_FILE']==public.os.devnull and 'HTTPS_PROXY' not in env
+    assert public.verification_scope(None)[0]=='verified_builtin_only'
+    with pytest.raises(ValueError,match='requires the public 512'):public.verification_scope(None,True)
+    with pytest.raises(ValueError,match='incomplete'):public.verification_scope({'method_views':42,'coordinates':42*512**2})
+    assert public.verification_scope({'independent_evaluation_sha256':'4'*64,'method_views':42,'coordinates':42*512**2},True)[0]=='verified_full'
+
+
+def test_online_wheel_record_requires_clean_origin_and_download_digest(tmp_path):
+    p=tmp_path/'report.json';record={'metadata':{'name':'example','version':'1.0'},'requested':True,
+         'download_info':{'url':'https://files.pythonhosted.org/sample/example-1.0-py3-none-any.whl','archive_info':{'hashes':{'sha256':'f'*64}}}}
+    def save():p.write_text(json.dumps({'version':'1','pip_version':'26.0','install':[record]}))
+    save();r=public.installed_wheels(p,'https://pypi.org/simple',None)
+    assert r['wheels'][0]['origin']=='files.pythonhosted.org' and r['pip_report_sha256']==rel.sha(p)
+    record['download_info']['url']='https://unregistered.invalid/example-1.0-py3-none-any.whl';save()
+    with pytest.raises(ValueError,match='unexpected download host'):public.installed_wheels(p,'https://pypi.org/simple',None)
 
 
 def test_external_body_uses_actual_cohorts_failures_and_frozen_default():

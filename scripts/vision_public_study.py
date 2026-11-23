@@ -116,7 +116,138 @@ def resource(run):
     }
 
 
-def scientific_text(path, summary, paired, cpu, training, attempts):
+def engineering_readback(run):
+    """Publish bounded numerical facts and named dispositions from explicitly supplied records."""
+    from evidence_lens._bundle import HASH, RUN_ID, load
+
+    exp = run.run["experiment_id"]
+    data = resource(run)
+    data["exit_code"] = run.run.get("exit_code")
+    data["scope"] = "engineering"
+    data["description"] = "Recorded engineering activity"
+    if exp == "stage2-backbone-verification":
+        data.update(description="Official encoder verification", scope="model_verification")
+        if (
+            run.run["execution_status"] == "failed"
+            and b"official Python source inventory differs" in run.open("stderr.log").read_bytes()
+        ):
+            data["finding"] = (
+                "The initial official-source inventory check exited before the verification completed."
+            )
+    elif exp == "stage2-pilot-budget":
+        doc, spec = member(run, "payload/budget.json")
+        budget = load(doc)
+        require(budget["decision"] in ("proceed", "pause", "stop"), "unrecognized pilot budget decision")
+        data.update(
+            description="Acquisition pilot and budget",
+            scope="engineering_pilot",
+            pilot_family_count=len(budget["pilot_families"]),
+            decision=budget["decision"],
+            receipt_sha256=spec["sha256"],
+        )
+    elif exp == "stage2-vision-pilot":
+        doc, spec = member(run, "payload/training.json")
+        tr = load(doc)
+        require(
+            tr["phase"] == "pilot" and type(tr["optimizer_steps"]) is int and tr["optimizer_steps"] > 0,
+            "incorrect GPU engineering pilot",
+        )
+        data.update(
+            description="GPU engineering pilot",
+            scope="engineering_pilot",
+            optimizer_steps=tr["optimizer_steps"],
+            receipt_sha256=spec["sha256"],
+        )
+    elif exp == "stage2-dev-mac-cost-readback":
+        doc, spec = member(run, "payload/readback.json")
+        qa = load(doc)
+        require(
+            qa["schema"] == "el-stage2-mac-primary-cost-readback-1" and qa["run_id"] == run.run["run_id"],
+            "incorrect CPU/CUDA readback",
+        )
+        data.update(
+            description="Development CPU and CUDA numerical readback",
+            scope="device_validation",
+            native_targets=qa["native_targets"],
+            warm_repeats=qa["warm_passes"],
+            receipt_sha256=spec["sha256"],
+        )
+    elif exp == "stage2-engineering-incident-readback":
+        doc, spec = member(run, "payload/engineering-events.json")
+        events = load(doc)
+        require(
+            events["schema"] == "el-stage2-engineering-events-1" and events["run_id"] == run.run["run_id"],
+            "incorrect engineering readback",
+        )
+        registered = {
+            "windows_transfer_deferred": (
+                "acquisition_transport",
+                "resumed_same_identity",
+                "A Windows disk limit deferred outgoing packaging for one development trial. The Mac subsequently received the original generation and render.",
+                {"control", "observation", "resolution", "selection"},
+            ),
+            "isolated_mac_bytecode_cache": (
+                "engineering_pilot",
+                "invalid_source_snapshot",
+                "The isolated Mac scorer exited successfully. Python bytecode files changed the source inventory and its recorder package failed verification.",
+                {"orphan_manifest", "orphan_events", "orphan_snapshot"},
+            ),
+            "release_example_input_lineage": (
+                "release_example",
+                "rejected_then_repaired",
+                "The public example scoring request failed its input lineage check before its scorer process started. A separate selection derivation supplied the verified input for a successful repeat.",
+                {"reject_manifest", "reject_events"},
+            ),
+        }
+        gathered = []
+        for r in events["events"]:
+            name = r["event"]
+            require(name in registered, "unrecognized public engineering observation")
+            scope, outcome, note, roles = registered[name]
+            digests = r["secondary_source_sha256"]
+            require(
+                r["scope"] == scope
+                and r["outcome"] == outcome
+                and set(digests) == roles
+                and all(isinstance(v, str) and HASH.fullmatch(v) for v in digests.values()),
+                "different engineering observation identity",
+            )
+            row = {
+                "event": name,
+                "description": note,
+                "scope": scope,
+                "outcome": outcome,
+                "secondary_source_sha256": digests,
+                "elapsed_seconds": r["elapsed_seconds"],
+            }
+            if "run_id" in r:
+                require(RUN_ID.fullmatch(r["run_id"]), "incorrect event ID")
+                row["run_id"] = r["run_id"]
+            if "linked_runs" in r:
+                row["linked_runs"] = [compact_pin(j) for j in r["linked_runs"]]
+            if name == "windows_transfer_deferred":
+                row["scientific_generation_attempts"] = 1
+            if name == "isolated_mac_bytecode_cache":
+                row.update(
+                    unplanned_bytecode_files=int(r["unplanned_bytecode_files"]),
+                    child_exit_code=int(r["child_exit_code"]),
+                )
+            if name == "release_example_input_lineage":
+                row["child_started"] = r["child_started"]
+            gathered.append(row)
+        require(
+            len(gathered) == len(registered) and {r["event"] for r in gathered} == set(registered),
+            "incomplete engineering observation inventory",
+        )
+        data.update(
+            description="Readback of three engineering and release events",
+            events=gathered,
+            receipt_sha256=spec["sha256"],
+        )
+    return data
+
+
+def scientific_text(path, summary, paired, cpu, training, attempts, engineering):
     """A standalone reading copy beside the portable numeric inventory."""
 
     def fmt(v, pct=False):
@@ -249,6 +380,39 @@ def scientific_text(path, summary, paired, cpu, training, attempts):
         "[Study summary and group results](public-numerical/study-summary.json) · [Per-family denominators](public-numerical/family-metrics.csv) · [Matched comparisons](public-numerical/paired-changes.csv) · [Measured costs](public-numerical/execution-costs.json) · [Development decision](public-numerical/selected-method.json) · [File hashes](public-numerical/manifest.json)",
         "",
     ]
+    if engineering:
+        rows.extend(
+            [
+                "## Engineering and release evidence",
+                "",
+                "These records describe engineering or release work outside the two scientific cohorts.",
+                "",
+                "| Activity | Recorder outcome | Wall time |",
+                "| --- | --- | ---: |",
+            ]
+        )
+        for r in engineering:
+            elapsed = r["elapsed_seconds_monotonic"]
+            rows.append(
+                f"| {r['description']} | {r['status']} | {elapsed:.2f} s |"
+                if elapsed is not None
+                else f"| {r['description']} | {r['status']} | N/A |"
+            )
+        rows.append("")
+        for r in engineering:
+            if r.get("finding"):
+                rows.append(r["finding"])
+            if "pilot_family_count" in r:
+                rows.append(
+                    f"The {r['pilot_family_count']}-family acquisition pilot recorded a decision to {r['decision']}."
+                )
+            if "optimizer_steps" in r:
+                rows.append(
+                    f"The GPU engineering pilot completed {r['optimizer_steps']} optimizer steps. The formal fit roster contains {len(training)} separate runs."
+                )
+            for ev in r.get("events", []):
+                rows.append(ev["description"])
+        rows.append("")
     path.write_text("\n".join(rows), encoding="utf-8")
 
 
@@ -480,7 +644,10 @@ def publish_report(roots, spec, new, old, output, run_id):
                 },
             }
         )
-    engineering = [cost(p) for p in spec.get("engineering", [])]
+    engineering = []
+    for pin in spec.get("engineering", []):
+        trusted = cost(pin)
+        engineering.append(engineering_readback(find_run(roots, trusted)))
     for upstream in method["models"].values():
         cost(upstream)
     for c in method["cpu_costs"].values():
@@ -578,7 +745,7 @@ def publish_report(roots, spec, new, old, output, run_id):
                 "deployment_parity": {k: v["canonical_win_to_mac"] for k, v in method["cpu_costs"].items()},
             },
         )
-        scientific_text(out / "study.md", summary, paired_rows, cpu, training, attempts)
+        scientific_text(out / "study.md", summary, paired_rows, cpu, training, attempts, engineering)
         write_json(
             pr / "manifest.json",
             {

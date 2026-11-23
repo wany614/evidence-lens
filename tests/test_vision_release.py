@@ -187,3 +187,37 @@ def test_report_projection_requires_sealed_sources_and_denominator_conservation(
     rows[0]["H"]=1;files()
     with pytest.raises(ValueError,match="RGB-error counts"):
         release.copy_report(tmp_path/"invalid",method,freeze,report)
+
+
+def test_runtime_sources_bind_both_exports_frozen_worker_and_tagged_git(tmp_path,monkeypatch):
+    from pathlib import Path
+    make=release.write;root=tmp_path/'bundle';root.mkdir()
+    model_ids={b:'unit-'+b for b in release.BRANCHES};generators={'launcher':'print("infer")\n','native_launcher':'print("native")\n'}
+    records={};source={};signed={};blob_refs={}
+    for n in sorted(release.RUNTIME):
+        path='src/'+n.removeprefix('runtime/');raw=b'# encoder runtime\n'
+        if path.endswith('/deploy.py'):raw='\n'.join(k+' = '+repr(v) for k,v in generators.items()).encode()
+        source[path]=raw;records[path]={'bytes':len(raw),'sha256':release.fingerprint(raw)};blob_refs[path]={'size':len(raw),'sha':release.git_blob_sha(raw)}
+    worker=root/'evidence/formal-training-source.zip';worker.parent.mkdir();idx=release.entries({'files':records})
+    with zipfile.ZipFile(worker,'w') as z:
+        z.writestr('worker-source.json',idx)
+        for n,raw in source.items():z.writestr(n,raw)
+    monkeypatch.setattr(release,'WORKER_ZIP_SHA',release.sha(worker));monkeypatch.setattr(release,'WORKER_INDEX_SHA',release.fingerprint(idx))
+    for branch in release.BRANCHES:
+        p=root/'models'/branch;values={}
+        for n in sorted(release.RUNTIME):
+            f=make(p,n,source['src/'+n.removeprefix('runtime/')]);values[n]=dict(path=n,**release.sig(f))
+        for n,key in (('infer.py','launcher'),('score-native.py','native_launcher')):
+            f=make(p,n,generators[key].replace('\n','\r\n').encode());values[n]=dict(path=n,**release.sig(f))
+        f=make(p,'model.json',release.entries(dict(model_id=model_ids[branch],branch=branch,files=values)))
+        signed[branch]=dict(model_sha256=release.sha(f),run_id=model_ids[branch]);make(root,'evidence/'+branch+'/training.json',
+            release.entries(dict(run_id=model_ids[branch],branch=branch,source_sha256={n:s['sha256'] for n,s in records.items()})))
+    rec=release.deployment_sources(root,'4'*40,signed,blob_refs)
+    assert len(rec['runtime_files'])==10 and rec['exported_launchers']['infer.py']['exports']['L2-frozen']['newlines']=='CRLF'
+    bad='src/evidence_lens_vision/model.py'
+    with pytest.raises(ValueError,match='shipping Git source'):
+        release.deployment_sources(root,'4'*40,signed,{**blob_refs,bad:{'sha':'f'*40,'size':records[bad]['bytes']}})
+    f=root/'models/L2-frozen/runtime/evidence_lens_vision/model.py';original=f.read_bytes();f.write_bytes(original+b'# changed\n')
+    with pytest.raises(ValueError,match='exported runtime'):release.deployment_sources(root,'4'*40,signed,blob_refs)
+    f.write_bytes(original);(root/'models/L2-vision-ft/infer.py').write_bytes(b'print("other")\n')
+    with pytest.raises(ValueError,match='exported launcher'):release.deployment_sources(root,'4'*40,signed,blob_refs)

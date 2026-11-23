@@ -348,6 +348,7 @@
     "tests/test_vision_confirmation.py": "apache-original",
     "tests/test_vision_control_attachment.py": "apache-original",
     "tests/test_vision_data.py": "apache-original",
+    "tests/test_vision_engineering_report.py": "apache-original",
     "tests/test_vision_gpu_job.py": "apache-original",
     "tests/test_vision_method.py": "apache-original",
     "tests/test_vision_public_download.py": "apache-original",

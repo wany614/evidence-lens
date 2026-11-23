@@ -18,6 +18,22 @@ TARGETS = tuple(f"v{i:02d}" for i in range(1, 7))
 HERE = Path(__file__).resolve().parent
 
 
+def protocol_method(store, opening_path, opening):
+    """Embed the verified method as protocol evidence alongside its original owner attestation."""
+    from make_handoff import publish, sha_bytes
+
+    owner = store / "runs" / opening["freeze_run_id"]
+    digest = opening["method_sha256"]
+    require(load(opening_path) == opening and RUN_ID.fullmatch(opening["freeze_run_id"])
+            and opening["method_member"] == "payload/method-freeze.json" and HASH.fullmatch(digest)
+            and sha(owner / "manifest.json") == opening["freeze_manifest_sha256"], "Wrong original method owner")
+    body = (owner / opening["method_member"]).read_bytes()
+    require(sha_bytes(body) == digest, "Opened method changed")
+    target = opening_path.parent / "methods" / digest / "method-freeze.json"
+    publish(target, body)
+    return target
+
+
 def study_context(project, store, registry, expected, family, condition):
     from select_trial import chain_ids, scientific_gates, transfer_evidence
     from stage2_process import context, handoff
@@ -36,8 +52,9 @@ def study_context(project, store, registry, expected, family, condition):
         k: opening[k] for k in ("catalog_sha256", "freeze_run_id", "freeze_manifest_sha256", "method_sha256")
     }
     attestation["opening_sha256"] = sha(ctx["opening_path"])
-    method_file = store / "runs" / opening["freeze_run_id"] / opening["method_member"]
-    require(sha(method_file) == opening["method_sha256"], "Opened method changed")
+    # The sealed method and its manifest were authenticated by verify_opening. Protocol evidence
+    # is independent of the exact image-producing parent graph. Both files enter every Mac seal.
+    method_file = protocol_method(store, ctx["opening_path"], opening)
     trial = row["trials"]["B0"]
     choice = store / "trials" / trial / "trial_selection.json"
     b0 = load(choice)

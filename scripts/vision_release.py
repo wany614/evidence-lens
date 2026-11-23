@@ -1,5 +1,6 @@
 """Build the v0.2.0-rc.1 CPU model release from authenticated research records and one authorized example."""
 import argparse
+import ast
 import csv
 import hashlib
 import io
@@ -230,6 +231,56 @@ NEURAL=RUNTIME|{"weights.safetensors","architecture.json","preprocessing.json","
 L1={"model.json","feature_schema.json","L1-full.json","L1-geometry.json","thresholds.json"}
 CONDITIONS={"B0","R1","Q1"}
 DOCS=("README.md","MODEL_CARD.md","REBUILD.md","NOTICE-B.txt","THIRD_PARTY_NOTICES.md","requirements.txt")
+WORKER_ZIP_SHA="19998e7fd69a6ba305633b1c62d5da0d9f09fe1ef5e3cb7b6177f7a9f54cc8b9"
+WORKER_INDEX_SHA="ff0230c2edbd66e1e90c9fe9545cfb129b6379449e76ce0aa2890d8607020810"
+
+
+def git_blob_sha(raw):
+    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+
+
+def deployment_sources(root, commit, models, shipping_blobs):
+    """Match each deployed Python file to its trained export, the training snapshot and the shipping Git tree."""
+    worker=root/"evidence/formal-training-source.zip"
+    require(sha(worker)==WORKER_ZIP_SHA,"training source archive differs")
+    indices={};training={};members={}
+    for b in BRANCHES:
+        index=root/"models"/b/"model.json"
+        require(sha(index)==models[b]["model_sha256"],"changed trained package index: "+b)
+        indices[b]=read(index);training[b]=read(root/"evidence"/b/"training.json")
+        require(indices[b]["model_id"]==training[b]["run_id"]==models[b]["run_id"] and indices[b]["branch"]==training[b]["branch"]==b,
+                "runtime model and original training identity differ for "+b)
+    with zipfile.ZipFile(worker) as z:
+        body=z.read("worker-source.json");require(fingerprint(body)==WORKER_INDEX_SHA,"training code inventory differs")
+        inventory=json.loads(body)
+        for n in sorted(RUNTIME):
+            src="src/"+n.removeprefix("runtime/");original=z.read(src)
+            spec={"bytes":len(original),"sha256":fingerprint(original)};blob=git_blob_sha(original)
+            require(inventory["files"][src]==spec and shipping_blobs.get(src)=={"sha":blob,"size":len(original)},
+                    "training snapshot differs from shipping Git source: "+src)
+            for b in BRANCHES:
+                require(indices[b]["files"][n]==dict(path=n,**spec) and training[b]["source_sha256"][src]==spec["sha256"] and
+                        (root/"models"/b/n).read_bytes()==original,"trained index, exported runtime or training record differs: "+b+"/"+n)
+            members[n]={**spec,"git_path":src,"git_blob_sha1":blob}
+        exporter="src/evidence_lens_vision/deploy.py"
+        tree=ast.parse(z.read(exporter));literals={}
+        for node in ast.walk(tree):
+            if isinstance(node,ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0],ast.Name) and isinstance(node.value,ast.Constant):
+                key=node.targets[0].id
+                if key in ("launcher","native_launcher"):
+                    require(key not in literals and isinstance(node.value.value,str),"ambiguous launcher source in frozen exporter")
+                    literals[key]=node.value.value
+        launchers={}
+        for n,key in (("infer.py","launcher"),("score-native.py","native_launcher")):
+            literal=literals[key];lf=literal.encode();crlf=literal.replace("\n","\r\n").encode();records={}
+            for b in BRANCHES:
+                raw=(root/"models"/b/n).read_bytes();spec={"bytes":len(raw),"sha256":fingerprint(raw)}
+                require(raw in (lf,crlf) and indices[b]["files"][n]==dict(path=n,**spec),"exported launcher differs from its frozen implementation: "+b+"/"+n)
+                records[b]={**spec,"newlines":"LF" if raw==lf else "CRLF"}
+            launchers[n]={"exporter_git_path":exporter,"literal_name":key,"exports":records}
+    return {"schema":"el-vision-deployed-source-1","shipping_commit":commit,"training_worker_zip_sha256":WORKER_ZIP_SHA,
+            "training_worker_index_sha256":WORKER_INDEX_SHA,"selected_model_indices":{b:models[b]["model_sha256"] for b in BRANCHES},
+            "runtime_files":members,"exported_launchers":launchers}
 
 
 def write(root,name,body):
@@ -585,7 +636,7 @@ def build(a):
         selected_fit=get(models[BRANCHES[0]])
         audit=selected_fit.json("payload/transport-audit.json")
         worker=selected_fit.file("inputs/worker/worker.zip")
-        require(audit["worker_sha256"]==sha(worker)=="19998e7fd69a6ba305633b1c62d5da0d9f09fe1ef5e3cb7b6177f7a9f54cc8b9",
+        require(audit["worker_sha256"]==sha(worker)==WORKER_ZIP_SHA,
                 "the formal, registered scientific worker does not match the source ZIP")
         with zipfile.ZipFile(worker) as z:
             inventory=json.loads(z.read("worker-source.json"))
@@ -597,6 +648,12 @@ def build(a):
                 require(len(body)==v["bytes"] and fingerprint(body)==v["sha256"],"frozen source hash mismatch "+n)
         copy(out,"evidence/formal-training-source.zip",worker)
         rights=copy_models(out,models,method,get)
+        shipping={}
+        for n in sorted(RUNTIME):
+            src="src/"+n.removeprefix("runtime/");raw_source=git_blob(a.repository,a.commit,src)
+            shipping[src]={"sha":git_blob_sha(raw_source),"size":len(raw_source)}
+        runtime=deployment_sources(out,a.commit,models,shipping)
+        runtime_path=write(out,"evidence/runtime-source.json",entries(runtime))
         native=checked_native(out,native_grade,models,freeze,method,sources,get)
         example=write_example(out,grade,models,a.rc3_archive)
         verify_native(out,dest,models,method["thresholds"])
@@ -606,6 +663,10 @@ def build(a):
         write(out,"licenses/ASSET-SCOPE.json",entries({"schema":"el-vision-release-rights-1","version":TAG,
               "credit":"wany614","software_and_original_model_parameters":"Apache-2.0","authored_example_and_original_records":"CC-BY-4.0",
               "upstream_base":original_source,"models":rights,"example_origin":example,
+              "separate_public_plane_attachment":{"filename":"evidence-lens-"+TAG+"-public-plane-512.zip","condition":"public-plane",
+                  "scope":"Independently evaluated 512-pixel authored control, distributed separately from the formal SHARP measurements.",
+                  "attribution":"wany614","original_data_media_and_measurements":"CC-BY-4.0","original_code_and_configuration":"Apache-2.0",
+                  "attachment_rights_manifest":"control.json"},
               "formal_publication":"Original quantitative tables and project-authored model documentation."}))
         write(out,"BASE-SOURCE.json",entries(original_source))
         weights={k:sig(out/"models"/"L1"/(k+".json")) for k in ("L1-full","L1-geometry")}
@@ -614,7 +675,7 @@ def build(a):
         for desc in ("thresholds","deployment_rule"):
             public_json(entries(method[desc]),desc+".json")
         doc={"schema":"el-vision-public-release-1","version":TAG,"repository":"wany614/evidence-lens","attribution":"wany614",
-             "code_commit":a.commit,"scientific_status":"confirmed_heldout_report_recorded","models":provenance,"weights":weights,
+             "code_commit":a.commit,"scientific_status":"confirmed_heldout_report_recorded","models":provenance,"weights":weights,"runtime_source_sha256":sha(runtime_path),
              "methods":method["methods"],"thresholds":method["thresholds"],"default_method":method["deployment_rule"]["default"],
              "method_freeze":dict(freeze.pin,sha256=method_sha),"report":report.pin,"example":example,"native_validation":native,"study":scope,
              "study_sha256":method["study_sha256"],"catalog_sha256":method["catalog_sha256"],"original_catalog_sha256":method["original_catalog_sha256"],

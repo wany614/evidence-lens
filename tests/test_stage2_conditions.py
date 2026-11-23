@@ -1,6 +1,8 @@
 """Real recorder/CPU stages on explicit synthetic data. No confirmation bundles are opened."""
 
+import contextlib
 import importlib
+import io
 import json
 import sys
 import zipfile
@@ -10,7 +12,7 @@ from types import SimpleNamespace
 import pytest
 
 from evidence_lens import recorder
-from evidence_lens._bundle import BundleError, encoded, load, new_id, save, sha
+from evidence_lens._bundle import BundleError, encoded, load, save, sha
 
 ROOT = Path.cwd()
 ASSETS = Path(__file__).resolve().parents[1]
@@ -102,13 +104,31 @@ def fixture_context(ctx, root):
         "handoff_sha256": sha_bytes(data["handoff.json"]),
         "worker_source_sha256": sha_bytes(zip_bytes(code)),
     }
-    opening = root / "fixture-opening.json"
-    save(opening, {"fixture_only": True})
+    # A genuine recorder member has an owner. Real R1 science parents remain the image/reference
+    # pair, and the method comes into that stage as a protocol file plus its sealed owner receipt.
+    cfg = root / "fixture-freeze-config.json"
+    save(cfg, {"synthetic_fixture": True})
+    with contextlib.redirect_stdout(io.StringIO()) as captured:
+        rc = recorder.main(["--root", str(ctx['store']), "--source-root", str(ROOT), "--config", str(cfg),
+                            "--experiment", "fixture-freeze-storage", "--kind", "generation", "--trial", "fixture-freeze-storage",
+                            "--input", "method="+str(ctx['method_file']), "--", "{python}", "-c",
+                            "import pathlib,shutil,sys;shutil.copyfile(sys.argv[1],pathlib.Path(sys.argv[2])/'method-freeze.json')",
+                            "{input:method}", "{out}"])
+    assert rc == 0
+    owner = json.loads(captured.getvalue())
+    opening = ctx['store'] / "protocol/stage2" / catalog / "test-opening.json"
+    opening.parent.mkdir(parents=True, exist_ok=True)
+    pin = {"catalog_sha256": catalog, "freeze_run_id": owner['run_id'], "freeze_manifest_sha256": owner['manifest_sha256'],
+           "method_member": "payload/method-freeze.json", "method_sha256": sha(ctx['method_file'])}
+    save(opening, pin)
+    ctx['method_file'] = controller.protocol_method(ctx['store'], opening, pin)
+    assert not ctx['method_file'].is_relative_to(ctx['store'] / 'runs')
+    assert ctx['method_file'].read_bytes() == (ctx['store']/'runs'/owner['run_id']/pin['method_member']).read_bytes()
     marker = {
         "catalog_sha256": catalog,
         "opening_sha256": sha(opening),
-        "freeze_run_id": new_id(),
-        "freeze_manifest_sha256": "a" * 64,
+        "freeze_run_id": owner['run_id'],
+        "freeze_manifest_sha256": owner['manifest_sha256'],
         "method_sha256": sha(ctx["method_file"]),
     }
     ctx.update(

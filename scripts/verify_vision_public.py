@@ -13,7 +13,7 @@ import venv
 import zipfile
 from datetime import datetime,timezone
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 from urllib.request import HTTPSHandler, ProxyHandler, Request, build_opener
 
 HERE=Path(__file__).resolve()
@@ -82,7 +82,12 @@ def git_source(op,tree_sha,base):
         git_sha=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
         rel.require(e["type"]=="blob" and e["mode"] in ("100644","100755") and e["size"]==len(raw) and e["sha"]==git_sha,
                     "local verifier differs from public commit: "+n)
-    return {n:rel.sig(base/n) for n in SOURCES}
+    runtime={}
+    for n in sorted(rel.RUNTIME):
+        path="src/"+n.removeprefix("runtime/");entry=entries[path]
+        rel.require(entry["type"]=="blob" and entry["mode"] in ("100644","100755"),"public runtime is not a regular Git blob: "+path)
+        runtime[path]={"sha":entry["sha"],"size":entry["size"]}
+    return {n:rel.sig(base/n) for n in SOURCES},runtime
 
 
 def download(op,asset,expected,folder):
@@ -108,17 +113,82 @@ def same_candidate(c,tag,commit):
         rel.require(type(spec["bytes"]) is int and 0<spec["bytes"]<2*1024**3 and rel.HASH.fullmatch(spec["sha256"]),"invalid candidate file pin")
 
 
+def installer_environment(temp):
+    """Build a child-only environment. Proxy, CA, credential and pip overrides are never inherited."""
+    private=temp/"installer-home";scratch=temp/"installer-temp";private.mkdir();scratch.mkdir()
+    home=str(private.resolve());tmp=str(scratch.resolve())
+    system={k:os.environ[k] for k in ("SYSTEMROOT","WINDIR","COMSPEC","SYSTEMDRIVE") if k in os.environ}
+    return dict(system,PATH=os.defpath,HOME=home,USERPROFILE=home,APPDATA=home,LOCALAPPDATA=home,PROGRAMDATA=home,
+                XDG_CONFIG_HOME=home,XDG_CONFIG_DIRS=home,XDG_DATA_HOME=home,XDG_CACHE_HOME=home,TMP=tmp,TEMP=tmp,TMPDIR=tmp,
+                NETRC=os.devnull,PIP_CONFIG_FILE=os.devnull,PYTHONNOUSERSITE="1",GIT_TERMINAL_PROMPT="0")
+
+
+def installed_wheels(report, source, wheelhouse):
+    doc=rel.read(report);packages=[]
+    rel.require(doc["version"]=="1","unexpected pip installation report")
+    for item in doc["install"]:
+        archive=item["download_info"];url=urlsplit(archive["url"]);filename=Path(unquote(url.path)).name
+        digest=archive["archive_info"]["hashes"]["sha256"]
+        rel.require(filename.endswith(".whl") and rel.HASH.fullmatch(digest) and not url.username and not url.password,"expected a hashed binary wheel")
+        if wheelhouse:
+            p=wheelhouse/filename
+            rel.require(url.scheme=="file" and p.is_file() and rel.sha(p)==digest,"pip did not consume the recorded local wheel: "+filename)
+            location="local wheelhouse"
+        else:
+            rel.require(url.scheme=="https" and url.hostname in {"pypi.org","files.pythonhosted.org","download.pytorch.org","download-r2.pytorch.org"},
+                        "pip used an unexpected download host")
+            location=url.hostname
+        packages.append({"distribution":item["metadata"]["name"],"version":item["metadata"]["version"],"requested":bool(item["requested"]),
+                         "wheel":filename,"sha256":digest,"origin":location})
+    return {"source":source,"pip_version":doc["pip_version"],"pip_report_sha256":rel.sha(report),"wheels":packages}
+
+
 def install(temp,requirements,wheelhouse):
-    env=temp/"clean-cpu";venv.EnvBuilder(with_pip=True).create(env)
+    env=temp/"clean-cpu";venv.EnvBuilder(with_pip=False).create(env)
     exe=env/("Scripts/python.exe" if os.name=="nt" else "bin/python")
-    pip=[str(exe),"-I","-m","pip","--isolated","install","--disable-pip-version-check","--no-input"]
-    config={k:v for k,v in os.environ.items() if not k.startswith(("PIP_","PYTHON","GH_","GITHUB_"))}
-    config["PIP_CONFIG_FILE"]=os.devnull
+    config=installer_environment(temp)
+    subprocess.run([str(exe),"-I","-m","ensurepip","--upgrade"],check=True,env=config,cwd=temp)
+    pip=[str(exe),"-I","-m","pip","--isolated","install","--disable-pip-version-check","--no-input","--no-cache-dir",
+         "--keyring-provider","disabled","--only-binary",":all:"]
+    steps=[]
     if platform.system() in ("Linux","Windows") and not wheelhouse:
-        subprocess.run([*pip,"--index-url","https://download.pytorch.org/whl/cpu","torch==2.8.0"],check=True,env=config)
-    locator=["--no-index","--find-links",str(wheelhouse.resolve())] if wheelhouse else ["--index-url","https://pypi.org/simple"]
-    subprocess.run([*pip,*locator,"-r",str(requirements)],check=True,env=config)
+        steps.append(("https://download.pytorch.org/whl/cpu",["--index-url","https://download.pytorch.org/whl/cpu","torch==2.8.0"]))
+    if wheelhouse:
+        wheelhouse=wheelhouse.resolve()
+        steps.append(("operator-supplied local wheelhouse",["--no-index","--find-links",str(wheelhouse),"-r",str(requirements.resolve())]))
+    else:steps.append(("https://pypi.org/simple",["--index-url","https://pypi.org/simple","-r",str(requirements.resolve())]))
+    transactions=[]
+    for i,(source,args) in enumerate(steps):
+        path=temp/("pip-report-"+str(i)+".json")
+        subprocess.run([*pip,"--report",str(path),*args],check=True,env=config,cwd=temp)
+        transactions.append(installed_wheels(path,source,wheelhouse))
+    probe="""import importlib.metadata as m,json,sys
+from pathlib import Path
+dists=list(m.distributions());assert sys.prefix!=sys.base_prefix and all(Path(d.locate_file('')).resolve().is_relative_to(Path(sys.prefix).resolve()) for d in dists)
+print(json.dumps({d.metadata['Name']:d.version for d in dists},sort_keys=True))"""
+    actual=json.loads(subprocess.check_output([str(exe),"-I","-B","-c",probe],env=config,cwd=temp,text=True))
+    normalized={re.sub(r"[-_.]+","-",k).lower():v for k,v in actual.items()}
+    for attempt in transactions:
+        for entry in attempt["wheels"]:
+            name=re.sub(r"[-_.]+","-",entry["distribution"]).lower()
+            rel.require(normalized.get(name)==entry["version"],"installed distribution differs from its selected wheel: "+name)
+    receipt={"schema":"el-vision-dependency-installation-1","source_mode":"offline_local_wheelhouse" if wheelhouse else "online_public_indices",
+             "requirements_sha256":rel.sha(requirements),"declared_requirements":requirements.read_text(encoding="utf-8").splitlines(),
+             "bootstrap":"Fresh venv with the interpreter's bundled ensurepip; separately recorded from selected dependency wheels.",
+             "dependency_policy":"The release requirements name the direct dependencies. pip resolved the remaining wheels in this run.",
+             "child_isolation":{"empty_user_profile":True,"netrc":"null device","pip_config_files":"disabled","keyring":"disabled",
+                                "inherited_proxy_or_ca_variables":False,"persistent_cache":False},
+             "installed_distributions":actual,"transactions":transactions}
+    rel.write(temp,"installation.json",rel.entries(receipt))
     return exe
+
+
+def verification_scope(control, require_full=False):
+    if require_full:rel.require(control is not None,"full verification requires the public 512 case, attachment and independent Blender evaluation")
+    if control is None:return "verified_builtin_only","anonymous release assets and the authored 128-pixel example"
+    rel.require(rel.HASH.fullmatch(control.get("independent_evaluation_sha256") or "") and control["method_views"]==42 and control["coordinates"]==42*512**2,
+                "incomplete independent public 512 evaluation")
+    return "verified_full","anonymous release assets, authored 128-pixel example and independently evaluated 512-pixel public control"
 
 
 def extract_control(archive, case_sha, folder):
@@ -148,6 +218,7 @@ def extract_control(archive, case_sha, folder):
 
 def verify(a):
     rel.require(a.tag==rel.TAG and rel.HASH.fullmatch(a.candidate_sha256),"use the exact B public tag and separately obtained candidate.json SHA-256")
+    rel.require(not a.require_full or (a.public_case_asset and a.public_case_sha256),"full verification requires an independent public-case attachment and manifest hash")
     op=opener();out=a.output.resolve()
     rel.require(not a.native_case or not out.is_relative_to(a.native_case.resolve()),"grade output must remain outside the private source case")
     out.mkdir(exist_ok=True,parents=True)
@@ -156,7 +227,7 @@ def verify(a):
     start=time.monotonic();phase="public release metadata"
     try:
         release,assets,tree=public_metadata(op,REPO,a.tag,a.commit)
-        local_sources=git_source(op,tree,HERE.parent)
+        local_sources,shipping_runtime=git_source(op,tree,HERE.parent)
         idx=assets["candidate.json"]
         rel.require(idx["size"]<2**20,"oversized release candidate index")
         proof={"candidate.json":download(op,idx,{"sha256":a.candidate_sha256,"bytes":idx["size"]},public)}
@@ -199,6 +270,10 @@ def verify(a):
             measured={k:rel.sig(bundle/"models"/"L1"/(k+".json")) for k in ("L1-full","L1-geometry")}
             measured.update({k:rel.sig(bundle/"models"/k/"weights.safetensors") for k in rel.BRANCHES})
             rel.require(measured==doc["weights"]==c["weights"],"original trained coefficients or FP32 visual weights differ")
+            runtime_provenance=rel.deployment_sources(bundle,a.commit,doc["models"],shipping_runtime)
+            runtime_index=bundle/"evidence/runtime-source.json"
+            rel.require(rel.sha(runtime_index)==doc["runtime_source_sha256"] and rel.read(runtime_index)==runtime_provenance,
+                        "deployed runtime provenance differs from the trained snapshot and actual tagged Git tree")
             with zipfile.ZipFile(public/NUMERIC) as numeric:
                 expected=sorted(n.split("/",1)[1] for n in doc["files"] if n.startswith("study/"))
                 rel.require(numeric.namelist()==expected,"standalone public numerical members differ")
@@ -207,6 +282,7 @@ def verify(a):
                         rel.require(hashlib.file_digest(f,"sha256").hexdigest()==doc["files"]["study/"+n]["sha256"],"independent numeric attachment differs: "+n)
             phase="clean CPU installation and authored example"
             exe=install(temp,bundle/"requirements.txt",a.wheelhouse)
+            rel.copy(out,"installation.json",temp/"installation.json");installation=rel.read(out/"installation.json")
             subprocess.run([str(exe),"-I","-B",str(bundle/"smoke.py"),"--bundle",str(bundle),"--output",str(out/"cpu"),"--use-installed",
                             "--archive",str(public/CPU),"--archive-sha256",c["assets"][CPU]["sha256"],"--release-sha256",c["release_sha256"]],check=True,cwd=temp)
             smoke=rel.read(out/"cpu/smoke.json")
@@ -252,16 +328,20 @@ def verify(a):
                 receipt=out/"formal-native/native-validation.json";d=rel.read(receipt)
                 rel.require(d["passed"] and d["family"]==doc["native_validation"]["family"] and d["models"]==doc["models"],"wrong formal native grade")
                 private={"native_validation_sha256":rel.sha(receipt),"family":d["family"],"checked_coordinates":512*512*18}
-        result={"schema":"el-vision-anonymous-verification-1","status":"verified","repository":REPO,"version":a.tag,"code_commit":a.commit,
+        status,scope=verification_scope(public_control,a.require_full)
+        result={"schema":"el-vision-anonymous-verification-1","status":status,"scope":scope,"repository":REPO,"version":a.tag,"code_commit":a.commit,
                 "release_url":release["html_url"],"release_id":release["id"],"github_published_at":release["published_at"],
                 "candidate_sha256":a.candidate_sha256,"release_sha256":c["release_sha256"],"assets":proof,"base":base,
                 "models":c["models"],"measured_weights":measured,"source_files":local_sources,"runtime":smoke["runtime"],"smoke_sha256":rel.sha(out/"cpu/smoke.json"),
+                "verified_deployed_source_sha256":doc["runtime_source_sha256"],"verified_runtime_git_paths":sorted(shipping_runtime),
+                "installation_sha256":rel.sha(out/"installation.json"),"dependency_installation":installation,
                 "plane_method_views":42,"plane_pngs":36,"separate_public_control":public_control,
                 "formal_native_public_receipt":doc["native_validation"],"local_private_native":private,
-                "access":"anonymous HTTPS, no credentials, cookies or environment proxy","verified_utc":datetime.now(timezone.utc).isoformat(),
+                "release_download":{"transport":"anonymous HTTPS","credentials":False,"cookies":False,"environment_proxy":False,
+                                    "repository":release["html_url"],"upstream_checkpoint_source":base["source"]},"verified_utc":datetime.now(timezone.utc).isoformat(),
                 "elapsed_seconds":time.monotonic()-start}
         rel.write(out,"public-verification.json",rel.entries(result))
-        return {"status":"verified","version":a.tag,"verification_sha256":rel.sha(out/"public-verification.json")}
+        return {"status":status,"scope":scope,"version":a.tag,"verification_sha256":rel.sha(out/"public-verification.json")}
     except Exception as exc:
         rel.write(out,"failure.json",rel.entries({"schema":"el-vision-anonymous-verification-failure-1","phase":phase,"version":a.tag,
                   "candidate_sha256":a.candidate_sha256,"type":type(exc).__name__,"recheck":"Preserve downloads and local CPU or native receipts from this attempt."}))
@@ -276,5 +356,6 @@ if __name__=="__main__":
     p.add_argument("--attachment",action="append",default=[],metavar="NAME=SHA256")
     p.add_argument("--public-case-asset",help="independently pinned additional ZIP containing the native 512 public plane control")
     p.add_argument("--public-case-sha256",help="independent SHA-256 of case.json in the selected external control ZIP")
+    p.add_argument("--require-full",action="store_true",help="require the 512-pixel public attachment, clean inference and independent Blender evaluation")
     p.add_argument("--native-case",type=Path);p.add_argument("--native-case-sha256")
     print(json.dumps(verify(p.parse_args()),sort_keys=True))
