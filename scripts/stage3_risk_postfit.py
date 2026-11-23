@@ -22,6 +22,7 @@ SCIENTIFIC = {
     "development": ("evaluation", "evaluation.json", "stage3-risk-development-evaluation", 190_000_000),
     "example": ("derivation", "expected-example.json", "stage3-public-expected-example", 75_000_000),
     "parity": ("archive_verify", "parity.json", "stage3-native-risk-parity", 2_000_000),
+    "joint-report": ("report", "report.json", "stage3-joint-study-report", 25_000_000),
     "confirmation": ("evaluation", "evaluation.json", "stage3-risk-test-evaluation", 200_000_000),
 }
 for method in METHODS:
@@ -116,7 +117,7 @@ def formal_candidates(roots, path, sha, train_sha, dev_sha):
 
 
 class Post:
-    def __init__(self, project, store, shelf, candidates, candidates_sha, python):
+    def __init__(self, project, store, shelf, candidates, candidates_sha, python, *, baselines_only=False):
         self.project = project
         self.roots = (store, shelf)
         self.base = store / "stage3" / CATALOG / "risk"
@@ -129,14 +130,20 @@ class Post:
         self.baseline = load(self.brec)
         self.candidates = candidates
         self.candidate_sha = candidates_sha
-        self.cand = formal_candidates(
-            self.roots, candidates, candidates_sha, file_hash(self.train), self.data_sha
+        self.cand = (
+            {}
+            if baselines_only
+            else formal_candidates(
+                self.roots, candidates, candidates_sha, file_hash(self.train), self.data_sha
+            )
         )
         self.rosters = {}
         for seed in (1729, 2718):
             ro = {}
             for m in METHODS:
                 if m in METHODS[2:]:
+                    if baselines_only:
+                        continue
                     ro[m] = self.cand[m, seed][2]
                     continue
                 spec = self.baseline["scores"][m]
@@ -267,10 +274,103 @@ class Post:
             require(res.returncode == 0, "post-fit run failed: " + str(logfile) + " " + raw[-400:])
             return resolve(json.loads(raw.splitlines()[-1]))
 
-    def run(self, action, opening=None, retry=None):
+    def joint_report(self, opening, evidence, evidence_sha, retry):
+        from evidence_lens.stage3_gate import get_frozen_method, require_opening
+
+        require(
+            opening and evidence and evidence_sha,
+            "joint report requires the opening and original extra evidence",
+        )
+        extra = signed(evidence, evidence_sha)
+        require(
+            extra["schema"] == "el-stage3-joint-report-extra-1"
+            and extra["catalog_sha256"] == CATALOG
+            and set(extra["sources"]) == {"input_qa", "acquisition_costs", "acquisition_quality"},
+            "unexpected study supplements",
+        )
+        store, shelf = self.roots
+        mk = require_opening(store, CATALOG, opening_sha256=opening, shelf=shelf)
+        method = get_frozen_method(store, mk, shelf)
+        sources, roles, parents = {}, {}, [mk["method"]]
+
+        def add(key, pin, run, path):
+            name = path.relative_to(run.root).as_posix()
+            sources[key] = {**compact_pin(pin), "member": name, "sha256": file_hash(path)}
+            roles[key] = (path, pin)
+            parents.append(pin)
+
+        for key, action in (
+            ("train_dataset", "data-train"),
+            ("development_dataset", "data-development"),
+            ("test_dataset", "data-test"),
+            ("fit", "fit"),
+            ("baseline_development", "development"),
+            ("test_baselines", "score-test"),
+        ):
+            add(key, *chosen(self.roots, self.base, action))
+        for key in ("selection", "development", "example", "parity", "confirmation"):
+            add(key, *verified_selection(self.roots, self.state, key))
+        for m in METHODS:
+            add("native_" + m, *verified_selection(self.roots, self.state, "native-" + m))
+            if m in METHODS[2:]:
+                add("test_" + m, *verified_selection(self.roots, self.state, "test-" + m))
+        for (m, seed), (p, r, _) in self.cand.items():
+            add("candidate_" + m + "_" + str(seed), p, r, r.open("payload/training.json"))
+        for key, spec in extra["sources"].items():
+            p = compact_pin(spec)
+            r = find_run(self.roots, p)
+            path, _ = member(r, spec["member"], spec["sha256"])
+            add(key, p, r, path)
+        for key in ("tensor_comparison", "cpu_validation", "production_budget"):
+            sc = method["components"][key]
+            p = compact_pin(sc)
+            r = find_run(self.roots, p)
+            roles[key] = (member(r, sc["member"], sc["sha256"])[0], p)
+            parents.append(p)
+        sources["freeze"] = {
+            **mk["method"],
+            "member": "payload/method-freeze.json",
+            "sha256": mk["method_sha256"],
+        }
+        roles["freeze"] = (
+            find_run(self.roots, mk["method"]).open("payload/method-freeze.json"),
+            mk["method"],
+        )
+        request = {
+            "schema": "el-stage3-joint-report-request-1",
+            "catalog_sha256": CATALOG,
+            "opening_sha256": opening,
+            "additional_evidence_sha256": evidence_sha,
+            "sources": sources,
+        }
+        register = self.state / "joint-report" / "originals.json"
+        publish(register, request)
+        roles["request"] = (register, None)
+        args = [
+            "stage3_risk_joint.py",
+            "--store",
+            str(store),
+            "--shelf",
+            str(shelf),
+            "--opening-sha256",
+            opening,
+            "--request",
+            "{input:request}",
+            "--request-sha256",
+            file_hash(register),
+        ]
+        return self.record("joint-report", parents, roles, args, retry=retry)
+
+    def run(self, action, opening=None, retry=None, joint_evidence=None, joint_evidence_sha=None):
+        require(
+            self.cand or action in {"native-B-L1-transfer", "native-MS-L1"},
+            "four original paired candidates required for this action",
+        )
         store, shelf = self.roots
         folder = self.state / action
         folder.mkdir(parents=True, exist_ok=True)
+        if action == "joint-report":
+            return self.joint_report(opening, joint_evidence, joint_evidence_sha, retry)
         if action.startswith("native-"):
             m = action[len("native-") :]
             d = load(self.dev)
@@ -474,20 +574,35 @@ class Post:
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("action", choices=SCIENTIFIC)
-    for k in ("project", "store", "candidates", "cpu-python"):
+    for k in ("project", "store", "cpu-python"):
         p.add_argument("--" + k, type=Path, required=True)
-    p.add_argument("--candidates-sha256", required=True)
+    p.add_argument("--candidates", type=Path)
+    p.add_argument("--candidates-sha256")
     p.add_argument("--shelf", type=Path)
     p.add_argument("--opening-sha256")
     p.add_argument("--retry-of")
+    p.add_argument("--joint-evidence", type=Path)
+    p.add_argument("--joint-evidence-sha256")
     a = p.parse_args()
     s = a.store.resolve()
+    baselines_only = a.action in {"native-B-L1-transfer", "native-MS-L1"} and not (
+        a.candidates or a.candidates_sha256
+    )
+    require(
+        baselines_only or (a.candidates and a.candidates_sha256),
+        "explicit paired candidate roster and digest required",
+    )
     post = Post(
         a.project.resolve(),
         s,
         (a.shelf or s.parent / "cold-shelf").resolve(),
-        a.candidates.resolve(),
+        a.candidates.resolve() if a.candidates else None,
         a.candidates_sha256,
         a.cpu_python.absolute(),
+        baselines_only=baselines_only,
     )
-    print(json.dumps(post.run(a.action, a.opening_sha256, a.retry_of)))
+    print(
+        json.dumps(
+            post.run(a.action, a.opening_sha256, a.retry_of, a.joint_evidence, a.joint_evidence_sha256)
+        )
+    )
