@@ -29,6 +29,22 @@ The Windows 11 RTX 3060 Laptop worker used PyTorch 2.8.0 and CUDA 12.8. Eight su
 
 These are family-equal APs on the eight development families for the selected learning rates. The mean paired difference was −0.007252 and its sample standard deviation was 0.015847. The preregistered decision retains **L1-full as the default scoring model**. The fixed thresholds for L2-frozen and L2-vision-ft are 0.5428733229637146 and 0.6533921360969543.
 
+
+## Confirmation on held-out families
+
+B0 uses the native input image. Each defined family estimate has equal weight. Average precision uses RGB-evaluable pixels scored by all seven methods. Low-risk coverage divides low decisions by all reference-valid pixels. Error in low risk divides RGB errors among low decisions by the number of low decisions.
+
+| Cohort | Method | Seven-method common AP | Low-risk coverage | Error among low-risk pixels |
+| --- | --- | ---: | ---: | ---: |
+| New confirmation (8) | L1-full | 0.8194 | 69.79% | 14.67% |
+| New confirmation (8) | L2-frozen | 0.8808 | 68.95% | 10.03% |
+| New confirmation (8) | L2-vision-ft | 0.8993 | 69.27% | 9.68% |
+| Historical regression (4) | L1-full | 0.8028 | 69.02% | 13.98% |
+| Historical regression (4) | L2-frozen | 0.8370 | 67.75% | 9.51% |
+| Historical regression (4) | L2-vision-ft | 0.8516 | 69.52% | 10.57% |
+
+The two cohorts have independent entries in the release’s numerical tables. All seven methods and all three conditions are reported there.
+
 ## CPU scoring cost
 
 The arm64 Mac measurements used the six native 512 × 512 views of development family `scene_037_bottle_carrier`, with one cold pass and three warm passes over all six views per model. Cold timing starts at process creation and ends when the first complete score file is available. Warm timing includes reading input, numerical features, the full image model, thresholding and writing a view.
@@ -45,3 +61,5 @@ Scores rank pixel risk. Probability calibration has not been established. Operat
 The ordinary, register-free DINOv2 model is from Meta. `BASE-SOURCE.json` gives the original weights URL, source revision, original SHA-256 and byte length. `licenses/DINOv2-LICENSE.txt` contains the upstream license. The project additions and supervised weights are credited to wany614.
 
 [Registered upstream source and model card](https://github.com/facebookresearch/dinov2/blob/7764ea0f912e53c92e82eb78a2a1631e92725fc8/MODEL_CARD.md)
+
+The independent pixel check covers all 144 new target views and all 72 historical target views. [Per-cohort counts and reproducible audit](../../results/vision-pixel-audit.md)

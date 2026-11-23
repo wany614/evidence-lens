@@ -1,0 +1,49 @@
+{
+  "schema": "el-vision-independent-native-confirmation-request-1",
+  "catalog_sha256": "543adef7b3b3f0dbc11434738f5a7a6d4c6178622b63f452a5133eed6446dc79",
+  "cohort": "historical_regression",
+  "method": {
+    "run_id": "20261123T140725019974Z-860cfe35388349e2",
+    "manifest_sha256": "86ff9ab53a6df41384b659c9e6ab0ea0a133a7d9c464932d7c32394d99a2a5ea"
+  },
+  "method_sha256": "68d2035135ccd2e928fd3202ec755c3a3d4da29c7eee9b56970b609fd429a35d",
+  "opening_sha256": "5ceded76654bf01fcb753a7af778730e984888778b713c578838a3829a16952a",
+  "stages": {
+    "materials": {
+      "run_id": "20261123T140925708292Z-82cbf84dddc54804",
+      "manifest_sha256": "e8642687ca4237fd9360de1cecfd61909c3bb180d7c5f8babaaca4285aad6851",
+      "receipt": "materials.json",
+      "receipt_sha256": "54943f2ea28a6ef56482efd1f1d5667d893d62efbb7d108f09b49b9d01be85d4"
+    },
+    "dataset": {
+      "run_id": "20261123T140927886351Z-2b596a4c14f34a29",
+      "manifest_sha256": "03f31c18f8f0eea5a7182d3d237323e6f16de0d30db5a6af66bc116b9a39bdea",
+      "receipt": "dataset.json",
+      "receipt_sha256": "a6bcf485c5d80ccc42c6f6c9d74d59f95eeceaf89152987145b80d182448633b"
+    },
+    "score-original-five": {
+      "run_id": "20261123T141006167182Z-deda1ddf47c04030",
+      "manifest_sha256": "4b370fbda80c7cbf1b26923a1cf9749244fddbd98462d94496758dee72e30722",
+      "receipt": "scores.json",
+      "receipt_sha256": "fbca1a84c099325e7ac98b252eba8e6deb0e1a973e33f1cd470f025236d7dab6"
+    },
+    "score-L2-frozen": {
+      "run_id": "20261123T141025694342Z-b99444d5dad04dc1",
+      "manifest_sha256": "098686cde35a6036811a66d02897dcf1f5986e2aa445ce687247fc7fb88a134b",
+      "receipt": "scores.json",
+      "receipt_sha256": "d43d9ce3d8f105dd3bd5e31f4b072449612788f8619207b74e98b74625580cb1"
+    },
+    "score-L2-vision-ft": {
+      "run_id": "20261123T141041250781Z-6f781709ed4c43c9",
+      "manifest_sha256": "f5f02136fe1c9faa09af7b8d34554640077fec13897df2816672d79d775069f8",
+      "receipt": "scores.json",
+      "receipt_sha256": "3d067689c15fd6d2355dcb6a2ccf74848ffb5c898b0a50f568883d6e10704e39"
+    },
+    "evaluation": {
+      "run_id": "20261123T141052704985Z-0721d7ef2dc94f75",
+      "manifest_sha256": "cf7d532549acfabc1f40a67ebe2e2701ae1597554d729522e6996dfad743ea3f",
+      "receipt": "evaluation.json",
+      "receipt_sha256": "707b716c6f0835feeb91102851ec27196137b66d8ca07da41dac53fcb8acf311"
+    }
+  }
+}

@@ -24,6 +24,11 @@ Windows PowerShell accepts `py -3.12 -I -B smoke.py --output ..\vision-plane-res
 
 The study fitted the models on 28 training families and selected thresholds and learning rates on eight development families. All eight formal neural fits were retained. Independent tensor checks confirmed that supervised training changed 3,551,228 pretrained scalars in the primary fine-tuned model. Each visual deployment weighs 88,301,188 bytes in FP32. On an arm64 Mac, the fine-tuned model took 0.645 seconds to produce its first complete 512 × 512 score file and 0.228 seconds per view at the warm 95th percentile. The matched three-seed development AP difference for fine-tuning versus freezing averaged −0.0073 with sample standard deviation 0.0158. **L1-full remains the default** under the rule frozen before the eight new confirmation families were opened. [Weights, training evidence and measured cost](docs/releases/v0.2.0-rc.1/MODEL_CARD.md) · [Study and selection protocol](protocol/stage2-training-v1.json)
 
+
+## Confirmation on held-out families
+
+Across eight newly held-out families, native-input common-domain AP was **0.819 for L1-full**, **0.881 for L2-frozen** and **0.899 for L2-vision-ft**. The four families used in the historical regression check are reported separately. The default was selected on development data before these measurements. [Complete results, including R1 and Q1](docs/results/vision-confirmation.md) · [Risk–coverage curves for every family](examples/vision-study-figures/README.md)
+
 ## First-stage logistic baseline
 
 The fitted L1-full and L1-geometry models, preprocessing, schema and thresholds occupy **12,387 bytes** of JSON. On the four families originally held out, L1-full reached family-equal average precision **0.804** for RGB error and L0 reached **0.402** on the same scoreable pixels. At its frozen threshold, L1-full marked **62.71%** of reference-valid pixels low risk. **11.03%** of those pixels had an actual RGB error. A raw-pixel replay reproduced the operating counts and scores. The separate auxiliary depth comparison found **1.146 m** mean absolute error and **99.40%** above tolerance. The research preview applies to nearby views of opaque synthetic studios with one generator. [Stage-one evidence and limits](docs/phase1/README.md) · [Original study tables](docs/results/README.md)

@@ -59,3 +59,11 @@ __pycache__/
 !/examples/native-plane-control/prediction-v01.png
 !/examples/native-plane-control/rgb-error-v01.png
 !/examples/native-plane-control/v01-L2-vision-ft-state.png
+
+# Quantitative family figures pinned to the Stage B public study.
+!/examples/vision-study-figures/historical_regression-B0.png
+!/examples/vision-study-figures/historical_regression-Q1.png
+!/examples/vision-study-figures/historical_regression-R1.png
+!/examples/vision-study-figures/new_confirmation-B0.png
+!/examples/vision-study-figures/new_confirmation-Q1.png
+!/examples/vision-study-figures/new_confirmation-R1.png

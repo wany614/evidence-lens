@@ -1,0 +1,245 @@
+{
+  "cohorts": {
+    "historical_regression": {
+      "ap_checks": {
+        "defined": 1368
+      },
+      "families": 4,
+      "family_conditions": 12,
+      "family_macro_cells_checked": 504,
+      "max_abs_ap_difference": 3.3306690738754696e-16,
+      "method_counts": {
+        "1-alpha": {
+          "A": 18874368,
+          "H": 4238571,
+          "HY": 1569805,
+          "L": 14635797,
+          "LY": 4651624,
+          "U": 0,
+          "UY": 0
+        },
+        "L0": {
+          "A": 18874368,
+          "H": 3496739,
+          "HY": 2030116,
+          "L": 15377629,
+          "LY": 4191313,
+          "U": 0,
+          "UY": 0
+        },
+        "L1-full": {
+          "A": 18800301,
+          "H": 5865209,
+          "HY": 4377998,
+          "L": 12935092,
+          "LY": 1769364,
+          "U": 74067,
+          "UY": 74067
+        },
+        "L1-geometry": {
+          "A": 18800301,
+          "H": 6092284,
+          "HY": 4315019,
+          "L": 12708017,
+          "LY": 1832343,
+          "U": 74067,
+          "UY": 74067
+        },
+        "L2-frozen": {
+          "A": 18800301,
+          "H": 6136612,
+          "HY": 4928776,
+          "L": 12663689,
+          "LY": 1218586,
+          "U": 74067,
+          "UY": 74067
+        },
+        "L2-vision-ft": {
+          "A": 18800301,
+          "H": 5781940,
+          "HY": 4750908,
+          "L": 13018361,
+          "LY": 1396454,
+          "U": 74067,
+          "UY": 74067
+        },
+        "constant": {
+          "A": 18874368,
+          "H": 0,
+          "HY": 0,
+          "L": 18874368,
+          "LY": 6221429,
+          "U": 0,
+          "UY": 0
+        }
+      },
+      "native_rgb_totals": {
+        "E": 18874368,
+        "S5": 18800301,
+        "S5Y": 6147362,
+        "S7": 18800301,
+        "S7Y": 6147362,
+        "V": 18874368,
+        "Y": 6221429
+      },
+      "views": 72
+    },
+    "new_confirmation": {
+      "ap_checks": {
+        "defined": 2736
+      },
+      "families": 8,
+      "family_conditions": 24,
+      "family_macro_cells_checked": 1512,
+      "max_abs_ap_difference": 3.3306690738754696e-16,
+      "method_counts": {
+        "1-alpha": {
+          "A": 37748736,
+          "H": 8505643,
+          "HY": 3377455,
+          "L": 29243093,
+          "LY": 9309705,
+          "U": 0,
+          "UY": 0
+        },
+        "L0": {
+          "A": 37748736,
+          "H": 6315140,
+          "HY": 3335616,
+          "L": 31433596,
+          "LY": 9351544,
+          "U": 0,
+          "UY": 0
+        },
+        "L1-full": {
+          "A": 37562806,
+          "H": 11382773,
+          "HY": 8726407,
+          "L": 26180033,
+          "LY": 3774823,
+          "U": 185930,
+          "UY": 185930
+        },
+        "L1-geometry": {
+          "A": 37562806,
+          "H": 11914621,
+          "HY": 8809305,
+          "L": 25648185,
+          "LY": 3691925,
+          "U": 185930,
+          "UY": 185930
+        },
+        "L2-frozen": {
+          "A": 37562806,
+          "H": 11710784,
+          "HY": 9913374,
+          "L": 25852022,
+          "LY": 2587856,
+          "U": 185930,
+          "UY": 185930
+        },
+        "L2-vision-ft": {
+          "A": 37562806,
+          "H": 11545155,
+          "HY": 9990394,
+          "L": 26017651,
+          "LY": 2510836,
+          "U": 185930,
+          "UY": 185930
+        },
+        "constant": {
+          "A": 37748736,
+          "H": 0,
+          "HY": 0,
+          "L": 37748736,
+          "LY": 12687160,
+          "U": 0,
+          "UY": 0
+        }
+      },
+      "native_rgb_totals": {
+        "E": 37748736,
+        "S5": 37562806,
+        "S5Y": 12501230,
+        "S7": 37562806,
+        "S7Y": 12501230,
+        "V": 37748736,
+        "Y": 12687160
+      },
+      "views": 144
+    }
+  },
+  "definitions": {
+    "A": "E with a finite method score",
+    "E": "V with valid native target prediction RGB",
+    "H": "A at or above the frozen threshold",
+    "HY": "Confirmed errors in H",
+    "L": "A strictly below the frozen threshold",
+    "LY": "Confirmed errors in L",
+    "S5": "E with finite scores from all five original methods",
+    "S5Y": "Confirmed errors in S5",
+    "S7": "E with finite scores from all seven methods",
+    "S7Y": "Confirmed errors in S7",
+    "U": "E with a nonfinite score",
+    "UY": "Confirmed errors in U",
+    "V": "Valid reference RGB pixels",
+    "Y": "E pixels with channel-mean absolute display-RGB error strictly above 0.05",
+    "ap_checks": "Per-view metrics on seven method-specific domains, five original-method common-score domains, and seven all-method common-score domains"
+  },
+  "historical_replay_agrees_except_for_run_id": true,
+  "method_sha256": "68d2035135ccd2e928fd3202ec755c3a3d4da29c7eee9b56970b609fd429a35d",
+  "portable_worker_sha256": "1d6470f076188ae3a4aaee2dc93de1253d794898dc4fdca4980e1e10e1027252",
+  "public_scientific_manifest_sha256": "48647289805d4adf6b159fe9d49b2b2dd21010cfb4db6f312869df0e7d8d1f11",
+  "request_sha256": {
+    "historical_regression": "5f198a8dceec90c2b4d0aea39628180e1e14b71283ea3743a61ffb5d502c9694",
+    "new_confirmation": "490bc5676f3ca2503d68c57743d3b71e76e74e0b8c016c5cb93e0653d2f322b9"
+  },
+  "run_evidence": {
+    "historical_original_check": {
+      "manifest_sha256": "c7d3808f0e7f5e22db9ddd75d2c2a4631e95c10d01046fd329429ce670d9acb8",
+      "member": "payload/native-readback.json",
+      "member_sha256": "00eb0d5e02069822768dcfb2a1e92c6119ea1a39d1645d84756bf5f5c607b5d4",
+      "run_id": "20261123T142356293379Z-ed3d34d163084eba",
+      "status": "succeeded"
+    },
+    "historical_replay_with_published_worker": {
+      "manifest_sha256": "d283a36e66d21a51a81550926ca9af017ad9e36c055edf34a52c9a4fc0a31ecf",
+      "member": "payload/native-readback.json",
+      "member_sha256": "c1736efff0f26192eb3b92c8859722a4c8ab1787adca08c5afceb30e7c9d1c31",
+      "run_id": "20261123T152925433070Z-2f5c4820daa64cd2",
+      "status": "succeeded"
+    },
+    "method_freeze": {
+      "manifest_sha256": "86ff9ab53a6df41384b659c9e6ab0ea0a133a7d9c464932d7c32394d99a2a5ea",
+      "member": "payload/method-freeze.json",
+      "member_sha256": "68d2035135ccd2e928fd3202ec755c3a3d4da29c7eee9b56970b609fd429a35d",
+      "run_id": "20261123T140725019974Z-860cfe35388349e2",
+      "status": "succeeded"
+    },
+    "new_corrected_check": {
+      "manifest_sha256": "beb4ea57ef707dc1770443c8ec222c324c0da87363999f4e7f0772b4febf3345",
+      "member": "payload/native-readback.json",
+      "member_sha256": "1941c791638c81428ad7bf1fe662bd43382ae0c8298822dae4f7256f4e4a734c",
+      "run_id": "20261123T152644361637Z-07b948b4d278467f",
+      "status": "succeeded"
+    },
+    "new_initial_audit_attempt": {
+      "cause": "The independent reader expected the historical method-hash field when it opened the new evaluation header. It stopped before reading any native pixel.",
+      "manifest_sha256": "42a63e40bcc999b02340142e7778e99dc4805042bcddfc4398251f4f09311f1d",
+      "member": "stderr.log",
+      "member_sha256": "aba975ae047f267c78fdb84410e01843baf8527f86783a21479fe6e8110d1ab9",
+      "processed_pixel_count": 0,
+      "run_id": "20261123T152450570567Z-160e5db0fec844b6",
+      "status": "failed"
+    },
+    "scientific_report": {
+      "manifest_sha256": "43fc6887d65a25978f373d0900e0605f63f3b0e597658eb750e4f6d22acae32a",
+      "member": "payload/public-numerical/manifest.json",
+      "member_sha256": "48647289805d4adf6b159fe9d49b2b2dd21010cfb4db6f312869df0e7d8d1f11",
+      "run_id": "20261123T152543832083Z-c80e50ae1e1d40aa",
+      "status": "succeeded"
+    }
+  },
+  "schema": "el-vision-public-postselection-pixel-check-1",
+  "sklearn_version": "1.9.1"
+}

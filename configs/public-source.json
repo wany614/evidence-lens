@@ -59,6 +59,8 @@
     "configs/stage2-acquisition-worker-v1.json": "apache-original",
     "configs/stage2-reference-freeze-v1.json": "apache-original",
     "configs/storage.json": "apache-original",
+    "configs/vision-audit/historical_regression.json": "apache-original",
+    "configs/vision-audit/new_confirmation.json": "apache-original",
     "configs/vision-base-v1.json": "apache-original",
     "configs/vision-public-control-v1.json": "apache-original",
     "configs/windows-b0.json": "apache-original",
@@ -112,6 +114,9 @@
     "docs/results/family-methods.csv": "cc-original",
     "docs/results/paired-changes.csv": "cc-original",
     "docs/results/provenance.json": "cc-original",
+    "docs/results/vision-confirmation.md": "cc-original",
+    "docs/results/vision-pixel-audit.json": "cc-original",
+    "docs/results/vision-pixel-audit.md": "cc-original",
     "docs/stage2-confirmation-operations.md": "cc-original",
     "docs/vision-data.md": "cc-original",
     "docs/vision-postfit.md": "cc-original",
@@ -140,6 +145,13 @@
     "examples/tabletop-plane/v01-prediction.png": "cc-original",
     "examples/tabletop-plane/v01-risk.png": "cc-original",
     "examples/tabletop-plane/v01-state.png": "cc-original",
+    "examples/vision-study-figures/README.md": "cc-original",
+    "examples/vision-study-figures/historical_regression-B0.png": "cc-original",
+    "examples/vision-study-figures/historical_regression-Q1.png": "cc-original",
+    "examples/vision-study-figures/historical_regression-R1.png": "cc-original",
+    "examples/vision-study-figures/new_confirmation-B0.png": "cc-original",
+    "examples/vision-study-figures/new_confirmation-Q1.png": "cc-original",
+    "examples/vision-study-figures/new_confirmation-R1.png": "cc-original",
     "licenses/ASSET-SCOPE.json": "notices",
     "licenses/CC-BY-4.0.txt": "notices",
     "licenses/DEPENDENCY-SOURCES.json": "notices",
@@ -239,6 +251,7 @@
     "scripts/verify_l1_development.py": "apache-original",
     "scripts/verify_public_prerelease.py": "apache-original",
     "scripts/verify_reference_config.py": "apache-original",
+    "scripts/verify_vision_native_metrics.py": "apache-original",
     "scripts/verify_vision_public.py": "apache-original",
     "scripts/verify_vision_updates.py": "apache-original",
     "scripts/vision_baselines.py": "apache-original",
@@ -437,6 +450,36 @@
       "format": "rgb8-png",
       "bytes": 834,
       "sha256": "94d7cb81496da1d39e5a3a88ae5c096d809afab92044569bf1cf14aec04b4405"
+    },
+    "examples/vision-study-figures/historical_regression-B0.png": {
+      "format": "rgb8-png",
+      "bytes": 146664,
+      "sha256": "8c6320e9844b1cc2fd25c84c5cd05f1ea6f9e897b0ad304b350e4dee18162012"
+    },
+    "examples/vision-study-figures/historical_regression-Q1.png": {
+      "format": "rgb8-png",
+      "bytes": 149105,
+      "sha256": "beb4ec810556677d4ded0b2aa869468db2812a7fcffe4b0a13bdc2ee3a2d2ab0"
+    },
+    "examples/vision-study-figures/historical_regression-R1.png": {
+      "format": "rgb8-png",
+      "bytes": 149197,
+      "sha256": "cc9677a3100413e439ffeb88a48fa540165755e17d2253a5f9509babba119c63"
+    },
+    "examples/vision-study-figures/new_confirmation-B0.png": {
+      "format": "rgb8-png",
+      "bytes": 234124,
+      "sha256": "d3f0fc351d2c09616d844a47da6a37a3d14fd16b93579b9babfb556c994dbbdf"
+    },
+    "examples/vision-study-figures/new_confirmation-Q1.png": {
+      "format": "rgb8-png",
+      "bytes": 236462,
+      "sha256": "0d9ed555d32a0a3a495f1ca5738ab5b1547e85829dc9cc0f44e94041ea144b73"
+    },
+    "examples/vision-study-figures/new_confirmation-R1.png": {
+      "format": "rgb8-png",
+      "bytes": 235022,
+      "sha256": "bc97ca142fc212e0ed2fea88786797191200b5f7336401424504ea2b5c2095ad"
     }
   }
 }
