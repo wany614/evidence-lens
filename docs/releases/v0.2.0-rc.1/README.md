@@ -32,8 +32,19 @@ python3 -I -B smoke.py --case /path/to/CASE --case-sha256 "$CASE_SHA" --output .
 
 Windows PowerShell accepts `py -3.12 -I -B smoke.py --case $Case --case-sha256 $CaseSha --output ../public-plane-512`. The command verifies and opens ten deployment inputs, writes six seven-method NPZ files and 36 PNGs, and records input and output hashes, model identities and native support counts in `control-scores.json`. Blender references and independent error measurements accompany the control separately. The bundle's built-in 128-pixel example uses its own expected arrays and smoke receipt.
 
+## Run the default L1 model with NumPy and Pillow
+
+Install the tagged Evidence Lens source into a new Python environment with `python -m pip install .`. Extract the CPU archive into `vision-bundle` and the public 512-pixel control into `vision-control`. Run these commands from their parent directory with that environment's Python.
+
+```sh
+python -I -m evidence_lens.l1 --input vision-control/CASE/input.png --cameras vision-control/CASE/cameras.json --predictions vision-control/CASE/predictions --model vision-bundle/models/L1 --model-sha256 cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2 --output lightweight-scores
+python -I -m evidence_lens.score_maps --scores lightweight-scores --output lightweight-maps
+```
+
+In a clean arm64 Mac environment, the wheel installed as `evidence-lens 0.2.0rc1` with NumPy 2.5.5 and Pillow 12.3.0. It produced all six native score files and 12 L1-full preview PNGs. Across five methods and 7,864,320 pixel scores on the authored control, finite support and threshold states matched the full pipeline exactly. The largest absolute score difference was zero. This check used release source revision `3d74f0734121` and run `20261123T150628833335Z-dfb6380cb0664f14`.
+
 ## Scientific measurements
 
 The eight new confirmation families and four historical regression families are reported separately in `study/study-summary.json` and `study/family-metrics.csv`. Each family has B0, R1 and Q1 conditions. Read the support and error counts alongside each result. The formal public assets contain quantitative results. The CPU archive's images and predictions belong to the authored deployment example.
 
-See [the model card](MODEL_CARD.md), [the source and rebuild guide](REBUILD.md), and [the asset license inventory](licenses/ASSET-SCOPE.json).
+See [the model card](MODEL_CARD.md), [the source and rebuild guide](REBUILD.md), and the archive’s `licenses/ASSET-SCOPE.json`. [Source asset licenses](https://github.com/wany614/evidence-lens/blob/v0.2.0-rc.1/licenses/vision-assets.json)

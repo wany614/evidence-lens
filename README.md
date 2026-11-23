@@ -2,7 +2,7 @@
 
 Evidence Lens estimates where a nearby synthesized view is likely to disagree with the scene that produced the input image. Its CPU scorer reads one source image, calibrated cameras and a generator's predicted RGB, opacity and expected camera depth. It produces continuous risk and low, high or unknown decisions for every target pixel.
 
-The single-image release includes a lightweight logistic model (L1-full), a DINOv2 ViT-S/14 with a trained risk head (L2-frozen), and a supervised model that also updates the last two transformer blocks and final LayerNorm (L2-vision-ft). All three score on a CPU. The source checkout installs the NumPy and Pillow path with `python -m pip install .`. The optional visual path adds PyTorch and safetensors.
+The single-image release includes a lightweight logistic model (L1-full), a DINOv2 ViT-S/14 with a trained risk head (L2-frozen), and a supervised model that also updates the last two transformer blocks and final LayerNorm (L2-vision-ft). All three score on a CPU. The source checkout installs the NumPy and Pillow path with `python -m pip install .`. The optional visual path adds PyTorch and safetensors. [Run L1 with only NumPy and Pillow](docs/releases/v0.2.0-rc.1/README.md#run-the-default-l1-model-with-numpy-and-pillow)
 
 | Observed image | Predicted first target | Measured RGB error | Fine-tuned risk decision |
 | --- | --- | --- | --- |
