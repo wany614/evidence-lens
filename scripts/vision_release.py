@@ -545,17 +545,53 @@ def checked_native(out,original,models,freeze,method,sources,get):
     return dict(original.pin,sha256=fingerprint(body),family=chosen,views=6,methods=3,checked_coordinates=512**2*18)
 
 
+def note_estimate(metric, families, percent=False):
+    defined, total, value = metric["defined_families"], metric["total_families"], metric["value"]
+    require(type(defined) is int and type(total) is int and total == families and 0 <= defined <= total,
+            "release estimate has inconsistent family denominators")
+    if value is None:
+        require(defined == 0, "undefined release estimate has contributing families")
+        label = "undefined"
+    else:
+        require(defined > 0 and type(value) in (int, float) and math.isfinite(value) and 0 <= value <= 1,
+                "release estimate has an invalid value or denominator")
+        label = f"{value:.2%}" if percent else f"{value:.4f}"
+    return f"{label} ({defined}/{total})"
+
+
 def release_notes(doc,summary,costs,assets):
+    from vision_control_attachment import CASE_INDEX, NAME
+
+    cohorts=(("new_confirmation","New confirmation"),("historical_regression","Historical regression"))
     lines=["# Evidence Lens "+TAG,"","Native-view risk scoring with the original logistic model and two DINOv2 ViT-S/14 variants. "
            "The development-frozen default is **"+doc["default_method"]+"**.","",
            "| Cohort | Families | Planned family / condition pairs | Scheduled views | Original render dispositions |",
            "| --- | ---: | ---: | ---: | --- |"]
-    for key,label in (("new_confirmation","New confirmation"),("historical_regression","Historical regression")):
+    for key,label in cohorts:
         c=summary["cohorts"][key]
         disp=", ".join(n+" "+str(v) for n,v in sorted(c["render_status"].items()))
         dispositions=", ".join(n+" "+str(v) for n,v in sorted(c["scientific_view_dispositions"].items()))
         disp+=". Scientific dispositions " + dispositions
         lines.append(f"| {label} | {len(c['families'])} | {c['planned_family_conditions']} | {c['planned_views']} | {disp} |")
+    lines+=["","## B0 results","","Each estimate gives equal weight to its contributing families. "
+            "Parentheses show families with a defined estimate / scheduled families. "
+            "Average precision (AP) ranks high RGB error among RGB-evaluable pixels with finite scores from all seven methods. "
+            "Each family first averages target views containing both error classes on that shared domain.","",
+            "Low-risk coverage is the number of pixels assigned low risk divided by all reference-valid pixels (L/V). "
+            "Error in low risk is the number of low-risk pixels with mean absolute display-sRGB channel error above 0.05 "
+            "divided by all low-risk pixels (LY/L). Each family pools its six views before computing either rate. "
+            "An empty denominator yields an undefined estimate.","",
+            "| B0 cohort | Method | Seven-method common-domain AP | Low-risk coverage (L/V) | Error in low risk (LY/L) |",
+            "| --- | --- | ---: | ---: | ---: |"]
+    for key,label in cohorts:
+        c=summary["cohorts"][key]
+        row=[r["methods"] for r in c["family_equal"] if r["condition"]=="B0" and r["cohort"]=="all"]
+        require(len(row)==1,"expected one family-equal B0 estimate for "+key)
+        for method in ("L1-full",*BRANCHES):
+            metrics=row[0][method]
+            values=[note_estimate(metrics[n],len(c["families"]),percent) for n,percent in
+                    (("seven_common_ap",False),("low_coverage",True),("low_risk_error",True))]
+            lines.append("| "+" | ".join((label,method,*values))+" |")
     systems=[]
     for r in costs["observed_runs"]:
         if r["status"]!="succeeded":systems.append(r["run_id"]+" ("+r["run_kind"]+", "+r["status"]+")")
@@ -570,10 +606,22 @@ def release_notes(doc,summary,costs,assets):
     for k,v in doc["models"].items():lines.append(f"| {k} | `{v['run_id']}` | `{v['model_sha256']}` |")
     lines+=["","Source commit `"+doc["code_commit"]+"`. Full-precision safetensors contain the complete visual backbones. "
             "The original Meta base is identified by `"+BASE+"`.","",
-            "Use Python 3.11 or 3.12. After extracting the CPU ZIP, run `python3 -I -B smoke.py --output ../vision-result` "
-            "on macOS/Linux or `py -3.12 -I -B smoke.py --output ../vision-result` on Windows. The `--case` option accepts the "
-            "independently supplied 512-pixel `public-plane` deployment control for the registered bottle-carrier cameras. "
-            "Its attachment and case manifest have separate checksums.","","| Asset | Bytes | SHA-256 |",
+            "## Reproduce the 128- and 512-pixel controls","",
+            "Use Python 3.11 or 3.12. Download the CPU ZIP and `"+NAME+"` into the same directory, extract the CPU ZIP "
+            "into a subdirectory, and run the commands below from that subdirectory. On Windows PowerShell use "
+            "`py -3.12` in place of `python3` for each command.","",
+            "Check the control ZIP before extraction. The public GitHub release metadata lists a `sha256:` digest "
+            "and byte size under the asset's exact filename. Compare the two printed values with that entry. "
+            "The metadata endpoint accepts requests without a GitHub account. "
+            "[Public release asset digests](https://api.github.com/repos/wany614/evidence-lens/releases/tags/"+TAG+")","",
+            "```sh",
+            "python3 -I -B -c \"from pathlib import Path; import hashlib, sys; p = Path(sys.argv[1]); print(p.stat().st_size, 'sha256:' + hashlib.file_digest(p.open('rb'), 'sha256').hexdigest())\" ../"+NAME,
+            "```","","The first run scores the bundled 128-pixel authored plane. The second scores the 512-pixel "
+            "`public-plane` control using its registered bottle-carrier input and cameras. Use a new output directory for each.","",
+            "```sh","python3 -I -B smoke.py --output ../vision-plane-128",
+            "python3 -m zipfile -e ../"+NAME+" ../vision-control",
+            "python3 -I -B smoke.py --case ../vision-control/CASE --case-sha256 "+CASE_INDEX+" --output ../vision-plane-512",
+            "```","","| Asset | Bytes | SHA-256 |",
             "| --- | ---: | --- |"]
     for k,r in sorted(assets.items()):lines.append(f"| {k} | {r['bytes']} | `{r['sha256']}` |")
     lines+=["","Project source and model additions are Apache-2.0. Original authorized documentation, plane media and quantitative "

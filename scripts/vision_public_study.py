@@ -2,6 +2,7 @@
 
 import csv
 import json
+import math
 from collections import Counter
 from statistics import mean
 
@@ -134,6 +135,117 @@ def engineering_readback(run):
             data["finding"] = (
                 "The initial official-source inventory check exited before the verification completed."
             )
+        if run.run["execution_status"] == "succeeded" and "payload/base-verification.json" in run.files:
+            original, spec = member(run, "payload/base-verification.json")
+            actual = load(original)
+            require(
+                actual["schema"] == "el-vision-base-check-1"
+                and actual["strict_equal_loaded_tensors"] is True,
+                "different encoder recovery evidence",
+            )
+            data.update(
+                receipt_sha256=spec["sha256"],
+                strict_equal_loaded_tensors=True,
+                checked_tensors=actual["tensors"],
+                checked_parameters=actual["parameters"],
+                max_abs_difference=actual["max_abs_difference"],
+            )
+    elif exp == "stage2-preopening-acquisition-cost":
+        original, spec = member(run, "payload/acquisition.json")
+        ledger = load(original)
+        require(
+            ledger["schema"] == "el-vision-preopening-acquisition-cost-1"
+            and ledger["run_id"] == run.pin["run_id"],
+            "different learning acquisition ledger",
+        )
+        expected = {
+            ("v11_new", "train"): 12,
+            ("v11_new", "development"): 4,
+            ("original_learning", "train"): 16,
+            ("original_learning", "development"): 4,
+        }
+        require(
+            {(r["origin"], r["split"]): r["families"] for r in ledger["summary"]} == expected
+            and len(ledger["summary"]) == 4
+            and len(ledger["cells"]) == sum(expected.values()),
+            "wrong preopening learning roster",
+        )
+
+        def numbers(row, names):
+            out = {k: row[k] for k in names}
+            require(
+                all(
+                    (val is None and "rss_bytes" in key)
+                    or (type(val) in (float, int) and math.isfinite(val) and val >= 0)
+                    for key, val in out.items()
+                ),
+                "learning worker measurement is not numeric",
+            )
+            return out
+
+        fields = (
+            "selected_unique_runs",
+            "attempts_including_failures",
+            "unsuccessful_attempts",
+            "sum_attempt_wall_seconds",
+            "sum_selected_wall_seconds",
+            "selected_payload_logical_bytes",
+            "max_sampled_tree_rss_bytes",
+        )
+        summaries = []
+        for r in ledger["summary"]:
+            require(r["prediction_views"] == 7 * r["families"], "different selected learning views")
+            summaries.append(
+                {
+                    **{k: r[k] for k in ("origin", "split", "families", "prediction_views")},
+                    "workers": {k: numbers(r["workers"][k], fields) for k in ("generation", "render")},
+                }
+            )
+        public = []
+        for cell in ledger["cells"]:
+            require(
+                cell["condition"] == "B0"
+                and cell["verified_prediction_views"] == 7
+                and (cell["origin"], cell["split"]) in expected
+                and isinstance(cell["scene_family_id"], str)
+                and cell["scene_family_id"].isidentifier()
+                and HASH.fullmatch(cell["selection_sha256"]),
+                "unexpected learning condition",
+            )
+            worker_rows = {}
+            for role in ("generation", "render"):
+                pin = compact_pin(cell["phases"][role]["pin"])
+                rows = [a for a in cell["attempts"] if a["run_id"] == pin["run_id"] and a["selected"]]
+                require(
+                    len(rows) == 1
+                    and rows[0]["kind"] == role
+                    and rows[0]["manifest_sha256"] == pin["manifest_sha256"],
+                    "missing original selected Windows worker",
+                )
+                worker_rows[role] = pin | numbers(
+                    rows[0], ("wall_seconds", "tree_rss_bytes", "payload_logical_bytes")
+                )
+            public.append(
+                {
+                    "family": cell["scene_family_id"],
+                    "origin": cell["origin"],
+                    "split": cell["split"],
+                    "selection_sha256": cell["selection_sha256"],
+                    "workers": worker_rows,
+                }
+            )
+        require(
+            Counter((r["origin"], r["split"]) for r in public) == expected
+            and len({r["family"] for r in public}) == len(public),
+            "duplicate or missing learning family",
+        )
+        data.update(
+            description="Pre-opening B0 acquisition costs",
+            scope="preopening_resources",
+            receipt_sha256=spec["sha256"],
+            learning_summary=summaries,
+            learning_cells=public,
+        )
     elif exp == "stage2-pilot-budget":
         doc, spec = member(run, "payload/budget.json")
         budget = load(doc)
@@ -247,7 +359,81 @@ def engineering_readback(run):
     return data
 
 
-def scientific_text(path, summary, paired, cpu, training, attempts, engineering):
+def acquisition_accounting(roots, engineering, acquisitions, attempts, cost_rows):
+    """Count distinct workers and actual selected view files across new learning and confirmation."""
+    inputs = [r for r in engineering if r.get("scope") == "preopening_resources"]
+    if not inputs:
+        return None
+    require(len(inputs) == 1, "duplicate learning acquisition ledger")
+    learning = inputs[0]["learning_summary"]
+    new = [r for r in learning if r["origin"] == "v11_new"]
+    reused = [r for r in learning if r["origin"] == "original_learning"]
+    held = [c for c in acquisitions if c["cohort"] == "new_confirmation"]
+    chosen = {}
+    actual_views = 0
+    target_names = ("source", *(f"v{i:02}" for i in range(1, 7)))
+    for c in held:
+        if c["status"] != "selected":
+            continue
+        for role in ("generation", "prediction"):
+            if role in c["roles"]:
+                info = cost_rows[c["roles"][role]["run_id"]]
+                if info["run_kind"] in ("generation", "render"):
+                    chosen[info["run_id"]] = info
+        pred = find_run(roots, c["roles"]["prediction"])
+        p, spec = member(pred, "payload/prediction.json")
+        doc = signed(p, spec["sha256"])
+        for v in target_names:
+            claim = doc["views"].get(v, {})
+            if claim.get("sha256"):
+                item = pred.files.get("payload/" + v + ".npz")
+                require(
+                    item
+                    and item["sha256"] == claim["sha256"]
+                    and item["bytes"] == claim.get("bytes", item["bytes"]),
+                    "selected native view receipt differs",
+                )
+                actual_views += 1
+    workers = {}
+    for stage in ("generation", "render"):
+        seen = {
+            a["run_id"]: cost_rows[a["run_id"]]
+            for a in attempts
+            if a["cohort"] == "new_confirmation" and a["stage"] == stage
+        }
+        selected = {rid: r for rid, r in chosen.items() if r["run_kind"] == stage}
+        seen.update(selected)
+        times = [
+            r["elapsed_seconds_monotonic"]
+            for r in seen.values()
+            if r["elapsed_seconds_monotonic"] is not None
+        ]
+        workers[stage] = {
+            "preopening_selected_runs": sum(z["workers"][stage]["selected_unique_runs"] for z in new),
+            "preopening_attempts": sum(z["workers"][stage]["attempts_including_failures"] for z in new),
+            "confirmation_selected_runs": len(selected),
+            "confirmation_attempts": len(seen),
+            "confirmation_unsuccessful_attempts": sum(r["status"] != "succeeded" for r in seen.values()),
+            "confirmation_attempts_with_wall_reading": len(times),
+            "new_acquisition_attempt_wall_seconds": sum(
+                z["workers"][stage]["sum_attempt_wall_seconds"] for z in new
+            )
+            + sum(times),
+            "new_acquisition_attempts": sum(z["workers"][stage]["attempts_including_failures"] for z in new)
+            + len(seen),
+        }
+    return {
+        "preopening_new_B0": sum(x["families"] for x in new),
+        "preopening_reused_B0": sum(x["families"] for x in reused),
+        "confirmation_scheduled_conditions": len(held),
+        "new_acquisition_conditions": sum(x["families"] for x in new) + len(held),
+        "selected_native_prediction_views": sum(x["prediction_views"] for x in new) + actual_views,
+        "workers": workers,
+        "preopening_evidence_sha256": inputs[0]["receipt_sha256"],
+    }
+
+
+def scientific_text(path, summary, paired, cpu, training, attempts, engineering, acquisition=None):
     """A standalone reading copy beside the portable numeric inventory."""
 
     def fmt(v, pct=False):
@@ -380,6 +566,18 @@ def scientific_text(path, summary, paired, cpu, training, attempts, engineering)
         "[Study summary and group results](public-numerical/study-summary.json) · [Per-family denominators](public-numerical/family-metrics.csv) · [Matched comparisons](public-numerical/paired-changes.csv) · [Measured costs](public-numerical/execution-costs.json) · [Development decision](public-numerical/selected-method.json) · [File hashes](public-numerical/manifest.json)",
         "",
     ]
+    if acquisition:
+        g, r = (acquisition["workers"][k] for k in ("generation", "render"))
+        rows.extend(
+            [
+                "## New acquisition and reused records",
+                "",
+                f"The {acquisition['new_acquisition_conditions']} new scheduled conditions comprised {acquisition['preopening_new_B0']} pre-opening B0 conditions and {acquisition['confirmation_scheduled_conditions']} confirmation conditions. The learning datasets also reused {acquisition['preopening_reused_B0']} earlier B0 acquisitions. Selected new renders supplied {acquisition['selected_native_prediction_views']} source and target view files.",
+                "",
+                f"The Windows ledger records {g['new_acquisition_attempts']} distinct generation attempts and {r['new_acquisition_attempts']} distinct render attempts. Their observed recorder wall times sum to {g['new_acquisition_attempt_wall_seconds'] / 60:.2f} and {r['new_acquisition_attempt_wall_seconds'] / 60:.2f} minutes, respectively. A shared generation counts once across condition references. These totals exclude earlier acquisitions reused for learning, historical regression and model fitting.",
+                "",
+            ]
+        )
     if engineering:
         rows.extend(
             [
@@ -648,6 +846,7 @@ def publish_report(roots, spec, new, old, output, run_id):
     for pin in spec.get("engineering", []):
         trusted = cost(pin)
         engineering.append(engineering_readback(find_run(roots, trusted)))
+    acquisition = acquisition_accounting(roots, engineering, acquisitions, attempts, costs)
     for upstream in method["models"].values():
         cost(upstream)
     for c in method["cpu_costs"].values():
@@ -701,6 +900,7 @@ def publish_report(roots, spec, new, old, output, run_id):
                 "schema": "el-vision-public-costs-1",
                 "model_training": training,
                 "acquisitions": acquisitions,
+                "new_acquisition_budget": acquisition,
                 "scientific_selection_attempts": attempts,
                 "independently_pinned_engineering": engineering,
                 "native_primary_cpu": cpu,
@@ -745,7 +945,9 @@ def publish_report(roots, spec, new, old, output, run_id):
                 "deployment_parity": {k: v["canonical_win_to_mac"] for k, v in method["cpu_costs"].items()},
             },
         )
-        scientific_text(out / "study.md", summary, paired_rows, cpu, training, attempts, engineering)
+        scientific_text(
+            out / "study.md", summary, paired_rows, cpu, training, attempts, engineering, acquisition
+        )
         write_json(
             pr / "manifest.json",
             {

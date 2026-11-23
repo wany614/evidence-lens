@@ -18,6 +18,42 @@ import vision_public_smoke as smoke
 import vision_release as release
 
 
+def test_release_notes_use_only_all_family_b0_rates_and_list_both_replays():
+    import vision_control_attachment as control
+
+    cohorts={}
+    for name,total in (("new_confirmation",8),("historical_regression",4)):
+        def estimate(value,n):
+            return {"value":value,"defined_families":n,"total_families":total}
+        methods={m:{"seven_common_ap":estimate(.314159,total-1),
+                    "low_coverage":estimate(0,total),
+                    "low_risk_error":estimate(None,0)} for m in ("L1-full",*release.BRANCHES)}
+        if total==4:
+            methods["L2-vision-ft"]["low_risk_error"]=estimate(.03125,2)
+        cohorts[name]={"families":list(range(total)),"planned_family_conditions":3*total,"planned_views":18*total,
+                       "render_status":{"completed":18*total},"scientific_view_dispositions":{"completed":18*total},
+                       "family_equal":[{"cohort":"subgroup","condition":"B0","methods":{}},
+                                       {"cohort":"all","condition":"R1","methods":{}},
+                                       {"cohort":"all","condition":"B0","methods":methods}]}
+    def body():
+        return release.release_notes({"default_method":"L1-full","models":{},"code_commit":"a"*40},
+                                     {"cohorts":cohorts},{"observed_runs":[]},{})
+    text=body()
+    for name,n in (("New confirmation",8),("Historical regression",4)):
+        for method in ("L1-full",*release.BRANCHES):
+            low="3.12% (2/4)" if (name,method)==("Historical regression","L2-vision-ft") else f"undefined (0/{n})"
+            assert f"| {name} | {method} | 0.3142 ({n-1}/{n}) | 0.00% ({n}/{n}) | {low} |" in text
+    assert "LY/L" in text and "L/V" in text and "both error classes" in text
+    assert "smoke.py --output ../vision-plane-128" in text and f"--case-sha256 {control.CASE_INDEX}" in text
+    assert "file_digest" in text and control.NAME in text and "/releases/tags/"+release.TAG in text
+    duplicate=cohorts["new_confirmation"]["family_equal"][-1]
+    cohorts["new_confirmation"]["family_equal"].append(duplicate)
+    with pytest.raises(ValueError,match="one family-equal B0"):
+        body()
+    with pytest.raises(ValueError,match="undefined"):
+        release.note_estimate({"value":None,"defined_families":2,"total_families":8},8)
+
+
 def test_report_includes_all_cohorts_conditions_and_failed_rows():
     names={c:[f"{c}-{n}" for n in range(size)] for c,size in (("new_confirmation",8),("historical_regression",4))}
     methods=[*release.BASELINE,*release.BRANCHES]

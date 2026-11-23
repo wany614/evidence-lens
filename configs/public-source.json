@@ -350,6 +350,7 @@
     "tests/test_stress_conditions.py": "apache-original",
     "tests/test_trial_selection.py": "apache-original",
     "tests/test_trial_summary.py": "apache-original",
+    "tests/test_vision_acquisition_accounting.py": "apache-original",
     "tests/test_vision_confirmation.py": "apache-original",
     "tests/test_vision_control_attachment.py": "apache-original",
     "tests/test_vision_data.py": "apache-original",
