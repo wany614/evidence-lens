@@ -1,0 +1,11 @@
+{
+  "schema": "el-original-example-1",
+  "run_id": "20261123T034606860802Z-acb5e6955f424043",
+  "adapter": "evidence-lens-textured-plane-1",
+  "source_png_sha256": "2112131fdeaef49a1e675e0aa4dca2a5ab4b4593f9f976ba43587029e01a5aa6",
+  "source_cameras_sha256": "e6d0742abf5ad1d1d2dc1ca904e34fe448df105a32c0076a8ea7534b52fea101",
+  "source_stride": 4,
+  "hypothesized_plane_m": 2.0,
+  "predictions": "Inverse pinhole ray intersection with one opaque plane textured by the sole input.",
+  "purpose": "Redistributable inference and image-coordinate demonstration. The formal experiment evaluates SHARP."
+}

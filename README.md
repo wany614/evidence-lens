@@ -2,7 +2,7 @@
 
 Evidence Lens studies where a single photograph supports a nearby synthesized view. Its CPU scorer uses the input PNG, calibrated cameras and the generator's own predicted RGB, expected camera depth and accumulated opacity. A separate evaluator compares the prediction with a fixed Blender world.
 
-This is a **research implementation in development**. L0 is a deterministic rule baseline. The trained L1 classifier, frozen operating threshold and downloadable model release are pending the family-split study.
+L0 is a deterministic rule baseline. Two L2-regularized logistic regressions, L1-full and L1-geometry, were fitted on 393,216 uniformly sampled target pixels from 16 authored scene families. Both used the same rows. The frozen training manifest identifies all 96 target views, their sampled pixel coordinates and their family folds.
 
 ## Tested configurations
 
@@ -25,17 +25,18 @@ On Windows, activate the environment with `.venv\Scripts\Activate.ps1`. The base
 
 ```sh
 python -m evidence_lens.risk_model --input example/input.png --cameras example/cameras.json \
-  --predictions example/prediction --output results/l0
+  --predictions example/predictions --output results/l0
 ```
 
-Here `example/` denotes files supplied by a producer. A redistributable example with a trained model is scheduled for the model release. The six target views have separate numeric scores and high, low and unknown decisions. Their scope is single-image, nearby perspective views of static opaque scenes.
+Here `example/` denotes the input, camera and predictions supplied by a producer. The authored tabletop-plane example has a 128×128 input and seven cameras. Its complete prediction arrays accompany the model release. The six target views have separate numeric scores and high, low and unknown decisions. Their scope is single-image, nearby perspective views of static opaque scenes.
 
 ## Research reproduction
 
 The recorder, Blender and Windows GPU worker use separate environments. Install recording and evaluation extras with `python -m pip install '.[record]'`. For the pinned Blender 4.5 LTS Python module use **Python 3.11** in another environment. See the environment locks in `requirements/`. Render the reference through the recorder. Pass the resulting source image and cameras to the Windows worker. Return its sealed generation and render records to the Mac, then run CPU scoring and independent evaluation. Each attempt has its own ID and checksum manifest.
 
-The original protocol is Evidence Lens master plan v1.1, numerical protocol 1.0. The engineering family belongs to training. It cannot establish cross-family performance. The formal split is planned as 16 train, 4 development and 4 held-out families. The CPU scorer reads the input PNG, cameras and predicted arrays. Research-only dependencies are separate.
+The original protocol is Evidence Lens master plan v1.1, numerical protocol 1.0. The engineering family belongs to training. It cannot establish cross-family performance. The preregistered split assigns 16 families to training, 4 to development and 4 to held-out testing. The CPU scorer reads the input PNG, cameras and predicted arrays. Research-only dependencies are separate.
 
+- [Rebuild the study in a fresh checkout](docs/rebuild-study.md) with the authored scenes, registered splits and historical Windows worker.
 - Module inputs, outputs and storage responsibilities are documented in [the data contract](docs/data-contract.md).
 - The [Blender reference guide](docs/blender-reference.md) describes the frozen scene, numeric channels and independent readback.
 - [Recording and transfer](docs/recording.md) documents how to run and receive an attempt.

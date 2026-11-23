@@ -4,6 +4,10 @@
     "original-source-pending": {
       "description": "Original project material. Owner license selection is pending.",
       "public_export": false
+    },
+    "original-example-pending": {
+      "description": "Authored input, camera and provenance for the two-metre tabletop plane demonstration. Owner example license selection is pending.",
+      "public_export": false
     }
   },
   "files": {
@@ -26,12 +30,18 @@
     "docs/formal-evaluation.md": "original-source-pending",
     "docs/l1-training.md": "original-source-pending",
     "docs/licenses.md": "original-source-pending",
+    "docs/rebuild-study.md": "original-source-pending",
     "docs/recording.md": "original-source-pending",
     "docs/windows-worker.md": "original-source-pending",
+    "examples/tabletop-plane/README.md": "original-source-pending",
+    "examples/tabletop-plane/cameras.json": "original-example-pending",
+    "examples/tabletop-plane/input.png": "original-example-pending",
+    "examples/tabletop-plane/provenance.json": "original-example-pending",
     "protocol/analysis-addendum-v1.json": "original-source-pending",
     "protocol/families-v1.json": "original-source-pending",
     "protocol/operating-points-v1.json": "original-source-pending",
     "protocol/study-v1.json": "original-source-pending",
+    "protocol/windows-worker-source-v1.json": "original-source-pending",
     "pyproject.toml": "original-source-pending",
     "requirements/mac-record.txt": "original-source-pending",
     "requirements/mac-reference.txt": "original-source-pending",
@@ -55,6 +65,7 @@
     "scripts/pilot_budget.py": "original-source-pending",
     "scripts/portable_family.py": "original-source-pending",
     "scripts/process_b0.py": "original-source-pending",
+    "scripts/rebuild_study.py": "original-source-pending",
     "scripts/recompute_view.py": "original-source-pending",
     "scripts/report_study.py": "original-source-pending",
     "scripts/restore_replay.py": "original-source-pending",
@@ -122,11 +133,19 @@
     "tests/test_l1.py": "original-source-pending",
     "tests/test_mac_input_storage.py": "original-source-pending",
     "tests/test_public_source.py": "original-source-pending",
+    "tests/test_rebuild_study.py": "original-source-pending",
     "tests/test_recorded_l1.py": "original-source-pending",
     "tests/test_recording.py": "original-source-pending",
     "tests/test_rolling_archive.py": "original-source-pending",
     "tests/test_stress_conditions.py": "original-source-pending",
     "tests/test_trial_selection.py": "original-source-pending",
     "tests/test_trial_summary.py": "original-source-pending"
+  },
+  "binary_examples": {
+    "examples/tabletop-plane/input.png": {
+      "format": "rgb8-png",
+      "bytes": 10275,
+      "sha256": "72e32aa18d67a13e02277b0c9decd010872f8847cd8ade96e1ab1bdd04446537"
+    }
   }
 }

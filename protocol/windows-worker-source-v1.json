@@ -1,0 +1,163 @@
+{
+  "files": {
+    "configs/storage.json": {
+      "sha256": "2887ba3816934f1fc92b0abefaf2c74eaef745e7ad95f43272174fd9a48b8c60"
+    },
+    "configs/windows-b0.json": {
+      "sha256": "868373a0b7b3c1f7cf0e99ed20f7eb071f049ed71a60ec1922917bed0c8f44f5"
+    },
+    "pyproject.toml": {
+      "historical_text": "[build-system]\nrequires = [\"setuptools>=72\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"evidence-lens\"\nversion = \"0.0.1\"\ndescription = \"CPU diagnostics for single-image novel-view synthesis\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\"numpy>=1.26,<3\", \"Pillow>=11,<13\"]\n\n[project.optional-dependencies]\nrecord = [\"psutil>=6,<8\", \"pyarrow>=18,<27\"]\ntrain = [\"scikit-learn==1.9.1\", \"pyarrow>=18,<27\", \"threadpoolctl>=3.1,<4\"]\ntest = [\"pytest>=8,<10\"]\nreference = [\"bpy==4.5.16\", \"numpy==1.26.4\", \"OpenEXR==3.5.5\", \"Pillow==12.3.0\"]\n\n[tool.setuptools.packages.find]\nwhere = [\"src\"]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\n",
+      "sha256": "fa36659a47d853323758866f0766a5e8629c4be65570655ef9801e2f37556083"
+    },
+    "scripts/windows_environment.py": {
+      "sha256": "3891058dcf85405ee36319bceb4ab6a780caa7d7d935ba367daaf1a053091770"
+    },
+    "scripts/windows_stage.py": {
+      "sha256": "11b01eb0f7469cff4ed4fdd99256dcff4a5e003523e5944785a5c3bb41578ab8"
+    },
+    "scripts/worker_jobs.py": {
+      "sha256": "6f7cda07302c6052d1dcde935d7451ae799f581d35fd974dc18542bd89084a0b"
+    },
+    "src/evidence_lens/__init__.py": {
+      "sha256": "19713bea9a3b23e84c20fd6128c62853e41507d4dcdfb0e7d8a0543da5a7ee0c"
+    },
+    "src/evidence_lens/_bundle.py": {
+      "sha256": "024d7d3ce9a6c9d78839c60b2a55c07fde0f3887a96495cfe4ba7ae8ba576708"
+    },
+    "src/evidence_lens/_capacity.py": {
+      "checkout_sha256": "8d995b310078ebc5ece881de4dfd6f9c29f24a9f3bb6a79dace921a6ff2e6187",
+      "edits": [
+        {
+          "insert": [
+            "def bytes_on_tree(path: Path) -> int:\n"
+          ],
+          "line": 24,
+          "remove": [
+            "def bytes_on_tree(path: Path, *, count_links: bool = False) -> int:\n"
+          ]
+        },
+        {
+          "insert": [
+            "            if stat.S_ISREG(item.st_mode) and (not item.st_ino or inode not in seen):\n"
+          ],
+          "line": 39,
+          "remove": [
+            "            if stat.S_ISREG(item.st_mode) and (count_links or not item.st_ino or inode not in seen):\n"
+          ]
+        },
+        {
+          "insert": [
+            "                if item.st_nlink > 1:\n"
+          ],
+          "line": 41,
+          "remove": [
+            "                if not count_links and item.st_nlink > 1:\n"
+          ]
+        }
+      ],
+      "sha256": "09a6ce27d46cf874df31b94d3a5aa2d8c64b5960d5079d6db7daf42e7ec199fb"
+    },
+    "src/evidence_lens/_index.py": {
+      "sha256": "da8d64adbf1653795f1d60b0fb3506c1dbac25bf5c9c4338768c0c0b0eff14ae"
+    },
+    "src/evidence_lens/_metrics.py": {
+      "sha256": "d36030b201a207bd574d7e975147ffeeb6a6c58c013f5e43e6fbdca00ea61ed6"
+    },
+    "src/evidence_lens/_snapshot.py": {
+      "sha256": "54598f8f848cb2867589d349cd3442fdf76c9146a43f1bc5741ac1c788201b0c"
+    },
+    "src/evidence_lens/_telemetry.py": {
+      "sha256": "9f7000598cef1be5b7a63c89c82b233069c23e37ca27737e0cb105ffec564860"
+    },
+    "src/evidence_lens/_verify.py": {
+      "sha256": "fa748988ca72925a8e3eb019909e37edb206235a58f21a33c9d5c8573e506414"
+    },
+    "src/evidence_lens/_worker.py": {
+      "sha256": "e0131e9c3af72d901cd4be5f90838eeba478cd542330d18b5bf92c940319f0c9"
+    },
+    "src/evidence_lens/archive.py": {
+      "checkout_sha256": "b432a511aab9b3b9fb5b953acb53b530ac694a3ab487006989656f8ce3ebf595",
+      "edits": [
+        {
+          "insert": [],
+          "line": 104,
+          "remove": [
+            "    storage_reuse = {}\n"
+          ]
+        },
+        {
+          "insert": [
+            "            estimate = _capacity.bytes_on_tree(source)\n"
+          ],
+          "line": 108,
+          "remove": [
+            "            estimate = _capacity.bytes_on_tree(source, count_links=True)\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 154,
+          "remove": [
+            "                if sys.platform == \"darwin\":\n",
+            "                    from ._dedup import compact_inputs\n",
+            "                    storage_reuse = compact_inputs(root, copy, result, upstreams)\n"
+          ]
+        },
+        {
+          "insert": [
+            "        receipt, record = make_receipt(root, \"transfer\", run_id=rid, manifest_sha256=digest, status=status,\n"
+          ],
+          "line": 170,
+          "remove": [
+            "        receipt, record = make_receipt(root, \"transfer\", run_id=rid, manifest_sha256=digest, status=status, local_input_storage=storage_reuse,\n"
+          ]
+        }
+      ],
+      "sha256": "cb30e969132e4b961bb7e545a2f4826dc84740528102c39e22bb11760ff261bb"
+    },
+    "src/evidence_lens/generator_adapter.py": {
+      "sha256": "f45b8c9ba070adef9eb5e4b0107c4ce52065fe6917afc43a22edc252810eaee5"
+    },
+    "src/evidence_lens/recorder.py": {
+      "checkout_sha256": "f3031ded890e89bbbc0ea4a0d79fd16c9e4e33c5ae1262791859d55732c67c63",
+      "edits": [
+        {
+          "insert": [
+            "                        _capacity.bytes_on_tree(Path(path).expanduser()) for path in [*embedded.values(), *staged_shared])\n"
+          ],
+          "line": 317,
+          "remove": [
+            "                        _capacity.bytes_on_tree(Path(path).expanduser(), count_links=True) for path in [*embedded.values(), *staged_shared])\n"
+          ]
+        },
+        {
+          "insert": [],
+          "line": 441,
+          "remove": [
+            "        storage_reuse = {}\n",
+            "        if sys.platform == \"darwin\" and not rejected:\n",
+            "            from ._dedup import compact_inputs\n",
+            "            storage_reuse = compact_inputs(root, bundle, result)\n"
+          ]
+        },
+        {
+          "insert": [
+            "                \"manifest_files\": len(manifest[\"files\"]), \"manifest_bytes\": result[\"bytes\"]}\n"
+          ],
+          "line": 451,
+          "remove": [
+            "                \"manifest_files\": len(manifest[\"files\"]), \"manifest_bytes\": result[\"bytes\"], \"local_input_storage\": storage_reuse}\n"
+          ]
+        }
+      ],
+      "sha256": "1eab0885d2b647b7778285cc057e398eb1181f198608de946639742b1b714a0b"
+    },
+    "src/evidence_lens/renderer_adapter.py": {
+      "sha256": "76b08bd6c875102343228d19dd228c2ef14b4a91a84f48ba66a289634825fb02"
+    }
+  },
+  "schema": "el-historical-worker-source-1",
+  "source_commit": "ab18e7d4ae627c550f11eb08095739830055ea91",
+  "zip_sha256": "3ef8f32ee5deb62065a56e9e64221a84c2e2e8fd907037f1724f857125967143"
+}

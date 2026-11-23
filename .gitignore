@@ -37,3 +37,6 @@ __pycache__/
 /receipts/
 /data/
 /outputs/
+
+# Recorded authored input explicitly listed in the source inventory.
+!/examples/tabletop-plane/input.png
