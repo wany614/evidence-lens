@@ -20,6 +20,7 @@ from vision_sources import find_run, json_member, member, signed
 SCIENTIFIC = {
     "selection": ("report", "selection.json", "stage3-development-paired-selection", 35_000_000),
     "development": ("evaluation", "evaluation.json", "stage3-risk-development-evaluation", 190_000_000),
+    "example-caption": ("derivation", "expected-example.json", "stage3-public-expected-example", 80_000_000),
     "example": ("derivation", "expected-example.json", "stage3-public-expected-example", 75_000_000),
     "parity": ("archive_verify", "parity.json", "stage3-native-risk-parity", 2_000_000),
     "pixel-replay": (
@@ -317,7 +318,9 @@ class Post:
         ):
             add(key, *chosen(self.roots, self.base, action))
         for key in ("selection", "development", "example", "parity", "confirmation", "pixel-replay"):
-            add(key, *verified_selection(self.roots, self.state, key))
+            selected_name = "example-caption" if key == "example" else key
+            add(key, *verified_selection(self.roots, self.state, selected_name))
+        add("original_example", *verified_selection(self.roots, self.state, "example"))
         for m in METHODS:
             add("native_" + m, *verified_selection(self.roots, self.state, "native-" + m))
             if m in METHODS[2:]:
@@ -377,6 +380,17 @@ class Post:
         store, shelf = self.roots
         folder = self.state / action
         folder.mkdir(parents=True, exist_ok=True)
+        if action == "example-caption":
+            p, r, parent = verified_selection(self.roots, self.state, "example")
+            roles = {"original": (parent.parent, p), "original_index": (parent, p)}
+            argv = [
+                "stage3_risk_caption.py",
+                "--source",
+                "{input:original}",
+                "--source-sha256",
+                file_hash(parent),
+            ]
+            return self.record(action, [p], roles, argv, retry=retry)
         if action == "joint-report":
             return self.joint_report(opening, joint_evidence, joint_evidence_sha, retry)
         if action.startswith("native-"):

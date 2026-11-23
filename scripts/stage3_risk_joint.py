@@ -333,7 +333,7 @@ def readable(summary, learn, parity, acquisition, qa, case, per_family, strata):
         s.extend(
             [
                 "",
-                f"The original Windows {rr['method']} fit with seed {rr['seed']} completed {rr['optimizer_steps']} optimizer steps, then failed its deployment-schema export. The Mac recovery performed zero additional updates and inherited the exact selected weights and all 48 Windows score-all arrays. M2 score-two uses the same two sources and bytes. The remaining smaller-source maps were scored on the Mac CPU. The three other pairs of method and seed produced all development scope scores on Windows. [Export evidence](engineering-and-failures.json)",
+                f"The original Windows {rr['method']} fit with seed {rr['seed']} completed {rr['optimizer_steps']} optimizer steps, then failed its deployment-schema export. The Mac recovery performed zero additional updates and inherited the exact selected weights and all 48 Windows score-all arrays. M2 score-two uses the same two sources and bytes. The remaining smaller-source maps were scored on the Mac CPU. The three other pairs of method and seed produced all development scope scores on Windows. The held-out four-method comparison used original Mac CPU inference across every source subset. [Export evidence](engineering-and-failures.json)",
             ]
         )
     budget = acquisition["production"]

@@ -45,12 +45,55 @@ def state(a, tau, e):
     return x
 
 
+def draw_header(image, family, condition, view, w, h, status):
+    # The installed Pillow face has full ASCII; spelling out intervals also survives raster export.
+    draw = ImageDraw.Draw(image)
+    bg = (248, 247, 242)
+    ink = (45, 58, 64)
+    small = ImageFont.load_default(size=12)
+    draw.rectangle((0, 0, image.width - 1, 89), fill=bg)
+    draw.text(
+        (12, 8),
+        f"{family}  /  {condition}  /  {view}     {w} x {h}     {status}",
+        font=ImageFont.load_default(size=14),
+        fill=(24, 37, 45),
+    )
+    draw.text(
+        (12, 30),
+        "Native target RGB and expected camera Z. All scorer subsets use this same reconstruction.",
+        font=small,
+        fill=ink,
+    )
+    draw.text(
+        (12, 49),
+        "Fixed scales are RGB MAE 0 to 0.20 display sRGB, depth error 0 to 0.20 m, and risk 0 to 1. Values at or above the upper limit are red.",
+        font=small,
+        fill=ink,
+    )
+    draw.text(
+        (12, 67),
+        "Grey marks unknown risk or an unavailable input. Purple marks pixels outside each RGB or depth evaluation domain. B transfer uses s00.",
+        font=small,
+        fill=ink,
+    )
+    left = image.width - 368
+    if left >= 850:
+        bar = np.broadcast_to(np.linspace(0, 1, 180, dtype=np.float32), (11, 180))
+        image.paste(Image.fromarray(heat(bar, 1, np.ones(bar.shape, bool))), (left, 29))
+        draw.text((left, 8), "Continuous map  |  zero to upper limit", font=small, fill=ink)
+        for i, (name, col) in enumerate(
+            (("low", LOW), ("high", HIGH), ("unknown", UNKNOWN), ("invalid", INVALID))
+        ):
+            x = left + (0, 59, 126, 220)[i]
+            draw.rectangle((x, 53, x + 12, 65), fill=col)
+            draw.text((x + 17, 51), name, font=small, fill=ink)
+
+
 def save_case(root, out, row, truth, scores, thresholds):
     f, c, v = row["family"], row["condition"], row["view"]
     h, w = row["height"], row["width"]
     # Real formal frames are 256 square. Fixtures use a smaller native input and a legible display tile.
     tile = max(150, w)
-    font = ImageFont.load_default(size=14)
     sm = ImageFont.load_default(size=12)
     margin, gap, label = 12, 6, 22
     stride = tile + gap
@@ -58,27 +101,7 @@ def save_case(root, out, row, truth, scores, thresholds):
         "RGB", (2 * margin + 8 * stride - gap, 90 + 4 * (tile + label + gap) + 52), (248, 247, 242)
     )
     draw = ImageDraw.Draw(image)
-    draw.text(
-        (margin, 8), f"{f}  /  {c}  /  {v}     {w} × {h}     {row['status']}", font=font, fill=(24, 37, 45)
-    )
-    draw.text(
-        (margin, 30),
-        "Native target RGB and expected camera Z. All scoring modes use this same reconstruction.",
-        font=sm,
-        fill=(45, 58, 64),
-    )
-    draw.text(
-        (margin, 49),
-        "Continuous scales: RGB MAE 0–0.20 display sRGB, depth error 0–0.20 m, risk 0–1. Higher values are red.",
-        font=sm,
-        fill=(45, 58, 64),
-    )
-    draw.text(
-        (margin, 67),
-        "State colours: blue = low; red = high; grey = unknown; purple = outside the evaluable domain. B transfer always uses s00.",
-        font=sm,
-        fill=(45, 58, 64),
-    )
+    draw_header(image, f, c, v, w, h, row["status"])
 
     def place(col, r, title, pixels=None):
         x = margin + col * stride
