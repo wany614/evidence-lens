@@ -1,6 +1,6 @@
 # Building and checking the model release
 
-For v0.1.1-rc.1, the operator recipe builds the wheel from an explicit Git commit, binds the candidate to selected diagnostic evidence, reproduces its ZIP and exercises it from a fresh CPU environment. The historical v0.1.0 payload retains its original one-view grading manifest. [Private RC build and rebuild](releases/v0.1.1-rc.1/BUILD.md) · [Extracted CPU example](releases/v0.1.1-rc.1/README.md)
+For v0.1.1-rc.2, the operator recipe builds the wheel from an explicit Git commit, binds the candidate to selected diagnostic evidence, reproduces its ZIP and exercises it from a fresh CPU environment. The historical v0.1.0 payload retains its original one-view grading manifest. [Private RC build and rebuild](releases/v0.1.1-rc.2/BUILD.md) · [Extracted CPU example](releases/v0.1.1-rc.2/README.md)
 
 The builder takes separately sealed model, authored example, score and report receipts. It verifies the complete training and development rosters, original class counts, per-fold class counts, exported parameters, and the 12 comparison-run pins across the four held-out families. The model ZIP includes its CPU wheel, frozen model, threshold and fit proofs, original example, expected numerical scores, curated report tables and the committed release texts.
 

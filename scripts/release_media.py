@@ -202,10 +202,19 @@ def check_example_media(folder, graded_views=("v01",)):
         check_png(folder / "example" / name, (w, h))
     for view in VIEWS:
         shape = cameras[view].shape
+        path = folder / "example/predictions" / (view + ".npz")
         check_npz(
-            folder / "example/predictions" / (view + ".npz"),
+            path,
             {"rgb": (np.float32, (*shape, 3)), "z": (np.float32, shape), "alpha": (np.float32, shape)},
         )
+        if len(graded_views)>1:
+            with np.load(path, allow_pickle=False) as values:
+                rgb, z, alpha = (values[k] for k in ("rgb","z","alpha"))
+                require(np.isfinite(rgb).all() and ((rgb>=0)&(rgb<=1)).all(),f"{view}: plane example RGB must be finite within [0,1]")
+                require(np.isfinite(alpha).all() and ((alpha>=0)&(alpha<=1)).all(),f"{view}: plane example alpha outside [0,1]")
+                support = alpha>0
+                require(np.isfinite(z[support]).all() and (z[support]>0).all() and np.isnan(z[~support]).all(),
+                        f"{view}: recorded plane camera-Z must be positive and finite on support, NaN on empty pixels")
     for view in graded_views:
         shape = cameras[view].shape
         expected = {"l0_reason": (np.uint8, shape)}

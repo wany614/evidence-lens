@@ -430,7 +430,7 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
     report = scientific_report(tmp_path, f, capsys)
     for name in ("README.md", "pyproject.toml"):
         shutil.copyfile(REPO / name, repo / name)
-    version = "v0.1.1-rc.1" if rc else "v0.0.1"
+    version = "v0.1.1-rc.2" if rc else "v0.0.1"
     project = repo / "pyproject.toml"
     import re
     project.write_text(re.sub(r'^version = "[^"]+"$', f'version = "{release.python_version(version)}"',
@@ -591,7 +591,7 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
             "source_sha256": sha(store / "runs" / parent["run_id"] / rel),
         }
     members = release.check(output, built["release_sha256"], built["checksums_sha256"])
-    archive = tmp_path / (f"evidence-lens-{version}-cpu.zip" if rc else "fixture-model.zip")
+    archive = tmp_path / (release.archive_name(version,"synthetic_fixture") if rc else "fixture-model.zip")
     pins = ["--release-sha256", built["release_sha256"], "--checksums-sha256", built["checksums_sha256"]]
     packed = cli("zip", "--folder", output, "--output", archive, *pins)
     assert packed == release.package(output, archive) and packed["sha256"] == sha(archive)
@@ -611,18 +611,49 @@ def test_released_wheel_original_proofs_and_zip(tmp_path, capsys, monkeypatch, r
         import build_prerelease
         monkeypatch.setattr(build_prerelease, "ROOT", repo)
         smoke_dir = tmp_path/"clean-rc-smoke"
+        rejected = subprocess.run([sys.executable,"-I",str(unpacked/"smoke.py"),"--output",str(smoke_dir)],
+                                  cwd=tmp_path,capture_output=True,text=True)
+        assert rejected.returncode and "--fixture" in rejected.stderr and not smoke_dir.exists()
         subprocess.run([sys.executable,"-I",str(unpacked/"smoke.py"),"--output",str(smoke_dir),
                         "--release-sha256",built["release_sha256"],"--archive",str(archive),"--archive-sha256",
-                        packed["sha256"],"--offline-uv"],cwd=tmp_path,check=True,capture_output=True)
+                        packed["sha256"],"--offline-uv","--fixture"],cwd=tmp_path,check=True,capture_output=True)
         grade = load(smoke_dir/"smoke.json")
         assert grade["state_arrays_equal"] and grade["finite_masks_equal"] and len(grade["methods"])==5 and len(grade["views"])==6
-        assert grade["runtime"]["packages"]["evidence-lens"]=="0.1.1rc1"
+        assert grade["runtime"]["packages"]["evidence-lens"]=="0.1.1rc2" and grade["scope"]=="synthetic_fixture"
+        assert sum(map(len,grade["comparisons"].values()))==30 and len(grade["map_pngs"])==12
         assert grade["verified_zip_sha256"]==packed["sha256"] and grade["grade_seconds"]>0
+        import release_smoke
+        def bad_worker(cmd, **kwargs):
+            dest=Path(cmd[-1]);dest.mkdir(parents=True)
+            bad=load(smoke_dir/"grade/grade.json")
+            bad["views"]["v05"]["methods"]["L1-full"]["states_equal"]=False
+            (dest/"grade.json").write_text(json.dumps(bad))
+            return subprocess.CompletedProcess(cmd,1,stdout="fixture divergence",stderr="")
+        failed_dest=tmp_path/"failed-smoke"
+        with monkeypatch.context() as fault:
+            fault.setattr(release_smoke,"run",lambda *args,**kwargs:None)
+            fault.setattr(release_smoke.subprocess,"run",bad_worker)
+            with pytest.raises(ValueError,match="v05/L1-full: states_equal failed; partial"):
+                release_smoke.smoke(unpacked,failed_dest,fixture=True)
+        failcase,=tmp_path.glob("failed-smoke-failed-*")
+        assert not failed_dest.exists() and load(failcase/"results/grade/grade.json")["views"]["v05"]
+        assert "fixture divergence" in (failcase/"results/grader.log").read_text()
         assert len(load(unpacked/"demo.json")["expected_views"])==6 and (unpacked/"docs/licenses.md").is_file()
+        from release_smoke import verified_maps
+        last_map=smoke_dir/"maps/v06-state.png"
+        last_map.rename(tmp_path/"held-map.png")
+        with pytest.raises(ValueError,match="v06/state.*v06-state.png"):
+            verified_maps(smoke_dir/"maps",index)
         a.fixture,a.offline,a.rebuild_of,a.output=True,True,None,tmp_path/"first-build"
         initial=build_candidate(a)
         a.rebuild_of=a.output/"candidate.json";a.output=tmp_path/"rebuild"
-        assert initial==build_candidate(a)
+        assert initial["schema"]=="el-synthetic-cpu-fixture-1" and initial["kind"]=="synthetic_fixture"
+        dirty = repo/"src/evidence_lens/l1.py"; old_text=dirty.read_bytes()
+        dirty.write_text("raise RuntimeError('dirty editable file must never be imported when packaging')\n")
+        with monkeypatch.context() as changed:
+            changed.setenv("PYTHONPATH",str(repo/"src"))
+            assert initial==build_candidate(a)
+        dirty.write_bytes(old_text)
     env = tmp_path / "wheel-only-env"
     subprocess.run(["uv", "venv", "--python", sys.executable, str(env)], check=True, capture_output=True)
     exe = env / ("Scripts/python.exe" if os.name == "nt" else "bin/python")

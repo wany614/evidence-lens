@@ -21,7 +21,7 @@ from release_identity import (
     signature,
 )
 from release_media import check_example_media
-from release_scope import (CPU_SOURCE, DOCS, SCOPE, SUMMARY, VERSION, check_scope, graded_views, python_version, scope_origin,
+from release_scope import (CPU_SOURCE, DOCS, SCOPE, SUMMARY, VERSION, archive_name, check_scope, graded_views, python_version, scope_origin,
                            summary_bytes, summary_origin)
 from release_wheel import aggregate, read_wheel
 
@@ -333,9 +333,11 @@ def build(a):
     scope_path = getattr(a, "scope", None)
     scope_sha = getattr(a, "scope_sha256", None)
     if rc:
-        require(scope_path and scope_sha and HASH.fullmatch(scope_sha) and sha(scope_path) == scope_sha,
+        scope_bytes = scope_path.read_bytes() if scope_path else None
+        require(scope_bytes and scope_sha and HASH.fullmatch(scope_sha) and hashlib.sha256(scope_bytes).hexdigest() == scope_sha,
                 "an RC requires --scope and the independently selected --scope-sha256")
-        check_scope(load(scope_path), a.version, method_sha, method["model_id"], method["model_index_sha256"],
+        scope = json.loads(scope_bytes)
+        check_scope(scope, a.version, method_sha, method["model_id"], method["model_index_sha256"],
                     pins, store=a.store.resolve())
     else:
         require(not scope_path and not scope_sha, "the prerelease scope belongs to an RC version")
@@ -585,9 +587,9 @@ def build(a):
             committed("smoke.py", "scripts/release_smoke.py")
             for name in CPU_SOURCE:
                 committed(name, "src/" + name.removeprefix("source/"))
-            include(SCOPE, scope_path.read_bytes(), scope_origin(scope_sha))
+            include(SCOPE, scope_bytes, scope_origin(scope_sha))
             table = out / "results/family-results.csv"
-            include(SUMMARY, summary_bytes(load(out / SCOPE), table), summary_origin(scope_sha, sha(table)))
+            include(SUMMARY, summary_bytes(scope, table, kind), summary_origin(scope_sha, sha(table)))
         for name in sorted(set(terms.values())):
             committed(name, name)
         include(LICENSE_SCOPE, scope_doc, {"commit": a.commit, "path": LICENSE_SCOPE})
@@ -790,9 +792,10 @@ def check_real_example_guide(folder, release):
 
 def check_prerelease(folder, release):
     from urllib.parse import unquote, urlsplit
+    from release_smoke import distributions
 
     root = folder.resolve()
-    require((root / SUMMARY).read_bytes() == summary_bytes(load(root / SCOPE), root / "results/family-results.csv"),
+    require((root / SUMMARY).read_bytes() == summary_bytes(load(root / SCOPE), root / "results/family-results.csv", release["kind"]),
             "human-readable scope differs from selected diagnostic or formal populations")
     for name in ("README.md", "MODEL_CARD.md", "RELEASE_NOTES.md", SUMMARY, *DOCS):
         path = root / name
@@ -805,15 +808,15 @@ def check_prerelease(folder, release):
             require(not url.scheme and not url.netloc and not url.query and local.is_relative_to(root)
                     and local.is_file(), "unavailable relative release link in " + name)
     guide = (root / "README.md").read_text(encoding="utf-8")
-    require("python -I smoke.py" in guide and "RELEASE_SCOPE.json" in guide and release["version"] in guide,
+    require("python3 -I smoke.py" in guide and "py -3 -I smoke.py" in guide and f"]({SCOPE})" in guide and
+            release["version"] in guide and set(re.findall(r"distribution[/\\]([\w.-]+\.whl)",guide))=={release["wheel"]["name"]},
             "RC guide must identify the version, scoped evidence and executable smoke command")
     with tempfile.TemporaryDirectory() as temp:
         scores, example = Path(temp) / "scores", root / "example"
         score_model(example / "input.png", example / "cameras.json", example / "predictions",
                     root / "model", scores, model_sha256=release["model_index_sha256"])
-        for view in TARGETS:
-            require(compare(root / "expected" / (view + ".npz"), scores / (view + ".npz"))["passed"],
-                    "RC example differs from the original five-method CPU scores for " + view)
+        measured = {v:compare(root/"expected"/(v+".npz"), scores/(v+".npz")) for v in TARGETS}
+        distributions({"views":measured})
 
 
 def check(folder, release_sha=None, sums_sha=None):
@@ -892,9 +895,10 @@ def check(folder, release_sha=None, sums_sha=None):
 
 def check_zip(folder, archive, names, expected=None):
     require(archive.is_file() and not archive.is_symlink(), "missing regular release ZIP")
-    version = load(folder / "release.json")["version"]
+    release = load(folder / "release.json")
+    version = release["version"]
     if "-rc." in version:
-        require(archive.name == f"evidence-lens-{version}-cpu.zip", "RC asset filename must match its release tag")
+        require(archive.name == archive_name(version, release["kind"]), "RC asset filename must match its release tag and scientific kind")
     actual_sha = sha(archive)
     require(not expected or expected == actual_sha, "ZIP differs from its external pin")
     with zipfile.ZipFile(archive) as z:
@@ -991,6 +995,7 @@ def main():
         require(not a.archive_sha256 or a.archive, "an archive hash needs --archive")
         names = check(a.folder, a.release_sha256, a.checksums_sha256)
         result = {
+            "kind": load(a.folder / "release.json")["kind"],
             "verified_files": len(names),
             "release_sha256": sha(a.folder / "release.json"),
             "checksums_sha256": sha(a.folder / "SHA256SUMS"),

@@ -90,10 +90,14 @@ def seal(bundle, score_dir, expected_receipt, views):
 
 def compare(expected, actual):
     rows = {}
+    view = Path(expected).stem if isinstance(expected, (str, Path)) else "expected view"
     with np.load(expected, allow_pickle=False) as ref, np.load(actual, allow_pickle=False) as run:
         for method, key in KEYS.items():
+            needed = {key, key + "_valid", key + "_state"}
+            require(needed <= set(ref.files) and needed <= set(run.files),
+                    f"{view}/{method}: missing score arrays in expected or actual output")
             a, b = ref[key], run[key]
-            require(a.shape == b.shape and a.dtype == b.dtype == np.float32, "score type or shape differs")
+            require(a.shape == b.shape and a.dtype == b.dtype == np.float32, f"{view}/{method}: score type or shape differs")
             af, bf = np.isfinite(a), np.isfinite(b)
             valid = all(src[key + "_valid"].dtype == np.bool_ and np.array_equal(src[key + "_valid"], mask)
                         for src, mask in ((ref, af), (run, bf)))
@@ -155,8 +159,13 @@ def grade(bundle, output, manifest_sha256, *, python=None):
         if p.returncode:
             report.update(passed=False, error=(p.stderr or p.stdout).strip())
         else:
-            measured = {vid: compare(bundle / "expected" / (vid + ".npz"), out / "scores" / (vid + ".npz")) for vid in m["expected_views"]}
-            finite_l1 = sum(v["methods"]["L1-full"]["finite_expected"] for v in measured.values())
+            measured = {}
+            for vid in m["expected_views"]:
+                try:
+                    measured[vid] = compare(bundle / "expected" / (vid + ".npz"), out / "scores" / (vid + ".npz"))
+                except (OSError, KeyError, ValueError) as exc:
+                    measured[vid] = {"passed": False, "error": f"{vid}: {exc}"}
+            finite_l1 = sum(v["methods"]["L1-full"]["finite_expected"] for v in measured.values() if "methods" in v)
             report.update(passed=all(v["passed"] for v in measured.values()), views=measured,
                           finite_l1_example_pixels=finite_l1, numerical_l1_parity_exercised=finite_l1 > 0, runtime=read(out / "runtime.json"))
         write_json(out / "grade.json", report)

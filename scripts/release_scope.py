@@ -33,6 +33,11 @@ def python_version(tag):
 def graded_views(tag):
     return TARGETS if "-rc." in tag else ("v01",)
 
+def archive_name(version, kind):
+    require(kind in {"heldout_study", "synthetic_fixture"}, "unknown scientific package kind")
+    prefix = "evidence-lens-synthetic-fixture" if kind == "synthetic_fixture" else "evidence-lens"
+    return f"{prefix}-{version}-cpu.zip"
+
 
 def scope_origin(digest):
     return {"kind": "selected_prerelease_scope", "sha256": digest}
@@ -42,7 +47,7 @@ def summary_origin(digest, table):
     return {"kind": "scope_and_recorded_counts", "scope_sha256": digest, "family_results_sha256": table}
 
 
-def summary_bytes(scope, table):
+def summary_bytes(scope, table, kind="heldout_study"):
     evidence = {"historical_benchmark_regression": "Historical benchmark regression following changes informed by this benchmark.",
                 "original_frozen_study_rechecked": "Original frozen study rechecked against the selected diagnostic evidence.",
                 "original_study_under_review": "The original formal measurements remain under review.",
@@ -54,28 +59,41 @@ def summary_bytes(scope, table):
              f"- Frozen model `{scope['model_id']}`, index SHA-256 `{scope['model_index_sha256']}`.",
              f"- Formal numerical report `{scope['report']['run_id']}`.",
              f"- Authored plane deployment score `{scope['example_scores']['run_id']}`.", ""]
+    if kind == "synthetic_fixture":
+        lines[0:0] = ["# Synthetic software fixture", "", "These fabricated records exercise the packaging tests.", ""]
     for row in scope["diagnostics"]:
         lines.append(f"- Diagnostic `{row['run_id']}`, `{row['path']}`, SHA-256 `{row['sha256']}`.")
-    lines.extend(["", "## Error decisions in the selected formal record", "",
-                  "Each row sums the four registered families over the whole reference-valid region for L1-full. "
-                  "Y counts confirmed RGB errors. HY, LY and UY count confirmed errors assigned high, low and unknown risk respectively. "
-                  "LY + UY counts all confirmed errors outside the high-risk decision.", "",
-                  "| Condition | Confirmed errors Y | High HY | Low LY | Unknown UY | Outside high LY + UY |",
-                  "| --- | ---: | ---: | ---: | ---: | ---: |"])
+    lines.extend(["", "## RGB error decisions in the selected formal record", "",
+                  "Each row pools pixels across the four registered families for L1-full. V counts reference-valid pixels, "
+                  "E counts RGB-evaluable pixels, H counts high-risk decisions within E, and Y counts confirmed RGB errors. "
+                  "HY, LY and UY partition these errors by decision. LY + UY counts confirmed RGB errors outside high risk. "
+                  "Depth-error measurements use their own surface and support denominators.", "",
+                  "| Condition | V | E | High risk H | RGB errors Y | High HY | Low LY | Unknown UY | Outside high LY + UY |",
+                  "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"])
     with table.open(encoding="utf-8", newline="") as source:
         rows = [r for r in csv.DictReader(source) if r["method"] == "L1-full" and r["region"] == "all"]
-    keys = ("Y", "HY", "LY", "UY")
+    keys = ("V", "E", "H", "Y", "HY", "LY", "UY")
+    rates = []
     for c in ("B0", "R1", "Q1"):
         group = [r for r in rows if r["condition"] == c]
         require(len(group) == 4 and len({r["family"] for r in group}) == 4, "formal decision counts lack a unique held-out roster")
         if any(r[k] == "" for r in group for k in keys):
-            cells = ["unavailable"] * 5
+            cells = ["unavailable"] * 8
+            ratio = ["unavailable"] * 4
         else:
             counts = [tuple(int(r[k]) for k in keys) for r in group]
-            require(all(min(ns) >= 0 and sum(ns[1:]) == ns[0] for ns in counts), "formal RGB error decisions do not partition Y")
-            y, high, low, unknown = map(sum, zip(*counts))
-            cells = [f"{n:,}" for n in (y, high, low, unknown, low + unknown)]
+            for v, e, h, y, hy, ly, uy in counts:
+                require(0 <= h <= e <= v and 0 <= y <= e and 0 <= hy <= h and min(ly,uy) >= 0
+                        and hy+ly+uy == y and ly+uy <= e-h, "formal RGB error decisions do not partition Y or its domains")
+            v,e,h,y,hy,ly,uy = map(sum,zip(*counts))
+            cells = [f"{n:,}" for n in (v,e,h,y,hy,ly,uy,ly+uy)]
+            ratio = [f"{n/d:.2%}" if d else "undefined" for n,d in ((h,v),(h,e),(hy,h),(hy,y))]
         lines.append("| " + " | ".join([c, *cells]) + " |")
+        rates.append("| " + " | ".join([c, *ratio]) + " |")
+    lines.extend(["", "Rates use the pooled counts above. High-risk coverage can be expressed over V or E. "
+                  "Precision uses H, and detection of confirmed RGB errors uses Y.", "",
+                  "| Condition | High risk among reference-valid H/V | High risk among RGB-evaluable H/E | RGB-error precision HY/H | Confirmed errors detected HY/Y |",
+                  "| --- | ---: | ---: | ---: | ---: |", *rates])
     lines.extend(["", "Source tables and per-family denominators are in [family results](results/family-results.csv).", ""])
     return "\n".join(lines).encode()
 
