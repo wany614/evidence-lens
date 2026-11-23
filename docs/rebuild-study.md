@@ -58,6 +58,8 @@ CAT="$(jq -er .dataset_hash "$LAB/reference.json")"
 
 ### Reconstruct the historical formal Windows worker
 
+The later DTU checkout changed the recorder and disk sampler. The offline builder also recognizes those two exact source hashes, so a downloaded source archive can regenerate the same historical worker. It verifies all 19 reconstructed files and the final ZIP digest. [DTU checkout byte mappings](../reproduce/windows-worker-checkout-variants.json)
+
 Before the first formal handoff in a fresh store, reconstruct the 19 allowlisted Git blobs from commit `ab18e7d4ae627c550f11eb08095739830055ea91`. The helper reads them directly from Git when available. A clean source ZIP can also rebuild them offline. The descriptor records every historical file hash, the original package metadata, and line edits for three archival modules that changed after the freeze. The helper applies those edits in memory, verifies every member, and uses the original sorted ZIP encoder. It requires SHA-256 `3ef8f32ee5deb62065a56e9e64221a84c2e2e8fd907037f1724f857125967143` before creating the per-catalog ZIP and receipt. An existing identical pack is accepted. A conflicting freeze stops the command. An independently supplied original ZIP can be used with `--worker-zip /path/to/worker-source.zip`. [Historical worker member hashes](../protocol/windows-worker-source-v1.json)
 
 ```sh

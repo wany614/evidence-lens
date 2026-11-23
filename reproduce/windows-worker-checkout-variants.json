@@ -1,0 +1,122 @@
+{
+  "schema": "el-worker-checkout-variants-1",
+  "source_commit": "ab18e7d4ae627c550f11eb08095739830055ea91",
+  "checkout_commit": "64dc0dbac4d73488212807cf0e5c30bc5d6af4b0",
+  "files": {
+    "src/evidence_lens/_capacity.py": {
+      "6e2b6f3a9b4195fd15f2e1f2a8566c3d3486ccd15bd46c2a4575e184e82519b5": [
+        {
+          "line": 24,
+          "remove": [
+            "def bytes_on_tree(path: Path, *, count_links: bool = False) -> int:\n"
+          ],
+          "insert": [
+            "def bytes_on_tree(path: Path) -> int:\n"
+          ]
+        },
+        {
+          "line": 34,
+          "remove": [
+            "        # Another recorder may seal (rename) its work directory during this sample.\n",
+            "        if not isinstance(error, FileNotFoundError):\n",
+            "            raise error\n"
+          ],
+          "insert": [
+            "        raise error\n"
+          ]
+        },
+        {
+          "line": 39,
+          "remove": [
+            "            try:\n",
+            "                item = (Path(parent) / name).lstat()\n",
+            "            except FileNotFoundError:\n",
+            "                # A disappearing entry consumed no bytes at its old path at stat time.\n",
+            "                continue\n"
+          ],
+          "insert": [
+            "            item = (Path(parent) / name).lstat()\n"
+          ]
+        },
+        {
+          "line": 45,
+          "remove": [
+            "            if stat.S_ISREG(item.st_mode) and (count_links or not item.st_ino or inode not in seen):\n"
+          ],
+          "insert": [
+            "            if stat.S_ISREG(item.st_mode) and (not item.st_ino or inode not in seen):\n"
+          ]
+        },
+        {
+          "line": 47,
+          "remove": [
+            "                if not count_links and item.st_nlink > 1:\n"
+          ],
+          "insert": [
+            "                if item.st_nlink > 1:\n"
+          ]
+        }
+      ]
+    },
+    "src/evidence_lens/recorder.py": {
+      "5645e682664a2a35c7b32c22223e339f2973609869ed56b1c86edb8db220733c": [
+        {
+          "line": 28,
+          "remove": [
+            "from ._index import writer_gate\n"
+          ],
+          "insert": []
+        },
+        {
+          "line": 135,
+          "remove": [],
+          "insert": [
+            "    from ._index import writer_gate\n"
+          ]
+        },
+        {
+          "line": 317,
+          "remove": [
+            "                        _capacity.bytes_on_tree(Path(path).expanduser(), count_links=True) for path in [*embedded.values(), *staged_shared])\n",
+            "                    # A cooperating archive move can rename a whole run during the active-store walk.\n",
+            "                    with writer_gate(root):\n",
+            "                        space = _capacity.check(root, expected, limits)\n"
+          ],
+          "insert": [
+            "                        _capacity.bytes_on_tree(Path(path).expanduser()) for path in [*embedded.values(), *staged_shared])\n",
+            "                    space = _capacity.check(root, expected, limits)\n"
+          ]
+        },
+        {
+          "line": 443,
+          "remove": [
+            "        storage_reuse = {}\n",
+            "        if sys.platform == \"darwin\" and not rejected:\n",
+            "            from ._dedup import compact_inputs\n",
+            "            storage_reuse = compact_inputs(root, bundle, result)\n"
+          ],
+          "insert": []
+        },
+        {
+          "line": 449,
+          "remove": [
+            "        with writer_gate(root):\n",
+            "            bundle.rename(final)\n"
+          ],
+          "insert": [
+            "        bundle.rename(final)\n"
+          ]
+        },
+        {
+          "line": 454,
+          "remove": [
+            "                \"manifest_files\": len(manifest[\"files\"]), \"manifest_bytes\": result[\"bytes\"], \"local_input_storage\": storage_reuse}\n"
+          ],
+          "insert": [
+            "                \"manifest_files\": len(manifest[\"files\"]), \"manifest_bytes\": result[\"bytes\"]}\n"
+          ]
+        }
+      ]
+    }
+  }
+}

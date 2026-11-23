@@ -30,6 +30,9 @@ def worker_from_source(project):
     descriptor = load(ROOT / WORKER_DESCRIPTOR)
     require(descriptor["schema"] == "el-historical-worker-source-1" and descriptor["source_commit"] == WORKER_COMMIT
             and descriptor["zip_sha256"] == WORKER_SHA and len(descriptor["files"]) == 19, "invalid historical source descriptor")
+    variants = load(ROOT / "reproduce/windows-worker-checkout-variants.json")
+    require(variants["schema"] == "el-worker-checkout-variants-1" and variants["source_commit"] == WORKER_COMMIT,
+            "checkout variants describe a different historical worker")
     members = {}
     for name, entry in descriptor["files"].items():
         path = project / local_path(name)
@@ -39,6 +42,8 @@ def worker_from_source(project):
             checkout_sha = sha_bytes(data)
             edits = (entry.get("edits") if checkout_sha == entry.get("checkout_sha256") else
                      entry.get("checkout_variants", {}).get(checkout_sha))
+            if edits is None:
+                edits = variants["files"].get(name, {}).get(checkout_sha)
             require(edits is not None, f"{name} differs from both recorded versions; supply the pinned checkout or --worker-zip")
             lines = data.decode("utf-8").splitlines(keepends=True)
             for edit in reversed(edits):
