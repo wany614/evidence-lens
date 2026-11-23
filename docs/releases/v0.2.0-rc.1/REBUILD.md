@@ -12,6 +12,8 @@ For L2-frozen select its directory and model index hash. Run within an environme
 
 `release.json` identifies the public source commit, frozen scientific method, completed quantitative report, independently recorded example and each selected model. The training protocols, model artifacts and public numerical reports are distributed in the bundle. The original sealed private training/evaluation records and provider-dependent rendered outputs remain in the owner research archive. An independent project can use the public acquisition recipe to record new inputs and receive its own run identities. Exact reconstruction of this archive uses the recorded inputs from the method, report, authored-example grade and formal-native grade.
 
+`protocol/stage2-inference-parity-v1.json` gives the registered Mac-to-CUDA development comparison. Its hash and the two catalog hashes are checked against the sealed scientific method. The subsequent release readbacks compare fresh CPU inference with the recorded CPU outputs and report each finite-score difference and threshold crossing.
+
 From the pinned public checkout use a Python environment with the project recording dependencies, PyTorch and safetensors. The original author uses the sealed research store and public A example ZIP to run the build. The `--method`, `--report`, `--example-grade` and `--native-grade` arguments take `RUN_ID=MANIFEST_SHA256`. The builder checks the real eight-run design, both complete FP32 exports, the current cohort opening, every numerical table row and the authored example. It reads its own source files from the specified commit.
 
 ```sh
@@ -51,3 +53,20 @@ py -3.12 -I -B scripts/verify_vision_public.py --tag v0.2.0-rc.1 --commit $Publi
 The public release assets are `candidate.json`, `RELEASE_NOTES.md`, `SHA256SUMS`, the CPU ZIP and the numerical ZIP. An optional separate copy of the original upstream checkpoint carries its official hash. Additional owner-approved attachments must be independently pinned with `--attachment NAME=SHA256`. The release body comes from `RELEASE_NOTES.md`, which records the actual scored cohorts, execution failures, chosen models and all primary artifact hashes. `private-sources.json` and the raw formal case are owner records. Anonymous readback emits `public-verification.json`, actual CPU output and, if requested, a local formal equivalence receipt. Failed verification leaves downloaded or partial bytes and a phase-specific failure marker in the new output directory.
 
 For a release carrying the additional 512-pixel plane control, append `--attachment "$CONTROL_NAME=$CONTROL_ZIP_SHA" --public-case-asset "$CONTROL_NAME" --public-case-sha256 "$CASE_SHA"` to the anonymous verifier command. Supply the independently known ZIP and case manifest digests. The verifier extracts only the ten declared deployment inputs and `case.json`, runs all seven scoring methods on the six targets in the clean CPU environment, and writes `public-control/control-scores.json`. The control's producer can distribute original Blender references and a separately measured six-view evaluation alongside the input directory in the same outer ZIP.
+
+## Rebuild the separately licensed plane attachment
+
+The owner verifies the two material exports and the raw evaluation with `vision_control_attachment.py materials`. The command authenticates the source of the registered Blender image and cameras, compares all six public reference arrays with their original Blender records and replays the raw measurement. The producer indexes are the sealed case export `20261123T134307201400Z-a5e16b2b6c7f4dd2`, reference export `20261123T134308150391Z-402d42333024458b` and independent raw evaluation `20261123T134826982683Z-1ad06f33c09d4541`. Each command argument combines its run ID and full manifest hash with `=`. The material inventory is an owner-side working product.
+
+```sh
+python3 scripts/vision_control_attachment.py materials --store "$STORE" --shelf "$SHELF" --case-export "$CASE_EXPORT" --reference-export "$REFERENCE_EXPORT" --evaluation "$RAW_EVALUATION" --output checked-control-inputs
+python3 scripts/vision_control_attachment.py build --repository . --commit "$PUBLIC_COMMIT" --store "$STORE" --shelf "$SHELF" --case-export "$CASE_EXPORT" --reference-export "$REFERENCE_EXPORT" --evaluation "$RAW_EVALUATION" --materials-sha256 "$MATERIALS_SHA" --method "$METHOD_PIN" --scores "$CONTROL_SCORE_PIN" --scored-evaluation "$CONTROL_GRADE_PIN" --output attachment-one
+```
+
+Repeat the second command with a new `--output attachment-two` and `--rebuild-of attachment-one` to check both the ZIP and external receipt byte for byte. Each build also exercises the independent evaluator against all six actual released score maps. Public readers can verify the scored control against an extracted CPU bundle and fresh scores by running the following from the source checkout.
+
+```sh
+python3 -I -B scripts/vision_control_attachment.py grade-download --archive "$CONTROL_ZIP" --archive-sha256 "$CONTROL_ZIP_SHA" --case-sha256 "$CASE_SHA" --release "$CPU_BUNDLE/release.json" --release-sha256 "$RELEASE_SHA" --scores ../fresh-plane/scores --output checked-plane-evaluation
+```
+
+The readback compares the six native maps of every method, finite support, threshold states, the L0 reason codes, RGB/depth measurements and fixed image pixels. Full error counts and thresholds are retained on a numerical discrepancy.

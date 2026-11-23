@@ -531,8 +531,10 @@ def release_notes(doc,summary,costs,assets):
 
 
 def release_sources(repo,commit,out):
-    paths=("scripts/vision_release.py","scripts/vision_public_smoke.py","scripts/vision_release_native.py","scripts/verify_vision_public.py",
-           "protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","configs/vision-base-v1.json","configs/vision-public-control-v1.json",
+    protocols=("protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","protocol/stage2-inference-parity-v1.json",
+               "protocol/families-v1.json","configs/vision-base-v1.json","configs/vision-public-control-v1.json")
+    paths=("scripts/vision_release.py","scripts/vision_public_smoke.py","scripts/vision_release_native.py","scripts/verify_vision_public.py","scripts/vision_control_attachment.py",
+           *protocols,
            "LICENSE","NOTICE","licenses/CC-BY-4.0.txt",*("docs/releases/"+TAG+"/"+n for n in DOCS))
     data={p:git_blob(repo,commit,p) for p in paths}
     for n in DOCS:
@@ -540,7 +542,7 @@ def release_sources(repo,commit,out):
     for n in ("LICENSE","NOTICE","licenses/CC-BY-4.0.txt"):
         write(out,n,data[n])
     write(out,"smoke.py",data["scripts/vision_public_smoke.py"])
-    for n in ("protocol/stage2-training-v1.json","protocol/stage2-families-v1.json","configs/vision-base-v1.json","configs/vision-public-control-v1.json"):
+    for n in protocols:
         write(out,n,data[n])
     return {n:{"bytes":len(v),"sha256":fingerprint(v)} for n,v in sorted(data.items())}
 
@@ -575,6 +577,8 @@ def build(a):
     with new_output(a.output) as dest,tempfile.TemporaryDirectory(prefix="evidence-lens-public-") as tmp:
         out=Path(tmp);sources=release_sources(a.repository,a.commit,out)
         require(sha(out/"protocol/stage2-families-v1.json")==method["catalog_sha256"] and
+                sha(out/"protocol/families-v1.json")==method["original_catalog_sha256"] and
+                sha(out/"protocol/stage2-inference-parity-v1.json")==method["inference_parity_protocol_sha256"] and
                 sha(out/"protocol/stage2-training-v1.json")==method["study_sha256"],"public code commit carries a different study or split")
         scope=copy_report(out,method,freeze,report)
         selection=selected_training(get,freeze,method)
@@ -613,7 +617,8 @@ def build(a):
              "code_commit":a.commit,"scientific_status":"confirmed_heldout_report_recorded","models":provenance,"weights":weights,
              "methods":method["methods"],"thresholds":method["thresholds"],"default_method":method["deployment_rule"]["default"],
              "method_freeze":dict(freeze.pin,sha256=method_sha),"report":report.pin,"example":example,"native_validation":native,"study":scope,
-             "study_sha256":method["study_sha256"],"catalog_sha256":method["catalog_sha256"],"opening_sha256":sha(marker_path),
+             "study_sha256":method["study_sha256"],"catalog_sha256":method["catalog_sha256"],"original_catalog_sha256":method["original_catalog_sha256"],
+             "inference_parity_protocol_sha256":method["inference_parity_protocol_sha256"],"opening_sha256":sha(marker_path),
              "upstream":original_source,"files":{p.relative_to(out).as_posix():sig(p) for p in sorted(out.rglob("*")) if p.is_file()}}
         raw=entries(doc);public_json(raw,"release.json");write(out,"release.json",raw)
         signatures={**{n:v["sha256"] for n,v in doc["files"].items()},"release.json":fingerprint(raw)}

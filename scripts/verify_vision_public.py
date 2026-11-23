@@ -25,7 +25,7 @@ REPO="wany614/evidence-lens"
 CPU="evidence-lens-"+rel.TAG+"-cpu.zip"
 NUMERIC="evidence-lens-"+rel.TAG+"-numerical.zip"
 WEIGHT="dinov2_vits14_pretrain.pth"
-SOURCES=("verify_vision_public.py","vision_release.py","vision_public_smoke.py","vision_release_native.py")
+SOURCES=("verify_vision_public.py","vision_release.py","vision_public_smoke.py","vision_release_native.py","vision_control_attachment.py")
 
 
 def opener():
@@ -217,6 +217,8 @@ def verify(a):
             public_control=None
             if a.public_case_asset:
                 phase="separate 512 public-plane control"
+                from vision_control_attachment import read_public
+                fixed=read_public(public/a.public_case_asset,a.public_case_sha256,a.commit,doc["method_freeze"]["sha256"],doc["models"])
                 case=extract_control(public/a.public_case_asset,a.public_case_sha256,temp/"public-control-input")
                 dest=out/"public-control"
                 subprocess.run([str(exe),"-I","-B",str(bundle/"smoke.py"),"--bundle",str(bundle),"--use-installed",
@@ -229,8 +231,17 @@ def verify(a):
                             all(set(v)==set(doc["methods"]) and all(r["pixels"]==512**2 and r["finite"]==r["low"]+r["high"] and
                                 r["finite"]+r["unknown"]==r["pixels"] for r in v.values()) for v in checks["views"].values()) and
                             len(checks["map_files"])==36 and len(checks["score_files"])==6,"incomplete separately scored native public control")
+                phase="independent public plane evaluation"
+                check=out/"public-control-evaluation"
+                subprocess.run([str(exe),"-I","-B",str(HERE.parent/"vision_control_attachment.py"),"grade-download","--archive",str(public/a.public_case_asset),
+                                "--archive-sha256",explicit[a.public_case_asset]["sha256"],"--case-sha256",a.public_case_sha256,
+                                "--release",str(bundle/"release.json"),"--release-sha256",c["release_sha256"],"--scores",str(dest/"scores"),"--output",str(check)],check=True,cwd=temp)
+                readback=rel.read(check/"public-control-readback.json")
+                rel.require(readback["passed"] and readback["independent_measurement_exact"] and readback["models"]==doc["models"],"independent public control evaluation differs")
                 public_control={"attachment":a.public_case_asset,"attachment_sha256":explicit[a.public_case_asset]["sha256"],"case_sha256":a.public_case_sha256,
-                                "receipt_sha256":rel.sha(dest/"control-scores.json"),"method_views":42,"coordinates":42*512**2}
+                                "receipt_sha256":rel.sha(dest/"control-scores.json"),"method_views":42,"coordinates":42*512**2,
+                                "independent_evaluation_sha256":rel.sha(check/"public-control-readback.json"),"case_export":fixed["case_export"],
+                                "reference_export":fixed["reference_export"],"original_reference":fixed["original_reference"],"original_source_sha256":fixed["original_source_sha256"]}
             private=None
             rel.require(bool(a.native_case)==bool(a.native_case_sha256),"supply both private case and independently pinned digest")
             if a.native_case:
