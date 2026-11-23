@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=72"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidence-lens"
+version = "0.0.1"
+description = "CPU diagnostics for single-image novel-view synthesis"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "Pillow>=11,<13"]
+
+[project.optional-dependencies]
+record = ["psutil>=6,<8", "pyarrow>=18,<27"]
+test = ["pytest>=8,<10"]
+reference = ["bpy==4.5.16", "numpy==1.26.4", "OpenEXR==3.5.5", "Pillow==12.3.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

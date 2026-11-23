@@ -1,0 +1,25 @@
+{
+  "protocol_version": "1.0",
+  "config_version": "p2-b0-1",
+  "scene_id": "scene_001_tabletop/v001",
+  "scene_family_id": "scene_001_tabletop",
+  "condition_id": "B0",
+  "seed": 9184,
+  "generator": {
+    "commit": "aed6527499ef91cba3b54c18d49a870f25947190",
+    "checkpoint_url": "https://ml-site.cdn-apple.com/models/sharp/sharp_2572gikvuh.pt",
+    "checkpoint_bytes": 2809738232,
+    "checkpoint_sha256": "94211a75198c47f61fca7d739ba08a215418d8d398d48fddf023baccc24f073d",
+    "internal_size": [1536, 1536],
+    "torch_version": "2.8.0"
+  },
+  "renderer": {
+    "gsplat_version": "1.5.3",
+    "mode": "RGB+ED",
+    "background": "black",
+    "eps2d": 0.0,
+    "depth_probe_abs_tolerance_m": 0.0002,
+    "alpha_probe_abs_tolerance": 0.002,
+    "color_probe_abs_tolerance": 0.002
+  }
+}

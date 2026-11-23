@@ -1,0 +1,53 @@
+{
+  "schema": "el-source-allowlist-1",
+  "license_status": {
+    "original-source-pending": {
+      "description": "Original project material. Owner license selection is pending.",
+      "public_export": false
+    }
+  },
+  "files": {
+    ".gitignore": "original-source-pending",
+    "README.md": "original-source-pending",
+    "configs/public-source.json": "original-source-pending",
+    "configs/recording-smoke.json": "original-source-pending",
+    "configs/reference.json": "original-source-pending",
+    "configs/storage.json": "original-source-pending",
+    "configs/windows-b0.json": "original-source-pending",
+    "docs/data-contract.md": "original-source-pending",
+    "docs/licenses.md": "original-source-pending",
+    "docs/windows-worker.md": "original-source-pending",
+    "pyproject.toml": "original-source-pending",
+    "requirements/mac-record.txt": "original-source-pending",
+    "requirements/mac-reference.txt": "original-source-pending",
+    "scripts/source_candidate.py": "original-source-pending",
+    "scripts/windows_environment.py": "original-source-pending",
+    "src/evidence_lens/__init__.py": "original-source-pending",
+    "src/evidence_lens/_bundle.py": "original-source-pending",
+    "src/evidence_lens/_index.py": "original-source-pending",
+    "src/evidence_lens/_metrics.py": "original-source-pending",
+    "src/evidence_lens/_snapshot.py": "original-source-pending",
+    "src/evidence_lens/_telemetry.py": "original-source-pending",
+    "src/evidence_lens/_verify.py": "original-source-pending",
+    "src/evidence_lens/_worker.py": "original-source-pending",
+    "src/evidence_lens/archive.py": "original-source-pending",
+    "src/evidence_lens/blender_reference/__init__.py": "original-source-pending",
+    "src/evidence_lens/blender_reference/passes.py": "original-source-pending",
+    "src/evidence_lens/blender_reference/produce.py": "original-source-pending",
+    "src/evidence_lens/blender_reference/scene.py": "original-source-pending",
+    "src/evidence_lens/blender_reference/validation.py": "original-source-pending",
+    "src/evidence_lens/blender_reference/verify_reference.py": "original-source-pending",
+    "src/evidence_lens/comparison_board.py": "original-source-pending",
+    "src/evidence_lens/evaluation.py": "original-source-pending",
+    "src/evidence_lens/features.py": "original-source-pending",
+    "src/evidence_lens/generator_adapter.py": "original-source-pending",
+    "src/evidence_lens/labels.py": "original-source-pending",
+    "src/evidence_lens/recorder.py": "original-source-pending",
+    "src/evidence_lens/renderer_adapter.py": "original-source-pending",
+    "src/evidence_lens/risk_model.py": "original-source-pending",
+    "src/evidence_lens/scoring_io.py": "original-source-pending",
+    "tests/test_cpu_p2.py": "original-source-pending",
+    "tests/test_public_source.py": "original-source-pending",
+    "tests/test_recording.py": "original-source-pending"
+  }
+}

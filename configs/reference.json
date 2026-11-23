@@ -1,0 +1,74 @@
+{
+  "scene_id": "scene_001_tabletop/v001",
+  "scene_family_id": "scene_001_tabletop",
+  "reference": {
+    "schema": "el-reference-config-1",
+    "blender_version": [4, 5, 16],
+    "width": 512,
+    "height": 512,
+    "preview_width": 256,
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 96,
+    "denoiser": "OPENIMAGEDENOISE",
+    "max_bounces": 2,
+    "diffuse_bounces": 1,
+    "seed": 1931,
+    "repeat_seed": 3797,
+    "pixel_filter": "BLACKMAN_HARRIS",
+    "filter_width": 1.5,
+    "color": {"display": "sRGB", "view": "Standard", "look": "None", "exposure": 0, "gamma": 1},
+    "world_strength": 0.45,
+    "world_color_linear": [0.72, 0.77, 0.82],
+    "area_light": {"location": [-1.20, -1.10, 2.70], "aim": [0.0, 0.0, 0.83], "size_m": 1.10, "energy_w": 95.0, "color_linear": [1.0, 0.96, 0.91]},
+    "camera": {
+      "lens_mm": 42, "sensor_mm": 36, "clip_m": [0.05, 30.0], "aim": [0, 0.05, 0.96],
+      "positions": {
+        "source": [0.0, -1.78, 1.20],
+        "v01": [-0.17, -1.78, 1.20],
+        "v02": [0.17, -1.78, 1.20],
+        "v03": [-0.25, -1.76, 1.21],
+        "v04": [0.25, -1.76, 1.21],
+        "v05": [-0.12, -1.82, 1.31],
+        "v06": [0.12, -1.74, 1.29]
+      },
+      "development": ["v01", "v02"]
+    },
+    "material_roughness": 0.65,
+    "materials": {
+      "plaster": {"linear": [0.54, 0.58, 0.55]},
+      "floor": {"linear": [0.17, 0.17, 0.15]},
+      "timber": {"linear": [0.39, 0.25, 0.13], "checker_linear": [0.43, 0.28, 0.16], "scale": 10},
+      "legs": {"linear": [0.18, 0.10, 0.05]},
+      "terracotta": {"linear": [0.66, 0.16, 0.066]},
+      "blue": {"linear": [0.06, 0.27, 0.39]},
+      "cream": {"linear": [0.77, 0.61, 0.34]},
+      "green": {"linear": [0.16, 0.32, 0.21]},
+      "dark": {"linear": [0.055, 0.075, 0.095]}
+    },
+    "objects": [
+      {"id": 1, "name": "Wall", "material": "plaster", "center": [0, 1.14, 1.50], "size": [6, 0.08, 3.0]},
+      {"id": 2, "name": "Floor", "material": "floor", "center": [0, 0, -0.035], "size": [6, 6, 0.07]},
+      {"id": 3, "name": "Table top", "material": "timber", "center": [0, 0.01, 0.715], "size": [1.58, 1.22, 0.07]},
+      {"id": 4, "name": "Table leg front left", "material": "legs", "center": [-0.66, -0.48, 0.34], "size": [0.072, 0.072, 0.68]},
+      {"id": 5, "name": "Table leg front right", "material": "legs", "center": [0.66, -0.48, 0.34], "size": [0.072, 0.072, 0.68]},
+      {"id": 6, "name": "Table leg back left", "material": "legs", "center": [-0.66, 0.50, 0.34], "size": [0.072, 0.072, 0.68]},
+      {"id": 7, "name": "Table leg back right", "material": "legs", "center": [0.66, 0.50, 0.34], "size": [0.072, 0.072, 0.68]},
+      {"id": 10, "name": "Foreground red block", "material": "terracotta", "center": [-0.08, -0.31, 0.945], "size": [0.32, 0.28, 0.39]},
+      {"id": 20, "name": "Partly hidden blue box", "material": "blue", "center": [-0.11, 0.31, 0.98], "size": [0.55, 0.25, 0.46]},
+      {"id": 30, "name": "Round canister", "material": "green", "center": [0.39, 0.11, 0.855], "radius": 0.096, "depth": 0.21},
+      {"id": 31, "name": "Canister lid", "material": "cream", "center": [0.39, 0.11, 0.969], "radius": 0.10, "depth": 0.018},
+      {"id": 40, "name": "Base for thin stems", "material": "cream", "center": [-0.48, 0.10, 0.771], "size": [0.16, 0.12, 0.042]},
+      {"id": 41, "name": "Thin left stem", "material": "dark", "center": [-0.522, 0.10, 0.932], "radius": 0.0075, "depth": 0.28},
+      {"id": 42, "name": "Thin right stem", "material": "dark", "center": [-0.454, 0.10, 0.959], "radius": 0.0055, "depth": 0.334}
+    ],
+    "validation": {
+      "ray_epsilon_abs_m": 0.0001, "ray_epsilon_rel": 0.0001,
+      "edge_radius_px": 2, "projection_tolerance_px": 0.10, "render_pixel_tolerance_px": 1.0,
+      "plane_relative_tolerance": 0.0001, "display_tolerance_code_values": 1,
+      "noise_mae_max": 0.005, "noise_pixel_mae_threshold": 0.05, "noise_exceedance_fraction_max": 0.001,
+      "band_min_width_px": 10, "band_min_interior_pixels": 24, "source_min_observed_fraction": 0.999,
+      "occluder_id": 10, "revealed_object_id": 20
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "el-storage-1",
+  "local_free_floor_bytes": 32212254720,
+  "local_active_batch_target_bytes": 21474836480,
+  "review_total_bytes": 350000000000,
+  "pause_expansion_total_bytes": 450000000000,
+  "nominal_archive_budget_bytes": 500000000000,
+  "margin_fraction": 0.5
+}

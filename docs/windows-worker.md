@@ -1,0 +1,9 @@
+# Windows research worker
+
+Use a project-local virtual environment on the chosen research drive. Record Windows, free space, GPU, driver, Toolkit, MSVC, Ninja and package versions first. The recorder and producer can use the same Python environment on Windows. A full research run needs a CUDA-capable PyTorch 2.8.0, torchvision 0.23.0, gsplat 1.5.3 and an editable, clean SHARP checkout at the commit in the B0 configuration. Choose the PyTorch CUDA build to match the installed driver and the compiler toolchain for gsplat. Source, weights, package caches, temporary build products and runs belong on the research volume.
+
+Download the official checkpoint from the URL in `configs/windows-b0.json`. Verify byte count and SHA-256 against this file. The worker also validates the checksum before the official predictor loads it. Code and weights have separate licenses. [SHARP installation and use](https://github.com/apple-aiml-research/ml-sharp/tree/aed6527499ef91cba3b54c18d49a870f25947190)
+
+A handoff carries an exact copy of the source PNG, camera calibration, reference run ID/manifest hash and allowlisted worker source. The generating process reads the source image and known source focal length. The renderer reopens the PLY with the pinned SHARP reader, blends in linear RGB using gsplat, converts once to display sRGB and exports FP32 data, PNG previews and actual measured resource figures. The source self-render is a diagnostic and the other six views are targets.
+
+Transfer complete generation and render run containers with their SHA-256 values. The receiver resolves the reference run and any shared checkpoint by content hash before importing the generation run, then imports the rendering run. A transfer failure is recorded separately from computation. A known-depth calibration failure disables depth-based study. The source self-render's appearance is reported whatever the measured error.
