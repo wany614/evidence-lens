@@ -1,0 +1,12 @@
+{
+  "schema": "el-phase1-backdrop-protocol-1",
+  "selection": "All 24 original scene families, seven B0 cameras each, and the four existing R1 source grids.",
+  "question": "Can any primary camera ray in the frozen image reach the illuminated World, while splats composite onto black?",
+  "padding_pixels": 4,
+  "geometry": "Project the padded sensor rectangle onto an interior plane of the opaque back wall. At corners the ray must point forward, remain inside the wall width and below its top, and reach the plane before the far clip. The camera, the near plane and all four wall-plane hits must be inside the floor footprint; the near plane must be above the floor. The floor meets the wall at its foot. Linear-fractional projection with positive denominators attains its extremes at vertices. Rays below the wall therefore cross the opaque floor first.",
+  "required_covered_reference_pixels": "Every archived native central ray in all seven views of each B0 family",
+  "control": "Lowest ordinal train family, archived source camera. Keep the World as an illuminant and disable only camera-ray visibility. Compare full source RGB and all geometry samples with the unmodified World. For an open view, hide the authored meshes and render the lit and camera-hidden World. The corrected empty-camera RGB must be zero. No network inference or new training is involved.",
+  "max_closed_linear_rgb_change": 0.000002,
+  "max_open_corrected_linear_rgb": 0.0000001,
+  "min_open_original_linear_rgb": 0.05
+}

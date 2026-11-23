@@ -1,0 +1,14 @@
+{
+  "schema": "el-phase1-depth-object-name-alias-1",
+  "plan_sha256": "7fbaaf23c12473e766172895538f3979dd4ee1f01923b06e517ea240f3901699",
+  "source": "The archived P2 tabletop scene names object ID 1 Wall and ID 2 Floor. Formal scenes use Studio back wall and Studio floor. Both names authenticate the same existing wall/floor classifier. IDs and metrics remain as registered.",
+  "mesh_id_1_names": [
+    "Wall",
+    "Back wall",
+    "Studio back wall"
+  ],
+  "mesh_id_2_names": [
+    "Floor",
+    "Studio floor"
+  ]
+}

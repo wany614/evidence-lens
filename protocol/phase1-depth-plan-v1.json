@@ -1,0 +1,585 @@
+{
+  "schema": "el-phase1-depth-plan-1",
+  "objective": "A1/A2 diagnostic and fixed original B0 reproduction; no fitted deployment changes",
+  "sample_rule": "Smallest catalog identifier for train and development B0; B0 and existing R1 for all four original test families. Strictly use independently sealed matching native camera grids; newly rendered R1 256 source truth requires immutable IDs and direct lineage; never resample metric depth.",
+  "catalog_sha256": "fb7fabef06d006c992bc38cb03c283a41d90238e0b174664a1357f274bb36baa",
+  "roadmap_sha256": "6afe8e6e3318ba9cec256a18b63e3ac28dc064248d2c77a85baa98de16290808",
+  "source_commit": "e2b06a4c1bb6e922174b77f70df30eda070caf1b",
+  "original_comparison_protocol": {
+    "schema": "el-comparison-protocol-1",
+    "files": {
+      "protocol/analysis-addendum-v1.json": "cf5c061d5412453a7f9993e74ff35e7e5aec84c61cbc0c8c472f68891f66f124",
+      "protocol/operating-points-v1.json": "ece6ca231f3b32fd3492881722527e7bd08d70c728c50860cb5e7b923dfe97ac",
+      "protocol/study-v1.json": "d1d5e47820a619697f2c07a9a16f121b24eb6241e18d882b228f832c8a0e04c8",
+      "scripts/report_study.py": "67fda7c50a598bd1d080795965d8d28f7b60e8acee658332294348dbc6c33035",
+      "src/evidence_lens/_bundle.py": "024d7d3ce9a6c9d78839c60b2a55c07fde0f3887a96495cfe4ba7ae8ba576708",
+      "src/evidence_lens/comparison_board.py": "d3e09fe575c999c4c5ebc23b4d017fc66d202dc7ed51e3863125951dd564874a",
+      "src/evidence_lens/evaluation.py": "f25afca21a343be17237706eec415b81db1b93278889e81855fbe31ffe602c0a",
+      "src/evidence_lens/features.py": "2748d73ded4d8391ab915280be45a85d53d6a172f3ee872662b9df15d3a2613b",
+      "src/evidence_lens/formal_board.py": "bee6fa85f7873c65d88dcd52cff7b0e141f1f4c4e7eed62844bed5d0d74d6fa4",
+      "src/evidence_lens/formal_evaluation.py": "5c4563e0eca20284d8620133076b0788bd21f9205aaa9a4607bf62cf81f73443",
+      "src/evidence_lens/formal_inputs.py": "a4c201dbbb3ad76e4bafda10008bfd0975639caafc880d769c1fe773ffba9fd4",
+      "src/evidence_lens/formal_metrics.py": "5233d40b918309a344f869c456053c660eb45ca8bea91c55b26ef8c775d0fea9",
+      "src/evidence_lens/formal_report.py": "d5b10b75b24bae0ac1b5bc9f90aaa9f1029e7b7286ff9130abcf7506fa465a4b",
+      "src/evidence_lens/formal_roster.py": "83d6a97d731db8f405c07a182dedbfdbc47261c780f8d75a52a9b8deb2fbdd5b",
+      "src/evidence_lens/l1.py": "9527cd6720c6891cd96e03e8a2a3a946e76a0d5b00951d7babe267108c58a06e",
+      "src/evidence_lens/labels.py": "feeaa173848e8a8cb0da6c6f9c7a051a6d6cb4343024d558583c3c0b37131f1b",
+      "src/evidence_lens/risk_model.py": "21b310d8df2534c8db4c5d21f6c869e0dc8044c312229dcd16f7467287c8e7ad",
+      "src/evidence_lens/scoring_io.py": "682bbd3fd1f6533d42f6900390d944372deca22c6192472e06cf57e1c90405aa"
+    },
+    "comparison_protocol_sha256": "30fd194160cb74da1adc244c643d2f1cb13f8d1b6a89744b3904480f4055c3be"
+  },
+  "cases": [
+    {
+      "family": "scene_001_tabletop",
+      "condition": "B0",
+      "trial": "tabletop-v001-b0",
+      "selection_sha256": "32f4ea2a1b0fdc09038e7413f6461aa334d15042f807895b4bca286535e4cf15",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T031842968246Z-23caeedcc81b418d",
+          "manifest_sha256": "92f2bcde6d923be1e5b23e16daa8aa71fe72cfae33bf10e981100c3b67e0e52d"
+        },
+        "generation": {
+          "run_id": "20261123T025225983821Z-72d21f01909d480d",
+          "manifest_sha256": "915c51b97b179a72d384c0a53753420d1594b0c5f205b226ae38608646dd6152"
+        },
+        "readback": {
+          "run_id": "20261123T025531301162Z-c7dc5d6a84dc4b29",
+          "manifest_sha256": "23a02522731d7aa9d3db7ebaf43e8756d88a136607cb350d76d2db97ff87e25f"
+        },
+        "recompute": {
+          "run_id": "20261123T031939618626Z-92beb13620364c80",
+          "manifest_sha256": "30b27026aa1fd3bb846c110325083209ff51e920126f8da2d7dca98a3247dcda"
+        },
+        "reference": {
+          "run_id": "20261123T023609071040Z-9fad7aa54fc84008",
+          "manifest_sha256": "2a0f114e09ae431ec8ab7efc1efa38ea5e7de8ff7b0125635a5f6fb1881708e4"
+        },
+        "render": {
+          "run_id": "20261123T031358556994Z-3a09c7b93228469a",
+          "manifest_sha256": "4529cb93f91351799b0a9fba2891f4cdd8bc1f5bc0bca05b823ea245fe0318c4"
+        },
+        "score": {
+          "run_id": "20261123T031816529358Z-5480fa787c574216",
+          "manifest_sha256": "426ca9db3863895868252f09adef2c313cc8e5ea11bca56316d033f0b80098f6"
+        }
+      }
+    },
+    {
+      "family": "scene_017_cycle_stand",
+      "condition": "B0",
+      "trial": "scene_017_cycle_stand-B0",
+      "selection_sha256": "83ffe51368cc0145950ab93384e019292ee8a2cd50fe06a512fcdc6d54570c0e",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T042551910360Z-e0c0b472f28b4908",
+          "manifest_sha256": "de5106260a6f8d0f2701cf6b52a48e5915d9c379c489d85ee628a09df7018026"
+        },
+        "generation": {
+          "run_id": "20261123T042325147045Z-93b4aacd1e544b22",
+          "manifest_sha256": "d607fb782f2540b9b2a8edc32a22987c88b4958e81c26b5446b8117ffbf2ca48"
+        },
+        "readback": {
+          "run_id": "20261123T040309519888Z-e31e79ee2b4743d1",
+          "manifest_sha256": "97d5d22ea459edc43eaef282450a0fc8dc335f40899891bda6e04efdd6bddf42"
+        },
+        "recompute": {
+          "run_id": "20261123T042555871781Z-a550314dac994874",
+          "manifest_sha256": "4f811c598fea9fe49b9b1e75537d5c59d834b24de356ddf79c731f8e9b0172fa"
+        },
+        "reference": {
+          "run_id": "20261123T040231149052Z-c079cd129c1643cb",
+          "manifest_sha256": "6a1ec33b9db32c63d499038484394ef3f7c79a12471158d867b0cc726ae377a2"
+        },
+        "render": {
+          "run_id": "20261123T042422084548Z-ed70518efc24434b",
+          "manifest_sha256": "dfbddcbd003f7eb1549a86b2e4d778926a28c01ae2a4b0c622427220cef5b1f1"
+        },
+        "score": {
+          "run_id": "20261123T042547235255Z-9f14cee57a404ffc",
+          "manifest_sha256": "532caf652abac912f87f96667f4fbea77eb450f2356dee453e5397ce41315551"
+        }
+      }
+    },
+    {
+      "family": "scene_021_drum_kit",
+      "condition": "B0",
+      "trial": "scene_021_drum_kit-B0",
+      "selection_sha256": "d1c6238b952a114fab7b802378d52a4dcbfe9d7ef4200323db1a428041904dab",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T043504452723Z-21237cd446064498",
+          "manifest_sha256": "5d0d761ac74fd7a6335a61e3d3db198116504ec3c8563eff9b9ab83e5d554b9b"
+        },
+        "generation": {
+          "run_id": "20261123T043251457453Z-dc2314eabf274113",
+          "manifest_sha256": "b2cc8c76542a94c3bc48c33b4d1c3ea377adfce59ec8068ff05eef6ae1040d82"
+        },
+        "readback": {
+          "run_id": "20261123T042916228739Z-89e8835b5b8143e8",
+          "manifest_sha256": "24b20c7f9cab228ead6880b178571054598907ac3de5996fde866be096d34914"
+        },
+        "recompute": {
+          "run_id": "20261123T043508824527Z-a8b7caac1e8c4ba2",
+          "manifest_sha256": "66e24b2e553f1867077bbc2d93ed25c023cbbcd61d2c99ca2a16ecce0ca4b744"
+        },
+        "reference": {
+          "run_id": "20261123T042832083384Z-a8a2585e6ee541ed",
+          "manifest_sha256": "06240e936785b45a11f6103fd8bd4b8ad31e1814fdf2aa816a5dc3458ffbc276"
+        },
+        "render": {
+          "run_id": "20261123T043348309957Z-591a8eecf7624fb9",
+          "manifest_sha256": "51c24c7740a8a6991687ae76dfcf2dffab0fd3cea6f8fc227c85531ddc69fb22"
+        },
+        "score": {
+          "run_id": "20261123T043459577630Z-d1d7bea0617c48df",
+          "manifest_sha256": "846860098e566e3a54b5df18a5a8dffd027ced2d425bb6510eb0187e4674d6f4"
+        }
+      },
+      "comparison_marker_sha256": "a323bd354c10b4988f3b251cd9b076289ca4514d2df5fa131fc62955acc25cd0",
+      "comparison": {
+        "manifest_sha256": "734af9fcb077329caf995642d87e0a65132318193f7f0350037fb17bb8f8cf83",
+        "run_id": "20261123T043517734554Z-513c8ab5312f44cd"
+      },
+      "learned": {
+        "manifest_sha256": "5866868cd0e22958c8ce5450299ea1c30e4d747cb5fdb70d774953a6e5f6bb94",
+        "run_id": "20261123T043515171358Z-7cfc8f91f4a14655"
+      }
+    },
+    {
+      "family": "scene_021_drum_kit",
+      "condition": "R1",
+      "trial": "scene_021_drum_kit-R1",
+      "selection_sha256": "d40ca4c450adf5f2b4a57c523eeba044624436179c98b306cccf3a8c269226c1",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T044511331412Z-b0d5e2df95504549",
+          "manifest_sha256": "46a76bc1f422bfeb9a6941235adf95b7e1a3906ec4b427345a113b6a77426e22"
+        },
+        "generation": {
+          "run_id": "20261123T044257346059Z-9952dd93926241e7",
+          "manifest_sha256": "d43701049fc647be98babfa121309ea914aa17bf567d9a7af2136bb21648f097"
+        },
+        "preparation": {
+          "run_id": "20261123T043900098999Z-a240953784b048b7",
+          "manifest_sha256": "78b0d9b239c43ea155fb316372684a2d5caa7dee7f20d874df1ae77bfc9e8783"
+        },
+        "producer": {
+          "run_id": "20261123T044257346059Z-9952dd93926241e7",
+          "manifest_sha256": "d43701049fc647be98babfa121309ea914aa17bf567d9a7af2136bb21648f097"
+        },
+        "readback": {
+          "run_id": "20261123T042916228739Z-89e8835b5b8143e8",
+          "manifest_sha256": "24b20c7f9cab228ead6880b178571054598907ac3de5996fde866be096d34914"
+        },
+        "recompute": {
+          "run_id": "20261123T044514021219Z-7f308dcc62124da8",
+          "manifest_sha256": "9ecf94fee8b510f37a40faf957a40ef21cf65ba48833f2ed81834142251cc6a0"
+        },
+        "reference": {
+          "run_id": "20261123T042832083384Z-a8a2585e6ee541ed",
+          "manifest_sha256": "06240e936785b45a11f6103fd8bd4b8ad31e1814fdf2aa816a5dc3458ffbc276"
+        },
+        "render": {
+          "run_id": "20261123T044353645738Z-188ebc74ce624467",
+          "manifest_sha256": "d9c5cd40e2e79be122075207ebea4e38570f7dc3ea6580aba90a2c3d7e8142c0"
+        },
+        "score": {
+          "run_id": "20261123T044508334473Z-c8002d36643140cb",
+          "manifest_sha256": "9434c38987ccb6433cb844c2e0c6046f4eb5bc7fabc250e4c39c9dd8a5d5d79c"
+        }
+      },
+      "comparison_marker_sha256": "26c0da8379b47c6c76321364d281290ca7a271482874b1f32e417d5b9cafe388",
+      "comparison": {
+        "manifest_sha256": "8ac0a92ed4c4b4081ccd6f57ec5c2908b6c9c905a19dfe53cfba538ca086733d",
+        "run_id": "20261123T044519669554Z-beefa94675e5467a"
+      },
+      "learned": {
+        "manifest_sha256": "d6c52fe5a5659c09b27d34dce0b029099c8a20b1ee9e727202ae6898d236e259",
+        "run_id": "20261123T044517269526Z-e600f9e77f224959"
+      }
+    },
+    {
+      "family": "scene_022_picket_gate",
+      "condition": "B0",
+      "trial": "scene_022_picket_gate-B0",
+      "selection_sha256": "9e135376655b2fecabd248615499ba209a2b13779e0d02938a48bda2aeb77005",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T043618782160Z-adfb17955bf843bf",
+          "manifest_sha256": "0de970dfffb96dca0abbff9e6a97a8418ce674313cc9f55bdb3960edcd4ee273"
+        },
+        "generation": {
+          "run_id": "20261123T043404944118Z-d21f0b6372a74011",
+          "manifest_sha256": "d1565508915af781c7256ee1ab8941dfd2b366373ece211764699c622a51fd6e"
+        },
+        "readback": {
+          "run_id": "20261123T042958058452Z-9ae3c5cb712c473c",
+          "manifest_sha256": "f6abd6e3a79fc562b969799920dd59572f1d91117744beeebc59ea33384d9fb5"
+        },
+        "recompute": {
+          "run_id": "20261123T043622759275Z-32f6d2f4c5cf4c1d",
+          "manifest_sha256": "9878831920ffcd7f87a32e4bfcf679ddb5cb85963f1d9e9a4dbee2c3f0e66052"
+        },
+        "reference": {
+          "run_id": "20261123T042919788702Z-572fe61ed4094ece",
+          "manifest_sha256": "b69f1281b50923017a13584e35536b8e45e6c4d361ae336889cd043a527c2433"
+        },
+        "render": {
+          "run_id": "20261123T043502826784Z-bed20d3935ec4938",
+          "manifest_sha256": "739191adef26de7b0cfb4e5d8dbe0db824e13ecc07fdc84be4a94f6a5ac56c13"
+        },
+        "score": {
+          "run_id": "20261123T043614237873Z-03a34dbb3bc04890",
+          "manifest_sha256": "de3f4a11c87fbfa5fcf0ba7fbdac6f1429a26ed92bd12cd3a7db380fe164630f"
+        }
+      },
+      "comparison_marker_sha256": "e10651a3b51c2a4d14fa6eb89882826dec30ab864f707323673751ce1037823a",
+      "comparison": {
+        "manifest_sha256": "f2d0ccd3b43ea3e236b83400e3f8658dd48b1f03d4e39dde096fd2cef70d3c5f",
+        "run_id": "20261123T043630783262Z-bc8afa692e504045"
+      },
+      "learned": {
+        "manifest_sha256": "2e8f93adf1ed52065f01df8de308c39b8f71f0e8e3e9cca909b100de3b99b2ad",
+        "run_id": "20261123T043628317289Z-8c64e5d167d34bec"
+      }
+    },
+    {
+      "family": "scene_022_picket_gate",
+      "condition": "R1",
+      "trial": "scene_022_picket_gate-R1",
+      "selection_sha256": "f4ca7f7d90f80dcb4043bf57367c145fe721180034ce473805ee8b3b5a2b5c13",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T044806892450Z-a2a9fb42bb954cbc",
+          "manifest_sha256": "5f9fcf7d98a3485fdb994fb545c631abd8602aeabb5d5824b5450fa3e560fe20"
+        },
+        "generation": {
+          "run_id": "20261123T044429513230Z-20fa0e3235a14a02",
+          "manifest_sha256": "e7979706cb94a3a473631bd971fd3afaa3c938b0d1fe961d744e5ff6f691611c"
+        },
+        "preparation": {
+          "run_id": "20261123T043903850107Z-0a68c7f113c346dc",
+          "manifest_sha256": "93f2e830e5b285f29733fab7a8a14f72bdadd0b49b8dde95749404e7742ed240"
+        },
+        "producer": {
+          "run_id": "20261123T044429513230Z-20fa0e3235a14a02",
+          "manifest_sha256": "e7979706cb94a3a473631bd971fd3afaa3c938b0d1fe961d744e5ff6f691611c"
+        },
+        "readback": {
+          "run_id": "20261123T042958058452Z-9ae3c5cb712c473c",
+          "manifest_sha256": "f6abd6e3a79fc562b969799920dd59572f1d91117744beeebc59ea33384d9fb5"
+        },
+        "recompute": {
+          "run_id": "20261123T044809604374Z-5b70555b831e4b36",
+          "manifest_sha256": "52512f4a585b73304dd058665bdc46a6a86b0f331001730eaf6b4bbbcfb800a0"
+        },
+        "reference": {
+          "run_id": "20261123T042919788702Z-572fe61ed4094ece",
+          "manifest_sha256": "b69f1281b50923017a13584e35536b8e45e6c4d361ae336889cd043a527c2433"
+        },
+        "render": {
+          "run_id": "20261123T044526919607Z-293d96d6f9de47b3",
+          "manifest_sha256": "b6bd97e2367e31789da1501bb7624abc3f82e5de0be6fc7c39273e2083954197"
+        },
+        "score": {
+          "run_id": "20261123T044803872863Z-9b040be362b141b7",
+          "manifest_sha256": "a1b9b69494ec4814ace38a3d7d0d63b6cf7ab9932827c2762212d228c5c13573"
+        }
+      },
+      "comparison_marker_sha256": "480268db72a9d6cd22e8955af3fa1fd52bd23910d1d94552d4cb9ae36e5f25dc",
+      "comparison": {
+        "manifest_sha256": "5fe3b3bbbec78f24723bb34f04675d810fc5e1dcf45523c622c02adb82e1b26b",
+        "run_id": "20261123T044911929435Z-19582d7f03994f7e"
+      },
+      "learned": {
+        "manifest_sha256": "7e730bc227de2705699218aef6af2a1d145d790f715ccbc5bfe85c893c77c0bb",
+        "run_id": "20261123T044909387943Z-62a9404a5e6e42c7"
+      }
+    },
+    {
+      "family": "scene_023_potters_wheel",
+      "condition": "B0",
+      "trial": "scene_023_potters_wheel-B0",
+      "selection_sha256": "79e74f87a749d770c11668496836233b61de2bbf36ec976cc00d577c35d532d8",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T043733801221Z-a6901106db3e4a52",
+          "manifest_sha256": "7dcbf02a432fe4498a2492180c2e2afcc4274a12cc1cf4c7b5d645a54d2c0761"
+        },
+        "generation": {
+          "run_id": "20261123T043519582751Z-5f7d4436bacf44f8",
+          "manifest_sha256": "3a2bdea2d24da9d4c746575792a7bd306f9ff0cd1596cbf297d0ed0099abb0ea"
+        },
+        "readback": {
+          "run_id": "20261123T043036415812Z-d49a3b42cf8b4c77",
+          "manifest_sha256": "c5b6ed2c7bfbec0ebde527a32c68609ae64cb6291d5f677264f7e29da39a1454"
+        },
+        "recompute": {
+          "run_id": "20261123T043737778139Z-c06c5dca02824dca",
+          "manifest_sha256": "7c68955196521065359ccc9858f6414c5d5c369272905245043493a86164ac32"
+        },
+        "reference": {
+          "run_id": "20261123T043000032013Z-934266740ee84432",
+          "manifest_sha256": "b18bf51ea342d2192e4f225ab0c382b0be815d86b93b44f7b8972a2a61fbbf5a"
+        },
+        "render": {
+          "run_id": "20261123T043616676097Z-c5ef17fd153d4253",
+          "manifest_sha256": "c94108e183829fde714a601beaf6ae350534c532e56c1e38458ff94d011d45c0"
+        },
+        "score": {
+          "run_id": "20261123T043729248067Z-630ce87d58784d35",
+          "manifest_sha256": "21091a8fdb437b28f821a3143751a36f2ac3ae79e854fb545f32b12ceeadd14f"
+        }
+      },
+      "comparison_marker_sha256": "e86b3658623bfc906e23f986bd80483bb18c95c44c9c22efb285040bb9ea2f44",
+      "comparison": {
+        "manifest_sha256": "d3af5d98fecaf790a9b2d5b7332955d11afcb94ade3c668b23024fb65df1e14e",
+        "run_id": "20261123T043743870001Z-fc37aaa8ff7e4e2b"
+      },
+      "learned": {
+        "manifest_sha256": "ecc735a1101d14d7e828adf8c11cfc84e88faefb394848e6f5760f340d029f41",
+        "run_id": "20261123T043741296985Z-079db12196a54c11"
+      }
+    },
+    {
+      "family": "scene_023_potters_wheel",
+      "condition": "R1",
+      "trial": "scene_023_potters_wheel-R1",
+      "selection_sha256": "82f61f11898bc3cbbe9366db5942de52dceaf88ca894c5c00c14f7e397bd4405",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T045003374280Z-2dcac4b61eee4ec1",
+          "manifest_sha256": "03ea5d1b3eb26f8eaefe5052b2dd3df0b4006e8baad52a708532964bc513b641"
+        },
+        "generation": {
+          "run_id": "20261123T044602429160Z-a0c179b4b6384ccb",
+          "manifest_sha256": "a09c2e00563912275942495491e632083b705440aa2b69aa4753c4b342066377"
+        },
+        "preparation": {
+          "run_id": "20261123T043907470119Z-d412396afec8441d",
+          "manifest_sha256": "f3d267b870c94992edff32fa675ef3326a691c33e3156e00f9d7430cafdc8ced"
+        },
+        "producer": {
+          "run_id": "20261123T044602429160Z-a0c179b4b6384ccb",
+          "manifest_sha256": "a09c2e00563912275942495491e632083b705440aa2b69aa4753c4b342066377"
+        },
+        "readback": {
+          "run_id": "20261123T043036415812Z-d49a3b42cf8b4c77",
+          "manifest_sha256": "c5b6ed2c7bfbec0ebde527a32c68609ae64cb6291d5f677264f7e29da39a1454"
+        },
+        "recompute": {
+          "run_id": "20261123T045006181343Z-51419297a4c247ba",
+          "manifest_sha256": "a1c3b25eef194efc9eae130783e9350a185a6e67970012c15c0a8e1748c4f49e"
+        },
+        "reference": {
+          "run_id": "20261123T043000032013Z-934266740ee84432",
+          "manifest_sha256": "b18bf51ea342d2192e4f225ab0c382b0be815d86b93b44f7b8972a2a61fbbf5a"
+        },
+        "render": {
+          "run_id": "20261123T044659593356Z-31eff11f18624b4b",
+          "manifest_sha256": "30d6c16b2c3641465f4c5f8c9b0c3370aec755a74a3c3e9a9e6503bb7983de94"
+        },
+        "score": {
+          "run_id": "20261123T045000279714Z-f9aff19a7e2e4dbe",
+          "manifest_sha256": "24ea084284dc5507814bdae54bbb43be6b876ffa66e78534d914117b0b88a28c"
+        }
+      },
+      "comparison_marker_sha256": "dfc8dc524cf81e28c5612d7b5a888cc28a2c2b6cb05b6495ff1e029c0351f0f0",
+      "comparison": {
+        "manifest_sha256": "291162a43fd45e8a81489e140cb6428ec73cf4b81aeddaf058122da1eac502ec",
+        "run_id": "20261123T045011445426Z-5f24af1daa874bcc"
+      },
+      "learned": {
+        "manifest_sha256": "77457d3463ab4135a62659a5a2de8bd8261da887371cdd8490503e9dd5128298",
+        "run_id": "20261123T045008745822Z-e29521cf90ac4649"
+      }
+    },
+    {
+      "family": "scene_024_orbital_mobile",
+      "condition": "B0",
+      "trial": "scene_024_orbital_mobile-B0",
+      "selection_sha256": "052e821ff702ec0f2bc70c41f4cc674393501ecdb2ae2428e0b46b1eff56e091",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T043848676480Z-5d581211b9284d90",
+          "manifest_sha256": "9ee91d2b961c8705cd7b991406c02a1e3de999ec014412b55b41e8d4e7ab7eda"
+        },
+        "generation": {
+          "run_id": "20261123T043633544314Z-8d7f881a83a446a0",
+          "manifest_sha256": "04ed2de022bfd67cab4613f332483f00cec2fe2556fe846a76e56c1274d9d792"
+        },
+        "readback": {
+          "run_id": "20261123T043115645814Z-b20d4eb79c654306",
+          "manifest_sha256": "7a71aa117340dffbed7fdda3cbb8c6a01cd01dd8a2d93c137928ba6f6499aaea"
+        },
+        "recompute": {
+          "run_id": "20261123T043852576356Z-4152f51d6d304261",
+          "manifest_sha256": "f557cb864b071505a83c665293c42932e9a3f32e3f2d105782b18f61a053a716"
+        },
+        "reference": {
+          "run_id": "20261123T043038873348Z-e6978258df584338",
+          "manifest_sha256": "9ee2ab048dcdfc744cadb1c18ad4b217d9b02b5a98e6bdb3e5b156df146be028"
+        },
+        "render": {
+          "run_id": "20261123T043731351841Z-3e191e75bdfb4cdc",
+          "manifest_sha256": "8ba50e1e5620a5182a3b016e9b35eaa7d32c0362da9cce988cdca25dbdab581b"
+        },
+        "score": {
+          "run_id": "20261123T043844076335Z-fc03f40feb314295",
+          "manifest_sha256": "03986106b46c012f6cb8075577f4700e81b33704d306fb65e77e975c66cead54"
+        }
+      },
+      "comparison_marker_sha256": "f73e70b45ebe3820499f1e8157ab72d44e23947b0955a45b4dbf777d4e3c7027",
+      "comparison": {
+        "manifest_sha256": "dcedc1bd41f7e824626403598504590af71f21d98c7fe1e3698ed0d7e7fe9cc2",
+        "run_id": "20261123T043901188148Z-d269e710b19840ce"
+      },
+      "learned": {
+        "manifest_sha256": "56c5620a6027cbbb5c61bd280477e5303267f2c8dfaab489aab7e57d2acff39f",
+        "run_id": "20261123T043858394180Z-c66f135a24fd48e6"
+      }
+    },
+    {
+      "family": "scene_024_orbital_mobile",
+      "condition": "R1",
+      "trial": "scene_024_orbital_mobile-R1",
+      "selection_sha256": "aee2887f5398cab745ce9457e13366fcb141990fbd747e5ccf67308b0960aa15",
+      "selected": {
+        "evaluation": {
+          "run_id": "20261123T045204757382Z-04000fb4c4e14c6e",
+          "manifest_sha256": "4d56fa0d9ee6ff7b9252183c631907ebf7d1164b7d7db8607770f87fcf02c02c"
+        },
+        "generation": {
+          "run_id": "20261123T044735137503Z-d133d8858f7046b2",
+          "manifest_sha256": "edf6047005ba185ff7e79cab0dfb93cfc51fd694e702dcf79f692922c09191e6"
+        },
+        "preparation": {
+          "run_id": "20261123T043910850027Z-20ed23d5b2614da3",
+          "manifest_sha256": "ee9db189ef865d9e577a7bd46233d0dc72da4de508ab6b237e76a83fdb31bee3"
+        },
+        "producer": {
+          "run_id": "20261123T044735137503Z-d133d8858f7046b2",
+          "manifest_sha256": "edf6047005ba185ff7e79cab0dfb93cfc51fd694e702dcf79f692922c09191e6"
+        },
+        "readback": {
+          "run_id": "20261123T043115645814Z-b20d4eb79c654306",
+          "manifest_sha256": "7a71aa117340dffbed7fdda3cbb8c6a01cd01dd8a2d93c137928ba6f6499aaea"
+        },
+        "recompute": {
+          "run_id": "20261123T045207768970Z-859433c373b84de3",
+          "manifest_sha256": "982fd3550d73dd70f7e61feac974dadd91b128fa9c974f3ec12ece6a6af6c4b9"
+        },
+        "reference": {
+          "run_id": "20261123T043038873348Z-e6978258df584338",
+          "manifest_sha256": "9ee2ab048dcdfc744cadb1c18ad4b217d9b02b5a98e6bdb3e5b156df146be028"
+        },
+        "render": {
+          "run_id": "20261123T044836520562Z-2c69c37237fa4223",
+          "manifest_sha256": "2908d18e61fbc61b88c1a2aee432d4c1fc0f7e2069595888ec91b95068c35fd2"
+        },
+        "score": {
+          "run_id": "20261123T045201024982Z-e11c198aabc94823",
+          "manifest_sha256": "69028bf2dd60940514b5381bc0a2e1fbc694d8009a567f119f77c94f52626e56"
+        }
+      },
+      "comparison_marker_sha256": "088a91ef7b54f3569c993adde5c199d388e50a6f870ddd9a07e1b062af5d5429",
+      "comparison": {
+        "manifest_sha256": "e2c08cc6af4b0a6d6d8244aa9670d10e1154b616d573d64cf668bca12c7cff6b",
+        "run_id": "20261123T045215075568Z-cce343bcf78d48c6"
+      },
+      "learned": {
+        "manifest_sha256": "d94a0a8134029a79234734c84348491aca4df94c54e6e68d4cdeefb1e74a621a",
+        "run_id": "20261123T045212474363Z-8531f27a57c447c1"
+      }
+    }
+  ],
+  "original_report": {
+    "run_id": "20261123T050620457525Z-a311c1632b7d4b1b",
+    "manifest_sha256": "209fb7f045a7e79aaa2113eb50a8823c4f0dbf66098e058ae4b201a826653aba"
+  },
+  "views": [
+    "source",
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "domains": {
+    "V": "finite reference RGB in every channel; E=V and finite predicted RGB in every channel. FP32 channel-mean absolute error; Y=RGB error strictly above float32 0.05.",
+    "surface": "finite positive reference camera-Z and all XYZ Position finite. Verify supplied reference_surface.",
+    "Z": "reproduce formal_metrics.view_statistics, region mask intersects label_view.depth_evaluable: surface AND verified positive finite expected camera-Z AND finite 0<=opacity<=1 AND opacity>=0.5. Record Z intersect E and Z outside E separately to expose RGB validity without modifying frozen numerators.",
+    "ZY": "FP32: abs(predicted camera-Z - reference camera-Z) > max(float32(0.02m),float32(0.02)*reference camera-Z). Total sums float64; pooled numerator/denominator across the six cameras per family then equal-family mean; source excluded from frozen aggregate."
+  },
+  "regions": {
+    "all": "unrestricted grid",
+    "foreground": "object id >=3, excluding both authored studio wall and floor",
+    "floor": "id 2 verified as Floor/Studio floor in sealed scene config",
+    "back_wall": "id 1 verified as Back wall/Studio back wall in sealed scene config",
+    "no_mesh": "id 0",
+    "edge": "frozen reference edge mask",
+    "interior": "complement of frozen edge",
+    "observed": "visibility=1",
+    "disoccluded": "visibility=2",
+    "outside_input_fov": "visibility=3",
+    "background_or_invalid": "visibility=0"
+  },
+  "stats": [
+    "region pixels,V,E,Y,invalid RGB,RGB MAE,median and signed per-pixel channel mean residual",
+    "surface,Z,ZY,surface-Z; disjoint reference and predicted validity/alpha failures; Z/E overlap",
+    "camera-Z absolute error MAE and median; signed difference mean/median and positive/negative/zero counts; signed relative mean/median, relative MAE; Z_pred/Z_ref exact linear quantiles .05,.25,.50,.75,.95. Ratio does not establish surface identity. Empty denominators represented by null.",
+    "B0/R1 source ratio and metric differences on independently compatible grids. No cross-grid pixel pairing.",
+    "authenticated render/generation metadata, PNG/array dimensions, K/c2w/w2c/units, codes/commits, source fpx and preprocessing; PLY metadata seal/size/SHA/property header."
+  ],
+  "views_for_private_boards": {
+    "scene_021_drum_kit": "v01",
+    "scene_022_picket_gate": "v01",
+    "scene_023_potters_wheel": "v01",
+    "scene_024_orbital_mobile": "v01"
+  },
+  "fixed_scales": {
+    "rgb": "shared display sRGB 0..1; identical image size conversion",
+    "rgb_error": [
+      0,
+      0.025,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "L1_full_score": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "state": "strictly score < frozen tau low; >= tau high; nonfinite on E unknown; outside E invalid, retain separate colors. Do not use Blender truth as input to scoring.",
+    "signed_z_m": [
+      -2,
+      0,
+      2
+    ],
+    "depth_ratio": [
+      0,
+      1,
+      2
+    ],
+    "rgb_integration": "owner private B0 v01 panels of input, ground truth/prediction, actual RGB error, L1-full score and low/high/unknown/invalid. Include raw counts, fixed legends and prior comparison IDs.",
+    "stratification_plot": "p05,median,p95 pred/ref ratios on 0..2 horizontal range, mark out-of-range with triangles; optional companion signed-residual range -2..2 m. Use separate panels for train/development source and all six targets, and held-out fixed views. Per-view tables retain unclipped data."
+  },
+  "tolerances": {
+    "array_masks_and_numerators": "exact equality for counts, frozen target labels and feature state validation, IDs",
+    "native_source_shape": "exact integer grid width/height; refuse incompatible grids",
+    "camera_matrix_absolute": 1e-08,
+    "position_z_atol_m": 0.0001,
+    "position_z_rtol": 0.0001,
+    "position_projection_max_px": 1.00001,
+    "reported_mae_m_abs": 1e-10,
+    "reported_depth_high_rate_abs": 1e-12,
+    "reason": "frozen label values are FP32 and sums use float64; compare archived unrounded family statistics with identical arithmetic; calibrated projective tolerances inherit the old P2 reference verifier."
+  },
+  "private": "All formal image panels restricted to owner review; numerical summaries/units and hashes may be audited independently for release. No publication by this worker."
+}
