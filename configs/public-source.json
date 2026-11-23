@@ -56,6 +56,7 @@
     "configs/public-source.json": "apache-original",
     "configs/recording-smoke.json": "apache-original",
     "configs/reference.json": "apache-original",
+    "configs/stage2-acquisition-worker-v1.json": "apache-original",
     "configs/stage2-reference-freeze-v1.json": "apache-original",
     "configs/storage.json": "apache-original",
     "configs/vision-base-v1.json": "apache-original",

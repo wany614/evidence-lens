@@ -1,14 +1,33 @@
 """Build a single-image input-only Windows batch from the registered stage-two references."""
 import argparse
 import json
+import subprocess
 import sys
 from pathlib import Path
 
-from evidence_lens._bundle import encoded, load, sha
+from evidence_lens._bundle import encoded, load, local_path, sha
 from evidence_lens._verify import require
 from formal_lineage import VerifiedRuns, reference_identity, run_pin
-from make_handoff import publish, sha_bytes, source_files, zip_bytes
+from make_handoff import publish, sha_bytes, zip_bytes
 from run_windows_batch import deliver
+
+
+def generation_source(project, source_root=None):
+    """The acquisition worker must not change when the optional risk training package evolves."""
+    fixed = load(project / "configs/stage2-acquisition-worker-v1.json")
+    revision = fixed["source_commit"]
+    def fetch(name):
+        local_path(name)
+        if source_root is not None:
+            path = source_root.resolve() / name
+            require(path.is_file() and path.resolve() == path, "generation source is not a regular file")
+            return path.read_bytes()
+        return subprocess.check_output(["git", "-C", str(project), "show", revision + ":" + name])
+    names = json.loads(fetch("configs/windows-worker-files.json"))["files"]
+    members = {n: fetch(n) for n in names if n != "README.md"}
+    require(len(members) == fixed["members"] and sha_bytes(zip_bytes(members)) == fixed["archive_sha256"],
+            "acquisition worker differs from the registered source even though the path matches")
+    return members
 
 
 def dispatch_family(project, store, catalog, catalog_hash, row, directory, members):
@@ -60,6 +79,7 @@ def main():
     p.add_argument("--catalog-sha256",required=True)
     p.add_argument("--batch",required=True)
     p.add_argument("--families",nargs="+",required=True)
+    p.add_argument("--generator-source-root", type=Path, help="extracted registered source release for operation without Git")
     a=p.parse_args()
     project,store=a.project.resolve(),a.store.resolve()
     require(sha(a.catalog)==a.catalog_sha256,"Registry checksum changed")
@@ -73,7 +93,7 @@ def main():
         verify_opening(store, catalog, a.catalog_sha256)
     local=store/"stage2"/a.catalog_sha256/"dispatches"/a.batch
     local.mkdir(exist_ok=True,parents=True)
-    members=source_files(formal=True)
+    members=generation_source(project,a.generator_source_root)
     jobs=[dispatch_family(project,store,catalog,a.catalog_sha256,rows[f],local,members) for f in a.families]
     runner=project/"scripts/run_windows_batch.py"
     batch={"schema":"el-windows-b0-batch-1","batch_id":a.batch,"runner_sha256":sha(runner),

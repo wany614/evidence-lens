@@ -1,0 +1,20 @@
+{
+  "archive_sha256": "862661c64308694ea0864f63ee96eacfa0f9d2c6ca41d89562e74c20754a0e6a",
+  "members": 20,
+  "observed_development": {
+    "archive_sha256": "e03864da8f47be91daa50e7ba85bf854d4137e727c260c30903f2b7dd1c1341d",
+    "difference": "New optional vision dependency declarations for the risk scorer. No worker imports, renderer, generator, scientific configuration, upstream weights or installed acquisition dependencies changed.",
+    "families": [
+      "scene_037_bottle_carrier",
+      "scene_038_music_stand",
+      "scene_039_vault_course",
+      "scene_040_corner_sink"
+    ],
+    "only_differing_member": "pyproject.toml"
+  },
+  "observed_training": "025 through 036 used this exact 20-member ZIP.",
+  "schema": "el-stage2-acquisition-worker-1",
+  "scientific_protocol": "SHARP aed6527499ef91cba3b54c18d49a870f25947190 with the registered SHARP weights and gsplat renderer; identical scientific source and runtime for the Stage B B0 matrix.",
+  "source_commit": "60d73ccc89c36903ba0182de8922e3f6ba0a15a2",
+  "test": "All eight B0 confirmation jobs use the exact primary archive. The registered R1 and Q1 adapters build on that member inventory."
+}
