@@ -1,0 +1,2574 @@
+{
+  "authorizations": {
+    "set1": {
+      "manifest_sha256": "8e93d05bd79cb592b74554bf0f0ab091802bc5b25dc56c58c0a498772a90cf25",
+      "member": "payload/choices.json",
+      "run_id": "20261124T015805706693Z-09f9884ef63d482e",
+      "sha256": "b56e987a78d6221ac712c43cace1118274ade5d372751ba8301d45393d6f82f8"
+    },
+    "set6": {
+      "manifest_sha256": "73ba6c65f2575d2a7419fff131764a7830a76991bd5fea1a4c434cce5a307a94",
+      "member": "payload/choices.json",
+      "run_id": "20261124T015806770790Z-ac34f106b6ff471b",
+      "sha256": "f017674b018719ae2918219892af2814c473ecb0c54a4d15e1563117165376dd"
+    }
+  },
+  "observations": 14,
+  "physical_totals": {
+    "physical_reconstructions": 13,
+    "source_candidate_http_body_bytes": 57981229,
+    "stages": {
+      "dispatch": {
+        "max_sampled_tree_rss_bytes": 9043968.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 7.407547125971178,
+        "unique_runs": 13
+      },
+      "generation": {
+        "max_sampled_tree_rss_bytes": 1571262464.0,
+        "max_torch_allocated_bytes": 37294592.0,
+        "max_torch_reserved_bytes": 60817408.0,
+        "sum_recorder_elapsed_s": 504.46899999998277,
+        "unique_runs": 13
+      },
+      "init": {
+        "max_sampled_tree_rss_bytes": 10174464.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 12.300595501976204,
+        "unique_runs": 13
+      },
+      "readback": {
+        "max_sampled_tree_rss_bytes": 225886208.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 24.237870163997286,
+        "unique_runs": 13
+      },
+      "render": {
+        "max_sampled_tree_rss_bytes": 939151360.0,
+        "max_torch_allocated_bytes": 10424832.0,
+        "max_torch_reserved_bytes": 14680064.0,
+        "sum_recorder_elapsed_s": 72.4210000000021,
+        "unique_runs": 13
+      },
+      "source": {
+        "max_sampled_tree_rss_bytes": 68403200.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 29.328464875012287,
+        "unique_runs": 12
+      }
+    },
+    "unique_source_runs_with_recorded_candidate_http": 12,
+    "windows_return_object_bytes_including_summary": 372796069
+  },
+  "rows": [
+    {
+      "branch": "random-137101",
+      "case": {
+        "manifest_sha256": "99c38d26f66a516de64d7af148df7aec4718395b282ec232469bf42c7795e89e",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021253442253Z-78f2c8b6211c4540",
+        "sha256": "2f1e1e5ed4ea8c030750b6c7528c5fd33b06f86faccdefa1c710b624cd791f1c"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 48.12298487502267,
+        "physical_trial_id": "b2-set1-m4-sel-7-17-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 6010481,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "2e99959c4767cb681fa279a0b47c50c4ee83e6ef3add4ea5167d8a969fc3c833",
+            "recorder_elapsed_s": 0.5830953340046108,
+            "run_id": "20261124T020024784697Z-7db9cca81fd647ac",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6553600.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "ce1a57f80ca5c4f9938ba07bd5e0e0d4efcd595b99b620f7fe96c150062154b2",
+            "recorder_elapsed_s": 36.51499999999942,
+            "run_id": "20261124T021127322250Z-c77be892e31442c0",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 975.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1571262464.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37143040,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 31.81100190000143
+          },
+          "init": {
+            "manifest_sha256": "9b4fa7fe93c8cc2d95064a239f30a6178552de753360206463b49a181c14bb74",
+            "recorder_elapsed_s": 1.274035084003117,
+            "run_id": "20261124T020023055667Z-6322e858fb674e47",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 2523136.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "99c38d26f66a516de64d7af148df7aec4718395b282ec232469bf42c7795e89e",
+            "recorder_elapsed_s": 1.5699785409960896,
+            "run_id": "20261124T021253442253Z-78f2c8b6211c4540",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 8028160.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "ab3b725ad3ddbc4c3fc1b7d051bbee8ad3f559b1360a0ee1c408820873b6e9d2",
+            "recorder_elapsed_s": 5.484000000011292,
+            "run_id": "20261124T021205115332Z-9ddce4d0102c42f1",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 905.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 781385728.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10317824,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3354743999952916
+          },
+          "source": {
+            "manifest_sha256": "2a744bb8a57c8e53c795c7bb03c93c736d6b7cf25b5a2675ef4b4afb18001206",
+            "recorder_elapsed_s": 2.696875916008139,
+            "run_id": "20261124T020013699516Z-0879fa3d001e4183",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 67141632.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28390640,
+        "windows_return_summary_sha256": "27e26b98554402a1d87b5f87406a6526620f328e3b5a8570b1ff38f2a0cb0f97"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 175,
+      "initialization": {
+        "manifest_sha256": "9b4fa7fe93c8cc2d95064a239f30a6178552de753360206463b49a181c14bb74",
+        "member": "payload/init.json",
+        "run_id": "20261124T020023055667Z-6322e858fb674e47",
+        "sha256": "1137cd461abef28fbb816affcb54f0f0cbab5868cfeb83883680a13a2e0d9bd1"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 7,
+        "s02": 17,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "99c38d26f66a516de64d7af148df7aec4718395b282ec232469bf42c7795e89e",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021253442253Z-78f2c8b6211c4540",
+        "sha256": "63ff65d9e215138e9be661fc2fdd040ebbca1bbeb0f2eeb17096691465b4db63"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "8e93d05bd79cb592b74554bf0f0ab091802bc5b25dc56c58c0a498772a90cf25",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T015805706693Z-09f9884ef63d482e",
+        "sha256": "77df5f7dbf994bf0a5b96027191a92c7c9ee3e0225bfd490c1984d05b6edbc16"
+      },
+      "source": {
+        "manifest_sha256": "2a744bb8a57c8e53c795c7bb03c93c736d6b7cf25b5a2675ef4b4afb18001206",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013699516Z-0879fa3d001e4183",
+        "sha256": "a381ef34b358eb6dc0371472a4703cfae7ba8c3b4587b50c24fb52b7643d27d0"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:06.361869Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          7,
+          17
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 6010243,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:13.700048Z",
+        "total_http_body_bytes": 6010481
+      },
+      "source_acquisition": {
+        "manifest_sha256": "2a744bb8a57c8e53c795c7bb03c93c736d6b7cf25b5a2675ef4b4afb18001206",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013699516Z-0879fa3d001e4183",
+        "sha256": "a381ef34b358eb6dc0371472a4703cfae7ba8c3b4587b50c24fb52b7643d27d0"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "2e99959c4767cb681fa279a0b47c50c4ee83e6ef3add4ea5167d8a969fc3c833",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020024784697Z-7db9cca81fd647ac",
+        "sha256": "c7db0014afc5b2b2902d520d23ab37a998a31cf51cae529787f1ab3239dfe467"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "f3f25856b2cedf471f4d49691f1be8c09eeff37fc60d4aacebfe29f2aafb12c8",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-sel-7-17-43171",
+      "triangulated_tracks": 175
+    },
+    {
+      "branch": "random-137102",
+      "case": {
+        "manifest_sha256": "79c4f8e7ea9256a8b7d3172181a3b32c9b001e6e4129b8410dad4a077006e5ca",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021349556984Z-870f93a5a59f48eb",
+        "sha256": "e31eda91f54948b872d27fbf92460575f0036051381176536edb37ed3828a203"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 51.986268499997095,
+        "physical_trial_id": "b2-set1-m4-sel-17-20-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5562026,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "57fb7c24b0497467d312149ede96ceb907442039ba38de36916c03e6a4e25693",
+            "recorder_elapsed_s": 0.4969109169906005,
+            "run_id": "20261124T020024377634Z-0dde48e747844c79",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6684672.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "37a6e2ba727e95f488275071a22d449f04196117de392c1772275b72fce4003c",
+            "recorder_elapsed_s": 39.96899999999732,
+            "run_id": "20261124T021212843707Z-9a8c2fd0269e42ec",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 973.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1526734848.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37197824,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.140868500006036
+          },
+          "init": {
+            "manifest_sha256": "111f132d416fb5e4e7592cf97d0aa4efd0e831a7b4cbe6dddcce223b2631ac26",
+            "recorder_elapsed_s": 0.8374856669979636,
+            "run_id": "20261124T020023053551Z-20be823488df4209",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6553600.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "79c4f8e7ea9256a8b7d3172181a3b32c9b001e6e4129b8410dad4a077006e5ca",
+            "recorder_elapsed_s": 1.810594916008995,
+            "run_id": "20261124T021349556984Z-870f93a5a59f48eb",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225411072.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "7f9bede872c482252a6540b443547d37c1a84ab852ef6d5fc56d192bd9b22e6d",
+            "recorder_elapsed_s": 5.625,
+            "run_id": "20261124T021254113257Z-e908c37a087b439b",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 897.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 780509184.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10346496,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3364693000039551
+          },
+          "source": {
+            "manifest_sha256": "de06b92bd05e8b149c1ea24eae62ac8fb455eaf94b6e8ea7cb39b5ee181bb007",
+            "recorder_elapsed_s": 3.2472770000022138,
+            "run_id": "20261124T020013700630Z-5ff7a6ef3cc6474a",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 67649536.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28557059,
+        "windows_return_summary_sha256": "542e6dee72ac678c44464557fdd02dd59a4dfdd0938128d88fd11994a77fa56a"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 163,
+      "initialization": {
+        "manifest_sha256": "111f132d416fb5e4e7592cf97d0aa4efd0e831a7b4cbe6dddcce223b2631ac26",
+        "member": "payload/init.json",
+        "run_id": "20261124T020023053551Z-20be823488df4209",
+        "sha256": "682d0bcb079ed7d5eef915a623295646599c1b18228a8df02f076fcea4f83e87"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 17,
+        "s02": 20,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "79c4f8e7ea9256a8b7d3172181a3b32c9b001e6e4129b8410dad4a077006e5ca",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021349556984Z-870f93a5a59f48eb",
+        "sha256": "91b2659f5e46fae3d27f63f9f6597dbe74990e438c39cf2cce883a59c828b6dc"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "8e93d05bd79cb592b74554bf0f0ab091802bc5b25dc56c58c0a498772a90cf25",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T015805706693Z-09f9884ef63d482e",
+        "sha256": "7ce6040ca1410f69e07d16e61506a590c75227366c10c726f93edecc9815e694"
+      },
+      "source": {
+        "manifest_sha256": "de06b92bd05e8b149c1ea24eae62ac8fb455eaf94b6e8ea7cb39b5ee181bb007",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013700630Z-5ff7a6ef3cc6474a",
+        "sha256": "83f443421310822926de287d10d0aa36a975e3333696a02134de6a715481c6b4"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:06.361869Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          17,
+          20
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5561788,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:13.701169Z",
+        "total_http_body_bytes": 5562026
+      },
+      "source_acquisition": {
+        "manifest_sha256": "de06b92bd05e8b149c1ea24eae62ac8fb455eaf94b6e8ea7cb39b5ee181bb007",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013700630Z-5ff7a6ef3cc6474a",
+        "sha256": "83f443421310822926de287d10d0aa36a975e3333696a02134de6a715481c6b4"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "57fb7c24b0497467d312149ede96ceb907442039ba38de36916c03e6a4e25693",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020024377634Z-0dde48e747844c79",
+        "sha256": "c8eb91d53b628e056142eeb3cf469a1c58d60e2da407c2a9eeab7b22cfba28dc"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "06dfcc87cf4f2b6adf7a8c5d42a2d49479af30c418b11027721021463c7dea27",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-sel-17-20-43171",
+      "triangulated_tracks": 163
+    },
+    {
+      "branch": "random-137103",
+      "case": {
+        "manifest_sha256": "981d6ce291d8a6422a9860412c0356dbd3b46d37f715197fceef6ea14e9f7493",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021432511635Z-3dc4d08809544cc6",
+        "sha256": "843f94f6fe2dde1de9d87427e5e3c3fabdba5b0940b72859d46b4edbe05a557e"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 50.165874874976,
+        "physical_trial_id": "b2-set1-m4-sel-10-13-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5564943,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "cc4428b8ced212de5d508aec19169b916504dfad0e6b409a87816dfa29c13d7b",
+            "recorder_elapsed_s": 0.6609584169927984,
+            "run_id": "20261124T020024471122Z-5f050de158f54234",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 9043968.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "76ae5933edbfc5fe6fa338f3d9bcfe6a1341aaa818af4ee74c0e8a0f04287a9f",
+            "recorder_elapsed_s": 37.421999999991385,
+            "run_id": "20261124T021301972374Z-f1b215a5b9a84437",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 973.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1533255680.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37112320,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 32.86762920000183
+          },
+          "init": {
+            "manifest_sha256": "23bc8abb5d854427f618c163088d6ab13d3f2174ab9e2b43dce4ce36d0299c89",
+            "recorder_elapsed_s": 0.9700765419984236,
+            "run_id": "20261124T020023054879Z-0ce663ef182a4439",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 5193728.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "981d6ce291d8a6422a9860412c0356dbd3b46d37f715197fceef6ea14e9f7493",
+            "recorder_elapsed_s": 1.866213749992312,
+            "run_id": "20261124T021432511635Z-3dc4d08809544cc6",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225427456.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "f39a901191a7e01dc8514f2d4abed525c5ca21bbbd14f5ec524f31f287c3c343",
+            "recorder_elapsed_s": 5.562000000005355,
+            "run_id": "20261124T021340647360Z-67e6f34620af49b2",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 896.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 823164928.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10424832,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3495117999991635
+          },
+          "source": {
+            "manifest_sha256": "e54c4c2c200ac91c94198d5e921b3704651dea30403c72f9a508da835b75d5b6",
+            "recorder_elapsed_s": 3.6846261659957236,
+            "run_id": "20261124T020013698790Z-e9a4e2f525ac4790",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 67960832.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28553770,
+        "windows_return_summary_sha256": "a134b3ad5968bfe38b8add5d65d680b60119a7655216c36bd48e49a8ff6d0c76"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 138,
+      "initialization": {
+        "manifest_sha256": "23bc8abb5d854427f618c163088d6ab13d3f2174ab9e2b43dce4ce36d0299c89",
+        "member": "payload/init.json",
+        "run_id": "20261124T020023054879Z-0ce663ef182a4439",
+        "sha256": "d3f1d5b011f4a4152098f4cb0492b08973ed7e2cbe9efb7dcb38b1391cc460e8"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 10,
+        "s02": 13,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "981d6ce291d8a6422a9860412c0356dbd3b46d37f715197fceef6ea14e9f7493",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021432511635Z-3dc4d08809544cc6",
+        "sha256": "d951c1e29ea39153a63dd11cf3350f8b5fb7295bfb7ee4b64ff16ad64f32ab3c"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "8e93d05bd79cb592b74554bf0f0ab091802bc5b25dc56c58c0a498772a90cf25",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T015805706693Z-09f9884ef63d482e",
+        "sha256": "3ba935f23e85fe27e2ba499973ea5de1779d16122161841b78e50dca2243e68d"
+      },
+      "source": {
+        "manifest_sha256": "e54c4c2c200ac91c94198d5e921b3704651dea30403c72f9a508da835b75d5b6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013698790Z-e9a4e2f525ac4790",
+        "sha256": "1a7ae0730af93c53e84f1165cc78bc6039a8b949adfe033a64462089b3ca5db8"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:06.361869Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          10,
+          13
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5564705,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:13.699352Z",
+        "total_http_body_bytes": 5564943
+      },
+      "source_acquisition": {
+        "manifest_sha256": "e54c4c2c200ac91c94198d5e921b3704651dea30403c72f9a508da835b75d5b6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013698790Z-e9a4e2f525ac4790",
+        "sha256": "1a7ae0730af93c53e84f1165cc78bc6039a8b949adfe033a64462089b3ca5db8"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "cc4428b8ced212de5d508aec19169b916504dfad0e6b409a87816dfa29c13d7b",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020024471122Z-5f050de158f54234",
+        "sha256": "09626b7aa90a0c7508bbbd6beeaec375a2897a8cb3845a66b6b2fc4d0fa2d3aa"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "ad2c1ffdcf73519ec23a51c656abe83d1c026d95e0feeff95b74857c119ac333",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-sel-10-13-43171",
+      "triangulated_tracks": 138
+    },
+    {
+      "branch": "uniform",
+      "case": {
+        "manifest_sha256": "5e128862506079aef360d3595c9757711cd7750b5cfb28f1a57df0a83dc195ca",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021522836601Z-535a3ba3c4444c60",
+        "sha256": "40d238d1242b34b646e5dce22ee0975d3e35b97a7305a09ecb19dcafbf40d957"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 52.18445258298016,
+        "physical_trial_id": "b2-set1-m4-sel-10-23-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5791289,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "b7489937d37647a78d2cc89f43ed9e1774dc9f7fdec0985fef3aab3c456e05fd",
+            "recorder_elapsed_s": 0.6756212909967871,
+            "run_id": "20261124T020027331446Z-7dbe2e27561e4943",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3391488.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "b0b2c19362077762ac570380312014596e16258d517b8cedf4f60f33e4d80ad5",
+            "recorder_elapsed_s": 39.60899999999674,
+            "run_id": "20261124T021348415676Z-6f75e307a0f04e81",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 978.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1528303616.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37204480,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.0253292999987
+          },
+          "init": {
+            "manifest_sha256": "7a865e188b9b5d7564ae3346cd5d07c9a7f4457cf9e24c2111645d6d767878a8",
+            "recorder_elapsed_s": 1.0325389159988845,
+            "run_id": "20261124T020025848838Z-382275ce9f734765",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6897664.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "5e128862506079aef360d3595c9757711cd7750b5cfb28f1a57df0a83dc195ca",
+            "recorder_elapsed_s": 1.9349125839944463,
+            "run_id": "20261124T021522836601Z-535a3ba3c4444c60",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225378304.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "9d69e362dbff94f23a9edc5f346a38f3f5c19c0105cbd534253d124d42b62b28",
+            "recorder_elapsed_s": 5.75,
+            "run_id": "20261124T021429289152Z-a3c993c7c0cc4292",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 912.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 939151360.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10308608,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.544030200006091
+          },
+          "source": {
+            "manifest_sha256": "b40895f72bf0a77a569b229aecff5b99a78d35d89d8b827eaed2916d8b256a89",
+            "recorder_elapsed_s": 3.1823797919932986,
+            "run_id": "20261124T020013699421Z-0c94ae1b19bc4963",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 66781184.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28569919,
+        "windows_return_summary_sha256": "8d8c4138093cef821d3ce67ecf964634f0eafb5f83756c654b183a230520c84d"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 217,
+      "initialization": {
+        "manifest_sha256": "7a865e188b9b5d7564ae3346cd5d07c9a7f4457cf9e24c2111645d6d767878a8",
+        "member": "payload/init.json",
+        "run_id": "20261124T020025848838Z-382275ce9f734765",
+        "sha256": "117ebb6b510004cf94773bc6d47f6fb7a677b8389545857e1335a57d64dec522"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 10,
+        "s02": 23,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "5e128862506079aef360d3595c9757711cd7750b5cfb28f1a57df0a83dc195ca",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021522836601Z-535a3ba3c4444c60",
+        "sha256": "ac6714f8f1027160f1dbca1b7b3ac0f808eeeea4632876bd9af8b0543da41f46"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "8e93d05bd79cb592b74554bf0f0ab091802bc5b25dc56c58c0a498772a90cf25",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T015805706693Z-09f9884ef63d482e",
+        "sha256": "c561d21fe0f23565c0f61a5ab7e3e0097ead5b6b2d24e8be29fbdd6093ce0d66"
+      },
+      "source": {
+        "manifest_sha256": "b40895f72bf0a77a569b229aecff5b99a78d35d89d8b827eaed2916d8b256a89",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013699421Z-0c94ae1b19bc4963",
+        "sha256": "6417169bf09efef11be199f69062debf6d79eccb9f9e6674fbfc138d274c266a"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:06.361869Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          10,
+          23
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5791051,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:13.700052Z",
+        "total_http_body_bytes": 5791289
+      },
+      "source_acquisition": {
+        "manifest_sha256": "b40895f72bf0a77a569b229aecff5b99a78d35d89d8b827eaed2916d8b256a89",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020013699421Z-0c94ae1b19bc4963",
+        "sha256": "6417169bf09efef11be199f69062debf6d79eccb9f9e6674fbfc138d274c266a"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "b7489937d37647a78d2cc89f43ed9e1774dc9f7fdec0985fef3aab3c456e05fd",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020027331446Z-7dbe2e27561e4943",
+        "sha256": "e08f6405fa10a4bd2d1e3bd214dd5be10a457e10d22be5139b65741a51b222bc"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "18c92ac06b359ae1e4a9f2f6df6efe121d11d9015769a580d80ecb613394df3c",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-sel-10-23-43171",
+      "triangulated_tracks": 217
+    },
+    {
+      "branch": "risk",
+      "case": {
+        "manifest_sha256": "7a2ca7ad75910fa279f6b1348f9125dbf54bc95a249fae22af00c5c7fdcc1fbf",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021606608446Z-79effa405c9142f7",
+        "sha256": "62c24b45a86d7c37b237a57ca98c868e85142c48445c14c6c369dcc480d919f8"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 49.291020332995686,
+        "physical_trial_id": "b2-set1-m4-sel-17-40-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5668271,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "4ee9256fac6d492a7f257bc7ab376c12bfaaf75c1e1e495feab3ff03956e465b",
+            "recorder_elapsed_s": 0.5455029580043629,
+            "run_id": "20261124T020027196105Z-5b3595ea1f4049f0",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6602752.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "83188f6656baef5d534ccc9e68239a5072ab26b50da2d0af3336371efdbb03c5",
+            "recorder_elapsed_s": 38.32799999999406,
+            "run_id": "20261124T021437226118Z-07414cce44264b72",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 971.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1538973696.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37192704,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 33.618852700004936
+          },
+          "init": {
+            "manifest_sha256": "377f48d5c77562a0334274fd0dd6fcf1929a338f0ed258a2b48e2ec20bdbd383",
+            "recorder_elapsed_s": 0.7518795829964802,
+            "run_id": "20261124T020025848695Z-61705ea44f2540e2",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3080192.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "7a2ca7ad75910fa279f6b1348f9125dbf54bc95a249fae22af00c5c7fdcc1fbf",
+            "recorder_elapsed_s": 1.9039009170082863,
+            "run_id": "20261124T021606608446Z-79effa405c9142f7",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225624064.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "0a5e3cce87befcc43d8f195509863d328f947ef5db5f4b20b68696b97723ecc2",
+            "recorder_elapsed_s": 5.687999999994645,
+            "run_id": "20261124T021516846674Z-5f4e8cce17764a4d",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 905.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 908050432.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10328064,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3645335000037448
+          },
+          "source": {
+            "manifest_sha256": "07e97f42436e173d8ec90b753ac2372948f58f2e2e36afc5b7ada1847afac0da",
+            "recorder_elapsed_s": 2.0737368749978486,
+            "run_id": "20261124T020016735263Z-587ab1befeb143ef",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 66961408.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28532736,
+        "windows_return_summary_sha256": "3f462a148e5850fcea24ea4638784c9205d51f69634bb672c62a670045cbb471"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 157,
+      "initialization": {
+        "manifest_sha256": "377f48d5c77562a0334274fd0dd6fcf1929a338f0ed258a2b48e2ec20bdbd383",
+        "member": "payload/init.json",
+        "run_id": "20261124T020025848695Z-61705ea44f2540e2",
+        "sha256": "fdc3940d9ff978642d66a2847bc2efe8b8474100bf718af4bae67ba9331d0859"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 17,
+        "s02": 40,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "7a2ca7ad75910fa279f6b1348f9125dbf54bc95a249fae22af00c5c7fdcc1fbf",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021606608446Z-79effa405c9142f7",
+        "sha256": "53a0a2d797e7f35a29c38fcdfcece63fdd58d812a3caf57e9d5ecc96ba0a7559"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "8e93d05bd79cb592b74554bf0f0ab091802bc5b25dc56c58c0a498772a90cf25",
+        "member": "payload/risk.json",
+        "run_id": "20261124T015805706693Z-09f9884ef63d482e",
+        "sha256": "551dfe6d7485596da98d60553af545b839d9098ad39ddd82c241f79db8b34e49"
+      },
+      "source": {
+        "manifest_sha256": "07e97f42436e173d8ec90b753ac2372948f58f2e2e36afc5b7ada1847afac0da",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020016735263Z-587ab1befeb143ef",
+        "sha256": "77736c1ab1b9db2329e1aa004ea4ea456439d5f87dcedd8dd5b40bec4d94791b"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:06.361869Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          17,
+          40
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5668033,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:16.738736Z",
+        "total_http_body_bytes": 5668271
+      },
+      "source_acquisition": {
+        "manifest_sha256": "07e97f42436e173d8ec90b753ac2372948f58f2e2e36afc5b7ada1847afac0da",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020016735263Z-587ab1befeb143ef",
+        "sha256": "77736c1ab1b9db2329e1aa004ea4ea456439d5f87dcedd8dd5b40bec4d94791b"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "4ee9256fac6d492a7f257bc7ab376c12bfaaf75c1e1e495feab3ff03956e465b",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020027196105Z-5b3595ea1f4049f0",
+        "sha256": "48edea1806a925a7cd7593b37b8f6ee81bbb67f776defa6d9706e9d90884f298"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "33011c79c38f425e9cbc14610c90c01867438994776d32e004f585e1b7707da8",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-sel-17-40-43171",
+      "triangulated_tracks": 157
+    },
+    {
+      "branch": "random-137101",
+      "case": {
+        "manifest_sha256": "ac6eb874f3b34899f6202818f74dea117a3eb574aef71940d206876e96b09546",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021656330708Z-46723809a25e4d93",
+        "sha256": "9f8be23ddb0493c3347fe83181af017af59e44eb66cb2011b698fdee395fe6f8"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 51.7729189570091,
+        "physical_trial_id": "b2-set6-m4-sel-7-10-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5876617,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "475de675fdd55546e0b78189bde51f7b17448f28f88830a71adf2c75f92cf452",
+            "recorder_elapsed_s": 0.643842040997697,
+            "run_id": "20261124T020027621020Z-560c9b7f54ec4cfd",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6995968.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "b99c8cd9b6983e211752c5e5a53bab3527a83b06148c2c9e4accc995c4a08a99",
+            "recorder_elapsed_s": 38.92200000000594,
+            "run_id": "20261124T021524870940Z-4e4566073eee48b7",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 977.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1525833728.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37140480,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 34.08865309999965
+          },
+          "init": {
+            "manifest_sha256": "21c15b62343854e324c3745e0b4feecd5f7033363bf4c86c763b005b5de7b161",
+            "recorder_elapsed_s": 1.3204892499925336,
+            "run_id": "20261124T020025850811Z-490bcabcec59454d",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3080192.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "ac6eb874f3b34899f6202818f74dea117a3eb574aef71940d206876e96b09546",
+            "recorder_elapsed_s": 1.8258809160033707,
+            "run_id": "20261124T021656330708Z-46723809a25e4d93",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225361920.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "7940031dbf5594dadf39ff2f5173fe5d286f5f7a2cf5a905f7fdce0045f483bc",
+            "recorder_elapsed_s": 5.639999999999418,
+            "run_id": "20261124T021605034099Z-41e9ec162009423d",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 892.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 779706368.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10291200,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3192569999955595
+          },
+          "source": {
+            "manifest_sha256": "d817b3cf1b1c5587376579490cbac6c4dc14c810b3d46157893ae735c2e0c1bc",
+            "recorder_elapsed_s": 3.4207067500101402,
+            "run_id": "20261124T020017644046Z-3e3259d5b5ca4d32",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 67043328.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28728223,
+        "windows_return_summary_sha256": "27af06b20c8d79725231d898e9f9d047ee0edf1469d1c77c6f6e51ba033a22d7"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 108,
+      "initialization": {
+        "manifest_sha256": "21c15b62343854e324c3745e0b4feecd5f7033363bf4c86c763b005b5de7b161",
+        "member": "payload/init.json",
+        "run_id": "20261124T020025850811Z-490bcabcec59454d",
+        "sha256": "937d0b00b1012a4b2d18d61b136d852cdeb7091e993a2c8d181a83817c1dd155"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 7,
+        "s02": 10,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "ac6eb874f3b34899f6202818f74dea117a3eb574aef71940d206876e96b09546",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021656330708Z-46723809a25e4d93",
+        "sha256": "2caf8b821d3af9e72bf9e1b78755ce0ca4529a135f4561f567d5c0eee3a814e1"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "73ba6c65f2575d2a7419fff131764a7830a76991bd5fea1a4c434cce5a307a94",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T015806770790Z-ac34f106b6ff471b",
+        "sha256": "437d64f2d040782bbcbcb920762287c5c43cf4070dd220dc6e2eea26e7fdc2f9"
+      },
+      "source": {
+        "manifest_sha256": "d817b3cf1b1c5587376579490cbac6c4dc14c810b3d46157893ae735c2e0c1bc",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020017644046Z-3e3259d5b5ca4d32",
+        "sha256": "23fa703c52081b54b4684d737771ab5d9ac7c81d6a8a591aa5b2eedb68ecfe59"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:07.438788Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          7,
+          10
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5876379,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:17.644612Z",
+        "total_http_body_bytes": 5876617
+      },
+      "source_acquisition": {
+        "manifest_sha256": "d817b3cf1b1c5587376579490cbac6c4dc14c810b3d46157893ae735c2e0c1bc",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020017644046Z-3e3259d5b5ca4d32",
+        "sha256": "23fa703c52081b54b4684d737771ab5d9ac7c81d6a8a591aa5b2eedb68ecfe59"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "475de675fdd55546e0b78189bde51f7b17448f28f88830a71adf2c75f92cf452",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020027621020Z-560c9b7f54ec4cfd",
+        "sha256": "d8a1350923fd7d9a45a8084f5f6933a08aee7d5190b860c225ab3116037b9494"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "e8cba0e7d1af1a3c9dfd53e7c503072dee999837677338e34884a9c220ba3665",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-sel-7-10-43171",
+      "triangulated_tracks": 108
+    },
+    {
+      "branch": "random-137102",
+      "case": {
+        "manifest_sha256": "c46accf472d63f1363efdabbfed061938f532bc3d822c1f0ff085d415cecd787",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021746671071Z-0b2912886a014fdf",
+        "sha256": "ba2dc50fa1373c073d7f4ed0f44c514646700460de07dbfc9eaa36ad045a240f"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 50.050729959009914,
+        "physical_trial_id": "b2-set6-m4-sel-7-23-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 6120243,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "7400c9287f73bb0bf0d60cbf406cd5e95aaf71e952c1349e94ac5edc8875f33d",
+            "recorder_elapsed_s": 0.5397090839978773,
+            "run_id": "20261124T020030056858Z-3b3dd921830a421a",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6324224.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "50b7396add22041413c21e56bbc6f41fdca0ca70e762e3480bcfe859320bfe84",
+            "recorder_elapsed_s": 38.54700000000594,
+            "run_id": "20261124T021612928843Z-436cb240161a4e77",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 970.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1528303616.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37172736,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 33.65186699999322
+          },
+          "init": {
+            "manifest_sha256": "dbf086e1f3a1a7bff1935ba9f4612acf436ab53d19ed194c9e04a71397aec7ca",
+            "recorder_elapsed_s": 0.8429073330044048,
+            "run_id": "20261124T020028488616Z-34850e6fb76048e2",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6963200.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "c46accf472d63f1363efdabbfed061938f532bc3d822c1f0ff085d415cecd787",
+            "recorder_elapsed_s": 1.8628352920059115,
+            "run_id": "20261124T021746671071Z-0b2912886a014fdf",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225542144.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "eb4adab59e5117c5f9d240635fc27b2a232f99fc9fd398c88b8b9f2d82ab1da4",
+            "recorder_elapsed_s": 5.60899999999674,
+            "run_id": "20261124T021652965837Z-9896f34122774b0d",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 889.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 813711360.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10281472,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3308614999987185
+          },
+          "source": {
+            "manifest_sha256": "7c367ee8bcbed02382895b824a58b15bcc1b657b2c8e113e1aff7e226dd7d829",
+            "recorder_elapsed_s": 2.6492782499990426,
+            "run_id": "20261124T020017644073Z-e8b510af771746ea",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 66961408.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28899360,
+        "windows_return_summary_sha256": "473efaf0b0ccd9020496a5e1d2bb0bea7ec894d6245f042d39a19476e9c3aadb"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 255,
+      "initialization": {
+        "manifest_sha256": "dbf086e1f3a1a7bff1935ba9f4612acf436ab53d19ed194c9e04a71397aec7ca",
+        "member": "payload/init.json",
+        "run_id": "20261124T020028488616Z-34850e6fb76048e2",
+        "sha256": "77fe1d44d647cf929a6fe2078dbc99cfa3b7737f56318bb05697ea24785bd1ab"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 7,
+        "s02": 23,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "c46accf472d63f1363efdabbfed061938f532bc3d822c1f0ff085d415cecd787",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021746671071Z-0b2912886a014fdf",
+        "sha256": "b4fb71ae529482d985a7e115d310c61a9411127bc5adfde764bc02b0dae0c1b7"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "73ba6c65f2575d2a7419fff131764a7830a76991bd5fea1a4c434cce5a307a94",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T015806770790Z-ac34f106b6ff471b",
+        "sha256": "275a5fb57f4f09eee21bc46b251ac83faa3bfbc14df4f2a9ce4d1423737ff872"
+      },
+      "source": {
+        "manifest_sha256": "7c367ee8bcbed02382895b824a58b15bcc1b657b2c8e113e1aff7e226dd7d829",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020017644073Z-e8b510af771746ea",
+        "sha256": "cca0afd269215a328ca98cb6bb683a38db56413a73a75f6113ab6f1af8fb66e5"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:07.438788Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          7,
+          23
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 6120005,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:17.644621Z",
+        "total_http_body_bytes": 6120243
+      },
+      "source_acquisition": {
+        "manifest_sha256": "7c367ee8bcbed02382895b824a58b15bcc1b657b2c8e113e1aff7e226dd7d829",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020017644073Z-e8b510af771746ea",
+        "sha256": "cca0afd269215a328ca98cb6bb683a38db56413a73a75f6113ab6f1af8fb66e5"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "7400c9287f73bb0bf0d60cbf406cd5e95aaf71e952c1349e94ac5edc8875f33d",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020030056858Z-3b3dd921830a421a",
+        "sha256": "0894fa580988efa4bc4dbe07758d081fd560d2c3a1c3361d0f53aa7f47ef07cd"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "0b09aec74018f45560a10077472c5faaa0a51ae38cef9692572e9532f2a9a8c1",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-sel-7-23-43171",
+      "triangulated_tracks": 255
+    },
+    {
+      "branch": "random-137103",
+      "case": {
+        "manifest_sha256": "eb7ba15773fe73a2e362cd742beb3cf497f98bbba98c5dab41b2d9e836a692e8",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021837692666Z-89816abe1fc74d65",
+        "sha256": "11a9c8856bfb4dd41c7e2f0f7bbafdbc21a52b8208623586d2d595b6bd5e62a7"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 51.03440654098813,
+        "physical_trial_id": "b2-set6-m4-sel-20-31-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5406281,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "bcf6ca8e4fd80abab21c13a986aa36f6f976c581d32d66df796a3f7845a6ef1d",
+            "recorder_elapsed_s": 0.8085399589908775,
+            "run_id": "20261124T020030062547Z-658c14d339234d79",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6586368.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "44c530ce395954f9f9c4f5cc601a6cf830166b5e2c38e4a5c7a7f13a98e66676",
+            "recorder_elapsed_s": 38.703999999997905,
+            "run_id": "20261124T021700835361Z-ef1395e175a14e6d",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 971.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1526587392.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37107712,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 33.83438709999609
+          },
+          "init": {
+            "manifest_sha256": "b77e531911443bd48a32dc849bf6711746b607b64cadacd030d78cd0d7b314b8",
+            "recorder_elapsed_s": 1.0531194999930449,
+            "run_id": "20261124T020028540780Z-f72914ddadd24382",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6455296.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "eb7ba15773fe73a2e362cd742beb3cf497f98bbba98c5dab41b2d9e836a692e8",
+            "recorder_elapsed_s": 1.8819549159961753,
+            "run_id": "20261124T021837692666Z-89816abe1fc74d65",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 224886784.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "e5b9100be751deba415a1e6e83ddeddbce7d0c616bdf3886975dfd163cb2c764",
+            "recorder_elapsed_s": 5.7189999999973224,
+            "run_id": "20261124T021740829446Z-5e238b87e9fd41b1",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 892.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 818372608.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10222080,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.288910900009796
+          },
+          "source": {
+            "manifest_sha256": "80ea04dfc0c2674aaae3c7109e06c38bd6c2e7d42d0f1ec8c917e32832758f20",
+            "recorder_elapsed_s": 2.867792166012805,
+            "run_id": "20261124T020017819091Z-a216682cead34681",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 68403200.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28918970,
+        "windows_return_summary_sha256": "69ea1eec1b2e5561ca86d1aae9a16813a601f65d89a2ba6471831a45a7083622"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 75,
+      "initialization": {
+        "manifest_sha256": "b77e531911443bd48a32dc849bf6711746b607b64cadacd030d78cd0d7b314b8",
+        "member": "payload/init.json",
+        "run_id": "20261124T020028540780Z-f72914ddadd24382",
+        "sha256": "d939b7feb930d5b3ba8c82d3ad61520a42edeeb7f45c01c19df3e2e28059d132"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 20,
+        "s02": 31,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "eb7ba15773fe73a2e362cd742beb3cf497f98bbba98c5dab41b2d9e836a692e8",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021837692666Z-89816abe1fc74d65",
+        "sha256": "d6bc97638a5844d429452f391239ed49b757cc0249a2cf7173366cc516546c9c"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "73ba6c65f2575d2a7419fff131764a7830a76991bd5fea1a4c434cce5a307a94",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T015806770790Z-ac34f106b6ff471b",
+        "sha256": "1cbcf91346e0297342bacafb3a50261a3d562674ab9ed08e110ca7cc2f74ae86"
+      },
+      "source": {
+        "manifest_sha256": "80ea04dfc0c2674aaae3c7109e06c38bd6c2e7d42d0f1ec8c917e32832758f20",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020017819091Z-a216682cead34681",
+        "sha256": "7498b140a03f3e97654775f4eb11c2c155ccd5f06a410c2a789b34f7247be9ba"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:07.438788Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          20,
+          31
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5406043,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:17.819610Z",
+        "total_http_body_bytes": 5406281
+      },
+      "source_acquisition": {
+        "manifest_sha256": "80ea04dfc0c2674aaae3c7109e06c38bd6c2e7d42d0f1ec8c917e32832758f20",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020017819091Z-a216682cead34681",
+        "sha256": "7498b140a03f3e97654775f4eb11c2c155ccd5f06a410c2a789b34f7247be9ba"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "bcf6ca8e4fd80abab21c13a986aa36f6f976c581d32d66df796a3f7845a6ef1d",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020030062547Z-658c14d339234d79",
+        "sha256": "8b89524f51a778b11f50cdaeb3f143c3e8b78cf335eee551a3419d48b7b5b975"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "2cb3658452451c9780952b51dc53bd53e8316eb3076cce0575bd35b58a3567fb",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-sel-20-31-43171",
+      "triangulated_tracks": 75
+    },
+    {
+      "branch": "uniform",
+      "case": {
+        "manifest_sha256": "cfef6b211a8e4df9dcd82be9429f1bfdc67c924c6d46f81ded727115ec9ca3e3",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021927753675Z-1248759a5f204bab",
+        "sha256": "6cec3217e727565f34743e36d39807d70e01f819ddc2b926b12604fb7ceaf60c"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 52.455510667015915,
+        "physical_trial_id": "b2-set6-m4-sel-17-31-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5990539,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "28a3cd8536c89a52d3f2df023d8ccd839419e824f6588f13d5661db5e24cc8e5",
+            "recorder_elapsed_s": 0.8126162500120699,
+            "run_id": "20261124T020030368753Z-0caa5f829ea842d4",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3620864.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "156f2bb7863cbb5de2ebd885c0434f7cb4670fa2710896a41e5349e229a51ba3",
+            "recorder_elapsed_s": 40.5,
+            "run_id": "20261124T021748823815Z-4a18109765a040c2",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 972.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1532637184.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37115904,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.5941196000058
+          },
+          "init": {
+            "manifest_sha256": "2c4e8b3377fb4d0a798687ced53d622be5916cebc9c4df2ef445c81f2f51c95c",
+            "recorder_elapsed_s": 1.290588250005385,
+            "run_id": "20261124T020028635340Z-512452dac45e43d9",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3227648.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "cfef6b211a8e4df9dcd82be9429f1bfdc67c924c6d46f81ded727115ec9ca3e3",
+            "recorder_elapsed_s": 1.972968125002808,
+            "run_id": "20261124T021927753675Z-1248759a5f204bab",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225886208.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "9fd9d27304871ef3e082c7a7abb85a1dc0107d04efa960c71f554a966d94877b",
+            "recorder_elapsed_s": 5.64100000000326,
+            "run_id": "20261124T021830585797Z-339cf8b464cb43d4",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 896.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 780693504.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10229760,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3325637000089046
+          },
+          "source": {
+            "manifest_sha256": "8480f3438695c2a07d82b5194401c3d567e6cb9ccc13d520a5d1f308af9c1c5a",
+            "recorder_elapsed_s": 2.2383380419923924,
+            "run_id": "20261124T020019137558Z-d4e0c86f1e094562",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 50675712.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28754340,
+        "windows_return_summary_sha256": "73fb4ef621d8cdd882cb4d5ef1229e4e388cdeaacf321e2caf14ce7fe87d51e1"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 167,
+      "initialization": {
+        "manifest_sha256": "2c4e8b3377fb4d0a798687ced53d622be5916cebc9c4df2ef445c81f2f51c95c",
+        "member": "payload/init.json",
+        "run_id": "20261124T020028635340Z-512452dac45e43d9",
+        "sha256": "00bf2bfc212f3fe308ca31c1a4d22952acc1b709743afe514a36677ed786f523"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 17,
+        "s02": 31,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "cfef6b211a8e4df9dcd82be9429f1bfdc67c924c6d46f81ded727115ec9ca3e3",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021927753675Z-1248759a5f204bab",
+        "sha256": "bef7584482eb8c57e0b5a897ef5dbb353fcbf5203f8ea97f09c955d163fdcc5e"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "73ba6c65f2575d2a7419fff131764a7830a76991bd5fea1a4c434cce5a307a94",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T015806770790Z-ac34f106b6ff471b",
+        "sha256": "f964f3272b2f72227457c36c37decfb5c8801605d7e06171693ef0b9a14296cb"
+      },
+      "source": {
+        "manifest_sha256": "8480f3438695c2a07d82b5194401c3d567e6cb9ccc13d520a5d1f308af9c1c5a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020019137558Z-d4e0c86f1e094562",
+        "sha256": "922f1167da101415dda43aaea49c9f309f17bf0d6ef0ded4ba5a0364854767f7"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:07.438788Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          17,
+          31
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5990301,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:19.138065Z",
+        "total_http_body_bytes": 5990539
+      },
+      "source_acquisition": {
+        "manifest_sha256": "8480f3438695c2a07d82b5194401c3d567e6cb9ccc13d520a5d1f308af9c1c5a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020019137558Z-d4e0c86f1e094562",
+        "sha256": "922f1167da101415dda43aaea49c9f309f17bf0d6ef0ded4ba5a0364854767f7"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "28a3cd8536c89a52d3f2df023d8ccd839419e824f6588f13d5661db5e24cc8e5",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020030368753Z-0caa5f829ea842d4",
+        "sha256": "afb118acf7e555af173facee0f5ff187827a44a889be51e1bf5bfccfc1f550fe"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "c68755877eaf7a9483629438e57b01d44a3893bae460fb212c3202136a376fc8",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-sel-17-31-43171",
+      "triangulated_tracks": 167
+    },
+    {
+      "branch": "risk",
+      "case": {
+        "manifest_sha256": "cfef6b211a8e4df9dcd82be9429f1bfdc67c924c6d46f81ded727115ec9ca3e3",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021927753675Z-1248759a5f204bab",
+        "sha256": "6cec3217e727565f34743e36d39807d70e01f819ddc2b926b12604fb7ceaf60c"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 52.25481304201821,
+        "physical_trial_id": "b2-set6-m4-sel-17-31-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 5990539,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "28a3cd8536c89a52d3f2df023d8ccd839419e824f6588f13d5661db5e24cc8e5",
+            "recorder_elapsed_s": 0.8126162500120699,
+            "run_id": "20261124T020030368753Z-0caa5f829ea842d4",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3620864.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "156f2bb7863cbb5de2ebd885c0434f7cb4670fa2710896a41e5349e229a51ba3",
+            "recorder_elapsed_s": 40.5,
+            "run_id": "20261124T021748823815Z-4a18109765a040c2",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 972.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1532637184.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37115904,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.5941196000058
+          },
+          "init": {
+            "manifest_sha256": "2c4e8b3377fb4d0a798687ced53d622be5916cebc9c4df2ef445c81f2f51c95c",
+            "recorder_elapsed_s": 1.290588250005385,
+            "run_id": "20261124T020028635340Z-512452dac45e43d9",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3227648.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "cfef6b211a8e4df9dcd82be9429f1bfdc67c924c6d46f81ded727115ec9ca3e3",
+            "recorder_elapsed_s": 1.972968125002808,
+            "run_id": "20261124T021927753675Z-1248759a5f204bab",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225886208.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "9fd9d27304871ef3e082c7a7abb85a1dc0107d04efa960c71f554a966d94877b",
+            "recorder_elapsed_s": 5.64100000000326,
+            "run_id": "20261124T021830585797Z-339cf8b464cb43d4",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 896.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 780693504.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10229760,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3325637000089046
+          },
+          "source": {
+            "manifest_sha256": "7865f97d0960eb9a6fb44a2252a857d6a7590dd7ca1136c7a5c13a3d86eff503",
+            "recorder_elapsed_s": 2.037640416994691,
+            "run_id": "20261124T020020627208Z-58a63ca360cb4462",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 67190784.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28754340,
+        "windows_return_summary_sha256": "73fb4ef621d8cdd882cb4d5ef1229e4e388cdeaacf321e2caf14ce7fe87d51e1"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 167,
+      "initialization": {
+        "manifest_sha256": "2c4e8b3377fb4d0a798687ced53d622be5916cebc9c4df2ef445c81f2f51c95c",
+        "member": "payload/init.json",
+        "run_id": "20261124T020028635340Z-512452dac45e43d9",
+        "sha256": "00bf2bfc212f3fe308ca31c1a4d22952acc1b709743afe514a36677ed786f523"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 17,
+        "s02": 31,
+        "s03": 22
+      },
+      "optimizer_seed": 43171,
+      "readback": {
+        "manifest_sha256": "cfef6b211a8e4df9dcd82be9429f1bfdc67c924c6d46f81ded727115ec9ca3e3",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021927753675Z-1248759a5f204bab",
+        "sha256": "bef7584482eb8c57e0b5a897ef5dbb353fcbf5203f8ea97f09c955d163fdcc5e"
+      },
+      "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "reuse_of": "uniform",
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": {
+        "manifest_sha256": "73ba6c65f2575d2a7419fff131764a7830a76991bd5fea1a4c434cce5a307a94",
+        "member": "payload/risk.json",
+        "run_id": "20261124T015806770790Z-ac34f106b6ff471b",
+        "sha256": "d2ffbea335fc891d88b986596006755d6071f900a038eadbc62967656902fe25"
+      },
+      "source": {
+        "manifest_sha256": "7865f97d0960eb9a6fb44a2252a857d6a7590dd7ca1136c7a5c13a3d86eff503",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020020627208Z-58a63ca360cb4462",
+        "sha256": "435a89be29c92ef7423bd85c9188685cc63ac36478a392268cc05183cde0bf48"
+      },
+      "source_access_readback": {
+        "decision_sealed_at_utc": "2026-11-24T01:58:07.438788Z",
+        "metadata_body_bytes": 238,
+        "observed_named_origin_ranges": 10,
+        "selected_official_ids": [
+          17,
+          31
+        ],
+        "selector_evaluation_poses": 0,
+        "selector_rgb_ids": [
+          24,
+          22
+        ],
+        "source_pixel_body_bytes": 5990301,
+        "source_recorder_started_at_utc": "2026-11-24T02:00:20.630676Z",
+        "total_http_body_bytes": 5990539
+      },
+      "source_acquisition": {
+        "manifest_sha256": "7865f97d0960eb9a6fb44a2252a857d6a7590dd7ca1136c7a5c13a3d86eff503",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T020020627208Z-58a63ca360cb4462",
+        "sha256": "435a89be29c92ef7423bd85c9188685cc63ac36478a392268cc05183cde0bf48"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "28a3cd8536c89a52d3f2df023d8ccd839419e824f6588f13d5661db5e24cc8e5",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T020030368753Z-0caa5f829ea842d4",
+        "sha256": "afb118acf7e555af173facee0f5ff187827a44a889be51e1bf5bfccfc1f550fe"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "c68755877eaf7a9483629438e57b01d44a3893bae460fb212c3202136a376fc8",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-sel-17-31-43171",
+      "triangulated_tracks": 167
+    },
+    {
+      "branch": "seed-43172",
+      "case": {
+        "manifest_sha256": "097da11d9f558bae58cbccf63cd70fb5cc8e070a581ac40f593141d7b60b95e7",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020936233728Z-07860361368b4490",
+        "sha256": "3c7f954216e2ad501c8b8458d6dbf867cd43ef86845813e264b83b782971d808"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 49.54641245897801,
+        "physical_trial_id": "b2-set1-m4-fixed-43172",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 0,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "0ad97c7713eae4ea7b3f71f15139b5317652a172a8ae748d67d725f8bb77e156",
+            "recorder_elapsed_s": 0.3763344579929253,
+            "run_id": "20261124T015552104028Z-a3c86825f5934d3b",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3653632.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "c60a4e3a5ed771355f2017dff5af9bc3e7cf2b9332a78eb66bae646047edab4b",
+            "recorder_elapsed_s": 40.375,
+            "run_id": "20261124T020801100725Z-2e7635a468174a79",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 975.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1524932608.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37294592,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.93669129999762
+          },
+          "init": {
+            "manifest_sha256": "f6d986a32ca031ada02d9523d06b363fa6527bb537d0898e7dbe9d91cfb5da2c",
+            "recorder_elapsed_s": 0.7174654589907732,
+            "run_id": "20261124T015551009268Z-589b76f2b9714bf9",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 2768896.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "097da11d9f558bae58cbccf63cd70fb5cc8e070a581ac40f593141d7b60b95e7",
+            "recorder_elapsed_s": 1.9888951249886304,
+            "run_id": "20261124T020936233728Z-07860361368b4490",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 224886784.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "f421ba29540cd8a46d69aacc77f0ad47b1d280c36a3c86802fb35f1d46ea8828",
+            "recorder_elapsed_s": 5.39100000000326,
+            "run_id": "20261124T020842773391Z-5b5860d1976549f7",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 905.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 816640000.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10257408,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3261054000031436
+          },
+          "source": {
+            "manifest_sha256": "bc43532ebfc03fd3ecc935c2866ff9949fd0103405e5d9aeb283aeb694ac2e66",
+            "recorder_elapsed_s": 0.6977174170024227,
+            "run_id": "20261124T015550003514Z-640d75f964e047d3",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6602752.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28566257,
+        "windows_return_summary_sha256": "5bc8ce5d7f4de7c23dfd98d5cb8e3d2044e199d3536a9b1667dfb9761027643a"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 271,
+      "initialization": {
+        "manifest_sha256": "f6d986a32ca031ada02d9523d06b363fa6527bb537d0898e7dbe9d91cfb5da2c",
+        "member": "payload/init.json",
+        "run_id": "20261124T015551009268Z-589b76f2b9714bf9",
+        "sha256": "8f9f91869c5fab97cf1e26b169ee20f8fa3e57107179c4e32b0efbb7539ebb52"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 23,
+        "s02": 17,
+        "s03": 22
+      },
+      "optimizer_seed": 43172,
+      "readback": {
+        "manifest_sha256": "097da11d9f558bae58cbccf63cd70fb5cc8e070a581ac40f593141d7b60b95e7",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020936233728Z-07860361368b4490",
+        "sha256": "a283bc64ac936ab6545f60026a12abf82c84ad33fd9b908d5e04eb2c6e1c7fc1"
+      },
+      "recipe_sha256": "8ba97ba7e440b6ccd9fc3277482c55484c54616e9be2438fa0fa59bcc2206860",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": null,
+      "source": {
+        "manifest_sha256": "bc43532ebfc03fd3ecc935c2866ff9949fd0103405e5d9aeb283aeb694ac2e66",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003514Z-640d75f964e047d3",
+        "sha256": "467e7f7617e0de147fb2cb9dbaaa9f37abc0aea3a6e792807060632c41980331"
+      },
+      "source_acquisition": {
+        "manifest_sha256": "bc43532ebfc03fd3ecc935c2866ff9949fd0103405e5d9aeb283aeb694ac2e66",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003514Z-640d75f964e047d3",
+        "sha256": "467e7f7617e0de147fb2cb9dbaaa9f37abc0aea3a6e792807060632c41980331"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "0ad97c7713eae4ea7b3f71f15139b5317652a172a8ae748d67d725f8bb77e156",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015552104028Z-a3c86825f5934d3b",
+        "sha256": "4015aeb9980d3ec049d6db92d199af1218ecf058027f07a75a736eb50a9c17c4"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "8c5639ad598ad956df470ce2da55295b533acaa9fe4eb2c500f7a8ea8975c94d",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-fixed-43172",
+      "triangulated_tracks": 271
+    },
+    {
+      "branch": "seed-43173",
+      "case": {
+        "manifest_sha256": "3da33d8c6a5323ee86ed37a766c4451df276123a6b8dca6568338baf2ed1e22a",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021024486112Z-112cf3b4cb2446c9",
+        "sha256": "c917592f2fa0d6066beb73ff1efbfbbe0bf8d73388c09ac078d40dc21c8d1d38"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 48.036143249992165,
+        "physical_trial_id": "b2-set1-m4-fixed-43173",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 0,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "56dfb1170d718bd59cce78a9621c76a00d5983bcfc5071d7a7f8d378e44cdb76",
+            "recorder_elapsed_s": 0.3970557499997085,
+            "run_id": "20261124T015553886460Z-fc3f81b7f404491d",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 5439488.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "4ace2d9e5f5b2b33c392a7c696bef6acb924a136f72e60dd3a4e5723c1334abf",
+            "recorder_elapsed_s": 38.905999999988126,
+            "run_id": "20261124T020851716671Z-41225fefe9114623",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 978.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1541230592.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37258240,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 34.46889449999435
+          },
+          "init": {
+            "manifest_sha256": "159a67ecd6117a07e1dad382098ea411c00e64af29eba5c06240cb54e0ae1560",
+            "recorder_elapsed_s": 0.6341405419952935,
+            "run_id": "20261124T015552900497Z-52a1dd9bd23e4856",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6897664.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "3da33d8c6a5323ee86ed37a766c4451df276123a6b8dca6568338baf2ed1e22a",
+            "recorder_elapsed_s": 2.0262295410066145,
+            "run_id": "20261124T021024486112Z-112cf3b4cb2446c9",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 209010688.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "91aa9a9200eac9766813daaae05f0049fb2936dfc8b0127194a7341cf4abb059",
+            "recorder_elapsed_s": 5.375,
+            "run_id": "20261124T020931928170Z-5813f8ebdc734da1",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 904.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 859656192.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10276864,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3830221999960486
+          },
+          "source": {
+            "manifest_sha256": "bc43532ebfc03fd3ecc935c2866ff9949fd0103405e5d9aeb283aeb694ac2e66",
+            "recorder_elapsed_s": 0.6977174170024227,
+            "run_id": "20261124T015550003514Z-640d75f964e047d3",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6602752.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28476527,
+        "windows_return_summary_sha256": "f85b9ff6b27f4afd2af3706f3e670bd42a8002d385da4807593546566d6fd200"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 271,
+      "initialization": {
+        "manifest_sha256": "159a67ecd6117a07e1dad382098ea411c00e64af29eba5c06240cb54e0ae1560",
+        "member": "payload/init.json",
+        "run_id": "20261124T015552900497Z-52a1dd9bd23e4856",
+        "sha256": "40a2d5f10a13abe2e9685496b00b8efa75b9d3e4032b62df18ec78da4ea0b933"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set1",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 23,
+        "s02": 17,
+        "s03": 22
+      },
+      "optimizer_seed": 43173,
+      "readback": {
+        "manifest_sha256": "3da33d8c6a5323ee86ed37a766c4451df276123a6b8dca6568338baf2ed1e22a",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021024486112Z-112cf3b4cb2446c9",
+        "sha256": "ecdfb1a03ce20877936eeee43af9513e05ca805e661fb6ac3f634cd527de73b4"
+      },
+      "recipe_sha256": "90664d535dd9f37b709f1537c019990829f57ff4c33e155892e61e3821f90c0a",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": null,
+      "source": {
+        "manifest_sha256": "bc43532ebfc03fd3ecc935c2866ff9949fd0103405e5d9aeb283aeb694ac2e66",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003514Z-640d75f964e047d3",
+        "sha256": "467e7f7617e0de147fb2cb9dbaaa9f37abc0aea3a6e792807060632c41980331"
+      },
+      "source_acquisition": {
+        "manifest_sha256": "bc43532ebfc03fd3ecc935c2866ff9949fd0103405e5d9aeb283aeb694ac2e66",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003514Z-640d75f964e047d3",
+        "sha256": "467e7f7617e0de147fb2cb9dbaaa9f37abc0aea3a6e792807060632c41980331"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "56dfb1170d718bd59cce78a9621c76a00d5983bcfc5071d7a7f8d378e44cdb76",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015553886460Z-fc3f81b7f404491d",
+        "sha256": "72ef0907848cf051fb0d129eab924e1883b0d44c9c46f80eba24aeb83610274a"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "1d2e5eec220bc5f94e5352505c44f03a1c1108c867deec2a9efb3432d5e17435",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set1-m4-fixed-43173",
+      "triangulated_tracks": 271
+    },
+    {
+      "branch": "seed-43172",
+      "case": {
+        "manifest_sha256": "5b5e6b386c0d39fb87a90f315012cb3caf9857467c5bf08168e31ae07ee591ab",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021113204741Z-0ea99c3e34264480",
+        "sha256": "c2fd15fe60ebdb9b6a32f87bd2ef6234ee95c0eedaae986b39e0f31e5853ce07"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 47.01542862599308,
+        "physical_trial_id": "b2-set6-m4-fixed-43172",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 0,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "fb8f81e6596f12a081902ec71976109abbee10a3bab157326f8c1fdb9c42cadf",
+            "recorder_elapsed_s": 0.4788379589881515,
+            "run_id": "20261124T015552125468Z-481620c97ef442d7",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 4784128.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "a1802f2c43bf3aa7191e8d59a09d1bba1b08442491c6e3f9ba364b39bea0b187",
+            "recorder_elapsed_s": 38.312000000005355,
+            "run_id": "20261124T020940864490Z-bc4fad6853d14308",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 978.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1540550656.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37159424,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 33.570367699998314
+          },
+          "init": {
+            "manifest_sha256": "448d7884441623fc63c49946f12901829ddf83fd7fe9271010100fc8d108d9d7",
+            "recorder_elapsed_s": 0.827628792001633,
+            "run_id": "20261124T015550919971Z-55d92fe07b034ecc",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 7028736.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "5b5e6b386c0d39fb87a90f315012cb3caf9857467c5bf08168e31ae07ee591ab",
+            "recorder_elapsed_s": 1.5058657909976318,
+            "run_id": "20261124T021113204741Z-0ea99c3e34264480",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 7847936.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "7ef8081459337938ed1f68f4db4a3a5d91aeedfa7a8715331d0f620180aea53d",
+            "recorder_elapsed_s": 5.35899999999674,
+            "run_id": "20261124T021020592009Z-45761c6cfa1f4931",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 904.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 779948032.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10214912,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3322289999923669
+          },
+          "source": {
+            "manifest_sha256": "bc6b03dfcede964f023d170acdfbf4797a8745f1b371fed1a3faf81a33cbbbae",
+            "recorder_elapsed_s": 0.5320960840035696,
+            "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6684672.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28919377,
+        "windows_return_summary_sha256": "a69f8050478927b694e7df2a2381bb82fab0eda21383214d7a22cd1900cd85fb"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 333,
+      "initialization": {
+        "manifest_sha256": "448d7884441623fc63c49946f12901829ddf83fd7fe9271010100fc8d108d9d7",
+        "member": "payload/init.json",
+        "run_id": "20261124T015550919971Z-55d92fe07b034ecc",
+        "sha256": "c5b4924f6a3ec8c64cb0dd967e880829a802faf93e2c70d5ee2ab53108357438"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 23,
+        "s02": 17,
+        "s03": 22
+      },
+      "optimizer_seed": 43172,
+      "readback": {
+        "manifest_sha256": "5b5e6b386c0d39fb87a90f315012cb3caf9857467c5bf08168e31ae07ee591ab",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021113204741Z-0ea99c3e34264480",
+        "sha256": "c612abfd68f2aab80ab01e4305dc47fee8ae7d1316b6d7ddba7d0f9e73538924"
+      },
+      "recipe_sha256": "8ba97ba7e440b6ccd9fc3277482c55484c54616e9be2438fa0fa59bcc2206860",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": null,
+      "source": {
+        "manifest_sha256": "bc6b03dfcede964f023d170acdfbf4797a8745f1b371fed1a3faf81a33cbbbae",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+        "sha256": "f82d3cd484e3e0635efaf370fd54676d5ef273ad5ab5b47d7d9ef7d47094edd4"
+      },
+      "source_acquisition": {
+        "manifest_sha256": "bc6b03dfcede964f023d170acdfbf4797a8745f1b371fed1a3faf81a33cbbbae",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+        "sha256": "f82d3cd484e3e0635efaf370fd54676d5ef273ad5ab5b47d7d9ef7d47094edd4"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "fb8f81e6596f12a081902ec71976109abbee10a3bab157326f8c1fdb9c42cadf",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015552125468Z-481620c97ef442d7",
+        "sha256": "144ba45b2e4a54ceb0fded09bfefc3d0dede77b1327a2d46bea5fcd3b17da10a"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "fc530836dd3b5d8b0ae9a43f760254fc633018a884d94c7cf87ac077321757ad",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-fixed-43172",
+      "triangulated_tracks": 333
+    },
+    {
+      "branch": "seed-43173",
+      "case": {
+        "manifest_sha256": "b711c40985cb8cd2b3d94f835f25d220fc4d549e4dd93823a9155721f1f9ef6a",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T021203156587Z-54104d1ca9ce4364",
+        "sha256": "0b91764140c662d983caa6e9e10cc0938e4d11101a6329811e6c56f7f25a30e5"
+      },
+      "completed_steps": 5000,
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 47.69449912599521,
+        "physical_trial_id": "b2-set6-m4-fixed-43173",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": 0,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "1937f986f1fee2983d1a6d25715715bc67d123515fd90838ba4e63cb056864b2",
+            "recorder_elapsed_s": 0.3885227080027107,
+            "run_id": "20261124T015554057758Z-d9e3f8fe754c405a",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3342336.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "35b87c16db6e06e47bd9d4c384fbcbd84464459d0ecc8d56465ecc02aca9786a",
+            "recorder_elapsed_s": 38.36000000000058,
+            "run_id": "20261124T021029628033Z-91a417d0c1b6416f",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 977.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1531457536.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37141504,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 33.81093919998966
+          },
+          "init": {
+            "manifest_sha256": "dda5c560008c9df3c5947b100dd1365c4472976005d1911f80a0e073e6ddfcb5",
+            "recorder_elapsed_s": 0.7482405839982675,
+            "run_id": "20261124T015552949195Z-7f23295b91a84a75",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 10174464.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "b711c40985cb8cd2b3d94f835f25d220fc4d549e4dd93823a9155721f1f9ef6a",
+            "recorder_elapsed_s": 2.087639749996015,
+            "run_id": "20261124T021203156587Z-54104d1ca9ce4364",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 205996032.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "dc0ff875f43b0878bf0b667456d247a83dd384cc468570a01326394a3ee04072",
+            "recorder_elapsed_s": 5.577999999994063,
+            "run_id": "20261124T021109304571Z-cfc3f8accfec40a6",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 919.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 890183680.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10212864,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3570599000086077
+          },
+          "source": {
+            "manifest_sha256": "bc6b03dfcede964f023d170acdfbf4797a8745f1b371fed1a3faf81a33cbbbae",
+            "recorder_elapsed_s": 0.5320960840035696,
+            "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6684672.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 28928891,
+        "windows_return_summary_sha256": "3e04bf8eebbd10cbabc719a2b26a51376ea4bc69cf2e79e16d698a6b91db1111"
+      },
+      "endpoint_baseline_recomputed_m": 0.2442371192480833,
+      "initial_points": 333,
+      "initialization": {
+        "manifest_sha256": "dda5c560008c9df3c5947b100dd1365c4472976005d1911f80a0e073e6ddfcb5",
+        "member": "payload/init.json",
+        "run_id": "20261124T015552949195Z-7f23295b91a84a75",
+        "sha256": "62b94b96b76e5a617d02f8d694a9b73fb799caeddc30773733da222366fe2eb9"
+      },
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set6",
+      "official_by_slot": {
+        "s00": 24,
+        "s01": 23,
+        "s02": 17,
+        "s03": 22
+      },
+      "optimizer_seed": 43173,
+      "readback": {
+        "manifest_sha256": "b711c40985cb8cd2b3d94f835f25d220fc4d549e4dd93823a9155721f1f9ef6a",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T021203156587Z-54104d1ca9ce4364",
+        "sha256": "3065820bc3a5092aab0376fea79b00a97dbe6d72f365e34f0a8ca2d1e93b5c38"
+      },
+      "recipe_sha256": "90664d535dd9f37b709f1537c019990829f57ff4c33e155892e61e3821f90c0a",
+      "reuse_of": null,
+      "s0_official_by_slot": {
+        "s00": 24,
+        "s03": 22
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "selection": null,
+      "source": {
+        "manifest_sha256": "bc6b03dfcede964f023d170acdfbf4797a8745f1b371fed1a3faf81a33cbbbae",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+        "sha256": "f82d3cd484e3e0635efaf370fd54676d5ef273ad5ab5b47d7d9ef7d47094edd4"
+      },
+      "source_acquisition": {
+        "manifest_sha256": "bc6b03dfcede964f023d170acdfbf4797a8745f1b371fed1a3faf81a33cbbbae",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+        "sha256": "f82d3cd484e3e0635efaf370fd54676d5ef273ad5ab5b47d7d9ef7d47094edd4"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "1937f986f1fee2983d1a6d25715715bc67d123515fd90838ba4e63cb056864b2",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015554057758Z-d9e3f8fe754c405a",
+        "sha256": "aab29944ba80265f7e9889097de60ad0f25acebd699ecc2a140545c29245aa35"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "dede5afb096e07bb8bf98f54ecef64812ebdfb164b86ac240bdd990fa8720ff1",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "trial_id": "b2-set6-m4-fixed-43173",
+      "triangulated_tracks": 333
+    }
+  ],
+  "run_id": "20261124T021937740306Z-df1cbacfb273417a",
+  "schema": "el-b2-development-branches-1",
+  "shared_M2": {
+    "set1": {
+      "checkpoint": {
+        "manifest_sha256": "66e89c7ee6462c00cc0cd810d1351d840e70019bac696b6775e39aa06390b822",
+        "member": "payload/checkpoints/step-5000.pt",
+        "run_id": "20261123T223253609516Z-40d100affe3d492a",
+        "sha256": "8513dacef486013ac7c5a8739671a8836697662b1f3d2babc632efba76822370"
+      },
+      "historical_optimizer": {
+        "manifest_sha256": "66e89c7ee6462c00cc0cd810d1351d840e70019bac696b6775e39aa06390b822",
+        "recorder_elapsed_s": 35.28200000000652,
+        "run_id": "20261123T223253609516Z-40d100affe3d492a",
+        "run_kind": "generation",
+        "sampled_all_device_memory_peak_MiB": 997.0,
+        "sampled_process_gpu_memory_peak_bytes": null,
+        "sampled_tree_rss_peak_bytes": 1518104576.0,
+        "status": "succeeded"
+      },
+      "historical_renderer": {
+        "manifest_sha256": "2341cc45c66352601e40a3156059cd1539bec3ca7c8556fa3880fa5c8cf22d61",
+        "recorder_elapsed_s": 6.6560000000026776,
+        "run_id": "20261123T223330512911Z-7aa1329502be4898",
+        "run_kind": "render",
+        "sampled_all_device_memory_peak_MiB": 947.0,
+        "sampled_process_gpu_memory_peak_bytes": null,
+        "sampled_tree_rss_peak_bytes": 930066432.0,
+        "status": "succeeded"
+      },
+      "new_historical_fit_runs": 0,
+      "object_id": "set1",
+      "renderer_scope": "The historical run renders its original checkpoint grid. Its wall time is not an isolated step-5000 endpoint render time.",
+      "selector_packet": {
+        "manifest_sha256": "6af6a699bc5d94dc965afe84974b310d4eac2421710c250a82dbea6eaea023f7",
+        "member": "payload/selector-input.json",
+        "run_id": "20261124T014828027371Z-baedfd5fc9484b2b",
+        "sha256": "26c325299f26068747254cda630a6f7d68b494b2eb726ef23320fe8c4997766a"
+      },
+      "selector_packet_build": {
+        "manifest_sha256": "6af6a699bc5d94dc965afe84974b310d4eac2421710c250a82dbea6eaea023f7",
+        "recorder_elapsed_s": 1.17656670800352,
+        "run_id": "20261124T014828027371Z-baedfd5fc9484b2b",
+        "run_kind": "archive_verify",
+        "sampled_all_device_memory_peak_MiB": null,
+        "sampled_process_gpu_memory_peak_bytes": null,
+        "sampled_tree_rss_peak_bytes": 6160384.0,
+        "status": "succeeded"
+      }
+    },
+    "set6": {
+      "checkpoint": {
+        "manifest_sha256": "ab84502f76d4e1e138f16a0a8a133417d2e09d9f45da5ef43b5b9f2545ccc0a7",
+        "member": "payload/checkpoints/step-5000.pt",
+        "run_id": "20261123T224353349448Z-4aee436d840d441b",
+        "sha256": "89591e1c3b7d956dc2868811fce41244cf95cee97839425f73e753bf12eabc38"
+      },
+      "historical_optimizer": {
+        "manifest_sha256": "ab84502f76d4e1e138f16a0a8a133417d2e09d9f45da5ef43b5b9f2545ccc0a7",
+        "recorder_elapsed_s": 37.54700000000594,
+        "run_id": "20261123T224353349448Z-4aee436d840d441b",
+        "run_kind": "generation",
+        "sampled_all_device_memory_peak_MiB": 998.0,
+        "sampled_process_gpu_memory_peak_bytes": null,
+        "sampled_tree_rss_peak_bytes": 1534578688.0,
+        "status": "succeeded"
+      },
+      "historical_renderer": {
+        "manifest_sha256": "694ba2e8d3090cb46ec7315488a30bf9c1c702909d08ba3b1ae9997e819bca50",
+        "recorder_elapsed_s": 5.047000000005937,
+        "run_id": "20261123T224432606539Z-990a523d89b44314",
+        "run_kind": "render",
+        "sampled_all_device_memory_peak_MiB": 921.0,
+        "sampled_process_gpu_memory_peak_bytes": null,
+        "sampled_tree_rss_peak_bytes": 779300864.0,
+        "status": "succeeded"
+      },
+      "new_historical_fit_runs": 0,
+      "object_id": "set6",
+      "renderer_scope": "The historical run renders its original checkpoint grid. Its wall time is not an isolated step-5000 endpoint render time.",
+      "selector_packet": {
+        "manifest_sha256": "c882f2a442c068408ccf9f209e99a313e401562d96c2e348db10432ff2cee1f2",
+        "member": "payload/selector-input.json",
+        "run_id": "20261124T014828027390Z-7b7dcb1c1bcc46da",
+        "sha256": "5716b67046db46d4c46e7d957ab1386e96b18eff4919a2f2799a297e5c27363e"
+      },
+      "selector_packet_build": {
+        "manifest_sha256": "c882f2a442c068408ccf9f209e99a313e401562d96c2e348db10432ff2cee1f2",
+        "recorder_elapsed_s": 1.1765525410010014,
+        "run_id": "20261124T014828027390Z-7b7dcb1c1bcc46da",
+        "run_kind": "archive_verify",
+        "sampled_all_device_memory_peak_MiB": null,
+        "sampled_process_gpu_memory_peak_bytes": null,
+        "sampled_tree_rss_peak_bytes": 4128768.0,
+        "status": "succeeded"
+      }
+    }
+  },
+  "source_metadata_note": "The original development-source S0 display field inherited all four historical fixed-slot IDs. The sealed selector package, role-level inputs and legal_photo_ids_before_selection identify only s00=24 and s03=22 before joint selection. Row s0_official_by_slot is derived from those two endpoint source entries. Current source tooling emits that same two-slot S0 metadata.",
+  "target_reference_files_opened": 0,
+  "unique_new_reconstructions": 13
+}

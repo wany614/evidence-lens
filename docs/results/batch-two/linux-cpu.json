@@ -1,0 +1,167 @@
+{
+  "comparisons": [
+    {
+      "compared_finite": 65536,
+      "gold_sha256": "db6e89387f925db9ee70cab4d9ed4c3823c6fea8a00e3fff298961aee75dc09b",
+      "max_abs": 0.0,
+      "mismatched_state": 0,
+      "mismatched_valid": 0,
+      "pixels": 65536,
+      "scores_sha256": "7522da38bb9aeaf51017e0bf6358b280868152f72a6604df311d7fe7c7e55e14",
+      "view": "v01"
+    },
+    {
+      "compared_finite": 65536,
+      "gold_sha256": "00a5ca3f385e0e63fcaff3103e30447ed37dcdee4956fa840181f8a6c215a493",
+      "max_abs": 0.0,
+      "mismatched_state": 0,
+      "mismatched_valid": 0,
+      "pixels": 65536,
+      "scores_sha256": "37d590da9196948c504abf535dc41b8f830d2f28b920de7fc13c58554a87c326",
+      "view": "v02"
+    },
+    {
+      "compared_finite": 64224,
+      "gold_sha256": "b0dc4c5e694a0bd5672d73b86042ee1c717fded52d06d367c7d7aecf0a1426f9",
+      "max_abs": 0.0,
+      "mismatched_state": 0,
+      "mismatched_valid": 0,
+      "pixels": 65536,
+      "scores_sha256": "07a39d6f57cd943739c53ca7a13465beaf1e4548fba6dfdf8c385d5c22e1b2a1",
+      "view": "v03"
+    },
+    {
+      "compared_finite": 64507,
+      "gold_sha256": "c02c49dd2f726e84304944438bd705e5889a94f28957f08fb0de8693fbe9b247",
+      "max_abs": 0.0,
+      "mismatched_state": 0,
+      "mismatched_valid": 0,
+      "pixels": 65536,
+      "scores_sha256": "5eb0af235de41d8cdcb76de2c836e6a13696514720974186ee0a77eaa110b01c",
+      "view": "v04"
+    },
+    {
+      "compared_finite": 63019,
+      "gold_sha256": "a9b2a39277a166188c79215a4bb55322304f7bf32fac66eda504dbd332647e4e",
+      "max_abs": 0.0,
+      "mismatched_state": 0,
+      "mismatched_valid": 0,
+      "pixels": 65536,
+      "scores_sha256": "dbaea7448b22f63dcba77a915ea32b7ecec9e4015ac594abc963dba770db4ad8",
+      "view": "v05"
+    },
+    {
+      "compared_finite": 65536,
+      "gold_sha256": "82246f288ccd3820a68d1de7f884793bc4999bbbfef1c9fd652f5e697bffdfd0",
+      "max_abs": 0.0,
+      "mismatched_state": 0,
+      "mismatched_valid": 0,
+      "pixels": 65536,
+      "scores_sha256": "5f008251307699a6798757a31630a149eb1d8bed200917b1544e56af91f9bcaa",
+      "view": "v06"
+    }
+  ],
+  "counts": {
+    "canvas": 393216,
+    "high": 72213,
+    "low": 316145,
+    "scoreable": 388358,
+    "unknown": 4858
+  },
+  "distribution": "evidence-lens",
+  "environment": {
+    "input_mounts": "read_only",
+    "machine": "aarch64",
+    "network_mode": "none",
+    "numpy": "2.5.5",
+    "pillow": "12.3.0",
+    "pip_external_indexes": 0,
+    "platform": "Linux",
+    "python": "3.12.16",
+    "repository_digest": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+    "requested_GPU_devices": 0,
+    "root_filesystem": "read_only",
+    "runtime": "Docker Linux container",
+    "temporary_venv": "empty tmpfs"
+  },
+  "html_sha256": {
+    "default": "accdf6a583cd97c2462473a3799994f5b3dfdb4e33b905e94af9f9b3ababd63f",
+    "profile": "06ea6b354ff9ca63671c993c43fc7f5a35a678759c4a80440186e3a93786c4d5"
+  },
+  "overall": {
+    "compared_finite": 388358,
+    "default_profile_override": null,
+    "max_finite_abs_error": 0.0,
+    "state_mismatches": 0,
+    "valid_mask_mismatches": 0
+  },
+  "passed": true,
+  "profile_check": {
+    "all_six_raw_arrays_byte_identical_to_default": true,
+    "bundle_applicability": "outside_calibration_scope",
+    "comparison": "The original Blender case was scored with the fixed DTU M4 profile and without a DTU deployment-scope proof. The HTML disclosed its scope and the embedded receipt preserved both statuses.",
+    "condition": "M4",
+    "profile_outcome": "no_feasible_operating_point",
+    "profile_sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92",
+    "profile_threshold": null,
+    "threshold_applied": false
+  },
+  "run_id": "20261124T022022718687Z-304bbad000e34084",
+  "schema": "el-b2-linux-cpu-acceptance-1",
+  "scope": {
+    "bundle_sha256": "5f6ec640ba9910259cb46f11620a3b2277c05a3c245a173e6987c9da9d99191a",
+    "condition": "M4",
+    "method": "MS-L1",
+    "model_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a",
+    "native_grid": [
+      256,
+      256
+    ],
+    "object": "original Blender development scene 057 offset bell cage",
+    "photographic_references_opened": 0,
+    "raw_numeric_tolerance": 0.0001,
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "released_original_threshold": 0.06428983435034752,
+    "source_count": 4,
+    "target_views": 6
+  },
+  "seconds": {
+    "clean_install_validate_score_report": 4.266986125003314,
+    "default_load_within_scoring": 0.002041260000623879,
+    "default_scoring": 0.70576172499932,
+    "separate_profile_install_validate_score_report": 3.6435139999957755,
+    "separate_profile_scoring": 0.653156394000689
+  },
+  "sources": {
+    "actual": {
+      "manifest_sha256": "b004c0ec45655c1004571397513b8546710e6495f467a4162e1a055f53436187",
+      "member": "payload/linux.json",
+      "run_id": "20261124T021724106283Z-67d589b19aad44b1",
+      "sha256": "c2b78cba6c8441369e5c8d39b84c9dd88545ffac66f1b9911509644d34812857"
+    },
+    "build": {
+      "manifest_sha256": "b7c15a68f16ce57f3a73a740ec59adf27c7566137ae03b842b9595a379810aee",
+      "member": "payload/build.json",
+      "run_id": "20261124T020650368203Z-bcaeca9882e749cd",
+      "sha256": "a996186e69a44244b7f60d495e33691050c24990d87468024b69b4d145907d9d"
+    },
+    "independence": {
+      "manifest_sha256": "e8acf0e5c5eff04df934795c2345f725d1bde0e6878e63ed24e76333d6f98c5b",
+      "member": "payload/profile-readback.json",
+      "run_id": "20261124T021929760866Z-fe12804f88064761",
+      "sha256": "46ddb75d0045b63b66c2270374830916869b68a007e2e123556a51950b89d19d"
+    },
+    "scores": {
+      "manifest_sha256": "b004c0ec45655c1004571397513b8546710e6495f467a4162e1a055f53436187",
+      "member": "payload/scores/scores.json",
+      "run_id": "20261124T021724106283Z-67d589b19aad44b1",
+      "sha256": "e07cbd7b5b76d32dc4535c95d8be1fd49e6856c1f44429519c63122592355c51"
+    }
+  },
+  "version": "0.4.0b1",
+  "wheel": {
+    "bytes": 365563,
+    "name": "evidence_lens-0.4.0b1-py3-none-any.whl",
+    "sha256": "ca52e82c8e870560c05075dda4b5282311500580f9283fe234aa27643d6f8882"
+  }
+}

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-lens"
-version = "0.4.0a3"
+version = "0.4.0b1"
 description = "CPU diagnostics for single- and multi-image novel-view synthesis"
 readme = "README.md"
 authors = [{name = "wany614"}]
@@ -20,6 +20,7 @@ evidence-lens = "evidence_lens_bundle.cli:main"
 Repository = "https://github.com/wany614/evidence-lens"
 
 [project.optional-dependencies]
+renderer = ["gsplat==1.5.3", "torch>=2,<3"]
 record = ["psutil>=6,<8", "pyarrow>=18,<27"]
 train = ["scikit-learn==1.9.1", "pyarrow>=18,<27", "threadpoolctl>=3.1,<4"]
 vision = ["torch==2.8.0", "safetensors>=0.5,<1", "psutil>=6,<8"]

@@ -1,0 +1,20 @@
+{
+  "bytes": 2092578,
+  "clean_distributions": {
+    "evidence-lens": "0.4.0b1",
+    "numpy": "2.5.5",
+    "pillow": "12.3.0"
+  },
+  "clean_replay_float32_words_different": 0,
+  "clean_replay_pixels": 196608,
+  "clean_replay_states_different": 0,
+  "example_html_sha256": "3bc6f9f9cceb2bd76ad656b8ada79f215bd9d8b2aaa4a4272bc8ca2458bf32ad",
+  "file": "evidence-lens-assets-v0.4.0b1.zip",
+  "manifest_sha256": "392a03e08c2b211f9e62ef8ff43e5d058bce64c7b23000d85b378557f3491f1d",
+  "members": 50,
+  "outside_html_sha256": "eb9158e89cedbe0e88e4c2bfdb0e306a9eaf509f5d55aee3393b3ae095b22fc3",
+  "run_id": "20261124T021735523259Z-8ee25029bf9d4422",
+  "schema": "el-b2-public-asset-distribution-1",
+  "sha256": "e0a6365b2895fb85ab3565f0753c3036bfaf0abc04c7dda53a2fe5fa3aeabcc9",
+  "verification_sha256": "818b707575ffe343a952d77956f1c9eb6e17f18c86326094241b5071db26307f"
+}

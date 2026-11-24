@@ -1,0 +1,113 @@
+{
+  "T1_access": 0,
+  "calibration_method": {
+    "manifest_sha256": "d763651112068cccf87018ec7be0f203f672f1c0ebc9f2991bb7ed9d0f3a8a17",
+    "member": "payload/calibration-method.json",
+    "run_id": "20261124T020129961316Z-2b715d6ae3314c12",
+    "sha256": "5d36644b3c65e0730e91bc816152145469ebaf378d52358e78fa8149a61cc3f3"
+  },
+  "candidate_rows": 2814,
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "fitted_conditions": 2,
+  "leave_one_object_out_fits": 12,
+  "new_risk_models": 0,
+  "numerical_files": {
+    "candidate-curves.csv": "5a2eeb182c67fccd0ef051659454b9fb7fa0a86f63edfd0d116ea0f15be34cf5",
+    "candidate-object-counts.csv": "089120da60860813d4370a68a2ba4cf88316f58d83c01aef6fac7dca55533195",
+    "leave-one-out.csv": "0cfb9e1129ea97d9f969f0167e1e7db6763c5a70d1471cd36a53ce9510319ca1",
+    "original-method-object-counts.csv": "2827b5b2a9fd64a7578a61d0b227881692c3bcb0ddf88786c5951937c3ee73b5",
+    "original-method-views.csv": "43f9d86392aaccd138b9ded3b291581a288c1e0455e651bc0887528a273b3d26"
+  },
+  "opening": {
+    "manifest_sha256": "c14d67f2d9d10b9dd0d2bca5a80eb9266faad2787b30ac0f1052d46e556e696c",
+    "member": "payload/opening.json",
+    "run_id": "20261124T021200190993Z-38fecc1ba0c146e0",
+    "sha256": "74d246fb46c1efbf533d04c638befc8e2aca04eb70746affd8a57dc7ffa0d73c"
+  },
+  "outcomes": {
+    "M2": {
+      "distinct_thresholds": 198,
+      "feasible_anchors": 0,
+      "highest_coverage_among_all_nonempty_error_at_most_5_percent": null,
+      "loo_feasible_folds": 0,
+      "loo_folds": 6,
+      "minimum_error_among_all_nonempty_coverage_at_least_20_percent": 0.6068727295175539,
+      "status": "no_feasible_operating_point",
+      "tau": null
+    },
+    "M4": {
+      "distinct_thresholds": 201,
+      "feasible_anchors": 0,
+      "highest_coverage_among_all_nonempty_error_at_most_5_percent": null,
+      "loo_feasible_folds": 0,
+      "loo_folds": 6,
+      "minimum_error_among_all_nonempty_coverage_at_least_20_percent": 0.15154721423223644,
+      "status": "no_feasible_operating_point",
+      "tau": null
+    }
+  },
+  "per_object_candidate_rows": 14472,
+  "profiles": {
+    "M2": {
+      "path": "profiles/M2.json",
+      "sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1"
+    },
+    "M4": {
+      "path": "profiles/M4.json",
+      "sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92"
+    }
+  },
+  "raw_scored_views_methods": 288,
+  "references": {
+    "set110": {
+      "manifest_sha256": "3a1334af64e884d5ed626908e08d5e7bc8d8057bbbbc01171d5f6a84b37e31ac",
+      "member": "payload/references.json",
+      "run_id": "20261124T021214982504Z-ffeb98d620a14a7b",
+      "sha256": "7ac9dc56b03fbdd9118383d626e0d0a4c6b790d700aaa1e0ce5f39a7632d8153"
+    },
+    "set42": {
+      "manifest_sha256": "17429a5fb30900ac19772b5e5f146ff61a92c7e252e91f8d776e6fc9f90aa923",
+      "member": "payload/references.json",
+      "run_id": "20261124T021221059658Z-247d820513384e71",
+      "sha256": "d52682cc28ad6cd1e5b1606c3d90334038e69eb8174017da717fae8b5553b60e"
+    },
+    "set48": {
+      "manifest_sha256": "d872998bae84be62d34964e7833521a1e3af851d7629b399e971234bd5c917aa",
+      "member": "payload/references.json",
+      "run_id": "20261124T021214990333Z-73cbebd255994301",
+      "sha256": "75095b1e660ecd3a3dabb67ec80dbebdd204e8d98f755cea019b7ca98aacea57"
+    },
+    "set52": {
+      "manifest_sha256": "444233e0b1f923f9bec699ef3811cb2eae64d7ac51d8801768a3251c809e675a",
+      "member": "payload/references.json",
+      "run_id": "20261124T021221941852Z-f8eb7a3cfee941ef",
+      "sha256": "946bfd04db42e2050e9de7c1b967172cdcd11de7d089842f6b8dd54d887e4fb1"
+    },
+    "set75": {
+      "manifest_sha256": "940e7535cd0787e6017cf89597e9c23ace7351c62e7124bcc14e7c7e57bf1755",
+      "member": "payload/references.json",
+      "run_id": "20261124T021214988659Z-6c41fe1ee9a341d2",
+      "sha256": "3a2a89348ada15a936cbc28151408c60025c0f103394c50cf4e58ca6c43398c1"
+    },
+    "set77": {
+      "manifest_sha256": "68752cdbe03e402631548b478ed1ce4891dfdb767850368023e772004ab8f8b3",
+      "member": "payload/references.json",
+      "run_id": "20261124T021221895594Z-802f286844214825",
+      "sha256": "ad96ddf9775aa536deb714e6ee30fe59962e1128141d417d389a594c748ba19b"
+    }
+  },
+  "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+  "schema": "el-b2-calibration-results-1",
+  "score_candidates": {
+    "manifest_sha256": "c1d25dc93dcb5e2d496423e84f71bbb28b9a18953d079f9cbb4da663f6978f97",
+    "member": "payload/score-candidates.json",
+    "run_id": "20261124T020900657339Z-71eb2236f1ad42c0",
+    "sha256": "7c2ebcc4ef73c895c9b8bdc1f5d2a7f1fe80f973bd627102c506725c294a241c"
+  },
+  "views": 72
+}

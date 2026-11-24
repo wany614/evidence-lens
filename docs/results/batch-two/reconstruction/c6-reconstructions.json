@@ -1,0 +1,1587 @@
+{
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "physical_totals": {
+    "physical_reconstructions": 12,
+    "source_candidate_http_body_bytes": 0,
+    "stages": {
+      "dispatch": {
+        "max_sampled_tree_rss_bytes": 9060352.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 4.620067251002183,
+        "unique_runs": 12
+      },
+      "generation": {
+        "max_sampled_tree_rss_bytes": 1544380416.0,
+        "max_torch_allocated_bytes": 37238272.0,
+        "max_torch_reserved_bytes": 60817408.0,
+        "sum_recorder_elapsed_s": 452.3259999999718,
+        "unique_runs": 12
+      },
+      "init": {
+        "max_sampled_tree_rss_bytes": 9273344.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 9.989422709011706,
+        "unique_runs": 12
+      },
+      "readback": {
+        "max_sampled_tree_rss_bytes": 227328000.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 24.306103251001332,
+        "unique_runs": 12
+      },
+      "render": {
+        "max_sampled_tree_rss_bytes": 944291840.0,
+        "max_torch_allocated_bytes": 10759168.0,
+        "max_torch_reserved_bytes": 14680064.0,
+        "sum_recorder_elapsed_s": 63.23500000000058,
+        "unique_runs": 12
+      },
+      "source": {
+        "max_sampled_tree_rss_bytes": 68943872.0,
+        "max_torch_allocated_bytes": null,
+        "max_torch_reserved_bytes": null,
+        "sum_recorder_elapsed_s": 17.90622829296626,
+        "unique_runs": 12
+      }
+    },
+    "unique_source_runs_with_recorded_candidate_http": 0,
+    "windows_return_object_bytes_including_summary": 299808891
+  },
+  "rows": [
+    {
+      "case": {
+        "manifest_sha256": "65ef9d39ac82e0148950b0196e26d6c9bc1f7f1ff919976c67177448c1da8287",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020412544136Z-25ec8936b0e54994",
+        "sha256": "de505c54b3fff047e285a41378841060b675056163d509329cce56a92b3eceac"
+      },
+      "completed_steps": 5000,
+      "condition": "M2",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 45.73781862601754,
+        "physical_trial_id": "b2-set48-m2-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "ab0432cc7490641056a5781a4b044c62a5702459ceec0ec8b92640c8a9057075",
+            "recorder_elapsed_s": 0.41692654200596735,
+            "run_id": "20261124T015258674188Z-e047d1c9f3774537",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6586368.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "fb402cd781f5f6773f6af5843c2960ad1fdcad2b9e6fc99d36752a4b45ae8799",
+            "recorder_elapsed_s": 35.687000000005355,
+            "run_id": "20261124T015830737364Z-a0d33c3c16fb41ef",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 957.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1510895616.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 35739648,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 32.1349240999989
+          },
+          "init": {
+            "manifest_sha256": "b794590b276cb79cf47b6b35d3bea95a747ad4cc249d76d3e0e8c360e2823dba",
+            "recorder_elapsed_s": 1.3340052090061363,
+            "run_id": "20261124T015256980934Z-c96bed3271e14949",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6635520.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "65ef9d39ac82e0148950b0196e26d6c9bc1f7f1ff919976c67177448c1da8287",
+            "recorder_elapsed_s": 2.249479292004253,
+            "run_id": "20261124T020412544136Z-25ec8936b0e54994",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 201392128.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "8dffbafc4aa14761ecd2908c25c29c01dd9f1ae4953b46654224b8f275c53e5d",
+            "recorder_elapsed_s": 4.7810000000026776,
+            "run_id": "20261124T015907615421Z-d2cfa21fb4b24dcd",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 895.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 914583552.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10680320,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.2993692999880295
+          },
+          "source": {
+            "manifest_sha256": "f7916b2a71eabbdf699dea4fb39246df05043d435d8c2f55373cc0deb7664fdd",
+            "recorder_elapsed_s": 1.2694075829931535,
+            "run_id": "20261124T014919697753Z-05e4409ffa7647ad",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 65110016.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 12,
+        "windows_return_object_bytes_including_summary": 24997525,
+        "windows_return_summary_sha256": "9a171e1e27b0bafaaa7a40480ab7403ff541870cdc6fd1fda35ecb1c47cc7acb"
+      },
+      "failure_reasons": null,
+      "initial_points": 2048,
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set48",
+      "readback": {
+        "manifest_sha256": "65ef9d39ac82e0148950b0196e26d6c9bc1f7f1ff919976c67177448c1da8287",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020412544136Z-25ec8936b0e54994",
+        "sha256": "e796197f314600e59cd0fe8cb2e0b38e53eb643b34568421674165f6c939dcd3"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "f7916b2a71eabbdf699dea4fb39246df05043d435d8c2f55373cc0deb7664fdd",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014919697753Z-05e4409ffa7647ad",
+        "sha256": "2b73079dc1673be0c163eba1880bdeeb5106d54652e7833314e8b40007a09c9f"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "ab0432cc7490641056a5781a4b044c62a5702459ceec0ec8b92640c8a9057075",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015258674188Z-e047d1c9f3774537",
+        "sha256": "9cd26619274099013e14612c7829dd75a611577fc6c370436d713a8910e6960d"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 2500,
+          "s03": 2500
+        },
+        "trace_sha256": "d81ae764907828552b4f9cf9baa21e4286f710b5a206011e8f504237bfd730ec",
+        "updates_with_nonzero_gradient": {
+          "s00": 2500,
+          "s03": 2500
+        }
+      },
+      "triangulated_tracks": 3
+    },
+    {
+      "case": {
+        "manifest_sha256": "7933683288561edf8e8c8ec3a0d0b8529c0580b17b435d25ff3304de571791c3",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020416142975Z-496fa3f1213c40a1",
+        "sha256": "340ac6e1d1845073961eeb21d117e09339494ef3789e6ddf729b32a1ea661538"
+      },
+      "completed_steps": 5000,
+      "condition": "M4",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 46.485220207992825,
+        "physical_trial_id": "b2-set48-m4-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "a6d61ee3812f883cc6e91ce505856ac3eae0c97446839ed8ab8f0c886ab0c4a6",
+            "recorder_elapsed_s": 0.32172750000609085,
+            "run_id": "20261124T015258655233Z-b44f81e60401491b",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 2998272.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "ae3471517cf6bff516e79d2ec887343128488c653b4b09ebe0aaac4fd7022749",
+            "recorder_elapsed_s": 37.09299999999348,
+            "run_id": "20261124T015915530427Z-f48ab9853806467f",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 969.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1544380416.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37228032,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 33.11934940000356
+          },
+          "init": {
+            "manifest_sha256": "dc95f5cfc1f7bd9c4e7d8b5baccbbbf7b1d88942dae59603b2abfd32b726ad03",
+            "recorder_elapsed_s": 1.3087537910032552,
+            "run_id": "20261124T015256981742Z-136223e6143842e3",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 7700480.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "7933683288561edf8e8c8ec3a0d0b8529c0580b17b435d25ff3304de571791c3",
+            "recorder_elapsed_s": 1.2404451670008712,
+            "run_id": "20261124T020416142975Z-496fa3f1213c40a1",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3604480.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "634ab2a5445a4ec8bc1f43522eb33158cef247318885c57354cd3cd3b2d6a44b",
+            "recorder_elapsed_s": 4.8439999999973224,
+            "run_id": "20261124T015953803240Z-06811342db3e4e7a",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 898.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 926015488.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10534400,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3230049999983748
+          },
+          "source": {
+            "manifest_sha256": "2feb840404d01ace5e60e2cd29e4d5940dfe4e4dc973f6fbab552bcd3986eeb2",
+            "recorder_elapsed_s": 1.6772937499918044,
+            "run_id": "20261124T014934388247Z-67bce748f7f34fcd",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 65634304.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 23219738,
+        "windows_return_summary_sha256": "cd80e9c601b94c415af279f4a653661e320b4f5479ea485d5d405e7fb16ef7e7"
+      },
+      "failure_reasons": null,
+      "initial_points": 24,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set48",
+      "readback": {
+        "manifest_sha256": "7933683288561edf8e8c8ec3a0d0b8529c0580b17b435d25ff3304de571791c3",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020416142975Z-496fa3f1213c40a1",
+        "sha256": "8c86a5f535611830baca0d6a006e91429733c87b7d53593fdf13f3613f5f3da2"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "2feb840404d01ace5e60e2cd29e4d5940dfe4e4dc973f6fbab552bcd3986eeb2",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014934388247Z-67bce748f7f34fcd",
+        "sha256": "4fd7addfa042ad5e947a381c245566794fb45fc2f6a476a41af494495c9f5c33"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "a6d61ee3812f883cc6e91ce505856ac3eae0c97446839ed8ab8f0c886ab0c4a6",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015258655233Z-b44f81e60401491b",
+        "sha256": "22dc969dc544d6fbe20a465e461e78155dd77f262d364ea6da9b71aa6305a796"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "8b48c59dc81cb64ef54e9558cb93d951631d020d3c863c2dc08b1c4290faa59c",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "triangulated_tracks": 24
+    },
+    {
+      "case": {
+        "manifest_sha256": "495d490f6e379977b8447e0b1d6b448ddd9478d717922bab716bb41345c3e0cd",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020414493590Z-4b572cc469264212",
+        "sha256": "e7e771c2754e38a80ee50ee68ddfa5878ea04ff0dc9e81f1636f938ee2993707"
+      },
+      "completed_steps": 5000,
+      "condition": "M2",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 48.11801862499851,
+        "physical_trial_id": "b2-set75-m2-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "320b0dfa075b0c6bd01bfd4fb95070bfef770be0fcb5847fc5d331af9d6d0640",
+            "recorder_elapsed_s": 0.34901387500576675,
+            "run_id": "20261124T015258676787Z-cf88f8bf057f4113",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3145728.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "f33c9df2e7e3cd573b45a03b5779c3af0830699efef05faa741bf1dc7e0b99e5",
+            "recorder_elapsed_s": 37.78100000000268,
+            "run_id": "20261124T020001814359Z-ac4a9cf3778a4426",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 962.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1507790848.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 35579392,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 33.82373049999296
+          },
+          "init": {
+            "manifest_sha256": "24e6d8fcf019d2e82a2c1539b2d86d382d16926c10c684146acfdec6b72f2432",
+            "recorder_elapsed_s": 1.3360890420008218,
+            "run_id": "20261124T015256981694Z-96aaf059274c479f",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6946816.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "495d490f6e379977b8447e0b1d6b448ddd9478d717922bab716bb41345c3e0cd",
+            "recorder_elapsed_s": 2.4622300829942105,
+            "run_id": "20261124T020414493590Z-4b572cc469264212",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6750208.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "1ccd0863acb30d6dfcd3c0512fd0998191da9ac3afb1a935f8dc345b1d80b107",
+            "recorder_elapsed_s": 4.860000000000582,
+            "run_id": "20261124T020040825792Z-50ace2a19fee44e3",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 887.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 776744960.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10372096,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.184819800007972
+          },
+          "source": {
+            "manifest_sha256": "3f446bee16114e29f5dce1030120afbf1b188123161ac96876db7c0605cd164f",
+            "recorder_elapsed_s": 1.329685624994454,
+            "run_id": "20261124T014934377047Z-d43bd34ec04f4357",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 64995328.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 12,
+        "windows_return_object_bytes_including_summary": 25733467,
+        "windows_return_summary_sha256": "2f4bef4ba07bdd240e016c19d7b93b22e97815645847297513492b0fa3ff33e1"
+      },
+      "failure_reasons": null,
+      "initial_points": 2048,
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set75",
+      "readback": {
+        "manifest_sha256": "495d490f6e379977b8447e0b1d6b448ddd9478d717922bab716bb41345c3e0cd",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020414493590Z-4b572cc469264212",
+        "sha256": "39e81722d12debf7036f2529346aa24ba32220bca97f8a21611408d8efe7c63b"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "3f446bee16114e29f5dce1030120afbf1b188123161ac96876db7c0605cd164f",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014934377047Z-d43bd34ec04f4357",
+        "sha256": "37244740bfceb68be382a09173fc9ec461b8f872fc000f20fdc0a92f4a469043"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "320b0dfa075b0c6bd01bfd4fb95070bfef770be0fcb5847fc5d331af9d6d0640",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015258676787Z-cf88f8bf057f4113",
+        "sha256": "721bf5cef0733fb255d1a1b63c7566f847d64eed864dc481e5ca6a6accd77c99"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 2500,
+          "s03": 2500
+        },
+        "trace_sha256": "aea5721858fd0c9b5344edd66f80c0ea8a139c1c079257dae50bbade0e440f7e",
+        "updates_with_nonzero_gradient": {
+          "s00": 2500,
+          "s03": 2500
+        }
+      },
+      "triangulated_tracks": 7
+    },
+    {
+      "case": {
+        "manifest_sha256": "009fc500f663affa3b5577807a5ea6ef90e053eab34c8f7f23dfc78c786e19ab",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020432430547Z-fae93257c5854696",
+        "sha256": "6f31ddf8994600f7a4af70a5f1d67a1a867f11e7198b3aa0a63178704377d988"
+      },
+      "completed_steps": 5000,
+      "condition": "M4",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 47.87886850096402,
+        "physical_trial_id": "b2-set75-m4-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "fbe25edc9144c329e11c7401222c2a141e040c0d2bbeb347e0a496fa15ac29da",
+            "recorder_elapsed_s": 0.40570945899526123,
+            "run_id": "20261124T015300258650Z-ff5d1d3c1e644824",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 7847936.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "38b2d00ec00bad64a006ae95cce3f578cd10b4310a683c2e82a64b09816d7fa3",
+            "recorder_elapsed_s": 37.76599999998871,
+            "run_id": "20261124T020048846464Z-5d7cfad36c81410b",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 976.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1504112640.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37124608,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 33.65746400000353
+          },
+          "init": {
+            "manifest_sha256": "2d6c9cefa9697b349928a903fd0dafb22cd3ccc49cf404289f973b818de508c5",
+            "recorder_elapsed_s": 0.6042899999883957,
+            "run_id": "20261124T015259292014Z-4b2de7d2d55d4287",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 9076736.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "009fc500f663affa3b5577807a5ea6ef90e053eab34c8f7f23dfc78c786e19ab",
+            "recorder_elapsed_s": 2.048939500004053,
+            "run_id": "20261124T020432430547Z-fae93257c5854696",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6766592.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "c6d11663017133e0000b09c993a0e219d44e4d7d8769e70f7debd25450396ae4",
+            "recorder_elapsed_s": 5.452999999994063,
+            "run_id": "20261124T020127937746Z-0fa0a4323c624cac",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 912.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 929107968.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10291200,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.4119396000023698
+          },
+          "source": {
+            "manifest_sha256": "a06a5eebf0c3a29b583abd09feca309573c5201d15f6744c20473ba742486ff6",
+            "recorder_elapsed_s": 1.600929541993537,
+            "run_id": "20261124T014935825626Z-1c726f32ca5a48fb",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 67452928.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 27583023,
+        "windows_return_summary_sha256": "a47e22c4185dda53b8bd1189f0b8d066cee6a7e43efab07b055c98ef3b8b309b"
+      },
+      "failure_reasons": null,
+      "initial_points": 78,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set75",
+      "readback": {
+        "manifest_sha256": "009fc500f663affa3b5577807a5ea6ef90e053eab34c8f7f23dfc78c786e19ab",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020432430547Z-fae93257c5854696",
+        "sha256": "1d54eb3e9b27d43235c74ad15649a2366992a52fcb7c2256c691b631ef4979aa"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "a06a5eebf0c3a29b583abd09feca309573c5201d15f6744c20473ba742486ff6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014935825626Z-1c726f32ca5a48fb",
+        "sha256": "3408f1ed9d19821208abeb90637bd43e2a11d9ab80109a10d7cf9890f076a53e"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "fbe25edc9144c329e11c7401222c2a141e040c0d2bbeb347e0a496fa15ac29da",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015300258650Z-ff5d1d3c1e644824",
+        "sha256": "9858760a5c28037d209039d16a87dfae5faaff98513deec3609de8847603107f"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "e66237597f6a8e11f085f417ae62ed37aafdb367f20d483a6d3914f359b6d53f",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "triangulated_tracks": 78
+    },
+    {
+      "case": {
+        "manifest_sha256": "222367d6eff01733f81a742509e698f4edb92971f42e8facc27d8315de94f95b",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020430791988Z-d1cfbd40f9fd4d38",
+        "sha256": "35ae5882621216a91d357b1b3401a7b12eb3b2ec2209a265f04d8229fefc67e7"
+      },
+      "completed_steps": 5000,
+      "condition": "M2",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 48.214482666997355,
+        "physical_trial_id": "b2-set110-m2-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "4460550f9933e0d3cefde8b2cb6a5e5cc6b8d5e28747e68b3cd437cf36af6829",
+            "recorder_elapsed_s": 0.4354640420060605,
+            "run_id": "20261124T015300319449Z-14000d02b6924ec9",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 9060352.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "b7adc8460a1f7494ab6d574bed6b5ad31496f22748a1b31369f1d6a956d0605c",
+            "recorder_elapsed_s": 37.51599999998871,
+            "run_id": "20261124T020136969831Z-538c0af32ff240c2",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 968.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1502482432.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 34041856,
+            "torch_reserved_peak_bytes": 56623104,
+            "worker_wall_seconds": 33.22282099998847
+          },
+          "init": {
+            "manifest_sha256": "f519d0d13f2221ca5f5bfb4429239571e8bf2200785aa7e541ac23c4b3363ec4",
+            "recorder_elapsed_s": 0.6519008330069482,
+            "run_id": "20261124T015259329076Z-9b1cf6fd1b2f4a41",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 9273344.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "222367d6eff01733f81a742509e698f4edb92971f42e8facc27d8315de94f95b",
+            "recorder_elapsed_s": 2.6919575829961104,
+            "run_id": "20261124T020430791988Z-d1cfbd40f9fd4d38",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 225886208.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "885da342da307710b68e3ce9b46d9bd23d66b04cecadabad3edccf5c81830dc8",
+            "recorder_elapsed_s": 5.125,
+            "run_id": "20261124T020215781373Z-9ae177b7034f4226",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 896.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 777351168.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 9559552,
+            "torch_reserved_peak_bytes": 12582912,
+            "worker_wall_seconds": 1.2511857999925269
+          },
+          "source": {
+            "manifest_sha256": "e9ee3465e1a6bbc153b8af657afe9414c81e674d5ee18bfeb1a520b8f02e518a",
+            "recorder_elapsed_s": 1.7941602089995285,
+            "run_id": "20261124T014934377282Z-d33b887841e742b0",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 65273856.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 12,
+        "windows_return_object_bytes_including_summary": 23808491,
+        "windows_return_summary_sha256": "17698d2df64644bca8690e4b74f86fbbb830b942925da0ec1546e98e9ffa3b43"
+      },
+      "failure_reasons": null,
+      "initial_points": 2048,
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set110",
+      "readback": {
+        "manifest_sha256": "222367d6eff01733f81a742509e698f4edb92971f42e8facc27d8315de94f95b",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020430791988Z-d1cfbd40f9fd4d38",
+        "sha256": "019bbbd1519db00a53ec4c677b63381d92a14eb7ca601ae1c7fd3ea387be5b47"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "e9ee3465e1a6bbc153b8af657afe9414c81e674d5ee18bfeb1a520b8f02e518a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014934377282Z-d33b887841e742b0",
+        "sha256": "f5db6473bc7973e71ade057cf113a4d52791b395cadb3d055f273e667cc4d5f8"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "4460550f9933e0d3cefde8b2cb6a5e5cc6b8d5e28747e68b3cd437cf36af6829",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015300319449Z-14000d02b6924ec9",
+        "sha256": "ac2cf914e5dfcf0f2d0e7ee2a5f917852bf2834492201528d61fd975de57c0f9"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 17225,
+        "source_updates_in_this_process": {
+          "s00": 2500,
+          "s03": 2500
+        },
+        "trace_sha256": "411705fdac10678d6cc5cfa92083316c1871ede6a4fd805458b882e212f45797",
+        "updates_with_nonzero_gradient": {
+          "s00": 2500,
+          "s03": 2500
+        }
+      },
+      "triangulated_tracks": 5
+    },
+    {
+      "case": {
+        "manifest_sha256": "aade8454e7120c2f07c35b134c9e898ba176a2a77e57e71f97853f6b3e702bc5",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020434820687Z-57caf394c1bd449c",
+        "sha256": "3c77c1a858f6a59dca523de86ea6636355904a2da37ab34939ef535805e08b45"
+      },
+      "completed_steps": 5000,
+      "condition": "M4",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 45.24578516698966,
+        "physical_trial_id": "b2-set110-m4-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "4cd3929ef8080cec9f5ac83b43fb48f3384d0ef15293942ef789a4bf72820a0b",
+            "recorder_elapsed_s": 0.431732541997917,
+            "run_id": "20261124T015300419933Z-c21edfeb09e44ea4",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3244032.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "f88e2708241618ad42c47df1576a1e6e0f004437ae785ef6195b2a6a5aef110b",
+            "recorder_elapsed_s": 35.921000000002095,
+            "run_id": "20261124T020224284897Z-9efe3a473c6b462d",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 973.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1513603072.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37094400,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 31.66003910001018
+          },
+          "init": {
+            "manifest_sha256": "91dab21bc903efd3be8edb47450e67e79e8b92b2d57c136eaa4d44df9716f306",
+            "recorder_elapsed_s": 0.6278637499926845,
+            "run_id": "20261124T015259427475Z-000da5e9ff17459f",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6946816.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "aade8454e7120c2f07c35b134c9e898ba176a2a77e57e71f97853f6b3e702bc5",
+            "recorder_elapsed_s": 1.3842112499987707,
+            "run_id": "20261124T020434820687Z-57caf394c1bd449c",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6111232.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "205fdbc1871a49c1b7f0e0810cdc978be998eba91267c2f3d58df5d08093cb34",
+            "recorder_elapsed_s": 5.125,
+            "run_id": "20261124T020301693006Z-f29c5232f08a445c",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 900.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 777658368.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10164736,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.2917498000024352
+          },
+          "source": {
+            "manifest_sha256": "3e01a859ebcd0f459a5931fd09ad76cf32ba3cdbe326d0b5881701cdabaac2b4",
+            "recorder_elapsed_s": 1.755977624998195,
+            "run_id": "20261124T014936310795Z-1297eabb2a844256",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 68943872.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 27996074,
+        "windows_return_summary_sha256": "dbc4daed2d55122ff9fa2dcdfc01cf61d3b30ab026430242898c6ceb3ba3fc33"
+      },
+      "failure_reasons": null,
+      "initial_points": 97,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set110",
+      "readback": {
+        "manifest_sha256": "aade8454e7120c2f07c35b134c9e898ba176a2a77e57e71f97853f6b3e702bc5",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020434820687Z-57caf394c1bd449c",
+        "sha256": "3ad2c7cc6accbaac358d708d8db74c4bf5b1b4546f20036e0cf52b30a508618a"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "3e01a859ebcd0f459a5931fd09ad76cf32ba3cdbe326d0b5881701cdabaac2b4",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014936310795Z-1297eabb2a844256",
+        "sha256": "18fd95245e769882753dcce5b8643ce7455491862dad6eeb5c152a3113b2dc2a"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "4cd3929ef8080cec9f5ac83b43fb48f3384d0ef15293942ef789a4bf72820a0b",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015300419933Z-c21edfeb09e44ea4",
+        "sha256": "be70efb34ec78224a0dd4a8aa34817eb22114f5eb39aeb0aa67c8658ade0ffc0"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "459268820c4ee0646584ebc2abef45d48e0e6af53f9450f858a5dbeb7ee8116d",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "triangulated_tracks": 97
+    },
+    {
+      "case": {
+        "manifest_sha256": "f6cec1c631ca1566b39655a003be65c28138095bad9cea3f38fe412cac72df9e",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020544028966Z-c0b86bd6c6ff4c2d",
+        "sha256": "2bfc0273459f62f5e9d30cdb07890d65271260d4dc86fc81c1cb2508e7d30810"
+      },
+      "completed_steps": 5000,
+      "condition": "M2",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 49.349620167005924,
+        "physical_trial_id": "b2-set42-m2-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "e7191b5c4d122df5abba531c318b74d0aba1354a867373073bca0179c0801c02",
+            "recorder_elapsed_s": 0.3672672909888206,
+            "run_id": "20261124T015301969322Z-ed5c65430f4f44e0",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6471680.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "19d6974d13ecd4931036ce1c7e39ac9418388d373eeb08a3b6d9a95ed3e7b025",
+            "recorder_elapsed_s": 38.26600000000326,
+            "run_id": "20261124T020310168238Z-f8316fd1a76a4156",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 970.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1508610048.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 35664896,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 33.97228800000448
+          },
+          "init": {
+            "manifest_sha256": "63d8c67d8eef5cfb2eb906dbf8d3bf5244c6f077a947a92d74dfe83e17c48d0d",
+            "recorder_elapsed_s": 0.6183949999976903,
+            "run_id": "20261124T015301005122Z-39d1319689924deb",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 7028736.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "f6cec1c631ca1566b39655a003be65c28138095bad9cea3f38fe412cac72df9e",
+            "recorder_elapsed_s": 2.919070834002923,
+            "run_id": "20261124T020544028966Z-c0b86bd6c6ff4c2d",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6701056.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "66a5fbe5d61fb2f41370b2d23980902dd9a4bd5e7f52a0990a449451ceabe3c8",
+            "recorder_elapsed_s": 5.437000000005355,
+            "run_id": "20261124T020349783465Z-b847640703534a9e",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 908.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 929923072.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10568704,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.2842873000045074
+          },
+          "source": {
+            "manifest_sha256": "f5061ab72ab84d26a90361d625190eb9aef704745fc94d1cad6991dbac326654",
+            "recorder_elapsed_s": 1.7418870420078747,
+            "run_id": "20261124T014936197201Z-1384ea009a9846da",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 64782336.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 12,
+        "windows_return_object_bytes_including_summary": 23961174,
+        "windows_return_summary_sha256": "5f778c3bb872c785956f5e4933f7316dc46c8e3248b059aae7012f266b4da28e"
+      },
+      "failure_reasons": null,
+      "initial_points": 30,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set42",
+      "readback": {
+        "manifest_sha256": "f6cec1c631ca1566b39655a003be65c28138095bad9cea3f38fe412cac72df9e",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020544028966Z-c0b86bd6c6ff4c2d",
+        "sha256": "1cc46c21d506dcfb421776d9532e994228317fa5c9406a57c9008f0a228e7849"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "f5061ab72ab84d26a90361d625190eb9aef704745fc94d1cad6991dbac326654",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014936197201Z-1384ea009a9846da",
+        "sha256": "e5e0937ac5430485fb08eb804ff9dca9324dd45039cba3eeb08e1929894d07af"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "e7191b5c4d122df5abba531c318b74d0aba1354a867373073bca0179c0801c02",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015301969322Z-ed5c65430f4f44e0",
+        "sha256": "369827e93861ff1147cdca8a8423835b047441479946bfbb8a1cb45be2742d91"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 2500,
+          "s03": 2500
+        },
+        "trace_sha256": "48a0614b0839f5a004a0d0c682237ce7cd25e8806875565ff43772ca516cfea7",
+        "updates_with_nonzero_gradient": {
+          "s00": 2500,
+          "s03": 2500
+        }
+      },
+      "triangulated_tracks": 30
+    },
+    {
+      "case": {
+        "manifest_sha256": "0c81f8177ad0f3e0d106b0439787ab414f92d82d22a9e499ed9e83ce1292d228",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020545909369Z-fdc72be108a04426",
+        "sha256": "a89f7209bdce2f4967af0e36c49f598801f22364f001f9f33e4a9dd132bde866"
+      },
+      "completed_steps": 5000,
+      "condition": "M4",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 49.59161804099858,
+        "physical_trial_id": "b2-set42-m4-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "2d788a1e280d6ca863eebba191ec752a4f4fd70779f74250466772fd8a92faa2",
+            "recorder_elapsed_s": 0.36695433300337754,
+            "run_id": "20261124T015302216227Z-4fa11296a628461e",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 8830976.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "41d247ce39aa728e7f829684a94afe556cecce15e07aa17b24a8c8acea2f1022",
+            "recorder_elapsed_s": 39.82799999999406,
+            "run_id": "20261124T020358658348Z-55a31c055b1647ca",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 978.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1529327616.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37238272,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.505223700005445
+          },
+          "init": {
+            "manifest_sha256": "d4d1be586073a8844d28f83c39e344fc757bc0f67566a2046f3007d3b6e0255e",
+            "recorder_elapsed_s": 0.7679122919944348,
+            "run_id": "20261124T015301097941Z-18bad965d55c4059",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 7667712.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "0c81f8177ad0f3e0d106b0439787ab414f92d82d22a9e499ed9e83ce1292d228",
+            "recorder_elapsed_s": 1.340595250003389,
+            "run_id": "20261124T020545909369Z-fdc72be108a04426",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6995968.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "7e2e89705c4ebdc936ab11996ca69fa6a8fb4ade718e16787ccc6dfc686b4a9e",
+            "recorder_elapsed_s": 5.297000000005937,
+            "run_id": "20261124T020439756248Z-9b1d7739edb24e41",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 914.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 885792768.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10324480,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3426027000095928
+          },
+          "source": {
+            "manifest_sha256": "5806fe0f89a5732cd094605eb2a68928af8ed544a75bed67645cdeaf0c3a0ab3",
+            "recorder_elapsed_s": 1.9911561659973813,
+            "run_id": "20261124T014938062772Z-484ce57e1e0d48b1",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 64962560.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 25606829,
+        "windows_return_summary_sha256": "53ae77baab759f4ae866c447b9850595532272225d995f227c7afe3158a7dfb9"
+      },
+      "failure_reasons": null,
+      "initial_points": 148,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set42",
+      "readback": {
+        "manifest_sha256": "0c81f8177ad0f3e0d106b0439787ab414f92d82d22a9e499ed9e83ce1292d228",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020545909369Z-fdc72be108a04426",
+        "sha256": "97ea04f002be1dbb5c0a01e4c2a5b67e040bd15eb8f70ac4ec97a935eb20e9d1"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "5806fe0f89a5732cd094605eb2a68928af8ed544a75bed67645cdeaf0c3a0ab3",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014938062772Z-484ce57e1e0d48b1",
+        "sha256": "327ffb2a3d8f152b9842118f45cf4ef54e77b7fdb48f12d2aa2737dfa49ff102"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "2d788a1e280d6ca863eebba191ec752a4f4fd70779f74250466772fd8a92faa2",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015302216227Z-4fa11296a628461e",
+        "sha256": "9929f9d92cd557dea717ced2a1a1636aa3bca2535a1f4eda5494514c8a6ee808"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "587d3c9467c5f9fe275071975edd6750c29ff69a00b764acd6371752d06c62fa",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "triangulated_tracks": 148
+    },
+    {
+      "case": {
+        "manifest_sha256": "617f0e15ae0dc813032465316edd902f215024516c5f342c894a3a089385fc00",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020616393861Z-1adf98494a484c9e",
+        "sha256": "8ae61b76b17d243c147ba67055ec6fe634310d53dc401a71b433961d378c34fa"
+      },
+      "completed_steps": 5000,
+      "condition": "M2",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 45.63382545999775,
+        "physical_trial_id": "b2-set77-m2-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "56547095b692fec278d2701133f869fe167aca10961168861ce7b485cf07f02d",
+            "recorder_elapsed_s": 0.36518529200111516,
+            "run_id": "20261124T015302315342Z-e7fcbdd0bbef4f5c",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 8781824.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "d9ee0a08a5d646c5b3012dea21506408655fbfb85bf1f03da89baeb4f8f11059",
+            "recorder_elapsed_s": 36.48500000000058,
+            "run_id": "20261124T020448302212Z-8a2a35c93f17494c",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 964.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1507004416.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 35643392,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 32.119986700010486
+          },
+          "init": {
+            "manifest_sha256": "254390b87e10a3b99021cd98f5f1000ec8d987174f32fab4ba44d8625b7c6616",
+            "recorder_elapsed_s": 0.7696756670047762,
+            "run_id": "20261124T015301198786Z-0ded92c81a6a4e0e",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 9060352.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "617f0e15ae0dc813032465316edd902f215024516c5f342c894a3a089385fc00",
+            "recorder_elapsed_s": 1.6283512920053909,
+            "run_id": "20261124T020616393861Z-1adf98494a484c9e",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 227328000.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "77035647cb12878b758258d1ceca99b1c0326523b8267293cd4ddc665459fd5d",
+            "recorder_elapsed_s": 5.296999999991385,
+            "run_id": "20261124T020526087455Z-cbef3f469a194916",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 895.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 864813056.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10759168,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3686560000060126
+          },
+          "source": {
+            "manifest_sha256": "666141ac62bea2070d1728c689f9ecf2c9381089f7c5988909d19e7ab63a80e2",
+            "recorder_elapsed_s": 1.0886132089945022,
+            "run_id": "20261124T014937553177Z-c150459eac054cfd",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 64225280.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 12,
+        "windows_return_object_bytes_including_summary": 23649988,
+        "windows_return_summary_sha256": "34cd8460d805b9e5e97e211a3e524e4c9453f44b6596f6f4c9d071ac4c478523"
+      },
+      "failure_reasons": null,
+      "initial_points": 2048,
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set77",
+      "readback": {
+        "manifest_sha256": "617f0e15ae0dc813032465316edd902f215024516c5f342c894a3a089385fc00",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020616393861Z-1adf98494a484c9e",
+        "sha256": "b664cff061ec90a4605bcc1325d407f41165945f0ff0d6c70f4d2057cc384336"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "666141ac62bea2070d1728c689f9ecf2c9381089f7c5988909d19e7ab63a80e2",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014937553177Z-c150459eac054cfd",
+        "sha256": "57eb919bf2a29aad64bc4d410680f15559639e1559df2bdafe9f5834e63999a4"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "56547095b692fec278d2701133f869fe167aca10961168861ce7b485cf07f02d",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015302315342Z-e7fcbdd0bbef4f5c",
+        "sha256": "37adb9ecae9a8984d0e188662f7f07e71ac069c2b7ad0e39240aba08957a8bed"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 2500,
+          "s03": 2500
+        },
+        "trace_sha256": "f71efec38cfb54be9709e306f738be1b209af98867927b36aa8cc4c89b10f723",
+        "updates_with_nonzero_gradient": {
+          "s00": 2500,
+          "s03": 2500
+        }
+      },
+      "triangulated_tracks": 5
+    },
+    {
+      "case": {
+        "manifest_sha256": "7bcb8ab55feb0009f697473fc6338c90b382e74b77507e28429273d70609d305",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020718217050Z-a0cfb4d0d94f4054",
+        "sha256": "fd6a0eda4ea2840a820d2dc2fcf1f3688105285edbe4662190de1f4c57731875"
+      },
+      "completed_steps": 5000,
+      "condition": "M4",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 50.339218123976025,
+        "physical_trial_id": "b2-set77-m4-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "33efcb0d4a977f9d944d350931d4edd544130ae16a01ca44772cc89c53f0b5ed",
+            "recorder_elapsed_s": 0.3944046659889864,
+            "run_id": "20261124T015303757683Z-12e217820b5345aa",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6832128.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "342dbf0d6bcba6b943eb5b10c8392a425ef14026660c1d3ce14d7708c010ea66",
+            "recorder_elapsed_s": 39.921000000002095,
+            "run_id": "20261124T020534530422Z-888eb67a7757412f",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 968.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1528565760.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37168640,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 35.51440690000891
+          },
+          "init": {
+            "manifest_sha256": "e97a42f0a6e7cf54489657025f0fb5aaf0eadce3e0c87b2bba99e81ffa95ad36",
+            "recorder_elapsed_s": 0.581835333010531,
+            "run_id": "20261124T015302836791Z-1bd84f11b406402b",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6635520.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "7bcb8ab55feb0009f697473fc6338c90b382e74b77507e28429273d70609d305",
+            "recorder_elapsed_s": 1.982442041989998,
+            "run_id": "20261124T020718217050Z-a0cfb4d0d94f4054",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 226213888.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "a4bbddeba18ce6f4437f39046838fbac40b40b3c3a98b123f49f66ca7ca1bd42",
+            "recorder_elapsed_s": 6.202999999994063,
+            "run_id": "20261124T020615932674Z-9d4620c5dd3c4454",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 908.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 932220928.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10553344,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.7376961999980267
+          },
+          "source": {
+            "manifest_sha256": "09807c50f9aa0f489246efa993f7d82ed68157117dca30a8c68e90848a82d909",
+            "recorder_elapsed_s": 1.2565360829903511,
+            "run_id": "20261124T014938753946Z-9cf91f5baab04485",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 65355776.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 22215860,
+        "windows_return_summary_sha256": "9d102bf466a804b750a2b570d8cca822ac2d9651433b3cb9ff163dfb9ca78d16"
+      },
+      "failure_reasons": null,
+      "initial_points": 59,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set77",
+      "readback": {
+        "manifest_sha256": "7bcb8ab55feb0009f697473fc6338c90b382e74b77507e28429273d70609d305",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020718217050Z-a0cfb4d0d94f4054",
+        "sha256": "9d435225ec1ada507ded5b08e36bd43e2bac4b50063cb29c97938bd454f66165"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "09807c50f9aa0f489246efa993f7d82ed68157117dca30a8c68e90848a82d909",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014938753946Z-9cf91f5baab04485",
+        "sha256": "e1258807bdaab7c44b27aebe0807548d8641a4d6168b092ca6ce63f44ec14866"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "33efcb0d4a977f9d944d350931d4edd544130ae16a01ca44772cc89c53f0b5ed",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015303757683Z-12e217820b5345aa",
+        "sha256": "d59e49a25531399788ee3a8ed6422bc790a1e5044aa81487fbdaaf614f543661"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "bd151f781f90f3c500e43f9c145f94aaeb1099e5480d5ddc8caf7a70c1d7f13c",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "triangulated_tracks": 59
+    },
+    {
+      "case": {
+        "manifest_sha256": "02999357b86fc487455493ff58e10b2b07500ab71d745a75c66384c439035bd7",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020750684858Z-fc5046c8c7a640a6",
+        "sha256": "8a9e6692fe52972a784ca430b50320273cfa847140bef5e8b2f1aace229dd5c3"
+      },
+      "completed_steps": 5000,
+      "condition": "M2",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 46.71035133401165,
+        "physical_trial_id": "b2-set52-m2-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "f92db26217af40bb6b303ead3eb80c3d569c34ec1d3896b9b8f6b9ccc4597a7f",
+            "recorder_elapsed_s": 0.39547575000324287,
+            "run_id": "20261124T015303900352Z-3b1447ace7e84a43",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6553600.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "02b40861b1a1fff3c959b6373d32de00628122858fdd0f19506df9b6437c13c9",
+            "recorder_elapsed_s": 37.0,
+            "run_id": "20261124T020625382871Z-50354656543a4e0c",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 969.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1518542848.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 35622400,
+            "torch_reserved_peak_bytes": 58720256,
+            "worker_wall_seconds": 32.55389090000244
+          },
+          "init": {
+            "manifest_sha256": "285d8db3647da5bd5cace1bafb7ae9d4e6717be82913a07e1fa36de5a24dfb2c",
+            "recorder_elapsed_s": 0.6983024170040153,
+            "run_id": "20261124T015302873351Z-a1125a7195c74f3d",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 9125888.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "02999357b86fc487455493ff58e10b2b07500ab71d745a75c66384c439035bd7",
+            "recorder_elapsed_s": 2.0667998749995604,
+            "run_id": "20261124T020750684858Z-fc5046c8c7a640a6",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 204767232.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "480fbd5f707d9cdaba34d2895964e9458276e75b50f317d91ce2840ae2ed2ade",
+            "recorder_elapsed_s": 5.26600000000326,
+            "run_id": "20261124T020703673438Z-fb515f29512f45fa",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 900.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 819298304.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10527232,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.3808109000092372
+          },
+          "source": {
+            "manifest_sha256": "f823ce4efd49e674fac429b5a70ccd4db5aedaca4c7c09e7b2e39c4d41d57f6a",
+            "recorder_elapsed_s": 1.2837732920015696,
+            "run_id": "20261124T014938209388Z-bb5359ff268b4331",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 64421888.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 12,
+        "windows_return_object_bytes_including_summary": 24671383,
+        "windows_return_summary_sha256": "132449d4f8b1a0980b0d4e0b1c8a3e037a7b4a420ec7eaf571fa6adb0940ca73"
+      },
+      "failure_reasons": null,
+      "initial_points": 2048,
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set52",
+      "readback": {
+        "manifest_sha256": "02999357b86fc487455493ff58e10b2b07500ab71d745a75c66384c439035bd7",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020750684858Z-fc5046c8c7a640a6",
+        "sha256": "995bf831a792705d08c70d3162fe76d34b2692611eeb25052c3fa40060ffd301"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "f823ce4efd49e674fac429b5a70ccd4db5aedaca4c7c09e7b2e39c4d41d57f6a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014938209388Z-bb5359ff268b4331",
+        "sha256": "d64d516ef74f3e9487d560de895032cb91a6b6f818c9c31bca044e4e2a036cf2"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "f92db26217af40bb6b303ead3eb80c3d569c34ec1d3896b9b8f6b9ccc4597a7f",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015303900352Z-3b1447ace7e84a43",
+        "sha256": "ef2b045341df5ad3624104457c94e1b43d18c164df9f347a9b6a0f95ea8b2616"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 2500,
+          "s03": 2500
+        },
+        "trace_sha256": "c7e7d343f20fd228c0b02b16bf540e3b77a5dddce265552750a1d6ebe272b83b",
+        "updates_with_nonzero_gradient": {
+          "s00": 2500,
+          "s03": 2500
+        }
+      },
+      "triangulated_tracks": 17
+    },
+    {
+      "case": {
+        "manifest_sha256": "d9d15507476856fffc87eac67fbc54c6613f8f0a025afae5a6d72360a497fcee",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T020845465941Z-aa8654154548440b",
+        "sha256": "d8167e5df4993f6a4096ae8fb35c6a6247b3c5ba20accd9f63f6bbfe31e2c343"
+      },
+      "completed_steps": 5000,
+      "condition": "M4",
+      "cost": {
+        "endpoint_pipeline_elapsed_s_if_charged_to_this_trajectory": 49.077994584004045,
+        "physical_trial_id": "b2-set52-m4-fixed-43171",
+        "scope": "Sum of observed source/init/dispatch/generation/render/readback stage elapsed seconds. Shared original M2, query renders, policy evaluation, interstage waits and network overhead are accounted separately.",
+        "source_candidate_http_body_bytes": null,
+        "stages": {
+          "dispatch": {
+            "manifest_sha256": "f896b9ba5b11e6ebb7cba97847c7f4ad0ca02396b86367385c5f83dae47320b9",
+            "recorder_elapsed_s": 0.370205958999577,
+            "run_id": "20261124T015304041856Z-83eceba014784cff",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 3522560.0,
+            "status": "succeeded"
+          },
+          "generation": {
+            "manifest_sha256": "130de7b84b018dda6ff1d52a6290e9bc0b42ea9b39765bea6457e44f3b1b3e16",
+            "recorder_elapsed_s": 39.0619999999908,
+            "run_id": "20261124T020712186567Z-529c323db08e476b",
+            "run_kind": "generation",
+            "sampled_all_device_memory_peak_MiB": 974.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 1510854656.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 37193728,
+            "torch_reserved_peak_bytes": 60817408,
+            "worker_wall_seconds": 34.60525459999917
+          },
+          "init": {
+            "manifest_sha256": "6e34b1a7f381f0540983f1c1e29694af4e5755695fe783ee9c07787eb0e6de45",
+            "recorder_elapsed_s": 0.6903993750020163,
+            "run_id": "20261124T015303005739Z-47f5f229bf6d469b",
+            "run_kind": "derivation",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 6635520.0,
+            "status": "succeeded"
+          },
+          "readback": {
+            "manifest_sha256": "d9d15507476856fffc87eac67fbc54c6613f8f0a025afae5a6d72360a497fcee",
+            "recorder_elapsed_s": 2.2915810830018017,
+            "run_id": "20261124T020845465941Z-aa8654154548440b",
+            "run_kind": "archive_verify",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 180322304.0,
+            "status": "succeeded"
+          },
+          "render": {
+            "manifest_sha256": "4585fb8659bd0690dd3bcecce6c9b17a18485136b307bc9acf6490c515c37e30",
+            "recorder_elapsed_s": 5.547000000005937,
+            "run_id": "20261124T020752521202Z-5d4739ed39e047ae",
+            "run_kind": "render",
+            "sampled_all_device_memory_peak_MiB": 916.0,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 944291840.0,
+            "status": "succeeded",
+            "torch_allocated_peak_bytes": 10463232,
+            "torch_reserved_peak_bytes": 14680064,
+            "worker_wall_seconds": 1.5322522000060417
+          },
+          "source": {
+            "manifest_sha256": "5bf4d6c3f2626fa261d608472ab5f207e68ed66231fa8b614d2f911f3e0894c8",
+            "recorder_elapsed_s": 1.11680816700391,
+            "run_id": "20261124T014939607571Z-c8e12751735041b7",
+            "run_kind": "dataset_build",
+            "sampled_all_device_memory_peak_MiB": null,
+            "sampled_process_gpu_memory_peak_bytes": null,
+            "sampled_tree_rss_peak_bytes": 66682880.0,
+            "status": "succeeded"
+          }
+        },
+        "windows_return_files_including_summary": 14,
+        "windows_return_object_bytes_including_summary": 26365339,
+        "windows_return_summary_sha256": "63570393a50289784fc612193b5acbc7206006d162929c1798011f27a2d415e6"
+      },
+      "failure_reasons": null,
+      "initial_points": 130,
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set52",
+      "readback": {
+        "manifest_sha256": "d9d15507476856fffc87eac67fbc54c6613f8f0a025afae5a6d72360a497fcee",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T020845465941Z-aa8654154548440b",
+        "sha256": "5ff7cd3ca6f1f4211c8df5ebd25c8f3716bdba72240e7f76159bfbe057551b6b"
+      },
+      "scene_scale_m": 0.2442371192480833,
+      "source": {
+        "manifest_sha256": "5bf4d6c3f2626fa261d608472ab5f207e68ed66231fa8b614d2f911f3e0894c8",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T014939607571Z-c8e12751735041b7",
+        "sha256": "3ed2c1c7d6464737666b1a5229ff3ade14d4e542a0ea19f54c7a0b8313a0a7c2"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "f896b9ba5b11e6ebb7cba97847c7f4ad0ca02396b86367385c5f83dae47320b9",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T015304041856Z-83eceba014784cff",
+        "sha256": "42882d57d416b829da3953c0ed696f74e2a64ad810df8393bafd339bef4cfe57"
+      },
+      "trace": {
+        "actual_source_pixels": 327680000,
+        "final_gaussians": 20000,
+        "source_updates_in_this_process": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        },
+        "trace_sha256": "074c66bf125cfa77f5cfdff8602e5f270257ec80b6be48ebfc17197cff06482c",
+        "updates_with_nonzero_gradient": {
+          "s00": 1250,
+          "s01": 1250,
+          "s02": 1250,
+          "s03": 1250
+        }
+      },
+      "triangulated_tracks": 130
+    }
+  ],
+  "run_id": "20261124T021119570759Z-85cf68d825e142e3",
+  "schema": "el-b2-c6-reconstruction-index-1",
+  "target_reference_files_opened": 0
+}

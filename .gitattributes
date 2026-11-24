@@ -26,3 +26,10 @@ docs/results/t0/intake/*.csv -text whitespace=trailing-space,space-before-tab,cr
 # Preserve recorded CSV and offline HTML bytes in the prepared-bundle receipts.
 docs/tooling/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
 examples/offset-bell-cage/bundle-report.html -text
+
+# Batch-two attachments are hashed as emitted by the recorder.
+docs/results/batch-two/** -text
+docs/results/batch-two/**/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/tooling/assets/** -text
+docs/tooling/assets/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+examples/helical-beads/*.html -text

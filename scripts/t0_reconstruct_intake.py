@@ -57,6 +57,11 @@ def receive_cross_store(source, root, digest, policy, history, evidence, freeze)
                                              evidence["manifest_sha256"], evidence["sha256"])
     require(freeze == binding and evidence["member"] == "payload/cross-store-audit.json",
             "Return and audited history reference different freezes")
+    return receive_verified_zip(source,root,digest,policy,anchors,evidence)
+
+
+def receive_verified_zip(source, root, digest, policy, anchors, evidence):
+    """Import a ZIP after the caller has verified all external roots against a sealed cross-store audit."""
     started = time.monotonic()
     staging = root / "staging"
     staging.mkdir(exist_ok=True)
@@ -80,8 +85,7 @@ def receive_cross_store(source, root, digest, policy, history, evidence, freeze)
                 verified = verify_bundle(copy)
                 rid, manifest_sha = verified["run"]["run_id"], verified["manifest_sha256"]
                 require(rid not in anchors, "Incoming identity collides with a historical root")
-                # The six old roots and their complete old-store DAG were verified from original
-                # bundles by the named history recorder. All new ancestors are read in the new root.
+                # All external ancestors are bound by the named history audit. Read local ancestors here.
                 upstreams = dict(anchors)
                 verify_dependencies(verified, root, upstreams)
                 local = {k:v for k,v in upstreams.items() if k not in anchors}

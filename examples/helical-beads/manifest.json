@@ -1,0 +1,34 @@
+{
+  "asset_license": "CC-BY-4.0",
+  "credit": "wany614 / Evidence Lens",
+  "files": {
+    "outside-scope.html": {
+      "bytes": 212133,
+      "manifest_sha256": "4bbd80ba342678923d546df9259465d4469510f89f8cf5094cf025c61a27ea1d",
+      "member": "payload/report.html",
+      "run_id": "20261124T021402632323Z-483d16d47e224340",
+      "sha256": "eb9158e89cedbe0e88e4c2bfdb0e306a9eaf509f5d55aee3393b3ae095b22fc3"
+    },
+    "report.html": {
+      "bytes": 210530,
+      "manifest_sha256": "eeb70ba6c426be8e98bee56f31d143f2f275c816077581099dbe723e8b5b9f92",
+      "member": "payload/report.html",
+      "run_id": "20261124T021402609482Z-4ba42a5c1f2a4194",
+      "sha256": "3bc6f9f9cceb2bd76ad656b8ada79f215bd9d8b2aaa4a4272bc8ca2458bf32ad"
+    },
+    "sh3-comparison.png": {
+      "bytes": 44073,
+      "manifest_sha256": "53ae4c03a9b84db770bf05679aa4bf105f692dd4cfc5b44106d4cea3441654a5",
+      "member": "payload/graphdeco-sh3-comparison.png",
+      "run_id": "20261124T021118010901Z-e7bca336730e47df",
+      "sha256": "bac8a474c0b3c72cbdaa094b072eb4502ddbb517e0c1b44b5dbff27cb4db45c4"
+    }
+  },
+  "generator_license": "Apache-2.0",
+  "notice": "../../docs/tooling/assets/ORIGINAL-EXAMPLE-NOTICE.txt",
+  "numerical_readback": "../../docs/tooling/assets/verification.json",
+  "portable_inventory": "../../docs/tooling/assets/portable.json",
+  "scene_recipe": "../../scripts/b2_asset_fixture.py",
+  "schema": "el-original-public-example-1",
+  "title": "Original helical bead study"
+}

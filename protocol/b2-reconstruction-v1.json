@@ -1,0 +1,18 @@
+{
+  "schema": "el-b2-reconstruction-protocol-1",
+  "stage": "batch-two",
+  "development_objects": ["set1", "set6"],
+  "groups": {"C6": "six objects in the sealed common cohort C6 list, both fixed M2 and fixed M4", "D": "two previously exposed objects", "T1": "closed"},
+  "base_recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "worker_zip_sha256": "aa65bc5a412cdafdac2e9ffa5f64f675ba8253904100dafbc086284b5a9632c1",
+  "worker_tree_sha256": "02fe9a25281a72b43a4eb038b37d0a2c5b6e291175f0ac0b1c8c0b5761247e3c",
+  "source_initialization_sha256": "024a4a08552e748afafc3ead27ba745d6f96e84757572e5fbf9aec387653d086",
+  "geometry_code_sha256": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+  "optimization": {"primary_seed": 43171, "fixed_M4_sensitivity_seeds_per_development_object": [43172, 43173], "seed_targets": ["python", "numpy", "torch", "torch.cuda"], "seed_variation": "Only the optimizer recipe seed changes. The original fixed-source initializer and its seed stay identical.", "steps": 5000, "gaussian_cap": 20000, "checkpoint_steps": [0,500,1500,3000,5000], "evaluation_checkpoint": 5000, "wall_seconds_per_fit": 1800},
+  "initialization":{"fixed_seed":43171,"minimum_independent_tracks":24,"other_gates":"all remaining original registered reprojection, parallax, coverage and independence gates", "fallback":"the original 1024 inverse-depth hypotheses per endpoint, total 2048", "scale":"physical separation of calibration centres s00 and s03 in world metres"},
+  "source_sampling":"round-robin in the declared logical slot order; M2 2500 updates per source and M4 1250 updates per source",
+  "calibration":{"native_grid":[256,256],"pixel_centres":"OpenCV integer-centre","background":"original registered gsplat renderer", "lighting":3,"crop_sha256":"28fc8c466883f97c53bce0673e79980bc5f211db1d443c7ef5f12adec8d68350","fixed_M2":{"s00":24,"s03":22},"fixed_M4":{"s00":24,"s01":23,"s02":17,"s03":22},"selected_M4":"s00=24, s01=lower selected ID, s02=higher selected ID, s03=22; use original native calibration for each camera and unchanged clip limits","evaluation_target_ids":[16,18,25,37,35,36]},
+  "development_selection":{"candidate_ids":[7,10,13,17,20,23,31,40],"strategies":["random-137101","random-137102","random-137103","uniform","risk"],"required_seal":"both chosen IDs together with object, strategy, candidate pool and M2 checkpoint digest before either source image is opened for this observation", "selector_inputs":"M2 checkpoint, the two endpoint source observations and permitted query/candidate poses only","aperture":"each branch opens only its two chosen photos and S0; other branches' photos and all evaluation poses are unavailable to the selector"},
+  "alias":"same object, official IDs in identical logical slot order, exact per-slot source RGB/camera bytes, initialization method and numerical inputs, optimizer seed and recipe, runtime and selected endpoint. Record a separate observation and selection receipt for every strategy.",
+  "failure":"record terminal failures and aliases under their original logical cells. Never add candidate strategies or select a different checkpoint in response to target errors."
+}

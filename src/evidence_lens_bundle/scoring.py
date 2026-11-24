@@ -144,10 +144,25 @@ def rgb_preview(rgb):
     return stream.getvalue()
 
 
-def score(root, output, method="MS-L1", *, cpu_dir=None, expected_sha256=None, threads=4):
+def score(
+    root,
+    output,
+    method="MS-L1",
+    *,
+    cpu_dir=None,
+    expected_sha256=None,
+    threads=4,
+    calibration_profile=None,
+    calibration_sha256=None,
+    scope_proof=None,
+    scope_sha256=None,
+):
+    from .calibration import select, states, state_counts
+
     require(type(threads) is int and 1 <= threads <= 256, "CPU thread count must be 1–256")
     started = perf_counter()
     bundle = Bundle(root, expected_sha256)
+    selected = select(bundle, method, calibration_profile, calibration_sha256, scope_proof, scope_sha256)
     m, spec = models(method, cpu_dir, threads)
     after_load = perf_counter()
     source_ids = (bundle.primary,) if method == "B-L1-transfer" else bundle.order
@@ -198,7 +213,20 @@ def score(root, output, method="MS-L1", *, cpu_dir=None, expected_sha256=None, t
                     "read_score_write_seconds": perf_counter() - tick,
                 }
             )
+            if selected and selected["applied"]:
+                state = states(a["risk"], selected["threshold"])
+                raw_state = io.BytesIO()
+                np.save(raw_state, state, allow_pickle=False)
+                observations[-1]["calibrated"] = {
+                    "counts": state_counts(state),
+                    "state": save(folder + "calibrated-state.npy", raw_state.getvalue()),
+                }
         summary = {k: sum(x["counts"][k] for x in observations) for k in observations[0]["counts"]}
+        if selected and selected["applied"]:
+            selected["counts"] = {
+                key: sum(v["calibrated"]["counts"][key] for v in observations)
+                for key in ("canvas", "low", "high", "unknown")
+            }
         endpoint = [bundle.cameras[s].c2w[:3, 3] for s in bundle.endpoints]
         receipt = {
             "schema": "el-bundle-scores-1",
@@ -225,7 +253,7 @@ def score(root, output, method="MS-L1", *, cpu_dir=None, expected_sha256=None, t
             "release_index_sha256": RELEASE_INDEX_SHA256,
             "method": method,
             "model": spec,
-            "calibration_profile": None,
+            "calibration_profile": selected,
             "reason_codes": dict(enumerate(REASON_NAMES)),
             "counts": summary,
             "views": observations,

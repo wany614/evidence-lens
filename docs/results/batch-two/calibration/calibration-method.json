@@ -1,0 +1,182 @@
+{
+  "calibration_scope": "Only empirical, fixed frozen method, same native source/target layout, camera, light, renderer and optimizer. Source-dependent NBV/other layouts outside scope.",
+  "candidates": {
+    "count": 201,
+    "empty": "Generate using available finite-score objects, record number contributing. If all are empty retain 201 null anchors. All planned objects stay in the fit feasibility test.",
+    "q": "j/200; j=0..200",
+    "sample": "Finite deployment MS-L1 scores at six targets; pool each object's native-grid scores across its six views; no references, E or Y used.",
+    "ties": "j=0 uses smallest observed score as strict empty cutoff. j>0 chooses smallest FP32 value with inclusive mixture mass >=j/200; tau=nextafter(float64(value),+infinity). All equal observations are classified together. Keep all repeated anchors and number of distinct thresholds.",
+    "weighting": "Each nonempty object contributes equal total probability, each of its scores weight 1/N_g; calculate inverse CDF by exact integer comparisons."
+  },
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "conditions": [
+    "M2",
+    "M4"
+  ],
+  "definitions": {
+    "E": "V and valid RGB prediction",
+    "L": "S and float64(score) < tau",
+    "LY": "L with error label 1",
+    "S": "E and finite method score",
+    "U_E": "E minus S",
+    "V": "valid registered reference pixels, whole crop",
+    "epsilon": 0.05,
+    "label": "strict mean absolute display RGB FP32 error > 0.05 on evaluable RGB",
+    "missing_render": "known V with E=0 and no observed error labels"
+  },
+  "environment": {
+    "numpy": "2.5.5",
+    "python": "3.12.16"
+  },
+  "holdout": "Six leave-one-object-out fits per condition regenerate all candidates from the other five deployment distributions, select against their Y, then evaluate the held-out object once if the training fold returns a threshold. No feasible point remains a reported outcome.",
+  "method": "MS-L1",
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "objects": [
+    "set48",
+    "set75",
+    "set110",
+    "set42",
+    "set77",
+    "set52"
+  ],
+  "prior_freeze": {
+    "manifest_sha256": "6fecea74ead7246c8bdc9db4ed2b92dd9cedfc53027af120f1ecbb29bfa0c0e1",
+    "member": "payload/freeze.json",
+    "run_id": "20261124T011650674892Z-3792a73748f64d36",
+    "sha256": "e26aefdc19ca66a02a294b2c5d258f93b1014b92da7e49a6335d17c375259944"
+  },
+  "prior_release": {
+    "manifest_sha256": "0b5ce75ed8670762b035dcf7b9b5820ec47a20a86ac92db08246fead9e8af33a",
+    "member": "payload/cpu/release.json",
+    "run_id": "20261123T193505072501Z-6046afc1fce4480b",
+    "sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d"
+  },
+  "reconstruction": {
+    "manifest_sha256": "0e7090bc12c7c19c80025ab005c321bffdd5829ebeac85563a73e014ac0ba356",
+    "member": "payload/bridge.json",
+    "run_id": "20261124T015232867527Z-f8e595e117804a1e",
+    "sha256": "ba4c03b262f6fb94d1397be442053caccc7aa0bbd1692133f8d0914b65078398"
+  },
+  "run_id": "20261124T020129961316Z-2b715d6ae3314c12",
+  "schema": "el-b2-calibration-method-1",
+  "science_roles": {
+    "T1": "unopened",
+    "only_calibration": "C6",
+    "previous_T0": "retains its original frozen confirmation role"
+  },
+  "scientific_files": {
+    "scripts/b2_calibration.py": "023842076ea3320bd7df75e8da5f189cf7a654736026875292e93e8a5dc23109",
+    "scripts/b2_calibration_fixture.py": "5bd263100180dff10af5917fcaa8bac87212c6db54248787998b587dc00e185d",
+    "scripts/b2_calibration_production.py": "fca0cbe9d837aa6fbf3d464631bd44874665601f0e2918e5d1b283015086a8ef",
+    "scripts/b2_calibration_record.py": "31d115d1328ee42a3db77aef5277f942d919805e677847ff32617e0701858463",
+    "scripts/b2_intake.py": "d678cf706d2df4d6e8c8fcb569e1c55b536f01a561724af7b5b499f0757a196e",
+    "scripts/b2_intake_cohort.py": "e5481dd2df080f9020a77fefce9f765c58c294eb0ab44a2f7474929334d0693d",
+    "scripts/b2_intake_photos.py": "461ba21bafb80b9674dfd6d87f61a295fdd897b24fe41c8e2ab3f757c6ec1831",
+    "scripts/b2_intake_record.py": "e8cfb9cb83804627c01eb03ff4be66cb210e907d440fa09fd133bec7e157d52d",
+    "scripts/dtu_eval.py": "481a56481068f148401db465c99446c2e72c18896af06b0024a677a843aaa3fd",
+    "scripts/dtu_eval_board.py": "c43e9147b89733aecf037fa2f8f4c6d07d6c5f725c87bdb46fa9ccddfee2c29b",
+    "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+    "scripts/dtu_gate.py": "33441a1816029982584a0e85cf6c2f56f73fc0187011de28660a2e7685ba0d63",
+    "scripts/dtu_sample.py": "22ec2384061fce7993728ac6f9e0c61e34f50d2b4004faf4b1e59277b8232c7e",
+    "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+    "scripts/stage3_risk_boards.py": "e0f967af771f3fac3a41d9b68d24ab17b5cce8c8fed30b5f29df4117b1204b4a",
+    "scripts/stage3_risk_data.py": "c7cea96d3324f2553e842445466cf39a4cda11492276a2ee0ef039b47d386fb8",
+    "scripts/stage3_risk_sources.py": "16185538985d7857b87f58b61dfaba6ad3e3bafb7b2ddbf2cfc1cc2b1937fa7c",
+    "scripts/t0_dtu_archive.py": "381ffd03ea4df853ab0dcfa6e27c89e7fc8710d9838f086aec8c52dc883858d1",
+    "scripts/t0_dtu_convert.py": "121c78db260761d2e7d5b24003e87bef2716528efdf22f52aece10369b59f84d",
+    "scripts/vision_data.py": "d5a5adff51326443df54d79002d0eb4b855deb2e9dab8abb3febfd36fe6a016b",
+    "scripts/vision_evaluate.py": "6a817907820631356a19deebcdfc91f307b97341885176b68fd6ec6b366b74b1",
+    "scripts/vision_sources.py": "9d15d0212252498bd3b9271b6ddf5063789906eff157d70f670784552694eeba",
+    "src/evidence_lens/__init__.py": "19713bea9a3b23e84c20fd6128c62853e41507d4dcdfb0e7d8a0543da5a7ee0c",
+    "src/evidence_lens/_bundle.py": "024d7d3ce9a6c9d78839c60b2a55c07fde0f3887a96495cfe4ba7ae8ba576708",
+    "src/evidence_lens/_metrics.py": "d36030b201a207bd574d7e975147ffeeb6a6c58c013f5e43e6fbdca00ea61ed6",
+    "src/evidence_lens/_verify.py": "e2d90fc7ec4f42afdcc6186dc09c7d846a807e7665345c63a8386e9486da357b",
+    "src/evidence_lens/dtu_camera.py": "b6bb3a6bc5e1b2c1f90cf2563aefe1e0c2843201223760d75e5fd10e29884da0",
+    "src/evidence_lens/features.py": "2748d73ded4d8391ab915280be45a85d53d6a172f3ee872662b9df15d3a2613b",
+    "src/evidence_lens/formal_inputs.py": "a4c201dbbb3ad76e4bafda10008bfd0975639caafc880d769c1fe773ffba9fd4",
+    "src/evidence_lens/l1.py": "9527cd6720c6891cd96e03e8a2a3a946e76a0d5b00951d7babe267108c58a06e",
+    "src/evidence_lens/l1_data.py": "f08aa1bdc0e0a672ea4fcb21e65a62c4271aba40b7cdb3fc88a093c7570efabf",
+    "src/evidence_lens/l1_freeze.py": "72dc943b7f00b2f96a48435310d999ef261952a4060827ffefc79c80fcf18019",
+    "src/evidence_lens/labels.py": "feeaa173848e8a8cb0da6c6f9c7a051a6d6cb4343024d558583c3c0b37131f1b",
+    "src/evidence_lens/multisource.py": "906b06a79d9ef5d7e35d3207f60293e1cf0687eb20207293a87d1aa58738f4cb",
+    "src/evidence_lens/multisource_io.py": "ea7b5f11697c09b20efaf7d5a1fb8e23459826f3c7ecb79ed465bc3e168914dc",
+    "src/evidence_lens/multisource_model.py": "1b365588066d2c6ec143834786296beb0a86adebc6bb76c0635639359f5866ad",
+    "src/evidence_lens/risk_model.py": "21b310d8df2534c8db4c5d21f6c869e0dc8044c312229dcd16f7467287c8e7ad",
+    "src/evidence_lens/scoring_io.py": "682bbd3fd1f6533d42f6900390d944372deca22c6192472e06cf57e1c90405aa",
+    "tests/test_b2_calibration.py": "6baea79c17883f0a51505dcd9b380de32891ef6c790dcbfafe4d7389f653a3b4",
+    "tests/test_b2_calibration_records.py": "d1c8c822e3aa4ced2dd84ed001c978efb1b0cce8f20bcdbea03c0835096a1479"
+  },
+  "scope": {
+    "alpha_semantics": "accumulated_opacity",
+    "depth_semantics": "expected_camera_z_m",
+    "feature_columns": 39,
+    "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+    "layout": "DTU-fixed",
+    "lighting_id": 3,
+    "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+    "model_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a",
+    "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+    "primary_source_id": "s00",
+    "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+    "reconstructor": {
+      "gaussian_cap": 20000,
+      "name": "r2-scale-decay-02",
+      "optimizer_seed": 43171,
+      "worker_tree_sha256": "02fe9a25281a72b43a4eb038b37d0a2c5b6e291175f0ac0b1c8c0b5761247e3c"
+    },
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "renderer": {
+      "name": "gsplat",
+      "version": "1.5.3"
+    },
+    "resolution": [
+      256,
+      256
+    ],
+    "rgb_encoding": "display_srgb_0_1",
+    "stop_step": 5000
+  },
+  "selection": "All planned C6 objects require L>0. Compare exact rational mean across objects: LY/L <= 1/20, L/V >= 1/5. Among feasible candidates maximize mean coverage, minimize mean low-error, then minimum tau, then lowest repeated anchor. Inspect full nonmonotone grid. Empty L gives null low-error.",
+  "source_validation": {
+    "manifest_sha256": "48e50169f996599c98197eb7a0aa84188b1570f4c4e281b027de5d698a3ac2bc",
+    "member": "payload/calibration-validation.json",
+    "run_id": "20261124T015338849952Z-98587b7cc1524161",
+    "sha256": "7bf9c3ff000489d00c6caedee5ef57f8d46a7ce8632ea5591be2628164e47240"
+  },
+  "target": {
+    "maximum_mean_low_error": 0.05,
+    "minimum_mean_coverage": 0.2,
+    "require_every_object_nonempty": true
+  },
+  "target_rgb_reads": 0
+}

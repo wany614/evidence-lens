@@ -56,6 +56,25 @@ def adapt(case_dir, expected_sha256, output, *, input_domain, run_id=None, proof
 
         generator, renderer, geometry = identities(old, proof, proof_sha256)
 
+    return adapt_authenticated_case(
+        old,
+        output,
+        input_domain=input_domain,
+        generator=generator,
+        renderer=renderer,
+        geometry=geometry,
+        run_id=run_id,
+        proof_sha256=proof_sha256,
+    )
+
+
+def adapt_authenticated_case(
+    old, output, *, input_domain, generator, renderer, geometry, run_id=None, proof_sha256=None
+):
+    """Write deployment roles after the caller authenticates original producer and geometry evidence."""
+    p = old.pred
+    for key, name in (("rgb_encoding", "rgb"), ("depth_semantics", "z"), ("alpha_semantics", "alpha")):
+        require(p.get(key) == SEMANTICS[name], "original verified channel semantics required: " + key)
     source_order = list(old.generator)
     target_order = list(p["target_ids"])
     cfg = {

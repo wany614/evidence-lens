@@ -1,0 +1,129 @@
+{
+  "T1_photograph_reads": 0,
+  "allocation_plan": {
+    "manifest_sha256": "1e008add4eecf6a212cd812446eb06e3d0840508ba63765d2a84687a950a62bf",
+    "member": "payload/allocation-plan.json",
+    "run_id": "20261124T014705379005Z-9062c98cd4814c64",
+    "sha256": "c5f73a5ec2d4cddff8f74413e9f942f87726d1163fceb97aa2d754409d22c6b9"
+  },
+  "allocation_seed": 137031,
+  "arm_order": {
+    "C6": [
+      "set48",
+      "set75",
+      "set110",
+      "set42",
+      "set77",
+      "set52"
+    ],
+    "T1": [
+      "set118",
+      "set76",
+      "set45",
+      "set103",
+      "set61",
+      "set32"
+    ],
+    "reserve": [
+      "set37",
+      "set54",
+      "set34",
+      "set62"
+    ]
+  },
+  "camera": {
+    "camera_sha256": "87e08d1ceda10b0ef0327aa5970ff239bbf60b56410945c59dbc66f4d1a8399f",
+    "conditions": {
+      "M2": {
+        "render_cameras": {
+          "bytes": 7557,
+          "sha256": "2bed3761ae30e1a65e55c447b55f7067a4c3a2644a3fbd749d35b0f837ba6ad2"
+        },
+        "source_cameras": {
+          "bytes": 2025,
+          "sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a"
+        }
+      },
+      "M4": {
+        "render_cameras": {
+          "bytes": 9418,
+          "sha256": "87e08d1ceda10b0ef0327aa5970ff239bbf60b56410945c59dbc66f4d1a8399f"
+        },
+        "source_cameras": {
+          "bytes": 3886,
+          "sha256": "e349f27b6067acb44f49df01b08bd0adf3222572da7f268543105b0e00e987ee"
+        }
+      }
+    },
+    "crop_sha256": "28fc8c466883f97c53bce0673e79980bc5f211db1d443c7ef5f12adec8d68350",
+    "plan_sha256": "e688ed923a57c65bc73be6a2ca794e8cc23ea554474ee825d65a92450fddbdbd",
+    "rig_source": "official right-camera Rectified P coordinates, common first 49 robotic views; cross-archive anchors on the two exposed scenes",
+    "view_set_sha256": "11b9da336f3cdef53d5703d7496ea11ab5694bb0656e31e8b53d2eac386be440"
+  },
+  "camera_eligibility": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/camera-eligibility.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "15a5919429bf4987340c03cd57f2326076fac8f9d5419f3dca49a6e1209464de"
+  },
+  "candidate_capture_ids": [
+    7,
+    10,
+    13,
+    17,
+    20,
+    23,
+    31,
+    40
+  ],
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "eligible_families": 16,
+  "evaluation_views": {
+    "v01": 16,
+    "v02": 18,
+    "v03": 25,
+    "v04": 37,
+    "v05": 35,
+    "v06": 36
+  },
+  "fixed_sources": {
+    "s00": 24,
+    "s01": 23,
+    "s02": 17,
+    "s03": 22
+  },
+  "included_reference_photographs": true,
+  "lights": [
+    3
+  ],
+  "max_reprojection_error_px": 2.338721243688724e-05,
+  "physical_identity_register": {
+    "manifest_sha256": "6537852178662a8c87dfecb7440e1d0b4cc1a4316f34e67cf8b6fdc4c026d028",
+    "member": "payload/roster.json",
+    "run_id": "20261124T011500481447Z-a60b8b0a33144727",
+    "sha256": "f83e1327701a1469321ba1c7259d5752cb4ef5cb88f6aad33ef773fd865a0e99"
+  },
+  "registered_captures_per_family": 16,
+  "schema": "el-b2-public-cohort-1",
+  "source_files": {
+    "photograph-hashes.csv": "a5afc31c194fd714bb1fbb2f0ddcbb5af6f6014a2f7805e49eed89839a5604e4",
+    "physical-families.csv": "28d7464dc1d4aae76c91e72fc54b9c14c4cc14289002d16b7d836572fdffd62e",
+    "rig-checks.csv": "68503a723a4b9c8cc70da7f26c4a410318546fcdcdc226bfd852750d235e72b5",
+    "transfers.csv": "67c0525580e28d1a3b0434e83df2657d0c6ff87948e8cc9c419b221fbbb0db9e"
+  },
+  "tolerance_px": 0.005,
+  "totals": {
+    "completed_members": 72,
+    "decompressed_from_http_bytes": 112175884,
+    "http_body_bytes": 112179096,
+    "http_requests": 198,
+    "output_crop_png_bytes": 6071531,
+    "verified_endpoint_cache_bytes": 22648839
+  },
+  "unique_C6_photographs": 60
+}

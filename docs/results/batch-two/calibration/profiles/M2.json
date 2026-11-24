@@ -1,0 +1,214 @@
+{
+  "C6_selected_threshold_counts": [
+    {
+      "E": 393216,
+      "L": null,
+      "LY": null,
+      "S": 366329,
+      "U_E": 26887,
+      "V": 393216,
+      "V_minus_E": 0,
+      "Y": 321961,
+      "coverage": null,
+      "low_error": null,
+      "object_id": "set48"
+    },
+    {
+      "E": 393216,
+      "L": null,
+      "LY": null,
+      "S": 380643,
+      "U_E": 12573,
+      "V": 393216,
+      "V_minus_E": 0,
+      "Y": 355938,
+      "coverage": null,
+      "low_error": null,
+      "object_id": "set75"
+    },
+    {
+      "E": 393216,
+      "L": null,
+      "LY": null,
+      "S": 388050,
+      "U_E": 5166,
+      "V": 393216,
+      "V_minus_E": 0,
+      "Y": 243631,
+      "coverage": null,
+      "low_error": null,
+      "object_id": "set110"
+    },
+    {
+      "E": 393216,
+      "L": null,
+      "LY": null,
+      "S": 375138,
+      "U_E": 18078,
+      "V": 393216,
+      "V_minus_E": 0,
+      "Y": 220158,
+      "coverage": null,
+      "low_error": null,
+      "object_id": "set42"
+    },
+    {
+      "E": 393216,
+      "L": null,
+      "LY": null,
+      "S": 338435,
+      "U_E": 54781,
+      "V": 393216,
+      "V_minus_E": 0,
+      "Y": 272784,
+      "coverage": null,
+      "low_error": null,
+      "object_id": "set77"
+    },
+    {
+      "E": 393216,
+      "L": null,
+      "LY": null,
+      "S": 364909,
+      "U_E": 28307,
+      "V": 393216,
+      "V_minus_E": 0,
+      "Y": 308843,
+      "coverage": null,
+      "low_error": null,
+      "object_id": "set52"
+    }
+  ],
+  "calibration_object_ids": [
+    "set48",
+    "set75",
+    "set110",
+    "set42",
+    "set77",
+    "set52"
+  ],
+  "candidate_anchors": 201,
+  "comparison": "score < tau",
+  "condition": "M2",
+  "distinct_thresholds": 198,
+  "epsilon": 0.05,
+  "epsilon_definition": "strict mean absolute display RGB FP32 error > 0.05 on evaluable RGB",
+  "evaluated_on_holdout": false,
+  "holdout_target_met": null,
+  "lineage": {
+    "algorithm": {
+      "manifest_sha256": "d763651112068cccf87018ec7be0f203f672f1c0ebc9f2991bb7ed9d0f3a8a17",
+      "member": "payload/calibration-method.json",
+      "run_id": "20261124T020129961316Z-2b715d6ae3314c12",
+      "sha256": "5d36644b3c65e0730e91bc816152145469ebaf378d52358e78fa8149a61cc3f3"
+    },
+    "cohort": {
+      "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+      "member": "payload/cohort.json",
+      "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+      "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+    },
+    "fit_run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+    "opening": {
+      "manifest_sha256": "c14d67f2d9d10b9dd0d2bca5a80eb9266faad2787b30ac0f1052d46e556e696c",
+      "member": "payload/opening.json",
+      "run_id": "20261124T021200190993Z-38fecc1ba0c146e0",
+      "sha256": "74d246fb46c1efbf533d04c638befc8e2aca04eb70746affd8a57dc7ffa0d73c"
+    },
+    "references": {
+      "set110": {
+        "manifest_sha256": "3a1334af64e884d5ed626908e08d5e7bc8d8057bbbbc01171d5f6a84b37e31ac",
+        "member": "payload/references.json",
+        "run_id": "20261124T021214982504Z-ffeb98d620a14a7b",
+        "sha256": "7ac9dc56b03fbdd9118383d626e0d0a4c6b790d700aaa1e0ce5f39a7632d8153"
+      },
+      "set42": {
+        "manifest_sha256": "17429a5fb30900ac19772b5e5f146ff61a92c7e252e91f8d776e6fc9f90aa923",
+        "member": "payload/references.json",
+        "run_id": "20261124T021221059658Z-247d820513384e71",
+        "sha256": "d52682cc28ad6cd1e5b1606c3d90334038e69eb8174017da717fae8b5553b60e"
+      },
+      "set48": {
+        "manifest_sha256": "d872998bae84be62d34964e7833521a1e3af851d7629b399e971234bd5c917aa",
+        "member": "payload/references.json",
+        "run_id": "20261124T021214990333Z-73cbebd255994301",
+        "sha256": "75095b1e660ecd3a3dabb67ec80dbebdd204e8d98f755cea019b7ca98aacea57"
+      },
+      "set52": {
+        "manifest_sha256": "444233e0b1f923f9bec699ef3811cb2eae64d7ac51d8801768a3251c809e675a",
+        "member": "payload/references.json",
+        "run_id": "20261124T021221941852Z-f8eb7a3cfee941ef",
+        "sha256": "946bfd04db42e2050e9de7c1b967172cdcd11de7d089842f6b8dd54d887e4fb1"
+      },
+      "set75": {
+        "manifest_sha256": "940e7535cd0787e6017cf89597e9c23ace7351c62e7124bcc14e7c7e57bf1755",
+        "member": "payload/references.json",
+        "run_id": "20261124T021214988659Z-6c41fe1ee9a341d2",
+        "sha256": "3a2a89348ada15a936cbc28151408c60025c0f103394c50cf4e58ca6c43398c1"
+      },
+      "set77": {
+        "manifest_sha256": "68752cdbe03e402631548b478ed1ce4891dfdb767850368023e772004ab8f8b3",
+        "member": "payload/references.json",
+        "run_id": "20261124T021221895594Z-802f286844214825",
+        "sha256": "ad96ddf9775aa536deb714e6ee30fe59962e1128141d417d389a594c748ba19b"
+      }
+    },
+    "score_candidates": {
+      "manifest_sha256": "c1d25dc93dcb5e2d496423e84f71bbb28b9a18953d079f9cbb4da663f6978f97",
+      "member": "payload/score-candidates.json",
+      "run_id": "20261124T020900657339Z-71eb2236f1ad42c0",
+      "sha256": "7c2ebcc4ef73c895c9b8bdc1f5d2a7f1fe80f973bd627102c506725c294a241c"
+    }
+  },
+  "method": "MS-L1",
+  "original_tau": 0.06428983435034752,
+  "profile_version": 1,
+  "raw_counts_file": "../candidate-object-counts.csv",
+  "remaining_scope": "Empirical calibration on C6 only. Fixed M4 does not establish suitability for M4-selected or imported assets.",
+  "schema": "el-b2-calibration-profile-1",
+  "scope": {
+    "alpha_semantics": "accumulated_opacity",
+    "depth_semantics": "expected_camera_z_m",
+    "feature_columns": 39,
+    "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+    "layout": "DTU-fixed",
+    "lighting_id": 3,
+    "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+    "model_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a",
+    "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+    "primary_source_id": "s00",
+    "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+    "reconstructor": {
+      "gaussian_cap": 20000,
+      "name": "r2-scale-decay-02",
+      "optimizer_seed": 43171,
+      "worker_tree_sha256": "02fe9a25281a72b43a4eb038b37d0a2c5b6e291175f0ac0b1c8c0b5761247e3c"
+    },
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "render_camera_sha256": "2bed3761ae30e1a65e55c447b55f7067a4c3a2644a3fbd749d35b0f837ba6ad2",
+    "renderer": {
+      "name": "gsplat",
+      "version": "1.5.3"
+    },
+    "resolution": [
+      256,
+      256
+    ],
+    "rgb_encoding": "display_srgb_0_1",
+    "source_camera_sha256": "e99df6b5b685aa6750f46dab17c161fb00225a83ad06be4a1cc8f403b515ea3a",
+    "source_ids": [
+      "s00",
+      "s03"
+    ],
+    "stop_step": 5000
+  },
+  "selected_anchor": null,
+  "selected_estimates": null,
+  "status": "no_feasible_operating_point",
+  "target": {
+    "maximum_mean_low_error": 0.05,
+    "minimum_mean_coverage": 0.2,
+    "require_every_object_nonempty": true
+  },
+  "tau": null
+}

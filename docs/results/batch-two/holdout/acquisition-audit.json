@@ -1,0 +1,217 @@
+{
+  "T1_photo_receipts": 0,
+  "rows": [
+    {
+      "kind": "sources",
+      "object": "set48",
+      "run_id": "20261124T014919697753Z-05e4409ffa7647ad",
+      "sha256": "2b73079dc1673be0c163eba1880bdeeb5106d54652e7833314e8b40007a09c9f",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set75",
+      "run_id": "20261124T014934377047Z-d43bd34ec04f4357",
+      "sha256": "37244740bfceb68be382a09173fc9ec461b8f872fc000f20fdc0a92f4a469043",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set110",
+      "run_id": "20261124T014934377282Z-d33b887841e742b0",
+      "sha256": "f5db6473bc7973e71ade057cf113a4d52791b395cadb3d055f273e667cc4d5f8",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set48",
+      "run_id": "20261124T014934388247Z-67bce748f7f34fcd",
+      "sha256": "4fd7addfa042ad5e947a381c245566794fb45fc2f6a476a41af494495c9f5c33",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set75",
+      "run_id": "20261124T014935825626Z-1c726f32ca5a48fb",
+      "sha256": "3408f1ed9d19821208abeb90637bd43e2a11d9ab80109a10d7cf9890f076a53e",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set42",
+      "run_id": "20261124T014936197201Z-1384ea009a9846da",
+      "sha256": "e5e0937ac5430485fb08eb804ff9dca9324dd45039cba3eeb08e1929894d07af",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set110",
+      "run_id": "20261124T014936310795Z-1297eabb2a844256",
+      "sha256": "18fd95245e769882753dcce5b8643ce7455491862dad6eeb5c152a3113b2dc2a",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set77",
+      "run_id": "20261124T014937553177Z-c150459eac054cfd",
+      "sha256": "57eb919bf2a29aad64bc4d410680f15559639e1559df2bdafe9f5834e63999a4",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set42",
+      "run_id": "20261124T014938062772Z-484ce57e1e0d48b1",
+      "sha256": "327ffb2a3d8f152b9842118f45cf4ef54e77b7fdb48f12d2aa2737dfa49ff102",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set52",
+      "run_id": "20261124T014938209388Z-bb5359ff268b4331",
+      "sha256": "d64d516ef74f3e9487d560de895032cb91a6b6f818c9c31bca044e4e2a036cf2",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set77",
+      "run_id": "20261124T014938753946Z-9cf91f5baab04485",
+      "sha256": "e1258807bdaab7c44b27aebe0807548d8641a4d6168b092ca6ce63f44ec14866",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set52",
+      "run_id": "20261124T014939607571Z-c8e12751735041b7",
+      "sha256": "3ed2c1c7d6464737666b1a5229ff3ade14d4e542a0ea19f54c7a0b8313a0a7c2",
+      "stage": "el-b2-dtu-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set1",
+      "run_id": "20261124T015550003514Z-640d75f964e047d3",
+      "sha256": "467e7f7617e0de147fb2cb9dbaaa9f37abc0aea3a6e792807060632c41980331",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set6",
+      "run_id": "20261124T015550003518Z-feb6ae7076d748c9",
+      "sha256": "f82d3cd484e3e0635efaf370fd54676d5ef273ad5ab5b47d7d9ef7d47094edd4",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set1",
+      "run_id": "20261124T020013698790Z-e9a4e2f525ac4790",
+      "sha256": "1a7ae0730af93c53e84f1165cc78bc6039a8b949adfe033a64462089b3ca5db8",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set1",
+      "run_id": "20261124T020013699421Z-0c94ae1b19bc4963",
+      "sha256": "6417169bf09efef11be199f69062debf6d79eccb9f9e6674fbfc138d274c266a",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set1",
+      "run_id": "20261124T020013699516Z-0879fa3d001e4183",
+      "sha256": "a381ef34b358eb6dc0371472a4703cfae7ba8c3b4587b50c24fb52b7643d27d0",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set1",
+      "run_id": "20261124T020013700630Z-5ff7a6ef3cc6474a",
+      "sha256": "83f443421310822926de287d10d0aa36a975e3333696a02134de6a715481c6b4",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set1",
+      "run_id": "20261124T020016735263Z-587ab1befeb143ef",
+      "sha256": "77736c1ab1b9db2329e1aa004ea4ea456439d5f87dcedd8dd5b40bec4d94791b",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set6",
+      "run_id": "20261124T020017644046Z-3e3259d5b5ca4d32",
+      "sha256": "23fa703c52081b54b4684d737771ab5d9ac7c81d6a8a591aa5b2eedb68ecfe59",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set6",
+      "run_id": "20261124T020017644073Z-e8b510af771746ea",
+      "sha256": "cca0afd269215a328ca98cb6bb683a38db56413a73a75f6113ab6f1af8fb66e5",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set6",
+      "run_id": "20261124T020017819091Z-a216682cead34681",
+      "sha256": "7498b140a03f3e97654775f4eb11c2c155ccd5f06a410c2a789b34f7247be9ba",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set6",
+      "run_id": "20261124T020019137558Z-d4e0c86f1e094562",
+      "sha256": "922f1167da101415dda43aaea49c9f309f17bf0d6ef0ded4ba5a0364854767f7",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "sources",
+      "object": "set6",
+      "run_id": "20261124T020020627208Z-58a63ca360cb4462",
+      "sha256": "435a89be29c92ef7423bd85c9188685cc63ac36478a392268cc05183cde0bf48",
+      "stage": "el-b2-development-source-1"
+    },
+    {
+      "kind": "references",
+      "object": "set110",
+      "run_id": "20261124T021214982504Z-ffeb98d620a14a7b",
+      "sha256": "7ac9dc56b03fbdd9118383d626e0d0a4c6b790d700aaa1e0ce5f39a7632d8153",
+      "stage": "el-b2-dtu-references-1"
+    },
+    {
+      "kind": "references",
+      "object": "set75",
+      "run_id": "20261124T021214988659Z-6c41fe1ee9a341d2",
+      "sha256": "3a2a89348ada15a936cbc28151408c60025c0f103394c50cf4e58ca6c43398c1",
+      "stage": "el-b2-dtu-references-1"
+    },
+    {
+      "kind": "references",
+      "object": "set48",
+      "run_id": "20261124T021214990333Z-73cbebd255994301",
+      "sha256": "75095b1e660ecd3a3dabb67ec80dbebdd204e8d98f755cea019b7ca98aacea57",
+      "stage": "el-b2-dtu-references-1"
+    },
+    {
+      "kind": "references",
+      "object": "set42",
+      "run_id": "20261124T021221059658Z-247d820513384e71",
+      "sha256": "d52682cc28ad6cd1e5b1606c3d90334038e69eb8174017da717fae8b5553b60e",
+      "stage": "el-b2-dtu-references-1"
+    },
+    {
+      "kind": "references",
+      "object": "set77",
+      "run_id": "20261124T021221895594Z-802f286844214825",
+      "sha256": "ad96ddf9775aa536deb714e6ee30fe59962e1128141d417d389a594c748ba19b",
+      "stage": "el-b2-dtu-references-1"
+    },
+    {
+      "kind": "references",
+      "object": "set52",
+      "run_id": "20261124T021221941852Z-f8eb7a3cfee941ef",
+      "sha256": "946bfd04db42e2050e9de7c1b967172cdcd11de7d089842f6b8dd54d887e4fb1",
+      "stage": "el-b2-dtu-references-1"
+    }
+  ],
+  "schema": "el-b2-access-inventory-1",
+  "scope": "All batch-store admitted and quarantined photographic acquisition receipts and HTTP logs. Directories of the independently exposed D originals are outside this scan."
+}

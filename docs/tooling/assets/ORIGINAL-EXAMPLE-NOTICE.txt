@@ -1,0 +1,16 @@
+Evidence Lens original helical bead study
+Copyright 2026 wany614 / Evidence Lens
+
+The original bead geometry, analytic source images, camera rig and Gaussian
+representations generated from that geometry, native renders and their
+comparisons, and the two authored example HTML reports are available under
+Creative Commons Attribution 4.0 International, to the extent the project
+may grant those rights. Attribute wany614 / Evidence Lens, link the license,
+and describe changes. https://creativecommons.org/licenses/by/4.0/
+
+The scene recipe, adapters, distribution tools and software tests are
+Apache-2.0. Previously released model parameters and factual research
+records retain their accompanying notices. The COLMAP and Graphdeco
+specifications, gsplat, PyTorch and other third-party works keep their own
+terms. DTU photographs are outside this grant. This authored example
+distribution contains no DTU photographs.

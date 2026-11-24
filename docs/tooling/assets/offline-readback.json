@@ -1,0 +1,58 @@
+{
+  "pages": {
+    "external": {
+      "browser": "Chrome/157.0.8103.51",
+      "enabled_schemes": [
+        "data",
+        "file"
+      ],
+      "html_sha256": "eb9158e89cedbe0e88e4c2bfdb0e306a9eaf509f5d55aee3393b3ae095b22fc3",
+      "image_count": 14,
+      "picker_options": 4,
+      "receipt_download": true,
+      "screenshot_sha256": "dc2f0076cb1bb7122f4063d3012efbfc3b0b6a9e8506cccad5b79f9ef9805c83",
+      "target_count": 3
+    },
+    "fixed2": {
+      "browser": "Chrome/157.0.8103.51",
+      "enabled_schemes": [
+        "data",
+        "file"
+      ],
+      "html_sha256": "2617569f4d27e558a55839b39643cd1a41ff92cadad3a5740b37d6f9bee3c797",
+      "image_count": 26,
+      "picker_options": 7,
+      "receipt_download": true,
+      "screenshot_sha256": "4b2926271e2a3a96f6d3b38122e2c720e98f57b4a8a84923f9702f4f970c3d47",
+      "target_count": 6
+    },
+    "fixed4": {
+      "browser": "Chrome/157.0.8103.51",
+      "enabled_schemes": [
+        "data",
+        "file"
+      ],
+      "html_sha256": "2cc84678a4f72e473ecbfa07d88ce6f5bc6376209952f026659320755052ef4e",
+      "image_count": 28,
+      "picker_options": 7,
+      "receipt_download": true,
+      "screenshot_sha256": "2a4c99bf10af6c9cc8b338e1d9883ffb68f7de54b9368d05cca4f3751554d9b7",
+      "target_count": 6
+    },
+    "original": {
+      "browser": "Chrome/157.0.8103.51",
+      "enabled_schemes": [
+        "data",
+        "file"
+      ],
+      "html_sha256": "3bc6f9f9cceb2bd76ad656b8ada79f215bd9d8b2aaa4a4272bc8ca2458bf32ad",
+      "image_count": 14,
+      "picker_options": 4,
+      "receipt_download": true,
+      "screenshot_sha256": "8c681d9377dc8ef8d873871ea7e0c004ab0e12f7e85a9728a65c56af2305d15f",
+      "target_count": 3
+    }
+  },
+  "passed": true,
+  "schema": "el-b2-offline-browser-1"
+}

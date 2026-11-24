@@ -1,0 +1,245 @@
+{
+  "camera_max_abs": 1.1102230246251565e-16,
+  "channels": {
+    "alpha": {
+      "finite_compared": 1966080,
+      "max_abs": 2.980232238769531e-07,
+      "max_view_mean_abs": 4.7739376896061e-09,
+      "support_differences": 0,
+      "total_components": 1966080
+    },
+    "rgb": {
+      "finite_compared": 5898240,
+      "max_abs": 2.980232238769531e-07,
+      "max_view_mean_abs": 4.297708263341822e-09,
+      "support_differences": 0,
+      "total_components": 5898240
+    },
+    "z": {
+      "finite_compared": 337362,
+      "max_abs": 4.2438507080078125e-05,
+      "max_view_mean_abs": 6.764023392288773e-07,
+      "support_differences": 0,
+      "total_components": 1966080
+    }
+  },
+  "cuda": "12.8",
+  "cuda_allocator_peak_bytes": {
+    "allocated": 13197824,
+    "reserved": 27262976
+  },
+  "default_threshold": 0.06428983435034752,
+  "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "external_profile_status": "outside_calibration_scope",
+  "fixture_sha256": "6bb6bef5ce63352f64f70ba2ba98df3c33c0342d371ce8b2296ae6b6c6268b8f",
+  "gsplat": "1.5.3",
+  "in_scope_set48": {
+    "M2": {
+      "applied": false,
+      "holdout_evaluated": false,
+      "holdout_target_met": null,
+      "original_counts": {
+        "canvas": 393216,
+        "high": 253903,
+        "low": 112426,
+        "scoreable": 366329,
+        "unknown": 26887
+      },
+      "original_threshold": 0.06428983435034752,
+      "profile_sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1",
+      "recorded_original_comparisons": 6,
+      "scope_sha256": "7b2bcb3a9930ae0cde649204ea765316c17151878db19687ebf61642e9fb22fd",
+      "status": "no_feasible_operating_point",
+      "threshold": null
+    },
+    "M4": {
+      "applied": false,
+      "holdout_evaluated": false,
+      "holdout_target_met": null,
+      "original_counts": {
+        "canvas": 393216,
+        "high": 151345,
+        "low": 166075,
+        "scoreable": 317420,
+        "unknown": 75796
+      },
+      "original_threshold": 0.06428983435034752,
+      "profile_sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92",
+      "recorded_original_comparisons": 6,
+      "scope_sha256": "05abe2844f05d71aecee57f44128bad0b7869c77e9c4f43712763b5570209909",
+      "status": "no_feasible_operating_point",
+      "threshold": null
+    }
+  },
+  "native_camera_comparisons": 30,
+  "negative_CPU": {
+    "absent_source_photo": {
+      "exit": 2,
+      "message": "missing or unsafe member: acquired/left-lens.png",
+      "status": "invalid"
+    },
+    "camera_distortion": {
+      "exit": 3,
+      "message": "unsupported or distorted COLMAP camera OPENCV",
+      "status": "unsupported"
+    },
+    "contradictory_scale": {
+      "exit": 3,
+      "message": "metric scale disagrees with declared source baseline",
+      "status": "unsupported"
+    },
+    "duplicate_source": {
+      "exit": 2,
+      "message": "duplicate source or target ID 41",
+      "status": "invalid"
+    },
+    "inconsistent_source_size": {
+      "exit": 3,
+      "message": "source must be a native-size RGB8 PNG/JPEG",
+      "status": "unsupported"
+    },
+    "missing_opacity": {
+      "exit": 3,
+      "message": "point-cloud or incomplete Gaussian PLY: missing opacity",
+      "status": "unsupported"
+    },
+    "missing_scale": {
+      "exit": 3,
+      "message": "missing metric scale and its source",
+      "status": "unsupported"
+    },
+    "no_CUDA": {
+      "exit": 3,
+      "message": "asset rendering requires CUDA PyTorch and gsplat 1.5.3",
+      "status": "unsupported"
+    },
+    "sparse_cloud": {
+      "exit": 3,
+      "message": "point-cloud or incomplete Gaussian PLY: missing f_dc_0, f_dc_1, f_dc_2, opacity, rot_0, rot_1, rot_2, rot_3, scale_0, scale_1, scale_2",
+      "status": "unsupported"
+    },
+    "unsupported_sh_order": {
+      "exit": 3,
+      "message": "only complete SH0 or SH3 coefficients are supported",
+      "status": "unsupported"
+    }
+  },
+  "original_example_counts": {
+    "canvas": 196608,
+    "high": 32022,
+    "low": 1344,
+    "scoreable": 33366,
+    "unknown": 163242
+  },
+  "origins": {
+    "cpu": {
+      "manifest_sha256": "5544b7437f7759f79793b68352790607acf273fca21fd9803a32ff8aa02035f8",
+      "member": "payload/cli-check.json",
+      "run_id": "20261124T020854168208Z-68ca8dc9c7d14d88",
+      "sha256": "41d4cd2b39c654c6649798dd47bde70c1cee92a8139544e39a6cc44328a82066"
+    },
+    "external": {
+      "manifest_sha256": "4bbd80ba342678923d546df9259465d4469510f89f8cf5094cf025c61a27ea1d",
+      "member": "payload/grade.json",
+      "run_id": "20261124T021402632323Z-483d16d47e224340",
+      "sha256": "cf5d9d48ce080480f77427d9a9d5df7c1a45b8cae98b160fcd2d0ce3f127ef15"
+    },
+    "fixed2": {
+      "manifest_sha256": "243c3603aa9067c98a1f5fdd46b8af63c9d46d6808065c14c9ee96484a6d4d44",
+      "member": "payload/grade.json",
+      "run_id": "20261124T021321751402Z-9930ecfff6ae4700",
+      "sha256": "531d478b7f4628ddacc6dd8a5b416415dec88d72b7554be4b0f3b7841664464d"
+    },
+    "fixed4": {
+      "manifest_sha256": "8c0944ea7c9a255eb1c802e2e37366032ecebb8046e9994c261601ab0bc873b3",
+      "member": "payload/grade.json",
+      "run_id": "20261124T021402808596Z-cd3226a14e6c49da",
+      "sha256": "b74b283c10a86e2e8e3c03e038ce486c7c8cd397450747d90289c52369eef8a7"
+    },
+    "fixture": {
+      "manifest_sha256": "195db3b32645a1494f356b9bc10915af3780e31908f18716cf9017316155b03c",
+      "member": "payload/fixture.json",
+      "run_id": "20261124T020009086033Z-dc525fcd05cb4730",
+      "sha256": "6bb6bef5ce63352f64f70ba2ba98df3c33c0342d371ce8b2296ae6b6c6268b8f"
+    },
+    "metrics": {
+      "manifest_sha256": "3d3e269174ee658d0fe72694cc712c25e0217594602f19c90f76de2c01e0a553",
+      "member": "payload/readback.json",
+      "run_id": "20261124T021436151799Z-4d22a7f9b5254640",
+      "sha256": "fdde453c9f01471c89d8fd6c6c323e4c85c9c43acdc035d5a8db8c7c4f73107c"
+    },
+    "parser": {
+      "manifest_sha256": "d806975d857e6fdb2775425bfb890c33e7190e64664a07029d73dd6d5947e339",
+      "member": "payload/cpu-readback.json",
+      "run_id": "20261124T020010577101Z-70abe97283924a0d",
+      "sha256": "55e9ab86ec6354e21529ae0f7aa88af74a583073e06784e9440a97aa13469226"
+    },
+    "profile2": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/profiles/M2.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1"
+    },
+    "profile4": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/profiles/M4.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92"
+    },
+    "ticket": {
+      "manifest_sha256": "53fc886b8d6d77f565f25b97cd4da55cecacc4484c5226d07fd0a0474b43c22c",
+      "member": "payload/evidence-lens-b2-asset-cuda.zip",
+      "run_id": "20261124T020009907635Z-5b1a86d19dbd4a40",
+      "sha256": "9549a49f99c384bedb27664a68e506897a94332e95593f664912508a86385756"
+    },
+    "uncalibrated": {
+      "manifest_sha256": "eeb70ba6c426be8e98bee56f31d143f2f275c816077581099dbe723e8b5b9f92",
+      "member": "payload/grade.json",
+      "run_id": "20261124T021402609482Z-4ba42a5c1f2a4194",
+      "sha256": "900fefc3b70206fdfd6edf962d934640871ba4bf06040a4e802e4c6f6fa6332a"
+    },
+    "wheel": {
+      "manifest_sha256": "b7c15a68f16ce57f3a73a740ec59adf27c7566137ae03b842b9595a379810aee",
+      "member": "payload/dist/evidence_lens-0.4.0b1-py3-none-any.whl",
+      "run_id": "20261124T020650368203Z-bcaeca9882e749cd",
+      "sha256": "ca52e82c8e870560c05075dda4b5282311500580f9283fe234aa27643d6f8882"
+    },
+    "windows": {
+      "manifest_sha256": "53ae4c03a9b84db770bf05679aa4bf105f692dd4cfc5b44106d4cea3441654a5",
+      "member": "payload/parity.json",
+      "run_id": "20261124T021118010901Z-e7bca336730e47df",
+      "sha256": "4c3041842f748b71e7a871438cd35017a6cd53b91d57af98fc988c4f80028304"
+    }
+  },
+  "positive_CPU_imports": 6,
+  "positive_CUDA_imports": 6,
+  "protocol_sha256": "d62b275eff257897ea85ea828cf2c21dd10f71957850385e320f9d4218daa8a4",
+  "renderer_parity_limits": {
+    "ED_m": 0.0001,
+    "RGB": 0.0001,
+    "alpha": 0.0001,
+    "camera": 1e-08
+  },
+  "run_id": "20261124T021735523259Z-8ee25029bf9d4422",
+  "schema": "el-b2-public-asset-acceptance-1",
+  "source_ids": [
+    "41",
+    "5"
+  ],
+  "target_error_labels": 0,
+  "target_ids": [
+    "70",
+    "109",
+    "13"
+  ],
+  "torch": "2.8.0+cu128",
+  "upstream_reader_sha256": "a732ea7f4cb0382188106b3dd31c0b58a121c4eeafe985404d3f81a331bc8acd",
+  "wheel_sha256": "ca52e82c8e870560c05075dda4b5282311500580f9283fe234aa27643d6f8882",
+  "windows_asset_module_sha256": {
+    "evidence_lens_asset/__init__.py": "bb6673b67bd122b29b8bfe2247babd99312aa10f8c4945b1cd90cd312924694b",
+    "evidence_lens_asset/colmap.py": "a9b62f63344a73785392791ba2977e6717c382256b58cca880c109d3a02219fd",
+    "evidence_lens_asset/gaussian.py": "e6a5408b509d649997cd574a73aa8859bc042f6bb4752e0277771c194451f0be",
+    "evidence_lens_asset/prepare.py": "a4ddc521d692ab65e792a748655eaba08cb81433543397c97347b8bd9359d770",
+    "evidence_lens_asset/render.py": "1a79ea1298f3eb63a4beadeadb9d473f48d127510b90b2d6b3cdb2d9c898702f"
+  }
+}

@@ -1,0 +1,18 @@
+stage,representation,format,seconds
+CPU inspection,graphdeco-sh0.ply,text,0.007616208007675596
+CPU inspection,graphdeco-sh3.ply,text,0.0022414169943658635
+CPU inspection,project.npz,text,0.002126249994034879
+CPU inspection,graphdeco-sh0.ply,binary,0.0021668749977834523
+CPU inspection,graphdeco-sh3.ply,binary,0.002008916999329813
+CPU inspection,project.npz,binary,0.0020467080030357465
+render_native_reference,graphdeco-sh0,native,0.6931888000108302
+inspect_render_validate_text,graphdeco-sh0,text,0.25945040000078734
+inspect_render_validate_binary,graphdeco-sh0,binary,0.12911690000328235
+render_native_reference,graphdeco-sh3,native,0.06108249998942483
+inspect_render_validate_text,graphdeco-sh3,text,0.12855139999010134
+inspect_render_validate_binary,graphdeco-sh3,binary,0.14406779999262653
+render_native_reference,project-npz,native,0.07419569999910891
+inspect_render_validate_text,project-npz,text,0.12296250001236331
+inspect_render_validate_binary,project-npz,binary,0.13410089998797048
+"CPU scoring, within worker",graphdeco-sh3,prepared,0.13072845801070798
+"Windows recorder, including interpreter and worker",all three assets,text+binary,6.4689999999973224

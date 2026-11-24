@@ -8,6 +8,8 @@ Install this checkout with `python -m pip install .`. Run `evidence-lens validat
 
 Six new photographed DTU subjects supplied 72 predicted target views and 288 frozen risk assessments. Four source views reduced mean target RGB MAE from 0.20535 to 0.10053. The four-source MS-L1 operating point delivered 41.70% coverage at 22.83% low-group error, averaged equally over subjects. At matched 20% coverage the fine-tuned model had 16.94% error and MS-L1 had 21.05%. [Independent report, failure history and raw counts](docs/results/t0/README.md)
 
+On six separate DTU calibration subjects, none of the registered MS-L1 cutoffs achieved 5% accepted-pixel error at 20% coverage. Both fixed-layout profiles record that outcome. The tool can also import supported COLMAP cameras and Gaussian assets. Preparing those assets uses a CUDA renderer. A prepared bundle can be scored and viewed offline on CPU. [Calibration study and active-view development results](docs/results/batch-two/README.md) · [Import an original example](docs/tooling/assets/README.md)
+
 ## Run the two- and four-image models
 
 The multi-source release includes four trained risk models and both reconstructions of an authored bell cage. The same six cameras view each reconstruction. The default multi-source logistic model uses NumPy and Pillow. The two DINOv2 models add PyTorch for CPU inference. [Download v0.3.0-rc.1](https://github.com/wany614/evidence-lens/releases/tag/v0.3.0-rc.1) · [Install and score a target](docs/releases/v0.3.0-rc.1/README.md) · [Weights, training and measured CPU cost](docs/releases/v0.3.0-rc.1/MODEL_CARD.md)

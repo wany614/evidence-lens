@@ -1,0 +1,160 @@
+{
+  "T1_objects": [
+    "set118",
+    "set76",
+    "set45",
+    "set103",
+    "set61",
+    "set32"
+  ],
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "endpoints": {
+    "camera_contract": {
+      "H_eval": [
+        16,
+        18,
+        25,
+        37,
+        35,
+        36
+      ],
+      "Q_probe": "four virtual queries from the sealed source/candidate-only procedure",
+      "S0": [
+        24,
+        22
+      ],
+      "U_pool": [
+        7,
+        10,
+        13,
+        17,
+        20,
+        23,
+        31,
+        40
+      ],
+      "fixed_M4": [
+        24,
+        23,
+        17,
+        22
+      ]
+    },
+    "cell_budget_per_object": 7,
+    "data": "the six physical families marked T1 in the seed-137031 cohort, in its recorded order; the full 256 by 256 rectified display-sRGB crop at DTU light 3",
+    "failure": "Keep all registered branches and families. Missing prediction has E=0 for that view and undefined native MAE. Report total coverage/completion and all missing comparisons. A random mean/range requiring three values is undefined when any repeat lacks a comparable endpoint; the remaining repeats still appear individually.",
+    "fixed_t1_endpoints": [
+      "Per subject and condition report independent six-target Y/E and target mean absolute RGB error. Pool counts, then weight objects equally in the study summary.",
+      "Compare four methods by AP with prevalence on exactly the same defined views and common support. Report own-support AP, finite coverage, every exact-k matched quota and attainable counts; preserve the historical tie procedure.",
+      "Original thresholds are always reported. For each feasible fixed-layout empirical profile, apply its strict score < tau without selection. Evaluate mean low risk group error <=5% and mean coverage >=20% across physical subjects with nonempty acceptance for all. Report per-subject worst error/minimum coverage and actual counts. An infeasible C6 profile has no adapted threshold to test."
+    ],
+    "label_and_counts": {
+      "checks": [
+        "E=L+H+U",
+        "Y=LY+HY+UY"
+      ],
+      "counts": [
+        "V",
+        "E",
+        "Y",
+        "S",
+        "L",
+        "LY",
+        "H",
+        "HY",
+        "U",
+        "UY"
+      ],
+      "coverage": "L/V",
+      "epsilon": 0.05,
+      "group_error": "LY/L; N/A when L=0",
+      "metric": "strictly greater than epsilon for float32 mean absolute display-sRGB channel difference to independent registered-camera photograph",
+      "object_masks": "only separately verified image-space masks, otherwise N/A",
+      "unknown": "U/E"
+    },
+    "max_main_reconstructions": 42,
+    "model_and_domain": {
+      "fixed_layout": "Four-method within_new common domain for ranking and matched coverage; full application domain for the original operating point and actual counts.",
+      "methods": [
+        "B-L1-transfer",
+        "MS-L1",
+        "MS-frozen",
+        "MS-ft"
+      ],
+      "scopes": {
+        "B-L1-transfer": "s00 only",
+        "MS-L1": "all authorized sources",
+        "MS-frozen": "all authorized sources",
+        "MS-ft": "all authorized sources"
+      },
+      "selected_layout": "Selected-view reconstruction quality is primary. Any descriptive risk uses its released score, with calibration scope outside the fixed layout."
+    },
+    "order": [
+      "admit six fixed physical families without quality-based replacement",
+      "one joint M2 from S0 per object",
+      "issue five independent choices from the same bounded selector evidence, seal both physical IDs in each trajectory before either candidate photograph",
+      "release only chosen candidate images to each trajectory, enforce separate observation ledgers",
+      "cold-start the fixed M4 and each selected M4; immutable reuse only on identical ordered inputs, initialization, optimizer seed, and recipe",
+      "seal every target prediction, four-method score or terminal failure across ALL six objects and branches before the one joint target opening",
+      "apply the frozen evaluation and calibration profiles, retain every scheduled view and failure"
+    ],
+    "paired_nbv_endpoint": "Within each object, primary contrast is final risk-weighted M4 target MAE minus uniform-geometry M4 target MAE; negative favors risk. Include fixed M4, original M2, all three random choices and their prespecified mean and range. Record new-photo, query/candidate rendering, scoring, optimization and endpoint costs separately. Do not treat repeated random choices as new objects.",
+    "permission_in_batch_B": "directory and camera metadata only, zero T1 source/candidate/target photographs",
+    "risk_training": 0,
+    "schema": "el-b2-t1-endpoints-1",
+    "scope": "known DTU rig, light, central crop and acquisition task, six named physical subjects; empirical endpoints only",
+    "stop": "single joint opening after every branch is terminal; no retraining, no threshold/profile edits, no competing optimizer or selector after observing outcomes. Record contamination if implementation changes after opening. Report any negative or tied result as observed.",
+    "study_conditions": [
+      "M2-fixed",
+      "M4-fixed",
+      "M4-uniform",
+      "M4-risk",
+      "M4-random-137101",
+      "M4-random-137102",
+      "M4-random-137103"
+    ],
+    "threshold_refits": 0
+  },
+  "members": {
+    "cohort": {
+      "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+      "member": "payload/cohort.json",
+      "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+      "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+    },
+    "reconstruction": {
+      "manifest_sha256": "0e7090bc12c7c19c80025ab005c321bffdd5829ebeac85563a73e014ac0ba356",
+      "member": "payload/bridge.json",
+      "run_id": "20261124T015232867527Z-f8e595e117804a1e",
+      "sha256": "ba4c03b262f6fb94d1397be442053caccc7aa0bbd1692133f8d0914b65078398"
+    },
+    "risk_release": {
+      "manifest_sha256": "0b5ce75ed8670762b035dcf7b9b5820ec47a20a86ac92db08246fead9e8af33a",
+      "member": "payload/cpu/release.json",
+      "run_id": "20261123T193505072501Z-6046afc1fce4480b",
+      "sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d"
+    },
+    "selector": {
+      "manifest_sha256": "2e00e15f408c72b09e1271c5ecf54318db15fa1497f4aea09d82331f507e2c61",
+      "member": "payload/freeze.json",
+      "run_id": "20261124T015236263470Z-6c0db5dc08d34101",
+      "sha256": "055ffcc725664186ef765e0921ab3118901b7f34d0786c9a900d8d1a4f7affe0"
+    },
+    "threshold_method": {
+      "manifest_sha256": "d763651112068cccf87018ec7be0f203f672f1c0ebc9f2991bb7ed9d0f3a8a17",
+      "member": "payload/calibration-method.json",
+      "run_id": "20261124T020129961316Z-2b715d6ae3314c12",
+      "sha256": "5d36644b3c65e0730e91bc816152145469ebaf378d52358e78fa8149a61cc3f3"
+    }
+  },
+  "preparation_scope": "metadata only; no T1 photograph authorized by this record",
+  "prospective_protocol_sha256": "ad892300194117b3126c4e4413e70ebf95b47459dfb42ef8a18cb9bb67e17088",
+  "run_id": "20261124T020659530443Z-846609b6d59c485a",
+  "schema": "el-b2-t1-prospective-1",
+  "sealed_decision_utc": "2026-11-24T02:07:00.530450Z"
+}

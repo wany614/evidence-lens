@@ -89,10 +89,13 @@ def audit(root, entries=None):
     declared = policy["files"]
     binaries = policy.get("binary_examples", {})
     numeric = policy.get("numeric_tables", {})
+    html = policy.get("authored_html", {})
     if not set(numeric) <= set(RECOVERY_TABLES) or not set(numeric) <= set(declared) or set(numeric) & set(binaries):
         raise ValueError("numerical data inventory contains an undeclared table")
     if not set(binaries) <= set(declared):
         raise ValueError("example manifest includes a file outside the source inventory")
+    if set(html) != {n for n in declared if n.endswith(".html")}:
+        raise ValueError("authored HTML inventory differs from the source manifest")
     if set(entries) != set(declared):
         raise ValueError(f"index differs from explicit file list: {sorted(set(entries) ^ set(declared))}")
     blobs = {}
@@ -105,14 +108,22 @@ def audit(root, entries=None):
         data = git(root, "cat-file", "blob", entries[name][1])
         if name in binaries:
             pin = binaries[name]
-            numerical_plot = name == "docs/results/stage3-learning-curves/learning-curves.png"
-            required_format, ihdr = ("rgba8-png", b"\x08\x06") if numerical_plot else ("rgb8-png", b"\x08\x02")
+            historical_plot = name == "docs/results/stage3-learning-curves/learning-curves.png"
+            numerical_plot = historical_plot or name == "docs/results/batch-two/calibration/risk-coverage.png"
+            required_format, ihdr = ("rgba8-png", b"\x08\x06") if historical_plot else ("rgb8-png", b"\x08\x02")
             if (not (name.startswith("examples/") or numerical_plot) or not name.endswith(".png") or pin.get("format") != required_format
                     or pin.get("bytes") != len(data) or pin.get("sha256") != hashlib.sha256(data).hexdigest()
                     or not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR" or data[24:26] != ihdr):
                 raise ValueError(f"original PNG example does not match its public inventory: {name}")
         elif name in numeric:
             audit_numeric_table(name, data, numeric[name])
+        elif name in html:
+            pin = html[name]
+            if (not name.startswith("examples/") or not pin.get("source")
+                    or pin.get("license") != policy["license_status"][license_id]["license"]
+                    or pin.get("bytes") != len(data) or pin.get("sha256") != hashlib.sha256(data).hexdigest()):
+                raise ValueError(f"authored HTML differs from its source and rights inventory: {name}")
+            data.decode("utf-8")
         else:
             data.decode("utf-8")  # All other binary assets belong to the separate Release inventory.
         blobs[name] = data

@@ -1,0 +1,42 @@
+{
+  "T1_photographs_read": 0,
+  "cdf_check": "exact per-object rational mass strictly below and through observed tie",
+  "checked_full_and_fold_cutoffs": 2814,
+  "checked_leave_one_out_fits": 12,
+  "checked_object_anchor_counts": 14472,
+  "count_check": "first strictly larger candidate per pixel; cumulative integer bucket counts",
+  "fit": {
+    "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+    "member": "payload/calibration-results.json",
+    "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+    "sha256": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a"
+  },
+  "native_prediction_views": 72,
+  "opening": {
+    "manifest_sha256": "c14d67f2d9d10b9dd0d2bca5a80eb9266faad2787b30ac0f1052d46e556e696c",
+    "member": "payload/opening.json",
+    "run_id": "20261124T021200190993Z-38fecc1ba0c146e0",
+    "sha256": "74d246fb46c1efbf533d04c638befc8e2aca04eb70746affd8a57dc7ffa0d73c"
+  },
+  "outcomes": {
+    "M2": {
+      "feasible_candidates": 0,
+      "selected_anchor": null,
+      "status": "no_feasible_operating_point"
+    },
+    "M4": {
+      "feasible_candidates": 0,
+      "selected_anchor": null,
+      "status": "no_feasible_operating_point"
+    }
+  },
+  "passed": true,
+  "raw_scores_used": "MS-L1",
+  "schema": "el-b2-independent-calibration-audit-1",
+  "score_candidates": {
+    "manifest_sha256": "c1d25dc93dcb5e2d496423e84f71bbb28b9a18953d079f9cbb4da663f6978f97",
+    "member": "payload/score-candidates.json",
+    "run_id": "20261124T020900657339Z-71eb2236f1ad42c0",
+    "sha256": "7c2ebcc4ef73c895c9b8bdc1f5d2a7f1fe80f973bd627102c506725c294a241c"
+  }
+}

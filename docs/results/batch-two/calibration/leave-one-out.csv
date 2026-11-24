@@ -1,0 +1,13 @@
+condition,held_out,training_ids,fit_status,selected_anchor,tau,held_out_status,object_id,V,E,Y,S,U_E,V_minus_E,L,LY,coverage,low_error
+M2,set48,set75;set110;set42;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set48,393216,393216,321961,366329,26887,0,,,,
+M2,set75,set48;set110;set42;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set75,393216,393216,355938,380643,12573,0,,,,
+M2,set110,set48;set75;set42;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set110,393216,393216,243631,388050,5166,0,,,,
+M2,set42,set48;set75;set110;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set42,393216,393216,220158,375138,18078,0,,,,
+M2,set77,set48;set75;set110;set42;set52,no_feasible_operating_point,,,no_fitted_operating_point,set77,393216,393216,272784,338435,54781,0,,,,
+M2,set52,set48;set75;set110;set42;set77,no_feasible_operating_point,,,no_fitted_operating_point,set52,393216,393216,308843,364909,28307,0,,,,
+M4,set48,set75;set110;set42;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set48,393216,393216,151188,317420,75796,0,,,,
+M4,set75,set48;set110;set42;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set75,393216,393216,101013,355461,37755,0,,,,
+M4,set110,set48;set75;set42;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set110,393216,393216,80270,371662,21554,0,,,,
+M4,set42,set48;set75;set110;set77;set52,no_feasible_operating_point,,,no_fitted_operating_point,set42,393216,393216,136056,306428,86788,0,,,,
+M4,set77,set48;set75;set110;set42;set52,no_feasible_operating_point,,,no_fitted_operating_point,set77,393216,393216,111623,322520,70696,0,,,,
+M4,set52,set48;set75;set110;set42;set77,no_feasible_operating_point,,,no_fitted_operating_point,set52,393216,393216,116969,370680,22536,0,,,,

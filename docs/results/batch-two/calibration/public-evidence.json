@@ -1,0 +1,109 @@
+{
+  "T1_evaluated": false,
+  "algorithm": {
+    "manifest_sha256": "d763651112068cccf87018ec7be0f203f672f1c0ebc9f2991bb7ed9d0f3a8a17",
+    "member": "payload/calibration-method.json",
+    "run_id": "20261124T020129961316Z-2b715d6ae3314c12",
+    "sha256": "5d36644b3c65e0730e91bc816152145469ebaf378d52358e78fa8149a61cc3f3"
+  },
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "files": {
+    "README.md": "b1c9483f1f53d45fb22bb6e37d657e7c2b95ee331231d32befcd00443ce06524",
+    "calibration-audit.json": "b13acbcf6c9c1663f0199f47acd65255e3bdf58e99605bf73166d78ef04615ad",
+    "calibration-method.json": "5d36644b3c65e0730e91bc816152145469ebaf378d52358e78fa8149a61cc3f3",
+    "calibration-results.json": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a",
+    "candidate-curves.csv": "5a2eeb182c67fccd0ef051659454b9fb7fa0a86f63edfd0d116ea0f15be34cf5",
+    "candidate-object-counts.csv": "089120da60860813d4370a68a2ba4cf88316f58d83c01aef6fac7dca55533195",
+    "diagnostic-object-counts.csv": "7624a86f46dbe9c8993162ef19c36a806db3170fa390a781807738b805df765e",
+    "leave-one-out.csv": "0cfb9e1129ea97d9f969f0167e1e7db6763c5a70d1471cd36a53ce9510319ca1",
+    "original-method-family-means.csv": "39c585111f90113703d9ea59b98b0933e4426ce31c6fc92cd014e9797c4ed83a",
+    "original-method-object-counts.csv": "2827b5b2a9fd64a7578a61d0b227881692c3bcb0ddf88786c5951937c3ee73b5",
+    "original-method-views.csv": "43f9d86392aaccd138b9ded3b291581a288c1e0455e651bc0887528a273b3d26",
+    "profiles/M2.json": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1",
+    "profiles/M4.json": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92",
+    "risk-coverage.png": "0669d752d477ca16b52eb3ea10ad1dd4869881d54a3c00390d6e7311a4f023e3"
+  },
+  "independent_audit": {
+    "manifest_sha256": "477b68a6b32dbbfafa158fc909774407d91cfa969de09e02eeb4833db8c789cd",
+    "member": "payload/calibration-audit.json",
+    "run_id": "20261124T021259461920Z-0f16697bc8ca4700",
+    "sha256": "b13acbcf6c9c1663f0199f47acd65255e3bdf58e99605bf73166d78ef04615ad"
+  },
+  "outcomes": {
+    "M2": {
+      "best_at_least_20_percent": {
+        "anchor": "44",
+        "condition": "M2",
+        "feasible": "False",
+        "fold": "full",
+        "maximum_object_low_error": "0.8418630452201425",
+        "mean_coverage": "0.20356114705403647",
+        "mean_low_error": "0.6068727295175539",
+        "minimum_object_coverage": "0.10841623942057292",
+        "nonempty_objects": "6",
+        "objects": "6",
+        "quantile_denominator": "200",
+        "quantile_numerator": "44",
+        "reasons": "mean_low_error_above_5_percent",
+        "tau": "0.013753117993474008"
+      },
+      "loo_training_feasible": 0,
+      "maximum_coverage_at_5_percent": null,
+      "minimum_error_any_nonempty_coverage": 0.5929301362641701,
+      "profile_status": "no_feasible_operating_point",
+      "selected": null,
+      "tau": null
+    },
+    "M4": {
+      "best_at_least_20_percent": {
+        "anchor": "88",
+        "condition": "M4",
+        "feasible": "False",
+        "fold": "full",
+        "maximum_object_low_error": "0.20038719062185809",
+        "mean_coverage": "0.38187620374891496",
+        "mean_low_error": "0.15154721423223644",
+        "minimum_object_coverage": "0.23776753743489584",
+        "nonempty_objects": "6",
+        "objects": "6",
+        "quantile_denominator": "200",
+        "quantile_numerator": "88",
+        "reasons": "mean_low_error_above_5_percent",
+        "tau": "0.016501840204000476"
+      },
+      "loo_training_feasible": 0,
+      "maximum_coverage_at_5_percent": null,
+      "minimum_error_any_nonempty_coverage": 0.15154721423223644,
+      "profile_status": "no_feasible_operating_point",
+      "selected": null,
+      "tau": null
+    }
+  },
+  "profiles": {
+    "M2": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/profiles/M2.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1"
+    },
+    "M4": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/profiles/M4.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92"
+    }
+  },
+  "schema": "el-b2-public-calibration-evidence-1",
+  "scientific_results": {
+    "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+    "member": "payload/calibration-results.json",
+    "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+    "sha256": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a"
+  },
+  "source_figure": "candidate-curves.csv"
+}

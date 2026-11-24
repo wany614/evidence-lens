@@ -1,0 +1,17 @@
+rank,role,object_id,scan_id,physical_family_id,documented_principal_subject,documented_or_possible_shared_ids,registered_rotation_ids,priority_sha256,eligible,number_of_verified_captures
+1,C6,set48,48,dtu-subject-48,mugs,48,,12890fe6214695ea4c21e1e620daad6910a0113efe3b29e89f9b04d7a7ab9f5f,True,16
+2,C6,set75,75,dtu-subject-75,green pepper,75,,1fc1512c8006eded7aff4f1478f44bd4745ad5b3794975cdb4deb59ec119bc53,True,16
+3,C6,set110,110,dtu-subject-110,bronze statue,110 111 112 113,110 111 112 113,26c3e17e60b594f531c331ffb67c3bed9ace18118e9d97fbbaccf926e61445be,True,16
+4,C6,set42,42,dtu-subject-42,cabbage,42,,3809fd8110bcf6f774d4c5e53b41ec8a4cca54fd254d7dfc3c2acb09035a3107,True,16
+5,C6,set77,77,dtu-subject-77,tea pot,77,,38d48b454af47df45be228102fc303b7ca9f88a4fc0c596e48abc5e4fef6b595,True,16
+6,C6,set52,52,dtu-subject-52,anatomical model,52,,3a60274dd9117a346d97daaaaa59cb8bc8e09e9a07d9040003321ccfa353a513,True,16
+7,T1,set118,118,dtu-subject-118,stone statue,118 119 120 121 122 123 124 125,118 119 120 121,405a9c396598eb3565c99e4fdfc808007556ef8db7a26bc1d12cfbce4fc02d93,True,16
+8,T1,set76,76,dtu-subject-76,canary melon,76,,41e0838d1900c87e94ecf1c068922e75baa5037c9ee792ca494d523a0ff6d54e,True,16
+9,T1,set45,45,dtu-subject-45,tea bag,45,,446c62c319191293d9becf96f80c3a94172a39b242c1c2ed703787f6d369b376,True,16
+10,T1,set103,103,dtu-subject-103,pig doll,103,,693b6f7faaa8ba41cce9a914881949695aa1eb03154049d81786e6da184b94fc,True,16
+11,T1,set61,61,dtu-subject-61,chocolate milk,61,,7bd36e6c9d88edf8cbf5106c7d540e8793305e65b931adc99ad1d42169a78969,True,16
+12,T1,set32,32,dtu-subject-32,cacao bag,32,,b5388db494e5d84184bd315739941c12d24867bdffa794416c4f5451b3526f51,True,16
+13,reserve,set37,37,dtu-subject-37,scissors,37,,b7702d8a39a7d89bc21b665004d2ea3e0c93d70f808b095cb90115b586802021,True,16
+14,reserve,set54,54,dtu-subject-54,picture,54,,c045a75abc5d75bebcf4b418e5280b1b16a6db772ed1b8786964af998954b67e,True,16
+15,reserve,set34,34,dtu-subject-34,bricks,34 36,,dfcdc8dc6f43d63a686f8b9285553f8ec44699d8b412bd7646ea714e8eae1fb4,True,16
+16,reserve,set62,62,dtu-subject-62,volleyball,62,,fa4009ce4a670968466d677e5bc3e1356c4df5420b0ab520596c45ccd992160c,True,16

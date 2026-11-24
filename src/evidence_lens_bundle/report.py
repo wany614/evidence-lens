@@ -183,6 +183,8 @@ def render(root, output, expected_sha256=None):
         source_tiles.append(
             f"<figure>{image_tag(img, 'Source ' + s['id'])}<figcaption>{caption}</figcaption></figure>"
         )
+    calibration = r.get("calibration_profile")
+    calibrated_total = {key: 0 for key in ("canvas", "low", "high", "unknown")}
     parts = []
     summed = None
     for i, v in enumerate(r["views"]):
@@ -237,10 +239,45 @@ def render(root, output, expected_sha256=None):
             if rows
             else "<p>All target pixels received a score.</p>"
         )
+        if calibration and calibration.get("applied"):
+            from .calibration import state_counts, states
+
+            require(
+                calibration.get("status") in ("empirical_calibration_only", "evaluated_on_holdout"),
+                "invalid profile application status",
+            )
+            spec = v.get("calibrated")
+            require(isinstance(spec, dict), "missing calibrated operating point")
+            stored = np.load(
+                io.BytesIO(member(root, spec["state"], expected=folder + "calibrated-state.npy")),
+                allow_pickle=False,
+            )
+            wanted = states(a["risk"], calibration["threshold"])
+            require(
+                stored.dtype == np.uint8
+                and np.array_equal(stored, wanted)
+                and spec["counts"] == state_counts(stored),
+                "calibration state disagrees with raw risk and selected threshold",
+            )
+            for key, value in spec["counts"].items():
+                calibrated_total[key] += value
+            visual = np.empty((*stored.shape, 3), dtype=np.uint8)
+            for key, color in STATE_COLORS.items():
+                visual[stored == key] = color
+            tiles += (
+                "<figure>"
+                + image_tag(png(visual), "Empirical threshold state " + v["id"])
+                + "<figcaption>Empirical threshold state</figcaption></figure>"
+            )
+            explanation += f"<p>At the empirical cutoff, {spec['counts']['low']:,} low, {spec['counts']['high']:,} high and {spec['counts']['unknown']:,} unknown.</p>"
+        else:
+            require("calibrated" not in v, "unexpected calibration state for an inactive profile")
         parts.append(
             f'<section class="observation" id="view-{i}"><h3>{esc(v["id"])}</h3><p>{c["scoreable"]:,} / {c["canvas"]:,} pixels scored ({ratio(c["scoreable"], c["canvas"])}). Low {c["low"]:,} · high {c["high"]:,} · unknown {c["unknown"]:,}.</p><div class="views">{tiles}</div>{explanation}</section>'
         )
     require(summed == r["counts"], "combined counts disagree with target arrays")
+    if calibration and calibration.get("applied"):
+        require(calibrated_total == calibration["counts"], "overall calibrated counts differ")
     c = summed
     stats = "".join(
         f"<div><b>{num}</b><small>{label}</small></div>"
@@ -269,10 +306,32 @@ def render(root, output, expected_sha256=None):
         ("Measured CPU score worker (s)", f"{r['cost']['worker_to_receipt_seconds']:.3f}"),
         ("Of which bundle and model loading (s)", f"{r['cost']['bundle_and_model_load_seconds']:.3f}"),
     ]
+    if calibration:
+        status = calibration["status"]
+        captions = {
+            "empirical_calibration_only": "Estimated on the calibration objects. External holdout outcome is pending.",
+            "evaluated_on_holdout": "Independent holdout evaluation recorded.",
+            "no_feasible_operating_point": "Calibration yielded no threshold satisfying the registered conditions.",
+            "outside_calibration_scope": "This bundle is outside the supplied calibration scope.",
+        }
+        require(status in captions, "unknown calibration outcome")
+        reasons_list = ", ".join(calibration.get("mismatches", []))
+        calibration_note = esc(captions[status]) + (" " + esc(reasons_list) + "." if reasons_list else "")
+        details.extend(
+            [
+                ("Empirical profile status", status),
+                ("Profile SHA-256", calibration["profile_sha256"]),
+                ("Scope proof SHA-256", calibration.get("scope_sha256") or "unsupplied"),
+                ("Threshold applied", calibration.get("threshold") if calibration.get("applied") else "none"),
+                ("Holdout target met", calibration.get("holdout_target_met")),
+            ]
+        )
+    else:
+        calibration_note = "Uncalibrated. The original model cutoff is shown."
     prov = "".join(f"<tr><th>{esc(k)}</th><td><code>{esc(n)}</code></td></tr>" for k, n in details)
     out = f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Novel-view risk report · {esc(r["method"])}</title><style>{STYLE}</style>
 <main>{header}<div class="stats">{stats}</div><h2>Source photographs</h2><div class="sources">{"".join(source_tiles)}</div>
-<h2>Target predictions</h2><p>Risk ranks potential reconstruction error. The original model threshold assigns low and high states. Unknown marks missing evidence. Coverage uses every pixel on the target canvas, including failed renders.</p>
+<h2>Target predictions</h2><p>{calibration_note}</p><p>Risk ranks potential reconstruction error. The original model threshold assigns low and high states. Unknown marks missing evidence. Coverage uses every pixel on the target canvas, including failed renders.</p>
 <div class="legend">Risk 0<span class="scale"></span>1 &nbsp; {legend}</div>
 <p class="filter" hidden><label for="pick">Target view </label><select id="pick">{options}<option value="all">All views</option></select></p>
 {"".join(parts)}<details><summary>Model, inputs and measured cost</summary><p>Verified model domain: {esc(r["tested_domain"])}</p><table>{prov}</table></details>

@@ -1,0 +1,22 @@
+{
+  "schema": "el-b2-nbv-protocol-1",
+  "development_objects": ["set1", "set6"],
+  "physical_endpoint_ids": [24, 22],
+  "candidate_ids": [7, 10, 13, 17, 20, 23, 31, 40],
+  "candidate_rule": "registered numeric light-3 rig member list excluding the two starting cameras and all six independent evaluation cameras; positions, never photo content or target outcomes, determine eligibility",
+  "virtual_query": {"count":4, "seed":137041, "order":"increasing SHA256 of UTF-8 q|137041|<integer candidate id>", "candidate_fraction":0.65, "rotation":"nearest proper SO(3) rotation by SVD of the blended positive-weight rotation matrices", "start":"equal weights for the two endpoints"},
+  "random_selector_seeds":[137101,137102,137103],
+  "random_draw":"lowest SHA256 of UTF-8 random|<seed>|<object_id>|<smaller camera id>|<larger camera id> over lexicographically enumerated pairs",
+  "grid":{"stride":8,"offset":4,"minimum_query_alpha":0.10,"voxel_size_in_endpoint_baselines":0.0078125,"voxel_origin":"canonical world origin","representative":"first q then y then x, chosen without reference to the magnitude of risk"},
+  "visibility":{"mode":"nearest integer pixel floor(x+0.5), same el-camera-1 frame and positive clip range","minimum_candidate_alpha":0.10,"absolute_depth_tolerance_in_baselines":0.01,"relative_depth_tolerance":0.05,"compare":"abs(candidate predicted camera-Z minus reprojected point camera-Z) <= max(absolute term, relative term times point camera-Z)"},
+  "objective":"union over each unordered camera pair; uniform weights one and risk weights original continuous published MS-L1; identical points and visibility both arms",
+  "ties":"lowest numeric camera pair within 1e-12 * max(1,max absolute utility)",
+  "shared_fallback":"both coverage arms use the same maximum angular separation of candidate optical axes with numeric pair tie break if support is empty, weight sum <=1e-12 or either complete utility grid is constant within tie tolerance",
+  "authorization":"For each object, seal five complete separate strategy receipts with both numeric IDs before releasing any candidate photographs. Selector inputs are the two source photos and native self renders, source-only checkpoint, permitted source/candidate/virtual geometry and its predictions. No held-out target poses or photographs in the selector.",
+  "primary_optimization_seed":43171, "fixed_M4_extra_optimization_seeds":[43172,43173],
+  "reconstruction":"cold start, 5000 updates; same source-only 24-track eligibility and original 2048 endpoint fallback; new four source order [24, lower selected ID, higher selected ID, 22]; scene scale fixed from common endpoints",
+  "primary_metric":"six-view full-crop display-sRGB MAE on independent cameras, paired within physical object, lower is better; compare risk against uniform, random mean and range across three preregistered choices; separately record failure/coverage and missing predictions",
+  "secondary_metric":"fraction of comparable pixels with strict RGB MAE >0.05; count missing canvases and comparable pixels per branch",
+  "unique_fit_rule":"same object, ordered sources and all inputs, initialization, optimizer seed and recipe permit aliasing a single immutable fit. No replacement after failure or target inspection.",
+  "risk_training":0, "T1_photographs_permitted_in_batch_B":0
+}

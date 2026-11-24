@@ -1,0 +1,439 @@
+{
+  "T1_objects": [
+    "set118",
+    "set76",
+    "set45",
+    "set103",
+    "set61",
+    "set32"
+  ],
+  "T1_photographic_opening_authorized": false,
+  "acquisition_audit_sha256": "595bdbfd6edbd25b9595643c04b5c593c6e358ea9b8eeed8dcd624a8c305c91f",
+  "calibration_heldout_status": {
+    "M2": "no fitted operating point",
+    "M4": "no fitted operating point"
+  },
+  "cohort": {
+    "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+    "member": "payload/cohort.json",
+    "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+    "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+  },
+  "endpoints": {
+    "camera_contract": {
+      "H_eval": [
+        16,
+        18,
+        25,
+        37,
+        35,
+        36
+      ],
+      "Q_probe": "four virtual queries from the sealed source/candidate-only procedure",
+      "S0": [
+        24,
+        22
+      ],
+      "U_pool": [
+        7,
+        10,
+        13,
+        17,
+        20,
+        23,
+        31,
+        40
+      ],
+      "fixed_M4": [
+        24,
+        23,
+        17,
+        22
+      ]
+    },
+    "cell_budget_per_object": 7,
+    "data": "the six physical families marked T1 in the seed-137031 cohort, in its recorded order; the full 256 by 256 rectified display-sRGB crop at DTU light 3",
+    "failure": "Keep all registered branches and families. Missing prediction has E=0 for that view and undefined native MAE. Report total coverage/completion and all missing comparisons. A random mean/range requiring three values is undefined when any repeat lacks a comparable endpoint; the remaining repeats still appear individually.",
+    "fixed_t1_endpoints": [
+      "Per subject and condition report independent six-target Y/E and target mean absolute RGB error. Pool counts, then weight objects equally in the study summary.",
+      "Compare four methods by AP with prevalence on exactly the same defined views and common support. Report own-support AP, finite coverage, every exact-k matched quota and attainable counts; preserve the historical tie procedure.",
+      "Original thresholds are always reported. For each feasible fixed-layout empirical profile, apply its strict score < tau without selection. Evaluate mean low risk group error <=5% and mean coverage >=20% across physical subjects with nonempty acceptance for all. Report per-subject worst error/minimum coverage and actual counts. An infeasible C6 profile has no adapted threshold to test."
+    ],
+    "label_and_counts": {
+      "checks": [
+        "E=L+H+U",
+        "Y=LY+HY+UY"
+      ],
+      "counts": [
+        "V",
+        "E",
+        "Y",
+        "S",
+        "L",
+        "LY",
+        "H",
+        "HY",
+        "U",
+        "UY"
+      ],
+      "coverage": "L/V",
+      "epsilon": 0.05,
+      "group_error": "LY/L; N/A when L=0",
+      "metric": "strictly greater than epsilon for float32 mean absolute display-sRGB channel difference to independent registered-camera photograph",
+      "object_masks": "only separately verified image-space masks, otherwise N/A",
+      "unknown": "U/E"
+    },
+    "max_main_reconstructions": 42,
+    "model_and_domain": {
+      "fixed_layout": "Four-method within_new common domain for ranking and matched coverage; full application domain for the original operating point and actual counts.",
+      "methods": [
+        "B-L1-transfer",
+        "MS-L1",
+        "MS-frozen",
+        "MS-ft"
+      ],
+      "scopes": {
+        "B-L1-transfer": "s00 only",
+        "MS-L1": "all authorized sources",
+        "MS-frozen": "all authorized sources",
+        "MS-ft": "all authorized sources"
+      },
+      "selected_layout": "Selected-view reconstruction quality is primary. Any descriptive risk uses its released score, with calibration scope outside the fixed layout."
+    },
+    "order": [
+      "admit six fixed physical families without quality-based replacement",
+      "one joint M2 from S0 per object",
+      "issue five independent choices from the same bounded selector evidence, seal both physical IDs in each trajectory before either candidate photograph",
+      "release only chosen candidate images to each trajectory, enforce separate observation ledgers",
+      "cold-start the fixed M4 and each selected M4; immutable reuse only on identical ordered inputs, initialization, optimizer seed, and recipe",
+      "seal every target prediction, four-method score or terminal failure across ALL six objects and branches before the one joint target opening",
+      "apply the frozen evaluation and calibration profiles, retain every scheduled view and failure"
+    ],
+    "paired_nbv_endpoint": "Within each object, primary contrast is final risk-weighted M4 target MAE minus uniform-geometry M4 target MAE; negative favors risk. Include fixed M4, original M2, all three random choices and their prespecified mean and range. Record new-photo, query/candidate rendering, scoring, optimization and endpoint costs separately. Do not treat repeated random choices as new objects.",
+    "permission_in_batch_B": "directory and camera metadata only, zero T1 source/candidate/target photographs",
+    "risk_training": 0,
+    "schema": "el-b2-t1-endpoints-1",
+    "scope": "known DTU rig, light, central crop and acquisition task, six named physical subjects; empirical endpoints only",
+    "stop": "single joint opening after every branch is terminal; no retraining, no threshold/profile edits, no competing optimizer or selector after observing outcomes. Record contamination if implementation changes after opening. Report any negative or tied result as observed.",
+    "study_conditions": [
+      "M2-fixed",
+      "M4-fixed",
+      "M4-uniform",
+      "M4-risk",
+      "M4-random-137101",
+      "M4-random-137102",
+      "M4-random-137103"
+    ],
+    "threshold_refits": 0
+  },
+  "layout_profiles": {
+    "M2": {
+      "pin": {
+        "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+        "member": "payload/profiles/M2.json",
+        "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+        "sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1"
+      },
+      "status": "no_feasible_operating_point",
+      "tau": null
+    },
+    "M4": {
+      "pin": {
+        "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+        "member": "payload/profiles/M4.json",
+        "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+        "sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92"
+      },
+      "status": "no_feasible_operating_point",
+      "tau": null
+    }
+  },
+  "preparation_scope": "metadata only; no T1 photograph authorized by this record",
+  "prospective_protocol_sha256": "ad892300194117b3126c4e4413e70ebf95b47459dfb42ef8a18cb9bb67e17088",
+  "query_evaluation_pose_matches": 0,
+  "released_models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "risk_training_in_this_study": 0,
+  "run_id": "20261124T023243052988Z-5e3007d1b3ed48dc",
+  "schema": "el-b2-t1-freeze-1",
+  "scientific_code_sha256": {
+    "scripts/b2_c6_study.py": "5b537f3731990c17e80581486834f167eb42907c7c1617ce46762a8bbff56ef8",
+    "scripts/b2_calibration.py": "023842076ea3320bd7df75e8da5f189cf7a654736026875292e93e8a5dc23109",
+    "scripts/b2_evaluate_development.py": "506ce55f5fa8ad5437fbf133ba6ca15571f6940a3d5e21f9dfb26a9bdfcf9639",
+    "scripts/b2_nbv_select.py": "64e5fe6ea1fcbecf36d98068d0093a3eacd8681392d4d0b4975afcca92a819bf",
+    "scripts/b2_probe_geometry.py": "bf7e91aa15cfafecaebf5d7bce41c0e3f3631f880dd4782da107a62243e3775f",
+    "scripts/b2_reconstruct.py": "9ed57296965413b530af618e757042e9f9bc1e4c8a939492380cfc9c8bdcf6d5",
+    "scripts/b2_t1_freeze.py": "ad044a6a054f9646df7f5fd084964da581b872a27f0821d69d0e9a672d885551",
+    "scripts/b2_worker_development.py": "f815088efc8751b035842231d77efefe752ae5e79ae4930cb69748e5a43c90a8",
+    "scripts/b2_worker_readback.py": "11e74b97ae516d65fea5183f91426200ea665c9c0f2f7dfb2a12345ce8eb8913",
+    "scripts/dtu_eval.py": "481a56481068f148401db465c99446c2e72c18896af06b0024a677a843aaa3fd",
+    "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+    "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+    "scripts/recovery_eval_coverage.py": "5759c05cae1d2dc7269fdeb41ebd297e7dbc43109153667d175f7b7203cc177a",
+    "scripts/recovery_eval_quality.py": "329184073f2488b3fb44338bddb89874ed99e69b394ea347d186444e16c4243d",
+    "scripts/t0_evaluate.py": "6399572e8bd9c74dd2c9c4caf0a018c6d303445792c55febbe07bb0f725325b3",
+    "src/evidence_lens/multisource.py": "906b06a79d9ef5d7e35d3207f60293e1cf0687eb20207293a87d1aa58738f4cb",
+    "src/evidence_lens/multisource_io.py": "ea7b5f11697c09b20efaf7d5a1fb8e23459826f3c7ecb79ed465bc3e168914dc",
+    "src/evidence_lens/multisource_model.py": "1b365588066d2c6ec143834786296beb0a86adebc6bb76c0635639359f5866ad",
+    "src/evidence_lens_bundle/calibration.py": "b69c3a9b17a8e0327ebb5972f45517531189d2b25835deda0dcee0eba095ec71"
+  },
+  "sealed_decision_utc": "2026-11-24T02:32:44.018129Z",
+  "selection": {
+    "T1_photographs_permitted_in_batch_B": 0,
+    "authorization": "For each object, seal five complete separate strategy receipts with both numeric IDs before releasing any candidate photographs. Selector inputs are the two source photos and native self renders, source-only checkpoint, permitted source/candidate/virtual geometry and its predictions. No held-out target poses or photographs in the selector.",
+    "candidate_ids": [
+      7,
+      10,
+      13,
+      17,
+      20,
+      23,
+      31,
+      40
+    ],
+    "candidate_rule": "registered numeric light-3 rig member list excluding the two starting cameras and all six independent evaluation cameras; positions, never photo content or target outcomes, determine eligibility",
+    "development_objects": [
+      "set1",
+      "set6"
+    ],
+    "fixed_M4_extra_optimization_seeds": [
+      43172,
+      43173
+    ],
+    "grid": {
+      "minimum_query_alpha": 0.1,
+      "offset": 4,
+      "representative": "first q then y then x, chosen without reference to the magnitude of risk",
+      "stride": 8,
+      "voxel_origin": "canonical world origin",
+      "voxel_size_in_endpoint_baselines": 0.0078125
+    },
+    "objective": "union over each unordered camera pair; uniform weights one and risk weights original continuous published MS-L1; identical points and visibility both arms",
+    "physical_endpoint_ids": [
+      24,
+      22
+    ],
+    "primary_metric": "six-view full-crop display-sRGB MAE on independent cameras, paired within physical object, lower is better; compare risk against uniform, random mean and range across three preregistered choices; separately record failure/coverage and missing predictions",
+    "primary_optimization_seed": 43171,
+    "random_draw": "lowest SHA256 of UTF-8 random|<seed>|<object_id>|<smaller camera id>|<larger camera id> over lexicographically enumerated pairs",
+    "random_selector_seeds": [
+      137101,
+      137102,
+      137103
+    ],
+    "reconstruction": "cold start, 5000 updates; same source-only 24-track eligibility and original 2048 endpoint fallback; new four source order [24, lower selected ID, higher selected ID, 22]; scene scale fixed from common endpoints",
+    "risk_training": 0,
+    "schema": "el-b2-nbv-protocol-1",
+    "secondary_metric": "fraction of comparable pixels with strict RGB MAE >0.05; count missing canvases and comparable pixels per branch",
+    "shared_fallback": "both coverage arms use the same maximum angular separation of candidate optical axes with numeric pair tie break if support is empty, weight sum <=1e-12 or either complete utility grid is constant within tie tolerance",
+    "ties": "lowest numeric camera pair within 1e-12 * max(1,max absolute utility)",
+    "unique_fit_rule": "same object, ordered sources and all inputs, initialization, optimizer seed and recipe permit aliasing a single immutable fit. No replacement after failure or target inspection.",
+    "virtual_query": {
+      "candidate_fraction": 0.65,
+      "count": 4,
+      "order": "increasing SHA256 of UTF-8 q|137041|<integer candidate id>",
+      "rotation": "nearest proper SO(3) rotation by SVD of the blended positive-weight rotation matrices",
+      "seed": 137041,
+      "start": "equal weights for the two endpoints"
+    },
+    "visibility": {
+      "absolute_depth_tolerance_in_baselines": 0.01,
+      "compare": "abs(candidate predicted camera-Z minus reprojected point camera-Z) <= max(absolute term, relative term times point camera-Z)",
+      "minimum_candidate_alpha": 0.1,
+      "mode": "nearest integer pixel floor(x+0.5), same el-camera-1 frame and positive clip range",
+      "relative_depth_tolerance": 0.05
+    }
+  },
+  "selection_code": {
+    "scripts/b2_nbv_select.py": "64e5fe6ea1fcbecf36d98068d0093a3eacd8681392d4d0b4975afcca92a819bf",
+    "scripts/b2_probe_geometry.py": "bf7e91aa15cfafecaebf5d7bce41c0e3f3631f880dd4782da107a62243e3775f",
+    "scripts/b2_probe_worker.py": "b0f0a4bc54c52639b85a85eade1b14c928fa1f7c9703b4a9d7ec062ac9be90ab",
+    "src/evidence_lens/features.py": "2748d73ded4d8391ab915280be45a85d53d6a172f3ee872662b9df15d3a2613b",
+    "src/evidence_lens/multisource.py": "906b06a79d9ef5d7e35d3207f60293e1cf0687eb20207293a87d1aa58738f4cb",
+    "src/evidence_lens/multisource_model.py": "1b365588066d2c6ec143834786296beb0a86adebc6bb76c0635639359f5866ad",
+    "src/recovery/engine.py": "031c6b0380934322d54266f6f194c8d88add8ab1a8981d26aa561045af79d539",
+    "src/recovery/scene.py": "d42b972531d1d75f023f4668524baf889b313fffcd025610b8975b90497b7ac6"
+  },
+  "sources": {
+    "asset_numeric_audit": {
+      "manifest_sha256": "3d3e269174ee658d0fe72694cc712c25e0217594602f19c90f76de2c01e0a553",
+      "member": "payload/readback.json",
+      "run_id": "20261124T021436151799Z-4d22a7f9b5254640",
+      "sha256": "fdde453c9f01471c89d8fd6c6c323e4c85c9c43acdc035d5a8db8c7c4f73107c"
+    },
+    "asset_parity": {
+      "manifest_sha256": "53ae4c03a9b84db770bf05679aa4bf105f692dd4cfc5b44106d4cea3441654a5",
+      "member": "payload/parity.json",
+      "run_id": "20261124T021118010901Z-e7bca336730e47df",
+      "sha256": "4c3041842f748b71e7a871438cd35017a6cd53b91d57af98fc988c4f80028304"
+    },
+    "asset_protocol": {
+      "manifest_sha256": "4a28d61dd9b88013115011d933b4e0f35266f432c8d1a0ff4bb301d47469c8c5",
+      "member": "payload/registration.json",
+      "run_id": "20261124T014807802481Z-8cb46610aaec4739",
+      "sha256": "35a6690a9afaa01147970a0b8cd317b1dc6af82d541f23fd9dafaed06321ecc1"
+    },
+    "c6_numeric_audit": {
+      "manifest_sha256": "477b68a6b32dbbfafa158fc909774407d91cfa969de09e02eeb4833db8c789cd",
+      "member": "payload/calibration-audit.json",
+      "run_id": "20261124T021259461920Z-0f16697bc8ca4700",
+      "sha256": "b13acbcf6c9c1663f0199f47acd65255e3bdf58e99605bf73166d78ef04615ad"
+    },
+    "c6_opening": {
+      "manifest_sha256": "c14d67f2d9d10b9dd0d2bca5a80eb9266faad2787b30ac0f1052d46e556e696c",
+      "member": "payload/opening.json",
+      "run_id": "20261124T021200190993Z-38fecc1ba0c146e0",
+      "sha256": "74d246fb46c1efbf533d04c638befc8e2aca04eb70746affd8a57dc7ffa0d73c"
+    },
+    "c6_resources": {
+      "manifest_sha256": "652b2b7d0b26ef1022abc67c6580990c47782e3d29787bc2939a5bf8ceb6659e",
+      "member": "payload/cohort-summary.json",
+      "run_id": "20261124T021235608848Z-37391ea47d974e94",
+      "sha256": "c09397319407c93f0c75a695d010c433f53e31e02cffc07e815ee9a13fa9c18e"
+    },
+    "calibration": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/calibration-results.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a"
+    },
+    "cli_validation": {
+      "manifest_sha256": "243c3603aa9067c98a1f5fdd46b8af63c9d46d6808065c14c9ee96484a6d4d44",
+      "member": "payload/grade.json",
+      "run_id": "20261124T021321751402Z-9930ecfff6ae4700",
+      "sha256": "531d478b7f4628ddacc6dd8a5b416415dec88d72b7554be4b0f3b7841664464d"
+    },
+    "cli_validation_M4": {
+      "manifest_sha256": "8c0944ea7c9a255eb1c802e2e37366032ecebb8046e9994c261601ab0bc873b3",
+      "member": "payload/grade.json",
+      "run_id": "20261124T021402808596Z-cd3226a14e6c49da",
+      "sha256": "b74b283c10a86e2e8e3c03e038ce486c7c8cd397450747d90289c52369eef8a7"
+    },
+    "cohort": {
+      "manifest_sha256": "59c9295f56ea64c4680f2b1784ede72866304c727801dc0fc63b00ec777bd79c",
+      "member": "payload/cohort.json",
+      "run_id": "20261124T014705638610Z-007327d6cbbc4242",
+      "sha256": "d40c589a0ba916f5e07655247254a8892a333af49ff94b728db1a6a426fab345"
+    },
+    "cpu_package": {
+      "manifest_sha256": "b7c15a68f16ce57f3a73a740ec59adf27c7566137ae03b842b9595a379810aee",
+      "member": "payload/dist/evidence_lens-0.4.0b1-py3-none-any.whl",
+      "run_id": "20261124T020650368203Z-bcaeca9882e749cd",
+      "sha256": "ca52e82c8e870560c05075dda4b5282311500580f9283fe234aa27643d6f8882"
+    },
+    "d_evaluation": {
+      "manifest_sha256": "375132900561d02f7db613c89980b1633182164f9e987d84d4cc4aa6fe564901",
+      "member": "payload/public/evaluation.json",
+      "run_id": "20261124T022032641624Z-d7da793c7f6b4dff",
+      "sha256": "3a45524b4e63529454edc6ab7a82a15e52d4bc7b1084511c52cce67a7168c02f"
+    },
+    "d_observations": {
+      "manifest_sha256": "418013416847c38c24c9fb6950a7be0c5a8085f7c4351dcf0fdffba6a62d27b6",
+      "member": "payload/access-audit.json",
+      "run_id": "20261124T020421072175Z-8945f7c021374f44",
+      "sha256": "768bfe0a897272b662d8bb80af1d4ee1d26e32564d2a0c5b6a661c41501b202a"
+    },
+    "heldout_camera_geometry": {
+      "manifest_sha256": "f7916b2a71eabbdf699dea4fb39246df05043d435d8c2f55373cc0deb7664fdd",
+      "member": "payload/render_cameras.json",
+      "run_id": "20261124T014919697753Z-05e4409ffa7647ad",
+      "sha256": "2bed3761ae30e1a65e55c447b55f7067a4c3a2644a3fbd749d35b0f837ba6ad2"
+    },
+    "linux_qualification": {
+      "manifest_sha256": "99f5872e04346377508e26f1de11b9dc0226f4a0169746fe371a0cf535d00346",
+      "member": "payload/linux-cpu.json",
+      "run_id": "20261124T022022718687Z-304bbad000e34084",
+      "sha256": "250b6ef65e69f94b8d37509965f4727f3f79f7febf87a6f9f903556b24102d55"
+    },
+    "original_example": {
+      "manifest_sha256": "547d495429df8264fed5e797b28f3862cbb09d59f89f9ddb17b963ed0724dc5a",
+      "member": "payload/portable.json",
+      "run_id": "20261124T021735523259Z-8ee25029bf9d4422",
+      "sha256": "6c8f44c937d35bd2e672cc4a5e2701a562fbd03ebf2b6c27a7a5a2723ecea61a"
+    },
+    "profileM2": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/profiles/M2.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1"
+    },
+    "profileM4": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/profiles/M4.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92"
+    },
+    "prospective": {
+      "manifest_sha256": "02e5909f677225890fe90ee65d5079ae7cac93b008c9056917a959c97ee535b5",
+      "member": "payload/prospective.json",
+      "run_id": "20261124T020659530443Z-846609b6d59c485a",
+      "sha256": "21519949e585eb909f5fd36a3c1571494cfaa51d00da1e0e786e68abbd92e684"
+    },
+    "query_cameras": {
+      "manifest_sha256": "c82accc3226c0cdf32b706b7de7de70c6a6d54444d51cc25f62a4c13a15b1845",
+      "member": "payload/cameras.json",
+      "run_id": "20261124T015237037024Z-8be3fc5175e049f5",
+      "sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c"
+    },
+    "reconstruction": {
+      "manifest_sha256": "0e7090bc12c7c19c80025ab005c321bffdd5829ebeac85563a73e014ac0ba356",
+      "member": "payload/bridge.json",
+      "run_id": "20261124T015232867527Z-f8e595e117804a1e",
+      "sha256": "ba4c03b262f6fb94d1397be442053caccc7aa0bbd1692133f8d0914b65078398"
+    },
+    "reconstruction_c6": {
+      "manifest_sha256": "10a8e9aa5abcb4d2941ec862de44250a06dbb07211f9f39e97628ceedd8c7b6b",
+      "member": "payload/c6-reconstructions.json",
+      "run_id": "20261124T021119570759Z-85cf68d825e142e3",
+      "sha256": "5f588c4c522bc005c270076224b90ded9c260b0740bd16868a5beaca21d828ac"
+    },
+    "reconstruction_d": {
+      "manifest_sha256": "e4e998a0b11050bee5e82bb87c60fb834e7cef5743bed1cf4542ca70b35d2080",
+      "member": "payload/branches.json",
+      "run_id": "20261124T021937740306Z-df1cbacfb273417a",
+      "sha256": "c54c69d3c342df23e43d1785882c750ace6f7e0bbdf260d5948ef90b11e218f0"
+    },
+    "risk_release": {
+      "manifest_sha256": "0b5ce75ed8670762b035dcf7b9b5820ec47a20a86ac92db08246fead9e8af33a",
+      "member": "payload/cpu/release.json",
+      "run_id": "20261123T193505072501Z-6046afc1fce4480b",
+      "sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d"
+    },
+    "selector": {
+      "manifest_sha256": "2e00e15f408c72b09e1271c5ecf54318db15fa1497f4aea09d82331f507e2c61",
+      "member": "payload/freeze.json",
+      "run_id": "20261124T015236263470Z-6c0db5dc08d34101",
+      "sha256": "055ffcc725664186ef765e0921ab3118901b7f34d0786c9a900d8d1a4f7affe0"
+    },
+    "threshold_method": {
+      "manifest_sha256": "d763651112068cccf87018ec7be0f203f672f1c0ebc9f2991bb7ed9d0f3a8a17",
+      "member": "payload/calibration-method.json",
+      "run_id": "20261124T020129961316Z-2b715d6ae3314c12",
+      "sha256": "5d36644b3c65e0730e91bc816152145469ebaf378d52358e78fa8149a61cc3f3"
+    }
+  }
+}

@@ -1,5 +1,11 @@
 # Third-party notices
 
+## Calibration data and standard-format examples
+
+The six C6 subjects came from the DTU MVS archive. Its official page requests citation of the 2014 Jensen et al. paper. The public profiles contain the measured operating-point status, the original threshold and numerical provenance. The project licenses its original report, aggregate measurements and authored portions of the profile records under CC BY 4.0 to the extent it holds those rights. The DTU photographs, crops and photographed-subject panels stay in the private research archive. [DTU acquisition and citation](https://roboimagedata.compute.dtu.dk/?page_id=36) · [C6 sources and measurements](docs/results/batch-two/calibration/README.md)
+
+The project implements the supported COLMAP and Graphdeco file readers independently. COLMAP specifies the camera and image records. The Graphdeco repository specifies its serialized Gaussian fields and supplies its own research and evaluation license. The optional renderer uses the separate gsplat 1.5.3 package. The source release carries the original adapter under Apache-2.0. The helical bead geometry, analytic source images, original renderings and offline visual report are by wany614 and carry CC BY 4.0. External assets retain the rights of their suppliers. [COLMAP format](https://colmap.github.io/format.html) · [Graphdeco upstream terms](https://github.com/graphdeco-inria/gaussian-splatting/blob/54c035f7834b564019656c3e3fcc3646292f727d/LICENSE.md) · [gsplat license](https://github.com/nerfstudio-project/gsplat/blob/v1.5.3/LICENSE) · [Format scope and provenance](docs/tooling/assets/README.md)
+
 The Evidence Lens CPU scorer installs NumPy and Pillow separately. Its public model contains five original JSON files. Research generation, reference rendering and model fitting used the additional components below. The versioned evidence inventory records exact upstream source revisions, actual installed distribution notices, and reference-wheel license file hashes. [Version and license evidence](licenses/DEPENDENCY-SOURCES.json)
 
 | External component | Use and applicable terms |

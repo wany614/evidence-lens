@@ -431,18 +431,11 @@ def authorize_history(store, history, registry, expected):
     return proof
 
 
-def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None, history=None):
-    from evidence_lens._bundle import local_path, HASH, RUN_ID, asset_path
-    from evidence_lens._index import writer_gate
-    from evidence_lens._verify import verify_shared
-    from evidence_lens.archive import receive
-    from recovery_receive import restore_shared
+def retain_original_return(t, trial, returns, summary_sha, retained_base):
+    """Authenticate the Windows summary, side receipts, ZIPs and exact shared-input inventory."""
+    from evidence_lens._bundle import HASH, RUN_ID, local_path
     from t0_worker_pack import spec
-    from evidence_lens import _capacity
 
-    t = load(member(store, ticket))
-    ready = load(member(store, ticket, "payload/READY.json"))
-    trial = ready["trial_id"]
     require(
         returns.name == trial
         and t["trial_id"] == trial
@@ -509,13 +502,28 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
             not f.is_symlink() and f.resolve().is_relative_to(returns.resolve()) and spec(f) == p,
             "Changed return " + name,
         )
-    retained = store / "transport/Returns/t0-v1" / trial
+    retained = retained_base / trial
     for name in sorted(allowed | {"completed.json"}):
         original = returns / name
         if original.resolve() != (retained / name).resolve():
             publish(retained / name, original.read_bytes())
     returns = retained
     staged = [(doc, returns / archive.name) for doc, archive in staged]
+    return summary, staged, retained
+
+
+def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None, history=None):
+    from evidence_lens._bundle import asset_path
+    from evidence_lens._index import writer_gate
+    from evidence_lens._verify import verify_shared
+    from evidence_lens.archive import receive
+    from recovery_receive import restore_shared
+    from evidence_lens import _capacity
+
+    t = load(member(store, ticket))
+    ready = load(member(store, ticket, "payload/READY.json"))
+    trial = ready["trial_id"]
+    summary, staged, returns = retain_original_return(t, trial, returns, summary_sha, store / "transport/Returns/t0-v1")
     historical_receipt = None if ready["forced_fallback_fixture"] else load(store / "t0/historical-lineage.json")
     originals = {
         "dispatch": short(ticket),

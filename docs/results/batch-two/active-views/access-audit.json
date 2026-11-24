@@ -1,0 +1,22 @@
+{
+  "cost_scope": "Four virtual renders, eight candidate visibility renders and two source-identity control renders are performed together for each shared D start. Random pair draws require only candidate IDs. Both coverage strategies reuse the same query scores and visibility calculation.",
+  "files": {
+    "observations.csv": "c029a3e9179eab35e120e35ffc77c206ad3624b23936007b4fe011f147b026e1",
+    "pair-utilities.csv": "356a217e87a5c1ee22395303b1f79eb40f67cd2ee066417e433ad0bc4255eb54",
+    "probe-costs.csv": "7d037deca54c64eec8cb40ee3cef87a95d1e518f01a95a2c5a5094b102a5bd3e",
+    "query-support.csv": "2307562aa8648fbbc55f0d098a34c8cba429fdb05a802cd83e7ded6080b10f6d"
+  },
+  "new_photos_per_trajectory": 2,
+  "objects": 2,
+  "observation_index_sha256": "8493a6c23da18494ba049d7bb1ed50794500367971592853751c3b7383c16984",
+  "observations": 10,
+  "protocol": {
+    "manifest_sha256": "2e00e15f408c72b09e1271c5ecf54318db15fa1497f4aea09d82331f507e2c61",
+    "member": "payload/freeze.json",
+    "run_id": "20261124T015236263470Z-6c0db5dc08d34101",
+    "sha256": "055ffcc725664186ef765e0921ab3118901b7f34d0786c9a900d8d1a4f7affe0"
+  },
+  "run_id": "20261124T020421072175Z-8945f7c021374f44",
+  "schema": "el-b2-observation-audit-1",
+  "unique_fit_requests": 9
+}

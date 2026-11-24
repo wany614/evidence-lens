@@ -79,3 +79,7 @@ __pycache__/
 
 # Aggregate figure from authored Stage C training and development measurements.
 !/docs/results/stage3-learning-curves/learning-curves.png
+
+# Original plot of aggregate threshold measurements.
+!/docs/results/batch-two/calibration/risk-coverage.png
+!/examples/helical-beads/sh3-comparison.png
