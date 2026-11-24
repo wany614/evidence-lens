@@ -25,7 +25,8 @@ def fetch(url, target, expected_sha, size=None):
         h=hashlib.sha256()
         with tmp.open("xb") as dest:
             q=urllib.request.Request(url,headers={"User-Agent":"Evidence-Lens-public-replay","Accept":"application/octet-stream"})
-            with urllib.request.urlopen(q,timeout=120) as reply:
+            opener=urllib.request.build_opener(urllib.request.ProxyHandler({}))
+            with opener.open(q,timeout=120) as reply:
                 if reply.status != 200:
                     raise ValueError("anonymous download returned HTTP " + str(reply.status))
                 n=0
@@ -39,7 +40,7 @@ def fetch(url, target, expected_sha, size=None):
         tmp.rename(target)
     finally:
         tmp.unlink(missing_ok=True)
-    return {"url":url,"name":target.name,"bytes":n,"sha256":expected_sha,"anonymous":True,"http_status":200,
+    return {"url":url,"name":target.name,"bytes":n,"sha256":expected_sha,"anonymous":True,"environment_proxy":False,"http_status":200,
             "seconds_including_verification":time.monotonic()-t}
 
 
@@ -54,8 +55,11 @@ def download(out, tag, commit, manifest_sha, everything=False):
     if spec["schema"]!="el-general-release-1" or spec["tag"]!=tag or spec["code_commit"]!=commit:
         raise ValueError("public release identity differs")
     selected={v["role"]:k for k,v in spec["assets"].items()}
-    if len(selected)!=len(spec["assets"]) or set(selected)!={"wheel","sources","original_replays","static_trajectories"}:
+    if len(selected)!=len(spec["assets"]) or set(selected)!={"wheel","sources","original_replays","static_trajectories","measurements"}:
         raise ValueError("unexpected general release roles")
+    sums={**{name:a["sha256"] for name,a in spec["assets"].items()},manifest:manifest_sha}
+    expected_sums="".join(sums[name]+"  "+name+"\n" for name in sorted(sums)).encode("ascii")
+    receipts.append(fetch(base+"SHA256SUMS",out/"SHA256SUMS",hashlib.sha256(expected_sums).hexdigest(),len(expected_sums)))
     for name,entry in spec["assets"].items():
         if not re.fullmatch("[A-Za-z0-9_.-]+",name) or name in (".","..") or type(entry["bytes"]) is not int or entry["bytes"]<=0:
             raise ValueError("invalid asset name or declared size")

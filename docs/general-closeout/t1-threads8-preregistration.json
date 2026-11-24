@@ -1,0 +1,139 @@
+{
+  "available_method_views": 240,
+  "cache_bytes": 67108864,
+  "closure": {
+    "manifest_sha256": "4354932ea8ad1d241f569245a3b3aad18933db3b5d40731a72fab986a1a286d6",
+    "member": "payload/sealed-matrix.json",
+    "run_id": "20261124T044722294241Z-47e91f72d281446d",
+    "sha256": "cc0bb6861817cc527571c6527b0f835f62921ad358d5ec2761cf8d4c00a420e8"
+  },
+  "development_selection": {
+    "controller_config_sha256": "2a1cb5476757f7f123fb93aad6eb8c593589c1c465068b878eaec0c3a659b036",
+    "development_case": "original offset bell cage M4",
+    "development_choices": {
+      "MS-L1": {
+        "candidates": [
+          {
+            "N": 8,
+            "exact": true,
+            "p50_service_seconds": 0.03717972949380055,
+            "threads": 4
+          }
+        ],
+        "ms_l1_threads": "--threads does not control NumPy",
+        "numpy_extra_thread_candidate": null,
+        "selection": "lowest sample median among candidates with exact 4-thread file-reference arrays",
+        "threads": 4,
+        "valid_candidates": 1
+      },
+      "MS-ft": {
+        "candidates": [
+          {
+            "N": 8,
+            "exact": true,
+            "p50_service_seconds": 0.08956143749674084,
+            "threads": 1
+          },
+          {
+            "N": 8,
+            "exact": true,
+            "p50_service_seconds": 0.08684718800213886,
+            "threads": 2
+          },
+          {
+            "N": 8,
+            "exact": true,
+            "p50_service_seconds": 0.07294987500063144,
+            "threads": 4
+          },
+          {
+            "N": 8,
+            "exact": true,
+            "p50_service_seconds": 0.069506020998233,
+            "threads": 8
+          }
+        ],
+        "ms_l1_threads": "--threads does not control NumPy",
+        "numpy_extra_thread_candidate": null,
+        "selection": "lowest sample median among candidates with exact 4-thread file-reference arrays",
+        "threads": 8,
+        "valid_candidates": 4
+      }
+    },
+    "member": "payload/selection.json",
+    "run_id": "20261124T044909556355Z-524ecb53b3cc484a",
+    "sha256": "d51d23c2277dc9906342fa244a84bcd11d262410ddf17c2d9a677e6a5d6e0d3a"
+  },
+  "engineering_threads": 8,
+  "legacy_reason_source": "Recover absent fourth channel from the independent authenticated original CPU feature code and original finite masks. Retain the primary bridge reference without rerunning the original neural scores.",
+  "methods": [
+    "B-L1-transfer",
+    "MS-L1",
+    "MS-frozen",
+    "MS-ft"
+  ],
+  "missing_method_views": 48,
+  "mixed_check": "On each available view, retain the archived 4-thread B-L1-transfer, MS-L1 and MS-frozen, replace only MS-ft by the 8-thread cached output, and compare all registered matched-quota memberships against archived4.",
+  "original_threads": 4,
+  "outputs": [
+    "FP32 risk bits including NaN",
+    "valid mask",
+    "three-state threshold decision",
+    "unknown reason",
+    "signed and absolute score differences",
+    "strict-threshold flips and crossing distances",
+    "four-method finite domain and attainable exact-k membership at 1/2/5/10/20/40/60/80 percent plus both MS-L1 threshold-count anchors",
+    "per-method denominator, preserved upstream failures, and path comparisons"
+  ],
+  "pairings": [
+    [
+      "archived4",
+      "file8"
+    ],
+    [
+      "archived4",
+      "resident_off8"
+    ],
+    [
+      "archived4",
+      "resident_on8"
+    ],
+    [
+      "file8",
+      "resident_off8"
+    ],
+    [
+      "file8",
+      "resident_on8"
+    ],
+    [
+      "resident_off8",
+      "resident_on8"
+    ]
+  ],
+  "preregistered_utc": "2026-11-24T04:53:13Z",
+  "primary_bridge": {
+    "manifest_sha256": "bec7344e2e1618e9849e827e44a39d022f6db6f8ca4a4e3e5fec6e6a2cb237ae",
+    "member": "payload/numerical-bridge.json",
+    "run_id": "20261124T044754363058Z-f44dcf52830b4157",
+    "sha256": "0bb59893077107a54f5069353b2d48509501f0d4fcf6c8d287ca25d361fd74cc"
+  },
+  "primary_configuration": {
+    "manifest_sha256": "41bf261c25b0a3336cc9928f3ae9a7c67efee9a64ce5a70e972ed7f00d295345",
+    "member": "payload/engineering-config.json",
+    "run_id": "20261124T042943940731Z-372172093dc447d5",
+    "sha256": "a31f0caef9bee1f17bb98c8cdb5feef544c916ad32806b6f46360f8051412c64"
+  },
+  "primary_roster": {
+    "manifest_sha256": "e6668f85aac44aa912365a6eedc1653e94a7b14c8dafd8f7f5c6f461f37a9dff",
+    "member": "payload/roster.json",
+    "run_id": "20261124T044752698140Z-6e989f43c7da44ea",
+    "sha256": "1417b1c8cbc3794a816527a71e5ee9e3cdfb58c32cb045850c788bc8719a3481"
+  },
+  "purpose": "Quantify the independent original Mac MS-ft performance choice on the already sealed T1 numerical outputs.",
+  "registered_method_views": 288,
+  "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+  "schema": "el-t1-selected-thread-plan-1",
+  "scope": "Use only the frozen deployment sources, predicted targets, cameras, three-channel score archives, original support logic and published weights. No target reference photograph, reference mask, scientific outcome metric, new training, setting-selection or performance timing enters this comparison.",
+  "selected_method": "MS-ft"
+}

@@ -104,7 +104,8 @@ def build(repo, commit, out):
     report = {"schema":"el-general-build-1", "run_id":os.getenv("EL_RUN_ID"), "code_commit":commit,
               "source_tree":git(repo,"rev-parse",commit+"^{tree}").decode().strip(), "version":version,
               "risk_weights_release":"v0.3.0-rc.1", "source_files":len(entries), "wheel_record_members":n,
-              "default_dependencies":meta["dependencies"], "source_date_epoch":946684800,
+              "default_dependencies":meta["dependencies"], "wheel_source_date_epoch":946684800,
+              "source_zip_member_timestamp":"1980-01-01T00:00:00",
               "assets":{p.name:{"bytes":p.stat().st_size,"sha256":digest(p.read_bytes())} for p in [source_zip,wheel]}}
     (out/"build.json").write_text(json.dumps(report,indent=2,sort_keys=True)+"\n", encoding="utf-8")
     return report

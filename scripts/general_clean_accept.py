@@ -62,6 +62,8 @@ def acceptance(a):
         examples=tmp/"examples"
         with zipfile.ZipFile(assets["original_replays"]) as z:
             z.extractall(examples)
+        with zipfile.ZipFile(assets["wheel"]) as wheel:
+            cli_sha=hashlib.sha256(wheel.read("evidence_lens_bundle/cli.py")).hexdigest()
         if sha(examples/"expected.json")!=doc["original_gold_sha256"]:
             raise ValueError("unexpected replay oracle")
         for group in (["default"] if a.default_only else ["default","vision"]):
@@ -101,7 +103,27 @@ def acceptance(a):
             p=dest/"acceptance.json";r=read(p)
             if r["installed_distribution"]!=inventory["evidence-lens"] or r["gold_index_sha256"]!=doc["original_gold_sha256"]:
                 raise ValueError("acceptance is for a different software or original")
-            checks[group]={"method":method,"status":r["status"],"bit_exact":r["bit_exact"],
+            scheduled={"B-L1-transfer","MS-L1","MS-frozen","MS-ft"} if method=="all" else {method}
+            wanted_views=set(read(examples/"expected.json")["sequences"]["bell-M4"]["target_order"])
+            if (set(r["recorded_methods"])!=scheduled or set(r["output"])!=scheduled
+                    or r["installed_cli_sha256"]!=cli_sha or len(wanted_views)!=6):
+                raise ValueError("incomplete methods or different installed CLI")
+            diffs=[]
+            for output in r["output"].values():
+                if set(output["views"])!=wanted_views:
+                    raise ValueError("missing original replay targets")
+                for view in output["views"].values():
+                    q=view["difference"]
+                    if set(q["changed_pixels"])!={"risk","state","valid","unknown_reason"}:
+                        raise ValueError("incomplete numerical comparison")
+                    diffs.append(q)
+            exact=all(q["bit_exact"] for q in diffs)
+            if r["bit_exact"]!=exact or r["status"]!=("bit_exact" if exact else "numerical_difference"):
+                raise ValueError("inconsistent comparison verdict")
+            checks[group]={"method":method,"replay_completed":True,
+                           "threshold_crossings":sum(q["threshold_crossings_common_finite"] for q in diffs),
+                           "changed_valid":sum(q["changed_pixels"]["valid"] for q in diffs),
+                           "changed_reasons":sum(q["changed_pixels"]["unknown_reason"] for q in diffs),"status":r["status"],"bit_exact":r["bit_exact"],
                            "acceptance_sha256":sha(p),"bundle_sha256":r["bundle_sha256"],"install_seconds":install_s,
                            "grade_seconds_including_HTML":time.monotonic()-before,"distributions":inventory}
     result={"schema":"el-general-clean-acceptance-1","run_id":os.getenv("EL_RUN_ID"),"tag":doc["tag"],

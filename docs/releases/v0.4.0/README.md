@@ -14,12 +14,25 @@ python accept.py --sequence bell-M4 --method MS-L1 --out checked-l1 --expected-s
 
 Open `my-report.html` locally. `checked-l1/acceptance.json` identifies the installed package and compares the new risk, validity, state and unknown-reason arrays with the released originals. It also compares the original threshold and the identities of pixels selected at the same coverage. The full report records the environment and actual differences. Use a fresh directory for each new output. [Original replay structure and numerical criteria](../../tooling/original-archive.md)
 
+## Choose the download for your task
+
+| Filename | Contents |
+|---|---|
+| `evidence_lens-0.4.0-py3-none-any.whl` | Installable CLI, resident array API, source cache and the default model. |
+| `evidence-lens-original-replays-v1.zip` | Four prepared original workloads, all four models’ frozen score arrays, sixteen offline reports and the executable comparator. |
+| `evidence-lens-static-trajectories.zip` | Two authored scenes, M2/M4, four 120-pose sequences and two 24-pose revision sequences. Supply these inputs to the continuous replay. |
+| `evidence-lens-cpu-replay-measurements.zip` | The recorded CPU configuration samples, per-frame queue ledger, stage timings, resource samples, output arrays for an authored example and its HTML report. Read the embedded `tables.json` for member digests. |
+| `evidence-lens-source-v0.4.0.zip` | The audited code, frozen protocols, permitted numerical research reports, build and reproduction scripts. |
+| `release-manifest.json` and `SHA256SUMS` | Exact code and model lineage, lengths and SHA-256 digests. |
+
+The complete four-model weights have a separate original download. The verified downloader below retrieves them. [Installation and original-model provenance](MODEL_CARD.md) · [Open an authored four-model report](../../../examples/general-four-models/README.md)
+
 ## Run the genuine fine-tuned model
 
 From the matching source checkout or extracted source ZIP, use the downloader to fetch and verify the complete original CPU release. It validates the archive, every release member and the retained preprocessing and weights. The vision extra installs the optional CPU model dependencies. Install the wheel in the same environment that will run `accept.py`.
 
 ```sh
-python -m pip install 'evidence-lens[vision] @ file:///absolute/path/to/evidence_lens-0.4.0-py3-none-any.whl'
+python -m pip install "./evidence_lens-0.4.0-py3-none-any.whl[vision]"
 python scripts/general_release_weights.py --out weights
 ```
 
@@ -35,4 +48,4 @@ Set `--method all` to replay B-L1-transfer, MS-L1, MS-frozen and MS-ft and obtai
 
 For repeated calls, `load_scorer`, `prepare_sources` and `score_frame` operate on identity-bound arrays. The CLI retains its original file reference path. Use the bounded static replay program with the separate original trajectory asset. Camera and frame timestamps, completed results, drops, stale outputs, map/source revisions, feature time, service time and queueing have separate records. [Resident array API](../../tooling/resident.md) · [Numerical bridge](../../tooling/numerical-bridge.md) · [Static replay and timing](../../general-closeout/performance/README.md)
 
-Rendering a supported Gaussian asset requires its separate CUDA renderer. The risk scoring path uses the prepared numerical evidence. The published source includes positive manifests, registration, numerical study results and reproduction scripts. The DTU photographs and their derivative panels remain in the private research archive. [Input support](../../tooling/assets/README.md) · [Research report](../../general-closeout/README.md) · [Rights](../../licenses.md)
+Rendering a supported Gaussian asset requires its separate CUDA renderer. The risk scoring path uses the prepared numerical evidence. The published source includes positive manifests, registration, numerical study results and reproduction scripts. The DTU photographs and their derivative panels remain in the private research archive. [Input support](../../tooling/assets/README.md) · [Research report](../../general-closeout/README.md) · [Release asset rights](RIGHTS.md)

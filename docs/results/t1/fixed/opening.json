@@ -1,0 +1,59 @@
+{
+  "authorized_operation": "One collective photographic opening over the six registered objects and target views.",
+  "before_opening_reference_reads": 0,
+  "condition_count": 42,
+  "entry": {
+    "manifest_sha256": "5d81587227a11560c8349a9e3c68604b838218b4c8766c3b69003e0ec0f908a1",
+    "member": "payload/entry.json",
+    "run_id": "20261124T040929244925Z-29ed9ca73ca94672",
+    "sha256": "971d8c212153d39caca44747e0fad8b4b28c1bc08f4d15e25f5720e7992ac818"
+  },
+  "evaluation_program": {
+    "manifest_sha256": "43a3f9e024b03ff7d72f406ccfbddf38468fa4110d45ce01a4c03400ba779834",
+    "member": "payload/software.json",
+    "run_id": "20261124T043338182085Z-7775103b2c7d4ebf",
+    "sha256": "30fdedd4ec152e03e95e74c34c47ffe5cdc5af310516724eef5d7fde6a1a73e4"
+  },
+  "fixed_score_count": 288,
+  "fixed_statuses": {
+    "failed": 48,
+    "ready": 240
+  },
+  "matrix": {
+    "manifest_sha256": "4354932ea8ad1d241f569245a3b3aad18933db3b5d40731a72fab986a1a286d6",
+    "member": "payload/sealed-matrix.json",
+    "run_id": "20261124T044722294241Z-47e91f72d281446d",
+    "sha256": "cc0bb6861817cc527571c6527b0f835f62921ad358d5ec2761cf8d4c00a420e8"
+  },
+  "new_risk_training": 0,
+  "object_ids": [
+    "set118",
+    "set76",
+    "set45",
+    "set103",
+    "set61",
+    "set32"
+  ],
+  "official_targets": [
+    16,
+    18,
+    25,
+    37,
+    35,
+    36
+  ],
+  "permitted_reader": "independent_target_evaluator",
+  "predictions_and_scores_sealed": true,
+  "run_id": "20261124T044751135267Z-7eafdcf5d2a44153",
+  "schema": "el-t1-joint-opening-1",
+  "target_ids": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "threshold_refits": 0,
+  "utc": "2026-11-24T04:47:52.253718Z"
+}

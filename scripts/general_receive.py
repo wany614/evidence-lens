@@ -14,7 +14,7 @@ def worker(a):
     cfg=load(a.config)
     rr=load(a.receipt)
     require(sha(a.receipt)==cfg["extra_sha256"]["return_receipt"] and rr["package"]==a.archive.name
-            and rr["bytes"]==a.archive.stat().st_size and rr["input_zip_sha256"]==cfg["sources"]["ticket"]["sha256"]
+            and rr["bytes"]==a.archive.stat().st_size and rr[cfg.get("identity_key","input_zip_sha256")]==cfg["sources"]["ticket"]["sha256"]
             and rr["producer_run_id"]==cfg["sources"]["ticket"]["run_id"]
             and rr["status"]=="succeeded" and rr["worker_exit_code"]==0,
             "return differs from the named engineering ticket")
@@ -36,7 +36,7 @@ def main(a):
         return worker(a)
     r=a.store
     t=bind(r,a.ticket_run,a.ticket_member)
-    return stage(r,r/"history",a.label,"archive_verify",{"ticket":t},{"result_member":a.result_member},
+    return stage(r,r/"history",a.label,"archive_verify",{"ticket":t},{"result_member":a.result_member,"identity_key":a.identity_key},
                  ["{python}","{source}/scripts/general_receive.py","worker","--config","{config}",
                   "--store",str(r),"--archive",str(a.archive),"--receipt",str(a.receipt),"--out","{out}"],
                  "payload/readback.json",5000,{"return_receipt":a.receipt})
@@ -47,6 +47,7 @@ if __name__=="__main__":
     p.add_argument("action",choices=("record","worker"))
     for n in ("store","archive","receipt","config","out"):
         p.add_argument("--"+n,type=Path)
+    p.add_argument("--identity-key",choices=("input_zip_sha256","input_release_manifest_sha256"),default="input_zip_sha256")
     for n in ("label","ticket-run","ticket-member","result-member"):
         p.add_argument("--"+n)
     print(json.dumps(main(p.parse_args()),sort_keys=True))
