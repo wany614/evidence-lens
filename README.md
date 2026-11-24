@@ -31,30 +31,31 @@ The three releases are archived separately. The experimental many-source package
 ## Architecture
 
 ```mermaid
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "padding": 18}}}%%
 flowchart TD
-    S["Source images and calibrated cameras"] --> U["Upstream reconstruction<br/>Multi-view 3DGS (e.g. gsplat)"]
-    U --> P["Rendering and evidence preparation<br/>Source self-renders · target RGB, depth, alpha"]
+    S["Source images and<br/>calibrated cameras"] --> U["Upstream reconstruction<br/>Multi-view 3DGS<br/>(e.g. gsplat)"]
+    U --> P["Rendering and evidence<br/>preparation<br/>Source self-renders<br/>Target RGB, depth, alpha"]
     S --> P
     subgraph A["A · v0.5.0 CPU toolkit"]
-        F["Reprojection and 39 multi-source features"]
-        F --> L["MS-L1 · logistic regression"]
-        F --> V["MS-frozen / MS-ft<br/>Evidence and DINOv2 features"]
-        L --> M["Risk map · state · unknown reason"]
+        F["Reprojection and<br/>39 multi-source features"]
+        F --> L["MS-L1<br/>Logistic regression"]
+        F --> V["MS-frozen / MS-ft<br/>Evidence and<br/>DINOv2 features"]
+        L --> M["Risk map · state<br/>Unknown reason"]
         V --> M
     end
     P --> F
     P -->|"Rendered target RGB"| V
     subgraph B["B · Separate many-source experiment"]
-        Q["Source-bank selection and streaming aggregation"]
-        Q --> K["44-feature NumPy ranker"]
-        Q --> W["Query record and optional full-bank audit"]
+        Q["Source-bank selection<br/>and streaming aggregation"]
+        Q --> K["44-feature<br/>NumPy ranker"]
+        Q --> W["Query record and<br/>optional full-bank audit"]
     end
     P --> Q
-    H["Independent reference<br/>Held-out photo or Blender render"] --> E["Separate evaluation<br/>Actual RGB errors and metrics"]
+    H["Independent reference<br/>Held-out photo<br/>or Blender render"] --> E["Separate evaluation<br/>Actual RGB errors<br/>and metrics"]
     P -->|"Rendered target RGB"| E
     M --> E
     K --> E
-    M --> C["C · Case viewer and humanities materials"]
+    M --> C["C · Case viewer and<br/>humanities materials"]
     K --> C
     W --> C
     E --> C
@@ -65,13 +66,14 @@ The diagram shows the main multi-source paths. The v0.5.0 toolkit also includes 
 ### Four image grids in v0.5.0
 
 ```mermaid
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "padding": 18}}}%%
 flowchart TD
-    O["Original image · e.g. 1920 × 1080<br/>Original camera intrinsics"] -->|"Crop and resize; transform K"| A["Analysis grid · 448 × 252<br/>Resampled source images · native target RGB, Z, alpha"]
-    A --> G["Geometric and photometric features"]
-    A --> N["Optional visual encoder<br/>448 × 252 input; 32 × 18 patches"]
-    N -->|"Interpolate features back to analysis pixels"| R["Risk scoring on 448 × 252"]
+    O["Original image<br/>e.g. 1920 × 1080<br/>Original camera intrinsics"] -->|"Crop and resize<br/>Transform K"| A["Analysis grid · 448 × 252<br/>Resampled source images<br/>Native target RGB, Z, alpha"]
+    A --> G["Geometric and<br/>photometric features"]
+    A --> N["Optional visual encoder<br/>448 × 252 input<br/>32 × 18 patches"]
+    N -->|"Interpolate features<br/>back to analysis pixels"| R["Risk scoring<br/>448 × 252"]
     G --> R
-    R --> D["Display raster · 1920 × 1080<br/>No additional analysed pixels"]
+    R --> D["Display raster<br/>1920 × 1080<br/>No additional<br/>analysed pixels"]
 ```
 
 The five opt-in analysis sizes are 256 × 256, 448 × 252, 252 × 448, 378 × 252 and 375 × 251. The legacy v1 square contract retains its 252 × 252 encoder input; the opt-in v2 square uses a padded 266 × 266 encoder. The optional neural path interpolates DINOv2's pretrained positional embeddings and maps patch features back to the analysis grid. Padded areas do not count as observed pixels, but padded tokens still participate in attention. Display enlargement preserves analysis counts. [Grid implementation](src/evidence_lens_bundle/grids.py) · [Neural-grid verification](docs/releases/v0.5.0/NEURAL_GRID.md) · [Resident API and caching](docs/tooling/resident.md).
