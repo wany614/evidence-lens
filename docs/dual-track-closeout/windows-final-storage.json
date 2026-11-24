@@ -1,0 +1,450 @@
+{
+  "B_release": {
+    "manifest_sha256": "cc19f51d4463500b198cb64d43a8fd84ff5b72fef08f0d0635f410cc3362e736",
+    "member": "payload/B_MANIFEST.json",
+    "run_id": "20261124T122658772178Z-8af722eec6fa438e",
+    "sha256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0"
+  },
+  "accounting_type": "resident endpoint stock",
+  "auxiliary_native_run_id": "20261124T111815754014Z-0cc09e7b0bb448f3",
+  "auxiliary_return_receipt_sha256": "91cd7c84c050fe5734cd0ad8c76fde6c4d20fc8cb92efff9280c0b65320a3db8",
+  "checks": {
+    "case_role_and_class_sums": 15,
+    "cohort_partitions": 3,
+    "historical_archive_and_current_length_matches": 15,
+    "independently_verified_cloud_binary_receipts_for_fits": 15,
+    "reconstruction_or_scoring_runs_for_this_receipt": 0,
+    "two_dedicated_queue_controls": 2
+  },
+  "direct_fifteen_by_cohort": {
+    "confirmation": {
+      "fits": 6,
+      "total": {
+        "alias_paths": 0,
+        "allocated_bytes": 2165781248,
+        "logical_path_bytes": 2161771191,
+        "paths": 2057,
+        "unique_file_ids": 2057,
+        "unique_logical_bytes": 2161771191
+      }
+    },
+    "development": {
+      "fits": 8,
+      "total": {
+        "alias_paths": 0,
+        "allocated_bytes": 2863454448,
+        "logical_path_bytes": 2858178924,
+        "paths": 2746,
+        "unique_file_ids": 2746,
+        "unique_logical_bytes": 2858178924
+      }
+    },
+    "pilot": {
+      "fits": 1,
+      "total": {
+        "alias_paths": 0,
+        "allocated_bytes": 123922104,
+        "logical_path_bytes": 123617042,
+        "paths": 165,
+        "unique_file_ids": 165,
+        "unique_logical_bytes": 123617042
+      }
+    }
+  },
+  "direct_fifteen_by_disjoint_category": {
+    "control": {
+      "alias_paths": 0,
+      "allocated_bytes": 751216,
+      "logical_path_bytes": 412048,
+      "paths": 254,
+      "unique_file_ids": 254,
+      "unique_logical_bytes": 412048
+    },
+    "local_return_zips": {
+      "alias_paths": 0,
+      "allocated_bytes": 2392072192,
+      "logical_path_bytes": 2392041507,
+      "paths": 15,
+      "unique_file_ids": 15,
+      "unique_logical_bytes": 2392041507
+    },
+    "native_archives": {
+      "alias_paths": 0,
+      "allocated_bytes": 2397689560,
+      "logical_path_bytes": 2391563037,
+      "paths": 3106,
+      "unique_file_ids": 3106,
+      "unique_logical_bytes": 2391563037
+    },
+    "working_copies": {
+      "alias_paths": 0,
+      "allocated_bytes": 362644832,
+      "logical_path_bytes": 359550565,
+      "paths": 1593,
+      "unique_file_ids": 1593,
+      "unique_logical_bytes": 359550565
+    }
+  },
+  "fifteen_fit_scientific_parent": {
+    "manifest_sha256": "0e6f0a26d98a0e89d6e4204da4b1cfa243ef1dbe732bc074c55983184072cb9a",
+    "member": "payload/upstream.json",
+    "run_id": "20261124T121957490225Z-e2c00b098fb14ff4",
+    "sha256": "d0f225511b3f59d9d42e2f4f4e1ef2d8b20e218b7b9c79041198e283e2b87929"
+  },
+  "filesystem": "NTFS",
+  "measurement": "Windows FileStandardInfo supplied regular-file logical length and default-stream AllocationSize. A volume and 128-bit file identity was charged once across the declared roots. Directory metadata, alternate streams and the later supplement itself fall outside this scope. The endpoint measured file attributes and control identities. Return-content digests came from the original full binary verifications.",
+  "native_source_receipt": {
+    "bytes": 164947,
+    "canonical_file_metadata_sha256": "41ee3e3ba8395d94158aa6126b082e8ee900ce397d7ffadf95a2a45b39706d83",
+    "distinct_roots": 178,
+    "end_utc": "2026-11-24T12:46:32.208708Z",
+    "metadata_read_errors": 0,
+    "reparse_skips": 0,
+    "sha256": "a697cf671ae3df65df44e194bc923ac07879f0bb328d6016b3d91399180bfab1",
+    "start_utc": "2026-11-24T12:46:30.839746Z"
+  },
+  "net_change_attributable_to_all_15": null,
+  "peak_lifetime_allocation_for_all_15": null,
+  "per_fit_verified": {
+    "b01-staggered-arcade-r128": {
+      "checkpoint_sha256": "c16ecac9677ff43c8112492893c1f97de4b262b28e20604f041cda238c0bb03a",
+      "cohort": "development",
+      "native_manifest_sha256": "7100dbf7e2a41357ecf52d2669af5784215997c6aaab25ca6409e7cdbdfa09bb",
+      "native_run_id": "20261124T114815071134Z-6ef6d6917d9c433b",
+      "output_archive_sha256": "34c27636e495a931471994069faaa43175fd164526aa3ee8caa8d0ee0d064e05",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 567342176,
+        "logical_path_bytes": 566367376,
+        "paths": 504,
+        "unique_file_ids": 504,
+        "unique_logical_bytes": 566367376
+      },
+      "return_zip_logical_bytes": 262939359,
+      "transfer_receipt_sha256": "b4830e2ee22501df1c42fef432ea691364272fe53cd1e15ae409266695e6b9e7"
+    },
+    "b01-staggered-arcade-r16": {
+      "checkpoint_sha256": "5bfd7831d5c7e4da82c8dcb5128dfc45f4b36e0fed3b300992854f7024164f84",
+      "cohort": "development",
+      "native_manifest_sha256": "f953b1ba8583066832d96c87a34b8f264ffdf7f7712129b137b044ef9c29bc02",
+      "native_run_id": "20261124T114706966682Z-1e52853f5b324244",
+      "output_archive_sha256": "8ae20487510afcb923e5975cdb44cacdabe5692afc605b0497602da8a5be935b",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 124504488,
+        "logical_path_bytes": 124198152,
+        "paths": 168,
+        "unique_file_ids": 168,
+        "unique_logical_bytes": 124198152
+      },
+      "return_zip_logical_bytes": 57696421,
+      "transfer_receipt_sha256": "eb323eed804383bb90b8a6f740a8f1acfefaa91654d117bd4d56b0188ed0a9d7"
+    },
+    "b02-terraced-court-r128": {
+      "checkpoint_sha256": "729dcdbfcc9e486eeb08023fb2480de596cb7be26eeaab90462116d7bbf7c816",
+      "cohort": "development",
+      "native_manifest_sha256": "5983ef23b4e20e03758b9e0002fb508ee792c298239d8fe10cd4277ba841a3b9",
+      "native_run_id": "20261124T115051000501Z-0ac2b0fed4324e04",
+      "output_archive_sha256": "1c38e7c3e165d6be0d18e12795b3077ba72c049f7dc71f67a5396c44dd12b7d9",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 566838360,
+        "logical_path_bytes": 565864097,
+        "paths": 504,
+        "unique_file_ids": 504,
+        "unique_logical_bytes": 565864097
+      },
+      "return_zip_logical_bytes": 263130391,
+      "transfer_receipt_sha256": "40fee201dadb1f739c610ec9bf7c5faba22f86b7584dec3a8bc0b6e3e816eb4b"
+    },
+    "b02-terraced-court-r16": {
+      "checkpoint_sha256": "8c9dad48a82d3dd75c7dbe385e37f84fbf66805c6f35071293135c241a0190bb",
+      "cohort": "development",
+      "native_manifest_sha256": "65ba2dbf453ae0a7be7c1d0fb9f875eaa2aa01edeebc4d4a0c57a87d55e3bd7f",
+      "native_run_id": "20261124T114940622776Z-684f7ad1591c4362",
+      "output_archive_sha256": "8b7f90092faefc89edd80434e496dd5eb0c34ab720b658c698f0ac9d09006a7f",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 122190248,
+        "logical_path_bytes": 121875907,
+        "paths": 168,
+        "unique_file_ids": 168,
+        "unique_logical_bytes": 121875907
+      },
+      "return_zip_logical_bytes": 56600191,
+      "transfer_receipt_sha256": "d1767949619eb4b46a332b0ff832034fd04ab0e77d339896a81cf8212e6fe5dd"
+    },
+    "b03-woven-truss-r128": {
+      "checkpoint_sha256": "fe7a390c9d83ce7e177b173e1b06d86d18140afb9dd5cc1745eb4ea1ad1d103e",
+      "cohort": "development",
+      "native_manifest_sha256": "4a29aeb63971f81d4ef6af1551ee974acc4981ce0dafc92ee8f5880c9bf243e7",
+      "native_run_id": "20261124T115323778783Z-ab539ad0e0ca4ecf",
+      "output_archive_sha256": "bbb250b3167c05a00338f51cc5a0053f122e5a60cac6c435966bc8bf1511b9a3",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 572245080,
+        "logical_path_bytes": 571241487,
+        "paths": 504,
+        "unique_file_ids": 504,
+        "unique_logical_bytes": 571241487
+      },
+      "return_zip_logical_bytes": 265422634,
+      "transfer_receipt_sha256": "085d225cdb68a74d3550f8416c9a9fe1f43e4ad064a13b7bad399cfcfb96243b"
+    },
+    "b03-woven-truss-r16": {
+      "checkpoint_sha256": "0cd8199575bbe0148c81c07682e2882922dfe7a2ed6bc7064b4b8e1fab0b01e4",
+      "cohort": "development",
+      "native_manifest_sha256": "4cf51511178ad3854aeea289d107374ac0a8f7d873758de0acb783ac35acb3b0",
+      "native_run_id": "20261124T115214380262Z-93a68d0dc82a41c1",
+      "output_archive_sha256": "c19a4e61bb8400fb9e6fbe9c9f20e84ff8800d1c5d7d0b67d2dea39dc2e34d5f",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 124136376,
+        "logical_path_bytes": 123828105,
+        "paths": 168,
+        "unique_file_ids": 168,
+        "unique_logical_bytes": 123828105
+      },
+      "return_zip_logical_bytes": 57523098,
+      "transfer_receipt_sha256": "ca638c8abf37d9ecfbeae7916ab55fbc2e0540588aebe1194e23a6e32df43701"
+    },
+    "b04-layered-louvers-r128": {
+      "checkpoint_sha256": "e900820014308c4f01b9c6b4249c4a9906c25fb1b11e48961574e92554a31ccb",
+      "cohort": "development",
+      "native_manifest_sha256": "70c7ae6be0588d12a19e69860117c6fc323f0dccd01da1bfb24c8e0b1aec085e",
+      "native_run_id": "20261124T115449275066Z-ad9bef752db14b96",
+      "output_archive_sha256": "ae3daa3314cc92bc136bf1b0e9b54f529e4f05e7111b6c37bfa287ac512a8fdb",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 572175984,
+        "logical_path_bytes": 571214424,
+        "paths": 504,
+        "unique_file_ids": 504,
+        "unique_logical_bytes": 571214424
+      },
+      "return_zip_logical_bytes": 265255852,
+      "transfer_receipt_sha256": "19f7571084ff091dd21cb8aa0e53d767a0097135fde8e0c248b805989015cd40"
+    },
+    "b04-layered-louvers-r16": {
+      "checkpoint_sha256": "9666db2f040cff27962204215e55867e85e84d57da60debb4bc88d52c66a194e",
+      "cohort": "pilot",
+      "native_manifest_sha256": "46769fea258f28eb6297432586f0795a94083d74de3fcd5f829e59f80a18aee4",
+      "native_run_id": "20261124T113100222841Z-f4483b1a47124aad",
+      "output_archive_sha256": "1b53fd35e7771e2f2c11b7453fd042645c815723e2da4a22447640e7930e0b85",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 123922104,
+        "logical_path_bytes": 123617042,
+        "paths": 165,
+        "unique_file_ids": 165,
+        "unique_logical_bytes": 123617042
+      },
+      "return_zip_logical_bytes": 57390874,
+      "transfer_receipt_sha256": "02d6226146527f9f9ed59979402ee148a7f2079a11aced382e41879e8e960da0"
+    },
+    "b05-perforated-gallery-r128": {
+      "checkpoint_sha256": "8abe78bc2be2386f1cde32b0458858a02696a8decbe6e8e26b3da690def9e626",
+      "cohort": "confirmation",
+      "native_manifest_sha256": "c4cfa617044150591640308c9037c071a700e303d5fb7377187a98921136ef0b",
+      "native_run_id": "20261124T121057099682Z-ae94490fbf4f4902",
+      "output_archive_sha256": "067403cfd9933fd8389e738ad2f8d9720ba2667743935f14f84084576b4fdf7f",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 564945944,
+        "logical_path_bytes": 563937818,
+        "paths": 504,
+        "unique_file_ids": 504,
+        "unique_logical_bytes": 563937818
+      },
+      "return_zip_logical_bytes": 262163219,
+      "transfer_receipt_sha256": "a1afa93ee551737bf24b7d512ac683e0c8ba4200b9908e79c41e581a26bafbb2"
+    },
+    "b05-perforated-gallery-r16": {
+      "checkpoint_sha256": "a958a518bf3391ed53ee55d7113cc272eea3ac85cd6480dde6e4122cd646719c",
+      "cohort": "confirmation",
+      "native_manifest_sha256": "af93cc9c9f3db6a77d987d094c8708c0c8bde52a8c67321961160617b5c38ba6",
+      "native_run_id": "20261124T120947920304Z-84f96ef4c0bc4669",
+      "output_archive_sha256": "749f358bc3b56ba2891d791531e7a0fa91a836866436b20071dba6211243ee1a",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 121022824,
+        "logical_path_bytes": 120716603,
+        "paths": 168,
+        "unique_file_ids": 168,
+        "unique_logical_bytes": 120716603
+      },
+      "return_zip_logical_bytes": 56010464,
+      "transfer_receipt_sha256": "41e9647733cc039db75564110b95d968e5225674aa08981a0254a53ed63d4244"
+    },
+    "b06-corner-alcoves-r128": {
+      "checkpoint_sha256": "f03cfc936ee4c3fc6d250787b66790ba8e966e99e05a4e418b9b963bd8809da4",
+      "cohort": "confirmation",
+      "native_manifest_sha256": "a04ea75b2d44953d194cb33196c9c8e93450b024e48a28042d83b714169af78a",
+      "native_run_id": "20261124T121333216331Z-978c9b319b4e4b5d",
+      "output_archive_sha256": "0cef96b5f276b27717371414d1192224519b003ecb94c953c6f07c7ce26a1ffa",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 568517648,
+        "logical_path_bytes": 567587573,
+        "paths": 504,
+        "unique_file_ids": 504,
+        "unique_logical_bytes": 567587573
+      },
+      "return_zip_logical_bytes": 263774388,
+      "transfer_receipt_sha256": "f41ac5948e80fd9a3c60a03c5c198b2df726735d6367b7f5c2075fd8e0a8a17e"
+    },
+    "b06-corner-alcoves-r16": {
+      "checkpoint_sha256": "87e999e2e878283d25d688668c5f13eea5ad1e189791a20073005d171df477b3",
+      "cohort": "confirmation",
+      "native_manifest_sha256": "6f179d42c3cf97bc3bdd2ac337073bdf90433b51566a4582937c3d46057c198b",
+      "native_run_id": "20261124T121223138158Z-5dc4b64934f945eb",
+      "output_archive_sha256": "ddfc6abe0d1038c0fc5556c0f3a8e31a01432dcab4cc20a424a0a96cbe82dc21",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 123865440,
+        "logical_path_bytes": 123555391,
+        "paths": 168,
+        "unique_file_ids": 168,
+        "unique_logical_bytes": 123555391
+      },
+      "return_zip_logical_bytes": 57416099,
+      "transfer_receipt_sha256": "29e987ab58aa7c52267fb1fb8a89f01614b8a526df6af0f1d71f9c462c657a6f"
+    },
+    "bridge-r100": {
+      "checkpoint_sha256": "31e8b3dcbda1a5cd666274f1a567f6b632f0aa7a396b805ba7cefa0a31f616eb",
+      "cohort": "confirmation",
+      "native_manifest_sha256": "2215898fea2948777343f846368a0963609d383de02aac67ecf71880e7ee4b01",
+      "native_run_id": "20261124T121612286105Z-52a00916907b4de5",
+      "output_archive_sha256": "fdfbdfbda3de2bad38901b787655b0d2160864b4b55ebf8f98c076a3fc5a79a5",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 492119048,
+        "logical_path_bytes": 491227734,
+        "paths": 424,
+        "unique_file_ids": 424,
+        "unique_logical_bytes": 491227734
+      },
+      "return_zip_logical_bytes": 228810095,
+      "transfer_receipt_sha256": "0b84c7d3be1d635a9cd88ac113a6294f5bf1e766aa92ba09f77a78774083c893"
+    },
+    "delivery-area-r34": {
+      "checkpoint_sha256": "2c60b1116f03f90038cb0ed97e69d24aeeb26aacb2941d8c62c0a6698b9f808a",
+      "cohort": "development",
+      "native_manifest_sha256": "bc77af37ab86906092489bb467e944f2feac3993f001adc58c50134258777091",
+      "native_run_id": "20261124T114604860655Z-2ba9767754384a97",
+      "output_archive_sha256": "7c2e02b95df3594e606a941d0a270a86945a8de6ac982ec53e058c0f121be405",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 214021736,
+        "logical_path_bytes": 213589376,
+        "paths": 226,
+        "unique_file_ids": 226,
+        "unique_logical_bytes": 213589376
+      },
+      "return_zip_logical_bytes": 99811953,
+      "transfer_receipt_sha256": "bafa287849c6144086da91fab150c039d23ea6de0a690ddfb9a323924c14b289"
+    },
+    "living-room-r55": {
+      "checkpoint_sha256": "f5eb1104c5a956c14411e75a5df4e44deb9df957ff47af33c6e0c46c56863212",
+      "cohort": "confirmation",
+      "native_manifest_sha256": "171287bb5d6e7a36a49ab5b3173190efadc5dd0408bd74e82ef4251ab0803d8c",
+      "native_run_id": "20261124T121458701680Z-70eb2510bd714d6b",
+      "output_archive_sha256": "60504b7ad48bee035e9cefcd8e839b25c540cecb4b2331ad74e1ee367bdebf7b",
+      "resident_files": {
+        "alias_paths": 0,
+        "allocated_bytes": 295310344,
+        "logical_path_bytes": 294746072,
+        "paths": 289,
+        "unique_file_ids": 289,
+        "unique_logical_bytes": 294746072
+      },
+      "return_zip_logical_bytes": 138096469,
+      "transfer_receipt_sha256": "656a930ad9838fe31decf9073abec0d76fb7d3af28f1a3b5b0004d4d2020e71c"
+    }
+  },
+  "pre_B_volume_baseline_available": false,
+  "prior_six_delta_parent": {
+    "manifest_sha256": "f330f6b7afb67f87e4dfe5aa487a8f72fbeb62cc71dc3c6f3901488b3f3ef2e4",
+    "member": "payload/storage.json",
+    "run_id": "20261124T122342711445Z-00bb015b3f1a4207",
+    "sha256": "0d9c03d3860076441846dc1ef27e94a6150f144233905c8161ff4ce0ec441aca"
+  },
+  "purpose": "Period-end B resource accounting across 15 Windows fits and one separately identified dependency check.",
+  "reclaimable_disk_bytes": null,
+  "relation_to_prior_six": "The six confirmation fits already appear among these 15. The earlier before-and-after record measured those six over its own window. Its figures are not added to the period-end stock.",
+  "retained_runtime": {
+    "bundled_fit_software_subset_already_counted_in_working_copies": {
+      "alias_paths": 0,
+      "allocated_bytes": 2400360,
+      "logical_path_bytes": 2127240,
+      "paths": 135,
+      "unique_file_ids": 135,
+      "unique_logical_bytes": 2127240
+    },
+    "shared_environment_net_new_bytes": null,
+    "standalone_installs_identified_in_dedicated_roots_allocated_bytes": 0,
+    "unattributed": [
+      "Existing Python environment and interpreter",
+      "CUDA and MSVC toolchains and compiled gsplat extension",
+      "Shared caches and mixed-phase recorder state"
+    ]
+  },
+  "run_id": "20261124T125054498049Z-2b2cf8a105114b8c",
+  "schema": "el-dual-track-final-windows-storage-readback-1",
+  "temporary_and_remote_copies": {
+    "copy_scope": "Each fit had one local return ZIP in addition to its native run tree, and one distinct remote archive with a full-byte receipt. The auxiliary check had one additional ZIP and remote object. Windows totals charge the distinct local file IDs. Remote storage, Drive client caches, Mac staging, and downstream packages lie outside the Windows roots.",
+    "dedicated_final_scratch_runtime_home_cache_files": 0,
+    "dedicated_final_scratch_runtime_home_cache_roots": 48,
+    "fit_archive_objects_verified_in_remote_service": 15,
+    "fit_archive_remote_logical_bytes": 2392041507,
+    "mac_stage_and_cache_allocation_in_this_survey": null,
+    "previous_six_only_sampled_temporary_peak_logical_bytes": 14164820,
+    "provider_physical_replicas_or_bytes": null,
+    "separate_inventory_archive_objects_verified_in_remote_service": 1,
+    "separate_inventory_archive_remote_logical_bytes": 144787,
+    "temporary_scope": "The 48 endpoint roots cover 15 fits plus the dependency inventory. Retained staged inputs, extracted workers and recorder source snapshots are working copies. The earlier six-confirmation transient sample is a separate lower bound."
+  },
+  "totals": {
+    "all_identifiable_B_files": {
+      "alias_paths": 0,
+      "allocated_bytes": 5153874744,
+      "logical_path_bytes": 5144146349,
+      "paths": 5050,
+      "unique_file_ids": 5050,
+      "unique_logical_bytes": 5144146349
+    },
+    "dedicated_queue_controls": {
+      "alias_paths": 0,
+      "allocated_bytes": 184848,
+      "logical_path_bytes": 170510,
+      "paths": 13,
+      "unique_file_ids": 13,
+      "unique_logical_bytes": 170510
+    },
+    "fifteen_fits_direct": {
+      "alias_paths": 0,
+      "allocated_bytes": 5153157800,
+      "logical_path_bytes": 5143567157,
+      "paths": 4968,
+      "unique_file_ids": 4968,
+      "unique_logical_bytes": 5143567157
+    },
+    "fifteen_fits_with_dedicated_queue_controls": {
+      "alias_paths": 0,
+      "allocated_bytes": 5153342648,
+      "logical_path_bytes": 5143737667,
+      "paths": 4981,
+      "unique_file_ids": 4981,
+      "unique_logical_bytes": 5143737667
+    },
+    "separate_dependency_inventory": {
+      "alias_paths": 0,
+      "allocated_bytes": 532096,
+      "logical_path_bytes": 408682,
+      "paths": 69,
+      "unique_file_ids": 69,
+      "unique_logical_bytes": 408682
+    }
+  },
+  "unit": "bytes"
+}

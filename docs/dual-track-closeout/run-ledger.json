@@ -1,0 +1,2732 @@
+{
+  "B_complete_cut": {
+    "accounted_cpu_core_seconds": 1980.991457401,
+    "all_manifest_logical_bytes": 17012824824,
+    "allocated_B_archive_bytes": 12610924544,
+    "fit_attempts": 15,
+    "gpu_fit_worker_seconds": 1090.7340000000113,
+    "max_allowance_uncovered_seconds": 4114.6640275241225,
+    "unique_payload_bytes": 8674980911
+  },
+  "B_scientific_cut": {
+    "B_working_directories_allocated_bytes": {
+      "isolated_research_runtime": 583147520,
+      "stage_controller_configs_and_logs": 2707456
+    },
+    "accounted_cpu_core_seconds": 1978.417601153,
+    "all_manifest_logical_bytes": 16462443764,
+    "allocated_B_archive_bytes": 12485156864,
+    "fit_attempts": 15,
+    "gpu_fit_worker_seconds": 1090.7340000000113,
+    "max_allowance_uncovered_seconds": 3874.2179705440067,
+    "science_failures": 6,
+    "terminal": 188,
+    "unique_payload_bytes": 8674693592
+  },
+  "additional_native_intake": {
+    "fits": 0,
+    "later_verified": {
+      "manifest_sha256": "542a6e65a3dc5a1cc8bb7791b7cc50018346d3e608307a3807d16835fcc0e392",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T112518136526Z-ad36035bf5ba4482",
+      "sha256": "7602c49bf5f5d0de95162709bbdcfd933a27c9ec1e40ba6d7f1d4e5bb787b371"
+    },
+    "original": {
+      "manifest_sha256": "53e53b894f32c1123966ce8699036c61817b299041941de967bd1bdc20ae764a",
+      "member": "payload/inventory.json",
+      "run_id": "20261124T111815754014Z-0cc09e7b0bb448f3",
+      "sha256": "b4a174a72d1d438220167c553baf2a0e4ce97289f789cc629801f6870f33713a"
+    },
+    "original_direct_parent": "quarantined: input assets missing from declared parent: kit"
+  },
+  "counts": {
+    "A": {
+      "failed": 9,
+      "succeeded": 48
+    },
+    "B": {
+      "failed": 7,
+      "succeeded": 192
+    },
+    "C": {
+      "succeeded": 11
+    }
+  },
+  "cutoff_utc": "2026-11-24T12:46:35.931583Z",
+  "native_records": 267,
+  "rows": [
+    {
+      "exit_code": 0,
+      "manifest_sha256": "8eaee10f71f535d5b8d5d890398b36f19a74b54c2a449c00d27ffb663300ac3e",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103042596974Z-ca5a82e33fe74514",
+      "seconds": 1.5774117920082062,
+      "stage": "a-start",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "df1e3fcf21526b953e941aa8558a291dab77d88eef63b14520b8a927cbc0a696",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103259188293Z-aab3a6a9bfa940be",
+      "seconds": 0.39066200000524987,
+      "stage": "a-grid-registration",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "dffb3231fa7a92cd3e10940635a29a3dd86380b07a6025348a6ce2efab83ba51",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103429612913Z-b5ffacee84404629",
+      "seconds": 0.5135696249926696,
+      "stage": "a-bell-register",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4bdac9d9409ebc20c63b429f7221c50d9e4bfc8a4c6ccdccdc8acfc531a1f0ab",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103446699503Z-ff03b123a9cc40b2",
+      "seconds": 0.429245000006631,
+      "stage": "a-bell-packet",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5c0f59f4bb8201d9fadef7e5d8075f74c6c7aa4f404b89cfef74990dd19ec455",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103519235634Z-22f0aa7aa21d4291",
+      "seconds": 0.4172921249992214,
+      "stage": "a-bell-register-six",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0683b51f0e49605ff2d9abc5637e020ebbad0e8293106692342e96b8777a6cf4",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103519992679Z-77b2dff244ae4fbe",
+      "seconds": 0.38382454199017957,
+      "stage": "a-bell-packet-six",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "bdfda2728ac7819d68f8cef4dcb2e37ea566e74a35c8ef0fcc4781e7d48e647d",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103607311608Z-1c1924bc9f9d4d2b",
+      "seconds": 0.6310552499926416,
+      "stage": "a-analytic-geometry",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "fe3e480fc8188eae6b4dce19ff84adfe7be0a07f7bd5beadd03c53abed15fd71",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103707954179Z-dea6da9b96b046b6",
+      "seconds": 1.2995570409984794,
+      "stage": "a-bell-sources",
+      "status": "failed"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "c7da2fc4a0bcb2dd5073c41d4a0f3f18f908a6a88a854f26082b5d3fa8f15bc6",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103721991451Z-89cc35880a7a45c6",
+      "seconds": 3.4868643340014387,
+      "stage": "a-neural-official-mac",
+      "status": "failed"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "964f03ec2628ea3946b46b8f729718455078f570ffb133e80dfecc89c41eb245",
+      "phase": "A",
+      "receiver": "quarantine",
+      "run_id": "20261124T103741046414Z-2c508d595d91429c",
+      "seconds": 0.33159499999601394,
+      "stage": "a-bell-sources",
+      "status": "failed"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "4b05ef43b79e1c9ed595b617e8bc6acbeb447fb503e9b67e78f47f14b9754c42",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103808757177Z-76ae82a525294877",
+      "seconds": 0.5470000000059372,
+      "stage": "dual-track-v1-A-windows-baseline-48b03a51",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "cab1f5fa0c7b16df3d798fb59e2179b14a7f6c18669685c293d762fa24522237",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103833530888Z-f21c7f685b114ec0",
+      "seconds": 112.88202425000782,
+      "stage": "a-bell-source-observations",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "025e8ca1daf56cf3ae8db52a56e169bad3c9c7d013f1f6ba0e229495a620825a",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103910069300Z-d9e923a9ba404f3b",
+      "seconds": 10.656999999991967,
+      "stage": "dual-track-v1-A-windows-baseline-48b03a51",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "44ed994e13e1470d6440c733dca3c509b5892e08619d797846c360a4e03a46f4",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T103940117496Z-30ff85801bf4405c",
+      "seconds": 1.5319728339964058,
+      "stage": "a-upstream-gaussian-contract",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "8a179453fa7663896a46bd546e0d349be64bb6c013d84634131a9915c3b6f005",
+      "phase": "A",
+      "receiver": "quarantine",
+      "run_id": "20261124T104059465924Z-5975fc7625aa4881",
+      "seconds": 0.6211136670026463,
+      "stage": "a-neural-official-mac",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b3040f3a727c5cf0574d818e124df5054ac393dc894fcb6be4a5c9a51933fd62",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104108441524Z-e9292e7202f24cd8",
+      "seconds": 8.235000000000582,
+      "stage": "a-bell-gpu",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5da45d5aefdb446d22542b69a5d1208ab6daf8e2033b4c45729d024b264613a4",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104121794287Z-5436a860b4d74ad0",
+      "seconds": 1.7942032089922577,
+      "stage": "a-win-start-failure-receive",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "e52d74d4bce5b9583959fc472c5f1b2f2c593a202481b6d51e006bc59257af4a",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104149601058Z-9ba146c4aec44a5b",
+      "seconds": 3.9268480409955373,
+      "stage": "a-win-start-receive",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "890a3bcb40ab8df74401506e1acb47d0771237679c06d3bdcd231ae26ad2ebe2",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104152131150Z-1eeb3b9eaa4846be",
+      "seconds": 1.7725551659968914,
+      "stage": "a-neural-official-paired-mac",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "364ab8d092e6bd449ec30085d5677fcd9f76fbd40acae920cc28a28ea51bdbe8",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104214538720Z-d2fdaadf100546dd",
+      "seconds": 6.298575332999462,
+      "stage": "a-neural-dispatch-mac",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0e00c072a6cf3957ae91636d37ff4da87bf44488461e5822cb4b42c8d72a0362",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104420734922Z-27b351b00efd4a35",
+      "seconds": 0.5916747500014026,
+      "stage": "a-bell-gpu-readback",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "ce9728d7abe2131d5c7e1aa98266a5aa7df93ea9501d7f7a36c47fb728133d7b",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104422343034Z-8d14e2cf26784a77",
+      "seconds": 0.6924731659964891,
+      "stage": "a-bell-bundles",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "034f1b9735734e7931953da40f30c498ea66ca40924b361dfa90da44b2155956",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104507616076Z-ce303b94f64c4b60",
+      "seconds": 2.263779417000478,
+      "stage": "a-bell-bundle-publication",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a4ef9e6aeb484a40cb819bd163d7b1d71a7377410e63eee8afe179a193948b4f",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104725823548Z-ae3cfab9e9044b6c",
+      "seconds": 0.4448193339922,
+      "stage": "a-bell-evaluation-program",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5a6e499fadebe7a21e701b4288f9ac16d0fc32d15d52302a4ff60a754beef751",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T104904746168Z-ade24820af934b9e",
+      "seconds": 0.7491944590001367,
+      "stage": "a-bell-source-delivery",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "fb2c1cde9957d0bc31c7d68a5418da0560eb9d0e95ed79ab0018b552eb7821fe",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105201022248Z-045c4fab18334e86",
+      "seconds": 8.10769008299394,
+      "stage": "a-release-build",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c67bf4657450a4fe2bc8d40ea545b197672b5010c75f890664f0b13e8fb68be0",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105220247551Z-28a3eb61f99d4dd0",
+      "seconds": 93.41583058300603,
+      "stage": "a-mac-install",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "015d84ac5d12d7614a6ebc28ee966978cf55a29965dfd7815a3d79d065f442ba",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105237492246Z-7584964e03fd411a",
+      "seconds": 1.161470000006375,
+      "stage": "a-cpu-platform-ticket",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "16aaf9dadc68cf19c544f7fa08763d2547f6c892c4c8db30fd962287d82f9872",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105248380410Z-f4f0c9c05b884896",
+      "seconds": 25.33482274999551,
+      "stage": "a-linux-installed-default",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d8847ba824262c6ae706b65a9839a26a900020a214318d33b7afc66a2267d217",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105254661455Z-667dd92916214bc9",
+      "seconds": 0.8636674159934046,
+      "stage": "a-cpu-platform-send-packet",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "19f05343cd76721f2a2ebe114e2bb54d1f5b1d57e97f34a3853803a74a41a9c0",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105256036664Z-99987326348b47b3",
+      "seconds": 0.8271295409940649,
+      "stage": "a-cpu-platform-send-dispatch",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c849b7ef0148c7956473793aa50a094b78db2816cf9f0d7c32028d810e85e07a",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105345771716Z-58e595b60db849e0",
+      "seconds": 0.6296188330015866,
+      "stage": "a-recovery-render-control-ticket",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9d581759aa4a42cf8e1f19ba025ed3d6e6dc7e1c9890bae18b2adad7f4f311ce",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105410830021Z-58316bf5f04c45d6",
+      "seconds": 1.8385507919883821,
+      "stage": "a-bell-scores-sealed",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "43fd49833ec56d30a69a6d94fe4b2ea462e6aab6209537f0d062c4fdb748c360",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105431215976Z-d94eba701d3f4a9f",
+      "seconds": 0.6511706250021234,
+      "stage": "a-bell-reference-opening",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c932dbc5c826c3fddf1b46d62257cae0435c55ef7ca3e58ae7b62c5cc84c3495",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105437629810Z-8e19b026a0f74854",
+      "seconds": 42.383596541010775,
+      "stage": "a-bell-references",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c0bc121e9efe996ea53ab3bf1b8c41fd3c7b9ebea442906fc72d151635f64b3c",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105444479046Z-9ab8b0dd490d428e",
+      "seconds": 0.6380724579939852,
+      "stage": "a-mac-array-projection",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "12a23501c1d8830fa39bec8760d435b2ff72e54d7cba9fb2e9998bb2cb6f51b8",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105457995316Z-64ac4dee228d48f5",
+      "seconds": 16.76880895899376,
+      "stage": "a-immutable-source-tests",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "959e5517d13585e4da3f89fa87952148e1c45eede38dd9be74d12da59a101aca",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105500965068Z-3bfd303887f04a44",
+      "seconds": 1.9555327080015559,
+      "stage": "a-installed-differences-linux",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "c532946427a115beecedf0dc7141426a6a0cd2ee89780ac78876bec0a1e2b564",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105549226225Z-d1c4da84ffa34544",
+      "seconds": 0.7256457500043325,
+      "stage": "a-bell-landscape-comparison",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9e387d0780eeaadffccda101f508dd97dbce376045a7669eb321ecf5dea471e9",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105646629361Z-f9188fcd1fba44dd",
+      "seconds": 0.5477311660069972,
+      "stage": "a-bell-reference-delivery",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "135333fa312898084891b0d7da21d1a9bf3518991c33902d5e689ab0c98176bc",
+      "phase": "A",
+      "receiver": "quarantine",
+      "run_id": "20261124T105723650879Z-c3d1fc2159fd4c1f",
+      "seconds": 0.6040503330004867,
+      "stage": "a-bell-landscape-comparison",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f7a7396827ad7554173c813fcf43b246a4425d64fd485da992cd4e8ecf090c8b",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105844729451Z-fef3e06c7c18437f",
+      "seconds": 1.935581457990338,
+      "stage": "a-bell-landscape-comparison-packaged",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3e296fcac11fb1d66d259c56739fac811f9d93d6fac059c8c0f78692eb744330",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105923609985Z-c043c03d0ef34189",
+      "seconds": 321.375,
+      "stage": "a-cpu-windows",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b8b3bf60522298d2fff48d5e8eba5154c756ff290fbf2447b4c32e52cf9ffc54",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105923921105Z-8f0ab49d618f40a7",
+      "seconds": 4.375,
+      "stage": "a-recovery-gpu",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "7ad46a32af5ecdb9606ad1d38223f1cd865be5964eeac2139716955d8c88aa55",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T105950326371Z-03f4bd18fdbb47bb",
+      "seconds": 8.338601708004717,
+      "stage": "a-upstream-wheel-tests",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "e234937ea48060416847c41077d11e4c0cae04fb7064253b781c315e456c00a0",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T110046521347Z-437364201cb44edb",
+      "seconds": 0.48897670798760373,
+      "stage": "a-recovery-render-agreement",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "36a56ac50debc612021616fd046b2ff92d34c71f014cc3d6369b78f8073a34c1",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T110055552458Z-cef6d53b30794c59",
+      "seconds": 0.4804138749896083,
+      "stage": "a-upstream-report",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a08fd95701c65906674f5f121668767e614345782dd9b036aa97745adf185c52",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T110950806073Z-fef5adc80f7a4a3e",
+      "seconds": 0.6011693750042468,
+      "stage": "a-windows-installed-intake",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3db49c2cc9148965d8b79a5cdac30ab2ed41ca1c48692841da121fdc56581027",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T110957643338Z-361bfe3b5fdd4378",
+      "seconds": 3.786817499989411,
+      "stage": "a-installed-differences-windows",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "46f275db7c74964b70e8e0da1a6f2a72bc71397962be9f57018252c0f51433e2",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111022251114Z-43d4686a35e8487b",
+      "seconds": 0.7643208340014098,
+      "stage": "a-platform-public-tables",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f52e732a7a41bb91bfdc1e348f675c10f5e5adcda153b705112a9c36938736f7",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111056914118Z-87cbfc82be534830",
+      "seconds": 0.6776008749875473,
+      "stage": "a-baseline-evidence",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111058386191Z-d99a4c418276454c",
+      "seconds": 0.7413593329983996,
+      "stage": "a-baseline",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2caa3e1f20ac8631a92bf2f8414884c4661d98f17d862765e6987e9462f1ca6f",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111106938281Z-cd89443d5e624ba9",
+      "seconds": 3.418517750003957,
+      "stage": "a-push-release-commit",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9b2c309af16f147bbdfcab91955153439edd06a6733082ac3c55788fea2e24c8",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111111196651Z-20c20ee6003b4200",
+      "seconds": 12.779020959002082,
+      "stage": "a-github-draft",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "20dc299ba372dc183042d79a2ec5d0fd50de453b3179a32a75e1ffeff96b92f8",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111125138114Z-6196d1a91dbc4792",
+      "seconds": 4.58107558300253,
+      "stage": "a-github-publish",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3233d5986c719a891e07ffa1998e3efae8842c40984af88a55807fcbd89600ec",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111130398649Z-9f07d2bcce9b4ad7",
+      "seconds": 11.426777750006295,
+      "stage": "a-anonymous-readback",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "8040ad9485ba3adc0b055702c6974e2e0e8b8d57c6eaebfb8bef631ee5718fed",
+      "phase": "A",
+      "receiver": "runs",
+      "run_id": "20261124T111355874751Z-fd4b2065eedd4bd5",
+      "seconds": 3.207325333991321,
+      "stage": "a-push-public-receipt",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "71a3e0f0809b8548886540ce293f4a2fcf51ee5bbf230ba4813dd3cd04e796a4",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T111427871042Z-f3910047cf8244ae",
+      "seconds": 2.3662176249927143,
+      "stage": "b-upstream-vendor",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T111533951307Z-8b7523eb307440af",
+      "seconds": 0.6705732920090668,
+      "stage": "b-study-registration",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "21175437a236664e86db780a115c66b5016872f07d9bfac0d7c3bbcce7e04d14",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T111537305132Z-2244a0f585274730",
+      "seconds": 0.43256250000558794,
+      "stage": "b-data-registration",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "8b26632ae1ea63c44dfab73b047de99515527c32104de867e7a65fff03a527cb",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T111642208508Z-fd10f60606da4a70",
+      "seconds": 201.5256169159984,
+      "stage": "b-eth-download-living-room",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "dcd7445d695da17ea4e5b4e14c1cfcaa3ba785cc74ac7a78ac44edbbd785844c",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T111642208832Z-700101acdcab4427",
+      "seconds": 277.7129902500019,
+      "stage": "b-eth-download-bridge",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "15065ed8262d32eac07ae5472fbc2509a44d661f82a8d45d46860b58294e2d33",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T111642211801Z-77e8ef10771743c6",
+      "seconds": 157.31408112500503,
+      "stage": "b-eth-download-delivery-area",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "30b0c1f3373a3d7c30b93936a1bb9dfcb7eb0ab4a53b5936fb58929463783013",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112117071101Z-3603d4c5272148a4",
+      "seconds": 13.72124770800292,
+      "stage": "b-roles-delivery-area",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "630a17d68840c15605266726c5dd0efa3886ab473189962890cee009366eda45",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112216513044Z-4e366e50a860466c",
+      "seconds": 35.42657566600246,
+      "stage": "b-roles-bridge",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "abdb9f6796e302b7b12aa09eb9a68e884ca946cbc9af3de99e48601636588267",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112216537451Z-8d61ebd3470d45f8",
+      "seconds": 20.17650400000275,
+      "stage": "b-roles-living-room",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "6a824830b3a3aebea79ff735297f5f99c0b77accf266722756ce180b95fc6145",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112333282690Z-3349cf54c5fe48ea",
+      "seconds": 4.8061629999865545,
+      "stage": "b-source-b01-staggered-arcade",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "536d89c4979c0ca3ca03cd89109edaef9ffc88b2a6429ac882653287966a86f5",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112333282800Z-0197f43dcaca42f6",
+      "seconds": 4.847674791002646,
+      "stage": "b-source-b04-layered-louvers",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0c70d8f1c742a10853f1317f2f4edb2b2057f2f701dba3ebdcebf522d9420f18",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112334129638Z-4ce7a35f523b4c9c",
+      "seconds": 19.595997750002425,
+      "stage": "b-source-delivery-area",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9afd5ff6bdca6bdd58e7bd8242c257e1a3025b0352227568c1dcc4b8f45b11c0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112431208585Z-af80abb007274dc4",
+      "seconds": 4.754876292005065,
+      "stage": "b-source-b05-perforated-gallery",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0d69884e17fd564f0205022734c079af4453712a86cea7d38173bb8630408101",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112431210575Z-2db6b46a51c64208",
+      "seconds": 5.3246995829977095,
+      "stage": "b-source-b02-terraced-court",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c79094fcb798a7e8fbd256cfb5d5b7d5cdb81e4e3bcf07a442f98593629fbffe",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112431210710Z-655cbe3343d14f85",
+      "seconds": 5.0916429170029005,
+      "stage": "b-source-b03-woven-truss",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "acae6e949a511034a1154c5a769065792a3074b573f8c3676727fcaa39914c2f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112431212025Z-98c8dcbbe67c4ba8",
+      "seconds": 5.838625582997338,
+      "stage": "b-source-b06-corner-alcoves",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5eb81a6c05c5c5b9ada7baafb96591d1435a92b280e82ec77cf2ac9569b78d20",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112433616854Z-c41f23090d0f41e2",
+      "seconds": 31.003469415998552,
+      "stage": "b-source-living-room",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "238680f01f3ab95ea65d6258c4158ae3e4a0a85f7edf69d0b8219591b1ba12da",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112433621816Z-f07bfcbf31d74bc2",
+      "seconds": 55.55792279200978,
+      "stage": "b-source-bridge",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "542a6e65a3dc5a1cc8bb7791b7cc50018346d3e608307a3807d16835fcc0e392",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112518136526Z-ad36035bf5ba4482",
+      "seconds": 0.782500290995813,
+      "stage": "b-upstream-runtime",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112608015631Z-d740f790af184ece",
+      "seconds": 0.5891373750055209,
+      "stage": "b-train-dev-h-opening",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "e33388c84a10c0e68a72c7bb70cd12681574206689534fc1218c4739f7974465",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112628578723Z-6afa94ef7341497f",
+      "seconds": 1.8762127090012655,
+      "stage": "b-upstream-objectives",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ff53d45bda350a3a25c6f7a3da31e1ae1b712fade3bb83da0a1f0e5cfbc4774b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112631071665Z-d29f7055496a4703",
+      "seconds": 0.7142867079965072,
+      "stage": "b-upstream-recipe",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "e3f5ae87e5024ede2348ddd359996cc2ce7094270c24e577f66784d74fc518a5",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112631908327Z-d834eb6e4fea4fcb",
+      "seconds": 2.1917904580041068,
+      "stage": "b-truth-b03-woven-truss",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "456566397f173882011c5123bc85ad09c4f9a5fa5625c4e8415fc3dd1bb7f335",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112631910365Z-674dd8105eba42e5",
+      "seconds": 2.441975124995224,
+      "stage": "b-truth-b02-terraced-court",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f35a4f16d80c2d8485f272af99e0abcc2319de5657711536f547211a67adebab",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112631910396Z-8a7ad22ad1ae42a1",
+      "seconds": 3.2915556670050137,
+      "stage": "b-truth-b04-layered-louvers",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d7a573714877a5d4b8ed4330036b343c02503d63cf26419cf1756059f3c84781",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112631910483Z-ac17996f5a844c25",
+      "seconds": 4.089627249995829,
+      "stage": "b-truth-b01-staggered-arcade",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "44ce2a5f08187fe28f02037836af3e39300cb89a4dceb20f6fea2ddc5e3ca122",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112632350660Z-1e3b6b367cbf4f28",
+      "seconds": 6.357961874993634,
+      "stage": "b-sfm-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c8eaa997b2d468fdcb1a1a8a365ddd906d76a0cddc9e4f6ed1a4dd29625846c5",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112632671322Z-c9428ddb7a674e0b",
+      "seconds": 16.026392250001663,
+      "stage": "b-truth-delivery-area",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0f1b66861f4486df93106644e6f80c30c3c8474cf321c62031e164fa95f1ffa4",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112639119869Z-f1762728137d480f",
+      "seconds": 0.7455910839926219,
+      "stage": "b-fit-ticket-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "995d6d6720d1c248c1f0e90cc65346a1e435f8963e402ba1964cca538725d31c",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112718072315Z-867a246fecba435d",
+      "seconds": 3.896286000002874,
+      "stage": "b-sfm-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "78341786c8b4e07842cc8c11da049f45fe2b165386125001f6c883b84983c84a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112718072332Z-1aba431e80194feb",
+      "seconds": 2.4624310000072,
+      "stage": "b-sfm-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "92a71a11b47352ea2300d853f48e5dc17c34a86a9ad2332c4a09fe44f4c2dca6",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112718072436Z-2b77e7ba0c3a48c2",
+      "seconds": 4.412996999992174,
+      "stage": "b-sfm-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "7fc942642f82b900da4ddb4b02f913b75d024797f95728ea7459616a84eb58df",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112718206587Z-c0809c35a5e1402d",
+      "seconds": 4.4329538340098225,
+      "stage": "b-sfm-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "aa111e513af28ed918376c86942e747fcb6771088f1a61f53ac26cd2f0f3731d",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112721062369Z-0095e49ea9b841d4",
+      "seconds": 1.0555364580068272,
+      "stage": "b-fit-ticket-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "541ae02ca2b4393ce5899d22b31b2ee67bf8819e6f9d0671555f1d219910b6f3",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112722439522Z-c2032d6f282d4b99",
+      "seconds": 0.861396500011324,
+      "stage": "b-fit-ticket-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c004ecaffd1262e80665acf551ee050f9e23a705416adc7f89d28c7f2169027b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112722948707Z-f62403d28a4d4f50",
+      "seconds": 0.8338130000047386,
+      "stage": "b-fit-ticket-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a4f68b68ba72da8bb1e4f379b3c510577d01c485b369796761536af288ac04db",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112723519064Z-8837911e98564667",
+      "seconds": 0.8411959579971153,
+      "stage": "b-fit-ticket-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "965944187d032e67ee80df03b36368dd63e22cba7894252ddcd42fdbb89fcc04",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112812170978Z-2d0f033ea4124e8f",
+      "seconds": 15.066897208002047,
+      "stage": "b-sfm-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3652374bc46758a89f81d155e68ee1b0f63a724ab891d25fa83c1eb822003b14",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112812171326Z-b9e9d9e00c1a4038",
+      "seconds": 15.543027000006987,
+      "stage": "b-sfm-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "08510bb4cc8c50e6ab714f5952a633446b4cf820cea3748f067e73b70ff3d3e7",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112812171400Z-c6128a015d614409",
+      "seconds": 14.049735292006517,
+      "stage": "b-sfm-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "31bad294a2cdb07b19826de127b5e44f639182ed80c72159ecebe2cc711ef5b8",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112812172055Z-ccaebc74e60c4784",
+      "seconds": 14.590111750003416,
+      "stage": "b-sfm-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d91cdad6531e816208dd80caa68a34fe521cb296e4ca78aab7303f6c2f8ef1b9",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112827204188Z-cf6af26d8f5e4db1",
+      "seconds": 1.3536154169996735,
+      "stage": "b-fit-ticket-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4ca4cd31438ae6101722dca98640a1cff3f0e26621899139f9248ef60c3b9eab",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112827607681Z-45dcb455baa84869",
+      "seconds": 1.4014118329941994,
+      "stage": "b-fit-ticket-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d13361bd25490dd654ca99fcbca355db8fd65a8a81e80cb63c3bc271ba582b12",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112828967909Z-87a65547c9024495",
+      "seconds": 1.17203270799655,
+      "stage": "b-fit-ticket-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ec021334414f82559fd04aed8046b160f35872975ec47dfc21ab4a2dc213d151",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112828976048Z-6ae313a4956f4674",
+      "seconds": 1.5723632919980446,
+      "stage": "b-fit-ticket-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2c2929dc7323fa80b4d7bd9e64842c8fbe89082122d5609d5b04fd90e540038d",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T112946015168Z-763e43c778fe4d7b",
+      "seconds": 1.0751977919862838,
+      "stage": "b-score-core-build",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "seconds": 6.21601954200014,
+      "stage": "b-score-runtime",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "46769fea258f28eb6297432586f0795a94083d74de3fcd5f829e59f80a18aee4",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113100222841Z-f4483b1a47124aad",
+      "seconds": 62.0,
+      "stage": "b-fit-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "cf94466bbdfdcef23c3dcc6d07457cab54b2d541f1298f11d194c6d2656f0c09",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113353240898Z-a6319c6dd9aa49e1",
+      "seconds": 3.3342175419966225,
+      "stage": "b-data-preopening-audit",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "8e04f790c4e727e1b3e116c4d4699ee0c90a66517af8ce58cf1385cecce616d0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113528393538Z-24d7c1bbf14744c5",
+      "seconds": 0.8038059579994297,
+      "stage": "b-bank-engineering-protocol",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "07bbd675278ffc2050263a4a5496d190b9e5db0f60be301e0c796e09a0039769",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113624317227Z-b0cf54c4c9af4654",
+      "seconds": 0.8207776670024032,
+      "stage": "b-visibility-probe-registration",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "83bc29ab404448a64c552f61ac1e85332ad031bd24c3cabe65c339fd731cceb2",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113848569248Z-4e427613e47143bf",
+      "seconds": 1.0736782090098131,
+      "stage": "b-bank-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3ed9d01ed4888e27a7ac2732d73d7dbc0c1ef40732649601e0e6d60ec3f13418",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T113938671888Z-54034a86b30b405f",
+      "seconds": 2.430756959001883,
+      "stage": "b-bank-performance-prefit",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "17c0a07c838428efbcf0fae02ce50f3a560726593633551df563008a69d407eb",
+      "phase": "B",
+      "receiver": "quarantine",
+      "run_id": "20261124T113953320978Z-a79b0324cf814b1f",
+      "seconds": 0.7209607089898782,
+      "stage": "b-visible-b04-layered-louvers",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "da2a8490d85834f4ebdc484b38dd621cea69b77e0d0a9448fe87b4e83f637084",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114123376746Z-580c2d861b034bf8",
+      "seconds": 1.8893137919949368,
+      "stage": "b-upstream-adapter-examples",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ff21b463ae2d102a9a2b14149ee294134ede8f60cfdf9a79f9c19e19039946c8",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114123426008Z-2361b975966e45b8",
+      "seconds": 1.5683881659933832,
+      "stage": "b-upstream-dev-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "3c01a4df182c1ae144689bb13dcdcbb5cf173903d913c6d7eba913e4e9bfefeb",
+      "phase": "B",
+      "receiver": "quarantine",
+      "run_id": "20261124T114123475123Z-cee29c0f2bf94c31",
+      "seconds": 1.9353092090022983,
+      "stage": "b-exact-visible-b04-layered-louvers",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "213c1000c8d84d0695bd4c121bce11595e65fb23e470bb30707dc69bd7721e36",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114125891178Z-6fade8b4462d4c42",
+      "seconds": 1.511649624997517,
+      "stage": "b-external-import-acceptance",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "982f9ff04de314630d8214e09fcc361a7a2dce163f6cdb0a845bcb49fb8b7f96",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114127469301Z-93f47cf2d6cd4b10",
+      "seconds": 0.8537252090027323,
+      "stage": "b-pilot-budget",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b734132005d70fb905cf9177bf11aae1b0ec013956ebee931597b8eddcc59dcf",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114130104099Z-38e6aed4504a41fd",
+      "seconds": 0.8402898750064196,
+      "stage": "b-training-development-fit-queue",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c4b78d20c63bc85905e996f94f6a853aaf85020bb1c31064d9a2d5071f02a1c0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114225965207Z-4b061de5a3f347f0",
+      "seconds": 0.9071597089932766,
+      "stage": "b-visibility-source-geometry",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a3641096e565a7c17cb94f756fbb3966c5044c819ea0b58142167fcdc8fb7b5b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114227910367Z-f44d579367b14227",
+      "seconds": 1.8006665840075584,
+      "stage": "b-exact-visibility-b04-layered-louvers",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5413ad7f2e68bdd8b2ba85db28e55b871bb2581da38a0ec6e6a5231024de7cde",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114243846929Z-9e3bdac090694218",
+      "seconds": 1.5785967080009868,
+      "stage": "b-exact-visibility-b03-woven-truss",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "42a7fa5988b1ca4fa93581ad05bc5adb0147d4f24511d92aa461de24c8cfd28a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114243847084Z-67ca9a7965674755",
+      "seconds": 2.1848469999968074,
+      "stage": "b-exact-visibility-b02-terraced-court",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ef23f7ce58d0951801607c7ee77597c43e49b5d0d66cb7a920efe4f4529a6f56",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114243862274Z-3855bae867b1496d",
+      "seconds": 2.7888037500088103,
+      "stage": "b-exact-visibility-b01-staggered-arcade",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "bc77af37ab86906092489bb467e944f2feac3993f001adc58c50134258777091",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114604860655Z-2ba9767754384a97",
+      "seconds": 60.09300000000803,
+      "stage": "b-fit-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f953b1ba8583066832d96c87a34b8f264ffdf7f7712129b137b044ef9c29bc02",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114706966682Z-1e52853f5b324244",
+      "seconds": 64.32799999999406,
+      "stage": "b-fit-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "1d71327533c257e998eb16e12051a705f26f598ef426969b271c72a3514553bc",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114732370148Z-2abbf51676c54cdb",
+      "seconds": 4.982492915994953,
+      "stage": "b-development-science-interface",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "7100dbf7e2a41357ecf52d2669af5784215997c6aaab25ca6409e7cdbdfa09bb",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114815071134Z-6ef6d6917d9c433b",
+      "seconds": 82.59399999999732,
+      "stage": "b-fit-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "65ba2dbf453ae0a7be7c1d0fb9f875eaa2aa01edeebc4d4a0c57a87d55e3bd7f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T114940622776Z-684f7ad1591c4362",
+      "seconds": 66.65700000000652,
+      "stage": "b-fit-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c1383bdcfa7d1a6f6a53a5e0104ede0221d0920ce513f866fe8f3146edbfff21",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115000352145Z-a9a95e57a7e14dd2",
+      "seconds": 1.3374692079960369,
+      "stage": "b-bank-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b5441c36275d52af642a27aa030a0b3f5ef2c1c45d2e07298ecff0b5caf0d79a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115002828283Z-03807b5e12c7475d",
+      "seconds": 1.1670241660031024,
+      "stage": "b-upstream-dev-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a8d29f99d1d614e60904e71a277954baf0e8cb9f64767f39d5f39db1b335515a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115017266197Z-625f3360b3e04a72",
+      "seconds": 3.61271408299217,
+      "stage": "b-bank-external-acceptance",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "76aa791dbe4c6d2382a1413a77127a4996d2171b9647848f04b77f1d02a24945",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115018996226Z-248d3f4398ee47f7",
+      "seconds": 1.2156251670094207,
+      "stage": "b-bank-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ef259279895e26ebba09723597c5d8a5eae6d2e8cf444337f219f32e1b95fa6a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115024985344Z-838a0bfb0f0745d3",
+      "seconds": 2.570039957994595,
+      "stage": "b-sample-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "1c7bd9aabd842da69561f63972229c168efdf65c5c9fbad4a126417b1507d27e",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115049772122Z-89e23e4a1a9a47c1",
+      "seconds": 1.093408916000044,
+      "stage": "b-development-visibility-link",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5983ef23b4e20e03758b9e0002fb508ee792c298239d8fe10cd4277ba841a3b9",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115051000501Z-0ac2b0fed4324e04",
+      "seconds": 80.78200000000652,
+      "stage": "b-fit-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4cf51511178ad3854aeea289d107374ac0a8f7d873758de0acb783ac35acb3b0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115214380262Z-93a68d0dc82a41c1",
+      "seconds": 66.375,
+      "stage": "b-fit-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9d7088426d1515d925cc2971f254fbe79bed47a0a39a3ab370e8762b4c00f9c5",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115225376506Z-df54695d17aa46b4",
+      "seconds": 2.1117988749901997,
+      "stage": "b-bank-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "424cd24a5168394309c89329e6f864e56111238dc230e3a8b2d3ebc09c9c339f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115233951292Z-3934ef67f3794442",
+      "seconds": 12.55659820899018,
+      "stage": "b-sample-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "78c1825aac5da1059e88c7cb0b9e1081196866943217673c26e5792ddaa0f974",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115244136960Z-0ec770d109314997",
+      "seconds": 1.2952387080003973,
+      "stage": "b-bank-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "fc4b57088e11791fd0c8fc39aefcb80e38bccda38442cadd53eb25c6e3bb28b8",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115247483506Z-c12dfd17954c45c7",
+      "seconds": 2.2569069170131115,
+      "stage": "b-sample-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4a29aeb63971f81d4ef6af1551ee974acc4981ce0dafc92ee8f5880c9bf243e7",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115323778783Z-ab539ad0e0ca4ecf",
+      "seconds": 81.70300000000861,
+      "stage": "b-fit-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5e6da9695b2145ea4fb1601a05ee8e9813d9ca8b36cc3df3600a2cd21785d4a3",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115352569411Z-1c93ea8b27cf40fd",
+      "seconds": 0.8452088340127375,
+      "stage": "b-independent-arithmetic-registration",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "36db25db68ece87ea39d308a12812ba4267126b7285361c667cf2a9ddf47312b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115445912130Z-7e7157611a9748bd",
+      "seconds": 2.118031834004796,
+      "stage": "b-bank-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0b575097e4550bfee92f2a5aa5bf435baa49ca765fcd59605c937fd048990793",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115448987923Z-87cea0efa7aa460e",
+      "seconds": 0.8738122500071768,
+      "stage": "b-bank-linux-replay-protocol",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "70c7ae6be0588d12a19e69860117c6fc323f0dccd01da1bfb24c8e0b1aec085e",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115449275066Z-ad9bef752db14b96",
+      "seconds": 80.98399999999674,
+      "stage": "b-fit-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "62418295491e30f175dd5a7c51bbb939bc247431bd52a89948eb0f4531752acb",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115451065243Z-ce03b463ffa54c81",
+      "seconds": 12.469321416996536,
+      "stage": "b-sample-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5bdab31f541cf8f16aa6e238a84990b7c8b22f033a4d86972c432771ec938d23",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115505001173Z-7370a355c3604131",
+      "seconds": 1.2488813749951078,
+      "stage": "b-bank-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "17e2412e2a791df7f950172abc7264ab2140a78ae028c15ccf2565f05813d12c",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115509866408Z-83fe885254eb4cee",
+      "seconds": 2.336011667008279,
+      "stage": "b-sample-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "7014c3ebb5f48e51bba742bea81368607ebd49015df71fb249ebac15c7b71102",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115659349559Z-26f1c5b36ebe416a",
+      "seconds": 2.265493625003728,
+      "stage": "b-study-regressions",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "1145e66f6f3e741bde0aa962b7173ea6d0b1dcf3a4c81884deb0aca7c73f1f28",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115739590075Z-d89f261f8e65440e",
+      "seconds": 2.076691791007761,
+      "stage": "b-bank-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2d522873b5cc386352fd6a9e9d8d9520c9a83555a67c4d1294451c2881ca8ef4",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115743613402Z-2e52bdaa5289450d",
+      "seconds": 12.372352749996935,
+      "stage": "b-sample-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5313985965e0f33966ddbb96e3542c736a92dffd6883d6f50f08f34572a58050",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115757480083Z-580f94154f2b4de4",
+      "seconds": 1.2912394999875687,
+      "stage": "b-head-candidates",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "317214d0824bc436aff22a807b56198c86927391860791196767fcbcfd301bf6",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115759645967Z-a008e96436224c43",
+      "seconds": 2.6558481249958277,
+      "stage": "b-dev-ranks-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "cef69526b59eece97a7077f90de7e8c8305a1376bbfbff7eac0ab70cd4d56d0d",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115803099120Z-440665aa83a84758",
+      "seconds": 1.3634112079889746,
+      "stage": "b-dev-eval-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f0270a03b035a6e65f7f8d9c11c239bc53e9c1606b1411a60d97c6a96329a4d2",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115805484494Z-c03fcd6f707e4a08",
+      "seconds": 3.6882799589948263,
+      "stage": "b-dev-ranks-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "789b4babd02235ea821e582b4c5e92805af4c99e7e7a1acb1be52635a3422597",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115810175001Z-5894443aa00a4cc1",
+      "seconds": 1.6297034580056788,
+      "stage": "b-dev-eval-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "cc95e300c52637b74137902ceba757e47698bc632623466d94f406c1d554845f",
+      "phase": "B",
+      "receiver": "quarantine",
+      "run_id": "20261124T115824526139Z-c712ed16e246411a",
+      "seconds": 0.8883970000024419,
+      "stage": "b-study-regressions",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4e469b52adbf495c8911f399ab6abccdee75d5142b3a71aa64106bec7713bbef",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115842436034Z-f9b5b3aa0f8c4402",
+      "seconds": 2.200262250000378,
+      "stage": "b-bank-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "713739246a7c791a15f8c046c53d229d7f561c2ebb736e38695648ba7dcc6926",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115846189165Z-846f94d6591546fe",
+      "seconds": 1.1661395420087501,
+      "stage": "b-upstream-dev-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3d9a2c0e65becd07bf9fb4c7d4c47dd3ba7686f7d5f062a3904548c5def8a2b7",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115848057621Z-92180c37751c4e4d",
+      "seconds": 3.2572014590114122,
+      "stage": "b-dev-ranks-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "98abed85320d7ae425daa850b9d98f790d52acf5739024407842b091ecc4e214",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115849245504Z-645bff342f1b4378",
+      "seconds": 1.0756877500098199,
+      "stage": "b-development-diagnostics",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "8603d9e5962c1d9e7f9d5b7a42ea5ef4dd5953bce2f26b946795c8ea85093c87",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115852141482Z-113e1452ff8442d0",
+      "seconds": 1.458566957997391,
+      "stage": "b-dev-eval-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0b4cc51de834d2c67a8343232a90dee2d5e25e7dd3269652621a670f2e66eb7b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115854571196Z-8fbf627be77940f6",
+      "seconds": 1.015161540999543,
+      "stage": "b-development-selection",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "5c436f26c29c0a1cf1b907d35d6aa740774272c292e39eadb2fd113c4f244179",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115857282953Z-3f6e989f5d4844b1",
+      "seconds": 1.2072716670081718,
+      "stage": "b-head-final",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2c02b02e9c19084b869c7690227dae40cbb45aad10ff612d373360f94ba72bb0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115905797505Z-b94cac2024764649",
+      "seconds": 2.9231012080126675,
+      "stage": "b-bank-performance-scale",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "13aa524fa2aa1592cb2e05430a972a439e28e23dbb491eee3acd07a4a751d354",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115922562155Z-a19c0f467c74486d",
+      "seconds": 5.893829666994861,
+      "stage": "b-bank-performance-fitted",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "seconds": 2.3039391659985995,
+      "stage": "b-bank-public-example",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "a356b4d4fd6cba98841e0099236413861f0fb89cfe40ef99908ae7b016498984",
+      "phase": "B",
+      "receiver": "quarantine",
+      "run_id": "20261124T120011361476Z-391ce8bcce9b4f54",
+      "seconds": 1.1006772500113584,
+      "stage": "b-bank-deployment-tables",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ddf75afefc8bd01dc87fceddc3f9f64daa692821e719181c2b5b81d34fead394",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+      "seconds": 6.775863582995953,
+      "stage": "b-bank-linux-clean-replay",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "629c433ad24ca23010ae0935e14c386b2b4fc1aaff13dccc2388cb363eb27cf2",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120039484803Z-6e3a7d43bcce4b0a",
+      "seconds": 1.0660721250023926,
+      "stage": "b-bank-linux-mac-comparison",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d125766e3392614c4d5009bd510d86cfe502798eb4d9480893b1465f3fb9a125",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120110597102Z-75adfc7c65874bec",
+      "seconds": 2.529822416996467,
+      "stage": "b-frozen-science-regressions",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "8cfcbc613842f765a428735ab645e085cbd4faee6b4a5c7e65d53152248a6c69",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120225193476Z-08e6832ca7c040d2",
+      "seconds": 2.4296550839935662,
+      "stage": "b-bank-deployment-tables-verified",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0de1f494c6f90e6744a3170f5f52e7957aab549313affb3bd5739d762e4cbc73",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120332809100Z-ec53d7a4a3b94042",
+      "seconds": 1.1300150000024587,
+      "stage": "b-model-freeze",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d311807bf9726787cab5436084a87d8b7b14ca775670ac6de28057be769d9e6c",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120336240623Z-b2014ed856ae4014",
+      "seconds": 10.06285091699101,
+      "stage": "b-matrix-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c267752871c23f17d0a4e0a8d33b5c2a0097e2c0c355859352022c864fdacf18",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120336744076Z-cf63b32e565d4f8e",
+      "seconds": 14.410399125001277,
+      "stage": "b-sfm-b05-perforated-gallery-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "56aa21d052391d75393f3615e1beefd133215966612d68ab9a183048432c8cf5",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120336744192Z-9796a4cc60344deb",
+      "seconds": 4.7931842079997296,
+      "stage": "b-sfm-b05-perforated-gallery-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ee76398a4aee71c54f6d42c031ac92098a31da9f2f691315f607d416eb25cb4b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120336823967Z-2a3e05f398af4c7a",
+      "seconds": 22.482777040990186,
+      "stage": "b-matrix-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "bd7a4bd666ae24fa0ec4383225e269f1e85b1ecb0f56ef4a38549e87bd69b93d",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120343034471Z-8ab34f51dc7848f5",
+      "seconds": 1.916371708997758,
+      "stage": "b-fit-ticket-b05-perforated-gallery-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "94b3508668ecef72fb34af9e50e3a785172de60dbc66d4a9d3b74bece563248a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120345747845Z-62c2244c28614214",
+      "seconds": 3.13687783300702,
+      "stage": "b-sfm-b06-corner-alcoves-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "13c41b75c0a956d752e2a918f9c13d87ededc7ebf3cc4fc0e1b2f62c76555df0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120346020645Z-c8ebef2caacf4ea8",
+      "seconds": 2.579951000006986,
+      "stage": "b-upstream-training-development-resources",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2e10c9e4d05e0bbb805491115913e5cb90d68132e9ea377a9f7b74786b8b3713",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120348807847Z-fc601072b6fc4edb",
+      "seconds": 14.777758166004787,
+      "stage": "b-matrix-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "1532b86333d98ba442b60f93da1c83a8d2706fc3611b0eb6332fc3014234c00f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120349454906Z-70c320274da04943",
+      "seconds": 1.9821194160031155,
+      "stage": "b-fit-ticket-b06-corner-alcoves-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ffeaa59b3f71404ae9f8738fe3b43344a4b310356bec77eaee2f85786d749f43",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120351997366Z-a053a8aa6d3c4a8a",
+      "seconds": 10.954592374997446,
+      "stage": "b-sfm-b06-corner-alcoves-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d8b2308649aec7f4ab7f18bede84a4d0fe108c4283029c20473977babcc7a649",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120352077350Z-b804e3b2458a43d8",
+      "seconds": 2.6631754170084605,
+      "stage": "b-fit-ticket-b05-perforated-gallery-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9b3d479e42023ba0df2a3422080b74618df9980cc963460a92f718393420c2d7",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120356018802Z-6b4127c79f3141c2",
+      "seconds": 4.327450124997995,
+      "stage": "b-sfm-living-room-r55",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "381eaff99e80bb865b2abfd2cbc508c475f6dd9074275afee3d7ef47c5e615b1",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120401045354Z-275a4c10d64d4521",
+      "seconds": 1.7080660829960834,
+      "stage": "b-fit-ticket-living-room-r55",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f02d811bb3b4717b80c8796b671caa2eb839c113e6c4a3239f6b485ff9f8b23f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120402173019Z-bd4ed3b864204207",
+      "seconds": 8.034733541993774,
+      "stage": "b-matrix-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "63cd254bd3f24f540288f9de9b86fa6f7234a58ec95c22ce47d1ce894623d7ce",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120403870420Z-f86ce643dd174190",
+      "seconds": 1.7935094999993453,
+      "stage": "b-fit-ticket-b06-corner-alcoves-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c8a2f4f3cd7da2ce59a4acbf7e1e50087164b4a28219c190cbbdb89f18c60989",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120405110151Z-bfa8cf222b494e81",
+      "seconds": 6.814624582999386,
+      "stage": "b-sfm-bridge-r100",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "47a5b1514b37d7a1dac2c0ca07f7292cad7bd1fe657b3a74a7a498964b9f0f37",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120406946100Z-d627c826c3044563",
+      "seconds": 20.92675616699853,
+      "stage": "b-matrix-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b41131378d6e9fe876703b7dba08af726d283dc0641e32bfa89317d5099024ed",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120412231326Z-cdd8e4425d9f48b6",
+      "seconds": 7.93337741700816,
+      "stage": "b-matrix-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c5c5e627969f1758585d7ea6f264046efd764824eb0b4dfb30d1cd3bdc2cb138",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120412877725Z-975bb3016d0e4f61",
+      "seconds": 1.9449414580012672,
+      "stage": "b-fit-ticket-bridge-r100",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b811a8a429b5fe1658b7de035102871786ad8e68a10322ca4f5e0faea3662525",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120422993404Z-524d40b33a364c98",
+      "seconds": 20.444735500001116,
+      "stage": "b-matrix-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "826305c6efd68e000f216f03408bcd084cf176ef13f35f030f2e31a297a7134a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120425673676Z-c6e47d4b73eb44b5",
+      "seconds": 1.4994955410074908,
+      "stage": "b-confirmation-fit-queue",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "43aed69fa40858c12771897b14b83f7f163fc79f638d6b9a21430481d538e5c5",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120430270949Z-853a4764ccdd40fb",
+      "seconds": 7.894797291999566,
+      "stage": "b-matrix-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "394ca596e8cbe56df2d001b208472771d7ee7c80da360de17c68ae77a1e12cef",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120432236841Z-ee4b89e5038c4457",
+      "seconds": 2.237473000001046,
+      "stage": "b-bank-deployment-public",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "141457d217c72ef4f5f969adef27d52925038d2ffd8a565d1b332a0d5bf4ea8b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120440965073Z-5e7224948d414395",
+      "seconds": 18.61465250000765,
+      "stage": "b-matrix-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f6734501e99cbb15aede21b9efbc18f2e66b3cd8f0d885c2af4e1dea50605c7f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120446791644Z-a400084922d84651",
+      "seconds": 7.242852042007144,
+      "stage": "b-eval-b04-layered-louvers-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b13f6d7ca839ae6d03e025738d77aedb38e454fb0cc21edfa4a8cc1e81cb28e6",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120456170378Z-af36c6a0307b4236",
+      "seconds": 10.346904249992804,
+      "stage": "b-eval-b04-layered-louvers-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2b501919027f58c4fc8211c4bd6aa863841a0f77fc65153322c0d6e4765ed34f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120502023642Z-c85dab135cc74103",
+      "seconds": 13.782401291988208,
+      "stage": "b-eval-delivery-area-r34",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d2a39ac74bee83e42c45bd4cc127a3f613de59443868674e302fb9b388b503dd",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120509927871Z-fb283cc294834e48",
+      "seconds": 7.1313299579924205,
+      "stage": "b-eval-b01-staggered-arcade-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3407ac7f8c9f82febda6443ed75bd49e673e424451a8fdacf546584ff49a3212",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120518427860Z-36aa15d112a448d4",
+      "seconds": 10.283044957992388,
+      "stage": "b-eval-b01-staggered-arcade-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "7aa5d13542a97debdc3fae370b268d8eb97ce191319be464f22a68242d248148",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120519994338Z-8d4f7943062e42be",
+      "seconds": 7.130854208997334,
+      "stage": "b-eval-b02-terraced-court-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "94c5fd0171ab8e87cf6374cc525bcd1f70e3c1245344d66c1d89df8f3b147456",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120530478591Z-9a47be5b0fd64552",
+      "seconds": 10.282530917000258,
+      "stage": "b-eval-b02-terraced-court-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "17baf1dfbb1a24f18900db4b4657771f5edd82651a166935a1f57d11d0cf4202",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120532054019Z-c517c947efa747d8",
+      "seconds": 7.2315279159956845,
+      "stage": "b-eval-b03-woven-truss-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c61d83f4a3e28f504a76d2de5890b9c9347f21ca6d8651d3d457a929c6b995fd",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120542499615Z-da94b9ba9f6746f7",
+      "seconds": 10.111358708993066,
+      "stage": "b-eval-b03-woven-truss-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "7bbe2eabc60af68162aae7520a77028e5622fb46d2ee686cf7b1be5be11c464e",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120726893855Z-b983c7b99bef4473",
+      "seconds": 1.3426201660040533,
+      "stage": "b-independent-arithmetic-program",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "af93cc9c9f3db6a77d987d094c8708c0c8bde52a8c67321961160617b5c38ba6",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T120947920304Z-84f96ef4c0bc4669",
+      "seconds": 66.13999999999942,
+      "stage": "b-fit-b05-perforated-gallery-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "c4cfa617044150591640308c9037c071a700e303d5fb7377187a98921136ef0b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121057099682Z-ae94490fbf4f4902",
+      "seconds": 83.57799999999406,
+      "stage": "b-fit-b05-perforated-gallery-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "91453df8331b95863e9dedd82e166d6be469b96fcea93f7e16dd1c290f751bf3",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121212827980Z-86e94030823e4a8f",
+      "seconds": 6.327193332996103,
+      "stage": "b-fit-input-alignment",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "6f179d42c3cf97bc3bdd2ac337073bdf90433b51566a4582937c3d46057c198b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121223138158Z-5dc4b64934f945eb",
+      "seconds": 66.71900000001187,
+      "stage": "b-fit-b06-corner-alcoves-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "beb55a2fdeeb4164fe584d6e0ae8b8d95369666bf185e5c13f6c7bf52a34e290",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121225128543Z-4451904d827f4a76",
+      "seconds": 1.4586316250060918,
+      "stage": "b-bank-b05-perforated-gallery-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b0433ac0dc58d420e15fe720a8066faac58b12f8bf050eb81ae2a04579790a6d",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121228779288Z-a9ea10a25506443a",
+      "seconds": 7.662697916995967,
+      "stage": "b-matrix-b05-perforated-gallery-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a04ea75b2d44953d194cb33196c9c8e93450b024e48a28042d83b714169af78a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121333216331Z-978c9b319b4e4b5d",
+      "seconds": 82.48500000000058,
+      "stage": "b-fit-b06-corner-alcoves-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "a9eb9a7e654c59ca573f7136cd908b8657624834ad7986415baa162a9a09779b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121457024933Z-253887ceebd24242",
+      "seconds": 2.3811872499936726,
+      "stage": "b-bank-b05-perforated-gallery-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "171287bb5d6e7a36a49ab5b3173190efadc5dd0408bd74e82ef4251ab0803d8c",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121458701680Z-70eb2510bd714d6b",
+      "seconds": 69.45299999999406,
+      "stage": "b-fit-living-room-r55",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "539fab2990ae5d7519fd932c2ccf8037f243fd2990e1b469b9d8586c0ec5511a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121501571985Z-75f0cdcbf70a42d1",
+      "seconds": 18.80566749999707,
+      "stage": "b-matrix-b05-perforated-gallery-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "35301053423178f6d6af2010a0eecac5ea85c39e959c60e8dd3ab84a8d847ea9",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121516322379Z-ab1081a7529044fd",
+      "seconds": 1.5934150420071092,
+      "stage": "b-bank-b06-corner-alcoves-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f5f8ce24a49c58f8272cfb3c046a381f63c90fda0cfa1319e988fe07e7417972",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121520559502Z-5722a0fbb88b4d3a",
+      "seconds": 6.987494875007542,
+      "stage": "b-matrix-b06-corner-alcoves-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "2215898fea2948777343f846368a0963609d383de02aac67ecf71880e7ee4b01",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121612286105Z-52a00916907b4de5",
+      "seconds": 76.84299999999348,
+      "stage": "b-fit-bridge-r100",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3449fed10a52b638b38ad61ad6ab39730af62f0bc242fc16ce0dbdba11727d0f",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121735341595Z-9a0ceb7407ac4569",
+      "seconds": 2.3916647090081824,
+      "stage": "b-bank-b06-corner-alcoves-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "01a29f2997a02a0ff0f0361d8eab7d4bddc48e90a6a4ab5a1713b6f3155f71e6",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121740306653Z-a6ef83bc4bbf46b8",
+      "seconds": 18.25209791699308,
+      "stage": "b-matrix-b06-corner-alcoves-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "591475a49a119aab1e7edf8f030558709e1a074e2819ddee32b1879a5af94b0b",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121811585874Z-a3fbd321028a40b7",
+      "seconds": 1.9070233329985058,
+      "stage": "b-bank-living-room-r55",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "dc6ed3c4442fbb81c164ef59ef62a749b2ca367c453a33269e521d3d45b6446d",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121815506115Z-d9008614992f4041",
+      "seconds": 17.031079833992408,
+      "stage": "b-matrix-living-room-r55",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "500f105c8f164ad00a4f8779e4a86dd73c8dcce4b2d6fff4f73c670b0c743bbc",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121937555040Z-4d322a0acf934046",
+      "seconds": 2.313440583006013,
+      "stage": "b-bank-bridge-r100",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "284955399dc8f52c663acfd440d3119ae8fb0d02c293fc03a59047322b5436af",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121943040942Z-eeeef373349549eb",
+      "seconds": 27.174483042006614,
+      "stage": "b-matrix-bridge-r100",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "0e6f0a26d98a0e89d6e4204da4b1cfa243ef1dbe732bc074c55983184072cb9a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T121957490225Z-e2c00b098fb14ff4",
+      "seconds": 1.6330727500026114,
+      "stage": "b-upstream-closeout",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "fb7ebbccb966c5471bdd02359877a6e0931bee22826fd4927f8cfae9ae73d585",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122005460144Z-e1abedc220814dbc",
+      "seconds": 2.7234270419867244,
+      "stage": "b-checkpoint-update-attribution",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "330dd7fd4ab9914fcd0fdf61e2cbd10f534142dbab97b2664c7b2ee1bb129c50",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+      "seconds": 1.4633607079886133,
+      "stage": "b-confirmation-h-opening",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "91e7812b3557693e8260f27da1406a0fc7a991c273341fca845df14a6f95f161",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122027215328Z-9f87028e50c246db",
+      "seconds": 2.8401809170027263,
+      "stage": "b-truth-b05-perforated-gallery",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "53fc6a459454d559368317a9f106321b7c4054f38dcfe38ec718096aef266d4a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122030759489Z-2ea7104f8dc541c8",
+      "seconds": 2.3937387079931796,
+      "stage": "b-truth-b06-corner-alcoves",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4456d07c6fdc37e3fbc958ce8aedbfe4d8b7da40bf674bbd5440e84e109d9939",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122035550335Z-90604612e274497d",
+      "seconds": 21.979521417000797,
+      "stage": "b-truth-living-room",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b11804dd01a77cef5c875070fd7cd3b727e01e421d0e7c2e77872938798fde1e",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122055452129Z-cb191a1efc904b09",
+      "seconds": 3.1002972919959575,
+      "stage": "b-exact-visibility-b06-corner-alcoves",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ba7f871b910d87b4ac8cc49a507412adcee5ac91d8845c082eaa30724b5ad116",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122055458787Z-8f5cfb59cc234019",
+      "seconds": 2.0724809160019504,
+      "stage": "b-exact-visibility-b05-perforated-gallery",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "467c8d83ce04295ac404a9a51ba385039b89a0081e45ed8f8ffff2314aa02c3e",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122101165280Z-b4bff45f0b0c4351",
+      "seconds": 40.73855866699887,
+      "stage": "b-truth-bridge",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "58f33c52bd385979aa73049c21d317c1eb4a99aeac7f95f2222d8d1684786faa",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122102303647Z-c1c1fe7221c64390",
+      "seconds": 7.881435083996621,
+      "stage": "b-eval-b05-perforated-gallery-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "930e622728b9aaf105ac141404b3fe4ced221cdcd886bd8a8f331f3fb11ad113",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122102647867Z-33a7edbdbe8d476b",
+      "seconds": 11.983695624992833,
+      "stage": "b-eval-b05-perforated-gallery-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "9778bbed70594ffa2632c30aedc9b103ec9892c7def5865be9f31111d7596595",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122113207354Z-a92192f6c39c4d66",
+      "seconds": 7.792560832996969,
+      "stage": "b-eval-b06-corner-alcoves-r16",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "56e1156ce586753eaa6efb5574be65b2cd0d5aabc87ea40625f72caba2124ff8",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122117406603Z-d2988b2e324844ec",
+      "seconds": 11.061699166006292,
+      "stage": "b-eval-b06-corner-alcoves-r128",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "16c1784eb07709f64520b0e08b763a493d4d7c44e9665b565f5d082b314f8e3a",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122123288940Z-aa2d1e7012ac4e6f",
+      "seconds": 14.590050083003007,
+      "stage": "b-eval-living-room-r55",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b68c22b805e7d6da38b1831d40887b7691c8e94ec1a65941a056c4d1158bbdb0",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122144704735Z-36fdcf0bd51f4bc1",
+      "seconds": 14.02349762499216,
+      "stage": "b-eval-bridge-r100",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "b7b9201a090be7ac1584f2a633908075437cc466be04c83c1bec44cf98e3e716",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122154357651Z-4f5b184a4a9b4435",
+      "seconds": 1.525969249996706,
+      "stage": "b-data-final-access",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "seconds": 1.9438372080039699,
+      "stage": "b-scientific-results",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "ba007e50fbebab439616e8ca5e7c6c2ffab34ba0456780b82ee1876f6e4338fa",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122208629213Z-9397cf5362104d49",
+      "seconds": 1.3633380829996895,
+      "stage": "b-model-package",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d1d6c3b4ee025f4e6d7ae3bfafa5cc8300ec5d687aba1ba5fad6c9f38aa28eef",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122213253889Z-838c104461344577",
+      "seconds": 1.580880374996923,
+      "stage": "b-independent-arithmetic-check",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "6ddc6febb24c0a794622b4a69d2029032dd4ed6e84dea8157cf92b57032aa49c",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122234514141Z-9ebf91bbe30c4e7a",
+      "seconds": 2.8033713749900926,
+      "stage": "b-scientific-summary-html",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "89af6bc15e3d4e259f5db75259f6813d56c2f4ea9f97eb9cab7d122de2bae307",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122242407066Z-1d1b07a14b454627",
+      "seconds": 3.0182808749959804,
+      "stage": "b-resources-and-failures",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "1fc5b4c0053d669fe0492df4ec618c2ae2bcc2df70a4b81254d0eb2a2ef48d44",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122248118424Z-1869e66f00684783",
+      "seconds": 1.3864056250022259,
+      "stage": "b-scientific-closeout",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "eccba45172fcbb22955f91ca3961e1800713af9eb59fc86f67a554c601d70763",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122250762447Z-7dc6110025784531",
+      "seconds": 1.3889720830047736,
+      "stage": "b-public-documentation",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f330f6b7afb67f87e4dfe5aa487a8f72fbeb62cc71dc3c6f3901488b3f3ef2e4",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122342711445Z-00bb015b3f1a4207",
+      "seconds": 1.3549900420039194,
+      "stage": "b-windows-confirmation-disk",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "cc19f51d4463500b198cb64d43a8fd84ff5b72fef08f0d0635f410cc3362e736",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122658772178Z-8af722eec6fa438e",
+      "seconds": 2.1483318749960745,
+      "stage": "b-research-release",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "17f250da408a0a938f01a38049476957b599017f57b6686a6c518f6a17208b64",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122701451045Z-d79669adba42422d",
+      "seconds": 5.182770375002292,
+      "stage": "b-push-release-source",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 1,
+      "manifest_sha256": "4dec46993f5aad51d86959d842a2a2abb70204b1bf68ba675d0603b444aceb43",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122707525054Z-206c2cede5604b3d",
+      "seconds": 4.875525625000591,
+      "stage": "b-github-draft",
+      "status": "failed"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3df278986db86d6e16a20c6cac36d25a830b022ddef573b8f8ef49cb46753ff9",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122741894864Z-4f3b1034df3047d3",
+      "seconds": 10.216085042004124,
+      "stage": "b-github-draft",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "896ebc6f6623d8510cf7808d03d5a04fa3f91a06815e55422036ed1ce008cff9",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122753192452Z-f167df0199694f18",
+      "seconds": 5.145392749996972,
+      "stage": "b-github-publish",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "4437532e8255886a24f2e181d82f9fd10f417d681f835a43fcc466ed07ebda95",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T122758951718Z-0096333565594edf",
+      "seconds": 9.986726291986997,
+      "stage": "b-anonymous-readback",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "222ab76f8a0dd1e9fbb10af0b3f4086da3a85c71c29086626a5d295dd64f8488",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T122803958580Z-dc0db5aa4ffe455f",
+      "seconds": 1.3499634170002537,
+      "stage": "c-foundation-registration",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "edaa568b6932603c99b688ca131f0f486d22d64d2498eb9a0deee85678e233cb",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T123002024983Z-c2f5815f390d4061",
+      "seconds": 3.497690624993993,
+      "stage": "c-primary-editions",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "827ad105ebb6b59969c1d0f2edb098c8a337df5b6440dfbdc7e0515144b35283",
+      "phase": "B",
+      "receiver": "runs",
+      "run_id": "20261124T123010116299Z-910b49c8324c488d",
+      "seconds": 3.973173708000104,
+      "stage": "b-push-outcome",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "seconds": 4.241804624994984,
+      "stage": "c-foundation-case-data",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "1821fa6d30234a3aa94865ca0d9337a1c42e8c5c7525d237650d0a3a72b6cf8e",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T123844169590Z-9e19431a2a234675",
+      "seconds": 3.27768025000114,
+      "stage": "c-foundation-case-readback",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "dc0c1918d223ba91515a34d6064bde9b020a5f97d785e87f9b302d6f142f4785",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124407786388Z-6f6d4b8266a442c9",
+      "seconds": 6.232993208002881,
+      "stage": "c-foundation-viewer",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "977f02efd6675fc3b4ee40c3907c57aa317b3d1450776642eadeef5fa0cf448e",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124546381455Z-201229a3a6944737",
+      "seconds": 3.9163462909928057,
+      "stage": "c-exhibit-package",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "90c0f4caaf971edce90551e8b12fc254d8b86ed7e2bc5f98cc92ef647f7435c6",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124551683640Z-92178433fcf54568",
+      "seconds": 1.6222564170020632,
+      "stage": "c-foundation-release",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "f543173c7161130b221065bf11b040aa129e02fd32e426ea25b938bc428c3d10",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124553852465Z-0da5e2abec7a4e3b",
+      "seconds": 7.270161874999758,
+      "stage": "c-push-release-source",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "3e016c8f904705a9c574d7141a70e743f0a31dd3109e7dfd166746f58279526d",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124601774432Z-9ce6bb70bc5a45a4",
+      "seconds": 16.853871707993676,
+      "stage": "c-github-draft",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "dcbfa8b02370a609fe49e280b9c696aef4244b1e1dc71d369998747a4b67875e",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124619537620Z-7e62712542ca4b73",
+      "seconds": 5.830207708000671,
+      "stage": "c-github-publish",
+      "status": "succeeded"
+    },
+    {
+      "exit_code": 0,
+      "manifest_sha256": "d38aed6df0b5855dc7abb42cfdd1569da5f66dcba987f60636d5fc512c6dcd80",
+      "phase": "C",
+      "receiver": "runs",
+      "run_id": "20261124T124626017029Z-cb14be74fd9743f9",
+      "seconds": 9.914370375001454,
+      "stage": "c-anonymous-readback",
+      "status": "succeeded"
+    }
+  ],
+  "run_id": "20261124T124710961103Z-79d30db64ff24f02",
+  "schema": "el-dual-track-outcome-ledger-1",
+  "scope": "Terminal A/B/C native manifests on the Mac receiver through the C anonymous download. The ledger recording itself and subsequent proof publication occur after this cut."
+}

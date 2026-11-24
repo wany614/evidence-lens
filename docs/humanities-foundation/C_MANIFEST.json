@@ -1,0 +1,130 @@
+{
+  "A_BASELINE_ID": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "B_MANIFEST_SHA256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0",
+  "assets": {
+    "evidence-lens-foundation-source-photos-v1.zip": {
+      "bytes": 113570300,
+      "license": "CC BY 4.0 original synthetic camera observations, derived renders and grantable measurements. See the member inventory.",
+      "parent": {
+        "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+        "member": "payload/evidence-lens-foundation-source-photos-v1.zip",
+        "run_id": "20261124T123629027571Z-35e7d606002541df",
+        "sha256": "b7f39ca7ee8516903890da1dcb4e86997b363ee7b55ed09ad40019d91f0ac8d1"
+      },
+      "role": "photos",
+      "sha256": "b7f39ca7ee8516903890da1dcb4e86997b363ee7b55ed09ad40019d91f0ac8d1"
+    },
+    "evidence-lens-foundation-viewer-v1.zip": {
+      "bytes": 8785767,
+      "license": "CC BY 4.0 original presentation, documentation and rendered examples. Embedded program Apache-2.0.",
+      "parent": {
+        "manifest_sha256": "977f02efd6675fc3b4ee40c3907c57aa317b3d1450776642eadeef5fa0cf448e",
+        "member": "payload/evidence-lens-foundation-viewer-v1.zip",
+        "run_id": "20261124T124546381455Z-201229a3a6944737",
+        "sha256": "2ed1bccf6f58d99c92bc53e1dc4682ce0d7324152c0d4cd43bf2e8191027ef4b"
+      },
+      "role": "exhibit",
+      "sha256": "2ed1bccf6f58d99c92bc53e1dc4682ce0d7324152c0d4cd43bf2e8191027ef4b"
+    }
+  },
+  "authored_target_views": 7,
+  "case_index_sha256": "665036cdec62e02d6d8a30e27d4901c73263ed5a65543da538e228bdbe161f8e",
+  "cases": [
+    "offset-bell-cage / v01–v06",
+    "b05-perforated-gallery / R128 / h00"
+  ],
+  "code_commit": "23d05371d3c8f2a09afb3a6dcf633513b0e457e4",
+  "documents": {
+    "CONCEPTS_AND_CLAIMS.md": "7368d32e31ab447385f8cef2d69e991bb79b65cf4137cec1857ec7ab60e3e7b7",
+    "CONTRIBUTIONS.md": "bd4b1021736d83e1e8b714ba2eafd0fee18be1a9833f6c0fa2fca8c5367fd6a6",
+    "MODEL_AND_DATA_BASIS.md": "79d663d42355e6fad0670d61669b07c5a0d6515599923270814e54587622ec66",
+    "OPEN_QUESTIONS.md": "bc4219f44823df8b31c50552999ea802d4103bc8b37059714997982e0e719928",
+    "README.md": "bd0fa604b6097f810e2f1c641a1c18d3498b219dc20a21ee1ab31428101606ff",
+    "THEORY_SOURCES.md": "54cde8a2d58fa9726932c7e99192f911c94d59a40e2179d191060d5fa6a6ef91",
+    "bibliography.bib": "ff8179e82658a5fc4df87be1f1d082b3604755eb3562db7f6f1af631833c5c79",
+    "case-data-check.json": "c08e428b59d6fab0ba425803dbb82873d0d26a33fe7184d2ecff781f53676fea",
+    "primary-editions.json": "3d5fc0d58bc67cb71d2939455199be4e0a567451a73da58777479996feac8696",
+    "registration.json": "c45b0603d0eb24d104d4496ee010d2b60c0d9bf0daaa3c393916d75d12a64c94"
+  },
+  "gallery_budgets": [
+    4,
+    8,
+    16,
+    32,
+    128
+  ],
+  "parents": {
+    "baseline": {
+      "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+      "member": "payload/BASELINE_MANIFEST.json",
+      "run_id": "20261124T111058386191Z-d99a4c418276454c",
+      "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
+    },
+    "case_readback": {
+      "manifest_sha256": "1821fa6d30234a3aa94865ca0d9337a1c42e8c5c7525d237650d0a3a72b6cf8e",
+      "member": "payload/readback.json",
+      "run_id": "20261124T123844169590Z-9e19431a2a234675",
+      "sha256": "c08e428b59d6fab0ba425803dbb82873d0d26a33fe7184d2ecff781f53676fea"
+    },
+    "cases": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/case-index.json",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "665036cdec62e02d6d8a30e27d4901c73263ed5a65543da538e228bdbe161f8e"
+    },
+    "editions": {
+      "manifest_sha256": "edaa568b6932603c99b688ca131f0f486d22d64d2498eb9a0deee85678e233cb",
+      "member": "payload/reading.json",
+      "run_id": "20261124T123002024983Z-c2f5815f390d4061",
+      "sha256": "3d5fc0d58bc67cb71d2939455199be4e0a567451a73da58777479996feac8696"
+    },
+    "exhibit": {
+      "manifest_sha256": "977f02efd6675fc3b4ee40c3907c57aa317b3d1450776642eadeef5fa0cf448e",
+      "member": "payload/evidence-lens-foundation-viewer-v1.zip",
+      "run_id": "20261124T124546381455Z-201229a3a6944737",
+      "sha256": "2ed1bccf6f58d99c92bc53e1dc4682ce0d7324152c0d4cd43bf2e8191027ef4b"
+    },
+    "package": {
+      "manifest_sha256": "977f02efd6675fc3b4ee40c3907c57aa317b3d1450776642eadeef5fa0cf448e",
+      "member": "payload/package.json",
+      "run_id": "20261124T124546381455Z-201229a3a6944737",
+      "sha256": "85d193d52507be897861a41d34f8599838e3825b79245a1ac5b5397df0851c0b"
+    },
+    "photos": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/evidence-lens-foundation-source-photos-v1.zip",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "b7f39ca7ee8516903890da1dcb4e86997b363ee7b55ed09ad40019d91f0ac8d1"
+    },
+    "public_B": {
+      "manifest_sha256": "4437532e8255886a24f2e181d82f9fd10f417d681f835a43fcc466ed07ebda95",
+      "member": "payload/readback.json",
+      "run_id": "20261124T122758951718Z-0096333565594edf",
+      "sha256": "1f50db72fc92b9197e3839ce166cae7458ba7d254311f367b3208b94b006b6b5"
+    },
+    "registration": {
+      "manifest_sha256": "222ab76f8a0dd1e9fbb10af0b3f4086da3a85c71c29086626a5d295dd64f8488",
+      "member": "payload/registration.json",
+      "run_id": "20261124T122803958580Z-dc0db5aa4ffe455f",
+      "sha256": "c45b0603d0eb24d104d4496ee010d2b60c0d9bf0daaa3c393916d75d12a64c94"
+    },
+    "research": {
+      "manifest_sha256": "cc19f51d4463500b198cb64d43a8fd84ff5b72fef08f0d0635f410cc3362e736",
+      "member": "payload/B_MANIFEST.json",
+      "run_id": "20261124T122658772178Z-8af722eec6fa438e",
+      "sha256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0"
+    },
+    "viewer": {
+      "manifest_sha256": "dc0c1918d223ba91515a34d6064bde9b020a5f97d785e87f9b302d6f142f4785",
+      "member": "payload/case-viewer.json",
+      "run_id": "20261124T124407786388Z-6f6d4b8266a442c9",
+      "sha256": "f6dafa31619035c706a275a9eb765257acb66ece0b8eae0a0d5b30fd93841cc1"
+    }
+  },
+  "run_id": "20261124T124551683640Z-92178433fcf54568",
+  "schema": "el-humanities-foundation-release-1",
+  "status": "completed",
+  "tag": "humanities-foundation-v1",
+  "training_and_calibration_in_C": 0,
+  "version": 1
+}

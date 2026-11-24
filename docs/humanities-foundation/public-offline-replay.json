@@ -1,0 +1,75 @@
+{
+  "archive": {
+    "anonymous": true,
+    "bytes": 8785767,
+    "environment_proxy": false,
+    "http_status": 200,
+    "name": "evidence-lens-foundation-viewer-v1.zip",
+    "seconds_including_verification": 0.807723874997464,
+    "sha256": "2ed1bccf6f58d99c92bc53e1dc4682ce0d7324152c0d4cd43bf2e8191027ef4b",
+    "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/evidence-lens-foundation-viewer-v1.zip"
+  },
+  "archive_files_checked": 255,
+  "evaluated": [
+    {
+      "case": "offset-bell-cage",
+      "errors": 17034,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v01"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 18815,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v02"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 15050,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v03"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 15299,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v04"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 22873,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v05"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 21482,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v06"
+    },
+    {
+      "case": "b05-perforated-gallery",
+      "errors": 4579,
+      "labelled": 95256,
+      "reference": 95256,
+      "view": "h00"
+    }
+  ],
+  "evaluated_views": 7,
+  "mobile_view": {
+    "document_width": 375,
+    "width": 375
+  },
+  "network_requests": 0,
+  "public_code_commit": "23d05371d3c8f2a09afb3a6dcf633513b0e457e4",
+  "repeated_conditions": 29,
+  "run_id": "20261124T124747170789Z-1322fd81aebc4dc6",
+  "schema": "el-foundation-public-offline-replay-1",
+  "script_errors": []
+}

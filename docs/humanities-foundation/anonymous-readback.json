@@ -1,0 +1,54 @@
+{
+  "asset_count": 4,
+  "bytes": 122362821,
+  "code_commit": "23d05371d3c8f2a09afb3a6dcf633513b0e457e4",
+  "downloads": [
+    {
+      "anonymous": true,
+      "bytes": 6455,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "C_MANIFEST.json",
+      "seconds_including_verification": 0.35318195800937247,
+      "sha256": "201389819f01dc13350acd579ad419d734f0a26b69bfe82ad02eb1635bc6b8fc",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/C_MANIFEST.json"
+    },
+    {
+      "anonymous": true,
+      "bytes": 299,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "SHA256SUMS",
+      "seconds_including_verification": 0.3238200420018984,
+      "sha256": "1285e3c82b25ff5bb9cb6686e65e71f5a19b05610f031079abdbf1f2ae4b0bb0",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/SHA256SUMS"
+    },
+    {
+      "anonymous": true,
+      "bytes": 113570300,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence-lens-foundation-source-photos-v1.zip",
+      "seconds_including_verification": 6.915960667000036,
+      "sha256": "b7f39ca7ee8516903890da1dcb4e86997b363ee7b55ed09ad40019d91f0ac8d1",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/evidence-lens-foundation-source-photos-v1.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 8785767,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence-lens-foundation-viewer-v1.zip",
+      "seconds_including_verification": 0.807723874997464,
+      "sha256": "2ed1bccf6f58d99c92bc53e1dc4682ce0d7324152c0d4cd43bf2e8191027ef4b",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/evidence-lens-foundation-viewer-v1.zip"
+    }
+  ],
+  "manifest_sha256": "201389819f01dc13350acd579ad419d734f0a26b69bfe82ad02eb1635bc6b8fc",
+  "repo": "wany614/evidence-lens",
+  "run_id": "20261124T124626017029Z-cb14be74fd9743f9",
+  "schema": "el-foundation-public-downloads-1",
+  "status": "published_foundation",
+  "tag": "humanities-foundation-v1",
+  "url": "https://github.com/wany614/evidence-lens/releases/tag/humanities-foundation-v1"
+}
