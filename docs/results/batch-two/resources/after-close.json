@@ -1,0 +1,99 @@
+{
+  "by_platform_and_stage": [
+    {
+      "elapsed_s": 20.672000000005937,
+      "failed": 0,
+      "kind": "archive_verify",
+      "platform": "Windows",
+      "runs": 2
+    },
+    {
+      "elapsed_s": 956.7949999999546,
+      "failed": 0,
+      "kind": "generation",
+      "platform": "Windows",
+      "runs": 25
+    },
+    {
+      "elapsed_s": 135.65600000000268,
+      "failed": 0,
+      "kind": "render",
+      "platform": "Windows",
+      "runs": 25
+    },
+    {
+      "elapsed_s": 189.0377881219756,
+      "failed": 2,
+      "kind": "archive_verify",
+      "platform": "macOS",
+      "runs": 55
+    },
+    {
+      "elapsed_s": 90.74566375395807,
+      "failed": 0,
+      "kind": "dataset_build",
+      "platform": "macOS",
+      "runs": 55
+    },
+    {
+      "elapsed_s": 35.319932000973495,
+      "failed": 0,
+      "kind": "derivation",
+      "platform": "macOS",
+      "runs": 36
+    },
+    {
+      "elapsed_s": 2.21956970798783,
+      "failed": 0,
+      "kind": "evaluation",
+      "platform": "macOS",
+      "runs": 1
+    },
+    {
+      "elapsed_s": 62.09610037499806,
+      "failed": 1,
+      "kind": "model_score",
+      "platform": "macOS",
+      "runs": 21
+    },
+    {
+      "elapsed_s": 28.695168464022572,
+      "failed": 0,
+      "kind": "report",
+      "platform": "macOS",
+      "runs": 27
+    }
+  ],
+  "count": 247,
+  "http_log_requests": 298,
+  "http_response_body_bytes": 170160325,
+  "inventory_closed_utc": "2026-11-24T02:59:58.360050Z",
+  "measurement_notes": "HTTP bytes sum recorded HTTP body logs. Return package and local store sizes measure different boundaries. RSS is the sampled process tree; device memory includes other GPU workloads. JSON null denotes unavailable telemetry.",
+  "parents": {
+    "first_census": {
+      "manifest_sha256": "ec9e4216f2da0fbd76019a5012735da29af40b147f3153dc4f1627d93a7dc05f",
+      "member": "payload/resources.json",
+      "run_id": "20261124T024917877156Z-aff148a6b7024c46",
+      "sha256": "166750a56c9c4dbbf6caf460b83db1d7b4f29ae047cff2338a56fa50472b5eba"
+    },
+    "windows_readback": {
+      "manifest_sha256": "acfa312303099e30a946c104e88e01e50ba3559d91a27a3122974ce912ad22fc",
+      "member": "payload/windows-cpu.json",
+      "run_id": "20261124T025913936867Z-db39ad69bea64f5c",
+      "sha256": "d8e7399c81710ec2cac153830e679a0bdfb5e1f5121ce1eed6dcb1fbe61be108"
+    }
+  },
+  "run_id": "20261124T025958729214Z-9bf1bb2c875f4aee",
+  "run_rows_sha256": "d35b946069acfb5408b3276ad8831f22ec80360bc725e6f6e21a81806717d875",
+  "sampled_device_used_max_MiB_across_runs": 978.0,
+  "sampled_tree_rss_max_bytes_across_runs": 1571262464,
+  "schema": "el-b2-resources-1",
+  "scope": "Originals present in this batch store at the inventory close, including failed attempts and received Windows runs. Subsequent sealing and publication are outside this census. Parallel elapsed times sum worker effort.",
+  "statuses": {
+    "failed": 3,
+    "succeeded": 244
+  },
+  "store_hard_link_deduplicated_file_bytes_at_measurement": 3297594802,
+  "volume_free_bytes_at_measurement": 1016691261440,
+  "volume_total_bytes": 1023999787008
+}

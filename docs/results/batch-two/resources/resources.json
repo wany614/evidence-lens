@@ -1,0 +1,153 @@
+{
+  "by_platform_and_stage": [
+    {
+      "elapsed_s": 20.672000000005937,
+      "failed": 0,
+      "kind": "archive_verify",
+      "platform": "Windows",
+      "runs": 2
+    },
+    {
+      "elapsed_s": 956.7949999999546,
+      "failed": 0,
+      "kind": "generation",
+      "platform": "Windows",
+      "runs": 25
+    },
+    {
+      "elapsed_s": 135.65600000000268,
+      "failed": 0,
+      "kind": "render",
+      "platform": "Windows",
+      "runs": 25
+    },
+    {
+      "elapsed_s": 185.7932851229998,
+      "failed": 0,
+      "kind": "archive_verify",
+      "platform": "macOS",
+      "runs": 52
+    },
+    {
+      "elapsed_s": 90.74566375395807,
+      "failed": 0,
+      "kind": "dataset_build",
+      "platform": "macOS",
+      "runs": 55
+    },
+    {
+      "elapsed_s": 35.319932000973495,
+      "failed": 0,
+      "kind": "derivation",
+      "platform": "macOS",
+      "runs": 36
+    },
+    {
+      "elapsed_s": 2.21956970798783,
+      "failed": 0,
+      "kind": "evaluation",
+      "platform": "macOS",
+      "runs": 1
+    },
+    {
+      "elapsed_s": 62.09610037499806,
+      "failed": 1,
+      "kind": "model_score",
+      "platform": "macOS",
+      "runs": 21
+    },
+    {
+      "elapsed_s": 27.024197089020163,
+      "failed": 0,
+      "kind": "report",
+      "platform": "macOS",
+      "runs": 26
+    }
+  ],
+  "count": 243,
+  "http_log_requests": 298,
+  "http_response_body_bytes": 170160325,
+  "inventory_closed_utc": "2026-11-24T02:49:16.596732Z",
+  "measurement_notes": "HTTP bytes sum recorded HTTP body logs. Return package and local store sizes measure different boundaries. RSS is the sampled process tree; device memory includes other GPU workloads. JSON null denotes unavailable telemetry.",
+  "parents": {
+    "C6_branches": {
+      "manifest_sha256": "10a8e9aa5abcb4d2941ec862de44250a06dbb07211f9f39e97628ceedd8c7b6b",
+      "member": "payload/c6-reconstructions.json",
+      "run_id": "20261124T021119570759Z-85cf68d825e142e3",
+      "sha256": "5f588c4c522bc005c270076224b90ded9c260b0740bd16868a5beaca21d828ac"
+    },
+    "C6_intake": {
+      "manifest_sha256": "652b2b7d0b26ef1022abc67c6580990c47782e3d29787bc2939a5bf8ceb6659e",
+      "member": "payload/cohort-summary.json",
+      "run_id": "20261124T021235608848Z-37391ea47d974e94",
+      "sha256": "c09397319407c93f0c75a695d010c433f53e31e02cffc07e815ee9a13fa9c18e"
+    },
+    "D_branches": {
+      "manifest_sha256": "e4e998a0b11050bee5e82bb87c60fb834e7cef5743bed1cf4542ca70b35d2080",
+      "member": "payload/branches.json",
+      "run_id": "20261124T021937740306Z-df1cbacfb273417a",
+      "sha256": "c54c69d3c342df23e43d1785882c750ace6f7e0bbdf260d5948ef90b11e218f0"
+    },
+    "D_evaluation": {
+      "manifest_sha256": "375132900561d02f7db613c89980b1633182164f9e987d84d4cc4aa6fe564901",
+      "member": "payload/public/evaluation.json",
+      "run_id": "20261124T022032641624Z-d7da793c7f6b4dff",
+      "sha256": "3a45524b4e63529454edc6ab7a82a15e52d4bc7b1084511c52cce67a7168c02f"
+    },
+    "D_observations": {
+      "manifest_sha256": "418013416847c38c24c9fb6950a7be0c5a8085f7c4351dcf0fdffba6a62d27b6",
+      "member": "payload/access-audit.json",
+      "run_id": "20261124T020421072175Z-8945f7c021374f44",
+      "sha256": "768bfe0a897272b662d8bb80af1d4ee1d26e32564d2a0c5b6a661c41501b202a"
+    },
+    "asset_package": {
+      "manifest_sha256": "547d495429df8264fed5e797b28f3862cbb09d59f89f9ddb17b963ed0724dc5a",
+      "member": "payload/portable.json",
+      "run_id": "20261124T021735523259Z-8ee25029bf9d4422",
+      "sha256": "6c8f44c937d35bd2e672cc4a5e2701a562fbd03ebf2b6c27a7a5a2723ecea61a"
+    },
+    "fit": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/calibration-results.json",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a"
+    },
+    "linux": {
+      "manifest_sha256": "99f5872e04346377508e26f1de11b9dc0226f4a0169746fe371a0cf535d00346",
+      "member": "payload/linux-cpu.json",
+      "run_id": "20261124T022022718687Z-304bbad000e34084",
+      "sha256": "250b6ef65e69f94b8d37509965f4727f3f79f7febf87a6f9f903556b24102d55"
+    },
+    "private_boards": {
+      "manifest_sha256": "e675325de3251ea637e01728562390b0673f18e7640851a868f7dc6147a3cabb",
+      "member": "payload/boards.json",
+      "run_id": "20261124T021733843712Z-cf6da29123da4be4",
+      "sha256": "a25b3f5756884c5caa499343d409de71610c0f9a3cb972d43429288ccf659619"
+    },
+    "t1_freeze": {
+      "manifest_sha256": "fec5d3267412b8fd5a58b79304d5c50ada6c157b7875c7bff7c6a902bf0190b8",
+      "member": "payload/t1-freeze.json",
+      "run_id": "20261124T023243052988Z-5e3007d1b3ed48dc",
+      "sha256": "b59dddc26d22cb28908ba5b4d27d7795871998e878408243a178ad1c7a2bf946"
+    },
+    "windows_readback": {
+      "manifest_sha256": "4d7bb9cceda184c948fcd5ab61253b91dafffabb8fd1d17f14fe82fef8568336",
+      "member": "payload/windows-cpu.json",
+      "run_id": "20261124T024840489724Z-802b4dde406a4262",
+      "sha256": "c4400c175a471c4f2a5e515fc874693f4d9f218e51a1d7343b92765569655275"
+    }
+  },
+  "run_id": "20261124T024917877156Z-aff148a6b7024c46",
+  "run_rows_sha256": "17b0e5d6a3033affde539ccd889a8a90720f89385a24af03684276fa1ebf4e49",
+  "sampled_device_used_max_MiB_across_runs": 978.0,
+  "sampled_tree_rss_max_bytes_across_runs": 1571262464,
+  "schema": "el-b2-resources-1",
+  "scope": "Originals present in this batch store at the inventory close, including failed attempts and received Windows runs. Subsequent sealing and publication are outside this census. Parallel elapsed times sum worker effort.",
+  "statuses": {
+    "failed": 1,
+    "succeeded": 242
+  },
+  "store_hard_link_deduplicated_file_bytes_at_measurement": 3272347811,
+  "volume_free_bytes_at_measurement": 1016734728192,
+  "volume_total_bytes": 1023999787008
+}

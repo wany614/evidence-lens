@@ -1,0 +1,169 @@
+{
+  "counts": {
+    "canvas": 196608,
+    "high": 32022,
+    "low": 1344,
+    "scoreable": 33366,
+    "unknown": 163242
+  },
+  "distributions": {
+    "evidence-lens": "0.4.0b1",
+    "numpy": "2.3.3",
+    "pillow": "11.3.0",
+    "pip": "23.2.1",
+    "setuptools": "65.5.0"
+  },
+  "history": {
+    "manifest_sha256": "6486d8447506b75b8d780868d836da4f47cb5143842cf9ff3f98486dbbd8b66c",
+    "member": "payload/history.json",
+    "run_id": "20261124T024743873579Z-3cea63613ba64587",
+    "sha256": "7fc525c8f8e55dae57a69655b3cbc5c0361c2b8f1a071b9fddc92f40c4ead057"
+  },
+  "html": {
+    "embedded_images": 14,
+    "images_with_different_decoded_rgb_or_dimensions": 0,
+    "reference_sha256": "3bc6f9f9cceb2bd76ad656b8ada79f215bd9d8b2aaa4a4272bc8ca2458bf32ad",
+    "same_bytes": false,
+    "windows_sha256": "5eaab96037c9943017f6519c8d40ddfcb53d2488ae688db1d6ce2fe2b68e767d"
+  },
+  "native_stages": [
+    {
+      "exit_code": 0,
+      "stage": "01-create-venv",
+      "wall_seconds": 4.839632099989103
+    },
+    {
+      "exit_code": 0,
+      "stage": "02-install",
+      "wall_seconds": 4.851282400006312
+    },
+    {
+      "exit_code": 0,
+      "stage": "03-pip-check",
+      "wall_seconds": 0.7230770000023767
+    },
+    {
+      "exit_code": 0,
+      "stage": "04-pip-list",
+      "wall_seconds": 0.6777485000056913
+    },
+    {
+      "exit_code": 0,
+      "stage": "05-environment",
+      "wall_seconds": 0.3059767999948235
+    },
+    {
+      "exit_code": 0,
+      "stage": "06-validate",
+      "wall_seconds": 0.4232326000055764
+    },
+    {
+      "exit_code": 0,
+      "stage": "07-score",
+      "wall_seconds": 0.6223323999874992
+    },
+    {
+      "exit_code": 0,
+      "stage": "08-report",
+      "wall_seconds": 0.3521496000030311
+    },
+    {
+      "exit_code": 0,
+      "stage": "09-compare",
+      "wall_seconds": 0.23620149999624118
+    }
+  ],
+  "passed": true,
+  "portable": {
+    "manifest_sha256": "547d495429df8264fed5e797b28f3862cbb09d59f89f9ddb17b963ed0724dc5a",
+    "member": "payload/evidence-lens-assets-v0.4.0b1.zip",
+    "run_id": "20261124T021735523259Z-8ee25029bf9d4422",
+    "sha256": "e0a6365b2895fb85ab3565f0753c3036bfaf0abc04c7dda53a2fe5fa3aeabcc9"
+  },
+  "python": "3.11.5",
+  "reference_html_hash_recomputed": true,
+  "release_members": 50,
+  "return_zip_bytes": 22767404,
+  "return_zip_sha256": "851367d16c765cd98aba719d9188821e041f967e067c02ac246ac07fa3247881",
+  "rows": [
+    {
+      "counts": {
+        "canvas": 65536,
+        "high": 10339,
+        "low": 715,
+        "scoreable": 11054,
+        "unknown": 54482
+      },
+      "expected_npz_sha256": "8b291f8e2fabe27bf5d514b715f4cbab771823c0372350780d46bf11d40b18ca",
+      "target": "70",
+      "value_differences": {
+        "risk": 0,
+        "state": 0,
+        "unknown_reason": 0,
+        "valid": 0
+      },
+      "windows_npz_sha256": "97943b5e73fd0500b326a31d8c1ee4cf268001b71b5716ca2383b97b4fdcf843"
+    },
+    {
+      "counts": {
+        "canvas": 65536,
+        "high": 10660,
+        "low": 485,
+        "scoreable": 11145,
+        "unknown": 54391
+      },
+      "expected_npz_sha256": "fec1611c4dcba710b41b1d71e2b3bc81bba09c5bc34d4ccd9ae2e2c06bfbc546",
+      "target": "109",
+      "value_differences": {
+        "risk": 0,
+        "state": 0,
+        "unknown_reason": 0,
+        "valid": 0
+      },
+      "windows_npz_sha256": "dc13f37a49bddf54760b3cc4a13afb49935935be25e4f2818263696df98d36c6"
+    },
+    {
+      "counts": {
+        "canvas": 65536,
+        "high": 11023,
+        "low": 144,
+        "scoreable": 11167,
+        "unknown": 54369
+      },
+      "expected_npz_sha256": "589a9cda01b76bdad282a8fd7b151aa4c633d96848beab524d762e9e64ffde79",
+      "target": "13",
+      "value_differences": {
+        "risk": 0,
+        "state": 0,
+        "unknown_reason": 0,
+        "valid": 0
+      },
+      "windows_npz_sha256": "30e943c53a7d4713b2592b1a1f0cb74b40c7fcf1ef857905959d67bcad0c76f4"
+    }
+  ],
+  "run_id": "20261124T030422988018Z-770cf828f0f945dd",
+  "schema": "el-b2-windows-cpu-independent-1",
+  "stages_seconds": {
+    "01-create-venv": 4.839632099989103,
+    "02-install": 4.851282400006312,
+    "03-pip-check": 0.7230770000023767,
+    "04-pip-list": 0.6777485000056913,
+    "05-environment": 0.3059767999948235,
+    "06-validate": 0.4232326000055764,
+    "07-score": 0.6223323999874992,
+    "08-report": 0.3521496000030311,
+    "09-compare": 0.23620149999624118
+  },
+  "target_photographs": 0,
+  "upstream_archive_sha256": "e0a6365b2895fb85ab3565f0753c3036bfaf0abc04c7dda53a2fe5fa3aeabcc9",
+  "wheel_sha256": "ca52e82c8e870560c05075dda4b5282311500580f9283fe234aa27643d6f8882",
+  "windows": {
+    "manifest_sha256": "334be1ca7fe2c8eef98a42067620c903488bcba58d5e875f64c258c22870af72",
+    "member": "payload/comparison.json",
+    "run_id": "20261124T023920980304Z-851ccb4c1c7c4bff",
+    "sha256": "e96f6824a8fcc1fd519183faf3a72469e742ba225ea30c041dd4b851145bfd05"
+  },
+  "windows_measured_archive_sha256": "e0a6365b2895fb85ab3565f0753c3036bfaf0abc04c7dda53a2fe5fa3aeabcc9",
+  "windows_recorder_elapsed_s": 14.203000000008615,
+  "windows_sampled_tree_rss_peak_bytes": 128405504
+}

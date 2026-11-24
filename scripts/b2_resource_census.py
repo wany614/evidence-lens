@@ -64,12 +64,37 @@ def census(store, snapshot, out, parents):
 def main(a):
     if a.action == "worker":
         return census(a.store, load(a.inventory), a.out, load(a.config)["sources"])
-    path = a.store / "work/controller/closed-b2-originals.json"
+    controller = a.store / "work/controller"
+    first_close = controller / "closed-b2-originals.json"
+    path = controller / "closed-b2-platform-originals.json" if a.with_platform_readback else first_close
     if not path.exists():
         save(path, inventory(a.store))
     parents = load(a.evidence)
-    return stage(a.store.resolve(), a.history.resolve(), "b2-resource-census", "report", parents,
-                 {"scope": "Measured original recorder runs through the batch B evidence close"},
+    closed = {r["run_id"]:r["manifest_sha256"] for r in load(path)["runs"]}
+    if a.with_platform_readback:
+        require(all(closed.get(p["run_id"]) == p["manifest_sha256"] for p in load(first_close)["runs"]),
+                "the platform supplement omits a previously closed original")
+    pending = list(parents.values())
+    seen = set()
+    while pending:
+        pin = pending.pop()
+        rid, digest = pin["run_id"], pin["manifest_sha256"]
+        require(closed.get(rid) == digest, "evidence is newer than the resource close: " + rid)
+        if rid in seen:
+            continue
+        seen.add(rid)
+        directory = a.store / "runs" / rid
+        if not directory.is_dir():
+            directory = a.store / "quarantine" / rid
+        manifest = load(directory / "manifest.json")
+        refs = manifest["parents"] + ([manifest["retry_of"]] if manifest.get("retry_of") else [])
+        pending.extend(p for p in refs if p["run_id"] in closed
+                       or any((a.store / k / p["run_id"]).is_dir() for k in ("runs", "quarantine")))
+    name = "b2-resource-census-platform-readback" if a.with_platform_readback else "b2-resource-census"
+    scope = ("Cumulative recorder originals through the final Windows CPU readback, including the first census"
+             if a.with_platform_readback else "Measured original recorder runs through the batch B evidence close")
+    return stage(a.store.resolve(), a.history.resolve(), name, "report", parents,
+                 {"scope": scope},
                  ["{python}", "{source}/scripts/b2_resource_census.py", "worker", "--store", str(a.store.resolve()),
                   "--inventory", "{input:inventory}", "--config", "{config}", "--out", "{out}"],
                  "payload/resources.json", 700000, {"inventory": path}, a.retry_of)
@@ -81,4 +106,5 @@ if __name__ == "__main__":
     for arg in ("store", "history", "inventory", "config", "out", "evidence"):
         parser.add_argument("--" + arg, type=Path)
     parser.add_argument("--retry-of")
+    parser.add_argument("--with-platform-readback", action="store_true")
     print(json.dumps(main(parser.parse_args()), sort_keys=True))

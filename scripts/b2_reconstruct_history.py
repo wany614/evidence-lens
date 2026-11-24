@@ -31,6 +31,17 @@ def audit(store, prior, old, config, registries, out):
         and [sha(p) for p in registries] == config["dispatch_registry_sha256"],
         "Changed dispatch lineage",
     )
+    data = {
+        "schema": "el-b2-reconstruction-history-1",
+        "run_id": os.environ["EL_RUN_ID"],
+        "dispatch_registry_sha256": config["dispatch_registry_sha256"],
+        **verify_external(prior, old, external),
+    }
+    (out / "history.json").write_bytes(encoded(data))
+
+
+def verify_external(prior, old, external):
+    """Verify every ancestor and shared asset at its actual batch-one or historical location."""
     digs, paths, owners, edges = {}, {}, {}, {}
 
     def collect(rid, digest, active):
@@ -68,18 +79,14 @@ def audit(store, prior, old, config, registries, out):
         all(verified[r]["run"]["execution_status"] == "succeeded" for r in external),
         "Failed external scientific parent",
     )
-    data = {
-        "schema": "el-b2-reconstruction-history-1",
-        "run_id": os.environ["EL_RUN_ID"],
+    return {
         "historical_parents": external,
-        "dispatch_registry_sha256": config["dispatch_registry_sha256"],
         "checked_manifests": digs,
         "verified_runs": len(digs),
         "verified_edges": sum(edges.values()),
         "verified_shared_assets": sum(map(len, assets.values())),
         "verified_historical_member_bytes": sum(b["bytes"] for b in verified.values()),
     }
-    (out / "history.json").write_bytes(encoded(data))
 
 
 def register(store, prior, old, name, registries):

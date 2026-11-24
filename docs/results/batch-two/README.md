@@ -42,5 +42,11 @@ Set118, set76, set45, set103, set61 and set32 were assigned before C6 opening, u
 | Windows CUDA format parity | `20261124T021118010901Z-e7bca336730e47df` |
 | Original portable package | `20261124T021735523259Z-8ee25029bf9d4422` |
 | Prospective T1 endpoints and final freeze | `20261124T020659530443Z-846609b6d59c485a` · `20261124T023243052988Z-5e3007d1b3ed48dc` |
+| Windows native CPU replay and independent numerical readback | `20261124T023920980304Z-851ccb4c1c7c4bff` · `20261124T024840489724Z-802b4dde406a4262` |
+| Whole-batch resource census | `20261124T024917877156Z-aff148a6b7024c46` |
+| Windows archive and native-stage verification, then cumulative census | `20261124T025913936867Z-db39ad69bea64f5c` · `20261124T025958729214Z-9bf1bb2c875f4aee` |
+| Independent readback of all nine ordered Windows stages | `20261124T030422988018Z-770cf828f0f945dd` |
+
+The 25 actual fits accumulated 956.795 seconds of Windows recorder time. The first census measured 3,272,347,811 file bytes. The cumulative census after the Windows archive check measured 3,297,594,802. Mac and Windows reproduced the three-target bead scores. The offline Linux container reproduced the six-target published bell-cage result. [Platform comparisons, failure history and costs](resources/README.md)
 
 The public figures and counts identify their inputs. DTU photographs and their visual comparisons remain in the private research archive. Raw examples in the CPU distribution come from an original analytic scene. [Study software and data notices](../../../THIRD_PARTY_NOTICES.md) · [Official DTU data and citation](https://roboimagedata.compute.dtu.dk/?page_id=36)
