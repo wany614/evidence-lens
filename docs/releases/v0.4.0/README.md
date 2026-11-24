@@ -49,3 +49,9 @@ Set `--method all` to replay B-L1-transfer, MS-L1, MS-frozen and MS-ft and obtai
 For repeated calls, `load_scorer`, `prepare_sources` and `score_frame` operate on identity-bound arrays. The CLI retains its original file reference path. Use the bounded static replay program with the separate original trajectory asset. Camera and frame timestamps, completed results, drops, stale outputs, map/source revisions, feature time, service time and queueing have separate records. [Resident array API](../../tooling/resident.md) · [Numerical bridge](../../tooling/numerical-bridge.md) · [Static replay and timing](../../general-closeout/performance/README.md)
 
 Rendering a supported Gaussian asset requires its separate CUDA renderer. The risk scoring path uses the prepared numerical evidence. The published source includes positive manifests, registration, numerical study results and reproduction scripts. The DTU photographs and their derivative panels remain in the private research archive. [Input support](../../tooling/assets/README.md) · [Research report](../../general-closeout/README.md) · [Release asset rights](RIGHTS.md)
+
+## Checks on the actual downloadable wheel
+
+The current release was downloaded anonymously and replayed on Mac arm64, native Windows x86-64 and an arm64 Linux container. The platform report includes the exact code/weight identities and observed numerical differences. [Public verification and per-view tables](../../verification/v0.4.0/README.md) · [Study completion matrix](../../general-closeout/completion-final.json)
+
+The embedded Windows test interpreter initially reported TLS issuer verification failure. A new recorded run used the CA bundle from its existing pip installation, checked each HTTPS hostname and successfully downloaded the public files. The exact CA digest, interpreter client and server URLs appear in the independent readback. [Windows trust and time receipts](../../verification/v0.4.0/chronology.json)

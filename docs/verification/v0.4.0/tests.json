@@ -1,0 +1,16 @@
+{
+  "run_id": "20261124T052734882331Z-389d71c83fd34246",
+  "schema": "el-general-release-tests-1",
+  "skipped": 0,
+  "source_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+  "source_zip_sha256": "795ba3dac1d2c8586c119c3f2f330f5b04683a3b486092650daf16b6c4b2ac47",
+  "suites": [
+    "test_b2_asset.py",
+    "test_bundle.py",
+    "test_replay.py",
+    "test_resident.py",
+    "test_t1_confirmation_controls.py"
+  ],
+  "tests_passed": 45,
+  "xml_sha256": "4eba9bfd15645a847ecec5de7ff76b80c3fe3346faa13b537e90de125905dc80"
+}

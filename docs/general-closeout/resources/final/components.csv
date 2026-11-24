@@ -1,0 +1,9 @@
+component,files,logical_bytes,allocated_stat_bytes,hardlink_distinct_files,hardlink_distinct_logical_bytes,hardlink_distinct_allocated_stat_bytes,symlinks_skipped,entries_vanished_during_scan
+assets,157,106338351,106651648,157,106338351,106651648,0,0
+history,0,0,0,0,0,0,1462,0
+index,2,2998272,3166208,2,2998272,3166208,0,0
+receipts,70,70324,286720,70,70324,286720,0,0
+runs,158040,8736596818,9154289664,157000,6054758888,6424137728,0,0
+staging,0,0,0,0,0,0,0,0
+transport,559,864499022,865632256,559,864499022,865632256,0,0
+work,1118,106177000,108711936,1118,106177000,108711936,6,0

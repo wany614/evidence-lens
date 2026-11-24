@@ -8,6 +8,8 @@ The release includes a prepared four-model replay, a real fine-tuned CPU model, 
 
 The prospective T1 study covered six additional photographed objects. All six supplied M2 scores and four supplied fixed M4 scores. The original probe failed on two objects. Four-source matched-20% error among the four comparable objects was 15.79% for MS-L1 and 12.40% for MS-ft. Offline risk-based camera choice changed mean paired target MAE by −0.0066173, with two improvements, one adverse case and one tie. [Prospective results and complete denominators](docs/results/t1/README.md) · [Paired camera selection](docs/results/t1/nbv.md) · [Latency and dropped frames](docs/general-closeout/performance/README.md)
 
+The published wheel was replayed on Mac arm64, native Windows x86-64 and Linux arm64. The verification report records the comparisons with the original arrays, including the observed Windows MS-ft differences. [Public replay receipts](docs/verification/v0.4.0/README.md) · [General-stage completion matrix](docs/general-closeout/completion-final.json)
+
 ## Score a prepared bundle on CPU
 
 Install this checkout with `python -m pip install .`. Run `evidence-lens validate --bundle CASE`, then `evidence-lens score --bundle CASE --out scores` and `evidence-lens report --scores scores --out report.html`. The default scorer includes the released MS-L1 parameters. An original bell-cage example supplies all required evidence. [Installation, example and optional MS-ft](docs/tooling/README.md) · [Offline HTML report](examples/offset-bell-cage/bundle-report.html)

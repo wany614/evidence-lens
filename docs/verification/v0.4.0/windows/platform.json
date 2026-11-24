@@ -1,0 +1,71 @@
+{
+  "basis": "Each row is one matched quota on one original target and method. Threshold changes repeat across quota rows.",
+  "clean_replay": {
+    "archive_sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0",
+    "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+    "cuda_visible_devices": "-1",
+    "groups": {
+      "default": {
+        "acceptance_sha256": "117f0a133616459e8e6d3ba0830c10c31abb48417151ab9ead857d95f54a4ab7",
+        "bit_exact": true,
+        "bundle_sha256": "b8feb75ade71f39336f7927ebbb814e828b345932b4f651e0e1cb81137e109c2",
+        "changed_reasons": 0,
+        "changed_valid": 0,
+        "distributions": {
+          "evidence-lens": "0.4.0",
+          "numpy": "2.5.5",
+          "pillow": "12.3.0",
+          "pip": "25.0.1"
+        },
+        "grade_seconds_including_HTML": 3.1560000000026776,
+        "install_seconds": 8.031000000002678,
+        "method": "MS-L1",
+        "replay_completed": true,
+        "status": "bit_exact",
+        "threshold_crossings": 0
+      },
+      "vision": {
+        "acceptance_sha256": "cad1ee03c64d61e807014d0ec7f8dc29dee9226840f84958cc42d414e1b91993",
+        "bit_exact": false,
+        "bundle_sha256": "b8feb75ade71f39336f7927ebbb814e828b345932b4f651e0e1cb81137e109c2",
+        "changed_reasons": 0,
+        "changed_valid": 0,
+        "distributions": {
+          "evidence-lens": "0.4.0",
+          "filelock": "4.3.1",
+          "fsspec": "2026.9.0",
+          "jinja2": "3.1.6",
+          "markupsafe": "3.0.4",
+          "mpmath": "1.3.0",
+          "networkx": "3.7",
+          "numpy": "2.5.5",
+          "pillow": "12.3.0",
+          "pip": "25.0.1",
+          "psutil": "7.2.2",
+          "safetensors": "0.8.0",
+          "setuptools": "84.2.1",
+          "sympy": "1.14.0",
+          "torch": "2.8.0+cpu",
+          "typing_extensions": "4.16.0"
+        },
+        "grade_seconds_including_HTML": 5.937999999994645,
+        "install_seconds": 110.60899999999674,
+        "method": "MS-ft",
+        "replay_completed": true,
+        "status": "numerical_difference",
+        "threshold_crossings": 0
+      }
+    },
+    "platform": {
+      "arch": "AMD64",
+      "os": "Windows",
+      "python": "3.12.10",
+      "version": "11"
+    },
+    "run_id": "20261124T053921931741Z-2a518ee89cfa4186",
+    "schema": "el-general-clean-acceptance-1",
+    "tag": "v0.4.0",
+    "wheel_sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281"
+  },
+  "table_sha256": "28ec27bf1bd339f215b971597c3931003daf03f90044fca455b354a31c2e1552"
+}

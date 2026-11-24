@@ -1,0 +1,26 @@
+{
+  "assets": {
+    "evidence-lens-source-v0.4.0.zip": {
+      "bytes": 16227673,
+      "sha256": "795ba3dac1d2c8586c119c3f2f330f5b04683a3b486092650daf16b6c4b2ac47"
+    },
+    "evidence_lens-0.4.0-py3-none-any.whl": {
+      "bytes": 395627,
+      "sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281"
+    }
+  },
+  "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+  "default_dependencies": [
+    "numpy>=1.26,<3",
+    "Pillow>=11,<13"
+  ],
+  "risk_weights_release": "v0.3.0-rc.1",
+  "run_id": "20261124T052717775380Z-6fd53e45c4f845a2",
+  "schema": "el-general-build-1",
+  "source_files": 1148,
+  "source_tree": "001ebfccf58f60d569df25f1eb79ca224bd41b9b",
+  "source_zip_member_timestamp": "1980-01-01T00:00:00",
+  "version": "0.4.0",
+  "wheel_record_members": 110,
+  "wheel_source_date_epoch": 946684800
+}

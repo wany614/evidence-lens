@@ -1,0 +1,14 @@
+{
+  "archive_receipt_id": "4549f0f577fc483dbc5c795b0445ac11",
+  "clean_replay_started": false,
+  "failure": "Python TLS issuer-chain verification while requesting the public release manifest",
+  "native_manifest_sha256": "ade9a281bed100ba56931eb9b9c188d8228b37ffe1e833a92b596b75230e3bfe",
+  "native_run_id": "20261124T053254866846Z-d7d5fe66135e4c85",
+  "release_manifest_sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc",
+  "return_bytes": 178810521,
+  "return_container_sha256": "af34230d70391856e7c8e2621f1ae712c953dcbc52d3896f22f9f1788b605870",
+  "run_id": "20261124T053711662786Z-35aa12351e0c4804",
+  "schema": "el-general-native-download-failure-1",
+  "sha256_native_stderr": "2d2075a2c6b07da812c8e67aabd67f6caa6067170b0b148d3bba01db7153a77d",
+  "terminal_status": "failed"
+}

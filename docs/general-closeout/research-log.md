@@ -65,3 +65,11 @@ At 10 Hz the default model delivered 466 of 600 inputs, dropped 132 and expired 
 |---|---|---|
 | G3 configurations | `20261124T045003997485Z-0ac6de2edc7b4a91` | `20261124T051847516079Z-82a9b9eef4e142bc` |
 | G4 static replay | `20261124T051249715138Z-af1a8204c27b4b03` | `20261124T051942452757Z-204f25c262484a69` |
+
+## RL-022
+
+RL-022｜公开发布、匿名下载与通用阶段停点
+事件为 2026-11-24 05:27 UTC 至三端核验完成，记录于 2026-11-24 05:44:34 UTC。Wany 决定将通用研究、真实微调和 CPU 工具公开复用，并明确停在专精之前。ChatGPT 细化研究、输入与独立验收规则，Codex 完成构建、GitHub 发布、实机下载和复算。v0.4.0 于 05:32:19 UTC 公开，源码 7051de93f7b8af764c5ded4aeb623fb205b56452，发布清单 SHA-256 285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc。真实模型仍来自 v0.3.0-rc.1。Mac 匿名回读七个文件，共 394,007,581 字节；Windows 独立匿名回读清单、校验表、wheel 与原创示例四个文件。Mac 四法、Windows 的 MS-L1 与真实 MS-ft、网络隔离的 Linux arm64 容器默认方法均用新环境运行，45 项发布源码回归全部通过。
+原创 bell M4 六个视角上三端 MS-L1 均逐位一致。Mac 四种方法均逐位一致。Windows MS-ft 在 388,358 个共同有限像素中有 374,959 个风险值出现浮点差异，最大绝对差 8.106231689453125×10⁻⁶，原阈值、状态、有效性和未知原因变化均为 0。60 个可达匹配配额中，v02 的 1% 和 v06 的 20% 各调换了一个像素；本次复算没有给 Windows 补报 T1 AP。Windows 第一次匿名请求因 TLS 无法验证证书签发方而失败，保留原件。使用本机项目既有的 pip CA 包后，仍执行证书和主机名验证，同一发布包通过了完整复跑。新发布回读 Mac 20261124T053239837552Z-8ec25846c9824287、Mac CPU 20261124T053317420913Z-a2222e0c95c84aab、Windows 20261124T053921931741Z-2a518ee89cfa4186、Linux 20261124T053334466132Z-7833aef37f6e419f、三端独立汇总 20261124T054331477446Z-297fca1fb02c47eb。Claude Opus high 无工具审查最终收口条件，提醒记录公开时序、Windows 配额成员差异与首次 TLS 失败。Codex 对照原始回执核验。通用阶段按既定范围停止；新增风险模型训练及阈值拟合均为 0。后续领域研究需单独立项。
+
+[Verified log revision and release identity](research-log-readback-final.json) · [Independent public replay and platform clocks](../verification/v0.4.0/chronology.json)

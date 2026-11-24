@@ -1,0 +1,412 @@
+{
+  "anonymous_mac": {
+    "anonymous_requests": [
+      {
+        "anonymous": true,
+        "bytes": 1548,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "release-manifest.json",
+        "seconds_including_verification": 0.3216336670011515,
+        "sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/release-manifest.json"
+      },
+      {
+        "anonymous": true,
+        "bytes": 605,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "SHA256SUMS",
+        "seconds_including_verification": 0.30789120799454395,
+        "sha256": "7b893afe9ca36e5a92472440674f50c73da22932467381b70313193162cf6c26",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/SHA256SUMS"
+      },
+      {
+        "anonymous": true,
+        "bytes": 3880237,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence-lens-cpu-replay-measurements.zip",
+        "seconds_including_verification": 0.6318638750090031,
+        "sha256": "2f6f98076f0e87984bff88a3c3c03175366beac55bb3f2af2d91b0017e64df2f",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence-lens-cpu-replay-measurements.zip"
+      },
+      {
+        "anonymous": true,
+        "bytes": 44233110,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence-lens-original-replays-v1.zip",
+        "seconds_including_verification": 4.480788957996992,
+        "sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence-lens-original-replays-v1.zip"
+      },
+      {
+        "anonymous": true,
+        "bytes": 16227673,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence-lens-source-v0.4.0.zip",
+        "seconds_including_verification": 1.3163402500067605,
+        "sha256": "795ba3dac1d2c8586c119c3f2f330f5b04683a3b486092650daf16b6c4b2ac47",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence-lens-source-v0.4.0.zip"
+      },
+      {
+        "anonymous": true,
+        "bytes": 329268781,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence-lens-static-trajectories.zip",
+        "seconds_including_verification": 27.368164166997303,
+        "sha256": "933d16cd27549618bc7adf43a1a86988daaf187fc06282a9d21775ac9a37b806",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence-lens-static-trajectories.zip"
+      },
+      {
+        "anonymous": true,
+        "bytes": 395627,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence_lens-0.4.0-py3-none-any.whl",
+        "seconds_including_verification": 0.3910402080073254,
+        "sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence_lens-0.4.0-py3-none-any.whl"
+      }
+    ],
+    "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+    "schema": "el-general-public-download-1",
+    "tag": "v0.4.0"
+  },
+  "anonymous_windows": {
+    "anonymous_requests": [
+      {
+        "anonymous": true,
+        "bytes": 1548,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "release-manifest.json",
+        "seconds_including_verification": 0.5160000000032596,
+        "sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/release-manifest.json"
+      },
+      {
+        "anonymous": true,
+        "bytes": 605,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "SHA256SUMS",
+        "seconds_including_verification": 0.6089999999967404,
+        "sha256": "7b893afe9ca36e5a92472440674f50c73da22932467381b70313193162cf6c26",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/SHA256SUMS"
+      },
+      {
+        "anonymous": true,
+        "bytes": 44233110,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence-lens-original-replays-v1.zip",
+        "seconds_including_verification": 3.2339999999967404,
+        "sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence-lens-original-replays-v1.zip"
+      },
+      {
+        "anonymous": true,
+        "bytes": 395627,
+        "environment_proxy": false,
+        "http_status": 200,
+        "name": "evidence_lens-0.4.0-py3-none-any.whl",
+        "seconds_including_verification": 0.6570000000065193,
+        "sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281",
+        "url": "https://github.com/wany614/evidence-lens/releases/download/v0.4.0/evidence_lens-0.4.0-py3-none-any.whl"
+      }
+    ],
+    "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+    "schema": "el-general-public-download-1",
+    "tag": "v0.4.0"
+  },
+  "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+  "compiled_tests": {
+    "run_id": "20261124T052734882331Z-389d71c83fd34246",
+    "schema": "el-general-release-tests-1",
+    "skipped": 0,
+    "source_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+    "source_zip_sha256": "795ba3dac1d2c8586c119c3f2f330f5b04683a3b486092650daf16b6c4b2ac47",
+    "suites": [
+      "test_b2_asset.py",
+      "test_bundle.py",
+      "test_replay.py",
+      "test_resident.py",
+      "test_t1_confirmation_controls.py"
+    ],
+    "tests_passed": 45,
+    "xml_sha256": "4eba9bfd15645a847ecec5de7ff76b80c3fe3346faa13b537e90de125905dc80"
+  },
+  "linux_download_transport": "The same published bytes may be transported into this network-off system.",
+  "linux_image": "sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "manifest_sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc",
+  "model_release": "v0.3.0-rc.1",
+  "original_replays": {
+    "linux": {
+      "acceptance_sha256": "91a1e4c5f499ff8a5475d291a6e8d02f187d8132d75d06367517cc68d26eb7c0",
+      "groups": {
+        "default": {
+          "MS-L1": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          }
+        }
+      },
+      "per_view_quota_table_sha256": "cce2566b8f959f8a766b51ec13fe268de006355d0758f7532cc31988b7b7d3d5",
+      "platform": {
+        "arch": "aarch64",
+        "os": "Linux",
+        "python": "3.12.16",
+        "version": "7.2.12-orbstack-00394-gbecdd6130068"
+      }
+    },
+    "mac": {
+      "acceptance_sha256": "2abb441b56fc2bbc24613db3778ae5f1d14d3abebb7dc325ab5f0f007ebd6dc0",
+      "groups": {
+        "default": {
+          "MS-L1": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          }
+        },
+        "vision": {
+          "B-L1-transfer": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          },
+          "MS-L1": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          },
+          "MS-frozen": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          },
+          "MS-ft": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          }
+        }
+      },
+      "per_view_quota_table_sha256": "0e20f61d6f7665e3ce333cfe425beb1e4764c8831397d11d4da03b5a44aac103",
+      "platform": {
+        "arch": "arm64",
+        "os": "Darwin",
+        "python": "3.12.16",
+        "version": "27.2.0"
+      }
+    },
+    "windows": {
+      "acceptance_sha256": "c841c2eec6f9def5036750a8055d1db39e4547770f2b6b5a92cbbfaf99f7b9a2",
+      "groups": {
+        "default": {
+          "MS-L1": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 6,
+            "changed_pixels": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 0.0,
+            "quota_membership_changed": 0,
+            "threshold_crossings": 0,
+            "views": 6
+          }
+        },
+        "vision": {
+          "MS-ft": {
+            "attainable_quotas": 60,
+            "bit_exact_views": 0,
+            "changed_pixels": {
+              "risk": 374959,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "max_abs_risk_difference": 8.106231689453125e-06,
+            "quota_membership_changed": 2,
+            "threshold_crossings": 0,
+            "views": 6
+          }
+        }
+      },
+      "per_view_quota_table_sha256": "28ec27bf1bd339f215b971597c3931003daf03f90044fca455b354a31c2e1552",
+      "platform": {
+        "arch": "AMD64",
+        "os": "Windows",
+        "python": "3.12.10",
+        "version": "11"
+      }
+    }
+  },
+  "provenance": {
+    "inventory": {
+      "manifest_sha256": "836b3061fc71d71504c4a83838837eae001cdac70aeb175f3e631de79e30ab22",
+      "member": "payload/release-manifest.json",
+      "run_id": "20261124T052727770618Z-f2df90e4ec4d44a7",
+      "sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc"
+    },
+    "linux": {
+      "manifest_sha256": "aad521f50a1021a7387f82ea20722636307649007414f53e584d0546773b74ca",
+      "member": "payload/linux.json",
+      "run_id": "20261124T053334466132Z-7833aef37f6e419f",
+      "sha256": "ae7dc7c0c40c4e1b190a110308db1c437a0fca3ea225ea9a7524cf69d653422d"
+    },
+    "mac": {
+      "manifest_sha256": "380ea2335dcd1e147300a56a291c791a3396edfb1471ff9d15d8c839ac1109ba",
+      "member": "payload/acceptance.json",
+      "run_id": "20261124T053317420913Z-a2222e0c95c84aab",
+      "sha256": "2abb441b56fc2bbc24613db3778ae5f1d14d3abebb7dc325ab5f0f007ebd6dc0"
+    },
+    "mac_anon": {
+      "manifest_sha256": "6fa8aca75352944c397b8c84f2fff23d0e9f0e84375c8f25424a3a8a7c889aef",
+      "member": "payload/public-readback.json",
+      "run_id": "20261124T053239837552Z-8ec25846c9824287",
+      "sha256": "6d4452d24d0db091076d03c327cc6d9c3d85037e438c19d98143c019c44f9eb2"
+    },
+    "publication": {
+      "manifest_sha256": "2d6f9f17a23598157177a9a0ac2257ff876e738e49a2f1d81155729547ae5c73",
+      "member": "payload/github.json",
+      "run_id": "20261124T053215645657Z-9531fab1637b4892",
+      "sha256": "68bb22de14e100ba3b3bc7b0dabd5c982a3db07c4f355e7fd501de46857dbccb"
+    },
+    "regressions": {
+      "manifest_sha256": "b61e327984539060cad915503308294a440aab65e3662b75b2ef6ce9fbe6afb8",
+      "member": "payload/tests.json",
+      "run_id": "20261124T052734882331Z-389d71c83fd34246",
+      "sha256": "6c6ac3187be992e5e250daa8657da422e575bc0c2feaba0a48d013a7d4391e7b"
+    },
+    "windows_anon": {
+      "manifest_sha256": "679aeb83622bb450952f2412df643592498c55ad119958632ffb5c7a17520ff8",
+      "member": "payload/public-readback.json",
+      "run_id": "20261124T053921931741Z-2a518ee89cfa4186",
+      "sha256": "67517d8e05e7bd5fe2becb3bd3698dbcedb5a77a90b28ae8305844d68599a58c"
+    },
+    "windows_grade": {
+      "manifest_sha256": "679aeb83622bb450952f2412df643592498c55ad119958632ffb5c7a17520ff8",
+      "member": "payload/grade/acceptance.json",
+      "run_id": "20261124T053921931741Z-2a518ee89cfa4186",
+      "sha256": "c841c2eec6f9def5036750a8055d1db39e4547770f2b6b5a92cbbfaf99f7b9a2"
+    },
+    "windows_intake": {
+      "manifest_sha256": "749ee10f272c2a9b2b81b0552a0edf35f6a31bce85771bb09ae3ddeb99d8d574",
+      "member": "payload/readback.json",
+      "run_id": "20261124T054246100437Z-2d21ce6c9efa4107",
+      "sha256": "a24da0c02c7259e335f417b3ced398cb7d9b70fd1d2a62a7bed56fb936d3fbfb"
+    }
+  },
+  "release": {
+    "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+    "draft": false,
+    "finish_utc": "2026-11-24T05:32:20.642347+00:00",
+    "manifest_sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc",
+    "notes_sha256": "eb95ac563a006377df8e02a35118658b60cd4bf58519bb4acdbc1e038a5b255e",
+    "operation": "public",
+    "published_at": "2026-11-24T05:32:19Z",
+    "release_id": 456343082,
+    "remote_assets": {
+      "SHA256SUMS": {
+        "bytes": 605,
+        "sha256": "7b893afe9ca36e5a92472440674f50c73da22932467381b70313193162cf6c26"
+      },
+      "evidence-lens-cpu-replay-measurements.zip": {
+        "bytes": 3880237,
+        "sha256": "2f6f98076f0e87984bff88a3c3c03175366beac55bb3f2af2d91b0017e64df2f"
+      },
+      "evidence-lens-original-replays-v1.zip": {
+        "bytes": 44233110,
+        "sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0"
+      },
+      "evidence-lens-source-v0.4.0.zip": {
+        "bytes": 16227673,
+        "sha256": "795ba3dac1d2c8586c119c3f2f330f5b04683a3b486092650daf16b6c4b2ac47"
+      },
+      "evidence-lens-static-trajectories.zip": {
+        "bytes": 329268781,
+        "sha256": "933d16cd27549618bc7adf43a1a86988daaf187fc06282a9d21775ac9a37b806"
+      },
+      "evidence_lens-0.4.0-py3-none-any.whl": {
+        "bytes": 395627,
+        "sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281"
+      },
+      "release-manifest.json": {
+        "bytes": 1548,
+        "sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc"
+      }
+    },
+    "repo": "wany614/evidence-lens",
+    "run_id": "20261124T053215645657Z-9531fab1637b4892",
+    "schema": "el-general-release-upload-1",
+    "start_utc": "2026-11-24T05:32:16.926770+00:00",
+    "tag": "v0.4.0",
+    "url": "https://github.com/wany614/evidence-lens/releases/tag/v0.4.0"
+  },
+  "run_id": "20261124T054331477446Z-297fca1fb02c47eb",
+  "schema": "el-general-public-verification-1",
+  "tag": "v0.4.0"
+}

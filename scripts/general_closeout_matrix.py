@@ -77,6 +77,8 @@ ALIASES = {
     "github": "g6-github-public",
     "verification": "g6-post-public-verification",
     "regressions": "g6-immutable-regressions",
+    "windows_first_attempt": "g6-windows-native-tls-failure",
+    "chronology": "g6-post-public-chronology",
 }
 STATIC = (
     (
@@ -351,7 +353,7 @@ def build(store, packet):
     docs = packet["repository_files_sha256"]
     rows = []
 
-    def add(item, status, roles, paths, limit):
+    def add(item, status, roles, paths, limit, details=None):
         require(status in STATES and not any(r["item"] == item for r in rows), "invalid or duplicate item")
         pointers = [p for role in roles for p in packet["public_evidence"].get(role, [])]
         evidence = list(dict.fromkeys([*paths, *pointers]))
@@ -372,6 +374,7 @@ def build(store, packet):
                 "runs": list(dict.fromkeys(p["run_id"] for p in provenance)),
                 "evidence_roles": list(roles),
                 "limitation": limit,
+                **({"observations": details} if details is not None else {}),
             }
         )
 
@@ -420,6 +423,7 @@ def build(store, packet):
                 )
                 continue
             rec = data[role]
+            observations = None
             native = run_folder(store, pins[role]["run_id"])
             env = load(native / "environment.json")
             files = load(native / "manifest.json")["files"]
@@ -485,7 +489,41 @@ def build(store, packet):
                     and rec["version_switch_status"]["finished"] > 0
                 )
                 desc = f"{len(traces)} sustained loads. {sum(x['inputs'] for x in traces)} input slots; {sum(x['status']['finished'] for x in traces)} finished. Every generated output is reconciled against the static render source. The revision check recorded {rec['version_switch_status']['finished']} completions."
-            add(role + "_measurements", "done" if complete else "failed", [role], [PERF_DOC], desc)
+            if phase == "g4" and packet["phase"] == "final":
+                consume = ("finished", "dropped", "expired", "failed")
+                terminal_rows = [
+                    {
+                        "workload": t["id"],
+                        "method": t["method"],
+                        "offered": t["inputs"],
+                        "distinct_target_views": t["unique_offered"],
+                        **{k: t["status"][k] for k in consume},
+                    }
+                    for t in traces
+                ]
+                switch = {k: rec["version_switch_status"][k] for k in consume}
+                native_run = load(native / "run.json")
+                observations = {
+                    "sustained_loads": terminal_rows,
+                    "version_switch": {**switch, "offered": sum(switch.values())},
+                    "native_recorder_exit_code": native_run["exit_code"],
+                    "native_worker_exit_code": native_run["worker_exit_code"],
+                    "sustained_frame_execution_failures": sum(x["failed"] for x in terminal_rows),
+                    "switch_frame_execution_failures": switch["failed"],
+                }
+                desc += " The finished/dropped/expired/failed counts per load were " + ", ".join(
+                    f"{t['workload']} {t['finished']}/{t['dropped']}/{t['expired']}/{t['failed']}"
+                    for t in terminal_rows
+                )
+                desc += f". Revision finished/dropped/expired/failed counts were {switch['finished']}/{switch['dropped']}/{switch['expired']}/{switch['failed']}. Native worker exit code {native_run['worker_exit_code']}."
+            add(
+                role + "_measurements",
+                "done" if complete else "failed",
+                [role],
+                [PERF_DOC],
+                desc,
+                observations,
+            )
             status[role] = complete
             if phase == "g4":
                 if packet["phase"] == "final":
@@ -638,7 +676,7 @@ def build(store, packet):
         [T1 + "resources.md", PUBLIC + "resources/" + phase + "/resources.json"],
         f"{rd['sealed_runs']} sealed native runs at {rd['start_utc']}. Full local-store logical bytes are {rd['local_store']['logical_bytes']}; external linked history and the active census are outside that scan.",
     )
-    pub_ready = release_rows(packet, data, pins, add, pending, status)
+    pub_ready = release_rows(packet, data, pins, add, pending, status, store)
     add(
         "additional_risk_training_t2_specialization_embodied_control",
         "out_of_scope",
@@ -679,7 +717,7 @@ def build(store, packet):
     }
 
 
-def release_rows(packet, data, pins, add, pending, status):
+def release_rows(packet, data, pins, add, pending, status, store=None):
     evidence = ["docs/releases/v0.4.0/README.md"]
     tag = packet["tool_version"]
     doc = data.get("manifest")
@@ -770,20 +808,130 @@ def release_rows(packet, data, pins, add, pending, status):
         )
         status[role] = ok
         primary = primary or bool(ok and groups.get("vision", {}).get("method") == "all")
-        add(
-            role,
-            "done" if ok else "failed",
-            [role],
-            evidence,
+        roles = [role]
+        desc = (
             result["platform"]["arch"]
             + " "
             + platform
-            + "; clean groups "
+            + ", clean groups "
             + ", ".join(n + "=" + g["method"] + " (" + g["status"] + ")" for n, g in groups.items())
-            + ".",
+            + "."
         )
+        observations = None
+        if packet["phase"] == "final" and "verification" in data:
+            v = data["verification"]["original_replays"][host]
+            observations = {
+                "authored_scene": "offset bell cage",
+                "layout": "M4",
+                "target_views_per_method": 6,
+                "numerical_results_by_group": v["groups"],
+            }
+            if host == "windows":
+                first = data.get("windows_first_attempt")
+                require(
+                    first
+                    and first["terminal_status"] == "failed"
+                    and first["clean_replay_started"] is False
+                    and first["release_manifest_sha256"] == pins["manifest"]["sha256"],
+                    "original Windows failure provenance differs",
+                )
+                rows_path = (
+                    run_folder(store, pins["verification"]["run_id"])
+                    / "payload/windows/numerical-differences.csv"
+                )
+                require(
+                    sha(rows_path) == v["per_view_quota_table_sha256"], "verified Windows quota table differs"
+                )
+                with rows_path.open(encoding="utf-8", newline="") as inp:
+                    changed = [
+                        {
+                            "method": r["method"],
+                            "target_view": r["view"],
+                            "quota": r["anchor"],
+                            "added_pixels": int(r["added_pixels"]),
+                            "removed_pixels": int(r["removed_pixels"]),
+                        }
+                        for r in csv.DictReader(inp)
+                        if r["old_attainable"] == "True"
+                        and r["new_attainable"] == "True"
+                        and (int(r["added_pixels"]) or int(r["removed_pixels"]))
+                    ]
+                default = v["groups"]["default"]["MS-L1"]
+                ft = v["groups"]["vision"]["MS-ft"]
+                require(
+                    sum(x["method"] == "MS-ft" for x in changed) == ft["quota_membership_changed"],
+                    "Windows changed quota membership recount differs",
+                )
+                observations["changed_attainable_quotas"] = changed
+                observations["first_failed_native"] = first["native_run_id"]
+                desc += f" The first native attempt stopped at TLS issuer-chain validation before scoring. The recovered public download completed using certificate verification. All {default['bit_exact_views']}/{default['views']} default target views matched. MS-ft matched {ft['bit_exact_views']}/{ft['views']} target views bit for bit. The {ft['changed_pixels']['risk']:,} changed risk values had a maximum absolute difference of {ft['max_abs_risk_difference']:.17g}. Valid/state/reason differences were {ft['changed_pixels']['valid']}/{ft['changed_pixels']['state']}/{ft['changed_pixels']['unknown_reason']}, with {ft['threshold_crossings']} threshold crossings."
+                desc += (
+                    f" {ft['quota_membership_changed']} of {ft['attainable_quotas']} attainable MS-ft view–quotas changed. The affected entries were "
+                    + ", ".join(
+                        f"{x['target_view']} at {x['quota']} (+{x['added_pixels']}, -{x['removed_pixels']})"
+                        for x in changed
+                        if x["method"] == "MS-ft"
+                    )
+                    + "."
+                )
+                roles.extend(
+                    [
+                        n
+                        for n in (
+                            "windows_first_attempt",
+                            "windows_acceptance_intake",
+                            "verification",
+                            "chronology",
+                        )
+                        if n in data
+                    ]
+                )
+        add(role, "done" if ok else "failed", roles, evidence, desc, observations)
     final_audited = False
+    chronology_ok = False
     if packet["phase"] == "final":
+        if "chronology" in data and doc:
+            clock = data["chronology"]
+            chain = {
+                "previous_failure": "windows_first_attempt",
+                "windows_grade": "windows_acceptance",
+                "windows_intake": "windows_acceptance_intake",
+                "publication": "github",
+                "mac_download": "download",
+                "mac_grade": "mac_acceptance",
+                "linux_grade": "linux_acceptance",
+            }
+            require(
+                clock["schema"] == "el-public-replay-chronology-1"
+                and clock["tag"] == tag
+                and clock["code_commit"] == doc["code_commit"]
+                and clock["manifest_sha256"] == pins["manifest"]["sha256"]
+                and all(k in pins and clock["source_receipts"][ck] == pins[k] for ck, k in chain.items())
+                and clock["windows_trust"]["certificate_verification"] == "CERT_REQUIRED"
+                and clock["windows_trust"]["hostname_verification"] is True
+                and bool(clock["windows_trust"]["ssl_cert_file_sha256"]),
+                "post-public native timing and Windows trust chronology differs",
+            )
+            paths = packet["public_evidence"].get("chronology", [])
+            require(
+                any(packet["repository_files_sha256"].get(p) == pins["chronology"]["sha256"] for p in paths),
+                "public chronology projection differs from its sealed original",
+            )
+            chronology_ok = True
+            add(
+                "post_public_utc_and_windows_trust",
+                "done",
+                ["chronology"],
+                evidence,
+                f"The release became public at {clock['published_at']}. The strict chronology binds the later anonymous fetch and clean replay runs, the network-off Linux input and the first failed Windows download. The successful Windows recovery required the CA chain and verified the hostname.",
+            )
+        else:
+            pending(
+                "post_public_utc_and_windows_trust",
+                "chronology",
+                evidence,
+                "The independently checked public timing and trust chronology is pending.",
+            )
         if "build" in data and doc:
             b = data["build"]
             require(
@@ -928,7 +1076,7 @@ def release_rows(packet, data, pins, add, pending, status):
         )
     return (
         published
-        and (packet["phase"] != "final" or final_audited)
+        and (packet["phase"] != "final" or (final_audited and chronology_ok))
         and primary
         and status.get("mac_acceptance", False)
         and status.get("windows_acceptance", False)

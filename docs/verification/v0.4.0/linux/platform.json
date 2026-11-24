@@ -1,0 +1,40 @@
+{
+  "basis": "Each row is one matched quota on one original target and method. Threshold changes repeat across quota rows.",
+  "clean_replay": {
+    "archive_sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0",
+    "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+    "cuda_visible_devices": "-1",
+    "groups": {
+      "default": {
+        "acceptance_sha256": "8ce34ef334d0297df70e7ffbca1bfb5ad3a0bbd58cc48e3dcba1c16be0443555",
+        "bit_exact": true,
+        "bundle_sha256": "b8feb75ade71f39336f7927ebbb814e828b345932b4f651e0e1cb81137e109c2",
+        "changed_reasons": 0,
+        "changed_valid": 0,
+        "distributions": {
+          "evidence-lens": "0.4.0",
+          "numpy": "2.5.5",
+          "pillow": "12.3.0",
+          "pip": "25.0.1"
+        },
+        "grade_seconds_including_HTML": 1.6266931799982558,
+        "install_seconds": 1.6329279519995907,
+        "method": "MS-L1",
+        "replay_completed": true,
+        "status": "bit_exact",
+        "threshold_crossings": 0
+      }
+    },
+    "platform": {
+      "arch": "aarch64",
+      "os": "Linux",
+      "python": "3.12.16",
+      "version": "7.2.12-orbstack-00394-gbecdd6130068"
+    },
+    "run_id": null,
+    "schema": "el-general-clean-acceptance-1",
+    "tag": "v0.4.0",
+    "wheel_sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281"
+  },
+  "table_sha256": "cce2566b8f959f8a766b51ec13fe268de006355d0758f7532cc31988b7b7d3d5"
+}

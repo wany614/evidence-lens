@@ -1,0 +1,39 @@
+{
+  "assets": {
+    "evidence-lens-cpu-replay-measurements.zip": {
+      "bytes": 3880237,
+      "role": "measurements",
+      "sha256": "2f6f98076f0e87984bff88a3c3c03175366beac55bb3f2af2d91b0017e64df2f"
+    },
+    "evidence-lens-original-replays-v1.zip": {
+      "bytes": 44233110,
+      "role": "original_replays",
+      "sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0"
+    },
+    "evidence-lens-source-v0.4.0.zip": {
+      "bytes": 16227673,
+      "role": "sources",
+      "sha256": "795ba3dac1d2c8586c119c3f2f330f5b04683a3b486092650daf16b6c4b2ac47"
+    },
+    "evidence-lens-static-trajectories.zip": {
+      "bytes": 329268781,
+      "role": "static_trajectories",
+      "sha256": "933d16cd27549618bc7adf43a1a86988daaf187fc06282a9d21775ac9a37b806"
+    },
+    "evidence_lens-0.4.0-py3-none-any.whl": {
+      "bytes": 395627,
+      "role": "wheel",
+      "sha256": "d9ae3890245d91d86d47ec19b654272773846acb0436b0a41eb498ef0e2e6281"
+    }
+  },
+  "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+  "cpu_release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+  "inventory_run": "20261124T052727770618Z-f2df90e4ec4d44a7",
+  "model_release": "v0.3.0-rc.1",
+  "original_gold_sha256": "7aed41037e7c4ec7f0a8583d33bdbe5291d6b02bf0ef8df325a13d337490f9cc",
+  "risk_weights_retrained": false,
+  "schema": "el-general-release-1",
+  "source_build_run": "20261124T052717775380Z-6fd53e45c4f845a2",
+  "tag": "v0.4.0",
+  "weights_download_run": "20261124T041052425868Z-d308c134e69d4d4b"
+}

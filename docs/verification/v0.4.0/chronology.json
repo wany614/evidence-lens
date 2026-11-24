@@ -1,0 +1,108 @@
+{
+  "anonymous_assets": {
+    "mac_download": [
+      "release-manifest.json",
+      "SHA256SUMS",
+      "evidence-lens-cpu-replay-measurements.zip",
+      "evidence-lens-original-replays-v1.zip",
+      "evidence-lens-source-v0.4.0.zip",
+      "evidence-lens-static-trajectories.zip",
+      "evidence_lens-0.4.0-py3-none-any.whl"
+    ],
+    "windows_download": [
+      "release-manifest.json",
+      "SHA256SUMS",
+      "evidence-lens-original-replays-v1.zip",
+      "evidence_lens-0.4.0-py3-none-any.whl"
+    ]
+  },
+  "code_commit": "7051de93f7b8af764c5ded4aeb623fb205b56452",
+  "linux_source": "Mac public download mounted in a fresh network-off arm64 container",
+  "manifest_sha256": "285524c04b426f807d3600a5ee3481715cf9a8151324d53c98fcc8233c6026cc",
+  "published_at": "2026-11-24T05:32:19Z",
+  "release_url": "https://github.com/wany614/evidence-lens/releases/tag/v0.4.0",
+  "run_id": "20261124T054631037488Z-c0fddc41daa64430",
+  "schema": "el-public-replay-chronology-1",
+  "source_receipts": {
+    "linux_grade": {
+      "manifest_sha256": "aad521f50a1021a7387f82ea20722636307649007414f53e584d0546773b74ca",
+      "member": "payload/linux.json",
+      "run_id": "20261124T053334466132Z-7833aef37f6e419f",
+      "sha256": "ae7dc7c0c40c4e1b190a110308db1c437a0fca3ea225ea9a7524cf69d653422d"
+    },
+    "mac_download": {
+      "manifest_sha256": "6fa8aca75352944c397b8c84f2fff23d0e9f0e84375c8f25424a3a8a7c889aef",
+      "member": "payload/public-readback.json",
+      "run_id": "20261124T053239837552Z-8ec25846c9824287",
+      "sha256": "6d4452d24d0db091076d03c327cc6d9c3d85037e438c19d98143c019c44f9eb2"
+    },
+    "mac_grade": {
+      "manifest_sha256": "380ea2335dcd1e147300a56a291c791a3396edfb1471ff9d15d8c839ac1109ba",
+      "member": "payload/acceptance.json",
+      "run_id": "20261124T053317420913Z-a2222e0c95c84aab",
+      "sha256": "2abb441b56fc2bbc24613db3778ae5f1d14d3abebb7dc325ab5f0f007ebd6dc0"
+    },
+    "previous_failure": {
+      "manifest_sha256": "70f79fb0bc01f7104431ad53aea69b961676f6de7f716fda3c2e70f3dca907b6",
+      "member": "payload/tls-failure.json",
+      "run_id": "20261124T053711662786Z-35aa12351e0c4804",
+      "sha256": "ba07ab58fcd3169bee2ac48cb56d4fea6dd09c47ff0d972de59871c1ee2b0561"
+    },
+    "publication": {
+      "manifest_sha256": "2d6f9f17a23598157177a9a0ac2257ff876e738e49a2f1d81155729547ae5c73",
+      "member": "payload/github.json",
+      "run_id": "20261124T053215645657Z-9531fab1637b4892",
+      "sha256": "68bb22de14e100ba3b3bc7b0dabd5c982a3db07c4f355e7fd501de46857dbccb"
+    },
+    "windows_download": {
+      "manifest_sha256": "679aeb83622bb450952f2412df643592498c55ad119958632ffb5c7a17520ff8",
+      "member": "payload/public-readback.json",
+      "run_id": "20261124T053921931741Z-2a518ee89cfa4186",
+      "sha256": "67517d8e05e7bd5fe2becb3bd3698dbcedb5a77a90b28ae8305844d68599a58c"
+    },
+    "windows_grade": {
+      "manifest_sha256": "679aeb83622bb450952f2412df643592498c55ad119958632ffb5c7a17520ff8",
+      "member": "payload/grade/acceptance.json",
+      "run_id": "20261124T053921931741Z-2a518ee89cfa4186",
+      "sha256": "c841c2eec6f9def5036750a8055d1db39e4547770f2b6b5a92cbbfaf99f7b9a2"
+    },
+    "windows_intake": {
+      "manifest_sha256": "749ee10f272c2a9b2b81b0552a0edf35f6a31bce85771bb09ae3ddeb99d8d574",
+      "member": "payload/readback.json",
+      "run_id": "20261124T054246100437Z-2d21ce6c9efa4107",
+      "sha256": "a24da0c02c7259e335f417b3ced398cb7d9b70fd1d2a62a7bed56fb936d3fbfb"
+    }
+  },
+  "tag": "v0.4.0",
+  "windows_first_attempt": "20261124T053254866846Z-d7d5fe66135e4c85",
+  "windows_trust": {
+    "additional_ca_source": "project-local pip vendored certifi bundle for Windows CPU interpreter",
+    "certificate_verification": "CERT_REQUIRED",
+    "hostname_verification": true,
+    "public_http_client": "issued general_public_download.py using native Windows CPython 3.12 stdlib urllib.request with OpenSSL",
+    "ssl_cert_file_sha256": "94edeb66e91774fcae93a05650914e29096259a5c7e871a1f65d461ab5201b47",
+    "system_native_transfer_client": false
+  },
+  "worker_utc": {
+    "linux_grade": {
+      "finish_utc": "2026-11-24T05:33:40.602324Z",
+      "run_id": "20261124T053334466132Z-7833aef37f6e419f",
+      "start_utc": "2026-11-24T05:33:34.469569Z"
+    },
+    "mac_download": {
+      "finish_utc": "2026-11-24T05:33:15.857766Z",
+      "run_id": "20261124T053239837552Z-8ec25846c9824287",
+      "start_utc": "2026-11-24T05:32:39.838043Z"
+    },
+    "mac_grade": {
+      "finish_utc": "2026-11-24T05:33:33.395024Z",
+      "run_id": "20261124T053317420913Z-a2222e0c95c84aab",
+      "start_utc": "2026-11-24T05:33:17.424379Z"
+    },
+    "windows_grade": {
+      "finish_utc": "2026-11-24T05:41:57.346589Z",
+      "run_id": "20261124T053921931741Z-2a518ee89cfa4186",
+      "start_utc": "2026-11-24T05:39:21.936573Z"
+    }
+  }
+}
