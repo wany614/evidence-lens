@@ -24,10 +24,25 @@ python scripts/t0_study.py --store "$STORE" --history "$HISTORY" freeze --roster
 python scripts/t0_score_matrix.py --store "$STORE" --history "$HISTORY" --cpu-python "$VISION_PYTHON"
 python scripts/t0_study.py --store "$STORE" --history "$HISTORY" lock
 python scripts/t0_study.py --store "$STORE" --history "$HISTORY" open --matrix "$STORE/work/controller/closed-matrix.json"
-python scripts/t0_study.py --store "$STORE" --history "$HISTORY" evaluate --references "$REFERENCE_ACCESS_LIST"
+python -B scripts/t0_locked_evaluation.py --store "$STORE" --history "$HISTORY" --references "$REFERENCE_ACCESS_LIST"
 ```
 
 The operations above span distinct authorities. Before scoring, the intake and reconstruction workers must produce the condition-specific source receipts and authenticated native Cases. The software lock additionally requires the authored evaluation-fixture receipt. Between `open` and `evaluate`, the independent reference reader obtains only the six permitted target members for each registered object. The deployment scorer has no reference parameter. The method-specific scores and states come from the pinned distributed `cpu.py` runtime. [Source and reference intake](../../../scripts/t0_dtu_record.py) · [Reconstruction controller](../../../scripts/t0_reconstruct.py) · [Frozen CPU entry](../../../scripts/dtu_score.py) · [Independent evaluator](../../../scripts/t0_evaluate.py)
+
+### Recorded opening and recovery
+
+The first software lock preceded a cross-store receipt repair. A second lock recorded the exact changes, with the same object list, scoring implementation, evaluator and thresholds. The first attempt to open the targets from the working checkout failed its file check before producing an access receipt. The successful controller ran from the second lock’s archived source. Its recorder sets the worker’s script directory, working directory and Python source path to the new snapshot of those same bytes.
+
+The archival loader’s first preflight also detected one interpreter-created bytecode cache. It was removed from the source tree and retained with its hash in the private incident record. All original files retained their hashes, the entire original manifest verified, and the retry suppressed bytecode writes. The authorized opening preceded all 36 target downloads. The engineering fixture used 24 authored maps and 24 deliberately absent maps to exercise the evaluator. Its surrogate image is unrelated to the six physical subjects.
+
+To replay this incident from **the recorded failed attempt**, use the command below. A fresh study can instead start with its matching frozen tree. The authority returned by an already completed opening is reused.
+
+```sh
+python -B scripts/t0_locked_evaluation.py --store "$STORE" --history "$HISTORY" \
+  --failed-opening-run 20261124T013330448584Z-042531c306864803
+```
+
+[Original freeze](authority/freeze.json) · [Pre-opening software and its transport amendment](authority/software-lock-final.json) · [Collective access receipt](authority/opening.json) · [Independent evaluation](confirmation/evaluation.json)
 
 ## Reading the denominators
 

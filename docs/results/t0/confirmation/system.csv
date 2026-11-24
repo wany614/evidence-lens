@@ -1,0 +1,13 @@
+object_id,condition,status,scheduled_entries,scored_entries,reason
+set2,M2,scored,24,24,
+set2,M4,scored,24,24,
+set4,M2,scored,24,24,
+set4,M4,scored,24,24,
+set10,M2,scored,24,24,
+set10,M4,scored,24,24,
+set11,M2,scored,24,24,
+set11,M4,scored,24,24,
+set12,M2,scored,24,24,
+set12,M4,scored,24,24,
+set31,M2,scored,24,24,
+set31,M4,scored,24,24,

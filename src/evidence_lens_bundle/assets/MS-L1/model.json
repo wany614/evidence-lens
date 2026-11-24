@@ -1,0 +1,26 @@
+{
+  "schema": "el-stage3-light-package-1",
+  "status": "frozen",
+  "method": "MS-L1",
+  "model_id": "20261123T162437825142Z-deffacafa1184806",
+  "fit_run_id": "20261123T162018152079Z-b13381a3a13b4041",
+  "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+  "study_sha256": "dd227c25648af4ab5e4e42d3fdd07702a8e46b3def36810ac9d65c55b07a7b23",
+  "training_dataset_sha256": "574f6bac7f07f0ed47a21c5e6c291c57a92c065deefb32c89dbc39f4d5a50208",
+  "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a",
+  "files": {
+    "coefficients.json": {
+      "path": "coefficients.json",
+      "bytes": 2255,
+      "sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "preprocessing.json": {
+      "path": "preprocessing.json",
+      "bytes": 3422,
+      "sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04"
+    }
+  },
+  "development_dataset_sha256": "cebab5a247a553305c456b94988103288dab3b793d6369384ed286329180d47b",
+  "fit_model_index_sha256": "2f08a7d77fe1a8144cf294c4e0e2e9cc5805912e032a5bef95363ab118814301",
+  "threshold": 0.06428983435034752
+}

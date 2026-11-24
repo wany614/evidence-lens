@@ -1,0 +1,25 @@
+{
+  "GPU_memory": "Whole-device telemetry includes other workloads. Allocator counters measure PyTorch in the individual process.",
+  "count": 143,
+  "deduplicated_store_file_bytes_during_ledger": 2382615601,
+  "per_stage_wall_seconds": {
+    "archive_verify": 116.07104870591138,
+    "dataset_build": 68.4669495010312,
+    "derivation": 15.89610662200721,
+    "evaluation": 17.772291708999546,
+    "generation": 491.5490000000136,
+    "model_score": 93.66733370700967,
+    "render": 62.93699999997625,
+    "report": 16.23970316699706
+  },
+  "run_id": "20261124T014231913393Z-d1e8121a55a444b1",
+  "run_rows_sha256": "03e3704e2c6cfe9e457ad6144b97ee7400d1543e30b6e83a602c51b99ee5ec77",
+  "schema": "el-t0-resources-1",
+  "scope": "All recorder originals listed in the sealed input, including failed Mac attempts and imported Windows originals, before the ledger run itself. Time sums across hosts are work, not end-to-end elapsed time.",
+  "statuses": {
+    "failed": 7,
+    "succeeded": 136
+  },
+  "volume_free_bytes_during_ledger": 1021083226112,
+  "volume_total_bytes": 1023999787008
+}

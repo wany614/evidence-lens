@@ -12,6 +12,10 @@ The subsequent recovery study selected an upstream reconstruction on a photograp
 | What can a reader reproduce publicly? | macOS arm64, Windows AMD64 and Linux arm64 have run the tagged public verifier in clean CPU environments. Each run produced 120 distinct score comparisons and independently recomputed RGB-error labels for twelve targets. The public example includes the deployable case, its Gaussian assets and separate reference. Research fitting requires additional inputs and compute. [Platform receipts](verification/v0.3.0-rc.1/README.md) · [Four-level reproduction matrix](reproducibility-matrix.md) |
 | Which inputs and scenes do these results cover? | The release expects calibrated cameras, source RGB, source self-renders and predicted target RGB, alpha and verified expected optical-axis depth on a 256 × 256 grid. Its published confirmation uses authored static opaque worlds. Across four such worlds the family-equal fraction above RGB MAE 0.05 was 10.66% for M2 and 6.90% for M4. Expected camera-Z and first-surface Blender depth can disagree substantially. A separate frozen external evaluation now covers one photographed DTU building model, 256-pixel center crops and the registered acquisition. On that object, MS-L1 low-group RGB error was 89.16% for M2 and 82.34% for M4. [Single-object study and counts](results/dtu-external/README.md) [Input definition](stage3-risk.md) · [Geometry and denominators](results/multisource-confirmation.md) |
 
+## Subsequent frozen six-object evaluation
+
+The registered T0 study extends the tested scope to six previously unopened physical subjects on the DTU rig. All 12 reconstructions and 288 risk assessments were sealed before the collective target release. Four-source mean target MAE was 0.10053. The independent evaluation and new prepared-bundle CPU commands have separate provenance. [Six-object study](results/t0/README.md) · [CPU tool and original example](tooling/README.md)
+
 ## D0 platform checks on 23 November 2026
 
 | Platform reached | Directly observed environment | Check performed |

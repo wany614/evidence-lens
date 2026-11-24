@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-lens"
-version = "0.3.0rc1"
+version = "0.4.0a3"
 description = "CPU diagnostics for single- and multi-image novel-view synthesis"
 readme = "README.md"
 authors = [{name = "wany614"}]
@@ -12,6 +12,9 @@ license = "Apache-2.0 AND CC-BY-4.0"
 license-files = ["LICENSE", "NOTICE", "licenses/CC-BY-4.0.txt", "THIRD_PARTY_NOTICES.md", "licenses/DEPENDENCY-SOURCES.json"]
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26,<3", "Pillow>=11,<13"]
+
+[project.scripts]
+evidence-lens = "evidence_lens_bundle.cli:main"
 
 [project.urls]
 Repository = "https://github.com/wany614/evidence-lens"
@@ -22,6 +25,9 @@ train = ["scikit-learn==1.9.1", "pyarrow>=18,<27", "threadpoolctl>=3.1,<4"]
 vision = ["torch==2.8.0", "safetensors>=0.5,<1", "psutil>=6,<8"]
 test = ["pytest>=8,<10"]
 reference = ["bpy==4.5.16", "numpy==1.26.4", "OpenEXR==3.5.5", "Pillow==12.3.0"]
+
+[tool.setuptools.package-data]
+evidence_lens_bundle = ["assets/*.json", "assets/MS-L1/*.json"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -60,6 +60,33 @@ def seal(config, roots, out, project):
     frozen = {**fr["new_scientific_files"], **fr["protocol"]["source_sha256"]}
     authenticate(project, frozen)
     files = {**frozen, **{n: sha(project / n) for n in SUPPLEMENT}}
+    revisions = {}
+    if "prior_lock" in config["sources"]:
+        prior = original(roots, config["sources"]["prior_lock"])
+        audit = original(roots, config["sources"]["recovery_audit"])
+        require(
+            prior["sources"]["freeze"] == fp
+            and audit["schema"] == "el-t0-cross-store-audit-1"
+            and audit["new_target_reference_files_opened"] == 0
+            and audit["verified_runs"] > 0,
+            "missing evidence for cross-store intake repair",
+        )
+        files["scripts/t0_reconstruct_history.py"] = sha(project / "scripts/t0_reconstruct_history.py")
+        revisions = {
+            n: {"before": prior["files"].get(n), "after": digest}
+            for n, digest in files.items()
+            if prior["files"].get(n) != digest
+        }
+        allowed = {
+            "scripts/t0_reconstruct.py",
+            "scripts/t0_reconstruct_history.py",
+            "scripts/t0_study.py",
+            "scripts/t0_opening_software.py",
+        }
+        require(
+            set(revisions) <= allowed and not set(revisions).intersection(frozen),
+            "unexpected change to the evaluator, reader or frozen scientific files",
+        )
     save(
         out / "software-lock.json",
         {
@@ -67,6 +94,7 @@ def seal(config, roots, out, project):
             "run_id": os.environ["EL_RUN_ID"],
             "sources": config["sources"],
             "original_freeze_files_verified": len(frozen),
+            "preopening_implementation_changes": revisions,
             "files": files,
             "preopening_addendum": "Adds software identity checks to the existing authority chain and tests missing predictions on authored material. No changes to registered scientific definitions, parameters or object roster.",
             "surrogate_references": "authored source used only to exercise evaluator output shapes; no T0 targets",

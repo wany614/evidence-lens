@@ -23,20 +23,19 @@ def row(store, pin):
     if not directory.is_dir():
         directory = store / "quarantine" / pin["run_id"]
     manifest = load(directory / "manifest.json")
-    run = load(directory / "run.json")
     seal = load(directory / "completion.json")
-    require(
-        pin["manifest_sha256"] == sha(directory / "manifest.json") == seal["manifest_sha256"]
-        and seal["execution_status"] == run["execution_status"]
-        and run["run_id"] == pin["run_id"],
-        "inconsistent ledger input",
-    )
+    require(pin["manifest_sha256"] == sha(directory / "manifest.json") == seal["manifest_sha256"],
+            "ledger manifest identity differs")
     files = {f["path"]: f for f in manifest["files"]}
 
     def checked(name):
         p = directory / name
         require(sha(p) == files[name]["sha256"], "changed source for ledger: " + name)
         return p
+
+    run = load(checked("run.json"))
+    require(seal["execution_status"] == run["execution_status"] and run["run_id"] == pin["run_id"],
+            "inconsistent ledger input")
 
     with checked("telemetry.csv").open(newline="") as f:
         measured = list(csv.DictReader(f))

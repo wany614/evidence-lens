@@ -2,6 +2,12 @@
 
 Evidence Lens estimates where a synthesized view is likely to disagree with an independent image from the same camera. Its CPU scorer reads calibrated source images and predicted RGB, opacity and expected camera depth. It returns a continuous risk map and a low, high or unknown state for each target pixel. Researchers can compare the maps with Blender references through a separate evaluation command.
 
+## Score a prepared bundle on CPU
+
+Install this checkout with `python -m pip install .`. Run `evidence-lens validate --bundle CASE`, then `evidence-lens score --bundle CASE --out scores` and `evidence-lens report --scores scores --out report.html`. The default scorer includes the released MS-L1 parameters. An original bell-cage example supplies all required evidence. [Installation, example and optional MS-ft](docs/tooling/README.md) · [Offline HTML report](examples/offset-bell-cage/bundle-report.html)
+
+Six new photographed DTU subjects supplied 72 predicted target views and 288 frozen risk assessments. Four source views reduced mean target RGB MAE from 0.20535 to 0.10053. The four-source MS-L1 operating point delivered 41.70% coverage at 22.83% low-group error, averaged equally over subjects. At matched 20% coverage the fine-tuned model had 16.94% error and MS-L1 had 21.05%. [Independent report, failure history and raw counts](docs/results/t0/README.md)
+
 ## Run the two- and four-image models
 
 The multi-source release includes four trained risk models and both reconstructions of an authored bell cage. The same six cameras view each reconstruction. The default multi-source logistic model uses NumPy and Pillow. The two DINOv2 models add PyTorch for CPU inference. [Download v0.3.0-rc.1](https://github.com/wany614/evidence-lens/releases/tag/v0.3.0-rc.1) · [Install and score a target](docs/releases/v0.3.0-rc.1/README.md) · [Weights, training and measured CPU cost](docs/releases/v0.3.0-rc.1/MODEL_CARD.md)
@@ -17,6 +23,8 @@ On the four held-out families, the family-equal RGB error fraction changed from 
 The frozen models were also evaluated on one held-out physical object from the official DTU SampleSet. On six target views with four source cameras, 91.00% of comparable pixels exceeded RGB MAE 0.05. Default MS-L1 reached common-support AP 0.9109 at a view-equal error prevalence of 0.8989. It called 0.60% of the crop low risk, and 1,958 of those 2,378 pixels exceeded the error tolerance. This is a single-object test under known calibration. [Full external results and denominators](docs/results/dtu-external/README.md) · [Current state and timing](docs/current-state.md) · [Reproducibility matrix](docs/reproducibility-matrix.md)
 
 A later reconstruction study fitted the same photographs from two or four source cameras using source-only triangulation and a density-changing Gaussian optimizer. On the previously exposed building model, the selected four-source reconstruction reduced target MAE from 0.21362 to 0.08801. With the same MS-L1 weights and threshold, low-risk coverage rose to 30.15% and 32,914 of those 118,537 pixels exceeded the error tolerance (27.77%). The new results cover one development object and one regression object. [Reconstruction recovery and all four scorers](docs/results/reconstruction-recovery/README.md) · [Public synthetic comparison](examples/offset-bell-cage/recovery-target-comparison.png)
+
+For comparisons between the four scorers on the recovered reconstruction, use the four-method `within_new` domain. On the exposed set6 M4 case at matched 20% coverage, MS-ft accepted 19,864 errors and MS-L1 accepted 20,063, each out of 78,642 pixels. The historical eight-score intersection answers a different question and reverses their ordering on this case. [Comparison domains and counts](docs/results/t0/comparison-domains.md)
 
 ## Single-image models
 

@@ -30,9 +30,9 @@ def product(src, roster, out):
     per_source = read(src / "source-fit.csv")
     meta = {r["object_id"]: r for r in roster["objects"]}
     lines = [
-        "# Frozen confirmation on six new DTU subjects"
+        "# Frozen evaluation on six new DTU subjects"
         if len(objects) == 6
-        else "# Frozen confirmation on new DTU subjects",
+        else "# Frozen evaluation on new DTU subjects",
         "",
         f"The collective opening covered {ev['scored_entries']} scored entries out of {ev['scheduled_entries']} scheduled. Each physical subject contributes two conditions and six target views per condition. Ground truth is the full centre-cropped photograph at the registered camera. A pixel is an error when its mean absolute display-RGB difference exceeds 0.05.",
         "",

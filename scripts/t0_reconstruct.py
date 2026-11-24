@@ -405,7 +405,33 @@ READBACK_SOURCE = (
 )
 
 
-def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None):
+def authorize_history(store, history, registry, expected):
+    from t0_reconstruct_history import missing_parents
+
+    require(registry.resolve() == (store / "transport/Handoffs/t0-v1/frozen-12.json").resolve()
+            and sha(registry) == expected, "Expected the independently frozen dispatch registry")
+    doc = load(registry)
+    tickets = [j["ticket"] for j in doc["jobs"]]
+    parents = {f"d{i}": short(ticket) for i, ticket in enumerate(tickets)}
+    cfg = {
+        "experiment_id": "t0-cross-store-archive-verification",
+        "trial_id": "t0-verify-historical-anchors-v1",
+        "dispatch_registry_sha256": expected,
+        "freeze": doc["freeze"],
+        "historical_parents": missing_parents(store, tickets),
+    }
+    sources = ("t0_reconstruct_history.py",) + tuple(
+        "historical/src/evidence_lens/" + n + ".py" for n in ("__init__", "_bundle", "_verify", "_metrics")
+    )
+    command = ["{python}", "{source}/scripts/t0_reconstruct_history.py", "--config", "{config}", "--registry",
+               "{input:registry}", "--store", str(store), "--history", str(history), "--out", "{out}"]
+    recorded = job_record(store, "archive_verify", cfg, {"registry": (registry, None)}, parents, sources, command)
+    proof = pin(store, recorded, "payload/cross-store-audit.json")
+    publish(store / "t0/historical-lineage.json", encoded(proof))
+    return proof
+
+
+def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None, history=None):
     from evidence_lens._bundle import local_path, HASH, RUN_ID, asset_path
     from evidence_lens._index import writer_gate
     from evidence_lens._verify import verify_shared
@@ -490,6 +516,7 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
             publish(retained / name, original.read_bytes())
     returns = retained
     staged = [(doc, returns / archive.name) for doc, archive in staged]
+    historical_receipt = None if ready["forced_fallback_fixture"] else load(store / "t0/historical-lineage.json")
     originals = {
         "dispatch": short(ticket),
         "bridge": short(load(store / "t0/origin.json")),
@@ -516,7 +543,14 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
             )
             require(not cap["reason"], str(cap["reason"]))
             restore_shared(returns, store, doc, inp)
-        receipt = receive(arch, store, doc["sha256"], PROJECT / "configs/storage.json")
+        policy = PROJECT / "configs/storage.json"
+        if historical_receipt is None:
+            receipt = receive(arch, store, doc["sha256"], policy)
+        else:
+            from t0_reconstruct_intake import receive_cross_store
+
+            receipt = receive_cross_store(arch, store, doc["sha256"], policy, (history or PROJECT / ".research").resolve(),
+                                          historical_receipt, ready["freeze"])
         require(
             receipt["status"] in ("accepted", "identical")
             and receipt["run_id"] == rid
@@ -528,6 +562,8 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
         require(v["run"]["execution_status"] == doc["status"], "Original terminal state differs")
         if doc["status"] == "succeeded":
             success_parents[rid] = rp
+    if historical_receipt:
+        success_parents[historical_receipt["run_id"]] = short(historical_receipt)
     parents = {
         f"p{i}": x for i, x in enumerate(sorted(success_parents.values(), key=lambda x: x["run_id"]))
     }
@@ -542,6 +578,9 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
         "return_sha256": summary_sha,
         "originals": originals,
     }
+    if historical_receipt:
+        cfg["historical_verification"] = historical_receipt
+        cfg["intake_code_sha256"] = sha(PROJECT / "scripts/t0_reconstruct_intake.py")
     if previous_audit:
         failed_id, failed_hash = previous_audit.split("=", 1)
         previous = verify_bundle(store / "runs" / failed_id)
@@ -578,7 +617,7 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
         cfg,
         inputs,
         parents,
-        READBACK_SOURCE,
+        READBACK_SOURCE + (("t0_reconstruct_intake.py",) if historical_receipt else ()),
         [
             str(interpreter.absolute()),
             "-B",
@@ -622,15 +661,19 @@ def accept(store, ticket, returns, summary_sha, interpreter, previous_audit=None
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     sp = p.add_subparsers(dest="stage", required=True)
-    for action in ("bridge", "force-D", "prepare", "receive"):
+    for action in ("bridge", "force-D", "prepare", "verify-history", "receive"):
         q = sp.add_parser(action)
         q.add_argument("--store", type=Path, required=True)
-        if action == "bridge":
+        if action in ("bridge", "verify-history"):
             q.add_argument("--historical-store", type=Path, required=True)
+            if action == "verify-history":
+                q.add_argument("--registry", type=Path, required=True)
+                q.add_argument("--registry-sha256", required=True)
         elif action == "receive":
             for flag in ("ticket", "returns", "audit-python"):
                 q.add_argument("--" + flag, type=Path, required=True)
             q.add_argument("--summary-sha256", required=True)
+            q.add_argument("--historical-store", type=Path, default=PROJECT / ".research")
             q.add_argument("--previous-audit", help="Prior failed local audit RUN=MANIFEST_SHA256")
         else:
             q.add_argument("--geometry-python", type=Path, required=True)
@@ -647,10 +690,11 @@ def main():
     elif a.stage == "force-D":
         b = load(s / "t0/origin.json")
         v = prepare(s, b, b, "set1", "M2", a.geometry_python, forced=True)
+    elif a.stage == "verify-history":
+        v = authorize_history(s, a.historical_store.resolve(), a.registry.resolve(), a.registry_sha256)
     elif a.stage == "receive":
-        v = accept(
-            s, load(a.ticket), a.returns.resolve(), a.summary_sha256, a.audit_python, a.previous_audit
-        )
+        v = accept(s, load(a.ticket), a.returns.resolve(), a.summary_sha256, a.audit_python,
+                   a.previous_audit, a.historical_store)
     else:
         v = prepare(
             s,

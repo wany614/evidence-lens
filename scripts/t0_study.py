@@ -140,18 +140,29 @@ def study(a):
     ]
     if a.action == "lock":
         fixture = load(state / "evaluator-authored-fixture/selected.json")
+        inputs = {"freeze": freeze, "authored_fixture": fixture}
+        name = "opening-software"
+        if a.recovery_audit:
+            require(
+                not (state / "collective-reference-opening/selected.json").exists(),
+                "the reference gate has already opened",
+            )
+            inputs["prior_lock"] = load(state / "opening-software/selected.json")
+            inputs["recovery_audit"] = load(a.recovery_audit)
+            name = "opening-software-cross-store"
         return record(
             store,
             history,
-            "opening-software",
+            name,
             "archive_verify",
-            {"freeze": freeze, "authored_fixture": fixture},
+            inputs,
             {"role": "software closure before reference access"},
             guarded,
             "payload/software-lock.json",
             500000,
         )
-    software_lock = load(state / "opening-software/selected.json")
+    updated = state / "opening-software-cross-store/selected.json"
+    software_lock = load(updated if updated.exists() else state / "opening-software/selected.json")
     if a.action == "open":
         req = load(a.matrix)
         require(req["freeze"] == freeze, "wrong matrix study")
@@ -215,7 +226,7 @@ if __name__ == "__main__":
     s.add_argument("--condition", choices=["M2", "M4"], required=True)
     s.add_argument("--readback", type=Path, required=True)
     s.add_argument("--cpu-python", type=Path, required=True)
-    sub.add_parser("lock")
+    sub.add_parser("lock").add_argument("--recovery-audit", type=Path)
     o = sub.add_parser("open")
     o.add_argument("--matrix", type=Path, required=True)
     e = sub.add_parser("evaluate")

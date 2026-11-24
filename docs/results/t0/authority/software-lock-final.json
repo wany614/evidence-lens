@@ -1,0 +1,93 @@
+{
+  "files": {
+    "protocol/dtu-external-v1.json": "7460bff77c65709cf2bd3f1273ff67a71fa9a400b80c809e9343e637a08d012b",
+    "protocol/reconstruction-recovery-v1.json": "82619d87327135f0f999fab67b468de121b2fb95c77fab3af55b90285d0b2c8d",
+    "protocol/recovery-gsplat-scale-decay-v1.json": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+    "protocol/recovery-initialization-v1.json": "024a4a08552e748afafc3ead27ba745d6f96e84757572e5fbf9aec387653d086",
+    "protocol/recovery-risk-comparison-v1.json": "d08647fd05b3c3ae1fedab75ea77b9cf869b4b7d0a3d3f3afca0f45445b79e31",
+    "scripts/dtu_eval.py": "481a56481068f148401db465c99446c2e72c18896af06b0024a677a843aaa3fd",
+    "scripts/dtu_eval_board.py": "c43e9147b89733aecf037fa2f8f4c6d07d6c5f725c87bdb46fa9ccddfee2c29b",
+    "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+    "scripts/dtu_sample.py": "22ec2384061fce7993728ac6f9e0c61e34f50d2b4004faf4b1e59277b8232c7e",
+    "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+    "scripts/recovery_eval_coverage.py": "5759c05cae1d2dc7269fdeb41ebd297e7dbc43109153667d175f7b7203cc177a",
+    "scripts/recovery_eval_risk.py": "c9f239abdeb39d63ed934473f22b579aab4240a5d2252e2a2a8003f66661e8bd",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27",
+    "scripts/stage3_risk_boards.py": "e0f967af771f3fac3a41d9b68d24ab17b5cce8c8fed30b5f29df4117b1204b4a",
+    "scripts/t0_authority.py": "dcd36c130eaa51936db944ff0a7ab237b914ee3e89bf33674153466d9c1f0ac9",
+    "scripts/t0_dtu_archive.py": "381ffd03ea4df853ab0dcfa6e27c89e7fc8710d9838f086aec8c52dc883858d1",
+    "scripts/t0_dtu_convert.py": "121c78db260761d2e7d5b24003e87bef2716528efdf22f52aece10369b59f84d",
+    "scripts/t0_dtu_record.py": "27fa85da45a826480a3696b7730349024a58106b72b21cd9a04a9d9a2dce41d2",
+    "scripts/t0_dtu_roster.py": "704fcbe416f29c39ce6f19a2a764da210913cf49ea9d6ca2da24f8a8be94bea2",
+    "scripts/t0_evaluate.py": "6399572e8bd9c74dd2c9c4caf0a018c6d303445792c55febbe07bb0f725325b3",
+    "scripts/t0_opening_software.py": "ee25fe655cd55479fdd41cfd1176a12525294698e45dd892f1c0e479422ee7bf",
+    "scripts/t0_reconstruct.py": "7bdcc1f2f0d15679faf4031a95f6e44968f7ab99b6881e935d23fb6bd55191c2",
+    "scripts/t0_reconstruct_history.py": "75b6f96136e2d0e1c1730ada0491495ebd4e9496304caa164cadb850f00b0002",
+    "scripts/t0_reconstruct_readback.py": "88f248f920818d274b787fe73e328bb7913da0e11b7c6ccbe5befe682e419c20",
+    "scripts/t0_records.py": "a3bd014e134e88ee7ad804790cfc1bd985f46444262990f1b162ec7cf43b6f05",
+    "scripts/t0_score_matrix.py": "1dadd85e515985d7fc9c82783e71e1e3e7c80b59120d197f1637ef4b85770410",
+    "scripts/t0_study.py": "2c176b910867b4f116a7847c753739e41869f017e7be4f159b1e1e0575010652",
+    "scripts/t0_worker_init.py": "934577b9f8c3b132683fe555bceda8d4acd454c0e54e8ed7c0573823715b6e64",
+    "scripts/t0_worker_pack.py": "a6d3d11382d15110fd4bbb0a1c8d53144852282f1556c0303aa331be3df6d579",
+    "scripts/t0_worker_run.py": "69a800973bbdf9d1de6876c3cee8b02de31dc7789cdc704b08517ff1833ba182",
+    "scripts/vision_evaluate.py": "6a817907820631356a19deebcdfc91f307b97341885176b68fd6ec6b366b74b1",
+    "scripts/vision_sources.py": "9d15d0212252498bd3b9271b6ddf5063789906eff157d70f670784552694eeba",
+    "src/evidence_lens/dtu_camera.py": "b6bb3a6bc5e1b2c1f90cf2563aefe1e0c2843201223760d75e5fd10e29884da0",
+    "src/evidence_lens/features.py": "2748d73ded4d8391ab915280be45a85d53d6a172f3ee872662b9df15d3a2613b",
+    "src/evidence_lens/formal_inputs.py": "a4c201dbbb3ad76e4bafda10008bfd0975639caafc880d769c1fe773ffba9fd4",
+    "src/evidence_lens/multisource.py": "906b06a79d9ef5d7e35d3207f60293e1cf0687eb20207293a87d1aa58738f4cb",
+    "src/evidence_lens/multisource_io.py": "ea7b5f11697c09b20efaf7d5a1fb8e23459826f3c7ecb79ed465bc3e168914dc",
+    "src/evidence_lens/scoring_io.py": "682bbd3fd1f6533d42f6900390d944372deca22c6192472e06cf57e1c90405aa"
+  },
+  "original_freeze_files_verified": 18,
+  "preopening_addendum": "Adds software identity checks to the existing authority chain and tests missing predictions on authored material. No changes to registered scientific definitions, parameters or object roster.",
+  "preopening_implementation_changes": {
+    "scripts/t0_opening_software.py": {
+      "after": "ee25fe655cd55479fdd41cfd1176a12525294698e45dd892f1c0e479422ee7bf",
+      "before": "853d76b9e1675ea6c8111444a7f355692a6b865f4ef9064360ac8019c94950a7"
+    },
+    "scripts/t0_reconstruct.py": {
+      "after": "7bdcc1f2f0d15679faf4031a95f6e44968f7ab99b6881e935d23fb6bd55191c2",
+      "before": "84fdab56a87824f752a4e9902e6cbb7597878c4fce02373448b5316ebaebe4e5"
+    },
+    "scripts/t0_reconstruct_history.py": {
+      "after": "75b6f96136e2d0e1c1730ada0491495ebd4e9496304caa164cadb850f00b0002",
+      "before": null
+    },
+    "scripts/t0_study.py": {
+      "after": "2c176b910867b4f116a7847c753739e41869f017e7be4f159b1e1e0575010652",
+      "before": "df8d53d275cb9db1fd306232ad346f09262899a03926732e88cba6e556b136a2"
+    }
+  },
+  "run_id": "20261124T013257762872Z-97500af4b99f4b37",
+  "schema": "el-t0-opening-software-1",
+  "sources": {
+    "authored_fixture": {
+      "manifest_sha256": "28cb69be3a23870bea3c58d5db7d4ff9688adbb64836f4650bce7d8ca0b3cecf",
+      "member": "payload/fixture.json",
+      "run_id": "20261124T012348959977Z-20ab3779dad24e9b",
+      "sha256": "4970e4be53e9f47d7d38fe856f457cbd2c64320080c7b29b14d8f6f9d76a3e54"
+    },
+    "freeze": {
+      "manifest_sha256": "6fecea74ead7246c8bdc9db4ed2b92dd9cedfc53027af120f1ecbb29bfa0c0e1",
+      "member": "payload/freeze.json",
+      "run_id": "20261124T011650674892Z-3792a73748f64d36",
+      "sha256": "e26aefdc19ca66a02a294b2c5d258f93b1014b92da7e49a6335d17c375259944"
+    },
+    "prior_lock": {
+      "manifest_sha256": "a47283ebab0feeff38ed2569472436d59da4e4475cd3a6fc9d08b2e24bfb44d9",
+      "member": "payload/software-lock.json",
+      "run_id": "20261124T012540873141Z-b13a1231388a416f",
+      "sha256": "8a85b9fe476de2a1757623e81c2521b71a85936afcd25cef257c1a6b81a6e3f8"
+    },
+    "recovery_audit": {
+      "manifest_sha256": "703f2609bed272d431a6b45c0435e489324b3e4ca474cf619b741e05e73c90d2",
+      "member": "payload/cross-store-audit.json",
+      "run_id": "20261124T012958649605Z-95c2eb0a75f947f6",
+      "sha256": "f260ff36d1c77f0b12c3af7e8dae1faa5b9276e79948367a1747b3dca5c1e090"
+    }
+  },
+  "surrogate_references": "authored source used only to exercise evaluator output shapes; no T0 targets",
+  "target_references_read": 0
+}

@@ -3,6 +3,8 @@ protocol/** -text
 reproduce/** -text
 scripts/*.py -text
 src/** -text
+# Released coefficient, preprocessing and threshold receipts are verified as raw bytes.
+src/evidence_lens_bundle/assets/** -text
 configs/*.json -text
 docs/results/reconstruction-recovery/** -text
 LICENSE -text
@@ -20,3 +22,7 @@ docs/results/reconstruction-recovery/quality/visual-readback.md whitespace=-blan
 # Preserve byte identities of the frozen DTU T0 protocol receipts and CSV exports.
 docs/results/t0/** -text
 docs/results/t0/intake/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# Preserve recorded CSV and offline HTML bytes in the prepared-bundle receipts.
+docs/tooling/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+examples/offset-bell-cage/bundle-report.html -text
