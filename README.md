@@ -10,6 +10,10 @@ Use the CPU CLI with an original 256-square bundle or a versioned rectangular bu
 
 The experimental CPU tool records which photographs it queried for each target and which pixels gained a comparison when the complete bank was audited. Its separate NumPy model ranks potential RGB errors. With the same 16 sources and 190,510 accepted pixels per external confirmation scene, the model admitted 51,334 errors against the residual rule’s 45,524 in living_room and 44,943 against 46,014 in bridge. The registered ranking endpoint was negative. [Install the tool and real weights](docs/research/many-source-v1/README.md) · [Browse the two-scene comparison](examples/many-source-study/report.html) · [Inspect an original source-bank audit](examples/many-source/b04-layered-louvers/audit-bank/report.html)
 
+## Inspect the evidence behind a frame
+
+The six bell views and the fixed gallery view let you examine an original reconstruction, its estimated risk, the synthetic source images actually queried and a separately opened reference. The accompanying readings connect this material to media theory and the documentation of visualisation. [Open the case viewer](examples/evidence-foundation/index.html) · [Read the model history, theory cards and open questions](docs/humanities-foundation/README.md)
+
 ## General CPU tools
 
 The release includes a prepared four-model replay, a real fine-tuned CPU model, a resident array API and original static camera trajectories. MS-L1 is the default. The research report compares frozen scores on DTU, records the empirical threshold results and explains where the models have been evaluated. [Install and reproduce](docs/releases/v0.4.0/README.md) · [Model card](docs/releases/v0.4.0/MODEL_CARD.md) · [Research report](docs/general-closeout/README.md)

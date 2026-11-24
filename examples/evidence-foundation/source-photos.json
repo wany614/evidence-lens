@@ -1,0 +1,3296 @@
+{
+  "archive": {
+    "bytes": 113570300,
+    "contents": "Source and independent reference PNGs, native prediction and rank arrays, and original independent bell FP32 measurements. Each role is recorded for each member.",
+    "file": "evidence-lens-foundation-source-photos-v1.zip",
+    "index_member": "contents.json",
+    "index_sha256": "6101d846b16fbd99cb1b02231dedd59eec4da889729674bb88ac63e5a3949d1e",
+    "member_count": 313,
+    "sha256": "b7f39ca7ee8516903890da1dcb4e86997b363ee7b55ed09ad40019d91f0ac8d1",
+    "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/evidence-lens-foundation-source-photos-v1.zip"
+  },
+  "files": [
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 68466,
+      "member": "offset-bell-cage/sources/s00-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ecbeff67ed9e77d2cc760c5b5a59db11c5c9a6511793524052930695b4d4f55a",
+      "size": [
+        448,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 179025,
+      "member": "offset-bell-cage/sources/s00-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "f2040bc2da4f884cd498ea9ffd339888669a471c5212f46f48ff2a90a810aa61",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 69486,
+      "member": "offset-bell-cage/sources/s01-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f84544b8943587e3177618b7a070b350b1da056aeb6ba83cbd2b80123b662f4c",
+      "size": [
+        448,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 182379,
+      "member": "offset-bell-cage/sources/s01-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "691809ade7bdfac1a254a646c21358bd483ea0c2bf69661013668473c4c5b4d2",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 69929,
+      "member": "offset-bell-cage/sources/s02-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "6a1199eb48ad736de76ffe4c0eb91e5e601b91c5734728a14718eaa437182485",
+      "size": [
+        448,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 183493,
+      "member": "offset-bell-cage/sources/s02-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "ccad1539057249642b4cb0f348cfb18d72acc05c9c7ffc4d1fe583b14a731898",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 69066,
+      "member": "offset-bell-cage/sources/s03-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "8c06266f1db66ca634ba76b9f0e877a2b6b3799afe9a3a85e2c838080aef966b",
+      "size": [
+        448,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 180777,
+      "member": "offset-bell-cage/sources/s03-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "2d9f9a18594d92ac8c997ccac4fa5dc842f9e8e16b8604823a2f2d42d7245543",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1906100,
+      "member": "offset-bell-cage/predictions/v01.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "3839effa14c237fd62f5cc2f1caaeea90fe6ab1b9863005462fa0c60eaaf13c9"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 183401,
+      "member": "offset-bell-cage/evaluation/v01-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "06491bf8c62f21762a3f95e859db170bbb13c2b916cfded6e4078bea4abec763",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 4566646,
+      "member": "offset-bell-cage/evaluation/v01-measurement.npz",
+      "role": "independent evaluation only, original FP32 display-sRGB",
+      "sha256": "91bb335e5f88bb530cca160b027764b7dde1b4aa1a391d4f750f44bafed975fb"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 410486,
+      "member": "offset-bell-cage/models/v01-MS-L1.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "7230228ad02c0520cb4b9c4134cf935737579a002783f5963bc43f46879f5c16"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 420856,
+      "member": "offset-bell-cage/models/v01-MS-ft.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "a91c03a6040201caa17cc06b01acdfd6b067ecf08b05411caa9a0e14121013a1"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 419669,
+      "member": "offset-bell-cage/models/v01-MS-frozen.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "8bf52cabafdcbbc0b3c6101750cd2eafd29da66ef07f0cc8e860e8588e2e5031"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 402552,
+      "member": "offset-bell-cage/models/v01-B-L1-transfer.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "978b1faad31afb04307a101bc61e0e1342df436ffda02d92a2cd207baeb5e736"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1915741,
+      "member": "offset-bell-cage/predictions/v02.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "5fff9f7bad60f0b026a80d35cf92c60280b6d91c08e524879cb956d806644452"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 186236,
+      "member": "offset-bell-cage/evaluation/v02-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "cd07ff5b7fc7f247371ad6bad6b99688f64c45aab6a95be1888ac67351074fd0",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 4598630,
+      "member": "offset-bell-cage/evaluation/v02-measurement.npz",
+      "role": "independent evaluation only, original FP32 display-sRGB",
+      "sha256": "cb31458a76c60f3384dffe7c0641d275fa42da9f9ee6c4d71d089e07b4faa869"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 411531,
+      "member": "offset-bell-cage/models/v02-MS-L1.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "87f5c08c1171b7bbbacf0736b7644697aba753518b3105ce2e08437aeb411b19"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 421536,
+      "member": "offset-bell-cage/models/v02-MS-ft.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "80c579dfa2f5bc43929b5f80ae4d0c38b35d9f922f6422e1f4c6807c6a4a9026"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 420422,
+      "member": "offset-bell-cage/models/v02-MS-frozen.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "a820e7f81f5a9bae6a986ca9267e8d42efeb18d839a56e584ce1020e4b42de3d"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 394517,
+      "member": "offset-bell-cage/models/v02-B-L1-transfer.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "2e6c49ac664420417112b756d4e059cdaa8f8e1df8ca2f52d0666172bdd38208"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1901555,
+      "member": "offset-bell-cage/predictions/v03.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "3a731caffb99d23d9e5b1b18dde29da669c6f58fb3866cb02b92128ec11809d2"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 177276,
+      "member": "offset-bell-cage/evaluation/v03-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "f8242d1fcdaa3fae7b8e60651c97b864b32eab9d9476f63b3011977e87ce9205",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 4553058,
+      "member": "offset-bell-cage/evaluation/v03-measurement.npz",
+      "role": "independent evaluation only, original FP32 display-sRGB",
+      "sha256": "2eb2e29a8483a0fdb5bee59b5722d6357de1393c02200fa384610be736cc16f1"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 408866,
+      "member": "offset-bell-cage/models/v03-MS-L1.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "c834326732db77a11062b3d2a363a8e483c02924cc86219d5fa451c41c685e02"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 414502,
+      "member": "offset-bell-cage/models/v03-MS-ft.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "464d400df8a9db0f39891001cdeae79c431d1247928435f5a03cb2df5864c57e"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 413240,
+      "member": "offset-bell-cage/models/v03-MS-frozen.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "b8ec6738f316cca3f61f66577f47001a31f8272a95c2aab4376d90bfbb093542"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 406516,
+      "member": "offset-bell-cage/models/v03-B-L1-transfer.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "bfb9ddf29427612b6a6fdd120e5e5f32f87b9849c13865c2429a31372936dee7"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1913393,
+      "member": "offset-bell-cage/predictions/v04.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "af7a1eb663ef9bb0c8ff8e918a33052dd6f5c9141950bb7ecad6114c14fbb945"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 179389,
+      "member": "offset-bell-cage/evaluation/v04-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "82492439a772074725eb5a070d0ffe3a47a3f2e8a856306ba236f01cff29e176",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 4594363,
+      "member": "offset-bell-cage/evaluation/v04-measurement.npz",
+      "role": "independent evaluation only, original FP32 display-sRGB",
+      "sha256": "a4ac8bc9e8e3aa4151a4c10e4ab7650933a91f6f718eff9d25a7f7b6b6c18159"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 409102,
+      "member": "offset-bell-cage/models/v04-MS-L1.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "2d12e72241c8ced94be28452c87dedddf975a5b696074ce9ee05f82e879555a5"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 417214,
+      "member": "offset-bell-cage/models/v04-MS-ft.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "75cc6a41423823e12a266c1381fb3d554817302b44cdf7ad6dbfd45c7bb521d4"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 415616,
+      "member": "offset-bell-cage/models/v04-MS-frozen.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "f4de4757ab11784246457aaac05bccdd68570d99a93508fff8cec49077e1a0b8"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 388614,
+      "member": "offset-bell-cage/models/v04-B-L1-transfer.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "2401a57b8f8fb15ea5e288eb6b879b4181e162f51a65b603c2cf08677706c7cf"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1901409,
+      "member": "offset-bell-cage/predictions/v05.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "03c275cfb7a1c7d3f60b785a0bbee5845b892861aa98e64efac3e58940178944"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 181489,
+      "member": "offset-bell-cage/evaluation/v05-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "ebf9cda1e599ff012f30d099e3ed06636684c4bce348d606dd2499831ebb5b89",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 4566950,
+      "member": "offset-bell-cage/evaluation/v05-measurement.npz",
+      "role": "independent evaluation only, original FP32 display-sRGB",
+      "sha256": "d4251acaf04a09270a967168ef8506537fce48a6ed55e4ded1dcc464dfd8eb4e"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 390268,
+      "member": "offset-bell-cage/models/v05-MS-L1.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "8945626e780421ecc00eed035c0515bfba90efb2c6f5400595702cd59aaa5380"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 396989,
+      "member": "offset-bell-cage/models/v05-MS-ft.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "71ccc5864f2d4fac1bcbf4ed23da73d7601014795294adf3a977630da4609e2a"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 395448,
+      "member": "offset-bell-cage/models/v05-MS-frozen.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "2ec1b3f3490e98e703c427b32cfdf5095b06797b0d0bc411bf615a1fba4febe1"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 403348,
+      "member": "offset-bell-cage/models/v05-B-L1-transfer.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "9c1c6a51a83855f950dcadaeae66b66ca339b7b5d06d69d541d7702a4af8322c"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1912084,
+      "member": "offset-bell-cage/predictions/v06.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "9052551ab0656e0564f22981238fcb061c3779844fbd0bcb38641926b788024d"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 186054,
+      "member": "offset-bell-cage/evaluation/v06-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "832ae6733bd37f30774987a0b2a83635ac2e36bd17b917b8dc5ee2ff5f86c1c1",
+      "size": [
+        896,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 4592702,
+      "member": "offset-bell-cage/evaluation/v06-measurement.npz",
+      "role": "independent evaluation only, original FP32 display-sRGB",
+      "sha256": "5db5dc9517438817bfc28d3330f5948193dd3175d4e3690410514e67610f6413"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 411863,
+      "member": "offset-bell-cage/models/v06-MS-L1.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "46cbe5afc12927be84d6127f723b3591219a825a8c40290760a86cc00c10e305"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 421131,
+      "member": "offset-bell-cage/models/v06-MS-ft.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "3d9b8f15bff9afbd092da44a6c2e1868e6544a78c93517c8feb36a869ed65a1c"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 420513,
+      "member": "offset-bell-cage/models/v06-MS-frozen.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "ec9a2c73dd17f4944313a46b146a80ec0cfa6b1c5be7f0a0cd82588dc601e494"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 398783,
+      "member": "offset-bell-cage/models/v06-B-L1-transfer.npz",
+      "role": "sealed risk, valid, threshold state and unknown reason",
+      "sha256": "21f96e43e075fee7660397502c915dd318387f6c673112541fbe60df5e594f20"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130930,
+      "member": "b05-perforated-gallery/sources/r000-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "67e652d35b196bdbaea870e84f97709fd52ece792291b2b86f2515d7ea2cc3cf",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 285419,
+      "member": "b05-perforated-gallery/sources/r000-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "fabe1f358b2976d7d567e35a5c17447a145cee363273bb7002ba0879c9a9641d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132304,
+      "member": "b05-perforated-gallery/sources/r001-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "adf6f645edc4d8682880fa6f2541fcdf84e6179c8ae91605ae7b83c67ebbfe3e",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 289410,
+      "member": "b05-perforated-gallery/sources/r001-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "57879e70a29802f5ed6c8e185ededaacfbeb4a9e4853eef51b08643175534d41",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133161,
+      "member": "b05-perforated-gallery/sources/r002-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "da3c10d7fddac29726756aaf30fa4ce1beb23ae2272208d389ab6c924f5b4da0",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 292731,
+      "member": "b05-perforated-gallery/sources/r002-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "2c8c52612efacabc92de099cc865c9310b2e5e699e1cd31a2f3333b9527cd2c3",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133869,
+      "member": "b05-perforated-gallery/sources/r003-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "5ced91920d744db62dd624e787629141f218af6ce7bed77bfcec56a600e432f1",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 293825,
+      "member": "b05-perforated-gallery/sources/r003-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "03f6a1253b79026ac596addf58e7a46a9f8d9d10175c7101b62c17427012e093",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134810,
+      "member": "b05-perforated-gallery/sources/r004-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "041ac5a1fa668ed2372020fdf676a5b9f2d87f68ed094ad6b3e60c7ba981ecc3",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297361,
+      "member": "b05-perforated-gallery/sources/r004-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "4574524610f9a05090fa809cc4a61c4ef0c36ed368d634ffac6ec89321265328",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135685,
+      "member": "b05-perforated-gallery/sources/r005-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "195e931d95b0c59b10c27b396151e1f80a6b5b0b9b183fa214a40a5e611a5b74",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 300084,
+      "member": "b05-perforated-gallery/sources/r005-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "87dce8d6cb7963d4d5ca00652b21ca48770d4894c781f4599a4d304324b5596d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136438,
+      "member": "b05-perforated-gallery/sources/r006-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "545004a7529aed46f83b7859a824b3af677354f7ee0219709519befcca92a33c",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 301923,
+      "member": "b05-perforated-gallery/sources/r006-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "d23f795f851fe4b59de629fc9811ff9de1f84044f9f513e415bef24ec7b9d96a",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137360,
+      "member": "b05-perforated-gallery/sources/r007-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "01ba69c1c1afd19833194cc1040efb7cb911a04da23326de725ce95659c5ebd4",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 303346,
+      "member": "b05-perforated-gallery/sources/r007-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "1775938b8607111a6f686ebe4557ea4c2a04be9c5d64d8a469a47bea09c9746f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138157,
+      "member": "b05-perforated-gallery/sources/r008-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "bfbce4ec9737855ec75f9482b5133d2de86771580e40416c8790b4fa9f2110b2",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 304604,
+      "member": "b05-perforated-gallery/sources/r008-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "ad6a68c883639e3fe0fe3830b2412858ec25ac8dde470579d4f1e5e85582f608",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138967,
+      "member": "b05-perforated-gallery/sources/r009-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "a7c3030857dd0aa7a015c962b90eaf23ce2b04608a2f75d37c2b9ed62e01bc41",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 306385,
+      "member": "b05-perforated-gallery/sources/r009-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "0b18d63323ed137f63288d3e900f8cd176001c819c1a6a88b1af42870182ce6b",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139741,
+      "member": "b05-perforated-gallery/sources/r010-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "76e00955b8d679bd658e62f28dcd3f04caa7d94daa8374b33a6d65ee0aeb8acf",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 306933,
+      "member": "b05-perforated-gallery/sources/r010-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "d47d4a40fbd99918d84a0f3228fe5859553749ae472025c310775130af5705d0",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140149,
+      "member": "b05-perforated-gallery/sources/r011-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "d59321d64a22dcc0a1672ea97a8ced186850302df3c5d24d4e916cab52f97099",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 308249,
+      "member": "b05-perforated-gallery/sources/r011-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "f02cb68f5c56d0eedb2c334a01932dd0081bd4a37ac9379cbf0aa4337de6976f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140577,
+      "member": "b05-perforated-gallery/sources/r012-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e70fc9093aa99864d9db4009d55ff9943d0f7d92a32ed4fbc6ac89d78e4651a6",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 308812,
+      "member": "b05-perforated-gallery/sources/r012-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6b8b79c7f9a37e3c79c1aecc56f199e3f85f3dda9829e7f2c77aedee10ff43f7",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141068,
+      "member": "b05-perforated-gallery/sources/r013-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "0d2be64a066c77ad65b033950d4113b78d452645044f5395de77fad8e94ff460",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 310010,
+      "member": "b05-perforated-gallery/sources/r013-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6502c45d1b3c986a2c4cf39823b72fa9cb6f67b515dbe6cfe79e233808d93390",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141172,
+      "member": "b05-perforated-gallery/sources/r014-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e6dccea8112ba48edc503caa06feb946edfb441bf365e75dd0dfd711207b7210",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 308848,
+      "member": "b05-perforated-gallery/sources/r014-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "24a881fdc7f8dc3f9de44cef6d71078ed953791e5b5260ed4a06d26f1a4b1cb2",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141449,
+      "member": "b05-perforated-gallery/sources/r015-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "fafdb46e2d28acfe67d89c3192eade713d21c42ad11092c62c878feaf66a1e23",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 309181,
+      "member": "b05-perforated-gallery/sources/r015-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "437e505b19971ae1b9a3e23927ad7d88db9ddfea4e88a4b6abaae84ca7860eeb",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141378,
+      "member": "b05-perforated-gallery/sources/r016-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "9cfad9b2d7a071f7c315494ebb1abe6d6f1198815662d4c0bf707321aa93e84c",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 307800,
+      "member": "b05-perforated-gallery/sources/r016-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "51e2d25d5fcafa12d6ec530ff2b397343d5e48187cdd965d6d4e308ec42e1674",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141386,
+      "member": "b05-perforated-gallery/sources/r017-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "73aaf9fc923f401135ace40d10b9818e86aaff17af49152fc4fd830b81bb9b3a",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 306424,
+      "member": "b05-perforated-gallery/sources/r017-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "59140516163989d7035cc0311977d4a5576a54019234b9350f7c1aa0a307001d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141156,
+      "member": "b05-perforated-gallery/sources/r018-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "b31661a7731915b478bc52f53a09560a141062ebc7bbbfa1a878c1a308e034e8",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 305223,
+      "member": "b05-perforated-gallery/sources/r018-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "7f2d5f94a191d880c840d09275ec1e86a518ce65136782b8d7f1ff914a96e4d7",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140855,
+      "member": "b05-perforated-gallery/sources/r019-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "a82202fd7becc92df269f217ae1fe64a9411657d7d55c2e1f656bfdb28c59026",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 303615,
+      "member": "b05-perforated-gallery/sources/r019-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "441d9cc362b515f3b3478efc80bae010b60fdc80a9007bfe135b42c5b030d1db",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140074,
+      "member": "b05-perforated-gallery/sources/r020-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f6a0de0985705410b7963a78b356b99800c47cb96cffc96bcbbc8612c7a20072",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 301008,
+      "member": "b05-perforated-gallery/sources/r020-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "81320a2bc43ccdc88948547ae54066bbabffac9564e796ebf5d23b00273f833e",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139521,
+      "member": "b05-perforated-gallery/sources/r021-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "d8cbc7eb92a7b3d05ebc7baadffc421dfb4c65ac4e5153b3d3ba6d7176bd32f1",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297811,
+      "member": "b05-perforated-gallery/sources/r021-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "e3e7d490874d308e6e175275facf10a5a9a398ba0946409e2edde772bbd37166",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138843,
+      "member": "b05-perforated-gallery/sources/r022-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "6cacf04575644a4317077c98a4601d11fe408a44bc641566141fa0ac6eb40d98",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 294009,
+      "member": "b05-perforated-gallery/sources/r022-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6ee9acd0a66bcbd6aa95d9ebc0f64b8bcd1179bf82307e562133e62e8b485734",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138048,
+      "member": "b05-perforated-gallery/sources/r023-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "93fa0534f71c82ac3d5d393181a1b160de08f66d4645db3340c13422bed5710f",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 291650,
+      "member": "b05-perforated-gallery/sources/r023-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5ba4aab3dbc5b92c285f515fcea57b126f22d6e5f64e1cce32638b261910a5db",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137264,
+      "member": "b05-perforated-gallery/sources/r024-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "d25aa94fd17bbe1b80b5207994d8d4a0fdc14cf2b80fbcbc948ad2cc13dc79a2",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 288223,
+      "member": "b05-perforated-gallery/sources/r024-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "14fd91f349e58ec77ea0deef14ec51ffb3b1ec3bdd1f74e8904c2bdd875fb554",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136387,
+      "member": "b05-perforated-gallery/sources/r025-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "3dc501544ca328edfeb3e7c1adc845baf10a83403d113546b87c0ab1c29df081",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 284858,
+      "member": "b05-perforated-gallery/sources/r025-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "17948a4c70e837d35a11662817e534e4f05cf282332ec2de608c10ed9329aaf0",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135895,
+      "member": "b05-perforated-gallery/sources/r026-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "96cd88d54d833a1c0e0628162c847ce3257882a64fb9efdd7e3e8c1e04bc0716",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 282440,
+      "member": "b05-perforated-gallery/sources/r026-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "7d8c0593e31506e2e86f4e3b172dde08a7f0c3b1102f6ff781e0dab98a24d34d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134852,
+      "member": "b05-perforated-gallery/sources/r027-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ec5543c449538499b04826b001f127b03006e914dbda3f25c156cd09600cf04d",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 278704,
+      "member": "b05-perforated-gallery/sources/r027-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "d1a3598a858c33c0a9b07ea97417a4f95dc1061ef05cb9bae3f71a5ee2988bd9",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134297,
+      "member": "b05-perforated-gallery/sources/r028-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c4e1542d13f869da304e4388e3226366c1eff9f02c91fbfdc9324a3c6e3e4438",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 276356,
+      "member": "b05-perforated-gallery/sources/r028-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "445d697228ce8e79d0dd3dc98938cdb4aa3a310ad3812d012216ad7ef259193c",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133203,
+      "member": "b05-perforated-gallery/sources/r029-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ff0a9d606f525db4aa0319f6e839548968713a5c65b4606b39749538eeb7b38c",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274662,
+      "member": "b05-perforated-gallery/sources/r029-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "50924a993cb4b0f7b827b8737bb037b83be401b533d33e82f4233b0e1a3af7ca",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132547,
+      "member": "b05-perforated-gallery/sources/r030-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "54505892bf12b934f40c8b8bb8061d1fd58173cedf5a49e8ee618d0f41f69f7d",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274232,
+      "member": "b05-perforated-gallery/sources/r030-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "07733942c09a87bda5dda1421919264190ae2d4c86057a77f024b8c051c798da",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132213,
+      "member": "b05-perforated-gallery/sources/r031-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "fa349bdcaafcbe251cb8245587a80a17ffd606734f97601feb56cbfc2b12d855",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272873,
+      "member": "b05-perforated-gallery/sources/r031-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "41f1ef4a1b961d238ec26c41142f78bc70c9a44589bfe3425e6302b5893b11e0",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131999,
+      "member": "b05-perforated-gallery/sources/r032-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "88d61ab5a90645aca528d7ff41d0cb7fa37077adad2298d2ce1cad971dc7c172",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272688,
+      "member": "b05-perforated-gallery/sources/r032-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "ce1bd51051ea58f58fa1840983b94c39c953ebe02a7792fec1af6513eddacb4d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131223,
+      "member": "b05-perforated-gallery/sources/r033-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "07722ee4e98f152d7038c6a1ef73eed712f64e3c8cc461739f027db148dcf18b",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272218,
+      "member": "b05-perforated-gallery/sources/r033-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "90a3871dd5076d35b5626a6f74f490d666b3bf7999748b9709e3c7b4bcec2e0b",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130902,
+      "member": "b05-perforated-gallery/sources/r034-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ed7f86fcabf76291a6eacd1795820bd27ab534c4edebd5eb830af93a1b1eaafd",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 271554,
+      "member": "b05-perforated-gallery/sources/r034-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "d7a0370f63f3ad8d484e674bb2afdc519151a4cf77dec5cca120f4195df4c191",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131003,
+      "member": "b05-perforated-gallery/sources/r035-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "096dc423948d8c1ea0d5e6bf67f08706cb797b2134a9be4cf9d9d9d839293501",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 271264,
+      "member": "b05-perforated-gallery/sources/r035-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "eb3e078ffa9801868863bb5496db96c6c32858be348ab5741b0bb25ac599dc68",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130724,
+      "member": "b05-perforated-gallery/sources/r036-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "8992b189845a48a070fcce4c59e2c9d39783deaf5ea0fe994c450986700fa3e9",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272214,
+      "member": "b05-perforated-gallery/sources/r036-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "65153fd0106f47d71026a84a7c6da90e09d4d7c8610d83643afd3c5c4d16e4a5",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130624,
+      "member": "b05-perforated-gallery/sources/r037-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "25e9172f4083de1c6689f772e63a4c0669eefc9a173af5c96325984e489bde10",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272785,
+      "member": "b05-perforated-gallery/sources/r037-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "351324b980aaf3d369de7c56ce097c2bf6176b9fe0217e3565d95e4ca55494f9",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130355,
+      "member": "b05-perforated-gallery/sources/r038-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c616bbdf27aee972184a70acdaa0f290867d423c98efc8d25b3afa7c0c22d2f1",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272720,
+      "member": "b05-perforated-gallery/sources/r038-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "3a2f8d5d801c111fa868b30f39be121aad37f6de34abdf84fb565f1a95c08f11",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130462,
+      "member": "b05-perforated-gallery/sources/r039-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "7736cfa030f5091dc032f5ac3911159c58d08ea06a9e6bafcebba0a523e55d37",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 273489,
+      "member": "b05-perforated-gallery/sources/r039-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "a5f13df5f53ce20e0bcc57384f6926e87f430c8e2c929c9049aac72f6717c3b3",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130750,
+      "member": "b05-perforated-gallery/sources/r040-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "830ed7a23a8874d2ef0c0ae7cf305b284d21362294bcf7ba8da940d6e8b55046",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274024,
+      "member": "b05-perforated-gallery/sources/r040-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5b8d576f1938dac04c215a68b7f1a4816da85fca0c57df880df91e7eea573ab8",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130885,
+      "member": "b05-perforated-gallery/sources/r041-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c509a359b7415ba57eb3c88ba8b28dace29c1a9a75f88e33b9b85ca2baaa3f9b",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274917,
+      "member": "b05-perforated-gallery/sources/r041-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "7155f758a7e1c8a8c91a66436465749557c4b17f0ed776d0fa3f645c8b3fe116",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130903,
+      "member": "b05-perforated-gallery/sources/r042-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "eb2e6a60a71fa5df94fb20dc5529aab580985160659d138227be12392d37f767",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 275791,
+      "member": "b05-perforated-gallery/sources/r042-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "9dc524a22eee49ca4a2e50734f7a23297588e1d09223eafb8b04d73a87ffc2fb",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131540,
+      "member": "b05-perforated-gallery/sources/r043-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c1bf7f0b9a35a102ef6024798dc807ea8b29ba4023b6bebe1bf08ea4540802aa",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 276538,
+      "member": "b05-perforated-gallery/sources/r043-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "a30cbe57f28518aada1b66cf3383f008d1474bf21f9c59c7d0ab372eb51830d4",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132077,
+      "member": "b05-perforated-gallery/sources/r044-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "1dd7b938c6030f87cde8a62a91146013671a7205a11bfee1a48f35e34094e9ec",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 277329,
+      "member": "b05-perforated-gallery/sources/r044-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "52570f92a8f523d9973444694ea72d3cf5fca6d8d1e5454072753076d78884e2",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132462,
+      "member": "b05-perforated-gallery/sources/r045-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "93c37774aebf09c66e347d065c1ee7e07bba001e0d9ac3d35ff6f9cf084a03dd",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 278961,
+      "member": "b05-perforated-gallery/sources/r045-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "02960a20b76b8361fefdd41a7c5e4def6c64e8a24db749556181cfc5d03ed429",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132947,
+      "member": "b05-perforated-gallery/sources/r046-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "9eb96cca615545170c0ad3c055a0e64dd626d9bab0f9b141c9ebf101908db2ed",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 280263,
+      "member": "b05-perforated-gallery/sources/r046-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "0fda3b7a1175dc580ccb8339ccf4303be26a3b9d901dac266dd91ba90d30b8b6",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133772,
+      "member": "b05-perforated-gallery/sources/r047-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f396c5b502bd79f93035e4d88e95ebadfcd97ffbc8ba33464d01243ade6a2ce2",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 283130,
+      "member": "b05-perforated-gallery/sources/r047-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6289fc730c0f4028a5301115e8b14e5ad3c66f69cccc3f49f20342ce3bd5d4a8",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134483,
+      "member": "b05-perforated-gallery/sources/r048-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e6368830a62d3f957244bc7b596273b36465d902d76b148c65e014f3db93690b",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 283761,
+      "member": "b05-perforated-gallery/sources/r048-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "bb3e3dd1eadf492b84b69fa6683f291af2a95df888f185b5e5f982481256c297",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135017,
+      "member": "b05-perforated-gallery/sources/r049-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c2d9786cb510fea30f203a632c07f9e74f683cf37d1ba91a1459abbb239175a9",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 285594,
+      "member": "b05-perforated-gallery/sources/r049-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "31c5cbb9e590ce5fe6f1e09923d4e964be7bb188b059913a1e36dac8c7c02210",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136103,
+      "member": "b05-perforated-gallery/sources/r050-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ba4ddad4704bba3dfff6c018680c1c09bf1b2a606105358bac1c59a31fe46ba1",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 288219,
+      "member": "b05-perforated-gallery/sources/r050-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "58c328e163c191490e547e70c6a63daae6b39e92eebaaa25de23b479d98882d8",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137062,
+      "member": "b05-perforated-gallery/sources/r051-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ba18fdaeda41781cd3d2a0ed4e6dbfa8d3e0353932a61665c65143b5dcace2ed",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 290025,
+      "member": "b05-perforated-gallery/sources/r051-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6711eeb6775b1a7c903e18f6d6e7f2dd5a08dbd393fabf0e4a08f56a2b08cc9d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137879,
+      "member": "b05-perforated-gallery/sources/r052-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ba82775a2864da1c78fb67ab29640dfdb9c20e8ad65424346dcbc5c8b7d131f3",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 292974,
+      "member": "b05-perforated-gallery/sources/r052-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "f8f191bd732a0d2ec97257ff689028eec8091da8024d6364af04dd223bd07297",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138396,
+      "member": "b05-perforated-gallery/sources/r053-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "4e2ddd5dabe4fc3c5dedd3884c5dbef0d6624d96b40c88194950773ffdb5461a",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 295009,
+      "member": "b05-perforated-gallery/sources/r053-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "85d977e422fc66338c087005c059ac9a61860d725c7893364bf104ae02dcfd14",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139217,
+      "member": "b05-perforated-gallery/sources/r054-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "34902e7991643526472788d8d82a06e84ca535c9e985f76bad78bd3e5d94ac84",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 296661,
+      "member": "b05-perforated-gallery/sources/r054-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5b4f60b1db352fd638f9464b5d1bcb5e716484671f2543e1d1505bd593e5d2e2",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139686,
+      "member": "b05-perforated-gallery/sources/r055-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "25b50ef8002caa5bbab3450b037520a6e7ee0d0568b80dea672a4817e6fcb0eb",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297793,
+      "member": "b05-perforated-gallery/sources/r055-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "c6996ca342781faf1ac2f610c3c33d546198af2c19f5df7256e0370bbb252bfb",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140330,
+      "member": "b05-perforated-gallery/sources/r056-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "9fae04e093019809929d1b0a49ed4f0365c2609f11277413f822044a45bef70a",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297816,
+      "member": "b05-perforated-gallery/sources/r056-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5ba2966c114ecbcc1b87033e3adfa09eddc7239963ce22ae10dfd7b46d16871a",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140543,
+      "member": "b05-perforated-gallery/sources/r057-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "a250f0d93f083018eb8915dbb35190853ede9370aaa36815aefedfbb514c9fff",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297664,
+      "member": "b05-perforated-gallery/sources/r057-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "8ac5b08334101458548b2efab69077cefe5488e5071bfa1866ddb870b427d4a4",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140732,
+      "member": "b05-perforated-gallery/sources/r058-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "83fc1527a1dc79539db87ec808b13a16054b62a245d45e53b1faafe0a078f396",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 298503,
+      "member": "b05-perforated-gallery/sources/r058-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "725809f338c7906af534cb591fbe5b660d2dfcaad1589299f7d3b591a00f2ed0",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141211,
+      "member": "b05-perforated-gallery/sources/r059-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "2cb12b635b0ac991cd954140c4b9f7c0c88778a8d3a0e7a6a1902d2d90cea103",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297479,
+      "member": "b05-perforated-gallery/sources/r059-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "d514e9d12cc3be09c8fde383d6d4cef37af22f9103d9271fb1083523512f2595",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141025,
+      "member": "b05-perforated-gallery/sources/r060-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ec8949d56357a79da173538ff09eab0235e47a39cd5323eb0b07d15b979edf52",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297008,
+      "member": "b05-perforated-gallery/sources/r060-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "e02588d417b1a9902ab07f1db34a10ec65abd6519ff1a187e6e0cd6f15ba80fb",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140615,
+      "member": "b05-perforated-gallery/sources/r061-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "df18010dd724a30bb33eaa437e6878e94b3744790df27cb57a6731308bce32af",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 294224,
+      "member": "b05-perforated-gallery/sources/r061-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "f30a2ebe94862020acfdf449b683070b04f3d4759a12a1e82b8a148c1bc7ed3b",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139754,
+      "member": "b05-perforated-gallery/sources/r062-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "7d8e2b0b1ca1ae102c7454b916384b6e7242353953f3cfa2f4f29811c606b965",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 293135,
+      "member": "b05-perforated-gallery/sources/r062-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "11cef7e0e850f73f82d06622ce44556859975dfe6886c4bbb9f530d28ac3cf57",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139160,
+      "member": "b05-perforated-gallery/sources/r063-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f0d7740b9bacee78a9af4da57a69b7584431c709aa041a8785a6f38179080027",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 289398,
+      "member": "b05-perforated-gallery/sources/r063-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "67647bc941d2d669856f90c68d7af8b869dc36d726060bba0fb13f923abd79b2",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139032,
+      "member": "b05-perforated-gallery/sources/r064-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "2e1ccafc67852e1c1e23af1a62ffa38bafed1b343bac5c5a4dd9c842b42609e1",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 289844,
+      "member": "b05-perforated-gallery/sources/r064-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5665fd9c2bf002955d60200ae7ec7482e214e55b6592cdfabae505d0947dbbc9",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140076,
+      "member": "b05-perforated-gallery/sources/r065-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f0f55064ca05201e389d3347249dd7ae73f2bdbec1d9ff906c03658e008aad0b",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 291424,
+      "member": "b05-perforated-gallery/sources/r065-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "991a5fb8dc4ffc5bd84a6da36e8212206f83af65120889cbcbb5f5b5fe883841",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140222,
+      "member": "b05-perforated-gallery/sources/r066-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "90bfc808c408aa2828f9fd51d51595201b33be9a3b329330c714790ee022685a",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 292474,
+      "member": "b05-perforated-gallery/sources/r066-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "1bf48593399615f9ca653aae898288b75b14c24128bbac65db0668d0430cdba8",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139532,
+      "member": "b05-perforated-gallery/sources/r067-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "0ab5c31b7c53591ede05ca48e9c491cbb14cdfc9825c6b903a0b7c8e01c47fa5",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 290991,
+      "member": "b05-perforated-gallery/sources/r067-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "9f6da9b7407b2e273e1a4fd03a7b02c40a646a5382071ed6f79a10d5ae6839bb",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139542,
+      "member": "b05-perforated-gallery/sources/r068-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e6a662cc634386dca06c9418afebae97dcd99f1a40f36b7c021b63c852421a52",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 291816,
+      "member": "b05-perforated-gallery/sources/r068-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "b6b9ea486ca9bb701ee2cb0f66f9bd41de6f71516520ea469cc56dcc7d42b203",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138881,
+      "member": "b05-perforated-gallery/sources/r069-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f82708cd6973956e9a4ece8d471ea5b6ff364f2aeee0309a11b5cacefb5e78bf",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 290430,
+      "member": "b05-perforated-gallery/sources/r069-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "35f97315ebdff132bbfe2e8484ca93c4bf203c6f00022c62c183025ba0e74f8f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138198,
+      "member": "b05-perforated-gallery/sources/r070-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "adbb5d04c1928e9d2d1df48f109fe9978b0e7f9fed0984e25169d3884d3140bd",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 289279,
+      "member": "b05-perforated-gallery/sources/r070-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "d4a0fd2ca5218273e6398fc22a3761ddf1d613f5622bdd53695b88fbd06f466d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137335,
+      "member": "b05-perforated-gallery/sources/r071-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "8170eda19f0a8222535670407a7a6875d66b0b0a448015ecac3542ca17c46ea9",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 287877,
+      "member": "b05-perforated-gallery/sources/r071-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "4b16d3cd3d710e57f46cacc2334bec2ccbe88dd55c4fba542d68082808c8c19b",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136552,
+      "member": "b05-perforated-gallery/sources/r072-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "7dc3e6a19548837ec3c0f4cb5bf21c4b21b6bfbafef084d0128ad923806dd2f3",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 285929,
+      "member": "b05-perforated-gallery/sources/r072-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "867aa41978a3a2e68309db36dbfcb2cb49eec68e2980374d741b2f44dd5d7e85",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135826,
+      "member": "b05-perforated-gallery/sources/r073-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "892edb5850ac5ab12fe6404922e3d4ac410331dd1dccaa443a8a5f4216b4aab6",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 284665,
+      "member": "b05-perforated-gallery/sources/r073-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "cafff14a9fc4c81d4e7aea3f11a6865b2e3751d235eec3255315f9c0d94c0fe7",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134951,
+      "member": "b05-perforated-gallery/sources/r074-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "a6075266f028c2567c02356be07fe838d3f46d77a484337a6c2ecf61c920a7dd",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 282428,
+      "member": "b05-perforated-gallery/sources/r074-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "e3067e0e2fffea75f8e9ef6eb208ad1b25962405366be74c2449920f88d9f44f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133962,
+      "member": "b05-perforated-gallery/sources/r075-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "fac3fbeffebbbe7fca81b1dae0bdcd28b26d097ddda166682b6d08045cd866ea",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 280829,
+      "member": "b05-perforated-gallery/sources/r075-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "59cbb7edf92c2012571796b8654439c5ad7b63e5aea31f753cbcba06699056cf",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133732,
+      "member": "b05-perforated-gallery/sources/r076-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "067f58af31cd679313b4a58ff5fa25d9cfffedd99dbd336be64e0fa4371e4990",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 279847,
+      "member": "b05-perforated-gallery/sources/r076-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "1526c21a3ca1427e743d404c581e4440d0d1737c236eb3a3979dbe4e0e338aa0",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133388,
+      "member": "b05-perforated-gallery/sources/r077-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "8d0188449c4219ee5ab1a2593d4195a872d9dac5339dd8c2902931c3418e5cb0",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 279007,
+      "member": "b05-perforated-gallery/sources/r077-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "79c77ae7395929242bc5c1df1c8da2f77d4370bf35abecffcb6b90c76fc875a5",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132673,
+      "member": "b05-perforated-gallery/sources/r078-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c54a3c8233ef013054142fed11a1b08c229bcf317a00effec5cbd5739ed510d6",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 276559,
+      "member": "b05-perforated-gallery/sources/r078-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "99f5ebe591f91aa9587cec39e902efd6232b83bc9cff73a257d84274e7b7e53e",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132221,
+      "member": "b05-perforated-gallery/sources/r079-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "9e56087e0952002a3aa2db17f7f5d4ad4e6863ec3006813db67567f9ead06c73",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 276114,
+      "member": "b05-perforated-gallery/sources/r079-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "bc202a150563ffc1f57fc9a11dfd6d5211dec31c038c6b19cc09be7bf5817c2a",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131995,
+      "member": "b05-perforated-gallery/sources/r080-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "2b89236d62cbbc1791226fc90e4e0aa1a851ea66d761bee15875eeb8f30962ed",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274492,
+      "member": "b05-perforated-gallery/sources/r080-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "11c0e4c7ad59e6b64780b2244061828199f2a4cc8dd526b3fec3407cde0244cd",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132009,
+      "member": "b05-perforated-gallery/sources/r081-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "7b1e8f17927b9a34217c38ed5e11e0a14a245855f0a2d2193c3e44cd64efdb44",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 273649,
+      "member": "b05-perforated-gallery/sources/r081-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "2b17e44ef31dd9ee1ae0e357ba2801ce23f7eca49b2892fb3be581ae2cb75452",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131848,
+      "member": "b05-perforated-gallery/sources/r082-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "723bb8fbc3b5d98d3b87826bf91dc48e2ffc5652d97c2d669f50bde0cf5f2f18",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 273087,
+      "member": "b05-perforated-gallery/sources/r082-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "e6065be1935e3a5a01bdaffd735af98dad78904b7cedfdc464ff60d43ede5ed9",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 131981,
+      "member": "b05-perforated-gallery/sources/r083-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "08f209c9c9ed6d6d8c9727490d57434e759f42d2cb2916bf4f4a70a8f87d20f9",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272791,
+      "member": "b05-perforated-gallery/sources/r083-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "da829b7def476d313c009e1af6d471c6d8f7276037efce9bf71c87e757aeb18c",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132369,
+      "member": "b05-perforated-gallery/sources/r084-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "7cd36b41eb901906cd097a855fe0654f602f2cf96ed1e84d86975e48ae7e2edb",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272255,
+      "member": "b05-perforated-gallery/sources/r084-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "bd5aac97fe7297b5afcca35c1f2271e439408c29971e944352358b8888ca8c9c",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132610,
+      "member": "b05-perforated-gallery/sources/r085-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f297cd9571edbfa957413aa0e4781b01a6572568f54c1a839c521b7ceb070e54",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272624,
+      "member": "b05-perforated-gallery/sources/r085-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5dfcd7a3dce489731123833ee4384d32c13be5c38e50f5a4207fc18e8da44040",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132946,
+      "member": "b05-perforated-gallery/sources/r086-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "cb9cf1ca7f5d5d2b9eac7ca55c9dd95571e62412eb388a0433b2d6f0802d4fcb",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272602,
+      "member": "b05-perforated-gallery/sources/r086-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "c6e42f1949e6eb4e7e918c67beb4f95f6b2c3872e3cf2b058736198976c220e1",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133092,
+      "member": "b05-perforated-gallery/sources/r087-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "3205ec3eb159c3cf2b0327d889b7931c8c70632c87ec1ac099b204a678a19671",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 273344,
+      "member": "b05-perforated-gallery/sources/r087-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6fefd7af99015f8e96e7077f8baf808b896c0111b57c35c20698f0d994e15a33",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133447,
+      "member": "b05-perforated-gallery/sources/r088-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "0f23a684f965da69b55301472a4b329edcae41c79413b18a5b06ae3f6ecfed21",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274224,
+      "member": "b05-perforated-gallery/sources/r088-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "083f2f20c6690d82237e0002e9c18bbd406b0f41c880218d988f837c2264176f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133883,
+      "member": "b05-perforated-gallery/sources/r089-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f6d2eb9ad5213d8251c9b0a9ee909b92abee4c6fbe0cb28b353b3666c5d70589",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274563,
+      "member": "b05-perforated-gallery/sources/r089-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "814817faacbe2213488287b1ede442108e07a7acb14a23cbce39e19adb9b5354",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134145,
+      "member": "b05-perforated-gallery/sources/r090-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "160ad3f59f4aee8e42bb2b634ef2f105d885dc050987f971e4d7dad003e09e6c",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 275140,
+      "member": "b05-perforated-gallery/sources/r090-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "907c3af6a018d3d23a9ae0cacd72b8bfaee36b3c2cafa0908cda2eadd8ca1423",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134614,
+      "member": "b05-perforated-gallery/sources/r091-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ccaee08f4efb95d8aca37f34d89fa493d5b2547ba51dfdf2b3ed3a9332f3aa42",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 276345,
+      "member": "b05-perforated-gallery/sources/r091-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "df69cf4033aa8b8feebfe5137558a44e01851ffb0e3254af30261d6c2507b075",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135014,
+      "member": "b05-perforated-gallery/sources/r092-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "183850cdc67adb059d20ae17dfe57c71d3a3f6befc8ce3fa885acfcee775f7cf",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 277149,
+      "member": "b05-perforated-gallery/sources/r092-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "01ea6399967641141c3be7c23213c243fd11be11913e43d5da3fe79a279ff6fd",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135713,
+      "member": "b05-perforated-gallery/sources/r093-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "3fcf39c8a5abcc49b9cc1e6c176785ed707a7142446865485527a82b48eda4b4",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 277324,
+      "member": "b05-perforated-gallery/sources/r093-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "328b6d27e734714ba9531bf86c8f30a13412a800c8edc7de64558a3c2255e536",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136347,
+      "member": "b05-perforated-gallery/sources/r094-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "bd5704446b4ccf0dfa2e4a4eda364c0d14982a679159610072070cff724aa7de",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 279769,
+      "member": "b05-perforated-gallery/sources/r094-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "ee5e54c86ae34c95aee8fadafe3440793f4b672a84a108a24ee57b409c733e6b",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136932,
+      "member": "b05-perforated-gallery/sources/r095-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e6dd428035ec6e88eeff03ed8ac2261c746ec8ad39bf1d876bb190741ed33293",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 280835,
+      "member": "b05-perforated-gallery/sources/r095-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "037698d9a637d8ed9a98358ee7a72f6c8820be24371b4e6e96cd3ce6b1e02c49",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137592,
+      "member": "b05-perforated-gallery/sources/r096-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "9464a550276f85b0e1f1ebadaa7d975080b0b4b5793e1e5581c9235117945a06",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 283297,
+      "member": "b05-perforated-gallery/sources/r096-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6d2e90b56f787badd82b191dd6eb9cc75eae9a65be6109d8d91639d0c782f836",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138444,
+      "member": "b05-perforated-gallery/sources/r097-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e459fe05f73b15ed0db0afa951ef46527d50a023ba38641c9252117b1fcd5bfc",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 285706,
+      "member": "b05-perforated-gallery/sources/r097-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "7689e9de37c8f5462b930e67b5a1a8af1998eeb32893e41decd1e6a5993a0881",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139240,
+      "member": "b05-perforated-gallery/sources/r098-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "764acadf5fc440a2e0ede4e315953f514f8eefb07e353e4a2a69710a1da3069b",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 287969,
+      "member": "b05-perforated-gallery/sources/r098-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "99d853a189635c3bf5b340390cf1d67846af5b43aa41e26e768f726a83354919",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139746,
+      "member": "b05-perforated-gallery/sources/r099-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "dd97374eadf4cb7f50d1576034d7655136f94e0da1b168ef4447a5d92279fbfb",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 289045,
+      "member": "b05-perforated-gallery/sources/r099-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "f8f560332e8aa17451457218e418d799419f029808eebb1ad46f74a73cf2d29f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140885,
+      "member": "b05-perforated-gallery/sources/r100-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "3d7b3ef3b9b6115cf9d56f6bd2ff94fb8a5f43656a874dfd487b0ac0ea872911",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 291046,
+      "member": "b05-perforated-gallery/sources/r100-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "8082bb017681c84d2f15fc178778b5cb9a6a750f5b5be9807e7235dba61716ce",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141759,
+      "member": "b05-perforated-gallery/sources/r101-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "a4441a0f9d93f511e5de568157c24898570e0a5de3b5ee55fb3931da153856c9",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 293431,
+      "member": "b05-perforated-gallery/sources/r101-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "1dc9ab913ee753507ea8e6a696957849061c9414d551382e963122433196a1bd",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 142645,
+      "member": "b05-perforated-gallery/sources/r102-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "eb8d6898d41080ad57d64242974974d8879fd959cb1d5b41b7d2081c5624b6b7",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 296222,
+      "member": "b05-perforated-gallery/sources/r102-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "db6c9dcd6f5d23073bb7bce782b3f740f245cb3a5800d8607e3a99ebba14687d",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 143173,
+      "member": "b05-perforated-gallery/sources/r103-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "fee16c696d539ae3e8cac4f19036f81a93e36812249fb8f3a627829d01b7596d",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 297940,
+      "member": "b05-perforated-gallery/sources/r103-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "af8cfeb186d9eb63883ad02620a2f942e0950c87b1f3f9dfb12cd4503d52e567",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 144030,
+      "member": "b05-perforated-gallery/sources/r104-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "11826ff9c9aa27b7f73686902bf8a45b70e4cb1e94480a7125645e4f2634db55",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 300891,
+      "member": "b05-perforated-gallery/sources/r104-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "97de8fea1a5e4f5712d0d0f627290ba35c15ae89e00b7ec88a2dd2ed09b24a94",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 144298,
+      "member": "b05-perforated-gallery/sources/r105-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "937cfed01ef8c4ef03692ead763b8d50abe87a5f1c63f35eb189ccf914555139",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 302014,
+      "member": "b05-perforated-gallery/sources/r105-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "b329dad8fae83ebc5f731bb25a3e06ad61498bf400842116409a78b31b7808fc",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 144789,
+      "member": "b05-perforated-gallery/sources/r106-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "0390f18fa212671409145ace64493f34a272717fef71693622d165c4035b168e",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 303481,
+      "member": "b05-perforated-gallery/sources/r106-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5513862b2e21ac72b9b01d653a4b168ba3e333e6344ae99f80b57870f1f8869e",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 145121,
+      "member": "b05-perforated-gallery/sources/r107-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c2b0b5e66b9abf7915adfc6c4a6ce5aafc3e9bcbc35eb03658b433e9dd287718",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 305885,
+      "member": "b05-perforated-gallery/sources/r107-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "a30baeed139da3a29426ef1426f16a0660e1a824fd2abb4591dc15fc114da79e",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 145268,
+      "member": "b05-perforated-gallery/sources/r108-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "22a92e6510012cf0ec51b4f68aa5a2272936b0f2c53df2893573370743dc2af1",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 306566,
+      "member": "b05-perforated-gallery/sources/r108-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "5f375d41a2f3cb7b182a700015118227a50d89394bb6f2e693e52ffa4bb58012",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 145339,
+      "member": "b05-perforated-gallery/sources/r109-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "ef655beff555260424d925c312072fa997e0775fce25ea6ac60a03cf80b9de9c",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 307102,
+      "member": "b05-perforated-gallery/sources/r109-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "f77da88d24251ec0aef94d31e8cccf5c49360b715322a4f198213082d6ce6851",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 144908,
+      "member": "b05-perforated-gallery/sources/r110-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "14339f02b83da650369ead9fa3ff89cb7439426c60b6f731810bcfb9a6695a47",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 307020,
+      "member": "b05-perforated-gallery/sources/r110-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6566eac0d04cb6408e9d9951c3d08c616fff8e99321b81cc2eab1e56222e81d2",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 144887,
+      "member": "b05-perforated-gallery/sources/r111-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "2832409cf23ac8d2a2b972f40b10728864f3e3b967eb22e302458152d35e1bf9",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 307346,
+      "member": "b05-perforated-gallery/sources/r111-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "0889256d78af2a5ef2276f4a9432fb14ffce1e363a8be4f104364c29e7c98f0b",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 144246,
+      "member": "b05-perforated-gallery/sources/r112-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "e26a36dc8c97838a04c6583cb291b75c4cb6327ca50a7f5b0eac4aa17cacc45c",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 306654,
+      "member": "b05-perforated-gallery/sources/r112-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "e8cf37885c57ca6b0d706b8e3cfec78bf60f9c3c59d7d2d9f98945c63a06fbfb",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 143507,
+      "member": "b05-perforated-gallery/sources/r113-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "c8e589fc36e42113770a375a4c5cfce600fdd7bbdfd41fa5524951b721e454af",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 306474,
+      "member": "b05-perforated-gallery/sources/r113-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "ae2e2a5ab911eebc486e4539ea76d213491b8b950f667f79fad02681ab1e6a82",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 142880,
+      "member": "b05-perforated-gallery/sources/r114-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "d7ecc00847e6e15bfbace9882139f810903e213297dad32d0322fc28d4882ace",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 305076,
+      "member": "b05-perforated-gallery/sources/r114-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "08b27297f0ffe580943df0e02f5c5975d440f26c73571a37578d0a340a36a46f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 141550,
+      "member": "b05-perforated-gallery/sources/r115-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "72d3a765733fb56a02f1e70182874e0d511fe8057da40792d26f07ab6d4a601b",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 303745,
+      "member": "b05-perforated-gallery/sources/r115-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "8d1512d0cce78a1f5b75c4d2084643c24dd52b4d1efdd0ad00fa765a6bd31a91",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 140768,
+      "member": "b05-perforated-gallery/sources/r116-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "75264af4618d0036301876839584aa0c03987db84013007d8dafbaeca8962bcd",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 300788,
+      "member": "b05-perforated-gallery/sources/r116-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "32897f73c6a2b90c11efccb7234d2ea56585505805404f71673c19f10b842249",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 139773,
+      "member": "b05-perforated-gallery/sources/r117-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "010742435aaef6a09926c8aa551156aa05cdea0216caa590e50e4e9e12426fd3",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 299906,
+      "member": "b05-perforated-gallery/sources/r117-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "62e9bca3305fa86861c2b979428d09b3656e744833ff85b84be252f969ff1166",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 138872,
+      "member": "b05-perforated-gallery/sources/r118-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "110c2e4f6ad52848a4571151bd808cdd557bb46767871258f8b713ef7375f567",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 296362,
+      "member": "b05-perforated-gallery/sources/r118-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "a03984189c1d869bf9906dc1b275c16460d00acb6169476249106d0be293a0be",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 137683,
+      "member": "b05-perforated-gallery/sources/r119-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "0bf065b18b14f2def28fbffd4696ae098d2da1c74b985857dc2e836d0c6eb4d7",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 293706,
+      "member": "b05-perforated-gallery/sources/r119-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "3238386a2b6a1576447a785f50c52d94e07d18b46b41113daa33faf81cbe3935",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 136553,
+      "member": "b05-perforated-gallery/sources/r120-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "02c33137d600f77e126c19324a79248246619739e5a0ce619df7926eaab1b677",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 291770,
+      "member": "b05-perforated-gallery/sources/r120-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "eb598b1fbb31e9ffe05278ba0ed353f41ce6845491ea72cf8437a2c2d8118858",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 135388,
+      "member": "b05-perforated-gallery/sources/r121-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "a45c669e9c84331447a8d92d3744ecd76a0d8b83952441000439590909a4138d",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 289190,
+      "member": "b05-perforated-gallery/sources/r121-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "02b99014e2a2349fd633bca8249feb9fb8bdfbd7cdbc3bde79e5f9367b7c8cde",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 134348,
+      "member": "b05-perforated-gallery/sources/r122-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "73fa61c2ddef57de21161ceda6b877af397533536ac04b7d41a35f0e161679d3",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 286341,
+      "member": "b05-perforated-gallery/sources/r122-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "e7536461e07cb936f69eab5d2a56eba267cfa061ff94a462563480bb03bda4fd",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 133106,
+      "member": "b05-perforated-gallery/sources/r123-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "f4f19d7224f9306a83913d73afbcece43ac6faec5459d6f5cd6e078d51ca9ceb",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 283263,
+      "member": "b05-perforated-gallery/sources/r123-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "6508c8e4c78d98369823e58fdab5ba94afeff31e61cbc223711b85e536ddf8d4",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 132127,
+      "member": "b05-perforated-gallery/sources/r124-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "817c54bc475439a9a443ab2396f18e320ea970978ccc0b2ec63707c29e17ed56",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 280390,
+      "member": "b05-perforated-gallery/sources/r124-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "778671dc42d6111e9abb8a2b90725c1c2347eea2aec0ee42f9c7172fc09164d3",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 130718,
+      "member": "b05-perforated-gallery/sources/r125-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "1ae85f2a2f005ae3ebef236a3b73be120811e585c5dcb79eaa8b5ea9c42c0868",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 276952,
+      "member": "b05-perforated-gallery/sources/r125-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "2c73f2b28b7492353436fea80eb2871f7831d7e50baaa0decc45d090cdf122d3",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 129900,
+      "member": "b05-perforated-gallery/sources/r126-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "0e4ffa782a4701f155787d00273055ef425d25db9505218c91f87c47e55259f0",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 274167,
+      "member": "b05-perforated-gallery/sources/r126-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "593bbf9da0a7da57a5666a71cc0a374372c1a61ee0311753db7e91af597057db",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 128919,
+      "member": "b05-perforated-gallery/sources/r127-analysis.png",
+      "role": "source observation, actual analysis grid",
+      "sha256": "65d81a5f47a81e21a83cee5c3d7a2aba33e235dbc542815f2eb23dd30111374a",
+      "size": [
+        378,
+        252
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 272164,
+      "member": "b05-perforated-gallery/sources/r127-original.png",
+      "role": "source observation, original resolution",
+      "sha256": "dca4f822ea73e6c1cad1a51a9c561edc47cd10e1c6fe9f2b335ff891dba76c1f",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1552925,
+      "member": "b05-perforated-gallery/predictions/h00.npz",
+      "role": "sealed native RGB, alpha and camera-Z",
+      "sha256": "c5eb81ece005d7ab313aa2151815deba16f5d71306867a120e9d9af34d57f2f0"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 317175,
+      "member": "b05-perforated-gallery/evaluation/h00-original.png",
+      "role": "independent evaluation only, original RGB8",
+      "sha256": "c3a6015b7a0b1fcac076c9e261b250d33f46269866ffce12004fa1e3697d57a0",
+      "size": [
+        756,
+        504
+      ]
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1701886,
+      "member": "b05-perforated-gallery/models/h00-coverage-4.npz",
+      "role": "native checkpoint ranks, counts, reasons and per-pixel first witness",
+      "sha256": "fc95c04e7b887d730c28240b6bfe8b252a6ef5fee190278af4a928ca48b0ba31"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1045728,
+      "member": "b05-perforated-gallery/models/h00-coverage-8.npz",
+      "role": "native checkpoint ranks, counts, reasons and per-pixel first witness",
+      "sha256": "a61e39200d08cab2d91081b0433f09e3b5f25f49c4027fd0ec2968b4c8719ea3"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1080121,
+      "member": "b05-perforated-gallery/models/h00-coverage-16.npz",
+      "role": "native checkpoint ranks, counts, reasons and per-pixel first witness",
+      "sha256": "44b5fb18bb05fedceda59a574b7919c98c189c6465b1cfb29dd81638f873a12c"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1131800,
+      "member": "b05-perforated-gallery/models/h00-coverage-32.npz",
+      "role": "native checkpoint ranks, counts, reasons and per-pixel first witness",
+      "sha256": "f2dc2277ca003800832d41ba1fb41f4b1184a1605166900ee3f41eeb6600e186"
+    },
+    {
+      "archive": "evidence-lens-foundation-source-photos-v1.zip",
+      "bytes": 1264489,
+      "member": "b05-perforated-gallery/models/h00-coverage-128.npz",
+      "role": "native checkpoint ranks, counts, reasons and per-pixel first witness",
+      "sha256": "53cdaf5ee8944ce658c6998fe20702ea49b131319882cac73beedfb546bd9ab8"
+    }
+  ],
+  "rights": {
+    "creator": "wany614, Evidence Lens",
+    "license": "CC-BY-4.0",
+    "material": "Authored synthetic camera renders generated from original 3D scenes; independent target measurements are also synthetic.",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "schema": "el-foundation-authored-archive-1"
+}

@@ -1,0 +1,54 @@
+{
+  "public_scope": "Bibliography, edition fingerprints and original notes.",
+  "retrieved_at": "2026-11-24T12:30:05.516709+00:00",
+  "run_id": "20261124T123002024983Z-c2f5815f390d4061",
+  "schema": "el-humanities-primary-editions-1",
+  "sources": {
+    "bolter-grusin": {
+      "bytes": 273838,
+      "excerpt_sha256": "a8569f0019643ccd341ed1cef8aea7aba3a9dfda2f6d9b97a1bb03753bacd7eb",
+      "parser": "pypdf 6.21.4",
+      "pdf_page_numbers": [
+        1,
+        2
+      ],
+      "pdf_pages": 30,
+      "retrieved_url": "https://www.dss-edit.com/plu/Bolter-Grusin_Remediation.pdf",
+      "sha256": "f15b4f6d384c53ed252a33a6aa6742f4e7d3766381f44b9b7bd97aff7bdcbafd",
+      "url": "https://www.dss-edit.com/plu/Bolter-Grusin_Remediation.pdf"
+    },
+    "london-charter": {
+      "bytes": 163415,
+      "excerpt_sha256": "47c79951ef45ca1cdfbcab8547e7bce17947cacad822253818c15ad084710879",
+      "parser": "pypdf 6.21.4",
+      "pdf_page_numbers": [
+        1,
+        7,
+        8,
+        9,
+        12,
+        13
+      ],
+      "pdf_pages": 13,
+      "retrieved_url": "https://www.london-charter.org/media/files/london_charter_2_1_en.pdf",
+      "sha256": "dfe1671446333dabe90b163924c71ecac854958303f67233e539683d0b73d76c",
+      "url": "https://www.london-charter.org/media/files/london_charter_2_1_en.pdf"
+    },
+    "seville-principles": {
+      "bytes": 500183,
+      "excerpt_sha256": "3aee1e60dcab3cc58b64169bc4d00ec17e4531c8a98983389b8cf866a554cd58",
+      "parser": "pypdf 6.21.4",
+      "pdf_page_numbers": [
+        1,
+        2,
+        3,
+        6,
+        8
+      ],
+      "pdf_pages": 27,
+      "retrieved_url": "https://icomos.es/wp-content/uploads/2020/06/Seville-Principles-IN-ES-FR.pdf",
+      "sha256": "962d590489d5ef5bfaa0bf224b11880e52656ffb5c2125f62ed07f95001142d5",
+      "url": "https://icomos.es/wp-content/uploads/2020/06/Seville-Principles-IN-ES-FR.pdf"
+    }
+  }
+}

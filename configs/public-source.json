@@ -1,5 +1,11 @@
 {
   "authored_html": {
+    "examples/evidence-foundation/index.html": {
+      "bytes": 325626,
+      "license": "CC-BY-4.0",
+      "sha256": "6fa4b8423af236e1ed947d2aec0773d023c322775e295d5086b5aedb09bb848b",
+      "source": "Authored synthetic bell and gallery images with frozen risk assessments and separate evaluation. See case-index.json, case-viewer.json and the public materials notice. Original presentation CC BY 4.0; embedded program Apache-2.0."
+    },
     "examples/general-four-models/B-L1-transfer.html": {
       "bytes": 1122857,
       "license": "CC-BY-4.0",
@@ -77,6 +83,1231 @@
       "bytes": 88364,
       "format": "rgba8-png",
       "sha256": "1c22e49460e47f964d63cac610cd02a834d0f800136bd049d9b26bbf8d7bbf9d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/evaluation/h00-error.png": {
+      "bytes": 7506,
+      "format": "rgb8-png",
+      "sha256": "d4385d93dbf96a50d5704495f1be8f93e815f18587698a7c7d4b71ea594fee4b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/evaluation/h00-reference.png": {
+      "bytes": 140000,
+      "format": "rgb8-png",
+      "sha256": "216f6ea65cec472d0c8b3cfac136c22ba5afeca21dc2bcbe9bb24a8baaf0cdbe"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-128-rank.png": {
+      "bytes": 89442,
+      "format": "rgb8-png",
+      "sha256": "6f010803d248c7ade5565571d4fd4579fb718c6bf49a380ebca45983a941c47f"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-128-reason.png": {
+      "bytes": 879,
+      "format": "rgb8-png",
+      "sha256": "6412a8cb766303c5282263b30b22f7258f2bbfbe0bb62380636fd025141cd38b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-128-state.png": {
+      "bytes": 970,
+      "format": "rgb8-png",
+      "sha256": "8109dafdc0f472338463bf009bcee042874bc985e865d3212fc559f3e02af0c8"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-16-rank.png": {
+      "bytes": 90886,
+      "format": "rgb8-png",
+      "sha256": "332aae3f7a8143f9fd8f7ce2954901a3954f4b1dc717c4b4110b28a15aabaa4d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-16-reason.png": {
+      "bytes": 879,
+      "format": "rgb8-png",
+      "sha256": "6412a8cb766303c5282263b30b22f7258f2bbfbe0bb62380636fd025141cd38b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-16-state.png": {
+      "bytes": 1073,
+      "format": "rgb8-png",
+      "sha256": "618a485d4c20c7edd436a24c4b00f1cf1c83e92329564a57ebd1328ca20a8d82"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-32-rank.png": {
+      "bytes": 89267,
+      "format": "rgb8-png",
+      "sha256": "3df3ca34ba2ded3226e2299fb4511cd0c23fe63cd5626d9a374feb31fa6aa736"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-32-reason.png": {
+      "bytes": 879,
+      "format": "rgb8-png",
+      "sha256": "6412a8cb766303c5282263b30b22f7258f2bbfbe0bb62380636fd025141cd38b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-32-state.png": {
+      "bytes": 992,
+      "format": "rgb8-png",
+      "sha256": "83be08aba2991dfed4d7a80123477f91903cc0b2917d553335dbcf821c943fc8"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-4-rank.png": {
+      "bytes": 102122,
+      "format": "rgb8-png",
+      "sha256": "a46de0973973420da2c469e35d7dece40fdcb2e68755e561d2460b7b5dff6648"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-4-reason.png": {
+      "bytes": 879,
+      "format": "rgb8-png",
+      "sha256": "6412a8cb766303c5282263b30b22f7258f2bbfbe0bb62380636fd025141cd38b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-4-state.png": {
+      "bytes": 1077,
+      "format": "rgb8-png",
+      "sha256": "f0c3ca43fc39c15e62ddf0f1a5a5fc8f4a24a30852b28f68a78f04147cce2329"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-8-rank.png": {
+      "bytes": 96065,
+      "format": "rgb8-png",
+      "sha256": "31eda30295ad92a2c6a08c482108b5deb88501ea443a78fe787b242a6996c6bf"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-8-reason.png": {
+      "bytes": 879,
+      "format": "rgb8-png",
+      "sha256": "6412a8cb766303c5282263b30b22f7258f2bbfbe0bb62380636fd025141cd38b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-8-state.png": {
+      "bytes": 1085,
+      "format": "rgb8-png",
+      "sha256": "793906b68cbdbb58e3406eff004e275874301c8c29c3394ddb41654232edff44"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r000.png": {
+      "bytes": 21341,
+      "format": "rgb8-png",
+      "sha256": "fbeafdded1bc45db7a1e8369ddae571f2b255bd7dab083a09ebfff9fa816d8aa"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r001.png": {
+      "bytes": 21499,
+      "format": "rgb8-png",
+      "sha256": "5fb8ce1c1a0591905936b810f465089746ed795255df2951c98ebaad86465a87"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r002.png": {
+      "bytes": 21613,
+      "format": "rgb8-png",
+      "sha256": "95b58656def7eecbb94858c428bdddcf0c9186913251e99821f3d29d24433e5e"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r003.png": {
+      "bytes": 21724,
+      "format": "rgb8-png",
+      "sha256": "1abf51141728a66623bb08d28aa1d369dc7ab35cc4197782c55d0ff7966619a1"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r004.png": {
+      "bytes": 21845,
+      "format": "rgb8-png",
+      "sha256": "526493ddc25389d17d134f69147cf794dbc1b57dd15548303201972b08bef0ec"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r005.png": {
+      "bytes": 22009,
+      "format": "rgb8-png",
+      "sha256": "197d53efa8c405f240e8bdd3a90ec22aa4a598b1a509db04aa585cc866978c34"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r006.png": {
+      "bytes": 22148,
+      "format": "rgb8-png",
+      "sha256": "ad6d731051975f9d99dc00891d153c2c06c47c6f83b4efe6aa8ba8bb3ec276aa"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r007.png": {
+      "bytes": 22312,
+      "format": "rgb8-png",
+      "sha256": "0bf5169bd5a1c3c6e007e5365572ab496ddc6b20c200017a8b75c9b7ac787c5d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r008.png": {
+      "bytes": 22406,
+      "format": "rgb8-png",
+      "sha256": "96a27152836edb7cdc678d7e240cff8399c67702148033dc357d6891695d6aec"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r009.png": {
+      "bytes": 22554,
+      "format": "rgb8-png",
+      "sha256": "87d30ead0cb7ff4ca8e68df661caeb6a22af1329ea528d4eb1fd406b76117b56"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r010.png": {
+      "bytes": 22671,
+      "format": "rgb8-png",
+      "sha256": "025f855cac6635c3476373e87d5fbb3c8b337fef4e66937cc073f62c6c3a5d32"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r011.png": {
+      "bytes": 22814,
+      "format": "rgb8-png",
+      "sha256": "a998d5bd96ab7ba9979409c6719c092684cae85c7d555ab8660763785feacb7b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r012.png": {
+      "bytes": 22964,
+      "format": "rgb8-png",
+      "sha256": "7d6ede1bdfb4a013cf0265cd0554375aaee70ccf6b6b4150a3e58145a02cca59"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r013.png": {
+      "bytes": 23037,
+      "format": "rgb8-png",
+      "sha256": "1b4265778692a7cf3714b6e6063cc7118146237601693b7e175adb8fbf3a013e"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r014.png": {
+      "bytes": 23132,
+      "format": "rgb8-png",
+      "sha256": "ffde4568fbd66afccddc1578ba553be042f2467484839cfb0fa4597cfa63f784"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r015.png": {
+      "bytes": 23167,
+      "format": "rgb8-png",
+      "sha256": "d0068335c670d7744395d19c0a5c77744cc57e702107899351559516e3a2eff7"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r016.png": {
+      "bytes": 23255,
+      "format": "rgb8-png",
+      "sha256": "cf7581078c49c871760255aee28fd81f19a5d83e424ef7b954ec23d709be10e2"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r017.png": {
+      "bytes": 23258,
+      "format": "rgb8-png",
+      "sha256": "74098ba5ee36bdcc92e63422473497067f723a143cebbf549ef577d41f5169b8"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r018.png": {
+      "bytes": 23271,
+      "format": "rgb8-png",
+      "sha256": "9278da6b4d55d3be9042ad16f0bc1786bc6a3406ccdaff8d8540d1bef09f8d6e"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r019.png": {
+      "bytes": 23325,
+      "format": "rgb8-png",
+      "sha256": "67a5d803ceef6412cf432abc9d7bbdd79768da5d633e9c3f92dc4a4ce5c7fd67"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r020.png": {
+      "bytes": 23280,
+      "format": "rgb8-png",
+      "sha256": "057497948bc96816c71892a12a520db0bfc5e2eb1c2e01c351e11d57cea10e47"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r021.png": {
+      "bytes": 23214,
+      "format": "rgb8-png",
+      "sha256": "9002165384413c4d30830358f29fa8a068d5a0bcbdbb9ccfdb27b9785cd546f5"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r022.png": {
+      "bytes": 23161,
+      "format": "rgb8-png",
+      "sha256": "e929e3278f10a161cac6ddda7399e05e4711f78c5f708552e22f538acf74513a"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r023.png": {
+      "bytes": 23023,
+      "format": "rgb8-png",
+      "sha256": "bdadda869036405dffa97b6774ead9fae1e88696027007e11bbd699b0bfe167f"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r024.png": {
+      "bytes": 22998,
+      "format": "rgb8-png",
+      "sha256": "f39654f23b1045c7a4e5b291d94814ecda5bc88f76778f7589b36e0df52dc8e9"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r025.png": {
+      "bytes": 22904,
+      "format": "rgb8-png",
+      "sha256": "125da2f4c5b99c19d85fd7cb971fc97b8a5d8ab4df6b8588a6fe06256fd4063a"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r026.png": {
+      "bytes": 22864,
+      "format": "rgb8-png",
+      "sha256": "ac3f5a95c4e58f2fba86d1ff2a807c8b3f5e18e6942af786f8c34229682bd21e"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r027.png": {
+      "bytes": 22741,
+      "format": "rgb8-png",
+      "sha256": "b2732bda971c6ba9fb07992a7bcc161d90f370864572020846dae0d31c03ea53"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r028.png": {
+      "bytes": 22623,
+      "format": "rgb8-png",
+      "sha256": "e7097c1aca645d1fcad7d928adbbd8c48abed49edebdc80a6e65e42abf49641d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r029.png": {
+      "bytes": 22474,
+      "format": "rgb8-png",
+      "sha256": "87cb1caf58e72f24e450d22d1e71c6d3ca49fca752ee5cda4f8db1f1ec057c3f"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r030.png": {
+      "bytes": 22307,
+      "format": "rgb8-png",
+      "sha256": "00fe423ff3cc51676158186d40ec9b0ad77972c5c618f5767d28c0a544f53bc8"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r031.png": {
+      "bytes": 22301,
+      "format": "rgb8-png",
+      "sha256": "06cd5fe39fd165ceb909e58e4a20b19c409f7a4defd7ce8e52462544b8e64f13"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r032.png": {
+      "bytes": 22139,
+      "format": "rgb8-png",
+      "sha256": "5b1e156066f6c7c681faf84102f7efad96de402dd8cfbade984050a374741ac4"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r033.png": {
+      "bytes": 22088,
+      "format": "rgb8-png",
+      "sha256": "5d56797563c65d38a51ad7059d3f4227dc9a6a1663af8594dfaee7e974361936"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r034.png": {
+      "bytes": 22007,
+      "format": "rgb8-png",
+      "sha256": "b653dcc5d4df0817e4bb49a9b72a56f484c962b9b455c8405ea3d5bee7bb8c82"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r035.png": {
+      "bytes": 21987,
+      "format": "rgb8-png",
+      "sha256": "5404f17c02af237c8ce2b5281f64d23a1d4d3169886a7155e073c2b9215cc001"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r036.png": {
+      "bytes": 21898,
+      "format": "rgb8-png",
+      "sha256": "55ce5cbef748e901b06fa1d022290674977a8928fb9ef059e64a10f983abe879"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r037.png": {
+      "bytes": 21896,
+      "format": "rgb8-png",
+      "sha256": "5494af65098c19d8dca0b466a33906eff1001f9a8d4df3573fbcb62c4172a052"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r038.png": {
+      "bytes": 21818,
+      "format": "rgb8-png",
+      "sha256": "c6b2b04bf2c7741d94e7293e5bfe4cf877ac011c52e8950cba4f13ac3ea78be8"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r039.png": {
+      "bytes": 21889,
+      "format": "rgb8-png",
+      "sha256": "b2ee5745f8506bc77e7758c1b673ee3dded3c2b0e6365e33eeb2fde299183902"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r040.png": {
+      "bytes": 21860,
+      "format": "rgb8-png",
+      "sha256": "d5f4e902dab96a0c5a4691b20d30e4c15d1ade93d8afa0fc6e7f3f399db2da07"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r041.png": {
+      "bytes": 21882,
+      "format": "rgb8-png",
+      "sha256": "8a31b6bc299f4e49c11e882b63c41c02163b7b71dc331df69f5294484331853d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r042.png": {
+      "bytes": 21919,
+      "format": "rgb8-png",
+      "sha256": "38961207b4e4d0f6cec5c2edec6fc1589ba7e998ca86908ebd9d20bde8345058"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r043.png": {
+      "bytes": 22042,
+      "format": "rgb8-png",
+      "sha256": "a68532e819e833501dce22e8598d0d9806565725388faa298a35e514ce732388"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r044.png": {
+      "bytes": 22105,
+      "format": "rgb8-png",
+      "sha256": "570ac5bd2c855b87a315c8ce8c8594cd54d5acb7f41888e31ff90a5e4e0d00c2"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r045.png": {
+      "bytes": 22195,
+      "format": "rgb8-png",
+      "sha256": "4bb5980032ce6f878a7382a4e9b6b1d3808a36ebdd9279ab3a02296ee66d765d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r046.png": {
+      "bytes": 22296,
+      "format": "rgb8-png",
+      "sha256": "d78e990f48d69a3b219e71368a4bcd4a984c0bbb60b99c64cd06c78148f7aa77"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r047.png": {
+      "bytes": 22331,
+      "format": "rgb8-png",
+      "sha256": "1c9a5836a4e3e7076b1f5a8b7c80c85e0bdac8474d79619ecaabe422520f6c62"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r048.png": {
+      "bytes": 22505,
+      "format": "rgb8-png",
+      "sha256": "be0aa12662d82cd05c4460b5bb088e2a376585d6c2939f35132568aca05d43a7"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r049.png": {
+      "bytes": 22621,
+      "format": "rgb8-png",
+      "sha256": "6ce20e86cf33df8cd615e9d9fce2ab7a528b80c63a50b563ef104442901d41db"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r050.png": {
+      "bytes": 22755,
+      "format": "rgb8-png",
+      "sha256": "ef7790ea72cd32fc8b37b71ee8a52018f79d8c48c71712de09db30bedf550eba"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r051.png": {
+      "bytes": 22930,
+      "format": "rgb8-png",
+      "sha256": "77f4f416a46098a402323763cf00c2bb31f0e3d92c178254b7ef245df642a71a"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r052.png": {
+      "bytes": 22927,
+      "format": "rgb8-png",
+      "sha256": "865ab73000ca707986dbab0da40588af732cd7b2d9fe55b75e97d8b98300fe67"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r053.png": {
+      "bytes": 23250,
+      "format": "rgb8-png",
+      "sha256": "ebd175d3225ed796b908901be2c870176d56c93f989a917f019ab605bf31a382"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r054.png": {
+      "bytes": 23252,
+      "format": "rgb8-png",
+      "sha256": "5a0818dedc6606c58cfae88c022aee21924d15c981a93a61bb5f51f920e53adc"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r055.png": {
+      "bytes": 23347,
+      "format": "rgb8-png",
+      "sha256": "5c5b9c7be3ffb6287c0a46b92b07f346248f524ceee8aa7ae0902018f91bc10c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r056.png": {
+      "bytes": 23594,
+      "format": "rgb8-png",
+      "sha256": "a1d41e24543c1094849d9356aca72ed111310b2875db711c2cfb18b1522414d7"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r057.png": {
+      "bytes": 23626,
+      "format": "rgb8-png",
+      "sha256": "94696e8d0d88dd4dd5d8387d92a5d664cf1c41d3e716c4cc468f8966b81918c1"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r058.png": {
+      "bytes": 23662,
+      "format": "rgb8-png",
+      "sha256": "ab57da78d006eff4b4c3b3e448314834acdc9cadb8e041eb99a7178b495ea683"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r059.png": {
+      "bytes": 23705,
+      "format": "rgb8-png",
+      "sha256": "9ea35470caaddccb3c1e1f82a27310a99242f14f6e2a536239c1aee50a32d590"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r060.png": {
+      "bytes": 23741,
+      "format": "rgb8-png",
+      "sha256": "aca10db01058a2fb1989f081e1cf5d30d79f73af61a27f271e242aac9aa955ec"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r061.png": {
+      "bytes": 23809,
+      "format": "rgb8-png",
+      "sha256": "0e56d27a61b67d496be81529f11ff7e5676ec4b4e83791a3804aa8adefe86195"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r062.png": {
+      "bytes": 23792,
+      "format": "rgb8-png",
+      "sha256": "353c61550f2ac28ee6bc8424eb02b5acc883edfc44d8d59a8bebe35a62e60c67"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r063.png": {
+      "bytes": 23643,
+      "format": "rgb8-png",
+      "sha256": "e4910a298bf3f4dcc0a085080fe30f82174fc55f736b9a6bfd117465243259f4"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r064.png": {
+      "bytes": 23624,
+      "format": "rgb8-png",
+      "sha256": "0ddf2ddc4249815ec3bcf1e5feca99fcd42d4a5b346782dbe803f577fc9221db"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r065.png": {
+      "bytes": 23687,
+      "format": "rgb8-png",
+      "sha256": "5c6ba39f0f7e6378659b88dbf8b8355db9c1769484dd55acb22985c5d5cd4df7"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r066.png": {
+      "bytes": 23766,
+      "format": "rgb8-png",
+      "sha256": "c1e7843d1514d0c01b7f4505025f305f7fa2bc3c24cef298ec5a2ce447d41537"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r067.png": {
+      "bytes": 23738,
+      "format": "rgb8-png",
+      "sha256": "f155b16b942a60262f8b4afabd5f268e1f15e612862bda4d1193168023c7d04f"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r068.png": {
+      "bytes": 23509,
+      "format": "rgb8-png",
+      "sha256": "3642d2c9adb55302e2e2978a8f24fc071904e02912d0b7be4c322c3a000b7d68"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r069.png": {
+      "bytes": 23444,
+      "format": "rgb8-png",
+      "sha256": "ee7c4c96778c10427a2bd0fde08d303f559e5ce1b234352c023d9d65be89abd0"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r070.png": {
+      "bytes": 23276,
+      "format": "rgb8-png",
+      "sha256": "d311026eea1437108cf64731f42a353b4fa82116211d414ae9c76cff85135aff"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r071.png": {
+      "bytes": 23127,
+      "format": "rgb8-png",
+      "sha256": "c7235f822d7f5a930f7c046859c292059e2f593ddfdb8912f20727e86cee543b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r072.png": {
+      "bytes": 22975,
+      "format": "rgb8-png",
+      "sha256": "8f450e702fa7e003b035c1f928adb81a7e19ffc840e62d7c6f448f75950b02a0"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r073.png": {
+      "bytes": 22820,
+      "format": "rgb8-png",
+      "sha256": "df5b38cb48762d057672bf8ad861baf067607feb8cf5fe5cf23319ba4c6e25fa"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r074.png": {
+      "bytes": 22647,
+      "format": "rgb8-png",
+      "sha256": "92ad82842f2c485c1e5799d726640bfc9bbe80d7a4f512768b2c5de7c10d98b5"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r075.png": {
+      "bytes": 22519,
+      "format": "rgb8-png",
+      "sha256": "38080b91ffa5eed0b2b2e481a81cc3a2a176d259c1fe3cea7d0776d71fab9789"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r076.png": {
+      "bytes": 22392,
+      "format": "rgb8-png",
+      "sha256": "de60b327f7601953a8b1ef6064aafee75d432c99e84b090d3e46ea491acf45c5"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r077.png": {
+      "bytes": 22267,
+      "format": "rgb8-png",
+      "sha256": "108be3cbe59ccf6bc676dc3122c8674a11cbaba380e74b0ebd5249ca6d09edaa"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r078.png": {
+      "bytes": 22239,
+      "format": "rgb8-png",
+      "sha256": "56927a11af406f3005e2f882f94379318c0a00a6105ef7ac9d9330bfb3f37c8d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r079.png": {
+      "bytes": 22162,
+      "format": "rgb8-png",
+      "sha256": "3c55aeed7241b5f1e37c1d868f173fc5ddde9b0fe82dfb3eec0185991cb56034"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r080.png": {
+      "bytes": 22086,
+      "format": "rgb8-png",
+      "sha256": "92e559985f0f16d32c01fec09706e110f9ea1f9f6c15ef85f223e934a350a38c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r081.png": {
+      "bytes": 22038,
+      "format": "rgb8-png",
+      "sha256": "592d3fb72ba9bc1573ef7d6e221b1229825def64eb4cad7a81c6e529eca6fe72"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r082.png": {
+      "bytes": 21988,
+      "format": "rgb8-png",
+      "sha256": "339745a4c02ad085dfb37ac7574a54690156a45d2c7fc2f90cad96ab74090b31"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r083.png": {
+      "bytes": 21996,
+      "format": "rgb8-png",
+      "sha256": "64dcd5af94aabf1a861588ad00c1eca5517c327fcf872956c21a7d8481c1b5fc"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r084.png": {
+      "bytes": 22046,
+      "format": "rgb8-png",
+      "sha256": "7f38d3e88705f138065b0604c5b70a26a32758aac4fc7e3a553bbceefaf35b8c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r085.png": {
+      "bytes": 22093,
+      "format": "rgb8-png",
+      "sha256": "8158a7ed02e6af670fa96adf554e642c0eef131f4abf3f9c5f656692fcaec4de"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r086.png": {
+      "bytes": 22172,
+      "format": "rgb8-png",
+      "sha256": "e5cb5bddeaa19591fb5fd29b0a3a73054e0a2ec2b3735fe66a23185546c0ef74"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r087.png": {
+      "bytes": 22176,
+      "format": "rgb8-png",
+      "sha256": "2b46ccab87db9e1807d47906ebe7c96fa3a7a89e9886e78886f2de28d6d7bee6"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r088.png": {
+      "bytes": 22177,
+      "format": "rgb8-png",
+      "sha256": "f791977fb96cd0dd9ea9f98007e8960583dd4af0dbf26f566b713897d8bbd794"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r089.png": {
+      "bytes": 22171,
+      "format": "rgb8-png",
+      "sha256": "fbbf62c9f2a2a21e31d46fc806114c314772fc916543660d1c1d069a1d870bb7"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r090.png": {
+      "bytes": 22277,
+      "format": "rgb8-png",
+      "sha256": "20158d542b79a667795e5e87e5984abd9a9c55e8b9893a8db7fdff91046e32d8"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r091.png": {
+      "bytes": 22360,
+      "format": "rgb8-png",
+      "sha256": "6c1aec6583a046aa1a38eec5d8f67372debb70b1e8767148d979f6ae59bac0a9"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r092.png": {
+      "bytes": 22404,
+      "format": "rgb8-png",
+      "sha256": "265f44d517e6d66f8ee3cac4735a9b44ccd0636d03b773bd4f4319e10e72aab4"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r093.png": {
+      "bytes": 22509,
+      "format": "rgb8-png",
+      "sha256": "ddb95d9484ade7ef4467f845621f72bafd65a5f5c13962655a0d783abd8fb075"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r094.png": {
+      "bytes": 22628,
+      "format": "rgb8-png",
+      "sha256": "ebbbc5cfcfcc496852eafbdb97ee274899f1f111d7fe28646afef8cd090d5713"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r095.png": {
+      "bytes": 22708,
+      "format": "rgb8-png",
+      "sha256": "402828e4d222b883aa04c64f001177cfc93807ec45a89597aa4daad707b21d1b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r096.png": {
+      "bytes": 22834,
+      "format": "rgb8-png",
+      "sha256": "bc4e17a0587f971d60548d9c941c0c962f52677c4a092c3a812793f45169d172"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r097.png": {
+      "bytes": 22978,
+      "format": "rgb8-png",
+      "sha256": "1cad987c4b105bfed8fd15cb9ab825c8bd27c40eabc4b07af6e1ea75b60ef5cf"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r098.png": {
+      "bytes": 23103,
+      "format": "rgb8-png",
+      "sha256": "e0b750538c8dda7c8fd53dc075e9c9a8800a340800e057ac8006411155ce3f15"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r099.png": {
+      "bytes": 23199,
+      "format": "rgb8-png",
+      "sha256": "e79d4dfaddfedbf3998c8bcb911fd9893001a53a28f6bca14ccc2c8ef0b1a88a"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r100.png": {
+      "bytes": 23354,
+      "format": "rgb8-png",
+      "sha256": "e3663829496b625af334da47c2daa40d547ee8b5d72e11542e5dd9cc527727ec"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r101.png": {
+      "bytes": 23407,
+      "format": "rgb8-png",
+      "sha256": "dfe261c57780d6c205adfa72aa3e4f41c00d68a4829c3877bae223f979f5c767"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r102.png": {
+      "bytes": 23481,
+      "format": "rgb8-png",
+      "sha256": "7c3c31f12fdd478dc6c4e6e6537e0f1b75cd9c7ad765df4e652f42dd5c3a714a"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r103.png": {
+      "bytes": 23604,
+      "format": "rgb8-png",
+      "sha256": "2858be59d9382e497f7663089116a32d6c30b7b4898b0123363a2b3b20e20814"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r104.png": {
+      "bytes": 23587,
+      "format": "rgb8-png",
+      "sha256": "3319ffdaa2f63204812f5b0a12088fce45e5e367dc73910e236a0f127967a26c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r105.png": {
+      "bytes": 23670,
+      "format": "rgb8-png",
+      "sha256": "d418e00e2b74e1459d61fac151225d0a33e1a0b5e807f9d60d28f33e9e06c610"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r106.png": {
+      "bytes": 23702,
+      "format": "rgb8-png",
+      "sha256": "23f688ee33d8c2c7f7236170f6b7a44914fc68e359a0752bb8377658039b8733"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r107.png": {
+      "bytes": 23668,
+      "format": "rgb8-png",
+      "sha256": "fac1b7cf8d75f1fda7aa9f42d291618c3922aed578a58d46cf9a8f560caf152a"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r108.png": {
+      "bytes": 23615,
+      "format": "rgb8-png",
+      "sha256": "9f61abd3bc4173d6ecd83a603aa6a53ef8c643638ab44f6591b2e30e7d279979"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r109.png": {
+      "bytes": 23645,
+      "format": "rgb8-png",
+      "sha256": "118581702406c70295cb51be2a96b1ca8a5cfcc5045ac1fb0d4ec31c919078f5"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r110.png": {
+      "bytes": 23555,
+      "format": "rgb8-png",
+      "sha256": "c8d3101e76a64bb5002919b9b4aa62aabf36c6ee04d354980adc3d6f698f98f9"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r111.png": {
+      "bytes": 23436,
+      "format": "rgb8-png",
+      "sha256": "fa96261dd146dab800416c5ddbcc6eda34cb4a0a78b36e56dd0b19ee8f5d9c5c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r112.png": {
+      "bytes": 23330,
+      "format": "rgb8-png",
+      "sha256": "472b63ca93aa9180924ee19c80a7524d67889fb3d622cfb5748a98ed35ebfb6b"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r113.png": {
+      "bytes": 23218,
+      "format": "rgb8-png",
+      "sha256": "b748ebad4fab3fbcbcafea6eb85745dbd9ae0b0b799b0e1095742ebf5bde075c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r114.png": {
+      "bytes": 23057,
+      "format": "rgb8-png",
+      "sha256": "16b7fb701b61d7693c5f3a176a449f42c198d4d4dbb00f1f355b4db4dc188f70"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r115.png": {
+      "bytes": 22897,
+      "format": "rgb8-png",
+      "sha256": "105de8e91860de9fd674eb9fab74b74c3d4f8487e669dbb9e5037c7681e24936"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r116.png": {
+      "bytes": 22749,
+      "format": "rgb8-png",
+      "sha256": "b4b756699c32b8528eeb9194facdbca7012daf51d450ccdca249893c993d61a4"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r117.png": {
+      "bytes": 22593,
+      "format": "rgb8-png",
+      "sha256": "a57e45f66e9bcb54be1fc0a909f16b48375156ce1cea3546597400bf8ad49f70"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r118.png": {
+      "bytes": 22408,
+      "format": "rgb8-png",
+      "sha256": "bb2e5389bf72f13241635f65769a1a19c163fb16b61328b9311c6b2c0f7c6ecf"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r119.png": {
+      "bytes": 22292,
+      "format": "rgb8-png",
+      "sha256": "571a800b955e77d2d8cf21382d1d6ead12f5fc2cbbbdc1c5f144ed26af6c3c9e"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r120.png": {
+      "bytes": 22122,
+      "format": "rgb8-png",
+      "sha256": "c6dd3c797f7d6e9f2be7bb699c03ca67b213faa48fdeea1c3cbed5aa91a01f0c"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r121.png": {
+      "bytes": 21958,
+      "format": "rgb8-png",
+      "sha256": "e3c276c7e215d92197586b5b7a1fe9184afa5e5636e69825564322cfe3c105de"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r122.png": {
+      "bytes": 21766,
+      "format": "rgb8-png",
+      "sha256": "caf0a803391fc070e6daa195b997d1a22d4724345e1aa31c4e46b5c2597ec865"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r123.png": {
+      "bytes": 21649,
+      "format": "rgb8-png",
+      "sha256": "83bbd67db4fd2d50efef4c31245543dff519050744f8503dbc08188ccc930143"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r124.png": {
+      "bytes": 21532,
+      "format": "rgb8-png",
+      "sha256": "053e01df4deb56eb4099342d6733babdbd77c4158234065e61875e45531f59ff"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r125.png": {
+      "bytes": 21355,
+      "format": "rgb8-png",
+      "sha256": "c7ebaade975c4b799d65e05ffa0c5843a0d31667c0211b7eab564a176e2eff87"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r126.png": {
+      "bytes": 21295,
+      "format": "rgb8-png",
+      "sha256": "7c169b6924af067ddb9d3c3552f95ecf6ddc388887e285c86e78ed5aeaa59b3d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r127.png": {
+      "bytes": 21213,
+      "format": "rgb8-png",
+      "sha256": "1dd7b93316a3eef2ab6bc5cc47dca66df3e7dd1387ceeb04d354b119fc340e1d"
+    },
+    "examples/evidence-foundation/b05-perforated-gallery/targets/h00.png": {
+      "bytes": 131853,
+      "format": "rgb8-png",
+      "sha256": "a14c08890ea09116085da2912e431b119926d2b9297e5c4026f6f27c98cd68be"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v01-error.png": {
+      "bytes": 4805,
+      "format": "rgb8-png",
+      "sha256": "f7fa5bf428b13170558f382ea9da5f262f617f0646f5e07819b4cfb7b07ba557"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v01-reference.png": {
+      "bytes": 58187,
+      "format": "rgb8-png",
+      "sha256": "dbfc8fdaf4da99e7e5329257b5fe065e4d74d59a5c91374a16149b3de9a7b851"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v02-error.png": {
+      "bytes": 4873,
+      "format": "rgb8-png",
+      "sha256": "9b32228141a22964f6a3f09be1a181425584647f91d2145e5955e19b8e6d429b"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v02-reference.png": {
+      "bytes": 59298,
+      "format": "rgb8-png",
+      "sha256": "f9868e06792bbe2b598392a4bbd9dbe59eab95e02e0c10897fc053cd9db03f9b"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v03-error.png": {
+      "bytes": 4380,
+      "format": "rgb8-png",
+      "sha256": "840c31e56fefb9a21b3d98d9c129506fe196235bd871f8616e056683dc24808a"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v03-reference.png": {
+      "bytes": 56268,
+      "format": "rgb8-png",
+      "sha256": "5e9cb986a197b2890e42fdcaca3f285082031550d9f66451f59cae0b3b6ca1a8"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v04-error.png": {
+      "bytes": 4283,
+      "format": "rgb8-png",
+      "sha256": "b7c299b0e87ae78d3eacbb4da02df26e00a2ce19466b8f4e2d429e69feab219b"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v04-reference.png": {
+      "bytes": 57461,
+      "format": "rgb8-png",
+      "sha256": "5af5b4e479043e531369597588729781116a137a0ad62f16a298c7e6f2933b8f"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v05-error.png": {
+      "bytes": 4785,
+      "format": "rgb8-png",
+      "sha256": "7e0e51a64c71a67eda2694f58a0f0103bed00d9a54f16471f22a7154ef3495f8"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v05-reference.png": {
+      "bytes": 57213,
+      "format": "rgb8-png",
+      "sha256": "e5bd328e3e194a7e44e84f1a2c93f159279c86f6ed1265458960d8c7ce7fb61e"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v06-error.png": {
+      "bytes": 4613,
+      "format": "rgb8-png",
+      "sha256": "de69efe99ead5d74ef73a60f50208ec8a157ecf30905ae21297a0ffd799aa205"
+    },
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v06-reference.png": {
+      "bytes": 59268,
+      "format": "rgb8-png",
+      "sha256": "ea27ae648474d0c0e7929325d91e5363225051223ec9cdebe1dd4c89525ba500"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-B-L1-transfer-rank.png": {
+      "bytes": 117895,
+      "format": "rgb8-png",
+      "sha256": "859432d37388323924dc87d07b36584c2febb475143bb4f5a15ed4491815161a"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-B-L1-transfer-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-B-L1-transfer-state.png": {
+      "bytes": 3622,
+      "format": "rgb8-png",
+      "sha256": "656f2087409f4296a73cf1c51cb3bd8a99e10f963d1ce1d3f92316c8fff43384"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-L1-rank.png": {
+      "bytes": 109696,
+      "format": "rgb8-png",
+      "sha256": "2b9032859a2176a6bc4e7a25fd4da5abc8065da17ffaf6ff819a76593340aa15"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-L1-reason.png": {
+      "bytes": 934,
+      "format": "rgb8-png",
+      "sha256": "bba008eba1c6bd533028fa4caf025a91256b6e72b8ac04254db5f35a90cbf324"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-L1-state.png": {
+      "bytes": 5746,
+      "format": "rgb8-png",
+      "sha256": "53ce9ac358cd48981df2078d0486b568a1856e833baf6214261378c445d1fcec"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-frozen-rank.png": {
+      "bytes": 95765,
+      "format": "rgb8-png",
+      "sha256": "174d2dcb8d2ff21b2fb1aa3470e3722c32078b04e13169792a02a156da6d1385"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-frozen-reason.png": {
+      "bytes": 934,
+      "format": "rgb8-png",
+      "sha256": "bba008eba1c6bd533028fa4caf025a91256b6e72b8ac04254db5f35a90cbf324"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-frozen-state.png": {
+      "bytes": 5175,
+      "format": "rgb8-png",
+      "sha256": "d40f0b2f93cf54503f43abc1504d048d2930419b7b54142611ba0f4b42129fab"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-ft-rank.png": {
+      "bytes": 93620,
+      "format": "rgb8-png",
+      "sha256": "61d3c0660e37877e4d85a253d5263faf9240651b71557e049cc982af9a7e3f6a"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-ft-reason.png": {
+      "bytes": 934,
+      "format": "rgb8-png",
+      "sha256": "bba008eba1c6bd533028fa4caf025a91256b6e72b8ac04254db5f35a90cbf324"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-ft-state.png": {
+      "bytes": 4978,
+      "format": "rgb8-png",
+      "sha256": "353db31128f8f373c9cbf903f677bad9519020c77aab352ead4508c4077ec63f"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-B-L1-transfer-rank.png": {
+      "bytes": 131876,
+      "format": "rgb8-png",
+      "sha256": "c616100726fd7c096d35dac31fad30b3554def43abe0fbaa00739b68f9089c45"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-B-L1-transfer-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-B-L1-transfer-state.png": {
+      "bytes": 4280,
+      "format": "rgb8-png",
+      "sha256": "30328f5fa87436d504afd79950f5f85e75624af2949bbd673cea89c094e06dfb"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-L1-rank.png": {
+      "bytes": 110129,
+      "format": "rgb8-png",
+      "sha256": "2807d64d87099daa22182dbf6c245e50fe5aec687cfe492d70f6ed0247a9b95e"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-L1-reason.png": {
+      "bytes": 922,
+      "format": "rgb8-png",
+      "sha256": "58db4cafe7efa5b7bbe3bec951bcd333685adc11031ba8f96907b270483fc6d6"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-L1-state.png": {
+      "bytes": 5828,
+      "format": "rgb8-png",
+      "sha256": "af9656b624fd4f52fd16bdf417cabcb4ce2351e4544afc91863aa02f45457d01"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-frozen-rank.png": {
+      "bytes": 95164,
+      "format": "rgb8-png",
+      "sha256": "d9994d139d436a2864e7dd5e51bacf36de8978f75ec1dd06829beee05a09ce98"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-frozen-reason.png": {
+      "bytes": 922,
+      "format": "rgb8-png",
+      "sha256": "58db4cafe7efa5b7bbe3bec951bcd333685adc11031ba8f96907b270483fc6d6"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-frozen-state.png": {
+      "bytes": 5153,
+      "format": "rgb8-png",
+      "sha256": "5f65f7bec0be116df1c2ef428b707c629a51bb4f023d95672adb23957da904e2"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-ft-rank.png": {
+      "bytes": 94527,
+      "format": "rgb8-png",
+      "sha256": "c751926979a57fd998929440dfad245e898d6be5e7e2dafe67af2d15d5a4f876"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-ft-reason.png": {
+      "bytes": 922,
+      "format": "rgb8-png",
+      "sha256": "58db4cafe7efa5b7bbe3bec951bcd333685adc11031ba8f96907b270483fc6d6"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-ft-state.png": {
+      "bytes": 4995,
+      "format": "rgb8-png",
+      "sha256": "57d815ccb5e22ca3d25d8a99dc889432732fd4c7a3260f2e21050404875ea7fa"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-B-L1-transfer-rank.png": {
+      "bytes": 100429,
+      "format": "rgb8-png",
+      "sha256": "677b24476857c05175e3ad4804ecac57285c5916e251fa54cf0b06905ab3623f"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-B-L1-transfer-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-B-L1-transfer-state.png": {
+      "bytes": 3237,
+      "format": "rgb8-png",
+      "sha256": "25afdfa77c1a328b9892eb33f229031736f8485d9811be71bcb45c16f12d6a70"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-L1-rank.png": {
+      "bytes": 98616,
+      "format": "rgb8-png",
+      "sha256": "52d3a39b30a03a8a8d5c349cfb8e856e401e55a49facbcc6295348f29f5016bd"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-L1-reason.png": {
+      "bytes": 1066,
+      "format": "rgb8-png",
+      "sha256": "7d70a1524711e108465a91e1097bbf8017c90f91f2237bbc6a1f4e3b25489a09"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-L1-state.png": {
+      "bytes": 5668,
+      "format": "rgb8-png",
+      "sha256": "29c63729cb8dad07aedda4695da2de3dc4863fc1e4883a405ef1bab09b3f3b46"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-frozen-rank.png": {
+      "bytes": 95213,
+      "format": "rgb8-png",
+      "sha256": "20ca2e70af808ac37c01eda8979e3e3fedda0fcf9083458bd3f540a22207a61f"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-frozen-reason.png": {
+      "bytes": 1066,
+      "format": "rgb8-png",
+      "sha256": "7d70a1524711e108465a91e1097bbf8017c90f91f2237bbc6a1f4e3b25489a09"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-frozen-state.png": {
+      "bytes": 5553,
+      "format": "rgb8-png",
+      "sha256": "5c36e237d411f84fdb0897a44cf853f2fdf141f0ad48660a79838e668355de2d"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-ft-rank.png": {
+      "bytes": 91152,
+      "format": "rgb8-png",
+      "sha256": "a80f6e65c025c8a9d621fa1afcb4be5dc1a56917e0566aeef5c576165f3a2487"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-ft-reason.png": {
+      "bytes": 1066,
+      "format": "rgb8-png",
+      "sha256": "7d70a1524711e108465a91e1097bbf8017c90f91f2237bbc6a1f4e3b25489a09"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-ft-state.png": {
+      "bytes": 5238,
+      "format": "rgb8-png",
+      "sha256": "7e89647c2182e030b0c5e0d841310ec1a65c1e8fa484910f595d92beb62fed76"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-B-L1-transfer-rank.png": {
+      "bytes": 116364,
+      "format": "rgb8-png",
+      "sha256": "ac713f7bf4e75cd8b130fb87127f858cc3c6e26d13a02a61fa0f3bb59bc5ace0"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-B-L1-transfer-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-B-L1-transfer-state.png": {
+      "bytes": 3766,
+      "format": "rgb8-png",
+      "sha256": "b2c9f9cd43982c117e21769cf0f9eaa8126b79735ee54e8f0c076c82cd3a0d32"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-L1-rank.png": {
+      "bytes": 100418,
+      "format": "rgb8-png",
+      "sha256": "3810a0685a9ff1a2f475d7c6009067145a82b86cebddb459d58d00c0182a19d8"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-L1-reason.png": {
+      "bytes": 1060,
+      "format": "rgb8-png",
+      "sha256": "e79f48a5a27c357ed4681093e5a739e7bb7cd203eb348658f2f247a024a4c008"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-L1-state.png": {
+      "bytes": 5914,
+      "format": "rgb8-png",
+      "sha256": "b78d8ed1234ad110ec5fc8a1d7979309a98b9e25b875175b855aee6e8197cb97"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-frozen-rank.png": {
+      "bytes": 94833,
+      "format": "rgb8-png",
+      "sha256": "21b67783ffddc553333f9c0da9708da6f84fc1d33b76bc1c2f826564d86f40ac"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-frozen-reason.png": {
+      "bytes": 1060,
+      "format": "rgb8-png",
+      "sha256": "e79f48a5a27c357ed4681093e5a739e7bb7cd203eb348658f2f247a024a4c008"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-frozen-state.png": {
+      "bytes": 5339,
+      "format": "rgb8-png",
+      "sha256": "07ae8520e7a3db6c359e59f419307491041554c137e3b2e7280940f815214f81"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-ft-rank.png": {
+      "bytes": 92883,
+      "format": "rgb8-png",
+      "sha256": "5452f2ce9fced816684dcef47997c20242b1c7767ebc940a49a66935cd6cb5dc"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-ft-reason.png": {
+      "bytes": 1060,
+      "format": "rgb8-png",
+      "sha256": "e79f48a5a27c357ed4681093e5a739e7bb7cd203eb348658f2f247a024a4c008"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-ft-state.png": {
+      "bytes": 5290,
+      "format": "rgb8-png",
+      "sha256": "7f628c6f174b0a7cad511b7d75e3c497f55ef8e0364fce0c2caed2ba34077050"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-B-L1-transfer-rank.png": {
+      "bytes": 129203,
+      "format": "rgb8-png",
+      "sha256": "c8058594a5c67d5a9c550111a16f79a5e63da60f5fcecd02d229a179a4e4b077"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-B-L1-transfer-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-B-L1-transfer-state.png": {
+      "bytes": 4482,
+      "format": "rgb8-png",
+      "sha256": "05cb7e7c86ef214330aebfc9977befc4079278633320a49c792b9ce7da68fe3b"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-L1-rank.png": {
+      "bytes": 113208,
+      "format": "rgb8-png",
+      "sha256": "364b9ce5d2c9d79fe642126965ff1bb676275d8ebeeb1efb5195a93478755887"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-L1-reason.png": {
+      "bytes": 1295,
+      "format": "rgb8-png",
+      "sha256": "824a4d6737a99bbfdf94e607fdf1d541e76cd8414b4a4c962287aec48441624d"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-L1-state.png": {
+      "bytes": 5232,
+      "format": "rgb8-png",
+      "sha256": "151c6724034a223b9ab94e0b4731373660dae5e7fe2d8cf72ca21d874cb90be5"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-frozen-rank.png": {
+      "bytes": 97178,
+      "format": "rgb8-png",
+      "sha256": "a14d896ab73089d7fd23fd01e33fa2c990057d081990ed6069990ae507696ac4"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-frozen-reason.png": {
+      "bytes": 1295,
+      "format": "rgb8-png",
+      "sha256": "824a4d6737a99bbfdf94e607fdf1d541e76cd8414b4a4c962287aec48441624d"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-frozen-state.png": {
+      "bytes": 5094,
+      "format": "rgb8-png",
+      "sha256": "810bb459c99b35c056138ab97faafd975438c04586c767e4224e662be5ce629c"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-ft-rank.png": {
+      "bytes": 95658,
+      "format": "rgb8-png",
+      "sha256": "e6f0bfb03e6d007ca6e55b4e5d5d005f9018cc2f3191e4059844b411dcf2ad45"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-ft-reason.png": {
+      "bytes": 1295,
+      "format": "rgb8-png",
+      "sha256": "824a4d6737a99bbfdf94e607fdf1d541e76cd8414b4a4c962287aec48441624d"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-ft-state.png": {
+      "bytes": 4836,
+      "format": "rgb8-png",
+      "sha256": "6d131044d1f6a472d45be69ecbab0501a034b5d7a000446a524805d12d0058dd"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-B-L1-transfer-rank.png": {
+      "bytes": 136762,
+      "format": "rgb8-png",
+      "sha256": "e08d305cd27362d8f93ce978028b1331aaa8ea24dcf306d2945d42b7905d1a04"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-B-L1-transfer-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-B-L1-transfer-state.png": {
+      "bytes": 4624,
+      "format": "rgb8-png",
+      "sha256": "d90116377982be496debc1c6941296bee452b119b96025d405762b76bcd5ec87"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-L1-rank.png": {
+      "bytes": 121644,
+      "format": "rgb8-png",
+      "sha256": "c4ce40b6141d4388d281dc2e34fefa6c8499a2fb6a4f3b9ce73678779f6394e7"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-L1-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-L1-state.png": {
+      "bytes": 5934,
+      "format": "rgb8-png",
+      "sha256": "3893c5736c71412ef727b5a4aae58d105e396792522a5bfc0b4e0b4ece370c21"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-frozen-rank.png": {
+      "bytes": 104660,
+      "format": "rgb8-png",
+      "sha256": "dcdc3c7613f91773e830c4ac145cce4c61c3e492a6f9c406e42bbdb3ad459d40"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-frozen-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-frozen-state.png": {
+      "bytes": 5308,
+      "format": "rgb8-png",
+      "sha256": "2996de24e50d27c72edca597115429e754fc8d6eccaf178f5ddc0b5fcabdab3c"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-ft-rank.png": {
+      "bytes": 101749,
+      "format": "rgb8-png",
+      "sha256": "24c5dee84d07f72827409cdcea2cb3cbe1ecf6498ca32c8d8046edb7ad2db88b"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-ft-reason.png": {
+      "bytes": 909,
+      "format": "rgb8-png",
+      "sha256": "9438ef91be5d31929114346f3e53a60c4b22264c7463b3065f9761f7403a06a1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-ft-state.png": {
+      "bytes": 5062,
+      "format": "rgb8-png",
+      "sha256": "faf06ac613d2fdd577257ef171aa494ef9cb46ead77431b311b9856401f21ccf"
+    },
+    "examples/evidence-foundation/offset-bell-cage/sources/s00.png": {
+      "bytes": 23596,
+      "format": "rgb8-png",
+      "sha256": "deb5bbf1969c05ff5711e835e7f2671aa158cee6391da4dfb7662df0e8d21473"
+    },
+    "examples/evidence-foundation/offset-bell-cage/sources/s01.png": {
+      "bytes": 23930,
+      "format": "rgb8-png",
+      "sha256": "8061472b4f10da1671b6c0449e962a045950d6515a0e74942d2d4aa67b08bae0"
+    },
+    "examples/evidence-foundation/offset-bell-cage/sources/s02.png": {
+      "bytes": 23989,
+      "format": "rgb8-png",
+      "sha256": "b5ccef317d5185bd8312216f55dc4f71cf55feafd18269fd92717d62998fdee1"
+    },
+    "examples/evidence-foundation/offset-bell-cage/sources/s03.png": {
+      "bytes": 23594,
+      "format": "rgb8-png",
+      "sha256": "7bef89945c8e796ed0a634bb8d5b2e8968d692f6696c86a25beaf079a44b5d69"
+    },
+    "examples/evidence-foundation/offset-bell-cage/targets/v01.png": {
+      "bytes": 69686,
+      "format": "rgb8-png",
+      "sha256": "5be9037e8f4173c96d87d63aa44f6f19d8b20d055fc800b727e1463267c61f7c"
+    },
+    "examples/evidence-foundation/offset-bell-cage/targets/v02.png": {
+      "bytes": 70900,
+      "format": "rgb8-png",
+      "sha256": "a5bde145eb4482594ea778f7c72ff7fb431b8a6cf3cac676ebb62e0d2985feeb"
+    },
+    "examples/evidence-foundation/offset-bell-cage/targets/v03.png": {
+      "bytes": 68560,
+      "format": "rgb8-png",
+      "sha256": "b5faee5d242ce4964b8ac5eb80623b95a75a0cebf4222488a2560571a9f34560"
+    },
+    "examples/evidence-foundation/offset-bell-cage/targets/v04.png": {
+      "bytes": 70380,
+      "format": "rgb8-png",
+      "sha256": "eb9407a9aa03752473e88d0e9eb6d58b6729ad49abb8e346d3001f3e2a31af1b"
+    },
+    "examples/evidence-foundation/offset-bell-cage/targets/v05.png": {
+      "bytes": 69459,
+      "format": "rgb8-png",
+      "sha256": "cc9fd1856dedae4403e85dc39c4ec9a4a5db1486241021dac9e5544ab93ff237"
+    },
+    "examples/evidence-foundation/offset-bell-cage/targets/v06.png": {
+      "bytes": 73828,
+      "format": "rgb8-png",
+      "sha256": "415ecc6a3de941e3c0f29c770d322f78bcff8db955fa246b4edce5cf97ce376b"
+    },
+    "examples/evidence-foundation/verification/assessment.png": {
+      "bytes": 233396,
+      "format": "rgb8-png",
+      "sha256": "bc051c550f33f9e0cac81288120a2f13b224d69a99f10f530218349b717238bb"
+    },
+    "examples/evidence-foundation/verification/evaluation.png": {
+      "bytes": 429100,
+      "format": "rgb8-png",
+      "sha256": "0370a67070d1822779f929cd310ec0d64820da38739c4af5d1a990c3d87b2187"
+    },
+    "examples/evidence-foundation/verification/mobile.png": {
+      "bytes": 156465,
+      "format": "rgb8-png",
+      "sha256": "67b1720181bff4c4913d61a72f0b8f38319b07ec05c7273e8977f71c86e6b310"
+    },
+    "examples/evidence-foundation/verification/picture.png": {
+      "bytes": 254604,
+      "format": "rgb8-png",
+      "sha256": "a525cfb50093b41bf902808f75a9cba91f23e012e5e1e20dad845f0800fe5cf2"
+    },
+    "examples/evidence-foundation/verification/sources.png": {
+      "bytes": 280204,
+      "format": "rgb8-png",
+      "sha256": "fec814ac324440236049363fc9beb4c57a807fb4757a4214b0c5b6560d7450d8"
     },
     "examples/heldout-drum/blender-v01.png": {
       "bytes": 111096,
@@ -348,6 +1579,16 @@
     "docs/general-closeout/t1-numerical-bridge.json": "cc-original",
     "docs/general-closeout/t1-threads8-numerical-bridge.json": "cc-original",
     "docs/general-closeout/t1-threads8-preregistration.json": "cc-original",
+    "docs/humanities-foundation/CONCEPTS_AND_CLAIMS.md": "cc-original",
+    "docs/humanities-foundation/CONTRIBUTIONS.md": "cc-original",
+    "docs/humanities-foundation/MODEL_AND_DATA_BASIS.md": "cc-original",
+    "docs/humanities-foundation/OPEN_QUESTIONS.md": "cc-original",
+    "docs/humanities-foundation/README.md": "cc-original",
+    "docs/humanities-foundation/THEORY_SOURCES.md": "cc-original",
+    "docs/humanities-foundation/bibliography.bib": "cc-original",
+    "docs/humanities-foundation/case-data-check.json": "cc-original",
+    "docs/humanities-foundation/primary-editions.json": "cc-original",
+    "docs/humanities-foundation/registration.json": "cc-original",
     "docs/l1-training.md": "cc-original",
     "docs/licenses.md": "cc-original",
     "docs/model-release.md": "cc-original",
@@ -801,6 +2042,257 @@
     "docs/vision-rights.md": "cc-original",
     "docs/vision-worker.md": "cc-original",
     "docs/windows-worker.md": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/evaluation/h00-error.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/evaluation/h00-reference.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-128-rank.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-128-reason.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-128-state.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-16-rank.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-16-reason.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-16-state.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-32-rank.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-32-reason.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-32-state.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-4-rank.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-4-reason.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-4-state.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-8-rank.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-8-reason.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/models/h00-coverage-8-state.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r000.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r001.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r002.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r003.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r004.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r005.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r006.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r007.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r008.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r009.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r010.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r011.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r012.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r013.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r014.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r015.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r016.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r017.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r018.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r019.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r020.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r021.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r022.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r023.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r024.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r025.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r026.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r027.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r028.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r029.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r030.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r031.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r032.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r033.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r034.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r035.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r036.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r037.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r038.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r039.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r040.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r041.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r042.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r043.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r044.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r045.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r046.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r047.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r048.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r049.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r050.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r051.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r052.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r053.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r054.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r055.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r056.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r057.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r058.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r059.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r060.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r061.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r062.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r063.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r064.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r065.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r066.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r067.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r068.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r069.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r070.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r071.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r072.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r073.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r074.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r075.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r076.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r077.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r078.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r079.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r080.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r081.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r082.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r083.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r084.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r085.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r086.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r087.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r088.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r089.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r090.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r091.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r092.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r093.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r094.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r095.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r096.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r097.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r098.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r099.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r100.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r101.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r102.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r103.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r104.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r105.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r106.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r107.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r108.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r109.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r110.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r111.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r112.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r113.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r114.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r115.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r116.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r117.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r118.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r119.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r120.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r121.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r122.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r123.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r124.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r125.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r126.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/sources/r127.png": "cc-original",
+    "examples/evidence-foundation/b05-perforated-gallery/targets/h00.png": "cc-original",
+    "examples/evidence-foundation/case-files.json": "cc-original",
+    "examples/evidence-foundation/case-index.json": "cc-original",
+    "examples/evidence-foundation/case-viewer.json": "cc-original",
+    "examples/evidence-foundation/index.html": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v01-error.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v01-reference.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v02-error.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v02-reference.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v03-error.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v03-reference.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v04-error.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v04-reference.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v05-error.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v05-reference.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v06-error.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/evaluation/v06-reference.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-B-L1-transfer-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-B-L1-transfer-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-B-L1-transfer-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-L1-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-L1-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-L1-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-frozen-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-frozen-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-frozen-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-ft-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-ft-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v01-MS-ft-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-B-L1-transfer-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-B-L1-transfer-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-B-L1-transfer-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-L1-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-L1-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-L1-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-frozen-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-frozen-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-frozen-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-ft-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-ft-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v02-MS-ft-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-B-L1-transfer-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-B-L1-transfer-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-B-L1-transfer-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-L1-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-L1-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-L1-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-frozen-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-frozen-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-frozen-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-ft-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-ft-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v03-MS-ft-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-B-L1-transfer-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-B-L1-transfer-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-B-L1-transfer-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-L1-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-L1-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-L1-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-frozen-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-frozen-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-frozen-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-ft-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-ft-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v04-MS-ft-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-B-L1-transfer-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-B-L1-transfer-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-B-L1-transfer-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-L1-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-L1-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-L1-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-frozen-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-frozen-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-frozen-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-ft-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-ft-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v05-MS-ft-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-B-L1-transfer-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-B-L1-transfer-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-B-L1-transfer-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-L1-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-L1-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-L1-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-frozen-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-frozen-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-frozen-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-ft-rank.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-ft-reason.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/models/v06-MS-ft-state.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/sources/s00.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/sources/s01.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/sources/s02.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/sources/s03.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/targets/v01.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/targets/v02.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/targets/v03.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/targets/v04.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/targets/v05.png": "cc-original",
+    "examples/evidence-foundation/offset-bell-cage/targets/v06.png": "cc-original",
+    "examples/evidence-foundation/source-photos.json": "cc-original",
+    "examples/evidence-foundation/verification/assessment.png": "cc-original",
+    "examples/evidence-foundation/verification/evaluation.png": "cc-original",
+    "examples/evidence-foundation/verification/mobile.png": "cc-original",
+    "examples/evidence-foundation/verification/picture.png": "cc-original",
+    "examples/evidence-foundation/verification/sources.png": "cc-original",
+    "examples/evidence-foundation/viewer-check.json": "cc-original",
     "examples/general-four-models/B-L1-transfer.html": "cc-original",
     "examples/general-four-models/MS-L1.html": "cc-original",
     "examples/general-four-models/MS-frozen.html": "cc-original",
@@ -1075,6 +2567,18 @@
     "scripts/formal_learning.py": "apache-original",
     "scripts/formal_lineage.py": "apache-original",
     "scripts/formal_reference.py": "apache-original",
+    "scripts/foundation_account.py": "apache-original",
+    "scripts/foundation_case_bell.py": "apache-original",
+    "scripts/foundation_case_data.py": "apache-original",
+    "scripts/foundation_case_gallery.py": "apache-original",
+    "scripts/foundation_case_io.py": "apache-original",
+    "scripts/foundation_case_readback.py": "apache-original",
+    "scripts/foundation_reading.py": "apache-original",
+    "scripts/foundation_register.py": "apache-original",
+    "scripts/foundation_release.py": "apache-original",
+    "scripts/foundation_viewer.html.tmpl": "apache-original",
+    "scripts/foundation_viewer.py": "apache-original",
+    "scripts/foundation_viewer_smoke.mjs": "apache-original",
     "scripts/freeze_stage3_method.py": "apache-original",
     "scripts/g0_entry.py": "apache-original",
     "scripts/g1_evaluate.py": "apache-original",

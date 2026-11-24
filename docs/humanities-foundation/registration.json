@@ -1,0 +1,56 @@
+{
+  "A_BASELINE_ID": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "B_code_commit": "19cd7079ee5d4e470af4ca6b2543ad916ef0a4b4",
+  "B_status": "completed_negative",
+  "cases": [
+    "offset-bell-cage, four real sources, all six released target views",
+    "b05-perforated-gallery, R128, h00, all registered K on the identical prediction"
+  ],
+  "organization": [
+    "prediction",
+    "model assessment",
+    "sources and procedure",
+    "separate evaluation"
+  ],
+  "parents": {
+    "A": {
+      "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+      "member": "payload/BASELINE_MANIFEST.json",
+      "run_id": "20261124T111058386191Z-d99a4c418276454c",
+      "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
+    },
+    "B": {
+      "manifest_sha256": "cc19f51d4463500b198cb64d43a8fd84ff5b72fef08f0d0635f410cc3362e736",
+      "member": "payload/B_MANIFEST.json",
+      "run_id": "20261124T122658772178Z-8af722eec6fa438e",
+      "sha256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0"
+    },
+    "data": {
+      "manifest_sha256": "21175437a236664e86db780a115c66b5016872f07d9bfac0d7c3bbcce7e04d14",
+      "member": "payload/registration.json",
+      "run_id": "20261124T111537305132Z-2244a0f585274730",
+      "sha256": "f65b0de0586763caafaec1869a90abc865c18fbbbdfcba70c9708099c43c1947"
+    },
+    "findings": {
+      "manifest_sha256": "1fc5b4c0053d669fe0492df4ec618c2ae2bcc2df70a4b81254d0eb2a2ef48d44",
+      "member": "payload/status.json",
+      "run_id": "20261124T122248118424Z-1869e66f00684783",
+      "sha256": "b0a81604f011b94e597b7ba8fd77983b64c1bca54bd2cf866b74bd289d2945a6"
+    },
+    "study": {
+      "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+      "member": "payload/study.json",
+      "run_id": "20261124T111533951307Z-8b7523eb307440af",
+      "sha256": "fd4ea8f80597cd7c21b4f548131d1a9f96780747d5c65503f83b6b1b79a22777"
+    }
+  },
+  "reading": [
+    "Bolter and Grusin 1996, Remediation, pp. 313–314",
+    "London Charter 2.1, documentation 4.4–4.7 and glossary",
+    "Seville Principles, virtual archaeology, authenticity and scientific transparency"
+  ],
+  "run_id": "20261124T122803958580Z-dc0db5aa4ffe455f",
+  "schema": "el-humanities-foundation-registration-1",
+  "stop": "The evidence, sources and apparatus remain open for Wany to choose a later interpretation.",
+  "version": "humanities-foundation-v1"
+}

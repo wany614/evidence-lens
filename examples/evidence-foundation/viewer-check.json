@@ -1,0 +1,701 @@
+{
+  "browser": "Chrome/157.0.8103.51",
+  "external_requests": 0,
+  "gate": "Picture load requested just its prediction. Evaluation had no source URLs until an explicit open. Selecting a new condition closed it.",
+  "independent_references_opened": [
+    {
+      "case": "offset-bell-cage",
+      "errors": 17034,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v01"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 18815,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v02"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 15050,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v03"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 15299,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v04"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 22873,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v05"
+    },
+    {
+      "case": "offset-bell-cage",
+      "errors": 21482,
+      "labelled": 112896,
+      "reference": 112896,
+      "view": "v06"
+    },
+    {
+      "case": "b05-perforated-gallery",
+      "errors": 4579,
+      "labelled": 95256,
+      "reference": 95256,
+      "view": "h00"
+    }
+  ],
+  "initial_files": [
+    "index.html",
+    "offset-bell-cage/targets/v01.png"
+  ],
+  "keyboard": [
+    "ArrowRight selected assessment",
+    "End selected sources and procedure",
+    "Home restored picture"
+  ],
+  "mobile": {
+    "document_width": 375,
+    "width": 375
+  },
+  "network": "offline",
+  "page_transport": "file://",
+  "png_paths_read": [
+    "b05-perforated-gallery/evaluation/h00-error.png",
+    "b05-perforated-gallery/evaluation/h00-reference.png",
+    "b05-perforated-gallery/models/h00-coverage-128-rank.png",
+    "b05-perforated-gallery/models/h00-coverage-128-reason.png",
+    "b05-perforated-gallery/models/h00-coverage-128-state.png",
+    "b05-perforated-gallery/models/h00-coverage-16-rank.png",
+    "b05-perforated-gallery/models/h00-coverage-16-reason.png",
+    "b05-perforated-gallery/models/h00-coverage-16-state.png",
+    "b05-perforated-gallery/models/h00-coverage-32-rank.png",
+    "b05-perforated-gallery/models/h00-coverage-32-reason.png",
+    "b05-perforated-gallery/models/h00-coverage-32-state.png",
+    "b05-perforated-gallery/models/h00-coverage-4-rank.png",
+    "b05-perforated-gallery/models/h00-coverage-4-reason.png",
+    "b05-perforated-gallery/models/h00-coverage-4-state.png",
+    "b05-perforated-gallery/models/h00-coverage-8-rank.png",
+    "b05-perforated-gallery/models/h00-coverage-8-reason.png",
+    "b05-perforated-gallery/models/h00-coverage-8-state.png",
+    "b05-perforated-gallery/sources/r000.png",
+    "b05-perforated-gallery/sources/r001.png",
+    "b05-perforated-gallery/sources/r002.png",
+    "b05-perforated-gallery/sources/r003.png",
+    "b05-perforated-gallery/sources/r004.png",
+    "b05-perforated-gallery/sources/r005.png",
+    "b05-perforated-gallery/sources/r006.png",
+    "b05-perforated-gallery/sources/r007.png",
+    "b05-perforated-gallery/sources/r008.png",
+    "b05-perforated-gallery/sources/r009.png",
+    "b05-perforated-gallery/sources/r010.png",
+    "b05-perforated-gallery/sources/r011.png",
+    "b05-perforated-gallery/sources/r012.png",
+    "b05-perforated-gallery/sources/r013.png",
+    "b05-perforated-gallery/sources/r014.png",
+    "b05-perforated-gallery/sources/r015.png",
+    "b05-perforated-gallery/sources/r016.png",
+    "b05-perforated-gallery/sources/r017.png",
+    "b05-perforated-gallery/sources/r018.png",
+    "b05-perforated-gallery/sources/r019.png",
+    "b05-perforated-gallery/sources/r020.png",
+    "b05-perforated-gallery/sources/r021.png",
+    "b05-perforated-gallery/sources/r022.png",
+    "b05-perforated-gallery/sources/r023.png",
+    "b05-perforated-gallery/sources/r024.png",
+    "b05-perforated-gallery/sources/r025.png",
+    "b05-perforated-gallery/sources/r026.png",
+    "b05-perforated-gallery/sources/r027.png",
+    "b05-perforated-gallery/sources/r028.png",
+    "b05-perforated-gallery/sources/r029.png",
+    "b05-perforated-gallery/sources/r030.png",
+    "b05-perforated-gallery/sources/r031.png",
+    "b05-perforated-gallery/sources/r032.png",
+    "b05-perforated-gallery/sources/r033.png",
+    "b05-perforated-gallery/sources/r034.png",
+    "b05-perforated-gallery/sources/r035.png",
+    "b05-perforated-gallery/sources/r036.png",
+    "b05-perforated-gallery/sources/r037.png",
+    "b05-perforated-gallery/sources/r038.png",
+    "b05-perforated-gallery/sources/r039.png",
+    "b05-perforated-gallery/sources/r040.png",
+    "b05-perforated-gallery/sources/r041.png",
+    "b05-perforated-gallery/sources/r042.png",
+    "b05-perforated-gallery/sources/r043.png",
+    "b05-perforated-gallery/sources/r044.png",
+    "b05-perforated-gallery/sources/r045.png",
+    "b05-perforated-gallery/sources/r046.png",
+    "b05-perforated-gallery/sources/r047.png",
+    "b05-perforated-gallery/sources/r048.png",
+    "b05-perforated-gallery/sources/r049.png",
+    "b05-perforated-gallery/sources/r050.png",
+    "b05-perforated-gallery/sources/r051.png",
+    "b05-perforated-gallery/sources/r052.png",
+    "b05-perforated-gallery/sources/r053.png",
+    "b05-perforated-gallery/sources/r054.png",
+    "b05-perforated-gallery/sources/r055.png",
+    "b05-perforated-gallery/sources/r056.png",
+    "b05-perforated-gallery/sources/r057.png",
+    "b05-perforated-gallery/sources/r058.png",
+    "b05-perforated-gallery/sources/r059.png",
+    "b05-perforated-gallery/sources/r060.png",
+    "b05-perforated-gallery/sources/r061.png",
+    "b05-perforated-gallery/sources/r062.png",
+    "b05-perforated-gallery/sources/r063.png",
+    "b05-perforated-gallery/sources/r064.png",
+    "b05-perforated-gallery/sources/r065.png",
+    "b05-perforated-gallery/sources/r066.png",
+    "b05-perforated-gallery/sources/r067.png",
+    "b05-perforated-gallery/sources/r068.png",
+    "b05-perforated-gallery/sources/r069.png",
+    "b05-perforated-gallery/sources/r070.png",
+    "b05-perforated-gallery/sources/r071.png",
+    "b05-perforated-gallery/sources/r072.png",
+    "b05-perforated-gallery/sources/r073.png",
+    "b05-perforated-gallery/sources/r074.png",
+    "b05-perforated-gallery/sources/r075.png",
+    "b05-perforated-gallery/sources/r076.png",
+    "b05-perforated-gallery/sources/r077.png",
+    "b05-perforated-gallery/sources/r078.png",
+    "b05-perforated-gallery/sources/r079.png",
+    "b05-perforated-gallery/sources/r080.png",
+    "b05-perforated-gallery/sources/r081.png",
+    "b05-perforated-gallery/sources/r082.png",
+    "b05-perforated-gallery/sources/r083.png",
+    "b05-perforated-gallery/sources/r084.png",
+    "b05-perforated-gallery/sources/r085.png",
+    "b05-perforated-gallery/sources/r086.png",
+    "b05-perforated-gallery/sources/r087.png",
+    "b05-perforated-gallery/sources/r088.png",
+    "b05-perforated-gallery/sources/r089.png",
+    "b05-perforated-gallery/sources/r090.png",
+    "b05-perforated-gallery/sources/r091.png",
+    "b05-perforated-gallery/sources/r092.png",
+    "b05-perforated-gallery/sources/r093.png",
+    "b05-perforated-gallery/sources/r094.png",
+    "b05-perforated-gallery/sources/r095.png",
+    "b05-perforated-gallery/sources/r096.png",
+    "b05-perforated-gallery/sources/r097.png",
+    "b05-perforated-gallery/sources/r098.png",
+    "b05-perforated-gallery/sources/r099.png",
+    "b05-perforated-gallery/sources/r100.png",
+    "b05-perforated-gallery/sources/r101.png",
+    "b05-perforated-gallery/sources/r102.png",
+    "b05-perforated-gallery/sources/r103.png",
+    "b05-perforated-gallery/sources/r104.png",
+    "b05-perforated-gallery/sources/r105.png",
+    "b05-perforated-gallery/sources/r106.png",
+    "b05-perforated-gallery/sources/r107.png",
+    "b05-perforated-gallery/sources/r108.png",
+    "b05-perforated-gallery/sources/r109.png",
+    "b05-perforated-gallery/sources/r110.png",
+    "b05-perforated-gallery/sources/r111.png",
+    "b05-perforated-gallery/sources/r112.png",
+    "b05-perforated-gallery/sources/r113.png",
+    "b05-perforated-gallery/sources/r114.png",
+    "b05-perforated-gallery/sources/r115.png",
+    "b05-perforated-gallery/sources/r116.png",
+    "b05-perforated-gallery/sources/r117.png",
+    "b05-perforated-gallery/sources/r118.png",
+    "b05-perforated-gallery/sources/r119.png",
+    "b05-perforated-gallery/sources/r120.png",
+    "b05-perforated-gallery/sources/r121.png",
+    "b05-perforated-gallery/sources/r122.png",
+    "b05-perforated-gallery/sources/r123.png",
+    "b05-perforated-gallery/sources/r124.png",
+    "b05-perforated-gallery/sources/r125.png",
+    "b05-perforated-gallery/sources/r126.png",
+    "b05-perforated-gallery/sources/r127.png",
+    "b05-perforated-gallery/targets/h00.png",
+    "offset-bell-cage/evaluation/v01-error.png",
+    "offset-bell-cage/evaluation/v01-reference.png",
+    "offset-bell-cage/evaluation/v02-error.png",
+    "offset-bell-cage/evaluation/v02-reference.png",
+    "offset-bell-cage/evaluation/v03-error.png",
+    "offset-bell-cage/evaluation/v03-reference.png",
+    "offset-bell-cage/evaluation/v04-error.png",
+    "offset-bell-cage/evaluation/v04-reference.png",
+    "offset-bell-cage/evaluation/v05-error.png",
+    "offset-bell-cage/evaluation/v05-reference.png",
+    "offset-bell-cage/evaluation/v06-error.png",
+    "offset-bell-cage/evaluation/v06-reference.png",
+    "offset-bell-cage/models/v01-B-L1-transfer-rank.png",
+    "offset-bell-cage/models/v01-B-L1-transfer-reason.png",
+    "offset-bell-cage/models/v01-B-L1-transfer-state.png",
+    "offset-bell-cage/models/v01-MS-L1-rank.png",
+    "offset-bell-cage/models/v01-MS-L1-reason.png",
+    "offset-bell-cage/models/v01-MS-L1-state.png",
+    "offset-bell-cage/models/v01-MS-frozen-rank.png",
+    "offset-bell-cage/models/v01-MS-frozen-reason.png",
+    "offset-bell-cage/models/v01-MS-frozen-state.png",
+    "offset-bell-cage/models/v01-MS-ft-rank.png",
+    "offset-bell-cage/models/v01-MS-ft-reason.png",
+    "offset-bell-cage/models/v01-MS-ft-state.png",
+    "offset-bell-cage/models/v02-B-L1-transfer-rank.png",
+    "offset-bell-cage/models/v02-B-L1-transfer-reason.png",
+    "offset-bell-cage/models/v02-B-L1-transfer-state.png",
+    "offset-bell-cage/models/v02-MS-L1-rank.png",
+    "offset-bell-cage/models/v02-MS-L1-reason.png",
+    "offset-bell-cage/models/v02-MS-L1-state.png",
+    "offset-bell-cage/models/v02-MS-frozen-rank.png",
+    "offset-bell-cage/models/v02-MS-frozen-reason.png",
+    "offset-bell-cage/models/v02-MS-frozen-state.png",
+    "offset-bell-cage/models/v02-MS-ft-rank.png",
+    "offset-bell-cage/models/v02-MS-ft-reason.png",
+    "offset-bell-cage/models/v02-MS-ft-state.png",
+    "offset-bell-cage/models/v03-B-L1-transfer-rank.png",
+    "offset-bell-cage/models/v03-B-L1-transfer-reason.png",
+    "offset-bell-cage/models/v03-B-L1-transfer-state.png",
+    "offset-bell-cage/models/v03-MS-L1-rank.png",
+    "offset-bell-cage/models/v03-MS-L1-reason.png",
+    "offset-bell-cage/models/v03-MS-L1-state.png",
+    "offset-bell-cage/models/v03-MS-frozen-rank.png",
+    "offset-bell-cage/models/v03-MS-frozen-reason.png",
+    "offset-bell-cage/models/v03-MS-frozen-state.png",
+    "offset-bell-cage/models/v03-MS-ft-rank.png",
+    "offset-bell-cage/models/v03-MS-ft-reason.png",
+    "offset-bell-cage/models/v03-MS-ft-state.png",
+    "offset-bell-cage/models/v04-B-L1-transfer-rank.png",
+    "offset-bell-cage/models/v04-B-L1-transfer-reason.png",
+    "offset-bell-cage/models/v04-B-L1-transfer-state.png",
+    "offset-bell-cage/models/v04-MS-L1-rank.png",
+    "offset-bell-cage/models/v04-MS-L1-reason.png",
+    "offset-bell-cage/models/v04-MS-L1-state.png",
+    "offset-bell-cage/models/v04-MS-frozen-rank.png",
+    "offset-bell-cage/models/v04-MS-frozen-reason.png",
+    "offset-bell-cage/models/v04-MS-frozen-state.png",
+    "offset-bell-cage/models/v04-MS-ft-rank.png",
+    "offset-bell-cage/models/v04-MS-ft-reason.png",
+    "offset-bell-cage/models/v04-MS-ft-state.png",
+    "offset-bell-cage/models/v05-B-L1-transfer-rank.png",
+    "offset-bell-cage/models/v05-B-L1-transfer-reason.png",
+    "offset-bell-cage/models/v05-B-L1-transfer-state.png",
+    "offset-bell-cage/models/v05-MS-L1-rank.png",
+    "offset-bell-cage/models/v05-MS-L1-reason.png",
+    "offset-bell-cage/models/v05-MS-L1-state.png",
+    "offset-bell-cage/models/v05-MS-frozen-rank.png",
+    "offset-bell-cage/models/v05-MS-frozen-reason.png",
+    "offset-bell-cage/models/v05-MS-frozen-state.png",
+    "offset-bell-cage/models/v05-MS-ft-rank.png",
+    "offset-bell-cage/models/v05-MS-ft-reason.png",
+    "offset-bell-cage/models/v05-MS-ft-state.png",
+    "offset-bell-cage/models/v06-B-L1-transfer-rank.png",
+    "offset-bell-cage/models/v06-B-L1-transfer-reason.png",
+    "offset-bell-cage/models/v06-B-L1-transfer-state.png",
+    "offset-bell-cage/models/v06-MS-L1-rank.png",
+    "offset-bell-cage/models/v06-MS-L1-reason.png",
+    "offset-bell-cage/models/v06-MS-L1-state.png",
+    "offset-bell-cage/models/v06-MS-frozen-rank.png",
+    "offset-bell-cage/models/v06-MS-frozen-reason.png",
+    "offset-bell-cage/models/v06-MS-frozen-state.png",
+    "offset-bell-cage/models/v06-MS-ft-rank.png",
+    "offset-bell-cage/models/v06-MS-ft-reason.png",
+    "offset-bell-cage/models/v06-MS-ft-state.png",
+    "offset-bell-cage/sources/s00.png",
+    "offset-bell-cage/sources/s01.png",
+    "offset-bell-cage/sources/s02.png",
+    "offset-bell-cage/sources/s03.png",
+    "offset-bell-cage/targets/v01.png",
+    "offset-bell-cage/targets/v02.png",
+    "offset-bell-cage/targets/v03.png",
+    "offset-bell-cage/targets/v04.png",
+    "offset-bell-cage/targets/v05.png",
+    "offset-bell-cage/targets/v06.png"
+  ],
+  "protocol": "1.3",
+  "rendered_source_views_decoded": {
+    "b05-perforated-gallery": 128,
+    "offset-bell-cage": 4
+  },
+  "schema": "el-foundation-browser-readback-1",
+  "screenshots": {
+    "assessment": {
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "doc": 1265,
+      "height": 850,
+      "layer": "assessment",
+      "map": "state",
+      "path": "verification/assessment.png",
+      "scroll_y": 298,
+      "view": "v01",
+      "width": 1280
+    },
+    "evaluation": {
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-128",
+      "doc": 1265,
+      "height": 850,
+      "layer": "independent evaluation",
+      "path": "verification/evaluation.png",
+      "scroll_y": 2429,
+      "view": "h00",
+      "width": 1280
+    },
+    "mobile": {
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-4",
+      "doc": 375,
+      "height": 812,
+      "layer": "assessment",
+      "map": "state",
+      "path": "verification/mobile.png",
+      "scroll_y": 0,
+      "view": "h00",
+      "width": 375
+    },
+    "picture": {
+      "case": "offset-bell-cage",
+      "doc": 1265,
+      "height": 850,
+      "layer": "picture",
+      "path": "verification/picture.png",
+      "scroll_y": 0,
+      "view": "v01",
+      "width": 1280
+    },
+    "sources": {
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-16",
+      "doc": 1265,
+      "height": 850,
+      "layer": "sources",
+      "path": "verification/sources.png",
+      "scroll_y": 1225,
+      "source": "r008",
+      "view": "h00",
+      "width": 1280
+    }
+  },
+  "script_errors": [],
+  "target_navigation": "Previous and next camera buttons matched native view order",
+  "verified_conditions": [
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "query_count": 4,
+      "view": "v01"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-ft",
+      "query_count": 4,
+      "view": "v01"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-frozen",
+      "query_count": 4,
+      "view": "v01"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "B-L1-transfer",
+      "query_count": 1,
+      "view": "v01"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "query_count": 4,
+      "view": "v02"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-ft",
+      "query_count": 4,
+      "view": "v02"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-frozen",
+      "query_count": 4,
+      "view": "v02"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "B-L1-transfer",
+      "query_count": 1,
+      "view": "v02"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "query_count": 4,
+      "view": "v03"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-ft",
+      "query_count": 4,
+      "view": "v03"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-frozen",
+      "query_count": 4,
+      "view": "v03"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "B-L1-transfer",
+      "query_count": 1,
+      "view": "v03"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "query_count": 4,
+      "view": "v04"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-ft",
+      "query_count": 4,
+      "view": "v04"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-frozen",
+      "query_count": 4,
+      "view": "v04"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "B-L1-transfer",
+      "query_count": 1,
+      "view": "v04"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "query_count": 4,
+      "view": "v05"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-ft",
+      "query_count": 4,
+      "view": "v05"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-frozen",
+      "query_count": 4,
+      "view": "v05"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "B-L1-transfer",
+      "query_count": 1,
+      "view": "v05"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-L1",
+      "query_count": 4,
+      "view": "v06"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-ft",
+      "query_count": 4,
+      "view": "v06"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "MS-frozen",
+      "query_count": 4,
+      "view": "v06"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "offset-bell-cage",
+      "condition": "B-L1-transfer",
+      "query_count": 1,
+      "view": "v06"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-4",
+      "query_count": 4,
+      "view": "h00"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-8",
+      "query_count": 8,
+      "view": "h00"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-16",
+      "query_count": 16,
+      "view": "h00"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-32",
+      "query_count": 32,
+      "view": "h00"
+    },
+    {
+      "assessment_maps": [
+        "rank",
+        "state",
+        "reason"
+      ],
+      "case": "b05-perforated-gallery",
+      "condition": "coverage-128",
+      "query_count": 128,
+      "view": "h00"
+    }
+  ]
+}

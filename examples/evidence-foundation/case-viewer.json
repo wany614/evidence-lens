@@ -1,0 +1,855 @@
+{
+  "b_scientific_status": "completed_negative",
+  "embedded_case_json_sha256": "234c4b84b740079a78bd5199868ad487ba28089a1638735675aac3a8d8921038",
+  "files": [
+    {
+      "bytes": 325626,
+      "path": "index.html",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials. Embedded interface implementation under Apache-2.0.",
+      "sha256": "6fa4b8423af236e1ed947d2aec0773d023c322775e295d5086b5aedb09bb848b"
+    },
+    {
+      "bytes": 21440,
+      "path": "viewer-check.json",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials.",
+      "sha256": "7cbc06b89cf3a38853d7b63286398461852cbaeea81a44320b5c0134a9167146"
+    },
+    {
+      "bytes": 254604,
+      "path": "verification/picture.png",
+      "pixel_sha256": "84747ab0ee08de95ede54ed57fd1db264c2a4b596cf978511f3e17270d29122b",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials.",
+      "sha256": "a525cfb50093b41bf902808f75a9cba91f23e012e5e1e20dad845f0800fe5cf2",
+      "size": [
+        1280,
+        850
+      ]
+    },
+    {
+      "bytes": 233396,
+      "path": "verification/assessment.png",
+      "pixel_sha256": "1cc569b0ff884625f2bcd4f2d2a0a557e369f61b2a1dc757b5d81a4599e1ee8b",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials.",
+      "sha256": "bc051c550f33f9e0cac81288120a2f13b224d69a99f10f530218349b717238bb",
+      "size": [
+        1280,
+        850
+      ]
+    },
+    {
+      "bytes": 280204,
+      "path": "verification/sources.png",
+      "pixel_sha256": "44e3b6a2d12463f22a9664d473d93f9720820c2fafa10276e53204fd77d55ad0",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials.",
+      "sha256": "fec814ac324440236049363fc9beb4c57a807fb4757a4214b0c5b6560d7450d8",
+      "size": [
+        1280,
+        850
+      ]
+    },
+    {
+      "bytes": 429100,
+      "path": "verification/evaluation.png",
+      "pixel_sha256": "5040102daef356d8b52d1e0bfd62c2e7d2ee36f6cc662536eb1ddf37ce197811",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials.",
+      "sha256": "0370a67070d1822779f929cd310ec0d64820da38739c4af5d1a990c3d87b2187",
+      "size": [
+        1280,
+        850
+      ]
+    },
+    {
+      "bytes": 156465,
+      "path": "verification/mobile.png",
+      "pixel_sha256": "4cc382e7ec124c7c291a0edbc0a58677575e4f92453643f575f4952389475aa3",
+      "rights": "CC-BY-4.0, wany614, Evidence Lens. Authored measurements and generated exhibit materials.",
+      "sha256": "67b1720181bff4c4913d61a72f0b8f38319b07ec05c7273e8977f71c86e6b310",
+      "size": [
+        375,
+        812
+      ]
+    }
+  ],
+  "independent_evaluation": "Distinct opt-in action loads independent reference and measured per-pixel RGB-error image. Changing condition or view closes it.",
+  "inline_css_sha256": "9028dba0165172f4d17d47d43aae4fe2d3042469f6c925d1bda6e9e0ca90afae",
+  "inputs": {
+    "browser_driver_sha256": "ed7e9685de0699a0c28fd04b7beb5609c5acf9300ab7e5d1f66c0731e34d2972",
+    "case_index_sha256": "665036cdec62e02d6d8a30e27d4901c73263ed5a65543da538e228bdbe161f8e",
+    "generator_sha256": "28e3b5138fbdc259a5f4b9d79f1794637084217d761d387c4db5666a8cab1c3c",
+    "positive_archived_native_inventory": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/source-photos.json",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "aee890fb16860f5cc1f4292539ceb9213f69ec02667f810431bcd67635b2b862"
+    },
+    "positive_local_png_inventory": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/case-files.json",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "c1103161c33f4281bc812017dc0082fc86cb0c516fb091750d73a6ca5a78312e"
+    },
+    "template_sha256": "773d4603602444a9aa1fd65d506463722585d68e5b7ce5d1feba6e9297184084"
+  },
+  "local_case_image_count": 240,
+  "operating_scope": "Offline synthetic camera scenes. Rank availability, geometry comparability and measured RGB error each use their own criterion.",
+  "parents": {
+    "A": {
+      "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+      "member": "payload/BASELINE_MANIFEST.json",
+      "run_id": "20261124T111058386191Z-d99a4c418276454c",
+      "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
+    },
+    "B": {
+      "manifest_sha256": "cc19f51d4463500b198cb64d43a8fd84ff5b72fef08f0d0635f410cc3362e736",
+      "member": "payload/B_MANIFEST.json",
+      "run_id": "20261124T122658772178Z-8af722eec6fa438e",
+      "sha256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0"
+    },
+    "case_data": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/case-index.json",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "665036cdec62e02d6d8a30e27d4901c73263ed5a65543da538e228bdbe161f8e"
+    },
+    "case_files": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/case-files.json",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "c1103161c33f4281bc812017dc0082fc86cb0c516fb091750d73a6ca5a78312e"
+    },
+    "case_readback": {
+      "manifest_sha256": "1821fa6d30234a3aa94865ca0d9337a1c42e8c5c7525d237650d0a3a72b6cf8e",
+      "member": "payload/readback.json",
+      "run_id": "20261124T123844169590Z-9e19431a2a234675",
+      "sha256": "c08e428b59d6fab0ba425803dbb82873d0d26a33fe7184d2ecff781f53676fea"
+    },
+    "registration": {
+      "manifest_sha256": "222ab76f8a0dd1e9fbb10af0b3f4086da3a85c71c29086626a5d295dd64f8488",
+      "member": "payload/registration.json",
+      "run_id": "20261124T122803958580Z-dc0db5aa4ffe455f",
+      "sha256": "c45b0603d0eb24d104d4496ee010d2b60c0d9bf0daaa3c393916d75d12a64c94"
+    },
+    "source_photos": {
+      "manifest_sha256": "fe2b3dd292384e45b9f7d38af128f3eb1b3cbc15d0c475dceae36bb4920ed011",
+      "member": "payload/source-photos.json",
+      "run_id": "20261124T123629027571Z-35e7d606002541df",
+      "sha256": "aee890fb16860f5cc1f4292539ceb9213f69ec02667f810431bcd67635b2b862"
+    }
+  },
+  "rights": {
+    "generated_exhibit": "CC-BY-4.0, wany614, Evidence Lens. The generated exhibit, text, numbers, readbacks and screenshots.",
+    "images": {
+      "creator": "wany614, Evidence Lens",
+      "license": "CC-BY-4.0",
+      "material": "Authored synthetic camera renders generated from original 3D scenes; independent target measurements are also synthetic.",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "implementation": "Apache-2.0 for generator, source template, CSS and browser scripts, including embedded implementation.",
+    "screenshots": "CC-BY-4.0. Original offline browser captures of authored synthetic case material."
+  },
+  "run_id": "20261124T124407786388Z-6f6d4b8266a442c9",
+  "schema": "el-foundation-offline-viewer-1",
+  "source_photo_archive": {
+    "bytes": 113570300,
+    "contents": "Source and independent reference PNGs, native prediction and rank arrays, and original independent bell FP32 measurements. Each role is recorded for each member.",
+    "file": "evidence-lens-foundation-source-photos-v1.zip",
+    "index_member": "contents.json",
+    "index_sha256": "6101d846b16fbd99cb1b02231dedd59eec4da889729674bb88ac63e5a3949d1e",
+    "member_count": 313,
+    "sha256": "b7f39ca7ee8516903890da1dcb4e86997b363ee7b55ed09ad40019d91f0ac8d1",
+    "url": "https://github.com/wany614/evidence-lens/releases/download/humanities-foundation-v1/evidence-lens-foundation-source-photos-v1.zip"
+  },
+  "summaries": [
+    {
+      "case": "offset-bell-cage",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-L1",
+          "finite": 112812,
+          "method": "MS-L1",
+          "requested_k": 4,
+          "unknown": 84
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-ft",
+          "finite": 112812,
+          "method": "MS-ft",
+          "requested_k": 4,
+          "unknown": 84
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-frozen",
+          "finite": 112812,
+          "method": "MS-frozen",
+          "requested_k": 4,
+          "unknown": 84
+        },
+        {
+          "actual_query_ids": [
+            "s00"
+          ],
+          "canvas": 112896,
+          "condition": "B-L1-transfer",
+          "finite": 112896,
+          "method": "B-L1-transfer",
+          "requested_k": 1,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 17034,
+        "labelled": 112896,
+        "mean_rgb_mae": 0.028449313776329737,
+        "reference": 112896,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "3839effa14c237fd62f5cc2f1caaeea90fe6ab1b9863005462fa0c60eaaf13c9",
+      "target_rgb_sha256": "db29e93cb0c436147f61f5c25f92abbc0688e79bbb6e449c6569f7d9a5ad7f5b",
+      "view": "v01"
+    },
+    {
+      "case": "offset-bell-cage",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-L1",
+          "finite": 112889,
+          "method": "MS-L1",
+          "requested_k": 4,
+          "unknown": 7
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-ft",
+          "finite": 112889,
+          "method": "MS-ft",
+          "requested_k": 4,
+          "unknown": 7
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-frozen",
+          "finite": 112889,
+          "method": "MS-frozen",
+          "requested_k": 4,
+          "unknown": 7
+        },
+        {
+          "actual_query_ids": [
+            "s00"
+          ],
+          "canvas": 112896,
+          "condition": "B-L1-transfer",
+          "finite": 112896,
+          "method": "B-L1-transfer",
+          "requested_k": 1,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 18815,
+        "labelled": 112896,
+        "mean_rgb_mae": 0.03009529802077621,
+        "reference": 112896,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "5fff9f7bad60f0b026a80d35cf92c60280b6d91c08e524879cb956d806644452",
+      "target_rgb_sha256": "bee1101bc2614254321032f1ccc47345f8de32daac0427726b00cb77872bd19a",
+      "view": "v02"
+    },
+    {
+      "case": "offset-bell-cage",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-L1",
+          "finite": 110802,
+          "method": "MS-L1",
+          "requested_k": 4,
+          "unknown": 2094
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-ft",
+          "finite": 110802,
+          "method": "MS-ft",
+          "requested_k": 4,
+          "unknown": 2094
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-frozen",
+          "finite": 110802,
+          "method": "MS-frozen",
+          "requested_k": 4,
+          "unknown": 2094
+        },
+        {
+          "actual_query_ids": [
+            "s00"
+          ],
+          "canvas": 112896,
+          "condition": "B-L1-transfer",
+          "finite": 112896,
+          "method": "B-L1-transfer",
+          "requested_k": 1,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 15050,
+        "labelled": 112896,
+        "mean_rgb_mae": 0.02480036207370582,
+        "reference": 112896,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "3a731caffb99d23d9e5b1b18dde29da669c6f58fb3866cb02b92128ec11809d2",
+      "target_rgb_sha256": "bb860e6d3158765890849081af117095e3e5271245a93bd16832caf5392b5caf",
+      "view": "v03"
+    },
+    {
+      "case": "offset-bell-cage",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-L1",
+          "finite": 111118,
+          "method": "MS-L1",
+          "requested_k": 4,
+          "unknown": 1778
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-ft",
+          "finite": 111118,
+          "method": "MS-ft",
+          "requested_k": 4,
+          "unknown": 1778
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-frozen",
+          "finite": 111118,
+          "method": "MS-frozen",
+          "requested_k": 4,
+          "unknown": 1778
+        },
+        {
+          "actual_query_ids": [
+            "s00"
+          ],
+          "canvas": 112896,
+          "condition": "B-L1-transfer",
+          "finite": 112896,
+          "method": "B-L1-transfer",
+          "requested_k": 1,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 15299,
+        "labelled": 112896,
+        "mean_rgb_mae": 0.026284509069704448,
+        "reference": 112896,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "af7a1eb663ef9bb0c8ff8e918a33052dd6f5c9141950bb7ecad6114c14fbb945",
+      "target_rgb_sha256": "a6a8dc40b37e52e5a789f7201f0dd7850de34d80128c3dc0c579aa35cc9e653e",
+      "view": "v04"
+    },
+    {
+      "case": "offset-bell-cage",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-L1",
+          "finite": 105926,
+          "method": "MS-L1",
+          "requested_k": 4,
+          "unknown": 6970
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-ft",
+          "finite": 105926,
+          "method": "MS-ft",
+          "requested_k": 4,
+          "unknown": 6970
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-frozen",
+          "finite": 105926,
+          "method": "MS-frozen",
+          "requested_k": 4,
+          "unknown": 6970
+        },
+        {
+          "actual_query_ids": [
+            "s00"
+          ],
+          "canvas": 112896,
+          "condition": "B-L1-transfer",
+          "finite": 112896,
+          "method": "B-L1-transfer",
+          "requested_k": 1,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 22873,
+        "labelled": 112896,
+        "mean_rgb_mae": 0.036882227230914416,
+        "reference": 112896,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "03c275cfb7a1c7d3f60b785a0bbee5845b892861aa98e64efac3e58940178944",
+      "target_rgb_sha256": "a76a4ad04586197174960c0f492c0bc5fe3cf02c9fbf912d4a3e9895784688ef",
+      "view": "v05"
+    },
+    {
+      "case": "offset-bell-cage",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-L1",
+          "finite": 112896,
+          "method": "MS-L1",
+          "requested_k": 4,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-ft",
+          "finite": 112896,
+          "method": "MS-ft",
+          "requested_k": 4,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "s00",
+            "s01",
+            "s02",
+            "s03"
+          ],
+          "canvas": 112896,
+          "condition": "MS-frozen",
+          "finite": 112896,
+          "method": "MS-frozen",
+          "requested_k": 4,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "s00"
+          ],
+          "canvas": 112896,
+          "condition": "B-L1-transfer",
+          "finite": 112896,
+          "method": "B-L1-transfer",
+          "requested_k": 1,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 21482,
+        "labelled": 112896,
+        "mean_rgb_mae": 0.03500762658489595,
+        "reference": 112896,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "9052551ab0656e0564f22981238fcb061c3779844fbd0bcb38641926b788024d",
+      "target_rgb_sha256": "4927a4186fd0024170641e6a64f2a794e34892b0e8e316bc7061a73c7e2e2143",
+      "view": "v06"
+    },
+    {
+      "case": "b05-perforated-gallery",
+      "conditions": [
+        {
+          "actual_query_ids": [
+            "r008",
+            "r127",
+            "r001",
+            "r045"
+          ],
+          "canvas": 95256,
+          "condition": "coverage-4",
+          "finite": 95256,
+          "library_no_comparable": 220,
+          "method": "B-CPU-LR",
+          "new_comparable_since_previous": 0,
+          "new_comparable_since_q4": 0,
+          "pixels_unchanged_in_comparability_from_q4": 95256,
+          "query_has_comparable": 94810,
+          "requested_k": 4,
+          "selected_gap": 226,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "r008",
+            "r127",
+            "r001",
+            "r045",
+            "r084",
+            "r005",
+            "r010",
+            "r065"
+          ],
+          "canvas": 95256,
+          "condition": "coverage-8",
+          "finite": 95256,
+          "library_no_comparable": 220,
+          "method": "B-CPU-LR",
+          "new_comparable_since_previous": 70,
+          "new_comparable_since_q4": 70,
+          "pixels_unchanged_in_comparability_from_q4": 95186,
+          "query_has_comparable": 94880,
+          "requested_k": 8,
+          "selected_gap": 156,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "r008",
+            "r127",
+            "r001",
+            "r045",
+            "r084",
+            "r005",
+            "r010",
+            "r065",
+            "r028",
+            "r105",
+            "r003",
+            "r007",
+            "r009",
+            "r006",
+            "r004",
+            "r012"
+          ],
+          "canvas": 95256,
+          "condition": "coverage-16",
+          "finite": 95256,
+          "library_no_comparable": 220,
+          "method": "B-CPU-LR",
+          "new_comparable_since_previous": 14,
+          "new_comparable_since_q4": 84,
+          "pixels_unchanged_in_comparability_from_q4": 95172,
+          "query_has_comparable": 94894,
+          "requested_k": 16,
+          "selected_gap": 142,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "r008",
+            "r127",
+            "r001",
+            "r045",
+            "r084",
+            "r005",
+            "r010",
+            "r065",
+            "r028",
+            "r105",
+            "r003",
+            "r007",
+            "r009",
+            "r006",
+            "r004",
+            "r012",
+            "r002",
+            "r054",
+            "r011",
+            "r117",
+            "r036",
+            "r020",
+            "r095",
+            "r000",
+            "r074",
+            "r016",
+            "r013",
+            "r024",
+            "r032",
+            "r041",
+            "r049",
+            "r014"
+          ],
+          "canvas": 95256,
+          "condition": "coverage-32",
+          "finite": 95256,
+          "library_no_comparable": 220,
+          "method": "B-CPU-LR",
+          "new_comparable_since_previous": 130,
+          "new_comparable_since_q4": 214,
+          "pixels_unchanged_in_comparability_from_q4": 95042,
+          "query_has_comparable": 95024,
+          "requested_k": 32,
+          "selected_gap": 12,
+          "unknown": 0
+        },
+        {
+          "actual_query_ids": [
+            "r008",
+            "r127",
+            "r001",
+            "r045",
+            "r084",
+            "r005",
+            "r010",
+            "r065",
+            "r028",
+            "r105",
+            "r003",
+            "r007",
+            "r009",
+            "r006",
+            "r004",
+            "r012",
+            "r002",
+            "r054",
+            "r011",
+            "r117",
+            "r036",
+            "r020",
+            "r095",
+            "r000",
+            "r074",
+            "r016",
+            "r013",
+            "r024",
+            "r032",
+            "r041",
+            "r049",
+            "r014",
+            "r059",
+            "r122",
+            "r015",
+            "r018",
+            "r079",
+            "r090",
+            "r111",
+            "r026",
+            "r022",
+            "r070",
+            "r017",
+            "r030",
+            "r100",
+            "r019",
+            "r034",
+            "r021",
+            "r047",
+            "r023",
+            "r043",
+            "r038",
+            "r025",
+            "r051",
+            "r027",
+            "r029",
+            "r062",
+            "r031",
+            "r033",
+            "r035",
+            "r056",
+            "r087",
+            "r114",
+            "r040",
+            "r044",
+            "r037",
+            "r046",
+            "r039",
+            "r068",
+            "r042",
+            "r072",
+            "r050",
+            "r076",
+            "r048",
+            "r053",
+            "r108",
+            "r052",
+            "r120",
+            "r081",
+            "r124",
+            "r055",
+            "r093",
+            "r058",
+            "r097",
+            "r057",
+            "r060",
+            "r061",
+            "r063",
+            "r102",
+            "r067",
+            "r064",
+            "r066",
+            "r071",
+            "r073",
+            "r069",
+            "r075",
+            "r078",
+            "r077",
+            "r080",
+            "r082",
+            "r119",
+            "r083",
+            "r121",
+            "r126",
+            "r085",
+            "r123",
+            "r086",
+            "r088",
+            "r125",
+            "r092",
+            "r091",
+            "r116",
+            "r089",
+            "r096",
+            "r094",
+            "r118",
+            "r115",
+            "r113",
+            "r112",
+            "r098",
+            "r099",
+            "r101",
+            "r110",
+            "r103",
+            "r104",
+            "r107",
+            "r109",
+            "r106"
+          ],
+          "canvas": 95256,
+          "condition": "coverage-128",
+          "finite": 95256,
+          "library_no_comparable": 220,
+          "method": "B-CPU-LR",
+          "new_comparable_since_previous": 12,
+          "new_comparable_since_q4": 226,
+          "pixels_unchanged_in_comparability_from_q4": 95030,
+          "query_has_comparable": 95036,
+          "requested_k": "all",
+          "selected_gap": 0,
+          "unknown": 0
+        }
+      ],
+      "evaluation_counts": {
+        "errors": 4579,
+        "labelled": 95256,
+        "mean_rgb_mae": 0.013064109147102492,
+        "reference": 95256,
+        "unavailable": 0
+      },
+      "target_prediction_sha256": "c5eb81ece005d7ab313aa2151815deba16f5d71306867a120e9d9af34d57f2f0",
+      "target_rgb_sha256": "379ba36492d2929b2799758b316111f46fb21a4c41faa065af103558e1a67876",
+      "view": "h00"
+    }
+  ]
+}

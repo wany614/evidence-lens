@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Evidence Lens | The picture and its sources</title>
+    <style>
+:root {
+  --ink:#23313a;
+  --soft:#53616b;
+  --rule:#c8d1cf;
+  --page:#f6f7f3;
+  --paper:#fff;
+  --green:#1f5a50;
+  --light:#e2eeea;
+  --dark:#253238;
+  --gold:#9c6934;
+  --sans:"Instrument Sans","Avenir Next",system-ui,sans-serif;
+  --serif:"Baskervville","Iowan Old Style",Georgia,serif
+}
+* {
+  box-sizing:border-box
+}
+html {
+  scroll-padding-top:1rem
+}
+body {
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font:16px/1.48 var(--sans)
+}
+button,select,a {
+  font:inherit
+}
+button,select {
+  color:var(--ink)
+}
+button {
+  cursor:pointer
+}
+a {
+  color:var(--green);
+  text-underline-offset:.17em
+}
+button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible {
+  outline:3px solid #a85f26;
+  outline-offset:3px
+}
+[hidden] {
+  display:none!important
+}
+.shell {
+  max-width:1360px;
+  margin:auto;
+  padding:0 clamp(15px,4.25vw,65px)
+}
+.mast {
+  background:var(--dark);
+  color:#fff
+}
+.mast .shell {
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem
+}
+.mast strong {
+  font-size:1.05rem
+}
+.mast span {
+  font-size:.84rem;
+  color:#d3dfd9
+}
+.intro {
+  padding:clamp(20px,3.5vw,42px) 0 1.15rem
+}
+.intro h1 {
+  margin:0;
+  font:normal clamp(2.15rem,5vw,4.2rem)/1.0 var(--serif);
+  letter-spacing:-.044em
+}
+.intro p {
+  max-width:75ch;
+  color:var(--soft);
+  margin:.55rem 0 0;
+  font-size:1.02rem
+}
+.controlbar {
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:.7rem 0;
+  display:flex;
+  align-items:end;
+  flex-wrap:wrap;
+  gap:.65rem 1rem
+}
+.controlbar label,.selector-label {
+  display:block;
+  font-size:.81rem;
+  font-weight:650;
+  margin:0 0 .2rem
+}
+.controlbar select,.source-set select {
+  background:white;
+  border:1px solid #a5b3af;
+  border-radius:4px;
+  padding:.38rem .6rem;
+  min-height:38px
+}
+.view-controls {
+  display:flex;
+  align-items:center;
+  gap:4px
+}
+.step {
+  border:1px solid #9caea8;
+  border-radius:3px;
+  background:var(--paper);
+  padding:.27rem .56rem;
+  min-height:38px
+}
+.step:disabled {
+  opacity:.4;
+  cursor:default
+}
+.condition-choices,.tabs,.maps {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.2rem;
+  align-items:stretch
+}
+.condition-choices button,.tabs button,.maps button {
+  border:1px solid #c1ccc8;
+  background:transparent;
+  color:var(--ink);
+  border-radius:4px;
+  padding:.35rem .64rem;
+  min-height:35px
+}
+.condition-choices button[aria-pressed=true],.maps button[aria-pressed=true] {
+  background:var(--light);
+  border-color:var(--green);
+  color:#194a41;
+  font-weight:650
+}
+.tabs {
+  padding:.85rem 0;
+  gap:.38rem
+}
+.tabs button {
+  padding:.46rem .93rem;
+  font-weight:600
+}
+.tabs button[aria-selected=true] {
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff
+}
+.stage {
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(230px,.72fr);
+  gap:clamp(1.1rem,3.2vw,3rem);
+  align-items:start
+}
+.images {
+  min-width:0
+}
+.plate {
+  margin:0;
+  background:var(--dark);
+  border:1px solid #3f4e50
+}
+.plate img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  max-height:60vh
+}
+.plate figcaption {
+  display:flex;
+  justify-content:space-between;
+  gap:.65rem;
+  flex-wrap:wrap;
+  padding:.45rem .75rem;
+  color:#eff6f2;
+  font-size:.86rem
+}
+.plate figcaption span {
+  color:#c0d2ca
+}
+.plate.secondary {
+  margin-top:.75rem
+}
+.mapheader {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin:1rem 0 .35rem
+}
+.mapheader h3 {
+  margin:0
+}
+.maps {
+  gap:3px
+}
+.maps button {
+  min-height:32px;
+  font-size:.89rem;
+  padding:.25rem .55rem
+}
+.asidetext {
+  min-width:0
+}
+.asidetext h2,.section h2 {
+  font:normal clamp(1.6rem,2.6vw,2.3rem)/1.08 var(--serif);
+  letter-spacing:-.025em;
+  margin:0 0 .65rem
+}
+.asidetext p,.section p {
+  max-width:77ch;
+  margin:.55rem 0 .85rem
+}
+.asidetext h3,.section h3,.mapheader h3 {
+  font-size:1.03rem;
+  line-height:1.25
+}
+.asidetext h3,.section h3 {
+  margin:1.06rem 0 .35rem
+}
+.subtle {
+  font-size:.9rem;
+  color:var(--soft)
+}
+.meta-list {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:.22rem .72rem;
+  margin:.65rem 0;
+  font-size:.9rem
+}
+.meta-list dt {
+  color:var(--soft)
+}
+.meta-list dd {
+  margin:0;
+  overflow-wrap:anywhere;
+  font-weight:600
+}
+.legend {
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:baseline;
+  column-gap:.5rem;
+  row-gap:.25rem;
+  font-size:.9rem
+}
+.sw {
+  display:inline-block;
+  width:12px;
+  height:12px;
+  border-radius:2px;
+  border:1px solid #65756c;
+  transform:translateY(1px)
+}
+.legend strong {
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap
+}
+.legend .label,.words {
+  overflow-wrap:anywhere
+}
+.section {
+  padding:1.5rem 0;
+  border-top:1px solid var(--rule);
+  margin-top:1.5rem
+}
+.labelled {
+  font-weight:650
+}
+.notice {
+  display:block;
+  font-size:.93rem;
+  padding:.58rem .8rem;
+  background:var(--light);
+  border-left:3px solid var(--green);
+  margin:1rem 0
+}
+.file {
+  display:block;
+  max-width:100%;
+  font: .78rem/1.5 ui-monospace,monospace;
+  overflow-wrap:anywhere
+}
+.tablewrap {
+  max-width:100%;
+  overflow-x:auto;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  margin:.65rem 0
+}
+table {
+  border-collapse:collapse;
+  width:100%;
+  font-size:.89rem;
+  font-variant-numeric:tabular-nums
+}
+td,th {
+  padding:.48rem .68rem;
+  text-align:right;
+  vertical-align:top;
+  border-bottom:1px solid #dde3de
+}
+td:first-child,th:first-child {
+  text-align:left
+}
+.tablewrap thead {
+  background:#e8eeea
+}
+thead th {
+  font-size:.8rem
+}
+tbody th {
+  font-weight:550
+}
+tbody tr:last-child>* {
+  border-bottom:0
+}
+.selected-row {
+  background:#eef4f1
+}
+.source-navigator {
+  display:grid;
+  grid-template-columns:minmax(210px,.8fr) minmax(0,1.2fr);
+  gap:1rem 1.7rem;
+  align-items:start
+}
+.source-set {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.55rem;
+  margin:.5rem 0
+}
+.source-set select {
+  min-width:9ch
+}
+.source-photo {
+  width:min(100%,450px);
+  height:auto;
+  display:block;
+  background:#d9dfdb;
+  border:1px solid var(--rule);
+  image-rendering:auto
+}
+.source-info,.source-info p {
+  margin:.25rem 0 .65rem;
+  font-size:.88rem
+}
+.id-list {
+  line-height:1.8;
+  word-spacing:.2rem;
+  overflow-wrap:anywhere;
+  color:#344a44
+}
+.reco {
+  margin-bottom:1rem
+}
+details {
+  max-width:100%;
+  padding:.38rem 0
+}
+summary {
+  width:fit-content;
+  cursor:pointer;
+  color:var(--green);
+  font-weight:650
+}
+.tree {
+  padding:.4rem .6rem;
+  margin:.45rem 0;
+  max-height:22rem;
+  overflow:auto;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font: .79rem/1.45 ui-monospace,monospace
+}
+.eval-head {
+  display:flex;
+  align-items:flex-start;
+  gap:.8rem;
+  justify-content:space-between;
+  flex-wrap:wrap
+}
+.eval-head h2 {
+  margin:0
+}
+.action {
+  background:white;
+  border:1px solid var(--green);
+  border-radius:4px;
+  color:var(--green);
+  font-weight:650;
+  padding:.45rem .9rem
+}
+.action[aria-expanded=true] {
+  background:var(--light)
+}
+.eval-panes {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.9rem
+}
+.eval-panes figure {
+  margin:0
+}
+.eval-panes img {
+  width:100%;
+  height:auto;
+  display:block;
+  background:var(--dark)
+}
+.eval-panes figcaption {
+  font-size:.87rem;
+  font-weight:620;
+  margin-top:.35rem
+}
+.foot {
+  padding:1rem 0 2.35rem;
+  border-top:1px solid var(--rule);
+  font-size:.9rem;
+  color:var(--soft)
+}
+.foot a {
+  margin-right:1rem
+}
+.foot p {
+  margin:.6rem 0;
+  max-width:85ch
+}
+.skip {
+  position:absolute;
+  left:-10000px
+}
+.skip:focus {
+  position:static
+}
+.empty {
+  color:var(--soft)
+}
+@media(max-width:780px) {
+  .stage {
+    grid-template-columns:1fr
+  }
+  .plate img {
+    max-height:55vh
+  }
+  .tabs button {
+    padding:.42rem .64rem
+  }
+  .source-navigator {
+    grid-template-columns:1fr 1fr
+  }
+  .controlbar {
+    gap:.45rem .8rem
+  }
+  .intro {
+    padding-top:1.45rem
+  }
+  .section {
+    margin-top:1.1rem;
+    padding-top:1.05rem
+  }
+  .asidetext h2 {
+    font-size:1.55rem
+  }
+  .asidetext h3 {
+    margin-top:.7rem
+  }
+  .source-navigator>div {
+    min-width:0
+  }
+}
+@media(max-width:500px) {
+  .source-navigator,.eval-panes {
+    grid-template-columns:1fr
+  }
+  .plate img {
+    max-height:48vh
+  }
+  .controlbar select,.source-set select {
+    max-width:100%
+  }
+  .tabs {
+    gap:.25rem
+  }
+  .tabs button {
+    padding:.42rem .55rem;
+    font-size:.87rem
+  }
+  .mast .shell {
+    height:43px
+  }
+  .condition-choices button {
+    font-size:.85rem;
+    min-height:31px
+  }
+  .controlbar {
+    align-items:start
+  }
+  .top span {
+    font-size:.77rem
+  }
+}
+@media print {
+  .mast {
+    background:white;
+    color:var(--ink)
+  }
+  .mast span {
+    color:var(--soft)
+  }
+  .controlbar,.tabs,.maps,.action,.skip,.source-set,.foot a {
+    display:none
+  }
+  .stage {
+    display:block
+  }
+  .plate {
+    break-inside:avoid
+  }
+  .plate img {
+    max-height:40vh
+  }
+  .section {
+    break-inside:avoid
+  }
+}
+@media(min-width:781px) {
+  #jump-sources {
+    display:inline-block;
+    margin:0 0 .65rem
+  }
+  #reader:not([data-mode=picture]) .stage {
+    display:flex;
+    flex-direction:column;
+    gap:.95rem
+  }
+  #reader:not([data-mode=picture]) .images {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.1rem;
+    align-items:end;
+    width:100%
+  }
+  #reader:not([data-mode=picture]) .plate img {
+    max-height:43vh
+  }
+  #reader:not([data-mode=picture]) .plate.secondary {
+    margin:0
+  }
+  #reader:not([data-mode=picture]) .mapheader {
+    margin:0 0 .32rem
+  }
+  #reader:not([data-mode=picture]) .asidetext {
+    display:grid;
+    grid-template-columns:minmax(230px,.8fr) minmax(280px,1fr);
+    gap:.1rem 2rem;
+    width:100%
+  }
+  #reader:not([data-mode=picture]) .asidetext h2,#reader:not([data-mode=picture]) #reading-copy,#reader:not([data-mode=picture]) #facts {
+    grid-column:1
+  }
+  #reader:not([data-mode=picture]) #assessment-notes {
+    grid-column:2;
+    grid-row:1 / 4
+  }
+  #reader:not([data-mode=picture]) #assessment-notes h3 {
+    margin-top:0
+  }
+}
+</style>
+  </head>
+  <body>
+    <a class="skip" href="#reader">Skip to case viewer</a>
+    <header class="mast">
+      <div class="shell">
+        <strong>Evidence Lens</strong>
+        <span>Humanities research foundation</span>
+      </div>
+    </header>
+    <main class="shell">
+      <header class="intro">
+        <h1>The picture and its sources</h1>
+        <p>Both scenes are original synthetic renders. Compare a predicted view with its model assessment and the source views it queried.</p>
+      </header>
+      <div class="controlbar" aria-label="Case and view selection">
+        <div>
+          <label for="case">Case</label>
+          <select id="case">
+          </select>
+        </div>
+        <div>
+          <label for="view">Target view</label>
+          <div class="view-controls">
+            <button class="step" id="prev-view" aria-label="Previous target">‹</button>
+            <select id="view">
+            </select>
+            <button class="step" id="next-view" aria-label="Next target">›</button>
+          </div>
+        </div>
+        <div id="condition-panel">
+          <span class="selector-label" id="condition-label">Scoring method</span>
+          <div id="conditions" class="condition-choices" role="group" aria-labelledby="condition-label">
+          </div>
+        </div>
+      </div>
+      <section id="reader" aria-label="Case reader">
+        <div id="layers" role="tablist" aria-label="Reading layer" class="tabs">
+          <button type="button" role="tab" id="layer-picture" data-layer="picture" aria-controls="reading-pane">Picture</button>
+          <button type="button" role="tab" id="layer-assessment" data-layer="assessment" aria-controls="reading-pane">Model assessment</button>
+          <button type="button" role="tab" id="layer-sources" data-layer="sources" aria-controls="reading-pane">Sources and procedure</button>
+        </div>
+        <a id="jump-sources" hidden href="#source-pane">Inspect the queried source views</a>
+        <div id="reading-pane" role="tabpanel">
+          <div class="stage">
+            <div class="images">
+              <figure class="plate">
+                <img id="prediction" alt="">
+                <figcaption>
+                  <b>Reconstruction</b>
+                  <span id="picture-caption">
+                  </span>
+                </figcaption>
+              </figure>
+              <div id="overlay-pane" hidden>
+                <div class="mapheader">
+                  <h3 id="map-heading">Model map</h3>
+                  <div id="maps" class="maps" role="group" aria-label="Assessment map">
+                    <button type="button" data-map="rank">Risk rank</button>
+                    <button type="button" data-map="state">State</button>
+                    <button type="button" data-map="reason">Rank reason</button>
+                  </div>
+                </div>
+                <figure class="plate secondary">
+                  <img id="map" alt="">
+                  <figcaption>
+                    <b id="map-caption">
+                    </b>
+                    <span>Analysis-grid pixels</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <aside class="asidetext">
+              <h2 id="case-title">
+              </h2>
+              <p id="reading-copy">
+              </p>
+              <dl id="facts" class="meta-list">
+              </dl>
+              <div id="assessment-notes" hidden>
+                <h3 id="legend-heading">Map key</h3>
+                <div id="legend" class="legend">
+                </div>
+                <p id="threshold" class="subtle">
+                </p>
+                <details>
+                  <summary>Current map counts and definitions</summary>
+                  <pre id="count-details" class="tree">
+                  </pre>
+                </details>
+              </div>
+            </aside>
+          </div>
+          <section id="source-pane" class="section" hidden>
+            <h2>Which sources were queried?</h2>
+            <p id="source-summary">
+            </p>
+            <p class="subtle" id="source-process">
+            </p>
+            <div class="source-navigator">
+              <div>
+                <label for="source-choice" class="selector-label">Rendered source view in query order</label>
+                <div class="source-set">
+                  <button id="prev-source" class="step" aria-label="Previous queried source">‹</button>
+                  <select id="source-choice">
+                  </select>
+                  <button id="next-source" class="step" aria-label="Next queried source">›</button>
+                </div>
+                <img id="source-image" class="source-photo" alt="">
+                <p class="subtle">Preview of the synthetic camera image used for analysis.</p>
+              </div>
+              <div class="source-info" id="source-info">
+              </div>
+            </div>
+            <details id="query-roster">
+              <summary>Show the complete ordered query</summary>
+              <p id="source-list" class="id-list">
+              </p>
+            </details>
+            <div id="budget-section" hidden>
+              <h3>What changed as the query grew?</h3>
+              <p id="budget-evidence">
+              </p>
+              <p class="subtle">A comparable pixel has at least one source passing the registered model geometry test. The full-library column uses a separate audit of all 128 sources. Physical visibility is a different measurement.</p>
+              <div id="budget-table" class="tablewrap">
+              </div>
+              <details id="witness-details">
+                <summary>Sources outside this query that supplied a comparable pixel</summary>
+                <p class="id-list" id="witnesses">
+                </p>
+              </details>
+            </div>
+            <details id="lineage">
+              <summary>Version, native records and permissions</summary>
+              <dl class="meta-list" id="identities">
+              </dl>
+              <pre id="lineage-data" class="tree">
+              </pre>
+            </details>
+          </section>
+        </div>
+      </section>
+      <section class="section" id="evaluation">
+        <div class="eval-head">
+          <h2>Independent evaluation</h2>
+          <button type="button" id="open-evaluation" class="action" aria-expanded="false" aria-controls="evaluation-body">Open independent evaluation</button>
+        </div>
+        <p id="evaluation-status" class="subtle">Open this target’s independently rendered reference to inspect measured RGB errors.</p>
+        <div id="evaluation-body" hidden>
+          <div class="eval-panes">
+            <figure>
+              <img id="reference" alt="Independent authored reference at this camera">
+              <figcaption>Independent reference observation</figcaption>
+            </figure>
+            <figure>
+              <img id="error" alt="Measured pixel-level RGB error on the registered grid">
+              <figcaption>Measured RGB error</figcaption>
+            </figure>
+          </div>
+          <p id="evaluation-counts">
+          </p>
+          <div id="error-key" class="legend">
+          </div>
+          <details>
+            <summary>Evaluation provenance and denominator</summary>
+            <pre id="evaluation-record" class="tree">
+            </pre>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="foot">
+      <div class="shell">
+        <p>Authored scene material and observations by wany614. The model assessment uses the registered source inputs and reconstruction. Independent RGB comparison uses its own reference, colour space and validity mask.</p>
+        <a href="case-index.json">Case data, image hashes and rights</a>
+        <a href="case-viewer.json">Interface and verification record</a>
+        <a href="https://github.com/wany614/evidence-lens/tree/humanities-foundation-v1/docs/humanities-foundation">Foundation documents</a>
+      </div>
+    </footer>
+    <script type="application/json" id="case-data">__CASE_DATA__</script>
+    <script>
+'use strict';
+const D = JSON.parse(document.getElementById('case-data').textContent), cases = D.cases;
+const $ = id => document.getElementById(id), put = (id, val) => {
+  $(id).textContent = val
+}, fmt = x => x == null ? 'N/A':new Intl.NumberFormat('en-GB').format(x), show = (id, on) => {
+  $(id).hidden = !on
+}, text = x => typeof x === 'string' ? x:JSON.stringify(x, null, 2), safe = x => String(x).replace(/[&<>"']/g, c => ( {
+  '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+}
+[c]));
+let ci = 0, vi = 0, qi = 0, layer = 'picture', whichMap = 'rank', sourceIndex = 0, evaluationOpen = false;
+const C = () => cases[ci], V = () => C().views[vi], Q = () => V().conditions[qi], many = () => C().id === 'b05-perforated-gallery';
+const labels = {
+  rank:'Risk rank', state:'Assessment state', reason:'Specific rank reason'
+};
+function options(el, items, sel) {
+  el.replaceChildren(...items.map(([val, name]) => {
+    const o = document.createElement('option'); o.value = val; o.textContent = name; return o
+  }));
+  el.value = sel
+}
+function dl(items) {
+  return items.filter(x => x[1] !== undefined && x[1] !== null).map(([a, b]) => '<dt>' + safe(a) + '</dt><dd>' + safe(b) + '</dd>').join('')
+}
+function img(id, ref, alt) {
+  const e = $(id);
+  if(e.getAttribute('src') !== ref.path)e.setAttribute('src', ref.path);
+  e.alt = alt
+}
+function clearImage(id) {
+  $(id).removeAttribute('src')
+}
+function closeEvaluation() {
+  evaluationOpen = false;
+  show('evaluation-body', false);
+  $('open-evaluation').setAttribute('aria-expanded', 'false');
+  put('open-evaluation', 'Open independent evaluation');
+  for(const id of ['reference', 'error'])clearImage(id);
+  put('evaluation-status', 'Open this target’s independently rendered reference to inspect measured RGB errors.')
+}
+function reset() {
+  qi = 0;
+  sourceIndex = 0;
+  whichMap = 'rank';
+  layer = 'picture';
+  closeEvaluation();
+  $('query-roster').open = false;
+  $('lineage').open = false
+}
+function conditionName(q) {
+  return many() ? (q.requested_k === 'all' ? 'All ' + q.k:'Q' + q.k):q.method
+}
+function legendMarkup(entries, counts) {
+  if(!entries?.length)return '<span class="empty">See native counts.</span>';
+  return entries.map(e => {
+    const label = e.label; const display = label.replaceAll('_', ' '); const group = counts || {
+    }; const n = group[label] ?? group[String(e.code)] ?? null; return '<span aria-hidden="true" class="sw" style="background:' + safe(e.color) + '"></span><span class="label" data-code="' + safe(label) + '">' + safe(display) + '</span><strong>' + (n == null ? '':fmt(n)) + '</strong>'
+  }).join('')
+}
+function selectButtons(root, selector, attribute, value) {
+  root.querySelectorAll(selector).forEach(b => b.setAttribute(attribute, String(b.dataset.map === value || b.dataset.condition === value)))
+}
+function updateMap() {
+  const q = Q();
+  const x = V();
+  img('map', q[whichMap], q.method + ' ' + labels[whichMap] + ' for ' + x.id);
+  put('map-caption', q.method + ' · ' + labels[whichMap]);
+  put('legend-heading', labels[whichMap] + ' key');
+  const count = whichMap === 'state' ? q.counts.state_counts:whichMap === 'reason' ? q.counts.reason_counts:null;
+  $('legend').innerHTML = legendMarkup(q.legends[whichMap], count);
+  selectButtons($('maps'), '[data-map]', 'aria-pressed', whichMap);
+  put('count-details', text(q.counts));
+  const has = q.threshold != null;
+  put('threshold', has ? 'The stored operating threshold is ' + text(q.threshold) + '. Low and high use the frozen cutoff transferred from the original grid. Calibration on this 448 × 252 grid is unverified.':'The model supplies a relative error ranking with no calibrated operating cutoff. The audit state describes comparable source evidence. A pixel can have a finite rank even when no source passes the comparability test.');
+}
+function sourceDetails() {
+  const c = C(), q = Q(), sourceId = q.query_ids[sourceIndex], s = c.sources.find(s => s.id === sourceId);
+  options($('source-choice'), q.query_ids.map((id, i) => [String(i), (i + 1) + ' / ' + q.k + ' · ' + id]), String(sourceIndex));
+  $('prev-source').disabled = sourceIndex === 0;
+  $('next-source').disabled = sourceIndex === q.query_ids.length-1;
+  img('source-image', s.image, 'Rendered source view ' + s.id);
+  let h = '<h3>' + safe(s.id) + '</h3><p>Query position ' + (sourceIndex + 1) + ' of ' + q.k + '.</p><p>Preview SHA-256 <code class="file">' + safe(s.image.sha256) + '</code></p>';
+  for(const [role, key] of [['Analysis image', 'analysis'], ['Original observation', 'original']]) {
+    const r = s[key];
+    if(r)h += '<p>' + role + ' · ' + safe(Array.isArray(r.size) ? r.size.join(' × '):'registered image') + '<br><span class="file">' + safe(r.member ?? r.path ?? '') + '</span><code class="file">' + safe(r.sha256) + '</code></p>'
+  }
+  if(s.original_fit_source_sha256)h += '<p>Original reconstruction fit image SHA-256 <code class="file">' + safe(s.original_fit_source_sha256) + '</code></p>';
+  const a = D.source_photo_archive ?? c.source_photo_archive;
+  if(a?.sha256)h += '<p>Full-resolution source archive <span class="file">' + safe(a.file ?? a.name ?? 'evidence-lens-foundation-source-photos-v1.zip') + '</span><code class="file">' + safe(a.sha256) + '</code></p>';
+  if(a?.url)h += '<p><a href="' + safe(a.url) + '">Full-resolution source archive</a></p>';
+  $('source-info').innerHTML = h;
+}
+function provenance() {
+  const c = C(), v = V(), q = Q();
+  put('source-summary', q.method + ' queried ' + q.k + ' of ' + q.available_count + ' accessible rendered source views in this ' + q.reconstruction_count + '-source reconstruction. ' + (q.full_bank_audited ? 'This condition includes a separate full-library comparability audit.':'This condition records the scope of the queried source views.'));
+  put('source-process', many() ? 'The authored camera renders were reduced from 756 × 504 to 378 × 252 for scoring. The local preview is a smaller copy.':'For scoring, independent synthetic camera renders were reduced from 896 × 504 to 448 × 252. Each record identifies the original fit image separately.');
+  sourceDetails();
+  put('source-list', q.query_ids.join('  '));
+  show('budget-section', many());
+  if(many()) {
+    const n = q.counts.new_comparable_since_previous ?? q.new_comparable_since_previous;
+    const q4 = q.counts.new_comparable_since_q4 ?? q.new_comparable_since_q4;
+    put('budget-evidence', qi === 0 ? 'Q4 is the registered starting query. Every budget uses the same native target prediction.':(n === 0 ? 'This increase added no comparable pixels.':fmt(n) + ' additional pixels gained a comparable source since the previous query.') + ' The gain from Q4 is ' + fmt(q4) + ' pixels. ' + fmt(q.counts.canvas-q4) + ' pixels kept the same comparable-evidence status as Q4. Every budget uses the same native target prediction.');
+    const body = v.conditions.map(p => {
+      const a = p.counts; return '<tr class="' + (p.id === q.id ? 'selected-row':'') + '"><th scope="row">' + safe(conditionName(p)) + '</th>' + [p.k, a.query_has_comparable, a.selected_gap, a.library_no_comparable, a.new_comparable_since_previous ?? p.new_comparable_since_previous, a.new_comparable_since_q4 ?? p.new_comparable_since_q4].map(x => '<td>' + safe(fmt(x)) + '</td>').join('') + '</tr>'
+    }).join('');
+    const witnesses = Object.entries(q.gap_witness_source_counts ?? {
+    });
+    put('witnesses', witnesses.length ? witnesses.map(([id, n]) => id + ' · ' + fmt(n) + ' pixels').join(' / '):'No outside-query witnesses were recorded for this condition.');
+    $('budget-table').innerHTML = '<table><thead><tr><th>Query</th><th>Views queried</th><th>Pixels with comparable evidence</th><th>Missed by query</th><th>None in full bank</th><th>Gain from previous</th><th>Gain from Q4</th></tr></thead><tbody>' + body + '</tbody></table>'
+  }
+  $('identities').innerHTML = dl([['Native target prediction SHA-256', v.target_prediction_sha256], ['Target RGB array SHA-256', v.target_rgb_sha256], ['Displayed prediction PNG SHA-256', v.target.sha256], ['Scene', c.id], ['View', v.id], ['Scoring method', q.method]]);
+  put('lineage-data', text( {
+    case_rights:c.rights, source_processing:c.source_processing, renderer:c.renderer, checkpoint_sha256:c.checkpoint_sha256, case_provenance:c.provenance, view_provenance:v.provenance, condition_provenance:q.provenance, model:q.model, threshold_status:q.threshold_status, condition:q.id, source_photo_archive:D.source_photo_archive ?? c.source_photo_archive
+  }));
+}
+function reading() {
+  const c = C(), v = V(), q = Q();
+  $('reader').dataset.mode = layer;
+  const labelsBy = {
+    picture:'Picture', assessment:'Model assessment', sources:'Sources and procedure'
+  };
+  for(const b of document.querySelectorAll('[data-layer]')) {
+    const on = b.dataset.layer === layer;
+    b.setAttribute('aria-selected', String(on));
+    b.tabIndex = on ? 0:-1
+  }
+  $('reading-pane').setAttribute('aria-labelledby', 'layer-' + layer);
+  show('overlay-pane', layer !== 'picture');
+  show('assessment-notes', layer !== 'picture');
+  show('source-pane', layer === 'sources');
+  show('jump-sources', layer === 'sources');
+  img('prediction', v.target, 'Predicted view ' + v.id + ' of ' + c.title);
+  put('picture-caption', c.title + ' · ' + v.id);
+  put('case-title', c.title);
+  if(layer === 'picture') {
+    put('reading-copy', many() ? 'This is the image produced by the registered 128-source reconstruction at the designated target camera. Switching the query budget changes which rendered source views are inspected.':'This four-view reconstruction shows an original synthetic bell cage. Move between six target cameras. The sources layer identifies the rendered observations each assessment actually queried.');
+    $('facts').innerHTML = dl([['Reading layer', labelsBy[layer]], ['Target camera', v.id], ['Displayed image', Array.isArray(v.target.size) ? v.target.size.join(' × '):null]]);
+    clearImage('map');
+    clearImage('source-image')
+  }else {
+    put('reading-copy', layer === 'assessment' ? 'The map accompanying the prediction describes the selected model’s assessment. Choose the risk rank, the state or its recorded reason.':'The source records identify the actual query and its capture, processing and model provenance. The original prediction is the same image shown in the picture layer.');
+    $('facts').innerHTML = dl([['Target camera', v.id], ['Model', q.method], ['Query / accessible', q.k + ' / ' + q.available_count], ['Finite rank / canvas', fmt(q.counts.finite) + ' / ' + fmt(q.counts.canvas)], ['Unknown rank', fmt(q.counts.unknown)]]);
+    updateMap();
+    if(layer === 'sources')provenance();
+    else clearImage('source-image')
+  }
+}
+function draw() {
+  const c = C(), v = V(), q = Q();
+  options($('case'), cases.map((c, i) => [String(i), c.title]), String(ci));
+  options($('view'), c.views.map((v, i) => [String(i), v.id]), String(vi));
+  $('prev-view').disabled = vi === 0;
+  $('next-view').disabled = vi === c.views.length-1;
+  put('condition-label', many() ? 'Source query budget':'Scoring method');
+  const el = $('conditions');
+  el.replaceChildren(...v.conditions.map((x, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.condition = x.id; b.textContent = conditionName(x); b.setAttribute('aria-pressed', String(i === qi)); b.addEventListener('click', () => {
+      qi = i; sourceIndex = 0; closeEvaluation(); draw(); $('conditions').querySelector('[aria-pressed="true"]').focus()
+    }); return b
+  }));
+  reading()
+}
+$('case').addEventListener('change', () => {
+  ci = Number($('case').value); vi = 0; reset(); draw()
+});
+function setView(index) {
+  vi = index;
+  reset();
+  draw()
+};
+$('view').addEventListener('change', () => setView(Number($('view').value)));
+$('prev-view').addEventListener('click', () => setView(vi-1));
+$('next-view').addEventListener('click', () => setView(vi + 1));
+const sequence = ['picture', 'assessment', 'sources'];
+for(const b of document.querySelectorAll('[data-layer]')) {
+  b.addEventListener('click', () => {
+    layer = b.dataset.layer; reading()
+  });
+  b.addEventListener('keydown', e => {
+    if(!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(e.key))return; e.preventDefault(); const i = sequence.indexOf(layer); layer = e.key === 'Home' ? 'picture':e.key === 'End' ? 'sources':sequence[(i + (e.key === 'ArrowRight' ? 1:2))%3]; reading(); $('layer-' + layer).focus()
+  })
+}
+for(const b of document.querySelectorAll('[data-map]'))b.addEventListener('click', () => {
+  whichMap = b.dataset.map; updateMap()
+});
+$('source-choice').addEventListener('change', () => {
+  sourceIndex = Number($('source-choice').value); sourceDetails()
+});
+$('prev-source').addEventListener('click', () => {
+  sourceIndex--; sourceDetails()
+});
+$('next-source').addEventListener('click', () => {
+  sourceIndex++; sourceDetails()
+});
+$('open-evaluation').addEventListener('click', () => {
+  if(evaluationOpen) {
+    closeEvaluation(); return
+  }
+  evaluationOpen = true; const v = V(), e = v.evaluation, n = e.counts; show('evaluation-body', true); $('open-evaluation').setAttribute('aria-expanded', 'true'); put('open-evaluation', 'Hide independent evaluation'); put('evaluation-status', 'Independent observation and measured error for ' + C().title + ' / ' + v.id + '.'); img('reference', e.reference, 'Independently rendered reference view at ' + v.id); img('error', e.error, 'Thresholded independent display-RGB error at ' + v.id); const tau = e.error_threshold ?? n.error_threshold ?? 0.05; put('evaluation-counts', fmt(n.errors) + ' of ' + fmt(n.labelled) + ' independently labelled pixels exceeded mean absolute RGB channel error ' + tau + '. The full reference contains ' + fmt(n.reference) + ' valid pixels. Mean measured RGB error was ' + (n.mean_rgb_mae == null ? 'N/A':Number(n.mean_rgb_mae).toFixed(5)) + '.'); $('error-key').innerHTML = legendMarkup(e.legend ?? e.legends?.error ?? [], null); put('evaluation-record', text( {
+    counts:n, error_threshold:tau, reference:e.reference, error_map:e.error, provenance:e.provenance, origin:e.origin, formula:e.formula, original:e.original, reference_array:e.reference_analysis_sha256, valid_mask:e.valid_mask_sha256, error_mask:e.error_mask_sha256
+  }));
+});
+draw();
+</script>
+  </body>
+</html>

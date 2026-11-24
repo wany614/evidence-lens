@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import shlex
 import subprocess
+import time
 
 from dual_records import bind,resolve,selected,stage
 from evidence_lens._bundle import load,save,sha
@@ -33,23 +34,28 @@ def advance(a):
          repo=REPO,ref="refs/heads/main",before=before,after=after))
 
 
-def release(a,spec):
+def release(a,spec,tag=TAG,manifest_name=MANIFEST,title="Multi-source CPU evidence audit 0.1.0.dev0",edition="many"):
     def api(path):return json.loads(cmd(a.gh,"api","repos/"+REPO+path))
     info=api("")
     require(info["full_name"]==REPO and not info["private"] and info["permissions"]["push"] and
             api("/commits/"+spec["code_commit"])["sha"]==spec["code_commit"],"wrong public source")
-    def rows():return [r for r in api("/releases?per_page=100") if r["tag_name"]==TAG]
+    require(spec["tag"]==tag,"release tag does not match the sealed manifest")
+    def rows():return [r for r in api("/releases?per_page=100") if r["tag_name"]==tag]
     results=rows()
     if a.operation=="draft" and not results:
-        require(not cmd("git","-C",a.repo,"ls-remote","--tags","origin","refs/tags/"+TAG),"tag already exists")
-        cmd(a.gh,"release","create",TAG,"--repo",REPO,"--draft","--prerelease","--target",spec["code_commit"],
-            "--title","Multi-source CPU evidence audit 0.1.0.dev0","--notes-file",a.notes)
-        results=rows()
+        require(not cmd("git","-C",a.repo,"ls-remote","--tags","origin","refs/tags/"+tag),"tag already exists")
+        cmd(a.gh,"release","create",tag,"--repo",REPO,"--draft","--prerelease","--target",spec["code_commit"],
+            "--title",title,"--notes-file",a.notes)
+        # A newly created private draft can take a few seconds to enter the list.
+        for delay in (0,1,2,4,8,12):
+            time.sleep(delay)
+            results=rows()
+            if results:break
     require(len(results)==1 and results[0]["target_commitish"]==spec["code_commit"] and results[0]["prerelease"],
             "unexpected release source or status")
     item=results[0]
     local={p.name:(p,p.stat().st_size,sha(p)) for p in a.asset}
-    require(set(local)==set(spec["assets"])|{MANIFEST,"SHA256SUMS"} and
+    require(set(local)==set(spec["assets"])|{manifest_name,"SHA256SUMS"} and
             all(local[n][1:]==(d["bytes"],d["sha256"]) for n,d in spec["assets"].items()),"release asset roster changed")
     def remote(row):
         require(all(f["state"]=="uploaded" for f in row["assets"]),"nonterminal GitHub asset")
@@ -59,33 +65,33 @@ def release(a,spec):
     if a.operation=="draft":
         require(item["draft"],"already published")
         missing=[v[0] for k,v in local.items() if k not in seen]
-        if missing:cmd(a.gh,"release","upload",TAG,*missing,"--repo",REPO)
-        item=rows()[0]
+        if missing:cmd(a.gh,"release","upload",tag,*missing,"--repo",REPO)
+        item=api("/releases/"+str(item["id"]))
     else:
         require(load(a.draft)["id"]==item["id"] and seen=={k:v[1:] for k,v in local.items()},"public draft identity differs")
-        if item["draft"]:cmd(a.gh,"release","edit",TAG,"--repo",REPO,"--draft=false","--prerelease","--latest=false")
-        item=api("/releases/tags/"+TAG)
-        ref=api("/git/ref/tags/"+TAG)["object"]
+        if item["draft"]:cmd(a.gh,"release","edit",tag,"--repo",REPO,"--draft=false","--prerelease","--latest=false")
+        item=api("/releases/tags/"+tag)
+        ref=api("/git/ref/tags/"+tag)["object"]
         if ref["type"]=="tag":ref=api("/git/tags/"+ref["sha"])["object"]
         require(not item["draft"] and ref["type"]=="commit" and ref["sha"]==spec["code_commit"],"different public tag")
     require(remote(item)=={k:v[1:] for k,v in local.items()},"GitHub readback ledger differs")
-    save(a.out/"github.json",dict(schema="el-many-github-release-1",run_id=os.environ["EL_RUN_ID"],repo=REPO,tag=TAG,
+    save(a.out/"github.json",dict(schema=f"el-{edition}-github-release-1",run_id=os.environ["EL_RUN_ID"],repo=REPO,tag=tag,
         code_commit=spec["code_commit"],id=item["id"],url=item["html_url"],draft=item["draft"],prerelease=item["prerelease"],
         manifest_sha256=sha(a.manifest),assets={n:dict(bytes=v[1],sha256=v[2]) for n,v in local.items()}))
 
 
-def anonymous(a,spec):
+def anonymous(a,spec,tag=TAG,manifest_name=MANIFEST,edition="many",status="published_experimental"):
     official=load(a.published)
-    require(official["tag"]==TAG and not official["draft"] and official["manifest_sha256"]==sha(a.manifest)
+    require(official["tag"]==tag==spec["tag"] and not official["draft"] and official["manifest_sha256"]==sha(a.manifest)
             and official["code_commit"]==spec["code_commit"],"wrong public release")
-    base="https://github.com/"+REPO+"/releases/download/"+TAG+"/"
+    base="https://github.com/"+REPO+"/releases/download/"+tag+"/"
     downloads=[]
     for n,f in sorted(official["assets"].items()):
         require(re.fullmatch(r"[A-Za-z0-9_.-]+",n) and Path(n).name==n,"nonportable public filename")
         downloads.append(fetch(base+n,a.out/n,f["sha256"],f["bytes"]))
-    require(load(a.out/MANIFEST)==spec,"different anonymous manifest")
-    save(a.out/"readback.json",dict(schema="el-many-public-downloads-1",run_id=os.environ["EL_RUN_ID"],repo=REPO,
-        tag=TAG,code_commit=spec["code_commit"],status="published_experimental",url=official["url"],
+    require(load(a.out/manifest_name)==spec,"different anonymous manifest")
+    save(a.out/"readback.json",dict(schema=f"el-{edition}-public-downloads-1",run_id=os.environ["EL_RUN_ID"],repo=REPO,
+        tag=tag,code_commit=spec["code_commit"],status=status,url=official["url"],
         manifest_sha256=sha(a.manifest),asset_count=len(downloads),bytes=sum(f["bytes"] for f in official["assets"].values()),
         downloads=downloads))
 
