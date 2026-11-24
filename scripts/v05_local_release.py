@@ -31,6 +31,7 @@ def seal_scores(root, grade, bundles, out):
     with zipfile.ZipFile(archive,"x",compression=zipfile.ZIP_DEFLATED,compresslevel=4) as z:
         for (tag,method), row in sorted(cells.items()):
             cell = root/tag/method
+            require(load(cell/"grade.json") == row, "stored cell differs from installation acceptance")
             raw = cell/"scores/scores.json"
             summary = load(raw)
             expected_bundle = index["routes"][tag]["sha256"]
@@ -97,6 +98,20 @@ def operations(a):
         scores_archive=bind(s,scores["run_id"],"payload/v05-bell-scores.zip")
         sources={"scores":scores,"scores_archive":scores_archive,"bundles_archive":bell,
                  "registration":selected(s,"a-bell-register-six")}
+        program = selected(s, "a-bell-evaluation-program")
+        existing = s/"work/controller/a-bell-reference-opening/selected.json"
+        if existing.is_file():
+            pin = selected(s, "a-bell-reference-opening")
+            record = load(resolve(roots, pin))
+            require(all(record.get(k) == item for k,item in sources.items()), "different historical opening")
+            if "program" in record:
+                require(record["program"] == program, "different registered evaluation program")
+            else:
+                require(load(s/"runs"/program["run_id"]/"completion.json")["sealed_at_utc"]
+                        < load(s/"runs"/pin["run_id"]/"run.json")["started_at_utc"],
+                        "historical program already had access to references")
+            return pin
+        sources["program"] = program
         return stage(s,"a-bell-reference-opening","archive_verify",sources,
              {"authorization":"six authored landscape target cameras for independent A comparison; no other views"},
              ["{python}","scripts/v05_local_release.py","opening-worker","--grade","{input:scores}",

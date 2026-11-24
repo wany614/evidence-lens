@@ -1,0 +1,55 @@
+{
+  "schema": "el-v05-reference-access-order-1",
+  "stages": {
+    "comparison": {
+      "pin": {
+        "manifest_sha256": "f7a7396827ad7554173c813fcf43b246a4425d64fd485da992cd4e8ecf090c8b",
+        "member": "payload/bell-comparison.json",
+        "run_id": "20261124T105844729451Z-fef3e06c7c18437f",
+        "sha256": "ff303e61b106e51ad6272cf5b6b68851eea76a66a97c7a8f9f170fcf2e051455"
+      },
+      "sealed_utc": "2026-11-24T10:58:46.769904Z",
+      "started_utc": "2026-11-24T10:58:44.737209Z"
+    },
+    "comparison_program": {
+      "pin": {
+        "manifest_sha256": "a4ef9e6aeb484a40cb819bd163d7b1d71a7377410e63eee8afe179a193948b4f",
+        "member": "payload/program.json",
+        "run_id": "20261124T104725823548Z-ae3cfab9e9044b6c",
+        "sha256": "3f88c9370647852931be44d9d699463904d4d1daad8138ae16210347799f4451"
+      },
+      "sealed_utc": "2026-11-24T10:47:26.307327Z",
+      "started_utc": "2026-11-24T10:47:25.824053Z"
+    },
+    "opening": {
+      "pin": {
+        "manifest_sha256": "43fd49833ec56d30a69a6d94fe4b2ea462e6aab6209537f0d062c4fdb748c360",
+        "member": "payload/opening.json",
+        "run_id": "20261124T105431215976Z-d94eba701d3f4a9f",
+        "sha256": "a43fc6a33b3b258e2b9d832d395d25c36d7e787c886b8885587e1394bb2d4ede"
+      },
+      "sealed_utc": "2026-11-24T10:54:31.961819Z",
+      "started_utc": "2026-11-24T10:54:31.216426Z"
+    },
+    "references": {
+      "pin": {
+        "manifest_sha256": "c932dbc5c826c3fddf1b46d62257cae0435c55ef7ca3e58ae7b62c5cc84c3495",
+        "member": "payload/photos.json",
+        "run_id": "20261124T105437629810Z-8e19b026a0f74854",
+        "sha256": "1e80f3a8db0a2a04f5eb8d19064c0741cb0445464662cd5c45cef3d522c8ba69"
+      },
+      "sealed_utc": "2026-11-24T10:55:20.170669Z",
+      "started_utc": "2026-11-24T10:54:37.633283Z"
+    },
+    "scores": {
+      "pin": {
+        "manifest_sha256": "9d581759aa4a42cf8e1f19ba025ed3d6e6dc7e1c9890bae18b2adad7f4f311ce",
+        "member": "payload/scores-index.json",
+        "run_id": "20261124T105410830021Z-58316bf5f04c45d6",
+        "sha256": "0c1e69715db35ab776287fb69fa6e89eb8a481f15b45cd4dbacf61e67dc0d421"
+      },
+      "sealed_utc": "2026-11-24T10:54:12.734752Z",
+      "started_utc": "2026-11-24T10:54:10.833842Z"
+    }
+  }
+}

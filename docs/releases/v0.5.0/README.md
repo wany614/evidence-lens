@@ -2,6 +2,8 @@
 
 This CPU tool scores prepared two- and four-source evidence on a finite set of image grids. The original source photos, the analysis pixels, the encoder's patch lattice and the display raster have separate descriptions. The four risk models keep their released numerical parameters.
 
+The release supplies the wheel, audited source, prepared bundles, original source observations, independent evaluation photographs and verification records as separate downloads. The release manifest binds the installable code, model versions, files and experimental runs. [Download v0.5.0](https://github.com/wany614/evidence-lens/releases/tag/v0.5.0) · [Engineering acceptance](ACCEPTANCE.md) · [Machine-readable baseline](BASELINE_MANIFEST.json) · [Checksums](SHA256SUMS)
+
 ## Score an authored example
 
 Install the wheel in a new Python 3.12 environment. Download the prepared bell examples from the same release, verify the file checksums and extract the example archive. Run these commands from the directory containing the six bundles. Use a fresh output directory for each score.

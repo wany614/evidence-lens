@@ -1,0 +1,1824 @@
+{
+  "cells": {
+    "historical-original/MS-L1": {
+      "analysis_wh": [
+        256,
+        256
+      ],
+      "bundle_sha256": "b8feb75ade71f39336f7927ebbb814e828b345932b4f651e0e1cb81137e109c2",
+      "grid": "historical-original",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 65536,
+          "host_finite": 65536,
+          "mac_finite": 65536,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 6553,
+              "mac_eligible": 65536,
+              "mac_selected": 6553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 13107,
+              "mac_eligible": 65536,
+              "mac_selected": 13107,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 65536,
+          "host_finite": 65536,
+          "mac_finite": 65536,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 6553,
+              "mac_eligible": 65536,
+              "mac_selected": 6553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 13107,
+              "mac_eligible": 65536,
+              "mac_selected": 13107,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 64224,
+          "host_finite": 64224,
+          "mac_finite": 64224,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 64224,
+              "host_selected": 6422,
+              "mac_eligible": 64224,
+              "mac_selected": 6422,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 64224,
+              "host_selected": 12844,
+              "mac_eligible": 64224,
+              "mac_selected": 12844,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 64507,
+          "host_finite": 64507,
+          "mac_finite": 64507,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 64507,
+              "host_selected": 6450,
+              "mac_eligible": 64507,
+              "mac_selected": 6450,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 64507,
+              "host_selected": 12901,
+              "mac_eligible": 64507,
+              "mac_selected": 12901,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 63019,
+          "host_finite": 63019,
+          "mac_finite": 63019,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 63019,
+              "host_selected": 6301,
+              "mac_eligible": 63019,
+              "mac_selected": 6301,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 63019,
+              "host_selected": 12603,
+              "mac_eligible": 63019,
+              "mac_selected": 12603,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 65536,
+          "host_finite": 65536,
+          "mac_finite": 65536,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 6553,
+              "mac_eligible": 65536,
+              "mac_selected": 6553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 13107,
+              "mac_eligible": 65536,
+              "mac_selected": 13107,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    },
+    "landscape/MS-L1": {
+      "analysis_wh": [
+        448,
+        252
+      ],
+      "bundle_sha256": "86b344266f4088ea0c89b4c5939a1d3a325e3b14af785abd71bba72a5a857bdc",
+      "grid": "landscape",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 112812,
+          "host_finite": 112812,
+          "mac_finite": 112812,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 112812,
+              "host_selected": 11281,
+              "mac_eligible": 112812,
+              "mac_selected": 11281,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 112812,
+              "host_selected": 22562,
+              "mac_eligible": 112812,
+              "mac_selected": 22562,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 112889,
+          "host_finite": 112889,
+          "mac_finite": 112889,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 112889,
+              "host_selected": 11288,
+              "mac_eligible": 112889,
+              "mac_selected": 11288,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 112889,
+              "host_selected": 22577,
+              "mac_eligible": 112889,
+              "mac_selected": 22577,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 110802,
+          "host_finite": 110802,
+          "mac_finite": 110802,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 110802,
+              "host_selected": 11080,
+              "mac_eligible": 110802,
+              "mac_selected": 11080,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 110802,
+              "host_selected": 22160,
+              "mac_eligible": 110802,
+              "mac_selected": 22160,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 111118,
+          "host_finite": 111118,
+          "mac_finite": 111118,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 111118,
+              "host_selected": 11111,
+              "mac_eligible": 111118,
+              "mac_selected": 11111,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 111118,
+              "host_selected": 22223,
+              "mac_eligible": 111118,
+              "mac_selected": 22223,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 105926,
+          "host_finite": 105926,
+          "mac_finite": 105926,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 105926,
+              "host_selected": 10592,
+              "mac_eligible": 105926,
+              "mac_selected": 10592,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 105926,
+              "host_selected": 21185,
+              "mac_eligible": 105926,
+              "mac_selected": 21185,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 112896,
+          "host_finite": 112896,
+          "mac_finite": 112896,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 112896,
+              "host_selected": 11289,
+              "mac_eligible": 112896,
+              "mac_selected": 11289,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 112896,
+              "host_selected": 22579,
+              "mac_eligible": 112896,
+              "mac_selected": 22579,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    },
+    "legacy-letterbox/MS-L1": {
+      "analysis_wh": [
+        256,
+        256
+      ],
+      "bundle_sha256": "0af84a95438f54ea4807a32bd9aa428992eaeab2a1dd470ea2b41e67d736618d",
+      "grid": "legacy-letterbox",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 36832,
+          "host_finite": 36832,
+          "mac_finite": 36832,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 36832,
+              "host_selected": 3683,
+              "mac_eligible": 36832,
+              "mac_selected": 3683,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 36832,
+              "host_selected": 7366,
+              "mac_eligible": 36832,
+              "mac_selected": 7366,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 36860,
+          "host_finite": 36860,
+          "mac_finite": 36860,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 36860,
+              "host_selected": 3686,
+              "mac_eligible": 36860,
+              "mac_selected": 3686,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 36860,
+              "host_selected": 7372,
+              "mac_eligible": 36860,
+              "mac_selected": 7372,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 36167,
+          "host_finite": 36167,
+          "mac_finite": 36167,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 36167,
+              "host_selected": 3616,
+              "mac_eligible": 36167,
+              "mac_selected": 3616,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 36167,
+              "host_selected": 7233,
+              "mac_eligible": 36167,
+              "mac_selected": 7233,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 36285,
+          "host_finite": 36285,
+          "mac_finite": 36285,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 36285,
+              "host_selected": 3628,
+              "mac_eligible": 36285,
+              "mac_selected": 3628,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 36285,
+              "host_selected": 7257,
+              "mac_eligible": 36285,
+              "mac_selected": 7257,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 34592,
+          "host_finite": 34592,
+          "mac_finite": 34592,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 34592,
+              "host_selected": 3459,
+              "mac_eligible": 34592,
+              "mac_selected": 3459,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 34592,
+              "host_selected": 6918,
+              "mac_eligible": 34592,
+              "mac_selected": 6918,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 36864,
+          "host_finite": 36864,
+          "mac_finite": 36864,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 36864,
+              "host_selected": 3686,
+              "mac_eligible": 36864,
+              "mac_selected": 3686,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 36864,
+              "host_selected": 7372,
+              "mac_eligible": 36864,
+              "mac_selected": 7372,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    },
+    "odd/MS-L1": {
+      "analysis_wh": [
+        375,
+        251
+      ],
+      "bundle_sha256": "02a14ce4b381e39c838ae2d910e1b7f6404a556e99f65f48bc336f7d929e3a2e",
+      "grid": "odd",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 94125,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 94073,
+          "host_finite": 94073,
+          "mac_finite": 94073,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 94073,
+              "host_selected": 9407,
+              "mac_eligible": 94073,
+              "mac_selected": 9407,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 94073,
+              "host_selected": 18814,
+              "mac_eligible": 94073,
+              "mac_selected": 18814,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 94125,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 94122,
+          "host_finite": 94122,
+          "mac_finite": 94122,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 94122,
+              "host_selected": 9412,
+              "mac_eligible": 94122,
+              "mac_selected": 9412,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 94122,
+              "host_selected": 18824,
+              "mac_eligible": 94122,
+              "mac_selected": 18824,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 94125,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 92352,
+          "host_finite": 92352,
+          "mac_finite": 92352,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 92352,
+              "host_selected": 9235,
+              "mac_eligible": 92352,
+              "mac_selected": 9235,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 92352,
+              "host_selected": 18470,
+              "mac_eligible": 92352,
+              "mac_selected": 18470,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 94125,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 92673,
+          "host_finite": 92673,
+          "mac_finite": 92673,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 92673,
+              "host_selected": 9267,
+              "mac_eligible": 92673,
+              "mac_selected": 9267,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 92673,
+              "host_selected": 18534,
+              "mac_eligible": 92673,
+              "mac_selected": 18534,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 94125,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 88666,
+          "host_finite": 88666,
+          "mac_finite": 88666,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 88666,
+              "host_selected": 8866,
+              "mac_eligible": 88666,
+              "mac_selected": 8866,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 88666,
+              "host_selected": 17733,
+              "mac_eligible": 88666,
+              "mac_selected": 17733,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 94125,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 94125,
+          "host_finite": 94125,
+          "mac_finite": 94125,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 94125,
+              "host_selected": 9412,
+              "mac_eligible": 94125,
+              "mac_selected": 9412,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 94125,
+              "host_selected": 18825,
+              "mac_eligible": 94125,
+              "mac_selected": 18825,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    },
+    "photo/MS-L1": {
+      "analysis_wh": [
+        378,
+        252
+      ],
+      "bundle_sha256": "f73768a3f64c90347c6500406c6aa60706863b32014af32a4d8053ad20ae3011",
+      "grid": "photo",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 95256,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 95204,
+          "host_finite": 95204,
+          "mac_finite": 95204,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 95204,
+              "host_selected": 9520,
+              "mac_eligible": 95204,
+              "mac_selected": 9520,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 95204,
+              "host_selected": 19040,
+              "mac_eligible": 95204,
+              "mac_selected": 19040,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 95256,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 95253,
+          "host_finite": 95253,
+          "mac_finite": 95253,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 95253,
+              "host_selected": 9525,
+              "mac_eligible": 95253,
+              "mac_selected": 9525,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 95253,
+              "host_selected": 19050,
+              "mac_eligible": 95253,
+              "mac_selected": 19050,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 95256,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 93459,
+          "host_finite": 93459,
+          "mac_finite": 93459,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 93459,
+              "host_selected": 9345,
+              "mac_eligible": 93459,
+              "mac_selected": 9345,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 93459,
+              "host_selected": 18691,
+              "mac_eligible": 93459,
+              "mac_selected": 18691,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 95256,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 93788,
+          "host_finite": 93788,
+          "mac_finite": 93788,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 93788,
+              "host_selected": 9378,
+              "mac_eligible": 93788,
+              "mac_selected": 9378,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 93788,
+              "host_selected": 18757,
+              "mac_eligible": 93788,
+              "mac_selected": 18757,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 95256,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 89717,
+          "host_finite": 89717,
+          "mac_finite": 89717,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 89717,
+              "host_selected": 8971,
+              "mac_eligible": 89717,
+              "mac_selected": 8971,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 89717,
+              "host_selected": 17943,
+              "mac_eligible": 89717,
+              "mac_selected": 17943,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 95256,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 95256,
+          "host_finite": 95256,
+          "mac_finite": 95256,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 95256,
+              "host_selected": 9525,
+              "mac_eligible": 95256,
+              "mac_selected": 9525,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 95256,
+              "host_selected": 19051,
+              "mac_eligible": 95256,
+              "mac_selected": 19051,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    },
+    "portrait/MS-L1": {
+      "analysis_wh": [
+        252,
+        448
+      ],
+      "bundle_sha256": "244fd7f0abd941466dc00803d152a7f987962b3cb6a8e7535bf4e7ae2f40d438",
+      "grid": "portrait",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 112853,
+          "host_finite": 112853,
+          "mac_finite": 112853,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 112853,
+              "host_selected": 11285,
+              "mac_eligible": 112853,
+              "mac_selected": 11285,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 112853,
+              "host_selected": 22570,
+              "mac_eligible": 112853,
+              "mac_selected": 22570,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 112884,
+          "host_finite": 112884,
+          "mac_finite": 112884,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 112884,
+              "host_selected": 11288,
+              "mac_eligible": 112884,
+              "mac_selected": 11288,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 112884,
+              "host_selected": 22576,
+              "mac_eligible": 112884,
+              "mac_selected": 22576,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 109204,
+          "host_finite": 109204,
+          "mac_finite": 109204,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 109204,
+              "host_selected": 10920,
+              "mac_eligible": 109204,
+              "mac_selected": 10920,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 109204,
+              "host_selected": 21840,
+              "mac_eligible": 109204,
+              "mac_selected": 21840,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 109742,
+          "host_finite": 109742,
+          "mac_finite": 109742,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 109742,
+              "host_selected": 10974,
+              "mac_eligible": 109742,
+              "mac_selected": 10974,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 109742,
+              "host_selected": 21948,
+              "mac_eligible": 109742,
+              "mac_selected": 21948,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 105533,
+          "host_finite": 105533,
+          "mac_finite": 105533,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 105533,
+              "host_selected": 10553,
+              "mac_eligible": 105533,
+              "mac_selected": 10553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 105533,
+              "host_selected": 21106,
+              "mac_eligible": 105533,
+              "mac_selected": 21106,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 112896,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 112896,
+          "host_finite": 112896,
+          "mac_finite": 112896,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 112896,
+              "host_selected": 11289,
+              "mac_eligible": 112896,
+              "mac_selected": 11289,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 112896,
+              "host_selected": 22579,
+              "mac_eligible": 112896,
+              "mac_selected": 22579,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    },
+    "square/MS-L1": {
+      "analysis_wh": [
+        256,
+        256
+      ],
+      "bundle_sha256": "31b9d5ddd1d07fb4108034f4d4adc83e0f43537c194c39620550f6f0a1731a94",
+      "grid": "square",
+      "method": "MS-L1",
+      "model": {
+        "feature_schema_sha256": "1f444f0dc9b7fce5c998bb677da20b2c18c25312d7c918e9bf17c6b290457e63",
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "preprocessing_sha256": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "views": {
+        "v01": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 65536,
+          "host_finite": 65536,
+          "mac_finite": 65536,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 6553,
+              "mac_eligible": 65536,
+              "mac_selected": 6553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 13107,
+              "mac_eligible": 65536,
+              "mac_selected": 13107,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v02": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 65536,
+          "host_finite": 65536,
+          "mac_finite": 65536,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 6553,
+              "mac_eligible": 65536,
+              "mac_selected": 6553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 13107,
+              "mac_eligible": 65536,
+              "mac_selected": 13107,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v03": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 64224,
+          "host_finite": 64224,
+          "mac_finite": 64224,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 64224,
+              "host_selected": 6422,
+              "mac_eligible": 64224,
+              "mac_selected": 6422,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 64224,
+              "host_selected": 12844,
+              "mac_eligible": 64224,
+              "mac_selected": 12844,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v04": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 64507,
+          "host_finite": 64507,
+          "mac_finite": 64507,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 64507,
+              "host_selected": 6450,
+              "mac_eligible": 64507,
+              "mac_selected": 6450,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 64507,
+              "host_selected": 12901,
+              "mac_eligible": 64507,
+              "mac_selected": 12901,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v05": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 63019,
+          "host_finite": 63019,
+          "mac_finite": 63019,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 63019,
+              "host_selected": 6301,
+              "mac_eligible": 63019,
+              "mac_selected": 6301,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 63019,
+              "host_selected": 12603,
+              "mac_eligible": 63019,
+              "mac_selected": 12603,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        },
+        "v06": {
+          "bit_exact": true,
+          "canvas": 65536,
+          "changed_pixels": {
+            "risk": 0,
+            "state": 0,
+            "unknown_reason": 0,
+            "valid": 0
+          },
+          "common_finite": 65536,
+          "host_finite": 65536,
+          "mac_finite": 65536,
+          "max_abs_common": 0.0,
+          "max_signed_host_minus_mac": 0.0,
+          "min_signed_host_minus_mac": 0.0,
+          "quota_on_method_finite": [
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 6553,
+              "mac_eligible": 65536,
+              "mac_selected": 6553,
+              "percent": 10,
+              "removed": 0
+            },
+            {
+              "added": 0,
+              "host_eligible": 65536,
+              "host_selected": 13107,
+              "mac_eligible": 65536,
+              "mac_selected": 13107,
+              "percent": 20,
+              "removed": 0
+            }
+          ],
+          "sum_abs": 0.0,
+          "sum_signed_host_minus_mac": 0.0,
+          "threshold": 0.06428983435034752,
+          "threshold_crossings": 0
+        }
+      }
+    }
+  },
+  "host": "Linux",
+  "host_native_array_sha256": "036f2e12db5d1b482c33ff15d3e86a2b6b961cdb8d305ee68276f242fd47bc15",
+  "mac_native_array_sha256": "277df38bc797ac42481c09b04bc3247f625d364a84babf397e21589d947f00b8",
+  "quota": "per-view floor(q*eligible), ascending original FP32 score then flattened row-major index; no target labels",
+  "run_id": "20261124T105500965068Z-3bfd303887f04a44",
+  "schema": "el-v05-cross-platform-views-1",
+  "threshold": "applied to FP32 scores promoted to float64"
+}

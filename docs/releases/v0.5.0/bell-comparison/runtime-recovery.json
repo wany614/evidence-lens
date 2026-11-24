@@ -1,0 +1,35 @@
+{
+  "frozen_program": {
+    "manifest_sha256": "a4ef9e6aeb484a40cb819bd163d7b1d71a7377410e63eee8afe179a193948b4f",
+    "member": "payload/program.json",
+    "run_id": "20261124T104725823548Z-ae3cfab9e9044b6c",
+    "sha256": "3f88c9370647852931be44d9d699463904d4d1daad8138ae16210347799f4451"
+  },
+  "opening": {
+    "manifest_sha256": "43fd49833ec56d30a69a6d94fe4b2ea462e6aab6209537f0d062c4fdb748c360",
+    "member": "payload/opening.json",
+    "run_id": "20261124T105431215976Z-d94eba701d3f4a9f",
+    "sha256": "a43fc6a33b3b258e2b9d832d395d25c36d7e787c886b8885587e1394bb2d4ede"
+  },
+  "prior_runtime_attempts": [
+    {
+      "disposition": "sealed",
+      "failure_reason": "required release profile.json absent from Python-only source snapshot",
+      "manifest_sha256": "c532946427a115beecedf0dc7141426a6a0cd2ee89780ac78876bec0a1e2b564",
+      "run_id": "20261124T105549226225Z-d1c4da84ffa34544"
+    },
+    {
+      "disposition": "quarantined",
+      "failure_reason": "RejectedLineage: retry changes frozen identity/configuration/code/inputs/command or exceeds first retry",
+      "manifest_sha256": "135333fa312898084891b0d7da21d1a9bf3518991c33902d5e689ab0c98176bc",
+      "run_id": "20261124T105723650879Z-c3d1fc2159fd4c1f"
+    }
+  ],
+  "release_profile": {
+    "manifest_sha256": "034f1b9735734e7931953da40f30c498ea66ca40924b361dfa90da44b2155956",
+    "member": "inputs/profile/profile.json",
+    "run_id": "20261124T104507616076Z-ce303b94f64c4b60",
+    "sha256": "99587dd70b67a84debb81fa1dc84e93729c8980bc4531edecfb56112a15eb191"
+  },
+  "run_id": "20261124T105844729451Z-fef3e06c7c18437f"
+}

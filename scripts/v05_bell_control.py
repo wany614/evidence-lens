@@ -30,8 +30,8 @@ def historical(store, role):
 def work(action, cfg, args, out):
     if action == "register":
         save(out/"registration.json", {"schema":"el-v05-bell-processing-1","run_id":os.environ["EL_RUN_ID"],
-             "parent":cfg["sources"]["eligibility"], "superseded_registration":cfg["sources"]["first_registration"],
-             "superseded_unissued_ticket":cfg["sources"]["first_packet"], "objects":["scene_057_offset_bell_cage"],"source_order":SOURCES,
+             "parent":cfg["sources"]["eligibility"], "superseded_registration":cfg["sources"].get("first_registration"),
+             "superseded_unissued_ticket":cfg["sources"].get("first_packet"), "objects":["scene_057_offset_bell_cage"],"source_order":SOURCES,
              "target_order":TARGETS,"analysis_wh":{name:list(wh) for name,wh in SIZES.items()},
              "authorized_originals":cfg["historical_materials"],"observation_scale":2,
              "new_source_acquisition":{"schema":"el-upstream-layout-authority-1","fixed_layouts":{"M2":[SOURCES[0],SOURCES[-1]],"M4":SOURCES}, "optional_pool":[]},
@@ -69,8 +69,10 @@ def work(action, cfg, args, out):
 
 def control(store, action, opening=None, retry=None):
     if action == "register":
-        pins={"eligibility":selected(store,"a-grid-registration"),"first_registration":selected(store,"a-bell-register"),
-              "first_packet":selected(store,"a-bell-packet")}
+        pins={"eligibility":selected(store,"a-grid-registration")}
+        for role, preliminary in (("first_registration","a-bell-register"),("first_packet","a-bell-packet")):
+            if (store/"work/controller"/preliminary/"selected.json").is_file():
+                pins[role]=selected(store,preliminary)
         details={"historical_materials":{k:historical(store,k) for k in OLD_FILES}}
         kind,member,estimate="archive_verify","registration.json",15000
     else:
