@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidence-lens-many-source"
+version = "0.1.0.dev0"
+description = "Experimental CPU evidence retrieval and ranking for registered static 3D Gaussian scenes"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+readme = "README.md"
+authors = [{name = "wany614"}]
+dependencies = ["evidence-lens==0.5.0"]
+
+[project.optional-dependencies]
+vision = ["evidence-lens[vision]==0.5.0"]
+
+[project.scripts]
+evidence-lens-bank = "evidence_lens_many.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

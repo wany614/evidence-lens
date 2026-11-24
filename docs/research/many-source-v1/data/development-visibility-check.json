@@ -1,0 +1,86 @@
+{
+  "H_view": "h00",
+  "Q": [
+    "r008",
+    "r120",
+    "r000",
+    "r080"
+  ],
+  "R": 16,
+  "RGB_reference_decodes": 0,
+  "calibration_or_model_fits": 0,
+  "dense_nearest_depth_approximation": {
+    "both": 65845,
+    "independent_target_surface": 66732,
+    "model_comparable": 66290,
+    "neither": 417,
+    "only_model": 445,
+    "only_true": 25,
+    "true_visible": 65870
+  },
+  "run_id": "20261124T115049772122Z-89e23e4a1a9a47c1",
+  "scene": "b04-layered-louvers",
+  "schema": "el-many-dev-native-geometry-link-1",
+  "sources": {
+    "bank": {
+      "manifest_sha256": "83bc29ab404448a64c552f61ac1e85332ad031bd24c3cabe65c339fd731cceb2",
+      "member": "payload/bank.json",
+      "run_id": "20261124T113848569248Z-4e427613e47143bf",
+      "sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250"
+    },
+    "opening": {
+      "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+      "member": "payload/opening.json",
+      "run_id": "20261124T112608015631Z-d740f790af184ece",
+      "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+    },
+    "physical": {
+      "manifest_sha256": "a3641096e565a7c17cb94f756fbb3966c5044c819ea0b58142167fcdc8fb7b5b",
+      "member": "payload/visibility.json",
+      "run_id": "20261124T114227910367Z-f44d579367b14227",
+      "sha256": "16b41f8016693f0ee4b330758883960a44c9f0779e768d6f2922a49651842d49"
+    },
+    "runtime": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "8307790b48e94b581417b511dacebd6bc1b8cbc3732a49294173767d5ca52374"
+    },
+    "truth": {
+      "manifest_sha256": "f35a4f16d80c2d8485f272af99e0abcc2319de5657711536f547211a67adebab",
+      "member": "payload/truth.json",
+      "run_id": "20261124T112631910396Z-8a7ad22ad1ae42a1",
+      "sha256": "0b6b774f202be4c67335a09749505d8c0d932d2617a97b92b72f67f8c444106b"
+    }
+  },
+  "true_surface_mesh_probe": {
+    "both": 1353,
+    "in_any_source_frame": 1360,
+    "independent_target_surface": 1368,
+    "model_comparable": 1360,
+    "neither": 8,
+    "only_model": 7,
+    "only_true": 0,
+    "probe_pixels": 1944,
+    "true_visible": 1353
+  },
+  "verified_frame": {
+    "H": 6,
+    "R": 16,
+    "camera_calibration_sha256": "f1004d2f757a3f8d0f403089fee136fd81c7af61885afa8f07d1f0174cd39966",
+    "camera_count": 22,
+    "configuration_archive": {
+      "manifest_sha256": "536d89c4979c0ca3ca03cd89109edaef9ffc88b2a6429ac882653287966a86f5",
+      "member": "payload/R16.zip",
+      "run_id": "20261124T112333282800Z-0197f43dcaca42f6",
+      "sha256": "6a2942ca74ee890f7889f5d7f85ff13bdb6a466c1e58eafb2c5ec57cbe450cf5"
+    },
+    "frame_unit": "m",
+    "source_acquisition": {
+      "manifest_sha256": "536d89c4979c0ca3ca03cd89109edaef9ffc88b2a6429ac882653287966a86f5",
+      "member": "payload/source.json",
+      "run_id": "20261124T112333282800Z-0197f43dcaca42f6",
+      "sha256": "ac92e01e8916f51da3f0bb75b412d5bc9ab7643b53f07baccfac784dd42d2a77"
+    }
+  }
+}

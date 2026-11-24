@@ -1,0 +1,162 @@
+{
+  "bare_ply": {
+    "fixture_sha256": "bfb923d2c48bd8c8103813a66b52b03c582a609cab6e986db4c794891ec99f24",
+    "inspection": {
+      "declared_vertex_count": "1",
+      "missing_for_full_scoring": [
+        "verified upstream photo membership",
+        "source photo permissions and decoded inputs",
+        "calibrated cameras and coordinate receipt",
+        "supported Gaussian semantics",
+        "native source and target RGB, expected camera-Z and opacity, depth probe"
+      ],
+      "status": "structural_inspection_only"
+    },
+    "role": "generated one-vertex structure-only negative control",
+    "score_error": "missing or unsafe member: bank.json",
+    "score_exit": 2
+  },
+  "checkpoint_sha256": "2c60b1116f03f90038cb0ed97e69d24aeeb26aacb2941d8c62c0a6698b9f808a",
+  "external_scene": "delivery_area",
+  "incomplete": {
+    "audit_cost": {
+      "cache_capacity_bytes": 134217728,
+      "cache_evictions": 0,
+      "cache_hits": 0,
+      "cache_misses": 33,
+      "cache_peak_bytes": 100607924,
+      "comparable_pixel_source_pairs": 446625,
+      "elapsed_through_snapshot_seconds": 0.5307483329961542,
+      "in_frame_pixel_source_pairs": 537309,
+      "photometric_seconds": 0.1599639989581192,
+      "projection_seconds": 0.12976241602154914,
+      "source_bytes_read": 58257738,
+      "source_decode_seconds": 0.20248275106132496,
+      "source_depth_arrays_compared": 33,
+      "source_geometry_projections": 34,
+      "source_photometric_comparisons": 33,
+      "source_photos_decoded": 33,
+      "source_renders_decoded": 33,
+      "supported_photometric_pixel_source_pairs": 153737,
+      "target_available": true,
+      "target_bytes_read": 1604623,
+      "target_decode_seconds": 0.0041661669965833426,
+      "target_geometry_decoded": 1,
+      "target_rgb_decoded": 1
+    },
+    "audit_wall_s": 0.6891593330074102,
+    "full_complete": false,
+    "missing_depth_message": "complete scoring requires independently verified expected camera-Z; inspect the bank for missing materials",
+    "missing_depth_scoring_status": 2,
+    "original_self_render_sha256": "a32ed8f113b8a53d7db515bf1fa2c282bdeeb026efa7dfaadd4b88f56311c41b",
+    "scope_counts": {
+      "audited_comparable_evidence": 0,
+      "audited_library_no_comparable_evidence": 0,
+      "geometry_not_evaluable": 0,
+      "library_incomplete_or_unavailable": 95256,
+      "selected_subset_only": 0,
+      "subset_comparability_gap": 0
+    },
+    "withheld_source": "r001"
+  },
+  "parents": {
+    "bank": {
+      "manifest_sha256": "c1383bdcfa7d1a6f6a53a5e0104ede0221d0920ce513f866fe8f3146edbfff21",
+      "member": "payload/bank.json",
+      "run_id": "20261124T115000352145Z-a9a95e57a7e14dd2",
+      "sha256": "ccd378e9d8013ba8b22e167d7dd34516d8cbf76ab2fdae63148cf727382ef4c2"
+    },
+    "baseline": {
+      "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+      "member": "payload/BASELINE_MANIFEST.json",
+      "run_id": "20261124T111058386191Z-d99a4c418276454c",
+      "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
+    },
+    "build": {
+      "manifest_sha256": "2c2929dc7323fa80b4d7bd9e64842c8fbe89082122d5609d5b04fd90e540038d",
+      "member": "payload/build.json",
+      "run_id": "20261124T112946015168Z-763e43c778fe4d7b",
+      "sha256": "e6a857aba5d644f157c5c111ffa16b665f1aa140d8f28704aed4a4309c334280"
+    },
+    "protocol": {
+      "manifest_sha256": "8e04f790c4e727e1b3e116c4d4699ee0c90a66517af8ce58cf1385cecce616d0",
+      "member": "payload/protocol.json",
+      "run_id": "20261124T113528393538Z-24d7c1bbf14744c5",
+      "sha256": "21d8670783b10aff62d866b08b68147519041993a0c3837828641cfbe711eaee"
+    },
+    "runtime": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "8307790b48e94b581417b511dacebd6bc1b8cbc3732a49294173767d5ca52374"
+    },
+    "study": {
+      "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+      "member": "payload/study.json",
+      "run_id": "20261124T111533951307Z-8b7523eb307440af",
+      "sha256": "fd4ea8f80597cd7c21b4f548131d1a9f96780747d5c65503f83b6b1b79a22777"
+    }
+  },
+  "positive": {
+    "actual_q": [
+      "r001",
+      "r002",
+      "r000",
+      "r004"
+    ],
+    "canvas_pixels": 95256,
+    "finite_pixels": 95256,
+    "import_wall_s": 0.17707845800032374,
+    "query_cost": {
+      "cache_capacity_bytes": 134217728,
+      "cache_evictions": 0,
+      "cache_hits": 0,
+      "cache_misses": 4,
+      "cache_peak_bytes": 12194899,
+      "comparable_pixel_source_pairs": 332874,
+      "elapsed_through_snapshot_seconds": 0.10399674999644049,
+      "in_frame_pixel_source_pairs": 332874,
+      "photometric_seconds": 0.02129070699447766,
+      "projection_seconds": 0.016166665984201245,
+      "source_bytes_read": 6845804,
+      "source_decode_seconds": 0.039926666009705514,
+      "source_depth_arrays_compared": 4,
+      "source_geometry_projections": 4,
+      "source_photometric_comparisons": 4,
+      "source_photos_decoded": 4,
+      "source_renders_decoded": 4,
+      "supported_photometric_pixel_source_pairs": 150757,
+      "target_available": true,
+      "target_bytes_read": 1604623,
+      "target_decode_seconds": 0.004217082998366095,
+      "target_geometry_decoded": 1,
+      "target_rgb_decoded": 1
+    },
+    "rule": "residual",
+    "score_arrays_sha256": "6aab785e3e1d7a8e9b7cee4ae8a12a604fd75953253bcb10488b9761bf94e431",
+    "score_q4_wall_s": 0.26763600000413135,
+    "target": "h00",
+    "verify_all_cost": {
+      "cache_evictions": 0,
+      "cache_hits": 0,
+      "cache_misses": 34,
+      "cache_peak_bytes": 103656649,
+      "source_bytes_read": 59960256,
+      "source_decode_seconds": 0.21657949603104498,
+      "source_photos_decoded": 34,
+      "source_renders_decoded": 34,
+      "target_bytes_read": 16231888,
+      "target_decode_seconds": 0.04028433498751838,
+      "target_geometry_decoded": 10,
+      "target_rgb_decoded": 10
+    },
+    "verify_all_wall_s": 0.357972375000827
+  },
+  "public_material": "counts, source IDs and hashes; the temporary external photos, predictions and graphical reports are private",
+  "run_id": "20261124T115017266197Z-625f3360b3e04a72",
+  "schema": "el-b-external-bank-acceptance-1",
+  "source_count": 34,
+  "target_prediction_count": 10,
+  "unit": "scene_units",
+  "verified_bank_sha256": "ccd378e9d8013ba8b22e167d7dd34516d8cbf76ab2fdae63148cf727382ef4c2"
+}

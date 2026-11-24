@@ -1,0 +1,20 @@
+Evidence Lens many-source prototype
+Copyright 2026 wany614
+
+The original prototype software is licensed under the Apache License, Version
+2.0. The full text is in LICENSE. Its model and feature contracts depend on
+Evidence Lens 0.5.0, copyright 2026 wany614, and the frozen Stage C CPU risk
+packages in the Evidence Lens v0.3.0-rc.1 release. The MS-ft transfer uses the
+real fitted DINOv2 parameters and requires that separately distributed model
+package and its third-party notices. The Python distribution contains the
+inference code. Each separately supplied model and data asset retains its
+own attribution and license.
+
+Original documentation, authored media and the owner's rights in published
+research data are licensed under Creative Commons Attribution 4.0
+International. Credit wany614, Evidence Lens.
+https://creativecommons.org/licenses/by/4.0/
+
+External ETH3D images and derivatives are subject to the applicable
+ETH3D terms, including CC BY-NC-SA 4.0 for the registered benchmark scenes.
+The Python distribution contains no external photographs or render weights.

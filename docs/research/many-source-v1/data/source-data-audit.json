@@ -1,0 +1,997 @@
+{
+  "A_BASELINE_ID": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "analysis_size": [
+    378,
+    252
+  ],
+  "audit_runtime": {
+    "peak_process_rss_bytes_macos": 434782208,
+    "worker_cpu_seconds": 2.317524,
+    "worker_wall_seconds": 2.3431297080096556
+  },
+  "data_role_resources": {
+    "allocated_bytes_deduplicated_by_inode": 5352026112,
+    "archive_scope": "Sealed native files plus seals from the listed production stages. Same-inode hardlinks counted once. Filesystem clone/external sharing, directory metadata, the audit itself and other study roles are outside this measurement.",
+    "cpu_scope": "Exact worker and sampled process-tree values are distinct overlapping measures. Sampled sums exclude unsampled edges and short-lived processes; stage clocks may overlap and are not summed as elapsed wall time.",
+    "download_cap_bytes": 5000000000,
+    "download_response_bytes": 2419531415,
+    "exact_worker_cpu_seconds_where_instrumented": 152.115523,
+    "native_runs_with_exact_worker_cpu": 17,
+    "native_runs_with_sampled_interval": 20,
+    "payload_bytes": 5095504366,
+    "peak_sampled_tree_rss_bytes": 278331392,
+    "production_native_runs_excluding_shared_study": 22,
+    "same_inode_deduplicated_apparent_bytes": 5258146881,
+    "sampled_tree_cpu_seconds_where_interval_available": 207.77624989499998,
+    "zero_gpu_seconds": 0
+  },
+  "production_resources": [
+    {
+      "end_utc": "2026-11-24T11:26:08.604912Z",
+      "label": "b-train-dev-h-opening",
+      "manifest_file_bytes_plus_seal": 7405297,
+      "native_wall_seconds": 0.5891373750055209,
+      "payload_bytes": 1047,
+      "run_id": "20261124T112608015631Z-d740f790af184ece",
+      "sampled_tree_peak_rss_bytes": 10305536,
+      "start_utc": "2026-11-24T11:26:08.016107Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    },
+    {
+      "end_utc": "2026-11-24T11:19:19.526863Z",
+      "label": "b-eth-download-delivery-area",
+      "manifest_file_bytes_plus_seal": 485395835,
+      "native_wall_seconds": 157.31408112500503,
+      "payload_bytes": 478077248,
+      "run_id": "20261124T111642211801Z-77e8ef10771743c6",
+      "sampled_tree_peak_rss_bytes": 38993920,
+      "start_utc": "2026-11-24T11:16:42.212205Z",
+      "telemetry_covered_interval_seconds": 156.06738691600913,
+      "telemetry_interval_tree_cpu_seconds": 3.321995264,
+      "worker_process_plus_child_cpu_seconds": 3.309806,
+      "worker_wall_seconds": 156.18465179200575
+    },
+    {
+      "end_utc": "2026-11-24T11:20:03.735411Z",
+      "label": "b-eth-download-living-room",
+      "manifest_file_bytes_plus_seal": 706763234,
+      "native_wall_seconds": 201.5256169159984,
+      "payload_bytes": 699434572,
+      "run_id": "20261124T111642208508Z-fd10f60606da4a70",
+      "sampled_tree_peak_rss_bytes": 38912000,
+      "start_utc": "2026-11-24T11:16:42.209027Z",
+      "telemetry_covered_interval_seconds": 200.1247010829975,
+      "telemetry_interval_tree_cpu_seconds": 4.351885671,
+      "worker_process_plus_child_cpu_seconds": 4.3487670000000005,
+      "worker_wall_seconds": 200.62440520900418
+    },
+    {
+      "end_utc": "2026-11-24T11:21:19.923494Z",
+      "label": "b-eth-download-bridge",
+      "manifest_file_bytes_plus_seal": 1249368411,
+      "native_wall_seconds": 277.7129902500019,
+      "payload_bytes": 1242022565,
+      "run_id": "20261124T111642208832Z-700101acdcab4427",
+      "sampled_tree_peak_rss_bytes": 38944768,
+      "start_utc": "2026-11-24T11:16:42.209284Z",
+      "telemetry_covered_interval_seconds": 275.7380704170064,
+      "telemetry_interval_tree_cpu_seconds": 7.157489591,
+      "worker_process_plus_child_cpu_seconds": 7.1479550000000005,
+      "worker_wall_seconds": 276.0411194999906
+    },
+    {
+      "end_utc": "2026-11-24T11:15:37.737818Z",
+      "label": "b-data-registration",
+      "manifest_file_bytes_plus_seal": 7295481,
+      "native_wall_seconds": 0.43256250000558794,
+      "payload_bytes": 6029,
+      "run_id": "20261124T111537305132Z-2244a0f585274730",
+      "sampled_tree_peak_rss_bytes": 11272192,
+      "start_utc": "2026-11-24T11:15:37.308549Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    },
+    {
+      "end_utc": "2026-11-24T11:21:30.792576Z",
+      "label": "b-roles-delivery-area",
+      "manifest_file_bytes_plus_seal": 7402339,
+      "native_wall_seconds": 13.72124770800292,
+      "payload_bytes": 51684,
+      "run_id": "20261124T112117071101Z-3603d4c5272148a4",
+      "sampled_tree_peak_rss_bytes": 81707008,
+      "start_utc": "2026-11-24T11:21:17.071598Z",
+      "telemetry_covered_interval_seconds": 12.182206874989788,
+      "telemetry_interval_tree_cpu_seconds": 11.387907249,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    },
+    {
+      "end_utc": "2026-11-24T11:22:36.714185Z",
+      "label": "b-roles-living-room",
+      "manifest_file_bytes_plus_seal": 7437622,
+      "native_wall_seconds": 20.17650400000275,
+      "payload_bytes": 75777,
+      "run_id": "20261124T112216537451Z-8d61ebd3470d45f8",
+      "sampled_tree_peak_rss_bytes": 81641472,
+      "start_utc": "2026-11-24T11:22:16.537909Z",
+      "telemetry_covered_interval_seconds": 19.31026012499933,
+      "telemetry_interval_tree_cpu_seconds": 18.612377912,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    },
+    {
+      "end_utc": "2026-11-24T11:22:51.939986Z",
+      "label": "b-roles-bridge",
+      "manifest_file_bytes_plus_seal": 7492567,
+      "native_wall_seconds": 35.42657566600246,
+      "payload_bytes": 127139,
+      "run_id": "20261124T112216513044Z-4e366e50a860466c",
+      "sampled_tree_peak_rss_bytes": 81674240,
+      "start_utc": "2026-11-24T11:22:16.513559Z",
+      "telemetry_covered_interval_seconds": 34.52300233300775,
+      "telemetry_interval_tree_cpu_seconds": 33.98150943899999,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    },
+    {
+      "end_utc": "2026-11-24T11:23:38.089021Z",
+      "label": "b-source-b01-staggered-arcade",
+      "manifest_file_bytes_plus_seal": 68429379,
+      "native_wall_seconds": 4.8061629999865545,
+      "payload_bytes": 61056233,
+      "run_id": "20261124T112333282690Z-3349cf54c5fe48ea",
+      "sampled_tree_peak_rss_bytes": 71041024,
+      "start_utc": "2026-11-24T11:23:33.283192Z",
+      "telemetry_covered_interval_seconds": 3.051264417008497,
+      "telemetry_interval_tree_cpu_seconds": 2.2292739630000002,
+      "worker_process_plus_child_cpu_seconds": 3.407967,
+      "worker_wall_seconds": 3.8755050000036135
+    },
+    {
+      "end_utc": "2026-11-24T11:24:36.535450Z",
+      "label": "b-source-b02-terraced-court",
+      "manifest_file_bytes_plus_seal": 65790541,
+      "native_wall_seconds": 5.3246995829977095,
+      "payload_bytes": 58392853,
+      "run_id": "20261124T112431210575Z-2db6b46a51c64208",
+      "sampled_tree_peak_rss_bytes": 67780608,
+      "start_utc": "2026-11-24T11:24:31.211096Z",
+      "telemetry_covered_interval_seconds": 3.0551201250054874,
+      "telemetry_interval_tree_cpu_seconds": 2.61772917,
+      "worker_process_plus_child_cpu_seconds": 3.655943,
+      "worker_wall_seconds": 3.902920874999836
+    },
+    {
+      "end_utc": "2026-11-24T11:24:36.302534Z",
+      "label": "b-source-b03-woven-truss",
+      "manifest_file_bytes_plus_seal": 67593072,
+      "native_wall_seconds": 5.0916429170029005,
+      "payload_bytes": 60195168,
+      "run_id": "20261124T112431210710Z-655cbe3343d14f85",
+      "sampled_tree_peak_rss_bytes": 65224704,
+      "start_utc": "2026-11-24T11:24:31.211252Z",
+      "telemetry_covered_interval_seconds": 4.073494416996255,
+      "telemetry_interval_tree_cpu_seconds": 3.6025832729999996,
+      "worker_process_plus_child_cpu_seconds": 3.7634630000000002,
+      "worker_wall_seconds": 4.0017376670002704
+    },
+    {
+      "end_utc": "2026-11-24T11:23:38.130644Z",
+      "label": "b-source-b04-layered-louvers",
+      "manifest_file_bytes_plus_seal": 67752875,
+      "native_wall_seconds": 4.847674791002646,
+      "payload_bytes": 60379737,
+      "run_id": "20261124T112333282800Z-0197f43dcaca42f6",
+      "sampled_tree_peak_rss_bytes": 70926336,
+      "start_utc": "2026-11-24T11:23:33.283354Z",
+      "telemetry_covered_interval_seconds": 3.0366694170079427,
+      "telemetry_interval_tree_cpu_seconds": 2.571430265,
+      "worker_process_plus_child_cpu_seconds": 3.317146,
+      "worker_wall_seconds": 3.568577208003262
+    },
+    {
+      "end_utc": "2026-11-24T11:24:35.963643Z",
+      "label": "b-source-b05-perforated-gallery",
+      "manifest_file_bytes_plus_seal": 64569988,
+      "native_wall_seconds": 4.754876292005065,
+      "payload_bytes": 57172043,
+      "run_id": "20261124T112431208585Z-af80abb007274dc4",
+      "sampled_tree_peak_rss_bytes": 67829760,
+      "start_utc": "2026-11-24T11:24:31.209117Z",
+      "telemetry_covered_interval_seconds": 4.077756166996551,
+      "telemetry_interval_tree_cpu_seconds": 3.529785783,
+      "worker_process_plus_child_cpu_seconds": 3.685092,
+      "worker_wall_seconds": 3.981007499998668
+    },
+    {
+      "end_utc": "2026-11-24T11:24:37.050808Z",
+      "label": "b-source-b06-corner-alcoves",
+      "manifest_file_bytes_plus_seal": 66423276,
+      "native_wall_seconds": 5.838625582997338,
+      "payload_bytes": 59025357,
+      "run_id": "20261124T112431212025Z-98c8dcbbe67c4ba8",
+      "sampled_tree_peak_rss_bytes": 69976064,
+      "start_utc": "2026-11-24T11:24:31.212488Z",
+      "telemetry_covered_interval_seconds": 4.070601707993774,
+      "telemetry_interval_tree_cpu_seconds": 3.562058521,
+      "worker_process_plus_child_cpu_seconds": 3.783239,
+      "worker_wall_seconds": 4.038982957994449
+    },
+    {
+      "end_utc": "2026-11-24T11:23:53.725923Z",
+      "label": "b-source-delivery-area",
+      "manifest_file_bytes_plus_seal": 386160495,
+      "native_wall_seconds": 19.595997750002425,
+      "payload_bytes": 378733777,
+      "run_id": "20261124T112334129638Z-4ce7a35f523b4c9c",
+      "sampled_tree_peak_rss_bytes": 276709376,
+      "start_utc": "2026-11-24T11:23:34.130215Z",
+      "telemetry_covered_interval_seconds": 18.283148499991512,
+      "telemetry_interval_tree_cpu_seconds": 16.981112249,
+      "worker_process_plus_child_cpu_seconds": 17.913585,
+      "worker_wall_seconds": 18.620355417006067
+    },
+    {
+      "end_utc": "2026-11-24T11:25:04.620662Z",
+      "label": "b-source-living-room",
+      "manifest_file_bytes_plus_seal": 615242344,
+      "native_wall_seconds": 31.003469415998552,
+      "payload_bytes": 607764374,
+      "run_id": "20261124T112433616854Z-c41f23090d0f41e2",
+      "sampled_tree_peak_rss_bytes": 278331392,
+      "start_utc": "2026-11-24T11:24:33.617411Z",
+      "telemetry_covered_interval_seconds": 29.483305500005372,
+      "telemetry_interval_tree_cpu_seconds": 27.546823919,
+      "worker_process_plus_child_cpu_seconds": 28.320945,
+      "worker_wall_seconds": 29.7968770830048
+    },
+    {
+      "end_utc": "2026-11-24T11:25:29.180175Z",
+      "label": "b-source-bridge",
+      "manifest_file_bytes_plus_seal": 1153959225,
+      "native_wall_seconds": 55.55792279200978,
+      "payload_bytes": 1146424181,
+      "run_id": "20261124T112433621816Z-f07bfcbf31d74bc2",
+      "sampled_tree_peak_rss_bytes": 269369344,
+      "start_utc": "2026-11-24T11:24:33.622325Z",
+      "telemetry_covered_interval_seconds": 53.87098525000329,
+      "telemetry_interval_tree_cpu_seconds": 50.156020033,
+      "worker_process_plus_child_cpu_seconds": 50.52847,
+      "worker_wall_seconds": 53.54154112499964
+    },
+    {
+      "end_utc": "2026-11-24T11:26:36.000269Z",
+      "label": "b-truth-b01-staggered-arcade",
+      "manifest_file_bytes_plus_seal": 26621059,
+      "native_wall_seconds": 4.089627249995829,
+      "payload_bytes": 19167175,
+      "run_id": "20261124T112631910483Z-ac17996f5a844c25",
+      "sampled_tree_peak_rss_bytes": 71663616,
+      "start_utc": "2026-11-24T11:26:31.910936Z",
+      "telemetry_covered_interval_seconds": 1.0166968340054154,
+      "telemetry_interval_tree_cpu_seconds": 0.623299317,
+      "worker_process_plus_child_cpu_seconds": 1.048377,
+      "worker_wall_seconds": 1.2057821670023259
+    },
+    {
+      "end_utc": "2026-11-24T11:26:34.352476Z",
+      "label": "b-truth-b02-terraced-court",
+      "manifest_file_bytes_plus_seal": 26333194,
+      "native_wall_seconds": 2.441975124995224,
+      "payload_bytes": 18879326,
+      "run_id": "20261124T112631910365Z-674dd8105eba42e5",
+      "sampled_tree_peak_rss_bytes": 71352320,
+      "start_utc": "2026-11-24T11:26:31.910881Z",
+      "telemetry_covered_interval_seconds": 1.017905165994307,
+      "telemetry_interval_tree_cpu_seconds": 0.6466912140000001,
+      "worker_process_plus_child_cpu_seconds": 1.002725,
+      "worker_wall_seconds": 1.1665225830074633
+    },
+    {
+      "end_utc": "2026-11-24T11:26:34.100307Z",
+      "label": "b-truth-b03-woven-truss",
+      "manifest_file_bytes_plus_seal": 26165241,
+      "native_wall_seconds": 2.1917904580041068,
+      "payload_bytes": 18711394,
+      "run_id": "20261124T112631908327Z-d834eb6e4fea4fcb",
+      "sampled_tree_peak_rss_bytes": 71401472,
+      "start_utc": "2026-11-24T11:26:31.908963Z",
+      "telemetry_covered_interval_seconds": 1.0108176249923417,
+      "telemetry_interval_tree_cpu_seconds": 0.470427531,
+      "worker_process_plus_child_cpu_seconds": 1.058406,
+      "worker_wall_seconds": 1.3483189589896938
+    },
+    {
+      "end_utc": "2026-11-24T11:26:35.202106Z",
+      "label": "b-truth-b04-layered-louvers",
+      "manifest_file_bytes_plus_seal": 27017616,
+      "native_wall_seconds": 3.2915556670050137,
+      "payload_bytes": 19563715,
+      "run_id": "20261124T112631910396Z-8a7ad22ad1ae42a1",
+      "sampled_tree_peak_rss_bytes": 71368704,
+      "start_utc": "2026-11-24T11:26:31.910867Z",
+      "telemetry_covered_interval_seconds": 1.017007457994623,
+      "telemetry_interval_tree_cpu_seconds": 0.6002291750000001,
+      "worker_process_plus_child_cpu_seconds": 1.095198,
+      "worker_wall_seconds": 1.2713706669892417
+    },
+    {
+      "end_utc": "2026-11-24T11:26:48.697962Z",
+      "label": "b-truth-delivery-area",
+      "manifest_file_bytes_plus_seal": 117730706,
+      "native_wall_seconds": 16.026392250001663,
+      "payload_bytes": 110242972,
+      "run_id": "20261124T112632671322Z-c9428ddb7a674e0b",
+      "sampled_tree_peak_rss_bytes": 276578304,
+      "start_utc": "2026-11-24T11:26:32.671930Z",
+      "telemetry_covered_interval_seconds": 15.24778525000147,
+      "telemetry_interval_tree_cpu_seconds": 13.825620355999998,
+      "worker_process_plus_child_cpu_seconds": 14.728439,
+      "worker_wall_seconds": 14.986335749999853
+    }
+  ],
+  "registered_public_exhibit": {
+    "include": "all registered budgets, including ties, absence of improvement and failures",
+    "reconstruction": "R128",
+    "scene": "b05-perforated-gallery",
+    "target": "h00"
+  },
+  "run_id": "20261124T113353240898Z-a6319c6dd9aa49e1",
+  "scenes": [
+    {
+      "H_cameras": 6,
+      "R_photographs_with_original_sha256_verified": 128,
+      "R_unique": 128,
+      "analysis_members_with_sha256_verified": 144,
+      "configuration_archives": {
+        "R128": {
+          "bytes": 18348595,
+          "camera_only_targets": 6,
+          "path": "R128.zip",
+          "sha256": "05d501425e2319c0faf40ea9cb26194b9ce374b80da01a04cc39ac4c4b300c55",
+          "source_members": 128
+        },
+        "R16": {
+          "bytes": 2307522,
+          "camera_only_targets": 6,
+          "path": "R16.zip",
+          "sha256": "602c1e42541c419640b13b437445aeead0740e1f574d1c2d9c37d40b021071cb",
+          "source_members": 16
+        }
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": true,
+      "original_probe_size": [
+        756,
+        504
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": {
+        "H_first_decodes": 6,
+        "H_first_observed_utc": "2026-11-24T11:26:35.258876+00:00",
+        "H_last_decode_start_utc": "2026-11-24T11:26:35.304708+00:00",
+        "geometry_images": 134,
+        "independent_world_rays": 938,
+        "largest_observed_depth_probe_error_metres": 4.749428850203685e-07,
+        "mean_decode_seconds": 0.0029039933336510635,
+        "truth_receipt": {
+          "manifest_sha256": "d7a573714877a5d4b8ed4330036b343c02503d63cf26419cf1756059f3c84781",
+          "member": "payload/truth.json",
+          "run_id": "20261124T112631910483Z-ac17996f5a844c25",
+          "sha256": "8ca6a5711190f913a9abb18b587f383cef60d137c883a228ef367fa4f75a81e7"
+        }
+      },
+      "raw_R_supplement": {
+        "bytes": 40367877,
+        "path": "R-originals.zip",
+        "sha256": "4d6a1f2cf30bf4e8fb38e755cb700839bb8b5ac4791802d5797e7b96bc2ab145"
+      },
+      "scene_id": "b01-staggered-arcade",
+      "seed": 41031,
+      "source_members_across_configurations": 144,
+      "source_original_bytes_decoded": 40353775,
+      "source_original_decode_seconds": 0.35503778906422667,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "6a824830b3a3aebea79ff735297f5f99c0b77accf266722756ce180b95fc6145",
+        "member": "payload/source.json",
+        "run_id": "20261124T112333282690Z-3349cf54c5fe48ea",
+        "sha256": "d35756889d72531dec256d5fe44a6761a2cf15b9d6637c651fd881aada21ee39"
+      },
+      "split": "train",
+      "target_photo_members": 0,
+      "unit": "m"
+    },
+    {
+      "H_cameras": 6,
+      "R_photographs_with_original_sha256_verified": 128,
+      "R_unique": 128,
+      "analysis_members_with_sha256_verified": 144,
+      "configuration_archives": {
+        "R128": {
+          "bytes": 17902628,
+          "camera_only_targets": 6,
+          "path": "R128.zip",
+          "sha256": "b44fd261686d8198be899462d3243c0f9a1ef12cac1f7e476e6d41e3700ea4da",
+          "source_members": 128
+        },
+        "R16": {
+          "bytes": 2249547,
+          "camera_only_targets": 6,
+          "path": "R16.zip",
+          "sha256": "ad544472319c4b243c25f20c6565dea608cc98d3bdd492b3f07401244965f594",
+          "source_members": 16
+        }
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": true,
+      "original_probe_size": [
+        756,
+        504
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": {
+        "H_first_decodes": 6,
+        "H_first_observed_utc": "2026-11-24T11:26:33.617739+00:00",
+        "H_last_decode_start_utc": "2026-11-24T11:26:33.659320+00:00",
+        "geometry_images": 134,
+        "independent_world_rays": 938,
+        "largest_observed_depth_probe_error_metres": 4.732626415204777e-07,
+        "mean_decode_seconds": 0.0027923265006393194,
+        "truth_receipt": {
+          "manifest_sha256": "456566397f173882011c5123bc85ad09c4f9a5fa5625c4e8415fc3dd1bb7f335",
+          "member": "payload/truth.json",
+          "run_id": "20261124T112631910365Z-674dd8105eba42e5",
+          "sha256": "e1f4cf8f155bafa1e8f94cc530026259de12ca39355eafaba703feda3eaa6c39"
+        }
+      },
+      "raw_R_supplement": {
+        "bytes": 38208445,
+        "path": "R-originals.zip",
+        "sha256": "788ad6e38e7f481b147f2070017b072d69d022ab74249bb0aa74f5d74f9b7783"
+      },
+      "scene_id": "b02-terraced-court",
+      "seed": 41032,
+      "source_members_across_configurations": 144,
+      "source_original_bytes_decoded": 38194343,
+      "source_original_decode_seconds": 0.3658087011135649,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "0d69884e17fd564f0205022734c079af4453712a86cea7d38173bb8630408101",
+        "member": "payload/source.json",
+        "run_id": "20261124T112431210575Z-2db6b46a51c64208",
+        "sha256": "e60128a71621d0091dac224bfcd0dd90e1dc753444d30c39e79fa952dc97940b"
+      },
+      "split": "train",
+      "target_photo_members": 0,
+      "unit": "m"
+    },
+    {
+      "H_cameras": 6,
+      "R_photographs_with_original_sha256_verified": 128,
+      "R_unique": 128,
+      "analysis_members_with_sha256_verified": 144,
+      "configuration_archives": {
+        "R128": {
+          "bytes": 18305840,
+          "camera_only_targets": 6,
+          "path": "R128.zip",
+          "sha256": "4646621ca889ad5bb94a111d7a56abf281a0f175e73a604ef9dc5a12885a7355",
+          "source_members": 128
+        },
+        "R16": {
+          "bytes": 2302127,
+          "camera_only_targets": 6,
+          "path": "R16.zip",
+          "sha256": "773fb4f33bdbf8a3b635b3ddb3149a33090358d0f58e9f2f534acc8386983122",
+          "source_members": 16
+        }
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": true,
+      "original_probe_size": [
+        756,
+        504
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": {
+        "H_first_decodes": 6,
+        "H_first_observed_utc": "2026-11-24T11:26:33.358893+00:00",
+        "H_last_decode_start_utc": "2026-11-24T11:26:33.400254+00:00",
+        "geometry_images": 134,
+        "independent_world_rays": 938,
+        "largest_observed_depth_probe_error_metres": 4.673687179490571e-07,
+        "mean_decode_seconds": 0.0027753750012683063,
+        "truth_receipt": {
+          "manifest_sha256": "e3f5ae87e5024ede2348ddd359996cc2ce7094270c24e577f66784d74fc518a5",
+          "member": "payload/truth.json",
+          "run_id": "20261124T112631908327Z-d834eb6e4fea4fcb",
+          "sha256": "ad7cb04e9ce5c00e8e2ac9d75f5dd7516f149fde058283fd66172a594885f404"
+        }
+      },
+      "raw_R_supplement": {
+        "bytes": 39554972,
+        "path": "R-originals.zip",
+        "sha256": "a1c3a530c56f51ce4554f442c8284a91ee43c3f5fab725aa1a22bbeb7606db35"
+      },
+      "scene_id": "b03-woven-truss",
+      "seed": 41033,
+      "source_members_across_configurations": 144,
+      "source_original_bytes_decoded": 39540870,
+      "source_original_decode_seconds": 0.35866616197745316,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "c79094fcb798a7e8fbd256cfb5d5b7d5cdb81e4e3bcf07a442f98593629fbffe",
+        "member": "payload/source.json",
+        "run_id": "20261124T112431210710Z-655cbe3343d14f85",
+        "sha256": "a3ddd4515bb862e3eb76163f9c0976cbf4538d7a8cfa926a19af1abd25c9a72f"
+      },
+      "split": "train",
+      "target_photo_members": 0,
+      "unit": "m"
+    },
+    {
+      "H_cameras": 6,
+      "R_photographs_with_original_sha256_verified": 128,
+      "R_unique": 128,
+      "analysis_members_with_sha256_verified": 144,
+      "configuration_archives": {
+        "R128": {
+          "bytes": 18444190,
+          "camera_only_targets": 6,
+          "path": "R128.zip",
+          "sha256": "c5aade042df517254c5350fc49e4672938d1b1e0b04bbdf16d8db56572485c12",
+          "source_members": 128
+        },
+        "R16": {
+          "bytes": 2319211,
+          "camera_only_targets": 6,
+          "path": "R16.zip",
+          "sha256": "6a2942ca74ee890f7889f5d7f85ff13bdb6a466c1e58eafb2c5ec57cbe450cf5",
+          "source_members": 16
+        }
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": true,
+      "original_probe_size": [
+        756,
+        504
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": {
+        "H_first_decodes": 6,
+        "H_first_observed_utc": "2026-11-24T11:26:34.412484+00:00",
+        "H_last_decode_start_utc": "2026-11-24T11:26:34.454478+00:00",
+        "geometry_images": 134,
+        "independent_world_rays": 938,
+        "largest_observed_depth_probe_error_metres": 4.7378845913215173e-07,
+        "mean_decode_seconds": 0.00279955550164838,
+        "truth_receipt": {
+          "manifest_sha256": "f35a4f16d80c2d8485f272af99e0abcc2319de5657711536f547211a67adebab",
+          "member": "payload/truth.json",
+          "run_id": "20261124T112631910396Z-8a7ad22ad1ae42a1",
+          "sha256": "0b6b774f202be4c67335a09749505d8c0d932d2617a97b92b72f67f8c444106b"
+        }
+      },
+      "raw_R_supplement": {
+        "bytes": 39584088,
+        "path": "R-originals.zip",
+        "sha256": "e8922eed0f5c805a02261679a9d1f5e5523a6ecd2452ad2759399627b0a6a857"
+      },
+      "scene_id": "b04-layered-louvers",
+      "seed": 41034,
+      "source_members_across_configurations": 144,
+      "source_original_bytes_decoded": 39569986,
+      "source_original_decode_seconds": 0.34683237806893885,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "536d89c4979c0ca3ca03cd89109edaef9ffc88b2a6429ac882653287966a86f5",
+        "member": "payload/source.json",
+        "run_id": "20261124T112333282800Z-0197f43dcaca42f6",
+        "sha256": "ac92e01e8916f51da3f0bb75b412d5bc9ab7643b53f07baccfac784dd42d2a77"
+      },
+      "split": "development",
+      "target_photo_members": 0,
+      "unit": "m"
+    },
+    {
+      "H_cameras": 6,
+      "R_photographs_with_original_sha256_verified": 128,
+      "R_unique": 128,
+      "analysis_members_with_sha256_verified": 144,
+      "configuration_archives": {
+        "R128": {
+          "bytes": 17908698,
+          "camera_only_targets": 6,
+          "path": "R128.zip",
+          "sha256": "09e018ee011decd63cfc5421e50ac53e54650c7d9964e4b8cfbbc9d2bcab95f8",
+          "source_members": 128
+        },
+        "R16": {
+          "bytes": 2253216,
+          "camera_only_targets": 6,
+          "path": "R16.zip",
+          "sha256": "8398fd866fbcd3e690ac4d5ba3248bfd72eb5b91faa6a9de5d376e5f0d552c84",
+          "source_members": 16
+        }
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": true,
+      "original_probe_size": [
+        756,
+        504
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": null,
+      "raw_R_supplement": {
+        "bytes": 36977874,
+        "path": "R-originals.zip",
+        "sha256": "66cf5d717b1f8ffde5928fc27e96c63144ea30867ff5a3b5f9809896ea4ad00f"
+      },
+      "scene_id": "b05-perforated-gallery",
+      "seed": 41035,
+      "source_members_across_configurations": 144,
+      "source_original_bytes_decoded": 36963772,
+      "source_original_decode_seconds": 0.35816191298363265,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "9afd5ff6bdca6bdd58e7bd8242c257e1a3025b0352227568c1dcc4b8f45b11c0",
+        "member": "payload/source.json",
+        "run_id": "20261124T112431208585Z-af80abb007274dc4",
+        "sha256": "c148ec999d17232fef32c63173191549b778b82f4861bd4bb42df12d80401a32"
+      },
+      "split": "confirmation",
+      "target_photo_members": 0,
+      "unit": "m"
+    },
+    {
+      "H_cameras": 6,
+      "R_photographs_with_original_sha256_verified": 128,
+      "R_unique": 128,
+      "analysis_members_with_sha256_verified": 144,
+      "configuration_archives": {
+        "R128": {
+          "bytes": 18124438,
+          "camera_only_targets": 6,
+          "path": "R128.zip",
+          "sha256": "f8bb2016558bc46ebe5a24cb8c8727253684f9f508a4bf293a30f9456b74d647",
+          "source_members": 128
+        },
+        "R16": {
+          "bytes": 2279338,
+          "camera_only_targets": 6,
+          "path": "R16.zip",
+          "sha256": "678fe4844e3ba74589aef44e9e9a37dbe9455f6924e548027908b71ee01e2ac3",
+          "source_members": 16
+        }
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": true,
+      "original_probe_size": [
+        756,
+        504
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": null,
+      "raw_R_supplement": {
+        "bytes": 38589334,
+        "path": "R-originals.zip",
+        "sha256": "9a5fc1a68e5266ab98079cda7f59b1a65617ec72bb1e18b747eb6ad120a8dfde"
+      },
+      "scene_id": "b06-corner-alcoves",
+      "seed": 41036,
+      "source_members_across_configurations": 144,
+      "source_original_bytes_decoded": 38575232,
+      "source_original_decode_seconds": 0.3576198290393222,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "acae6e949a511034a1154c5a769065792a3074b573f8c3676727fcaa39914c2f",
+        "member": "payload/source.json",
+        "run_id": "20261124T112431212025Z-98c8dcbbe67c4ba8",
+        "sha256": "15792965f77bfb8319ca290119570bc9fe43ff97560727fab8b672463d5af5e7"
+      },
+      "split": "confirmation",
+      "target_photo_members": 0,
+      "unit": "m"
+    },
+    {
+      "H_cameras": 10,
+      "R_photographs_with_original_sha256_verified": 34,
+      "R_unique": 34,
+      "analysis_members_with_sha256_verified": 34,
+      "configuration_archives": {
+        "R34": {
+          "bytes": 4920493,
+          "camera_only_targets": 10,
+          "path": "R34.zip",
+          "sha256": "c59e2dcdce056bcf05df5ba527c828f5858b4fd852813a8e76a0d3b58ad682ce",
+          "source_members": 34
+        }
+      },
+      "external": {
+        "heldout_official_names": [
+          "dslr_images_undistorted/DSC_0677.JPG",
+          "dslr_images_undistorted/DSC_0681.JPG",
+          "dslr_images_undistorted/DSC_0686.JPG",
+          "dslr_images_undistorted/DSC_0690.JPG",
+          "dslr_images_undistorted/DSC_0694.JPG",
+          "dslr_images_undistorted/DSC_0699.JPG",
+          "dslr_images_undistorted/DSC_0703.JPG",
+          "dslr_images_undistorted/DSC_0708.JPG",
+          "dslr_images_undistorted/DSC_0712.JPG",
+          "dslr_images_undistorted/DSC_0716.JPG"
+        ],
+        "heldout_zero_based_lexical_ranks": [
+          2,
+          6,
+          11,
+          15,
+          19,
+          24,
+          28,
+          33,
+          37,
+          41
+        ],
+        "official_3d_points_opened": 0,
+        "official_count": 44,
+        "official_observation_rows_parsed": 0,
+        "source_and_heldout_calibrations_stay_in_official_world": true
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": null,
+      "official_transport": {
+        "bytes": 478076254,
+        "pin": {
+          "manifest_sha256": "15065ed8262d32eac07ae5472fbc2509a44d661f82a8d45d46860b58294e2d33",
+          "member": "payload/download.json",
+          "run_id": "20261124T111642211801Z-77e8ef10771743c6",
+          "sha256": "a771ff5d6cb09578b89e48d32627f955dba1e090d29d423ae56d2b3bd0694499"
+        },
+        "sha256": "9acf5efec4b99a69b89ebb87b403259730756c1a510307c92e5f2ce2d22658f3",
+        "url": "https://www.eth3d.net/data/delivery_area_dslr_undistorted.7z"
+      },
+      "original_probe_size": [
+        6208,
+        4135
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": {
+        "H_first_decodes": 10,
+        "H_first_observed_utc": "2026-11-24T11:26:47.042036+00:00",
+        "H_last_decode_start_utc": "2026-11-24T11:26:48.363364+00:00",
+        "geometry_images": 0,
+        "independent_world_rays": 0,
+        "largest_observed_depth_probe_error_metres": null,
+        "mean_decode_seconds": 0.07134611240180674,
+        "truth_receipt": {
+          "manifest_sha256": "c8eaa997b2d468fdcb1a1a8a365ddd906d76a0cddc9e4f6ed1a4dd29625846c5",
+          "member": "payload/truth.json",
+          "run_id": "20261124T112632671322Z-c9428ddb7a674e0b",
+          "sha256": "2424dd687553375d1cd0735471e348b145e2258f6385c8b300b5741dd0625693"
+        }
+      },
+      "raw_R_supplement": {
+        "bytes": 373802150,
+        "path": "R-originals.zip",
+        "sha256": "475bad47ca5abfc074afcafbd0403a3c76573144c39b93a8c0a21e969bfc1c28"
+      },
+      "scene_id": "delivery_area",
+      "source_members_across_configurations": 34,
+      "source_original_bytes_decoded": 373798388,
+      "source_original_decode_seconds": 2.4297952949709725,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "0c70d8f1c742a10853f1317f2f4edb2b2057f2f701dba3ebdcebf522d9420f18",
+        "member": "payload/source.json",
+        "run_id": "20261124T112334129638Z-4ce7a35f523b4c9c",
+        "sha256": "795392e687c43e2d9100a56616429b4235cd21c55216dbf60fcc6081552866c9"
+      },
+      "split": "development",
+      "target_photo_members": 0,
+      "unit": "scene_units"
+    },
+    {
+      "H_cameras": 10,
+      "R_photographs_with_original_sha256_verified": 55,
+      "R_unique": 55,
+      "analysis_members_with_sha256_verified": 55,
+      "configuration_archives": {
+        "R55": {
+          "bytes": 7246240,
+          "camera_only_targets": 10,
+          "path": "R55.zip",
+          "sha256": "3645de13961771bd8c73189ee486862019e3b38e73063f92a2c8cd6ea559c0c2",
+          "source_members": 55
+        }
+      },
+      "external": {
+        "heldout_official_names": [
+          "dslr_images_undistorted/DSC_1538.JPG",
+          "dslr_images_undistorted/DSC_1544.JPG",
+          "dslr_images_undistorted/DSC_1551.JPG",
+          "dslr_images_undistorted/DSC_1565.JPG",
+          "dslr_images_undistorted/DSC_1572.JPG",
+          "dslr_images_undistorted/DSC_1582.JPG",
+          "dslr_images_undistorted/DSC_1600.JPG",
+          "dslr_images_undistorted/DSC_1613.JPG",
+          "dslr_images_undistorted/DSC_1620.JPG",
+          "dslr_images_undistorted/DSC_1626.JPG"
+        ],
+        "heldout_zero_based_lexical_ranks": [
+          3,
+          9,
+          16,
+          22,
+          29,
+          35,
+          42,
+          48,
+          55,
+          61
+        ],
+        "official_3d_points_opened": 0,
+        "official_count": 65,
+        "official_observation_rows_parsed": 0,
+        "source_and_heldout_calibrations_stay_in_official_world": true
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": null,
+      "official_transport": {
+        "bytes": 699433581,
+        "pin": {
+          "manifest_sha256": "8b26632ae1ea63c44dfab73b047de99515527c32104de867e7a65fff03a527cb",
+          "member": "payload/download.json",
+          "run_id": "20261124T111642208508Z-fd10f60606da4a70",
+          "sha256": "17b62a0783b057a2b6b61d2193e5efc88345cb852ba3ed6e79cb0f843f3d6a45"
+        },
+        "sha256": "5fcb39b5f8c86e54db5a502ea99153ac8709e12faeb340693fe2bb61223581b7",
+        "url": "https://www.eth3d.net/data/living_room_dslr_undistorted.7z"
+      },
+      "original_probe_size": [
+        6223,
+        4146
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": null,
+      "raw_R_supplement": {
+        "bytes": 600501407,
+        "path": "R-originals.zip",
+        "sha256": "19cdc260925c8954ad0b4e43ee1ed8bcddbde14a3213e3b2d88cc07018bf3e5f"
+      },
+      "scene_id": "living_room",
+      "source_members_across_configurations": 55,
+      "source_original_bytes_decoded": 600495335,
+      "source_original_decode_seconds": 4.091730706059025,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "5eb81a6c05c5c5b9ada7baafb96591d1435a92b280e82ec77cf2ac9569b78d20",
+        "member": "payload/source.json",
+        "run_id": "20261124T112433616854Z-c41f23090d0f41e2",
+        "sha256": "5fe9779cbab65e9cc2204519b2b3071d17eab45697d36c610c7c60269384f570"
+      },
+      "split": "confirmation",
+      "target_photo_members": 0,
+      "unit": "scene_units"
+    },
+    {
+      "H_cameras": 10,
+      "R_photographs_with_original_sha256_verified": 100,
+      "R_unique": 100,
+      "analysis_members_with_sha256_verified": 100,
+      "configuration_archives": {
+        "R100": {
+          "bytes": 14887316,
+          "camera_only_targets": 10,
+          "path": "R100.zip",
+          "sha256": "0ed84daa027c74540f4215ebe5e5730ac2927aae0cdfa254186384246e5dfc76",
+          "source_members": 100
+        }
+      },
+      "external": {
+        "heldout_official_names": [
+          "dslr_images_undistorted/DSC_1180.JPG",
+          "dslr_images_undistorted/DSC_1192.JPG",
+          "dslr_images_undistorted/DSC_1206.JPG",
+          "dslr_images_undistorted/DSC_1217.JPG",
+          "dslr_images_undistorted/DSC_1228.JPG",
+          "dslr_images_undistorted/DSC_1239.JPG",
+          "dslr_images_undistorted/DSC_1250.JPG",
+          "dslr_images_undistorted/DSC_1264.JPG",
+          "dslr_images_undistorted/DSC_1275.JPG",
+          "dslr_images_undistorted/DSC_1292.JPG"
+        ],
+        "heldout_zero_based_lexical_ranks": [
+          5,
+          16,
+          27,
+          38,
+          49,
+          60,
+          71,
+          82,
+          93,
+          104
+        ],
+        "official_3d_points_opened": 0,
+        "official_count": 110,
+        "official_observation_rows_parsed": 0,
+        "source_and_heldout_calibrations_stay_in_official_world": true
+      },
+      "geometry_prior_members": 0,
+      "nested_16_128_shared_pixels_and_cameras_exact": null,
+      "official_transport": {
+        "bytes": 1242021580,
+        "pin": {
+          "manifest_sha256": "dcd7445d695da17ea4e5b4e14c1cfcaa3ba785cc74ac7a78ac44edbbd785844c",
+          "member": "payload/download.json",
+          "run_id": "20261124T111642208832Z-700101acdcab4427",
+          "sha256": "37ae615598ad14d19dcd6a45e05b218f14fd67b274897f273c12f8721d05fd9a"
+        },
+        "sha256": "0860c6230712eaffef5c9780a3b1088e96d52f18172515e865bc61e9b1a0891f",
+        "url": "https://www.eth3d.net/data/bridge_dslr_undistorted.7z"
+      },
+      "original_probe_size": [
+        6208,
+        4137
+      ],
+      "original_to_analysis_bitwise_probe": "r000",
+      "previous_authorized_evaluation": null,
+      "raw_R_supplement": {
+        "bytes": 1131508132,
+        "path": "R-originals.zip",
+        "sha256": "59c6f2d97589e8e01867735d78f0dbc3d573606e454fc78368dbc3489c152def"
+      },
+      "scene_id": "bridge",
+      "source_members_across_configurations": 100,
+      "source_original_bytes_decoded": 1131497110,
+      "source_original_decode_seconds": 7.285235080096754,
+      "source_original_first_read_timestamp_granularity": "native run bounds; per-image cumulative calls and time",
+      "source_receipt": {
+        "manifest_sha256": "238680f01f3ab95ea65d6258c4158ae3e4a0a85f7edf69d0b8219591b1ba12da",
+        "member": "payload/source.json",
+        "run_id": "20261124T112433621816Z-f07bfcbf31d74bc2",
+        "sha256": "d998ff4587e5ecb0f57aaa28dd3b9beec445b7414873180f68bf9c248865851e"
+      },
+      "split": "confirmation",
+      "target_photo_members": 0,
+      "unit": "scene_units"
+    }
+  ],
+  "schema": "el-many-source-data-audit-1",
+  "source_registration": {
+    "manifest_sha256": "21175437a236664e86db780a115c66b5016872f07d9bfac0d7c3bbcce7e04d14",
+    "member": "payload/registration.json",
+    "run_id": "20261124T111537305132Z-2244a0f585274730",
+    "sha256": "f65b0de0586763caafaec1869a90abc865c18fbbbdfcba70c9708099c43c1947"
+  },
+  "study_registration": {
+    "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+    "member": "payload/study.json",
+    "run_id": "20261124T111533951307Z-8b7523eb307440af",
+    "sha256": "fd4ea8f80597cd7c21b4f548131d1a9f96780747d5c65503f83b6b1b79a22777"
+  },
+  "totals": {
+    "QA_decoded_H_images": 0,
+    "QA_decoded_R_analysis_PNGs": 9,
+    "QA_decoded_R_originals": 9,
+    "R_deployment_memberships": 1053,
+    "authored_optical_depth_images": 536,
+    "authorized_training_development_H_first_decodes": 34,
+    "confirmation_H_image_reads": 0,
+    "deployment_libraries": 15,
+    "unique_R_original_production_decodes": 957,
+    "world_ray_checks": 3752
+  },
+  "training_development_opening": {
+    "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+    "member": "payload/opening.json",
+    "run_id": "20261124T112608015631Z-d740f790af184ece",
+    "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+  }
+}
