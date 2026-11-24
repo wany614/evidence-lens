@@ -1,0 +1,122 @@
+{
+  "actual_software_paths": {
+    "browser_test_program_sha256": "ba7d481955968bf61c4ce1932563d14d6537e3d8d5c6b8c72ebc528aabfff2da",
+    "source_template_sha256": "839d6faa0948683d7c20f672000dd22c6fb63d27efc7844f49ed31ac1ace866c"
+  },
+  "css_sha256": "7e330a03539649e320ab8a64aea97ba2ecf07cc4f2470125a6043d5d0573fb30",
+  "embedded_data_contract": "the compact JSON block parses to exactly study-summary.json",
+  "embedded_json_sha256": "9be01ab04b4b7e14d606878ed45a00d2aae7343b7e974abc67ff6f08a9a5e8e0",
+  "full_output_list": [
+    "report.html",
+    "study-summary.json",
+    "unknown-reason-counts.csv",
+    "reason-codebook.json",
+    "interface-check.json",
+    "report.json"
+  ],
+  "parents": {
+    "base": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "inputs/basewheel/evidence_lens-0.5.0-py3-none-any.whl",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "40d9b6ffb9d881c63d4710fee71112920dd665da831ef744fb062a20f86de734"
+    },
+    "comparability": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/comparability.csv",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "d1dc9e60511312b1c6ed151d488a90b9b5e2542c3f25692e38d9f9074b65e85c"
+    },
+    "deployment": {
+      "manifest_sha256": "394ca596e8cbe56df2d001b208472771d7ee7c80da360de17c68ae77a1e12cef",
+      "member": "payload/deployment.json",
+      "run_id": "20261124T120432236841Z-ee4b89e5038c4457",
+      "sha256": "84ed8d6d0a9508f0f7e053367e1286c61720704398818d51304c329f0b30744b"
+    },
+    "domain_ranks": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/domain-ranks.csv",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "553bdfb0ad375d9779dd3a0407ca6d7bf684d8806f2884c4a32fdc589171a017"
+    },
+    "endpoints": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/endpoints.json",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "e2cabe718690d719f5c75d57fa4e66a5de17c2adccbb1c0cacaf0009e67c3069"
+    },
+    "example": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/example.json",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "111da715a1b98df0452ed7c7ca52036f1ee095f3f0308488c9b5f2d3a9781ec0"
+    },
+    "geometric_visibility": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/geometric-visibility.csv",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "334edf9caf42c8e5d364c3d1c5818f23669d46c266b129c42d808e3c3b7afdc4"
+    },
+    "perf": {
+      "manifest_sha256": "394ca596e8cbe56df2d001b208472771d7ee7c80da360de17c68ae77a1e12cef",
+      "member": "payload/cpu-performance.csv",
+      "run_id": "20261124T120432236841Z-ee4b89e5038c4457",
+      "sha256": "57ad8e629228dcdcf8695bb9ca148c8f5aa79d8b6337f36f92b047298b6ed7f8"
+    },
+    "prototype": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "inputs/prototype/evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "42f705cca13248a0622dc9afc22f34c681f3088a93fc1957b0a78618697e8cb3"
+    },
+    "unknown_reasons": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/unknown-reasons.csv",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "8166f3aedd3f7cec0a2e5b7ebc989a31f96d51954384884d7ea9cd2fec98441f"
+    },
+    "view_priority": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/view-priority.csv",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "da74e06f313c5c69e3874b8866b3b6420faf367e1f7601fdd9f8281ff1f3577c"
+    },
+    "views": {
+      "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+      "member": "payload/views.csv",
+      "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+      "sha256": "d9ed6482cdcbf594ae3e510ad5eb67e750e8b610805eecb241b1bdf01682dc00"
+    }
+  },
+  "positive_list": {
+    "interface-check.json": {
+      "bytes": 639,
+      "sha256": "398f38218d70cf108c189e5459f3f293f4e6a8724dbe57e0346d66b052f552f5"
+    },
+    "reason-codebook.json": {
+      "bytes": 1259,
+      "sha256": "10b626648c307014de62e282873495091f5e67236b45d9928b59ae2f00faa20f"
+    },
+    "report.html": {
+      "bytes": 53095,
+      "sha256": "1d3c6a1469ee478a839c79d08faf0d050cd73c7edaeef94822692156b1612b4d"
+    },
+    "study-summary.json": {
+      "bytes": 62341,
+      "sha256": "35434f366c6710abe86deafceb5efc6ed83f0d1259e8c831e66d13130457fb2f"
+    },
+    "unknown-reason-counts.csv": {
+      "bytes": 2984662,
+      "sha256": "b29a30f82992a44ca4596ef75dbdd4ea44e399a01f2624e577646735bb3c0d79"
+    }
+  },
+  "reason_counts_exported": 22584,
+  "rights": {
+    "authored_demonstration": "Numeric counts only from wany614’s CC BY 4.0 authored dataset.",
+    "html_css_browser_script": "Original Evidence Lens work, wany614, Apache-2.0",
+    "numeric_findings": "Project measurements and published numeric identifiers. ETH3D is credited as the external benchmark.",
+    "visual_material": "No photographs, external renders, fonts or third-party visual assets. Browser uses local fonts."
+  },
+  "run_id": "20261124T122234514141Z-9ebf91bbe30c4e7a",
+  "schema": "el-b-scientific-summary-html-1"
+}

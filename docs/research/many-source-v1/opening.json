@@ -1,0 +1,181 @@
+{
+  "allowed_targets": {
+    "b05-perforated-gallery": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05"
+    ],
+    "b06-corner-alcoves": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05"
+    ],
+    "bridge": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05",
+      "h06",
+      "h07",
+      "h08",
+      "h09"
+    ],
+    "living_room": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05",
+      "h06",
+      "h07",
+      "h08",
+      "h09"
+    ]
+  },
+  "first_actual_reference_access": "recorded separately by the evaluator",
+  "model_freeze": {
+    "manifest_sha256": "0de1f494c6f90e6744a3170f5f52e7957aab549313affb3bd5739d762e4cbc73",
+    "member": "payload/freeze.json",
+    "run_id": "20261124T120332809100Z-ec53d7a4a3b94042",
+    "sha256": "452048897c150f6073808634c3f8d29924ddf84662abac68f470ca6b12fca479"
+  },
+  "phase": "confirmation",
+  "prediction_freeze_sha256": "602e1414cb806b578739a9e337ff0cb2feb072cedfb34873fa75d6fb390d4149",
+  "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+  "schema": "el-many-h-opening-1",
+  "terminals": {
+    "b05-perforated-gallery": {
+      "128": {
+        "receipt": {
+          "manifest_sha256": "539fab2990ae5d7519fd932c2ccf8037f243fd2990e1b469b9d8586c0ec5511a",
+          "member": "payload/scores.json",
+          "run_id": "20261124T121501571985Z-75f0cdcbf70a42d1",
+          "sha256": "122a1dcc2df100927d161f7c3f168598653496a312f7f6f79c8b3e6ad0061a9a"
+        },
+        "scores_run": "20261124T121501571985Z-75f0cdcbf70a42d1",
+        "status": "succeeded",
+        "target_outcomes": {
+          "h00": "ready",
+          "h01": "ready",
+          "h02": "ready",
+          "h03": "ready",
+          "h04": "ready",
+          "h05": "ready"
+        }
+      },
+      "16": {
+        "receipt": {
+          "manifest_sha256": "b0433ac0dc58d420e15fe720a8066faac58b12f8bf050eb81ae2a04579790a6d",
+          "member": "payload/scores.json",
+          "run_id": "20261124T121228779288Z-a9ea10a25506443a",
+          "sha256": "a361b57a12cb616a6a21975a377a91d2179d304367179b3755346b163f985df5"
+        },
+        "scores_run": "20261124T121228779288Z-a9ea10a25506443a",
+        "status": "succeeded",
+        "target_outcomes": {
+          "h00": "ready",
+          "h01": "ready",
+          "h02": "ready",
+          "h03": "ready",
+          "h04": "ready",
+          "h05": "ready"
+        }
+      }
+    },
+    "b06-corner-alcoves": {
+      "128": {
+        "receipt": {
+          "manifest_sha256": "01a29f2997a02a0ff0f0361d8eab7d4bddc48e90a6a4ab5a1713b6f3155f71e6",
+          "member": "payload/scores.json",
+          "run_id": "20261124T121740306653Z-a6ef83bc4bbf46b8",
+          "sha256": "fa0046800ca20c63ae85b02641b975b21540f30df1a9002c9595c036bd19a79d"
+        },
+        "scores_run": "20261124T121740306653Z-a6ef83bc4bbf46b8",
+        "status": "succeeded",
+        "target_outcomes": {
+          "h00": "ready",
+          "h01": "ready",
+          "h02": "ready",
+          "h03": "ready",
+          "h04": "ready",
+          "h05": "ready"
+        }
+      },
+      "16": {
+        "receipt": {
+          "manifest_sha256": "f5f8ce24a49c58f8272cfb3c046a381f63c90fda0cfa1319e988fe07e7417972",
+          "member": "payload/scores.json",
+          "run_id": "20261124T121520559502Z-5722a0fbb88b4d3a",
+          "sha256": "6ac203359ac579fd82795737e0146ea2e25a6a32387a7c9cf835cee4003b43ef"
+        },
+        "scores_run": "20261124T121520559502Z-5722a0fbb88b4d3a",
+        "status": "succeeded",
+        "target_outcomes": {
+          "h00": "ready",
+          "h01": "ready",
+          "h02": "ready",
+          "h03": "ready",
+          "h04": "ready",
+          "h05": "ready"
+        }
+      }
+    },
+    "bridge": {
+      "100": {
+        "receipt": {
+          "manifest_sha256": "284955399dc8f52c663acfd440d3119ae8fb0d02c293fc03a59047322b5436af",
+          "member": "payload/scores.json",
+          "run_id": "20261124T121943040942Z-eeeef373349549eb",
+          "sha256": "71dc037379b6ff066d94fe2185163b868346e539c83eeedf1f54482b697ab31b"
+        },
+        "scores_run": "20261124T121943040942Z-eeeef373349549eb",
+        "status": "succeeded",
+        "target_outcomes": {
+          "h00": "ready",
+          "h01": "ready",
+          "h02": "ready",
+          "h03": "ready",
+          "h04": "ready",
+          "h05": "ready",
+          "h06": "ready",
+          "h07": "ready",
+          "h08": "ready",
+          "h09": "ready"
+        }
+      }
+    },
+    "living_room": {
+      "55": {
+        "receipt": {
+          "manifest_sha256": "dc6ed3c4442fbb81c164ef59ef62a749b2ca367c453a33269e521d3d45b6446d",
+          "member": "payload/scores.json",
+          "run_id": "20261124T121815506115Z-d9008614992f4041",
+          "sha256": "ad0b021cbf3290dc33794fe9dade26d3c4ed386952cb5abca8744a460f484e06"
+        },
+        "scores_run": "20261124T121815506115Z-d9008614992f4041",
+        "status": "succeeded",
+        "target_outcomes": {
+          "h00": "ready",
+          "h01": "ready",
+          "h02": "ready",
+          "h03": "ready",
+          "h04": "ready",
+          "h05": "ready",
+          "h06": "ready",
+          "h07": "ready",
+          "h08": "ready",
+          "h09": "ready"
+        }
+      }
+    }
+  }
+}

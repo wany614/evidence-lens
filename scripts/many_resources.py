@@ -126,7 +126,9 @@ def main(a):
     if a.record:
         pins={k:selected(a.store,v) for k,v in {"study":"b-study-registration","results":"b-scientific-results",
             "upstream":"b-upstream-closeout","cpu":"b-bank-deployment-public","independent":"b-independent-arithmetic-check",
-            "model":"b-model-package"}.items()}
+            "model":"b-model-package","access":"b-data-final-access","alignment":"b-fit-input-alignment",
+            "updates":"b-checkpoint-update-attribution","summary":"b-scientific-summary-html",
+            "regressions":"b-frozen-science-regressions"}.items()}
         if (a.store/"work/controller/b-bank-linux-mac-comparison/selected.json").is_file():
             pins["linux"]=selected(a.store,"b-bank-linux-mac-comparison")
         print(stage(a.store,"b-resources-and-failures","report",pins,{"scope":"through scientific, deployment and independent numerical acceptance"},
@@ -138,6 +140,12 @@ def main(a):
         result["run_id"]=os.getenv("EL_RUN_ID")
         result["allocated_store_bytes_including_prior_A"]=int(subprocess.check_output(
             ["du","-sk",str(a.store)],text=True).split()[0])*1024
+        environment=a.store/"work/many-env"
+        controls=sorted((a.store/"work/controller").glob("b-*"))
+        result["B_working_directories_allocated_bytes"]={
+            "isolated_research_runtime":int(subprocess.check_output(["du","-sk",environment],text=True).split()[0])*1024,
+            "stage_controller_configs_and_logs":sum(int(line.split()[0])*1024 for line in
+                subprocess.check_output(["du","-sk",*controls],text=True).splitlines())}
         save(a.out/"resources.json",result)
     else:
         print(json.dumps({k:v for k,v in result.items() if k!="runs"},sort_keys=True))

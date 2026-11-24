@@ -94,7 +94,8 @@ def export(a):
     roster={k:{"bytes":len(v),"sha256":hashlib.sha256(v).hexdigest()} for k,v in contents.items()}
     require(roster["feature-schema.json"]["sha256"]==FEATURE_SCHEMA_SHA256,"schema bytes differ")
     contents["manifest.json"]=encoded(dict(schema="el-many-model-files-1",files=roster,
-        science_code_commit=freeze["science_code_commit"],protocol_sha256=cfg["sources"]["study"]["sha256"],
+        science_code_commit=freeze["science_code_commit"],protocol_sha256=load(f["study"])["protocol_sha256"],
+        study_registration_sha256=cfg["sources"]["study"]["sha256"],
         model_id=model["model_id"],final_fit=cfg["sources"]["fit"],feature_schema_sha256=FEATURE_SCHEMA_SHA256))
     zip_path=a.out/ARCHIVE
     with ZipFile(zip_path,"x",compression=ZIP_DEFLATED) as archive:

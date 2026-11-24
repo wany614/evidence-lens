@@ -1,0 +1,29 @@
+{
+  "base_wheel_sha256": "40d9b6ffb9d881c63d4710fee71112920dd665da831ef744fb062a20f86de734",
+  "legacy": {
+    "0": "scoreable",
+    "1": "depth_unverified",
+    "2": "invalid_target_rgb",
+    "254": "unavailable_source_reason_code",
+    "3": "invalid_target_alpha",
+    "4": "invalid_target_z",
+    "5": "no_in_frame_projection",
+    "6": "no_comparable_source",
+    "7": "render_failed",
+    "8": "visual_input_unavailable"
+  },
+  "legacy_extension": "254 is the named missing-source sentinel from the prototype legacy_q4 adapter. The original view reason codes come from the Stage A wheel.",
+  "many_source": {
+    "0": "rank_available",
+    "1": "depth_unverified",
+    "2": "target_render_unavailable",
+    "3": "invalid_target_rgb",
+    "4": "invalid_target_alpha",
+    "5": "invalid_target_z",
+    "6": "target_alpha_below_minimum",
+    "7": "queried_material_unavailable"
+  },
+  "prototype_wheel_sha256": "42f705cca13248a0622dc9afc22f34c681f3088a93fc1957b0a78618697e8cb3",
+  "schema": "el-b-study-reason-codebook-1",
+  "scope": "Code 0 marks available ranking. A nonzero code is specific to its family and belongs to a nonfinite rank. The independent RGB error label has its own mask. Whole-view terminal failures have no issued pixel reason code."
+}

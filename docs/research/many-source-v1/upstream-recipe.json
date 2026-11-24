@@ -1,0 +1,133 @@
+{
+  "baseline_id": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+  "files": {
+    "headless-trainer.patch": "c1fec2ac0a5af473986cfddf23e69c1430eba87e56086ea1c5974ae4e58c0928",
+    "official/LICENSE": "96a4f89293c0df19880da9b0e35f67589f5885ea61b224ef16bb2bd599a8a44d",
+    "official/simple_trainer.py": "79319e1cd7404e4d1ba0c425634235c39e6054f0643b904a01feea6179462c05",
+    "official/utils.py": "44a38b236940706705c9351b365be6bd21d49efc57dd695ba5a7e70055b959e1",
+    "run_gpu.py": "1044b385e0687e1d540498699d3cb435bc757d2ed27be60d40b06de7eb230950",
+    "runtime/many_upstream_adapter.py": "3563ca7e5444eb84433221cee35337875708ffdd39ccd1deb488cfed1bcc116d",
+    "runtime/many_upstream_native.py": "fed66ae5e0cafdb63ad7668472c93e9dd22d9da7a78fa929a47c727502654e0a",
+    "runtime/simple_trainer.py": "ce42db9ae2cd950bdbcfecb95a8b97aae365051fa06f884c34f5d518d1d71e1e",
+    "runtime/upstream_math.py": "9d4654d99f819ca582300380f119bc8eae2931cb56696d62ca1bee9b847c1c8d"
+  },
+  "headless_patch_sha256": "c1fec2ac0a5af473986cfddf23e69c1430eba87e56086ea1c5974ae4e58c0928",
+  "mcmc_canonical_lf_sha256": "0c2fc042833f39fae0b785de07d0472fe0d1f22437108b0d04a45c0e4fe67c16",
+  "original_trainer_sha256": "79319e1cd7404e4d1ba0c425634235c39e6054f0643b904a01feea6179462c05",
+  "parents": {
+    "license": {
+      "manifest_sha256": "71a3e0f0809b8548886540ce293f4a2fcf51ee5bbf230ba4813dd3cd04e796a4",
+      "member": "payload/official/LICENSE",
+      "run_id": "20261124T111427871042Z-f3910047cf8244ae",
+      "sha256": "96a4f89293c0df19880da9b0e35f67589f5885ea61b224ef16bb2bd599a8a44d"
+    },
+    "objective_control": {
+      "manifest_sha256": "e33388c84a10c0e68a72c7bb70cd12681574206689534fc1218c4739f7974465",
+      "member": "payload/objectives.json",
+      "run_id": "20261124T112628578723Z-6afa94ef7341497f",
+      "sha256": "2d3b312517dd4cfb27ec1d65d53fb30c5475b6b178da17d33ac1dc53a4930b29"
+    },
+    "roles": {
+      "manifest_sha256": "21175437a236664e86db780a115c66b5016872f07d9bfac0d7c3bbcce7e04d14",
+      "member": "payload/registration.json",
+      "run_id": "20261124T111537305132Z-2244a0f585274730",
+      "sha256": "f65b0de0586763caafaec1869a90abc865c18fbbbdfcba70c9708099c43c1947"
+    },
+    "runtime": {
+      "manifest_sha256": "542a6e65a3dc5a1cc8bb7791b7cc50018346d3e608307a3807d16835fcc0e392",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T112518136526Z-ad36035bf5ba4482",
+      "sha256": "7602c49bf5f5d0de95162709bbdcfd933a27c9ec1e40ba6d7f1d4e5bb787b371"
+    },
+    "study": {
+      "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+      "member": "payload/study.json",
+      "run_id": "20261124T111533951307Z-8b7523eb307440af",
+      "sha256": "fd4ea8f80597cd7c21b4f548131d1a9f96780747d5c65503f83b6b1b79a22777"
+    },
+    "trainer": {
+      "manifest_sha256": "71a3e0f0809b8548886540ce293f4a2fcf51ee5bbf230ba4813dd3cd04e796a4",
+      "member": "payload/official/examples/simple_trainer.py",
+      "run_id": "20261124T111427871042Z-f3910047cf8244ae",
+      "sha256": "79319e1cd7404e4d1ba0c425634235c39e6054f0643b904a01feea6179462c05"
+    },
+    "utils": {
+      "manifest_sha256": "71a3e0f0809b8548886540ce293f4a2fcf51ee5bbf230ba4813dd3cd04e796a4",
+      "member": "payload/official/examples/utils.py",
+      "run_id": "20261124T111427871042Z-f3910047cf8244ae",
+      "sha256": "44a38b236940706705c9351b365be6bd21d49efc57dd695ba5a7e70055b959e1"
+    },
+    "vendor": {
+      "manifest_sha256": "71a3e0f0809b8548886540ce293f4a2fcf51ee5bbf230ba4813dd3cd04e796a4",
+      "member": "payload/vendor.json",
+      "run_id": "20261124T111427871042Z-f3910047cf8244ae",
+      "sha256": "f3f94f59ceae9386b75b6a92bd3066f76deebfa621655a64aae1ad361f68dff6"
+    }
+  },
+  "recipe": {
+    "camera": "pinhole OpenCV integer centres; add 0.5 to both principal point coordinates for gsplat",
+    "cumulative_gpu_seconds": 28800,
+    "depth_alpha_epsilon": 1e-06,
+    "hard_fits": 20,
+    "init_opa": 0.5,
+    "init_scale": 0.1,
+    "initialization": "R-only calibrated COLMAP triangulation",
+    "loss": {
+      "display_l1": 0.8,
+      "opacity_reg": 0.01,
+      "scale_reg": 0.01,
+      "sigma": 1.5,
+      "valid_ssim": 0.2,
+      "window": 11
+    },
+    "native_adapter_max_error_scale": 2e-05,
+    "native_checkpoint_step_zero_based": 5999,
+    "native_method": "gsplat simple_trainer MCMC",
+    "near_far": [
+      0.01,
+      10000000000.0
+    ],
+    "normalization": "identity",
+    "per_fit_wall_limit_seconds": 3600,
+    "preapproved_fits": 15,
+    "renderer": "classic gsplat 1.5.3 RGB+ED; combined display SH3; all source and target poses",
+    "seed": 42,
+    "sfm": {
+      "algorithm": "SIFT mutual ratio plus forward-backward Lucas-Kanade, calibrated two-view triangulation",
+      "fusion_voxel_in_source_extents": 0.0025,
+      "lk_fb_px": 0.75,
+      "max_mean_rgb_discrepancy_8bit": 45,
+      "max_parallax_deg": 80,
+      "max_radius_in_source_extents": 80,
+      "max_reprojection_px": 1.25,
+      "maximum_points": 15000,
+      "min_parallax_deg": 0.75,
+      "minimum_points": 16,
+      "opencv": "4.11.0",
+      "ratio": 0.8,
+      "sift_max": 2400,
+      "source_neighbours": 6
+    },
+    "sh_degree": 3,
+    "sh_degree_interval": 1000,
+    "strategy": {
+      "cap_max": 60000,
+      "min_opacity": 0.005,
+      "noise_lr": 500000.0,
+      "refine_every": 100,
+      "refine_start_iter": 500,
+      "refine_stop_iter": 4500
+    },
+    "training_guard_seconds": 3390,
+    "updates": 6000
+  },
+  "run_id": "20261124T112631071665Z-d29f7055496a4703",
+  "runtime": {
+    "bytes": 41716,
+    "path": "trainer-runtime.zip",
+    "sha256": "79968b1e07937b4042687d4e390a97e1a1544fb9eb54caaf8cd0c720134aef89"
+  },
+  "schema": "el-many-upstream-recipe-1",
+  "sfm_program_sha256": "f0a0f37c7791d64ab5a53c7d82bbd52b0af0149500b4adae9329d3497f6d4dc9"
+}

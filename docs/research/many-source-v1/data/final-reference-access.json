@@ -1,0 +1,504 @@
+{
+  "additional_data_stage_resources": [
+    {
+      "end_utc": "2026-11-24T11:42:46.651195Z",
+      "label": "exact0",
+      "manifest_file_bytes_plus_seal": 26385300,
+      "native_wall_seconds": 2.7888037500088103,
+      "payload_bytes": 344258,
+      "run_id": "20261124T114243862274Z-3855bae867b1496d",
+      "sampled_tree_peak_rss_bytes": 10846208,
+      "start_utc": "2026-11-24T11:42:43.862682Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": 0.53375,
+      "worker_wall_seconds": 0.6409000840067165
+    },
+    {
+      "end_utc": "2026-11-24T11:42:46.032092Z",
+      "label": "exact1",
+      "manifest_file_bytes_plus_seal": 25908550,
+      "native_wall_seconds": 2.1848469999968074,
+      "payload_bytes": 313517,
+      "run_id": "20261124T114243847084Z-67ca9a7965674755",
+      "sampled_tree_peak_rss_bytes": 11517952,
+      "start_utc": "2026-11-24T11:42:43.850327Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": 0.485071,
+      "worker_wall_seconds": 0.5982884580007521
+    },
+    {
+      "end_utc": "2026-11-24T11:42:45.425688Z",
+      "label": "exact2",
+      "manifest_file_bytes_plus_seal": 26352751,
+      "native_wall_seconds": 1.5785967080009868,
+      "payload_bytes": 354523,
+      "run_id": "20261124T114243846929Z-9e3bdac090694218",
+      "sampled_tree_peak_rss_bytes": 8830976,
+      "start_utc": "2026-11-24T11:42:43.850319Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": 0.513508,
+      "worker_wall_seconds": 0.6184322080080165
+    },
+    {
+      "end_utc": "2026-11-24T11:42:29.711204Z",
+      "label": "exact3",
+      "manifest_file_bytes_plus_seal": 26477019,
+      "native_wall_seconds": 1.8006665840075584,
+      "payload_bytes": 339581,
+      "run_id": "20261124T114227910367Z-f44d579367b14227",
+      "sampled_tree_peak_rss_bytes": 68878336,
+      "start_utc": "2026-11-24T11:42:27.910911Z",
+      "telemetry_covered_interval_seconds": 1.0152682499901857,
+      "telemetry_interval_tree_cpu_seconds": 0.316745987,
+      "worker_process_plus_child_cpu_seconds": 0.641703,
+      "worker_wall_seconds": 0.9433917499991367
+    },
+    {
+      "end_utc": "2026-11-24T12:20:57.531432Z",
+      "label": "exact4",
+      "manifest_file_bytes_plus_seal": 26193012,
+      "native_wall_seconds": 2.0724809160019504,
+      "payload_bytes": 332797,
+      "run_id": "20261124T122055458787Z-8f5cfb59cc234019",
+      "sampled_tree_peak_rss_bytes": 7962624,
+      "start_utc": "2026-11-24T12:20:55.459300Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": 0.55546,
+      "worker_wall_seconds": 0.6869709169986891
+    },
+    {
+      "end_utc": "2026-11-24T12:20:58.552650Z",
+      "label": "exact5",
+      "manifest_file_bytes_plus_seal": 26398939,
+      "native_wall_seconds": 3.1002972919959575,
+      "payload_bytes": 323061,
+      "run_id": "20261124T122055452129Z-cb191a1efc904b09",
+      "sampled_tree_peak_rss_bytes": 11386880,
+      "start_utc": "2026-11-24T12:20:55.455621Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": 0.46400099999999994,
+      "worker_wall_seconds": 0.653151833001175
+    },
+    {
+      "end_utc": "2026-11-24T12:20:30.055650Z",
+      "label": "truth4",
+      "manifest_file_bytes_plus_seal": 28514624,
+      "native_wall_seconds": 2.8401809170027263,
+      "payload_bytes": 20629522,
+      "run_id": "20261124T122027215328Z-9f87028e50c246db",
+      "sampled_tree_peak_rss_bytes": 74039296,
+      "start_utc": "2026-11-24T12:20:27.215909Z",
+      "telemetry_covered_interval_seconds": 1.0153123749914812,
+      "telemetry_interval_tree_cpu_seconds": 0.32383600900000004,
+      "worker_process_plus_child_cpu_seconds": 1.1594069999999999,
+      "worker_wall_seconds": 1.5399265410087537
+    },
+    {
+      "end_utc": "2026-11-24T12:20:33.153383Z",
+      "label": "truth5",
+      "manifest_file_bytes_plus_seal": 27452694,
+      "native_wall_seconds": 2.3937387079931796,
+      "payload_bytes": 19567626,
+      "run_id": "20261124T122030759489Z-2ea7104f8dc541c8",
+      "sampled_tree_peak_rss_bytes": 71565312,
+      "start_utc": "2026-11-24T12:20:30.759995Z",
+      "telemetry_covered_interval_seconds": 1.0127183749864344,
+      "telemetry_interval_tree_cpu_seconds": 0.675714476,
+      "worker_process_plus_child_cpu_seconds": 0.953117,
+      "worker_wall_seconds": 1.092473875003634
+    },
+    {
+      "end_utc": "2026-11-24T12:20:57.530132Z",
+      "label": "truth7",
+      "manifest_file_bytes_plus_seal": 119094334,
+      "native_wall_seconds": 21.979521417000797,
+      "payload_bytes": 111145675,
+      "run_id": "20261124T122035550335Z-90604612e274497d",
+      "sampled_tree_peak_rss_bytes": 278347776,
+      "start_utc": "2026-11-24T12:20:35.550846Z",
+      "telemetry_covered_interval_seconds": 20.29639462499472,
+      "telemetry_interval_tree_cpu_seconds": 18.74901295,
+      "worker_process_plus_child_cpu_seconds": 20.101137,
+      "worker_wall_seconds": 20.409140083007514
+    },
+    {
+      "end_utc": "2026-11-24T12:21:41.904344Z",
+      "label": "truth8",
+      "manifest_file_bytes_plus_seal": 123033877,
+      "native_wall_seconds": 40.73855866699887,
+      "payload_bytes": 115017538,
+      "run_id": "20261124T122101165280Z-b4bff45f0b0c4351",
+      "sampled_tree_peak_rss_bytes": 265093120,
+      "start_utc": "2026-11-24T12:21:01.165999Z",
+      "telemetry_covered_interval_seconds": 38.60594491699885,
+      "telemetry_interval_tree_cpu_seconds": 36.714942998000005,
+      "worker_process_plus_child_cpu_seconds": 38.031755000000004,
+      "worker_wall_seconds": 38.64621454200824
+    },
+    {
+      "end_utc": "2026-11-24T11:36:25.138159Z",
+      "label": "geometry_registration",
+      "manifest_file_bytes_plus_seal": 7539719,
+      "native_wall_seconds": 0.8207776670024032,
+      "payload_bytes": 2985,
+      "run_id": "20261124T113624317227Z-b0cf54c4c9af4654",
+      "sampled_tree_peak_rss_bytes": 7766016,
+      "start_utc": "2026-11-24T11:36:24.317716Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    },
+    {
+      "end_utc": "2026-11-24T11:42:26.872532Z",
+      "label": "geometry_source",
+      "manifest_file_bytes_plus_seal": 7825851,
+      "native_wall_seconds": 0.9071597089932766,
+      "payload_bytes": 43878,
+      "run_id": "20261124T114225965207Z-4b061de5a3f347f0",
+      "sampled_tree_peak_rss_bytes": 11403264,
+      "start_utc": "2026-11-24T11:42:25.965772Z",
+      "telemetry_covered_interval_seconds": 0.0,
+      "telemetry_interval_tree_cpu_seconds": null,
+      "worker_process_plus_child_cpu_seconds": null,
+      "worker_wall_seconds": null
+    }
+  ],
+  "confirmation_H_first_decodes": 32,
+  "confirmation_H_first_decodes_before_grant": 0,
+  "confirmation_opening": {
+    "manifest_sha256": "330dd7fd4ab9914fcd0fdf61e2cbd10f534142dbab97b2664c7b2ee1bb129c50",
+    "member": "payload/opening.json",
+    "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+    "sha256": "f1cbfb2258df0c79bdaf38999557ad6bedef1257a28a84322dc1d66554b3177a"
+  },
+  "dense_independent_world_rays": 5628,
+  "dense_optical_z_images": 804,
+  "fixed_geometry_protocol": {
+    "manifest_sha256": "07bbd675278ffc2050263a4a5496d190b9e5db0f60be301e0c796e09a0039769",
+    "member": "payload/visibility-protocol.json",
+    "run_id": "20261124T113624317227Z-b0cf54c4c9af4654",
+    "sha256": "b7b7b8fd889569686a53fc590738a723264f6cee045ba99b27b54207c03000c3"
+  },
+  "independent_exhaustive_source_ray_checks": 13824,
+  "new_QA_H_decodes": 0,
+  "preopening": {
+    "manifest_sha256": "cf94466bbdfdcef23c3dcc6d07457cab54b2d541f1298f11d194c6d2656f0c09",
+    "member": "payload/data.json",
+    "run_id": "20261124T113353240898Z-a6319c6dd9aa49e1",
+    "sha256": "063c3cce9d6b2daf95b7cf7629e3bae95e093ae8e48aadf3ffc7a15bb791b838"
+  },
+  "resource_scope": "New production stages beyond the pre-opening source audit. The global B resource ledger also includes data QA, science, technical failures and native transfer stages.",
+  "run_id": "20261124T122154357651Z-4f5b184a4a9b4435",
+  "scenes": [
+    {
+      "H_first_decodes": 6,
+      "authority": {
+        "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+        "member": "payload/opening.json",
+        "run_id": "20261124T112608015631Z-d740f790af184ece",
+        "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+      },
+      "decoded_original_bytes": 1942132,
+      "dense_independent_world_rays": 938,
+      "dense_optical_z_images": 134,
+      "exact_geometry_receipt": {
+        "manifest_sha256": "ef23f7ce58d0951801607c7ee77597c43e49b5d0d66cb7a920efe4f4529a6f56",
+        "member": "payload/visibility.json",
+        "run_id": "20261124T114243862274Z-3855bae867b1496d",
+        "sha256": "161cdd75ff755515d05e2b6fbf4aa8ff8b51e760804f4ce273622f0f1fd3a669"
+      },
+      "exclusive_source_ids": 128,
+      "first_H_decode_utc": "2026-11-24T11:26:35.258876+00:00",
+      "grant_completed_utc": "2026-11-24T11:26:08.604912Z",
+      "independent_exhaustive_source_ray_checks": 2304,
+      "materialization_window": null,
+      "native_evaluator_started_utc": "2026-11-24T11:26:31.910936Z",
+      "photo_decode_seconds": 0.01742396000190638,
+      "role": "train",
+      "scene_id": "b01-staggered-arcade",
+      "sparse_foreground_probes": 8454,
+      "sparse_target_probes": 11664,
+      "truth_receipt": {
+        "manifest_sha256": "d7a573714877a5d4b8ed4330036b343c02503d63cf26419cf1756059f3c84781",
+        "member": "payload/truth.json",
+        "run_id": "20261124T112631910483Z-ac17996f5a844c25",
+        "sha256": "8ca6a5711190f913a9abb18b587f383cef60d137c883a228ef367fa4f75a81e7"
+      }
+    },
+    {
+      "H_first_decodes": 6,
+      "authority": {
+        "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+        "member": "payload/opening.json",
+        "run_id": "20261124T112608015631Z-d740f790af184ece",
+        "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+      },
+      "decoded_original_bytes": 1845969,
+      "dense_independent_world_rays": 938,
+      "dense_optical_z_images": 134,
+      "exact_geometry_receipt": {
+        "manifest_sha256": "42a7fa5988b1ca4fa93581ad05bc5adb0147d4f24511d92aa461de24c8cfd28a",
+        "member": "payload/visibility.json",
+        "run_id": "20261124T114243847084Z-67ca9a7965674755",
+        "sha256": "78d219370ee5ea85fb3da3ff332ffa2f00b1279bdebeaa636e1e4f0ab4a094ef"
+      },
+      "exclusive_source_ids": 128,
+      "first_H_decode_utc": "2026-11-24T11:26:33.617739+00:00",
+      "grant_completed_utc": "2026-11-24T11:26:08.604912Z",
+      "independent_exhaustive_source_ray_checks": 2304,
+      "materialization_window": null,
+      "native_evaluator_started_utc": "2026-11-24T11:26:31.910881Z",
+      "photo_decode_seconds": 0.016753959003835917,
+      "role": "train",
+      "scene_id": "b02-terraced-court",
+      "sparse_foreground_probes": 8365,
+      "sparse_target_probes": 11664,
+      "truth_receipt": {
+        "manifest_sha256": "456566397f173882011c5123bc85ad09c4f9a5fa5625c4e8415fc3dd1bb7f335",
+        "member": "payload/truth.json",
+        "run_id": "20261124T112631910365Z-674dd8105eba42e5",
+        "sha256": "e1f4cf8f155bafa1e8f94cc530026259de12ca39355eafaba703feda3eaa6c39"
+      }
+    },
+    {
+      "H_first_decodes": 6,
+      "authority": {
+        "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+        "member": "payload/opening.json",
+        "run_id": "20261124T112608015631Z-d740f790af184ece",
+        "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+      },
+      "decoded_original_bytes": 1905348,
+      "dense_independent_world_rays": 938,
+      "dense_optical_z_images": 134,
+      "exact_geometry_receipt": {
+        "manifest_sha256": "5413ad7f2e68bdd8b2ba85db28e55b871bb2581da38a0ec6e6a5231024de7cde",
+        "member": "payload/visibility.json",
+        "run_id": "20261124T114243846929Z-9e3bdac090694218",
+        "sha256": "18fb2b5e6f424452937c55c8dfbee5302931ce08787443c702909bd5a19a23f0"
+      },
+      "exclusive_source_ids": 128,
+      "first_H_decode_utc": "2026-11-24T11:26:33.358893+00:00",
+      "grant_completed_utc": "2026-11-24T11:26:08.604912Z",
+      "independent_exhaustive_source_ray_checks": 2304,
+      "materialization_window": null,
+      "native_evaluator_started_utc": "2026-11-24T11:26:31.908963Z",
+      "photo_decode_seconds": 0.016652250007609837,
+      "role": "train",
+      "scene_id": "b03-woven-truss",
+      "sparse_foreground_probes": 8432,
+      "sparse_target_probes": 11664,
+      "truth_receipt": {
+        "manifest_sha256": "e3f5ae87e5024ede2348ddd359996cc2ce7094270c24e577f66784d74fc518a5",
+        "member": "payload/truth.json",
+        "run_id": "20261124T112631908327Z-d834eb6e4fea4fcb",
+        "sha256": "ad7cb04e9ce5c00e8e2ac9d75f5dd7516f149fde058283fd66172a594885f404"
+      }
+    },
+    {
+      "H_first_decodes": 6,
+      "authority": {
+        "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+        "member": "payload/opening.json",
+        "run_id": "20261124T112608015631Z-d740f790af184ece",
+        "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+      },
+      "decoded_original_bytes": 1901926,
+      "dense_independent_world_rays": 938,
+      "dense_optical_z_images": 134,
+      "exact_geometry_receipt": {
+        "manifest_sha256": "a3641096e565a7c17cb94f756fbb3966c5044c819ea0b58142167fcdc8fb7b5b",
+        "member": "payload/visibility.json",
+        "run_id": "20261124T114227910367Z-f44d579367b14227",
+        "sha256": "16b41f8016693f0ee4b330758883960a44c9f0779e768d6f2922a49651842d49"
+      },
+      "exclusive_source_ids": 128,
+      "first_H_decode_utc": "2026-11-24T11:26:34.412484+00:00",
+      "grant_completed_utc": "2026-11-24T11:26:08.604912Z",
+      "independent_exhaustive_source_ray_checks": 2304,
+      "materialization_window": null,
+      "native_evaluator_started_utc": "2026-11-24T11:26:31.910867Z",
+      "photo_decode_seconds": 0.01679733300989028,
+      "role": "development",
+      "scene_id": "b04-layered-louvers",
+      "sparse_foreground_probes": 8449,
+      "sparse_target_probes": 11664,
+      "truth_receipt": {
+        "manifest_sha256": "f35a4f16d80c2d8485f272af99e0abcc2319de5657711536f547211a67adebab",
+        "member": "payload/truth.json",
+        "run_id": "20261124T112631910396Z-8a7ad22ad1ae42a1",
+        "sha256": "0b6b774f202be4c67335a09749505d8c0d932d2617a97b92b72f67f8c444106b"
+      }
+    },
+    {
+      "H_first_decodes": 6,
+      "authority": {
+        "manifest_sha256": "330dd7fd4ab9914fcd0fdf61e2cbd10f534142dbab97b2664c7b2ee1bb129c50",
+        "member": "payload/opening.json",
+        "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+        "sha256": "f1cbfb2258df0c79bdaf38999557ad6bedef1257a28a84322dc1d66554b3177a"
+      },
+      "decoded_original_bytes": 1799731,
+      "dense_independent_world_rays": 938,
+      "dense_optical_z_images": 134,
+      "exact_geometry_receipt": {
+        "manifest_sha256": "ba7f871b910d87b4ac8cc49a507412adcee5ac91d8845c082eaa30724b5ad116",
+        "member": "payload/visibility.json",
+        "run_id": "20261124T122055458787Z-8f5cfb59cc234019",
+        "sha256": "485e1ee7bcfac136bee4cca876174a6c6ed7a95a169e60a0ea63c73449c02cbf"
+      },
+      "exclusive_source_ids": 128,
+      "first_H_decode_utc": "2026-11-24T12:20:29.327788+00:00",
+      "grant_completed_utc": "2026-11-24T12:20:15.655002Z",
+      "independent_exhaustive_source_ray_checks": 2304,
+      "materialization_window": {
+        "ended_at_utc": "2026-11-24T12:20:29.327320+00:00",
+        "operation": "individually timestamped authored image renders",
+        "started_at_utc": "2026-11-24T12:20:29.198952+00:00"
+      },
+      "native_evaluator_started_utc": "2026-11-24T12:20:27.215909Z",
+      "photo_decode_seconds": 0.015854208992095664,
+      "role": "confirmation",
+      "scene_id": "b05-perforated-gallery",
+      "sparse_foreground_probes": 8532,
+      "sparse_target_probes": 11664,
+      "truth_receipt": {
+        "manifest_sha256": "91e7812b3557693e8260f27da1406a0fc7a991c273341fca845df14a6f95f161",
+        "member": "payload/truth.json",
+        "run_id": "20261124T122027215328Z-9f87028e50c246db",
+        "sha256": "6875094761381e96090db5c8d3a4c01086a80b39701025b8749703f8bd2756d6"
+      }
+    },
+    {
+      "H_first_decodes": 6,
+      "authority": {
+        "manifest_sha256": "330dd7fd4ab9914fcd0fdf61e2cbd10f534142dbab97b2664c7b2ee1bb129c50",
+        "member": "payload/opening.json",
+        "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+        "sha256": "f1cbfb2258df0c79bdaf38999557ad6bedef1257a28a84322dc1d66554b3177a"
+      },
+      "decoded_original_bytes": 1862557,
+      "dense_independent_world_rays": 938,
+      "dense_optical_z_images": 134,
+      "exact_geometry_receipt": {
+        "manifest_sha256": "b11804dd01a77cef5c875070fd7cd3b727e01e421d0e7c2e77872938798fde1e",
+        "member": "payload/visibility.json",
+        "run_id": "20261124T122055452129Z-cb191a1efc904b09",
+        "sha256": "a983a90229b1c26955dd0ab9b4359d6a969068bf8d705cf5ca9a02f304ebc543"
+      },
+      "exclusive_source_ids": 128,
+      "first_H_decode_utc": "2026-11-24T12:20:32.470710+00:00",
+      "grant_completed_utc": "2026-11-24T12:20:15.655002Z",
+      "independent_exhaustive_source_ray_checks": 2304,
+      "materialization_window": {
+        "ended_at_utc": "2026-11-24T12:20:32.470272+00:00",
+        "operation": "individually timestamped authored image renders",
+        "started_at_utc": "2026-11-24T12:20:32.361879+00:00"
+      },
+      "native_evaluator_started_utc": "2026-11-24T12:20:30.759995Z",
+      "photo_decode_seconds": 0.01636670898005832,
+      "role": "confirmation",
+      "scene_id": "b06-corner-alcoves",
+      "sparse_foreground_probes": 8533,
+      "sparse_target_probes": 11664,
+      "truth_receipt": {
+        "manifest_sha256": "53fc6a459454d559368317a9f106321b7c4054f38dcfe38ec718096aef266d4a",
+        "member": "payload/truth.json",
+        "run_id": "20261124T122030759489Z-2ea7104f8dc541c8",
+        "sha256": "973cf44fb435599aab97949b998d6e819e56989d530f1cd088e397215329fa72"
+      }
+    },
+    {
+      "H_first_decodes": 10,
+      "authority": {
+        "manifest_sha256": "61cde11eb469e50ff6025efacb44c8c22b79776a77efe6165828be6e149fb141",
+        "member": "payload/opening.json",
+        "run_id": "20261124T112608015631Z-d740f790af184ece",
+        "sha256": "a3a889b82f66e42636b25191ff16665164f03e2de0587f84a915ed1dd0742c52"
+      },
+      "decoded_original_bytes": 108837602,
+      "dense_independent_world_rays": 0,
+      "dense_optical_z_images": 0,
+      "first_H_decode_utc": "2026-11-24T11:26:47.042036+00:00",
+      "grant_completed_utc": "2026-11-24T11:26:08.604912Z",
+      "materialization_window": null,
+      "native_evaluator_started_utc": "2026-11-24T11:26:32.671930Z",
+      "photo_decode_seconds": 0.7134611240180675,
+      "role": "development",
+      "scene_id": "delivery_area",
+      "truth_receipt": {
+        "manifest_sha256": "c8eaa997b2d468fdcb1a1a8a365ddd906d76a0cddc9e4f6ed1a4dd29625846c5",
+        "member": "payload/truth.json",
+        "run_id": "20261124T112632671322Z-c9428ddb7a674e0b",
+        "sha256": "2424dd687553375d1cd0735471e348b145e2258f6385c8b300b5741dd0625693"
+      }
+    },
+    {
+      "H_first_decodes": 10,
+      "authority": {
+        "manifest_sha256": "330dd7fd4ab9914fcd0fdf61e2cbd10f534142dbab97b2664c7b2ee1bb129c50",
+        "member": "payload/opening.json",
+        "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+        "sha256": "f1cbfb2258df0c79bdaf38999557ad6bedef1257a28a84322dc1d66554b3177a"
+      },
+      "decoded_original_bytes": 109862226,
+      "dense_independent_world_rays": 0,
+      "dense_optical_z_images": 0,
+      "first_H_decode_utc": "2026-11-24T12:20:55.739055+00:00",
+      "grant_completed_utc": "2026-11-24T12:20:15.655002Z",
+      "materialization_window": {
+        "ended_at_utc": "2026-11-24T12:20:55.730228+00:00",
+        "operation": "one role-restricted archive extraction; timestamps bracket the entire extraction",
+        "started_at_utc": "2026-11-24T12:20:37.067842+00:00"
+      },
+      "native_evaluator_started_utc": "2026-11-24T12:20:35.550846Z",
+      "photo_decode_seconds": 0.7615755819861079,
+      "role": "confirmation",
+      "scene_id": "living_room",
+      "truth_receipt": {
+        "manifest_sha256": "4456d07c6fdc37e3fbc958ce8aedbfe4d8b7da40bf674bbd5440e84e109d9939",
+        "member": "payload/truth.json",
+        "run_id": "20261124T122035550335Z-90604612e274497d",
+        "sha256": "323480011f4cc025c8aa15dc7f2d5b04f113f210121dafd4ff416d07b35811ca"
+      }
+    },
+    {
+      "H_first_decodes": 10,
+      "authority": {
+        "manifest_sha256": "330dd7fd4ab9914fcd0fdf61e2cbd10f534142dbab97b2664c7b2ee1bb129c50",
+        "member": "payload/opening.json",
+        "run_id": "20261124T122014191481Z-ddac5a608d5a4d90",
+        "sha256": "f1cbfb2258df0c79bdaf38999557ad6bedef1257a28a84322dc1d66554b3177a"
+      },
+      "decoded_original_bytes": 113539075,
+      "dense_independent_world_rays": 0,
+      "dense_optical_z_images": 0,
+      "first_H_decode_utc": "2026-11-24T12:21:40.191487+00:00",
+      "grant_completed_utc": "2026-11-24T12:20:15.655002Z",
+      "materialization_window": {
+        "ended_at_utc": "2026-11-24T12:21:40.164746+00:00",
+        "operation": "one role-restricted archive extraction; timestamps bracket the entire extraction",
+        "started_at_utc": "2026-11-24T12:21:03.208930+00:00"
+      },
+      "native_evaluator_started_utc": "2026-11-24T12:21:01.165999Z",
+      "photo_decode_seconds": 0.7424307500332361,
+      "role": "confirmation",
+      "scene_id": "bridge",
+      "truth_receipt": {
+        "manifest_sha256": "467c8d83ce04295ac404a9a51ba385039b89a0081e45ed8f8ffff2314aa02c3e",
+        "member": "payload/truth.json",
+        "run_id": "20261124T122101165280Z-b4bff45f0b0c4351",
+        "sha256": "062d17419841f19f946c086bcbbab1f9f15ee34e7379944598fb102d34a94505"
+      }
+    }
+  ],
+  "schema": "el-many-final-reference-access-1",
+  "sparse_authored_target_probes": 69984,
+  "total_unique_H_photos": 66
+}

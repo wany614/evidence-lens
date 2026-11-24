@@ -1,0 +1,64 @@
+{
+  "archive": {
+    "bytes": 29523,
+    "name": "evidence-lens-many-source-model-0.1.0.dev0.zip",
+    "sha256": "69f7ef75f6a6a5d9a97945d5e82f1c184357425e5000b8573dffbc9162f14ad5"
+  },
+  "contents": {
+    "LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "MODEL_CARD.md": {
+      "bytes": 3584,
+      "sha256": "a2d68d943009b564346cab2bcb9426d8af2fdd384f208e1c8222ebe90821a948"
+    },
+    "RIGHTS.md": {
+      "bytes": 2367,
+      "sha256": "1f8afe77c2fb6dcb476e4a40d35dd64e47669bf7e3aa749278a28b8e8a064991"
+    },
+    "development-selection.json": {
+      "bytes": 46851,
+      "sha256": "5806d9eb9c0902ecf5ed0d763105aa8160df49d39e51ba15dc06ef950cfc6205"
+    },
+    "feature-schema.json": {
+      "bytes": 6749,
+      "sha256": "42298817f3c1cd333430dd20cc9305be23cde4174f09e2951fb7667b1c55078d"
+    },
+    "freeze.json": {
+      "bytes": 7181,
+      "sha256": "452048897c150f6073808634c3f8d29924ddf84662abac68f470ca6b12fca479"
+    },
+    "model.json": {
+      "bytes": 6382,
+      "sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721"
+    },
+    "operating-point.json": {
+      "bytes": 255,
+      "sha256": "53a053b3c3e2e15a39c7e2f3c4bedcdcefbe4729aff5fe5de83bf3ddd2362164"
+    },
+    "training.json": {
+      "bytes": 19400,
+      "sha256": "8fd5e996be252e6b953eec53b64fd6da2d7b063c785a4d1e2882bd023baab57a"
+    }
+  },
+  "feature_schema_sha256": "42298817f3c1cd333430dd20cc9305be23cde4174f09e2951fb7667b1c55078d",
+  "model_bytes": 6382,
+  "model_id": "b-cpu-lr-l2-0.1-final",
+  "results": {
+    "manifest_sha256": "d765d231997aff57bdde365f0a9cab5d84b773e084d7fd1e86ccfde87493ea50",
+    "member": "payload/endpoints.json",
+    "run_id": "20261124T122203772897Z-ba03676b98d64b31",
+    "sha256": "e2cabe718690d719f5c75d57fa4e66a5de17c2adccbb1c0cacaf0009e67c3069"
+  },
+  "run_id": "20261124T122208629213Z-9397cf5362104d49",
+  "schema": "el-many-model-release-1",
+  "science_code_commit": "6e55dd6969b58faa08dc4a7033d7c6687a919dad",
+  "training": {
+    "manifest_sha256": "5c436f26c29c0a1cf1b907d35d6aa740774272c292e39eadb2fd113c4f244179",
+    "member": "payload/fits.json",
+    "run_id": "20261124T115857282953Z-3f6e989f5d4844b1",
+    "sha256": "8fd5e996be252e6b953eec53b64fd6da2d7b063c785a4d1e2882bd023baab57a"
+  },
+  "weights_sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721"
+}

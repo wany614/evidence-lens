@@ -21,6 +21,8 @@ FILES={
     "operating-point.json":("b-model-package","operating-point.json"),
     "model-package.json":("b-model-package","model-release.json"),
     "freeze-manifest.json":("b-model-freeze","freeze.json"),
+    "data-roles.json":("b-data-registration","registration.json"),
+    "upstream-recipe.json":("b-upstream-recipe","recipe.json"),
     "opening.json":("b-confirmation-h-opening","opening.json"),
     "independent-arithmetic.json":("b-independent-arithmetic-check","arithmetic.json"),
     "access-order.json":("b-data-final-access","access.json"),
@@ -92,9 +94,9 @@ def project(a):
         "The operating point is unset. Mac arm64 and an offline Linux arm64 container ran the original deployment example. "
         "Native Windows x86-64 supplied the source-only Gaussian fits. "
         "[Model ZIP]("+download+model["archive"]["name"]+") · [Model card](model-card.md) · [CPU platform results](deployment/README.md)","",
-        "[Study protocol](protocol.md) · [Source and calibration](data/README.md) · [Frozen model and rule](freeze-manifest.json) · "
+        "[Study protocol](protocol.md) · [Data roles](data-roles.json) · [Source and calibration](data/README.md) · [Frozen model and rule](freeze-manifest.json) · "
         "[Unified opening](opening.json) · [Actual reference access](access-order.json) · [Independent arithmetic](independent-arithmetic.json) · "
-        "[Upstream fits](upstream.json) · [All source images and camera grids](input-alignment.json) · [Checkpoint update counts](checkpoint-updates.json) · "
+        "[Upstream recipe](upstream-recipe.json) · [Upstream fits](upstream.json) · [All source image and camera-grid checks](input-alignment.json) · [Checkpoint update counts](checkpoint-updates.json) · "
         "[Resource and failure ledger](resources-and-failures.md) · [Scope](limitations.md) · [Rights](rights.md)"]
     (docs/"README.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     save(a.out/"public-docs.json",dict(schema="el-many-public-docs-1",run_id=os.environ["EL_RUN_ID"],

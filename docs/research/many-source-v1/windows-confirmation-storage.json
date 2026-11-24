@@ -1,0 +1,91 @@
+{
+  "allocation_method": "Windows GetFileInformationByHandleEx(FileStandardInfo).AllocationSize for regular files, with volume / file ID deduplication across scopes. Duplicate archive representations (native directory versus transfer ZIP) have separate file IDs. Directory overhead, filesystem metadata and out-of-scope files are excluded. Volume free change is a separate GetDiskFreeSpaceEx observation across the volume.",
+  "disjoint_classes": {
+    "control_and_receipts": {
+      "file_allocation_bytes": 417192,
+      "files": 108,
+      "hardlink_aliases": 0,
+      "logical_bytes": 274740,
+      "unique_files": 108,
+      "unique_logical_bytes": 274740
+    },
+    "local_return_zip_copies": {
+      "file_allocation_bytes": 1006280704,
+      "files": 6,
+      "hardlink_aliases": 0,
+      "logical_bytes": 1006270734,
+      "unique_files": 6,
+      "unique_logical_bytes": 1006270734
+    },
+    "native_run_directories": {
+      "file_allocation_bytes": 1008634800,
+      "files": 1290,
+      "hardlink_aliases": 0,
+      "logical_bytes": 1006071980,
+      "unique_files": 1290,
+      "unique_logical_bytes": 1006071980
+    },
+    "retained_working_files": {
+      "file_allocation_bytes": 150555312,
+      "files": 659,
+      "hardlink_aliases": 0,
+      "logical_bytes": 149253818,
+      "unique_files": 659,
+      "unique_logical_bytes": 149253818
+    }
+  },
+  "model_freeze": {
+    "manifest_sha256": "0de1f494c6f90e6744a3170f5f52e7957aab549313affb3bd5739d762e4cbc73",
+    "member": "payload/freeze.json",
+    "run_id": "20261124T120332809100Z-ec53d7a4a3b94042",
+    "sha256": "452048897c150f6073808634c3f8d29924ddf84662abac68f470ca6b12fca479"
+  },
+  "native_disk_receipt_sha256": "a7ab1c45eba5cb6d3fbb2495c5f6491893e06021d37d0c35769c2f81505888d3",
+  "native_six_returns_sha256": "aa8ccebeb4a18addc77e62a0d77e55996c9cd2124e48aef291493ed867ec4115",
+  "queue": {
+    "manifest_sha256": "826305c6efd68e000f216f03408bcd084cf176ef13f35f030f2e31a297a7134a",
+    "member": "payload/queue.json",
+    "run_id": "20261124T120425673676Z-c6e47d4b73eb44b5",
+    "sha256": "907fa46d4bb11d56380485da19f17946eb545380cd80e81c36a0279bd8746b40"
+  },
+  "run_id": "20261124T122342711445Z-00bb015b3f1a4207",
+  "sampling": {
+    "count": 471,
+    "interpretation": "Sampled lower bound for live temporary files. Individual peaks are not added to final storage or to one another.",
+    "max_combined_scratch_logical_bytes": 14164820,
+    "max_gap_seconds": 1.041956,
+    "per_case_peak_logical_bytes": {
+      "b-fit-b05-perforated-gallery-r128": 14164820,
+      "b-fit-b05-perforated-gallery-r16": 14164820,
+      "b-fit-b06-corner-alcoves-r128": 14164820,
+      "b-fit-b06-corner-alcoves-r16": 14164819,
+      "b-fit-bridge-r100": 14164819,
+      "b-fit-living-room-r55": 14164818
+    }
+  },
+  "schema": "el-many-confirmation-storage-readback-1",
+  "scope": "Six native run directories and exact case work areas under dual-track-v1, their queue controller, and before/after deltas of recorder index, receipts and retry claims. Project-scoped material only. No Drive/cache attribution inferred from the volume difference.",
+  "source": "Windows native local filesystem counters; Mac independently verifies six original run/container identities and both endpoint/delta arithmetic reconciliations.",
+  "totals": {
+    "file_allocation_bytes": 2165888008,
+    "files": 2063,
+    "hardlink_aliases": 0,
+    "logical_bytes": 2161871272,
+    "unique_files": 2063,
+    "unique_logical_bytes": 2161871272
+  },
+  "upstream": {
+    "manifest_sha256": "0e6f0a26d98a0e89d6e4204da4b1cfa243ef1dbe732bc074c55983184072cb9a",
+    "member": "payload/upstream.json",
+    "run_id": "20261124T121957490225Z-e2c00b098fb14ff4",
+    "sha256": "d0f225511b3f59d9d42e2f4f4e1ef2d8b20e218b7b9c79041198e283e2b87929"
+  },
+  "verified_native_runs": {
+    "b-fit-b05-perforated-gallery-r128": "20261124T121057099682Z-ae94490fbf4f4902",
+    "b-fit-b05-perforated-gallery-r16": "20261124T120947920304Z-84f96ef4c0bc4669",
+    "b-fit-b06-corner-alcoves-r128": "20261124T121333216331Z-978c9b319b4e4b5d",
+    "b-fit-b06-corner-alcoves-r16": "20261124T121223138158Z-5dc4b64934f945eb",
+    "b-fit-bridge-r100": "20261124T121612286105Z-52a00916907b4de5",
+    "b-fit-living-room-r55": "20261124T121458701680Z-70eb2510bd714d6b"
+  }
+}

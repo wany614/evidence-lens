@@ -31,6 +31,8 @@ The original checkpoint has `step` and a `splats` state dictionary. `means` are 
 
 Each 378 × 252 FP32 render has `rgb`, `alpha` and `z`. The last represents opacity-normalized expected optical-axis depth in the declared world unit. Alpha at or below 0.000001 gives undefined Z (NaN). A two-surface on-axis and off-axis analytic probe verifies the difference between accumulated weighted depth and expected Z. The camera stores OpenCV integer-centre intrinsics and c2w. The renderer adds 0.5 to the two principal-point coordinates when handing them to gsplat. Authored geometry uses metres. The ETH3D camera frame retains explicitly named scene units.
 
+The ETH3D experiment uses official intrinsics and extrinsics, which may reflect the full capture. Its held-out RGB comparison is conditional on that calibration. All newly triangulated positions, initialization colours and fitted appearance come from the registered source photographs.
+
 Source-only matching uses six geometrically neighbouring cameras, reciprocal SIFT and forward-backward Lucas–Kanade tracks. Positive-depth, reprojection, parallax, colour and source-extent checks precede deterministic voxel fusion and the 15,000-point initialization cap. The generated source COLMAP model contains the newly reconstructed points and two-source tracks. The official trainer computes 6,000 single-source losses and applies 6,000 optimizer updates in memory, with SH3 and a 60,000-Gaussian MCMC cap. It saves the checkpoint after computing the last gradient and before applying the last update at zero-based index 5,999. Each source self-render and target prediction uses the saved model with the first 5,999 updates. [Matching and COLMAP export](../../../scripts/many_upstream_sfm.py) · [Auditable changes to the trainer](../../../scripts/many_upstream_patch.py)
 
 The project’s headless training path uses valid 11 × 11, sigma 1.5 display-RGB SSIM through differentiable PyTorch operations. It checks objective values and first-image gradients against the independent `pytorch-msssim` reference used by the pinned fused-SSIM project tests. Source-only Euclidean KNN is checked against ordered independent distances. Actual per-view training counts, source-order digest, checkpoint parity and the resource times accompany each native archive. [Objective checks](../../../scripts/many_upstream_objectives.py) · [Pinned fused-SSIM tests](https://github.com/rahul-goel/fused-ssim/blob/328dc9836f513d00c4b5bc38fe30478b4435cbb5/tests/test.py)
@@ -41,7 +43,7 @@ To inspect the exact change that ran, use the source file at the gsplat commit a
 patch -o adapted-simple-trainer.py path/to/gsplat/examples/simple_trainer.py < gsplat-simple-trainer.patch
 ```
 
-An independent readback replayed the executed training dataset against all 15 issued fit packets and their authorized source archives. Filenames, ordered source identifiers, PNG hashes and all 100,304,568 decoded RGB pixels agreed across 1,053 source views. Applying each renderer's original FP32 principal-point adjustment produced the same intrinsics as training for all 1,053 views. Translation agreed exactly. The largest absolute difference in any rotation entry was 3.68 × 10⁻¹⁶. On a plane at unit camera-Z the largest measured discrepancy across the full image grid was 9.67 × 10⁻¹³ pixels. Readback `20261124T121212827980Z-86e94030823e4a8f` has manifest SHA-256 `91453df8331b95863e9dedd82e166d6be469b96fcea93f7e16dd1c290f751bf3`. [Independent input and checkpoint audit](../../../scripts/many_upstream_alignment.py)
+An independent readback replayed the executed training dataset against all 15 issued fit packets and their authorized source archives. Filenames, ordered source identifiers, PNG hashes and all 100,304,568 decoded RGB pixels agreed across 1,053 source entries. Those entries contained 957 distinct PNGs because each authored 16-view reconstruction repeats a subset of the corresponding 128-view sources. Applying each renderer's original FP32 principal-point adjustment produced the same intrinsics as training for every entry. Translation agreed exactly. The largest absolute difference in any rotation entry was 3.68 × 10⁻¹⁶. On a plane at unit camera-Z the largest measured discrepancy across the full image grid was 9.67 × 10⁻¹³ pixels. Readback `20261124T121212827980Z-86e94030823e4a8f` has manifest SHA-256 `91453df8331b95863e9dedd82e166d6be469b96fcea93f7e16dd1c290f751bf3`. [Independent input and checkpoint audit](../../../scripts/many_upstream_alignment.py)
 
 ## Development reconstruction quality
 
@@ -54,6 +56,14 @@ Each row compares the fixed checkpoint with the constant RGB mean of its authori
 | ETH3D delivery_area, 34 | 0.01747 | 0.15732 | 0.04655 | 0.16277 | 50,562 |
 
 Each reconstruction retained 15,000 triangulated initialization points and ended with 60,000 fitted Gaussians. The corresponding fractions of target pixels with alpha at least 0.5 were 99.60%, 99.41% and 99.24%. Development record `20261124T115849245504Z-645bff342f1b4378` has manifest SHA-256 `98abed85320d7ae425daa850b9d98f790d52acf5739024407842b091ecc4e214` and diagnostics SHA-256 `ec9676eb67ac36e215006735ac82f587d6f6fbc0162fdcebb8c7b4921243ac82`.
+
+## All 15 reconstructions
+
+The 15 completed fits produced 1,053 source self-renders and 102 target predictions. On the finite support of each channel, all RGB, opacity and expected-Z values matched the official checkpoint renderer exactly. Depth validity masks agreed. The on-axis and off-axis checks measured alpha 0.75 and expected camera-Z 2.666666746 in each fit. [Native evidence and per-case resources](upstream-results.json)
+
+The source-only triangulations used 317.750 CPU core-seconds. The Windows GPU workers occupied 1,057.032 seconds in total, including 867.908 seconds for training. Peak sampled whole-device usage was 1,118 MiB. PyTorch reported a maximum of 116,493,312 allocated and 155,189,248 reserved bytes. WDDM provided no process-level driver memory counter for these fits. The recorded device total includes desktop and background allocations. [Measured resources](upstream-results.json)
+
+Each of the 15 CPU index replays matched the original SHA-256 of its full 6,000-step sampling order. Those 90,000 sampled losses yielded 89,985 updates in the saved checkpoints. The per-source table identifies both the last source update in each saved model and the following sample at which the trainer saved it. [Checkpoint update attribution](checkpoint-updates.json)
 
 ## Dependencies and data rights
 

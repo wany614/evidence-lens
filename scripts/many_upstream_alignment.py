@@ -2,6 +2,7 @@
 
 import argparse
 import ast
+from collections import Counter
 import copy
 import hashlib
 import importlib.util
@@ -250,6 +251,33 @@ def checkpoint_program_order(raw):
     return {"loss_backward_line":backward[0],"checkpoint_torch_save_line":save[0],"optimizer_step_lines":steps}
 
 
+def verified_sampler(fit, recipe):
+    """Reconstruct indices from the pinned CPU draw and native sampler. Name step 5998 only after an exact original digest match."""
+    import torch
+    roster=fit["R"]
+    with torch.random.fork_rng(devices=[]):
+        torch.random.default_generator.manual_seed(recipe["recipe"]["seed"])
+        torch.rand((fit["initial_gaussians"],4),dtype=torch.float32,device="cpu")
+        loader=torch.utils.data.DataLoader(range(len(roster)),batch_size=1,shuffle=True,num_workers=0,
+                                          persistent_workers=False,pin_memory=False)
+        it=iter(loader);order=[];sequence=hashlib.sha256()
+        for step in range(fit["training_steps"]):
+            try:
+                item=next(it)
+            except StopIteration:
+                it=iter(loader);item=next(it)
+            key=roster[int(item.item())];order.append(key)
+            sequence.update((str(step)+" "+key+"\n").encode())
+    matches=sequence.hexdigest()==fit["ordered_actual_source_step_sha256"]
+    if matches:
+        need(all(order[row["step"]]==row["source"] for row in fit["trace"]) and dict(Counter(order))==fit["source_visits"],
+             "recorded sparse trace and full source-order digest disagree")
+    return {"original_sha256":fit["ordered_actual_source_step_sha256"],"replayed_sha256":sequence.hexdigest(),
+            "full_order_hash_matches":matches,"last_update_in_saved_model_zero_based":5998,
+            "last_update_in_saved_model_source":order[5998] if matches else None,
+            "method":"Replay seeded CPU quaternion initializer draw and stock PyTorch shuffled DataLoader on integer row IDs. Publish the unlogged penultimate identity only when the digest of every one of the 6000 (step, source) rows equals its original native witness."}
+
+
 def run_attribution(cfg,paths,out):
     align,up=read(paths["alignment"]),read(paths["upstream"]);need(align["checkpoints"]==15 and up["issued_fit_count"]==15,"incomplete registered series")
     recipe=read(paths["recipe"]);original=paths["original_trainer"].read_bytes()
@@ -273,10 +301,12 @@ def run_attribution(cfg,paths,out):
         cases[tag]={"status":"succeeded","checkpoint_sha256":fit["native_checkpoint"]["sha256"],"training":cfg["sources"]["fit-"+tag],
             "all_computed_source_samples":all_visits,"checkpoint_updates_by_source":applied,"checkpoint_updates":sum(applied.values()),
             "last_computed_sample_source":last[0]["source"],"last_computed_sample_zero_based":5999,
+            "verified_full_order_replay":verified_sampler(fit,recipe),
             "native_depth":probe(read(paths["probe-"+tag])),"depth_probe":cfg["sources"]["probe-"+tag]}
     ok=[c for c in cases.values() if c["status"]=="succeeded"]
     write(out/"updates.json",{"schema":"el-many-checkpoint-update-attribution-1","run_id":os.environ["EL_RUN_ID"],"parents":cfg["sources"],
           "successful_checkpoints":len(ok),"total_source_loss_computations":sum(sum(c["all_computed_source_samples"].values()) for c in ok),
+          "exact_6000_source_order_digest_matches":sum(c["verified_full_order_replay"]["full_order_hash_matches"] for c in ok),
           "total_source_updates_in_saved_checkpoints":sum(c["checkpoint_updates"] for c in ok),"trainer_program_order":program,
           "semantics":"Each fit computed the last source loss and gradients at zero-based step 5999. Official Runner.train saved the model before optimizer.step. The final in-memory optimizer update was performed after the saved checkpoint.",
           "wddm":"Device-wide nvidia-smi memory includes desktop/background allocations; WDDM per-process driver counters can be unavailable. PyTorch allocator data are independent process-local framework counters. Missing per-process driver counters remain null in the upstream resource ledger.",

@@ -1,0 +1,39 @@
+{
+  "schema": "el-many-source-data-registration-1",
+  "A_BASELINE_ID": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "analysis_profile": "analysis-378x252-v1",
+  "originals": [
+    {"id":"b01-staggered-arcade","seed":41031,"split":"train","structure":"Two staggered rows of masonry piers with repeated semicircular arch ribs, different depth bays and a rear arcade."},
+    {"id":"b02-terraced-court","seed":41032,"split":"train","structure":"Broad stair runs around a sunken forecourt, staggered retaining walls and freestanding plinths."},
+    {"id":"b03-woven-truss","seed":41033,"split":"train","structure":"Two structural planes of alternating diagonals, upright posts and cross-depth truss members around a clear central aisle."},
+    {"id":"b04-layered-louvers","seed":41034,"split":"development","structure":"Three offset banks of open tilted louvers in different material strips with frame posts and openings to a back wall."},
+    {"id":"b05-perforated-gallery","seed":41035,"split":"confirmation","structure":"Two spatially separated masonry galleries, cut-through portals alternating with window openings and elevated bridge decks."},
+    {"id":"b06-corner-alcoves","seed":41036,"split":"confirmation","structure":"A right-angle wall arrangement with deep asymmetric niches, shelves, offsets, side returns and divided bays."}
+  ],
+  "authored_camera": {
+    "projection":"Right/down/forward pinhole, native 756x504, integer-centre fx=660 fy=655 cx=376.75 cy=252.1, no distortion. World metres x right, y forward, z up.",
+    "R128":"ordered r000..r127, parameter t=i/127",
+    "R16":"ordered r000,r008,...,r120, strict subset of the separate R128 reconstruction",
+    "H":"h00..h05, t=(j+0.37)/6, same family cameras shared by its two independent fits",
+    "position":"angle in degrees=-48+96*t; radius=7.3+0.35*cos(6*pi*t+0.17)+0.20*is_H; centre=[radius*sin(angle),-radius*cos(angle),2.45+0.55*sin(5*pi*t+0.23)+0.25*is_H]; look at=[0.18*sin(2*pi*t),0.35,1.10+0.09*cos(4*pi*t)], zero roll",
+    "photometry":"Opaque project-authored fixed surface texture from a family seed, world-space material tiles, deterministic marks and diffuse directional lighting. RGB observations render at original grid and use A LANCZOS on their own grid. Independent geometric depth uses each exact analysis-grid pixel centre.",
+    "roles":"Only source photographs and public cameras enter the R package. Original and target true geometric optical-axis Z remain confined to the evaluator, with no Gaussian initialization or selection access. Analytic geometry and independent target photographs may be evaluated after the appropriate split authorization."
+  },
+  "external": {
+    "license":"CC BY-NC-SA 4.0, ETH3D Stereo Benchmark, Schops et al. CVPR 2017. Keep external photographs and photographic derivatives private; distribute official URLs, code, hashes and approved numerical summaries.",
+    "urls":{"catalog":"https://www.eth3d.net/datasets","camera_format":"https://www.eth3d.net/documentation","rights":"https://www.eth3d.net/"},
+    "roster":[
+      {"id":"delivery_area","split":"development","official_total":44,"R":34,"H":10,"url":"https://www.eth3d.net/data/delivery_area_dslr_undistorted.7z"},
+      {"id":"living_room","split":"confirmation","official_total":65,"R":55,"H":10,"url":"https://www.eth3d.net/data/living_room_dslr_undistorted.7z"},
+      {"id":"bridge","split":"confirmation","official_total":110,"R":100,"H":10,"url":"https://www.eth3d.net/data/bridge_dslr_undistorted.7z"}
+    ],
+    "role_rule":"Sort the original camera-recorded full image names by UTF-8 bytes. For j=0..9, hold out zero-indexed rank floor((2*j+1)*official_total/20), give it h00..h09. Give the complement r000... in original-name order. Preserve original names and original (possibly nonconsecutive) camera and image identifiers.",
+    "authorizations":"A role-restricted archive intake may transfer opaque original compressed bytes and list file metadata. It may parse PINHOLE cameras plus image pose header lines. Discard their interleaved observations without parsing and do not extract points3D, scan/depth, visibility, mask or covariance data for reconstruction. R worker physically extracts only R photograph members and decodes only R. H pixels are first authorized by the training/development opening or the separate common confirmation opening for all confirmation predictions.",
+    "camera":"Preserve the official world frame. Quaternion and translation are world-to-camera. ETH3D origin is the upper left corner, so subtract 0.5 from both principal-point coordinates for A's integer pixel centres. Use scene_units, with identity transform, absent a per-archive metric scale assertion. Official fixed calibration can include the whole acquisition.",
+    "download_cap_bytes":5000000000
+  },
+  "training_and_development_opening":"At the registered train/development access stage bind R-only dataset identity and the role registration. Use original train targets for labels and the two development datasets for the registered selection rules. Emit explicit first H access counts and member identities.",
+  "confirmation_opening":"Only after the common confirmation-opening parent records sealed predictions and registered scoring methods for both external scenes and both original families; expose only the authorized evaluator vault. Prior to that point, confirmation source workers may only use the designated R photos, all calibrated camera metadata, and the opaque original transport.",
+  "public_display":{"scene":"b05-perforated-gallery","reconstruction":"R128","target":"h00","include":"all registered budgets, including ties, absence of improvement and failures"},
+  "resource_limits":{"external_dataset_download_bytes":5000000000,"aggregate_CPU_hours":10,"aggregate_GPU_hours":8,"added_archive_GiB":30,"data_receipt":"separate local input/archive reads, upstream network bytes, image decode opens/seconds, process CPU, peak RSS, wall, output bytes. No GPU for source production."}
+}

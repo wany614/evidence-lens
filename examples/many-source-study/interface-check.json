@@ -1,0 +1,30 @@
+{
+  "anchor": "#geometry",
+  "browser": "Chrome/157.0.8103.51",
+  "checked_details": [
+    "per-target denominators",
+    "legacy and many-source reason dictionaries"
+  ],
+  "desktop_viewport_css": [
+    1280,
+    850
+  ],
+  "external_http_requests_observed": 0,
+  "images": 0,
+  "keyboard_scene": "Home switched to Living room",
+  "method_selection": "Changed the native selector to coverage-16 B-CPU-LR",
+  "mobile": {
+    "content": 360,
+    "viewport": 375
+  },
+  "network": "offline",
+  "planned_rows": {
+    "bridge": 10,
+    "living_room": 10
+  },
+  "script_errors": [],
+  "verified_scenes": [
+    "living_room",
+    "bridge"
+  ]
+}

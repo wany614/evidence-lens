@@ -1,0 +1,1582 @@
+{
+  "artifact_byte_scope": "Logical transferred ZIP, checkpoint and scoring-bank component sizes. The same content occurs in multiple representations; these columns are not an estimate of physical disk use.",
+  "artifact_bytes_by_case": {
+    "b01-staggered-arcade-r128": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 262939359,
+      "scoring_bank_source_photographs": 17955042,
+      "scoring_bank_source_self_renders": 198367457,
+      "scoring_bank_target_predictions": 9345699
+    },
+    "b01-staggered-arcade-r16": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 57696421,
+      "scoring_bank_source_photographs": 2243062,
+      "scoring_bank_source_self_renders": 25097130,
+      "scoring_bank_target_predictions": 9432305
+    },
+    "b02-terraced-court-r128": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 263130391,
+      "scoring_bank_source_photographs": 17509079,
+      "scoring_bank_source_self_renders": 199425449,
+      "scoring_bank_target_predictions": 9366601
+    },
+    "b02-terraced-court-r16": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 56600191,
+      "scoring_bank_source_photographs": 2185091,
+      "scoring_bank_source_self_renders": 24406508,
+      "scoring_bank_target_predictions": 9154285
+    },
+    "b03-woven-truss-r128": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 265422634,
+      "scoring_bank_source_photographs": 17912297,
+      "scoring_bank_source_self_renders": 200857773,
+      "scoring_bank_target_predictions": 9433221
+    },
+    "b03-woven-truss-r16": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 57523098,
+      "scoring_bank_source_photographs": 2237677,
+      "scoring_bank_source_self_renders": 24987804,
+      "scoring_bank_target_predictions": 9390426
+    },
+    "b04-layered-louvers-r128": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 265255852,
+      "scoring_bank_source_photographs": 18050627,
+      "scoring_bank_source_self_renders": 200392959,
+      "scoring_bank_target_predictions": 9425102
+    },
+    "b04-layered-louvers-r16": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 57390874,
+      "scoring_bank_source_photographs": 2254741,
+      "scoring_bank_source_self_renders": 24875487,
+      "scoring_bank_target_predictions": 9326955
+    },
+    "b05-perforated-gallery-r128": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 262163219,
+      "scoring_bank_source_photographs": 17515127,
+      "scoring_bank_source_self_renders": 198483452,
+      "scoring_bank_target_predictions": 9332191
+    },
+    "b05-perforated-gallery-r16": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 56010464,
+      "scoring_bank_source_photographs": 2188738,
+      "scoring_bank_source_self_renders": 23939867,
+      "scoring_bank_target_predictions": 9011707
+    },
+    "b06-corner-alcoves-r128": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 263774388,
+      "scoring_bank_source_photographs": 17730875,
+      "scoring_bank_source_self_renders": 199613119,
+      "scoring_bank_target_predictions": 9386614
+    },
+    "b06-corner-alcoves-r16": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 57416099,
+      "scoring_bank_source_photographs": 2214868,
+      "scoring_bank_source_self_renders": 24945773,
+      "scoring_bank_target_predictions": 9384396
+    },
+    "bridge-r100": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 228810095,
+      "scoring_bank_source_photographs": 14513738,
+      "scoring_bank_source_self_renders": 164189907,
+      "scoring_bank_target_predictions": 16355868
+    },
+    "delivery-area-r34": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 99811953,
+      "scoring_bank_source_photographs": 4772362,
+      "scoring_bank_source_self_renders": 55187894,
+      "scoring_bank_target_predictions": 16231888
+    },
+    "living-room-r55": {
+      "native_checkpoint": 14163125,
+      "native_transfer_zip": 138096469,
+      "scoring_bank_source_photographs": 7026140,
+      "scoring_bank_source_self_renders": 88892053,
+      "scoring_bank_target_predictions": 16149298
+    }
+  },
+  "baseline_id": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "cases": {
+    "b01-staggered-arcade-r128": {
+      "R": 128,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "9d7088426d1515d925cc2971f254fbe79bed47a0a39a3ab370e8762b4c00f9c5",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115225376506Z-df54695d17aa46b4",
+        "sha256": "02d9461691044e40b558ddff18b54e40a8878ec4f2c0de815520dd10ccf880ba"
+      },
+      "charged_gpu_seconds": 80.38999999999942,
+      "checkpoint_sha256": "c16ecac9677ff43c8112492893c1f97de4b262b28e20604f041cda238c0bb03a",
+      "final_gaussians": 60000,
+      "fit_seconds": 59.57799999999406,
+      "gaussians_above_0_005_opacity": 55380,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 47,
+      "mean_projected_gaussians": 51827.234375,
+      "min_actual_visits": 46,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115392512,
+      "native_peak_torch_reserved_bytes": 150994944,
+      "native_process_cpu_seconds": 74.1875,
+      "native_record": {
+        "manifest_sha256": "7100dbf7e2a41357ecf52d2669af5784215997c6aaab25ca6409e7cdbdfa09bb",
+        "member": "run.json",
+        "run_id": "20261124T114815071134Z-6ef6d6917d9c433b",
+        "sha256": "3fd4296aa7ea756f96334ea92b5cc7e41f7386ce87377de61dea20843fac5274"
+      },
+      "native_recorder_wall_seconds": 82.59399999999732,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1465094144,
+      "native_telemetry": {
+        "manifest_sha256": "7100dbf7e2a41357ecf52d2669af5784215997c6aaab25ca6409e7cdbdfa09bb",
+        "member": "telemetry.csv",
+        "run_id": "20261124T114815071134Z-6ef6d6917d9c433b",
+        "sha256": "44d883227c959bdb6785cfa85a5907415fb3c2e81c751ddff82180575c772acd"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        1.4549735169566702e-05,
+        0.05844193324446678,
+        0.1328127086162567,
+        0.2952859103679657,
+        0.9999924898147583
+      ],
+      "proof": {
+        "manifest_sha256": "9d7088426d1515d925cc2971f254fbe79bed47a0a39a3ab370e8762b4c00f9c5",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115225376506Z-df54695d17aa46b4",
+        "sha256": "ba8771bba1ee5ee142bd4a374af5bea40ed5f8868438edd6d86fc3ea1fac4b3c"
+      },
+      "scene_id": "b01-staggered-arcade",
+      "sfm": {
+        "manifest_sha256": "08510bb4cc8c50e6ab714f5952a633446b4cf820cea3748f067e73b70ff3d3e7",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112812171400Z-c6128a015d614409",
+        "sha256": "3288958d864938ed3dfa33b345bf15ca30bea2e512ea136607340e6608c26336"
+      },
+      "source_alpha_gt_0_5_pixels": 12187698,
+      "source_finite_expected_z_pixels": 12192768,
+      "source_mean_control_mae": 0.09183094202307984,
+      "source_order_sha256": "576b1db8b572aeb24f663e2916070162fb78da5e2853eb39b19ba9778f01c15e",
+      "source_pixels": 12192768,
+      "source_self_mae": 0.011370312378858216,
+      "source_sfm_seconds": 34.665089,
+      "source_sfm_wall_seconds": 12.751835957998992,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 73,
+        "observed_min_whole_device_mib": 788.0,
+        "observed_peak_device_utilization_percent": 88.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1107.0,
+        "recorder_samples": 73,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        3.064112075179537e-09,
+        0.002034747041761875,
+        0.01332317665219307,
+        0.03871994744986296,
+        16.673988342285156
+      ]
+    },
+    "b01-staggered-arcade-r16": {
+      "R": 16,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "76aa791dbe4c6d2382a1413a77127a4996d2171b9647848f04b77f1d02a24945",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115018996226Z-248d3f4398ee47f7",
+        "sha256": "6e76f3ed66753224b6b0162fe60539c8a853717ed04d0badf5114a3a84eebdc9"
+      },
+      "charged_gpu_seconds": 62.796000000002095,
+      "checkpoint_sha256": "5bfd7831d5c7e4da82c8dcb5128dfc45f4b36e0fed3b300992854f7024164f84",
+      "final_gaussians": 60000,
+      "fit_seconds": 57.86000000000058,
+      "gaussians_above_0_005_opacity": 56845,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 375,
+      "mean_projected_gaussians": 53677.875,
+      "min_actual_visits": 375,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115378688,
+      "native_peak_torch_reserved_bytes": 146800640,
+      "native_process_cpu_seconds": 58.390625,
+      "native_record": {
+        "manifest_sha256": "f953b1ba8583066832d96c87a34b8f264ffdf7f7712129b137b044ef9c29bc02",
+        "member": "run.json",
+        "run_id": "20261124T114706966682Z-1e52853f5b324244",
+        "sha256": "55187bb8a978c7503b06b9aef4ee067be0797829d205d1941f4f53e1ebb702ef"
+      },
+      "native_recorder_wall_seconds": 64.32799999999406,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1429299200,
+      "native_telemetry": {
+        "manifest_sha256": "f953b1ba8583066832d96c87a34b8f264ffdf7f7712129b137b044ef9c29bc02",
+        "member": "telemetry.csv",
+        "run_id": "20261124T114706966682Z-1e52853f5b324244",
+        "sha256": "ee2c9ba315a006adf086573ad1c63522d401bb695484bf92c34b1910b2501a4c"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        0.00010644956637406722,
+        0.06690268963575363,
+        0.13499745726585388,
+        0.2754485756158829,
+        0.9999856948852539
+      ],
+      "proof": {
+        "manifest_sha256": "76aa791dbe4c6d2382a1413a77127a4996d2171b9647848f04b77f1d02a24945",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115018996226Z-248d3f4398ee47f7",
+        "sha256": "624e7bb5feae606b701d47d4d02df5a730ba8cd58d37d8bf3b9d355f6e73c729"
+      },
+      "scene_id": "b01-staggered-arcade",
+      "sfm": {
+        "manifest_sha256": "995d6d6720d1c248c1f0e90cc65346a1e435f8963e402ba1964cca538725d31c",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112718072315Z-867a246fecba435d",
+        "sha256": "23a4e22cf74a3e53cfa8d0482aef1978dfd34b6a317be57ee84b6e97d77da6fd"
+      },
+      "source_alpha_gt_0_5_pixels": 1511644,
+      "source_finite_expected_z_pixels": 1524096,
+      "source_mean_control_mae": 0.09199680155143142,
+      "source_order_sha256": "11b259564580f8fc78df8522012e19a5dc5f378d20941304de1722c54161d22a",
+      "source_pixels": 1524096,
+      "source_self_mae": 0.010862233117222786,
+      "source_sfm_seconds": 7.607665,
+      "source_sfm_wall_seconds": 2.1040367079986027,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 57,
+        "observed_min_whole_device_mib": 791.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1107.0,
+        "recorder_samples": 57,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.5702906752679269e-09,
+        0.0013903797953389585,
+        0.01173726050183177,
+        0.039120023138821125,
+        12.080360412597656
+      ]
+    },
+    "b02-terraced-court-r128": {
+      "R": 128,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "36db25db68ece87ea39d308a12812ba4267126b7285361c667cf2a9ddf47312b",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115445912130Z-7e7157611a9748bd",
+        "sha256": "72c1313053ae318334d40e733449bf725dd3b2231dfc6b96a5cd3a0d95f4f517"
+      },
+      "charged_gpu_seconds": 78.20300000000861,
+      "checkpoint_sha256": "729dcdbfcc9e486eeb08023fb2480de596cb7be26eeaab90462116d7bbf7c816",
+      "final_gaussians": 60000,
+      "fit_seconds": 58.01600000000326,
+      "gaussians_above_0_005_opacity": 55162,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 47,
+      "mean_projected_gaussians": 51395.625,
+      "min_actual_visits": 46,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115983872,
+      "native_peak_torch_reserved_bytes": 144703488,
+      "native_process_cpu_seconds": 73.578125,
+      "native_record": {
+        "manifest_sha256": "5983ef23b4e20e03758b9e0002fb508ee792c298239d8fe10cd4277ba841a3b9",
+        "member": "run.json",
+        "run_id": "20261124T115051000501Z-0ac2b0fed4324e04",
+        "sha256": "7ab1963c3685a6b31bb173361e702a60f5933d933590c74d8bac87c044f69ebd"
+      },
+      "native_recorder_wall_seconds": 80.78200000000652,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1460154368,
+      "native_telemetry": {
+        "manifest_sha256": "5983ef23b4e20e03758b9e0002fb508ee792c298239d8fe10cd4277ba841a3b9",
+        "member": "telemetry.csv",
+        "run_id": "20261124T115051000501Z-0ac2b0fed4324e04",
+        "sha256": "def7645521edbb519b6914699f4858b7f21b111df18133a85ff1521e70a0e0af"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        1.1437354260124266e-05,
+        0.052444467321038246,
+        0.11895656958222389,
+        0.2755490243434906,
+        0.9999929666519165
+      ],
+      "proof": {
+        "manifest_sha256": "36db25db68ece87ea39d308a12812ba4267126b7285361c667cf2a9ddf47312b",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115445912130Z-7e7157611a9748bd",
+        "sha256": "625ef1a968f9e1c384fd265dd413c12c461aa29b0cfcb591d8d0ee7640144de9"
+      },
+      "scene_id": "b02-terraced-court",
+      "sfm": {
+        "manifest_sha256": "3652374bc46758a89f81d155e68ee1b0f63a724ab891d25fa83c1eb822003b14",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112812171326Z-b9e9d9e00c1a4038",
+        "sha256": "6587004591aab49b78b79587bc76ab9d2e7423f8e2cf4256bc267cb097fb4997"
+      },
+      "source_alpha_gt_0_5_pixels": 12135777,
+      "source_finite_expected_z_pixels": 12192768,
+      "source_mean_control_mae": 0.08923539688112214,
+      "source_order_sha256": "576b1db8b572aeb24f663e2916070162fb78da5e2853eb39b19ba9778f01c15e",
+      "source_pixels": 12192768,
+      "source_self_mae": 0.010882157308515161,
+      "source_sfm_seconds": 34.277743,
+      "source_sfm_wall_seconds": 12.99993925000308,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 70,
+        "observed_min_whole_device_mib": 792.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1109.0,
+        "recorder_samples": 70,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.4288390470795775e-09,
+        0.002042498905211687,
+        0.012750983703881502,
+        0.03608569223433733,
+        15.50461196899414
+      ]
+    },
+    "b02-terraced-court-r16": {
+      "R": 16,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "78c1825aac5da1059e88c7cb0b9e1081196866943217673c26e5792ddaa0f974",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115244136960Z-0ec770d109314997",
+        "sha256": "071899513fc90112ba12f3819639978a7f84644f3dfc7b03faad76d5f5764d22"
+      },
+      "charged_gpu_seconds": 64.89100000000326,
+      "checkpoint_sha256": "8c9dad48a82d3dd75c7dbe385e37f84fbf66805c6f35071293135c241a0190bb",
+      "final_gaussians": 60000,
+      "fit_seconds": 59.296999999991385,
+      "gaussians_above_0_005_opacity": 56842,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 375,
+      "mean_projected_gaussians": 53701.25,
+      "min_actual_visits": 375,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 114358784,
+      "native_peak_torch_reserved_bytes": 153092096,
+      "native_process_cpu_seconds": 59.328125,
+      "native_record": {
+        "manifest_sha256": "65ba2dbf453ae0a7be7c1d0fb9f875eaa2aa01edeebc4d4a0c57a87d55e3bd7f",
+        "member": "run.json",
+        "run_id": "20261124T114940622776Z-684f7ad1591c4362",
+        "sha256": "543cd73b28ff9b7af5f8f49055aedb650b8ec81bbed13698626a79eeed30622a"
+      },
+      "native_recorder_wall_seconds": 66.65700000000652,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1436655616,
+      "native_telemetry": {
+        "manifest_sha256": "65ba2dbf453ae0a7be7c1d0fb9f875eaa2aa01edeebc4d4a0c57a87d55e3bd7f",
+        "member": "telemetry.csv",
+        "run_id": "20261124T114940622776Z-684f7ad1591c4362",
+        "sha256": "ff85a19cf6c06c28a51e61eb364147fd58858e4ced3346f3676be8049407c150"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        1.4767768334422726e-05,
+        0.06373502500355244,
+        0.12373300269246101,
+        0.24020712450146675,
+        0.999993085861206
+      ],
+      "proof": {
+        "manifest_sha256": "78c1825aac5da1059e88c7cb0b9e1081196866943217673c26e5792ddaa0f974",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115244136960Z-0ec770d109314997",
+        "sha256": "7c084d00b8e325b41af1ff8517d90c179cfc433ddc43a818da833d4ecfafd243"
+      },
+      "scene_id": "b02-terraced-court",
+      "sfm": {
+        "manifest_sha256": "92a71a11b47352ea2300d853f48e5dc17c34a86a9ad2332c4a09fe44f4c2dca6",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112718072436Z-2b77e7ba0c3a48c2",
+        "sha256": "ea0ed4575535015c9a10757e8a6a6e92e683ba214c068ed20cdfa8594484bdb6"
+      },
+      "source_alpha_gt_0_5_pixels": 1523718,
+      "source_finite_expected_z_pixels": 1524096,
+      "source_mean_control_mae": 0.08940904261544347,
+      "source_order_sha256": "11b259564580f8fc78df8522012e19a5dc5f378d20941304de1722c54161d22a",
+      "source_pixels": 1524096,
+      "source_self_mae": 0.009657360438723117,
+      "source_sfm_seconds": 7.416643,
+      "source_sfm_wall_seconds": 2.223083792006946,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 59,
+        "observed_min_whole_device_mib": 790.0,
+        "observed_peak_device_utilization_percent": 85.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1097.0,
+        "recorder_samples": 59,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.9637154125007328e-09,
+        0.0011575370153877884,
+        0.01057135546579957,
+        0.03722234535962343,
+        42.77360153198242
+      ]
+    },
+    "b03-woven-truss-r128": {
+      "R": 128,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "1145e66f6f3e741bde0aa962b7173ea6d0b1dcf3a4c81884deb0aca7c73f1f28",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115739590075Z-d89f261f8e65440e",
+        "sha256": "eeaf2bf903ada8893a4498b2ffcfe144dfa9f2b7ddc562e03bcaf3a35608ae81"
+      },
+      "charged_gpu_seconds": 79.09399999999732,
+      "checkpoint_sha256": "fe7a390c9d83ce7e177b173e1b06d86d18140afb9dd5cc1745eb4ea1ad1d103e",
+      "final_gaussians": 60000,
+      "fit_seconds": 58.0,
+      "gaussians_above_0_005_opacity": 55099,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 47,
+      "mean_projected_gaussians": 51625.9375,
+      "min_actual_visits": 46,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115357184,
+      "native_peak_torch_reserved_bytes": 148897792,
+      "native_process_cpu_seconds": 74.640625,
+      "native_record": {
+        "manifest_sha256": "4a29aeb63971f81d4ef6af1551ee974acc4981ce0dafc92ee8f5880c9bf243e7",
+        "member": "run.json",
+        "run_id": "20261124T115323778783Z-ab539ad0e0ca4ecf",
+        "sha256": "171bf2ad8923a515aa86ae2e39759b3186a1632625b30bf852f29268386f162b"
+      },
+      "native_recorder_wall_seconds": 81.70300000000861,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1465655296,
+      "native_telemetry": {
+        "manifest_sha256": "4a29aeb63971f81d4ef6af1551ee974acc4981ce0dafc92ee8f5880c9bf243e7",
+        "member": "telemetry.csv",
+        "run_id": "20261124T115323778783Z-ab539ad0e0ca4ecf",
+        "sha256": "49fab7ef81354d822d929327f3eb9b09495a5659846e91b7181961192340f5e6"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.8475449198595015e-06,
+        0.05539922509342432,
+        0.12719344347715378,
+        0.29819852113723755,
+        0.999998927116394
+      ],
+      "proof": {
+        "manifest_sha256": "1145e66f6f3e741bde0aa962b7173ea6d0b1dcf3a4c81884deb0aca7c73f1f28",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115739590075Z-d89f261f8e65440e",
+        "sha256": "63e6dd5c5162cba25fbad0d25a92588aefbb3930d6a2844241db82575db46d1e"
+      },
+      "scene_id": "b03-woven-truss",
+      "sfm": {
+        "manifest_sha256": "965944187d032e67ee80df03b36368dd63e22cba7894252ddcd42fdbb89fcc04",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112812170978Z-2d0f033ea4124e8f",
+        "sha256": "2b9cc7ad6618e195244581a8a43fa97c0c31d1599542a05534ed42f8c95ddc4c"
+      },
+      "source_alpha_gt_0_5_pixels": 12085687,
+      "source_finite_expected_z_pixels": 12192768,
+      "source_mean_control_mae": 0.09313467604806647,
+      "source_order_sha256": "576b1db8b572aeb24f663e2916070162fb78da5e2853eb39b19ba9778f01c15e",
+      "source_pixels": 12192768,
+      "source_self_mae": 0.011941172851948068,
+      "source_sfm_seconds": 34.307701,
+      "source_sfm_wall_seconds": 13.001555416994961,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 71,
+        "observed_min_whole_device_mib": 788.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1105.0,
+        "recorder_samples": 71,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        2.3919697333951717e-09,
+        0.002078482590150088,
+        0.013845765497535467,
+        0.03786798845976591,
+        22.24399185180664
+      ]
+    },
+    "b03-woven-truss-r16": {
+      "R": 16,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "5bdab31f541cf8f16aa6e238a84990b7c8b22f033a4d86972c432771ec938d23",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115505001173Z-7370a355c3604131",
+        "sha256": "55da2343b2ab851274abdbed8629c37e982323617f38d616eaa7da552c60ce74"
+      },
+      "charged_gpu_seconds": 64.45299999999406,
+      "checkpoint_sha256": "0cd8199575bbe0148c81c07682e2882922dfe7a2ed6bc7064b4b8e1fab0b01e4",
+      "final_gaussians": 60000,
+      "fit_seconds": 58.687000000005355,
+      "gaussians_above_0_005_opacity": 57049,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 375,
+      "mean_projected_gaussians": 53905.6875,
+      "min_actual_visits": 375,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115368960,
+      "native_peak_torch_reserved_bytes": 148897792,
+      "native_process_cpu_seconds": 62.453125,
+      "native_record": {
+        "manifest_sha256": "4cf51511178ad3854aeea289d107374ac0a8f7d873758de0acb783ac35acb3b0",
+        "member": "run.json",
+        "run_id": "20261124T115214380262Z-93a68d0dc82a41c1",
+        "sha256": "6d8e0a7e1a43a29d9d09ec57895e3645eafc3727c40db684f986904b113df17e"
+      },
+      "native_recorder_wall_seconds": 66.375,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1438363648,
+      "native_telemetry": {
+        "manifest_sha256": "4cf51511178ad3854aeea289d107374ac0a8f7d873758de0acb783ac35acb3b0",
+        "member": "telemetry.csv",
+        "run_id": "20261124T115214380262Z-93a68d0dc82a41c1",
+        "sha256": "6541d456c2cea782f721ae677c91c08e181a73c75714a581f44a894fc6c8e4df"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        4.234748485032469e-05,
+        0.06757677532732487,
+        0.13347823172807693,
+        0.2650032564997673,
+        0.9999983310699463
+      ],
+      "proof": {
+        "manifest_sha256": "5bdab31f541cf8f16aa6e238a84990b7c8b22f033a4d86972c432771ec938d23",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115505001173Z-7370a355c3604131",
+        "sha256": "3f996ed11546f14c987befd8deab04782ffe2a177562a49abbb0b96212adc800"
+      },
+      "scene_id": "b03-woven-truss",
+      "sfm": {
+        "manifest_sha256": "78341786c8b4e07842cc8c11da049f45fe2b165386125001f6c883b84983c84a",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112718072332Z-1aba431e80194feb",
+        "sha256": "64573a3975df3ce851765496da2621f50dbdd8254c335bc0b557c511bf8d80f4"
+      },
+      "source_alpha_gt_0_5_pixels": 1513755,
+      "source_finite_expected_z_pixels": 1524096,
+      "source_mean_control_mae": 0.09332008520141244,
+      "source_order_sha256": "11b259564580f8fc78df8522012e19a5dc5f378d20941304de1722c54161d22a",
+      "source_pixels": 1524096,
+      "source_self_mae": 0.011613518232479692,
+      "source_sfm_seconds": 7.850903000000001,
+      "source_sfm_wall_seconds": 1.5762314159946982,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 58,
+        "observed_min_whole_device_mib": 801.0,
+        "observed_peak_device_utilization_percent": 87.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1117.0,
+        "recorder_samples": 58,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.3368942619607083e-09,
+        0.0013204183196648955,
+        0.010777643881738186,
+        0.0364994490519166,
+        19.95052719116211
+      ]
+    },
+    "b04-layered-louvers-r128": {
+      "R": 128,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "4e469b52adbf495c8911f399ab6abccdee75d5142b3a71aa64106bec7713bbef",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115842436034Z-f9b5b3aa0f8c4402",
+        "sha256": "327484ce2f947961671f4a2f5dd3116e1bb15286a45e7bf51098e2eccbc30394"
+      },
+      "charged_gpu_seconds": 78.1880000000092,
+      "checkpoint_sha256": "e900820014308c4f01b9c6b4249c4a9906c25fb1b11e48961574e92554a31ccb",
+      "final_gaussians": 60000,
+      "fit_seconds": 57.46899999999732,
+      "gaussians_above_0_005_opacity": 55399,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 47,
+      "mean_projected_gaussians": 51840.953125,
+      "min_actual_visits": 46,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 116012032,
+      "native_peak_torch_reserved_bytes": 153092096,
+      "native_process_cpu_seconds": 72.75,
+      "native_record": {
+        "manifest_sha256": "70c7ae6be0588d12a19e69860117c6fc323f0dccd01da1bfb24c8e0b1aec085e",
+        "member": "run.json",
+        "run_id": "20261124T115449275066Z-ad9bef752db14b96",
+        "sha256": "116d2d18afd2b5892025823e1e6c03d06fa24de24af563422973544a93392591"
+      },
+      "native_recorder_wall_seconds": 80.98399999999674,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1489285120,
+      "native_telemetry": {
+        "manifest_sha256": "70c7ae6be0588d12a19e69860117c6fc323f0dccd01da1bfb24c8e0b1aec085e",
+        "member": "telemetry.csv",
+        "run_id": "20261124T115449275066Z-ad9bef752db14b96",
+        "sha256": "f98f39e6f1e5becc4c5db2cf119d340e9b40b54a945f6a011735eba349e2b106"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.0917566416756017e-06,
+        0.05434320122003555,
+        0.1270589828491211,
+        0.30226679891347885,
+        0.9998741149902344
+      ],
+      "proof": {
+        "manifest_sha256": "4e469b52adbf495c8911f399ab6abccdee75d5142b3a71aa64106bec7713bbef",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115842436034Z-f9b5b3aa0f8c4402",
+        "sha256": "d28aa08a2eefdb1bbbd28178ba3bacd603ece3fb590ae5eb49d66ad35a3d6dce"
+      },
+      "scene_id": "b04-layered-louvers",
+      "sfm": {
+        "manifest_sha256": "31bad294a2cdb07b19826de127b5e44f639182ed80c72159ecebe2cc711ef5b8",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112812172055Z-ccaebc74e60c4784",
+        "sha256": "cceaf2d603d4ca8f5cb758ee789c746f348e275f55681b9768191f7621870687"
+      },
+      "source_alpha_gt_0_5_pixels": 12119884,
+      "source_finite_expected_z_pixels": 12192768,
+      "source_mean_control_mae": 0.09265947580570355,
+      "source_order_sha256": "576b1db8b572aeb24f663e2916070162fb78da5e2853eb39b19ba9778f01c15e",
+      "source_pixels": 12192768,
+      "source_self_mae": 0.011615066367085092,
+      "source_sfm_seconds": 35.937386999999994,
+      "source_sfm_wall_seconds": 12.947071417002007,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 70,
+        "observed_min_whole_device_mib": 788.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1110.0,
+        "recorder_samples": 70,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        2.390200259938524e-09,
+        0.0019826380885206163,
+        0.012703475076705217,
+        0.03525740932673216,
+        9.823972702026367
+      ]
+    },
+    "b04-layered-louvers-r16": {
+      "R": 16,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "83bc29ab404448a64c552f61ac1e85332ad031bd24c3cabe65c339fd731cceb2",
+        "member": "payload/bank.json",
+        "run_id": "20261124T113848569248Z-4e427613e47143bf",
+        "sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250"
+      },
+      "charged_gpu_seconds": 60.70299999999406,
+      "checkpoint_sha256": "9666db2f040cff27962204215e55867e85e84d57da60debb4bc88d52c66a194e",
+      "final_gaussians": 60000,
+      "fit_seconds": 55.969000000011874,
+      "gaussians_above_0_005_opacity": 56860,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 375,
+      "mean_projected_gaussians": 54044.3125,
+      "min_actual_visits": 375,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115356672,
+      "native_peak_torch_reserved_bytes": 148897792,
+      "native_process_cpu_seconds": 55.328125,
+      "native_record": {
+        "manifest_sha256": "46769fea258f28eb6297432586f0795a94083d74de3fcd5f829e59f80a18aee4",
+        "member": "run.json",
+        "run_id": "20261124T113100222841Z-f4483b1a47124aad",
+        "sha256": "70546e7f6c96eb34d77d2e0dfb283f88ad285f8e2dd2d7cf3424c7a952588767"
+      },
+      "native_recorder_wall_seconds": 62.0,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1453948928,
+      "native_telemetry": {
+        "manifest_sha256": "46769fea258f28eb6297432586f0795a94083d74de3fcd5f829e59f80a18aee4",
+        "member": "telemetry.csv",
+        "run_id": "20261124T113100222841Z-f4483b1a47124aad",
+        "sha256": "fd4be1628f40a2cdaca4d6f3fe7f61ebdac5ece83d8ab09fa56be2fa2ea34e72"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.0917566416756017e-06,
+        0.06419038027524948,
+        0.13167055696249008,
+        0.27063919603824615,
+        0.9999828338623047
+      ],
+      "proof": {
+        "manifest_sha256": "83bc29ab404448a64c552f61ac1e85332ad031bd24c3cabe65c339fd731cceb2",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T113848569248Z-4e427613e47143bf",
+        "sha256": "fd45e42ea57b58401e9f2d0912d1992f7630a6210ab1734be578b71fc59f586d"
+      },
+      "scene_id": "b04-layered-louvers",
+      "sfm": {
+        "manifest_sha256": "44ce2a5f08187fe28f02037836af3e39300cb89a4dceb20f6fea2ddc5e3ca122",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112632350660Z-1e3b6b367cbf4f28",
+        "sha256": "1b3d2dc7c0130955233a2a26fcfc8d2c2ea3a2154f901d990f1655cb201f8e09"
+      },
+      "source_alpha_gt_0_5_pixels": 1518114,
+      "source_finite_expected_z_pixels": 1524096,
+      "source_mean_control_mae": 0.09280352247878909,
+      "source_order_sha256": "11b259564580f8fc78df8522012e19a5dc5f378d20941304de1722c54161d22a",
+      "source_pixels": 1524096,
+      "source_self_mae": 0.010913510050158948,
+      "source_sfm_seconds": 7.471734,
+      "source_sfm_wall_seconds": 1.0882883750018664,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 55,
+        "observed_min_whole_device_mib": 804.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1107.0,
+        "recorder_samples": 55,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        2.277354527180364e-09,
+        0.0011900528916157782,
+        0.010456677991896868,
+        0.03491508308798075,
+        11.5720796585083
+      ]
+    },
+    "b05-perforated-gallery-r128": {
+      "R": 128,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "a9eb9a7e654c59ca573f7136cd908b8657624834ad7986415baa162a9a09779b",
+        "member": "payload/bank.json",
+        "run_id": "20261124T121457024933Z-253887ceebd24242",
+        "sha256": "61b3470c13871ede459504eb74f144651f33299be609e5360dbd4afb78b6ffdb"
+      },
+      "charged_gpu_seconds": 80.60899999999674,
+      "checkpoint_sha256": "8abe78bc2be2386f1cde32b0458858a02696a8decbe6e8e26b3da690def9e626",
+      "final_gaussians": 60000,
+      "fit_seconds": 59.46899999999732,
+      "gaussians_above_0_005_opacity": 55442,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 47,
+      "mean_projected_gaussians": 52083.25,
+      "min_actual_visits": 46,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 116102144,
+      "native_peak_torch_reserved_bytes": 140509184,
+      "native_process_cpu_seconds": 73.015625,
+      "native_record": {
+        "manifest_sha256": "c4cfa617044150591640308c9037c071a700e303d5fb7377187a98921136ef0b",
+        "member": "run.json",
+        "run_id": "20261124T121057099682Z-ae94490fbf4f4902",
+        "sha256": "717719d600a8dd172cebbfe4504d9b2423c57fac91aa04da37aa24fa0a2031bb"
+      },
+      "native_recorder_wall_seconds": 83.57799999999406,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1465856000,
+      "native_telemetry": {
+        "manifest_sha256": "c4cfa617044150591640308c9037c071a700e303d5fb7377187a98921136ef0b",
+        "member": "telemetry.csv",
+        "run_id": "20261124T121057099682Z-ae94490fbf4f4902",
+        "sha256": "458c29296ee865cafc2f3e7f9b8050bfc48740927325e427176c5c2b60f5fb03"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        5.0785256462404504e-05,
+        0.058101153932511806,
+        0.1285925954580307,
+        0.28397954255342484,
+        0.9999961853027344
+      ],
+      "proof": {
+        "manifest_sha256": "a9eb9a7e654c59ca573f7136cd908b8657624834ad7986415baa162a9a09779b",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T121457024933Z-253887ceebd24242",
+        "sha256": "9e7e72a18504c0fc2e326fb384bc8e94758331c8ec4b6d7084667796f559cbff"
+      },
+      "scene_id": "b05-perforated-gallery",
+      "sfm": {
+        "manifest_sha256": "c267752871c23f17d0a4e0a8d33b5c2a0097e2c0c355859352022c864fdacf18",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T120336744076Z-cf63b32e565d4f8e",
+        "sha256": "9c5442fe652efba068cc785a7e0179f3e6615487e3c808cfb749298e7d33059e"
+      },
+      "source_alpha_gt_0_5_pixels": 12176036,
+      "source_finite_expected_z_pixels": 12192768,
+      "source_mean_control_mae": 0.09531558147864416,
+      "source_order_sha256": "576b1db8b572aeb24f663e2916070162fb78da5e2853eb39b19ba9778f01c15e",
+      "source_pixels": 12192768,
+      "source_self_mae": 0.011305850333883427,
+      "source_sfm_seconds": 36.835952,
+      "source_sfm_wall_seconds": 9.81977704098972,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 73,
+        "observed_min_whole_device_mib": 788.0,
+        "observed_peak_device_utilization_percent": 87.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1109.0,
+        "recorder_samples": 73,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        2.900462314769925e-09,
+        0.0020390707068145275,
+        0.01309907529503107,
+        0.03704633470624685,
+        14.254910469055176
+      ]
+    },
+    "b05-perforated-gallery-r16": {
+      "R": 16,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "beb55a2fdeeb4164fe584d6e0ae8b8d95369666bf185e5c13f6c7bf52a34e290",
+        "member": "payload/bank.json",
+        "run_id": "20261124T121225128543Z-4451904d827f4a76",
+        "sha256": "2a925db5a168f9cc7ae071b8495e3ce48d2ce1c70630298d9c64d925b5724cc8"
+      },
+      "charged_gpu_seconds": 64.34399999999732,
+      "checkpoint_sha256": "a958a518bf3391ed53ee55d7113cc272eea3ac85cd6480dde6e4122cd646719c",
+      "final_gaussians": 60000,
+      "fit_seconds": 59.23500000000058,
+      "gaussians_above_0_005_opacity": 57045,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 375,
+      "mean_projected_gaussians": 54286.9375,
+      "min_actual_visits": 375,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 116493312,
+      "native_peak_torch_reserved_bytes": 155189248,
+      "native_process_cpu_seconds": 57.8125,
+      "native_record": {
+        "manifest_sha256": "af93cc9c9f3db6a77d987d094c8708c0c8bde52a8c67321961160617b5c38ba6",
+        "member": "run.json",
+        "run_id": "20261124T120947920304Z-84f96ef4c0bc4669",
+        "sha256": "65e58d0c51dbee4477e4a0e98791100d88922516a12966a640dc8f5cf7a5e689"
+      },
+      "native_recorder_wall_seconds": 66.13999999999942,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1425190912,
+      "native_telemetry": {
+        "manifest_sha256": "af93cc9c9f3db6a77d987d094c8708c0c8bde52a8c67321961160617b5c38ba6",
+        "member": "telemetry.csv",
+        "run_id": "20261124T120947920304Z-84f96ef4c0bc4669",
+        "sha256": "63e425e852f720c59f1cf554b3c538cb3e1cae5decbfad569063c041784360a8"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.4266477339551784e-05,
+        0.06661587581038475,
+        0.12826384603977203,
+        0.24939009547233582,
+        0.9999973773956299
+      ],
+      "proof": {
+        "manifest_sha256": "beb55a2fdeeb4164fe584d6e0ae8b8d95369666bf185e5c13f6c7bf52a34e290",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T121225128543Z-4451904d827f4a76",
+        "sha256": "047656a85f9a30f2a4b35988fa93b8712bae7354199f3d7dde891d08793e46d2"
+      },
+      "scene_id": "b05-perforated-gallery",
+      "sfm": {
+        "manifest_sha256": "56aa21d052391d75393f3615e1beefd133215966612d68ab9a183048432c8cf5",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T120336744192Z-9796a4cc60344deb",
+        "sha256": "ec569f65b64365875992cb94f18652fc4dba51cef475b0573db967607e79a0d4"
+      },
+      "source_alpha_gt_0_5_pixels": 1524096,
+      "source_finite_expected_z_pixels": 1524096,
+      "source_mean_control_mae": 0.09544986905530095,
+      "source_order_sha256": "11b259564580f8fc78df8522012e19a5dc5f378d20941304de1722c54161d22a",
+      "source_pixels": 1524096,
+      "source_self_mae": 0.010419560829177499,
+      "source_sfm_seconds": 8.007664,
+      "source_sfm_wall_seconds": 1.4589188340032706,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 58,
+        "observed_min_whole_device_mib": 798.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1111.0,
+        "recorder_samples": 58,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.1672838251541862e-09,
+        0.0010724540625233203,
+        0.009749909862875938,
+        0.03685699589550495,
+        86.55315399169922
+      ]
+    },
+    "b06-corner-alcoves-r128": {
+      "R": 128,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "3449fed10a52b638b38ad61ad6ab39730af62f0bc242fc16ce0dbdba11727d0f",
+        "member": "payload/bank.json",
+        "run_id": "20261124T121735341595Z-9a0ceb7407ac4569",
+        "sha256": "7ad8664082e35ec3fd9a57118859ca4838be4670fdc80d03f78feccd2432127e"
+      },
+      "charged_gpu_seconds": 79.5,
+      "checkpoint_sha256": "f03cfc936ee4c3fc6d250787b66790ba8e966e99e05a4e418b9b963bd8809da4",
+      "final_gaussians": 60000,
+      "fit_seconds": 59.15600000000268,
+      "gaussians_above_0_005_opacity": 55430,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 47,
+      "mean_projected_gaussians": 52007.34375,
+      "min_actual_visits": 46,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115344896,
+      "native_peak_torch_reserved_bytes": 146800640,
+      "native_process_cpu_seconds": 74.53125,
+      "native_record": {
+        "manifest_sha256": "a04ea75b2d44953d194cb33196c9c8e93450b024e48a28042d83b714169af78a",
+        "member": "run.json",
+        "run_id": "20261124T121333216331Z-978c9b319b4e4b5d",
+        "sha256": "10f324902dfbef8036aa8d297ff1628bd0ffe665e732a71031f27ee145021375"
+      },
+      "native_recorder_wall_seconds": 82.48500000000058,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1463271424,
+      "native_telemetry": {
+        "manifest_sha256": "a04ea75b2d44953d194cb33196c9c8e93450b024e48a28042d83b714169af78a",
+        "member": "telemetry.csv",
+        "run_id": "20261124T121333216331Z-978c9b319b4e4b5d",
+        "sha256": "879298cc0cae07f7b24ef460b94e90ecd23292ea1495d75b10f434a2081a28c4"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        3.956909495173022e-05,
+        0.05771798826754093,
+        0.13185041397809982,
+        0.3009590730071068,
+        0.9999911785125732
+      ],
+      "proof": {
+        "manifest_sha256": "3449fed10a52b638b38ad61ad6ab39730af62f0bc242fc16ce0dbdba11727d0f",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T121735341595Z-9a0ceb7407ac4569",
+        "sha256": "e4ed9cd10638fd97af8e2fb79a37e80e46a9ab3d7eb14ace3e46dc1eb28ea428"
+      },
+      "scene_id": "b06-corner-alcoves",
+      "sfm": {
+        "manifest_sha256": "ffeaa59b3f71404ae9f8738fe3b43344a4b310356bec77eaee2f85786d749f43",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T120351997366Z-a053a8aa6d3c4a8a",
+        "sha256": "43fe1f87aad0d10e210488498678c852d54d8f740e043993a405b5bd8e2c3b24"
+      },
+      "source_alpha_gt_0_5_pixels": 12157940,
+      "source_finite_expected_z_pixels": 12192768,
+      "source_mean_control_mae": 0.09620617760811001,
+      "source_order_sha256": "576b1db8b572aeb24f663e2916070162fb78da5e2853eb39b19ba9778f01c15e",
+      "source_pixels": 12192768,
+      "source_self_mae": 0.011235287674935535,
+      "source_sfm_seconds": 36.779318,
+      "source_sfm_wall_seconds": 9.237042709006346,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 72,
+        "observed_min_whole_device_mib": 788.0,
+        "observed_peak_device_utilization_percent": 84.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1115.0,
+        "recorder_samples": 72,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.0827243546174259e-09,
+        0.002193171065300703,
+        0.013441691175103188,
+        0.03798577282577753,
+        18.103727340698242
+      ]
+    },
+    "b06-corner-alcoves-r16": {
+      "R": 16,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "35301053423178f6d6af2010a0eecac5ea85c39e959c60e8dd3ab84a8d847ea9",
+        "member": "payload/bank.json",
+        "run_id": "20261124T121516322379Z-ab1081a7529044fd",
+        "sha256": "198b9b7560208e518bac2b92e42a60d34687b0a7b2c6ef22a063d55e112efc84"
+      },
+      "charged_gpu_seconds": 64.5789999999979,
+      "checkpoint_sha256": "87e999e2e878283d25d688668c5f13eea5ad1e189791a20073005d171df477b3",
+      "final_gaussians": 60000,
+      "fit_seconds": 58.85899999999674,
+      "gaussians_above_0_005_opacity": 56829,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 375,
+      "mean_projected_gaussians": 54376.5625,
+      "min_actual_visits": 375,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 115343872,
+      "native_peak_torch_reserved_bytes": 148897792,
+      "native_process_cpu_seconds": 62.84375,
+      "native_record": {
+        "manifest_sha256": "6f179d42c3cf97bc3bdd2ac337073bdf90433b51566a4582937c3d46057c198b",
+        "member": "run.json",
+        "run_id": "20261124T121223138158Z-5dc4b64934f945eb",
+        "sha256": "4e297b61c38c7e58fe747f94a47ac58017904382d47cb85935ff2404708df1d2"
+      },
+      "native_recorder_wall_seconds": 66.71900000001187,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1458905088,
+      "native_telemetry": {
+        "manifest_sha256": "6f179d42c3cf97bc3bdd2ac337073bdf90433b51566a4582937c3d46057c198b",
+        "member": "telemetry.csv",
+        "run_id": "20261124T121223138158Z-5dc4b64934f945eb",
+        "sha256": "e972a725505cd012805ad4cc38fdf168104a490ab9d8e041054af3d595cd0e42"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        4.315827482059831e-06,
+        0.06661255471408367,
+        0.13702989369630814,
+        0.2825308069586754,
+        0.9999953508377075
+      ],
+      "proof": {
+        "manifest_sha256": "35301053423178f6d6af2010a0eecac5ea85c39e959c60e8dd3ab84a8d847ea9",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T121516322379Z-ab1081a7529044fd",
+        "sha256": "d8d26c0d5bc9256f37d0a4f07ffe1a3de1b3df053f3535ad612eb9bae3da7adc"
+      },
+      "scene_id": "b06-corner-alcoves",
+      "sfm": {
+        "manifest_sha256": "94b3508668ecef72fb34af9e50e3a785172de60dbc66d4a9d3b74bece563248a",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T120345747845Z-62c2244c28614214",
+        "sha256": "e7b9f8a488f191856bfa8baa87b368f64604027b110e2676675c07712219eb1f"
+      },
+      "source_alpha_gt_0_5_pixels": 1514079,
+      "source_finite_expected_z_pixels": 1524096,
+      "source_mean_control_mae": 0.09632113855332136,
+      "source_order_sha256": "11b259564580f8fc78df8522012e19a5dc5f378d20941304de1722c54161d22a",
+      "source_pixels": 1524096,
+      "source_self_mae": 0.010218724608421326,
+      "source_sfm_seconds": 7.646104,
+      "source_sfm_wall_seconds": 1.5898161669902038,
+      "status": "succeeded",
+      "target_poses": 6,
+      "telemetry": {
+        "device_samples": 59,
+        "observed_min_whole_device_mib": 803.0,
+        "observed_peak_device_utilization_percent": 87.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1117.0,
+        "recorder_samples": 59,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "m",
+      "world_scale_percentiles": [
+        1.8645636146175093e-09,
+        0.001438004313968122,
+        0.0118375807069242,
+        0.038205401971936226,
+        14.548111915588379
+      ]
+    },
+    "bridge-r100": {
+      "R": 100,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "500f105c8f164ad00a4f8779e4a86dd73c8dcce4b2d6fff4f73c670b0c743bbc",
+        "member": "payload/bank.json",
+        "run_id": "20261124T121937555040Z-4d322a0acf934046",
+        "sha256": "e5df596d8c509cd386905de16ddf2b3feeb0d7be793fac5c44cf8300303f534d"
+      },
+      "charged_gpu_seconds": 73.93799999999464,
+      "checkpoint_sha256": "31e8b3dcbda1a5cd666274f1a567f6b632f0aa7a396b805ba7cefa0a31f616eb",
+      "final_gaussians": 60000,
+      "fit_seconds": 57.96899999999732,
+      "gaussians_above_0_005_opacity": 48846,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 60,
+      "mean_projected_gaussians": 17603.57,
+      "min_actual_visits": 60,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 114287104,
+      "native_peak_torch_reserved_bytes": 146800640,
+      "native_process_cpu_seconds": 68.78125,
+      "native_record": {
+        "manifest_sha256": "2215898fea2948777343f846368a0963609d383de02aac67ecf71880e7ee4b01",
+        "member": "run.json",
+        "run_id": "20261124T121612286105Z-52a00916907b4de5",
+        "sha256": "785837900644be45a2e668985111ac0b39820b9d7097e801260ac3e5788ce2c3"
+      },
+      "native_recorder_wall_seconds": 76.84299999999348,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1452208128,
+      "native_telemetry": {
+        "manifest_sha256": "2215898fea2948777343f846368a0963609d383de02aac67ecf71880e7ee4b01",
+        "member": "telemetry.csv",
+        "run_id": "20261124T121612286105Z-52a00916907b4de5",
+        "sha256": "bb79b33d821229a640d0e30f251dcad041010b9b0a049bc519fa50499f1131a6"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.0917566416756017e-06,
+        0.006788556580431759,
+        0.09328533336520195,
+        0.24359030276536942,
+        0.9997264742851257
+      ],
+      "proof": {
+        "manifest_sha256": "500f105c8f164ad00a4f8779e4a86dd73c8dcce4b2d6fff4f73c670b0c743bbc",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T121937555040Z-4d322a0acf934046",
+        "sha256": "bdc7942fa49cad5e1ab079955ca043f471e1298717159ad96bb5abcc8dcc2bdb"
+      },
+      "scene_id": "bridge",
+      "sfm": {
+        "manifest_sha256": "c8a2f4f3cd7da2ce59a4acbf7e1e50087164b4a28219c190cbbdb89f18c60989",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T120405110151Z-bfa8cf222b494e81",
+        "sha256": "539d9301a651fb63e88295dfa975be696ef95044da3d65ad33422ebda2a534fe"
+      },
+      "source_alpha_gt_0_5_pixels": 8926547,
+      "source_finite_expected_z_pixels": 9523600,
+      "source_mean_control_mae": 0.15806103959679604,
+      "source_order_sha256": "b3682027f7730e88a64dec93713757f51d00a8cd0834ce13065faa03eb1dd792",
+      "source_pixels": 9525600,
+      "source_self_mae": 0.0296741246804595,
+      "source_sfm_seconds": 36.606039,
+      "source_sfm_wall_seconds": 5.2961470000009285,
+      "status": "succeeded",
+      "target_poses": 10,
+      "telemetry": {
+        "device_samples": 67,
+        "observed_min_whole_device_mib": 788.0,
+        "observed_peak_device_utilization_percent": 85.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1108.0,
+        "recorder_samples": 67,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "scene_units",
+      "world_scale_percentiles": [
+        1.7924768336285979e-09,
+        0.007259446894749999,
+        0.02767679188400507,
+        0.07045979052782059,
+        42.686946868896484
+      ]
+    },
+    "delivery-area-r34": {
+      "R": 34,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "c1383bdcfa7d1a6f6a53a5e0104ede0221d0920ce513f866fe8f3146edbfff21",
+        "member": "payload/bank.json",
+        "run_id": "20261124T115000352145Z-a9a95e57a7e14dd2",
+        "sha256": "ccd378e9d8013ba8b22e167d7dd34516d8cbf76ab2fdae63148cf727382ef4c2"
+      },
+      "charged_gpu_seconds": 58.625,
+      "checkpoint_sha256": "2c60b1116f03f90038cb0ed97e69d24aeeb26aacb2941d8c62c0a6698b9f808a",
+      "final_gaussians": 60000,
+      "fit_seconds": 52.01600000000326,
+      "gaussians_above_0_005_opacity": 50562,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 177,
+      "mean_projected_gaussians": 10097.441176470587,
+      "min_actual_visits": 176,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 114211328,
+      "native_peak_torch_reserved_bytes": 144703488,
+      "native_process_cpu_seconds": 53.453125,
+      "native_record": {
+        "manifest_sha256": "bc77af37ab86906092489bb467e944f2feac3993f001adc58c50134258777091",
+        "member": "run.json",
+        "run_id": "20261124T114604860655Z-2ba9767754384a97",
+        "sha256": "c4fc120982eb400f2063b4ef3df8c5cf7b57ff0b83867dc05cacae386b43c273"
+      },
+      "native_recorder_wall_seconds": 60.09300000000803,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1434644480,
+      "native_telemetry": {
+        "manifest_sha256": "bc77af37ab86906092489bb467e944f2feac3993f001adc58c50134258777091",
+        "member": "telemetry.csv",
+        "run_id": "20261124T114604860655Z-2ba9767754384a97",
+        "sha256": "21caca2ca291086f17f5a479a5f42251895bc426f85cb65769ad12ee21145529"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.1784871933050454e-06,
+        0.016926002223044634,
+        0.10951652005314827,
+        0.2634647786617279,
+        0.9998100399971008
+      ],
+      "proof": {
+        "manifest_sha256": "c1383bdcfa7d1a6f6a53a5e0104ede0221d0920ce513f866fe8f3146edbfff21",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T115000352145Z-a9a95e57a7e14dd2",
+        "sha256": "aadcf5ea38498045d0c65038fd74b1101dece9e487372b8767b21c13a75a6498"
+      },
+      "scene_id": "delivery_area",
+      "sfm": {
+        "manifest_sha256": "7fc942642f82b900da4ddb4b02f913b75d024797f95728ea7459616a84eb58df",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T112718206587Z-c0809c35a5e1402d",
+        "sha256": "baf276200043b8b9baf82b7177e38a46da76ec00a577ac41d51ffc0254b312a8"
+      },
+      "source_alpha_gt_0_5_pixels": 3205179,
+      "source_finite_expected_z_pixels": 3238704,
+      "source_mean_control_mae": 0.15732061884859028,
+      "source_order_sha256": "6c4c6c4bf2639bd3193cfa19d79fbcfc1038fd73bf27ab08f0c77e35fc3356be",
+      "source_pixels": 3238704,
+      "source_self_mae": 0.017466724576318964,
+      "source_sfm_seconds": 10.456151,
+      "source_sfm_wall_seconds": 3.183524291991489,
+      "status": "succeeded",
+      "target_poses": 10,
+      "telemetry": {
+        "device_samples": 53,
+        "observed_min_whole_device_mib": 804.0,
+        "observed_peak_device_utilization_percent": 83.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1100.0,
+        "recorder_samples": 53,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "scene_units",
+      "world_scale_percentiles": [
+        1.515908398808108e-09,
+        0.0029929231386631727,
+        0.027695036493241787,
+        0.09651507437229156,
+        66.77681732177734
+      ]
+    },
+    "living-room-r55": {
+      "R": 55,
+      "auxiliary_validation_photos_read": 0,
+      "bank": {
+        "manifest_sha256": "591475a49a119aab1e7edf8f030558709e1a074e2819ddee32b1879a5af94b0b",
+        "member": "payload/bank.json",
+        "run_id": "20261124T121811585874Z-a3fbd321028a40b7",
+        "sha256": "61800ea823f2474a3e341bc4e6cdc9bb03f520c692005a7294e6c21ebceb0e5a"
+      },
+      "charged_gpu_seconds": 66.71899999999732,
+      "checkpoint_sha256": "f5eb1104c5a956c14411e75a5df4e44deb9df957ff47af33c6e0c46c56863212",
+      "final_gaussians": 60000,
+      "fit_seconds": 56.32799999999406,
+      "gaussians_above_0_005_opacity": 55161,
+      "gpu_accounting": "native worker wall including fit and rendering",
+      "initial_gaussians": 15000,
+      "internal_holdout": 0,
+      "max_actual_visits": 110,
+      "mean_projected_gaussians": 17129.036363636365,
+      "min_actual_visits": 109,
+      "native_checkpoint_step": 5999,
+      "native_peak_torch_allocated_bytes": 114672128,
+      "native_peak_torch_reserved_bytes": 155189248,
+      "native_process_cpu_seconds": 61.984375,
+      "native_record": {
+        "manifest_sha256": "171287bb5d6e7a36a49ab5b3173190efadc5dd0408bd74e82ef4251ab0803d8c",
+        "member": "run.json",
+        "run_id": "20261124T121458701680Z-70eb2510bd714d6b",
+        "sha256": "def9d6f09d4e5a61dd1ef68a75a5b6c7f955c019e405e26d9ad8599d99dcef66"
+      },
+      "native_recorder_wall_seconds": 69.45299999999406,
+      "native_render_max_absolute_difference": {
+        "alpha": 0.0,
+        "rgb": 0.0,
+        "z": 0.0
+      },
+      "native_sampled_peak_process_tree_rss_bytes": 1437982720,
+      "native_telemetry": {
+        "manifest_sha256": "171287bb5d6e7a36a49ab5b3173190efadc5dd0408bd74e82ef4251ab0803d8c",
+        "member": "telemetry.csv",
+        "run_id": "20261124T121458701680Z-70eb2510bd714d6b",
+        "sha256": "167f5a3f8179536f95de3d0c30a561022ba901f4bf2b6737c1900eed22078c4f"
+      },
+      "official_commit": "937e29912570c372bed6747a5c9bf85fed877bae",
+      "opacity_percentiles": [
+        2.237167336716084e-06,
+        0.03516799304634333,
+        0.09177535027265549,
+        0.22507881373167038,
+        0.9998949766159058
+      ],
+      "proof": {
+        "manifest_sha256": "591475a49a119aab1e7edf8f030558709e1a074e2819ddee32b1879a5af94b0b",
+        "member": "payload/upstream-evidence.json",
+        "run_id": "20261124T121811585874Z-a3fbd321028a40b7",
+        "sha256": "db11470a4845fabe9ae3f6dd85a1451ef587d5934712ae997dd971c3483c6240"
+      },
+      "scene_id": "living_room",
+      "sfm": {
+        "manifest_sha256": "9b3d479e42023ba0df2a3422080b74618df9980cc963460a92f718393420c2d7",
+        "member": "payload/sfm.json",
+        "run_id": "20261124T120356018802Z-6b4127c79f3141c2",
+        "sha256": "937f1c9205ea6fe3ea2458e98be2c8effc6c6d3fea878738d2c17ba13c436f4e"
+      },
+      "source_alpha_gt_0_5_pixels": 5210874,
+      "source_finite_expected_z_pixels": 5239080,
+      "source_mean_control_mae": 0.19899054846980355,
+      "source_order_sha256": "4e7c8e1f0b2a300dece35e7a683a5ca469a2e850649abdfe0b59e763e4139f31",
+      "source_pixels": 5239080,
+      "source_self_mae": 0.019590477357533845,
+      "source_sfm_seconds": 11.88358,
+      "source_sfm_wall_seconds": 2.8141307920013787,
+      "status": "succeeded",
+      "target_poses": 10,
+      "telemetry": {
+        "device_samples": 60,
+        "observed_min_whole_device_mib": 799.0,
+        "observed_peak_device_utilization_percent": 86.0,
+        "observed_peak_driver_process_bytes": null,
+        "observed_peak_whole_device_mib": 1118.0,
+        "recorder_samples": 60,
+        "scope": "nvidia-smi device-wide samples include desktop/background use; missing per-process driver counters remain null"
+      },
+      "training_updates": 6000,
+      "units": "scene_units",
+      "world_scale_percentiles": [
+        1.4547377746865209e-09,
+        0.0027523497119545937,
+        0.011314481496810913,
+        0.03272848576307297,
+        8.710468292236328
+      ]
+    }
+  },
+  "cases_over_native_wall_cap": [],
+  "charged_gpu_seconds": 1057.031999999992,
+  "common_model_freeze": {
+    "manifest_sha256": "0de1f494c6f90e6744a3170f5f52e7957aab549313affb3bd5739d762e4cbc73",
+    "member": "payload/freeze.json",
+    "run_id": "20261124T120332809100Z-ec53d7a4a3b94042",
+    "sha256": "452048897c150f6073808634c3f8d29924ddf84662abac68f470ca6b12fca479"
+  },
+  "confirmation_queue": {
+    "manifest_sha256": "826305c6efd68e000f216f03408bcd084cf176ef13f35f030f2e31a297a7134a",
+    "member": "payload/queue.json",
+    "run_id": "20261124T120425673676Z-c6e47d4b73eb44b5",
+    "sha256": "907fa46d4bb11d56380485da19f17946eb545380cd80e81c36a0279bd8746b40"
+  },
+  "development": {
+    "manifest_sha256": "98abed85320d7ae425daa850b9d98f790d52acf5739024407842b091ecc4e214",
+    "member": "payload/diagnostics.json",
+    "run_id": "20261124T115849245504Z-645bff342f1b4378",
+    "sha256": "ec9676eb67ac36e215006735ac82f587d6f6fbc0162fdcebb8c7b4921243ac82"
+  },
+  "device_memory_scope": "On Windows the nvidia-smi samples are whole-device measurements; WDDM may withhold process-level counters. The maximum PyTorch allocated/reserved counts in this ledger are framework-local; a missing WDDM process counter stays null.",
+  "external_adapter": {
+    "manifest_sha256": "213c1000c8d84d0695bd4c121bce11595e65fb23e470bb30707dc69bd7721e36",
+    "member": "payload/acceptance.json",
+    "run_id": "20261124T114125891178Z-6fade8b4462d4c42",
+    "sha256": "5ca4ded3f2b6750657d2247051f227bdc27d94f71488d1f707fd39e33117144c"
+  },
+  "failed": 0,
+  "fit_time_and_count_within_declared_limits": true,
+  "independent_confirmation_photos_accessed_by_upstream": 0,
+  "issued_fit_count": 15,
+  "max_cuda_reserved_bytes": 155189248,
+  "max_device_observed_mib": 1118.0,
+  "measured_development_resources": {
+    "manifest_sha256": "13c41b75c0a956d752e2a918f9c13d87ededc7ebf3cc4fc0e1b2f62c76555df0",
+    "member": "payload/resources.json",
+    "run_id": "20261124T120346020645Z-c8ebef2caacf4ea8",
+    "sha256": "f7a7f4d8a50d32598cc7a2587c2a023f3699dbc7150b7ed64fdf40c0d0444126"
+  },
+  "policy": {
+    "cpu_scoring_rss_bytes": 2147483648,
+    "max_cpu_core_seconds": 36000,
+    "max_delivery_recipes": 2,
+    "max_external_download_bytes": 5000000000,
+    "max_fits_including_failures": 20,
+    "max_gaussians": 100000,
+    "max_gpu_seconds": 28800,
+    "max_updates_per_fit": 20000,
+    "max_worker_seconds_per_fit": 3600,
+    "new_archive_bytes": 32212254720,
+    "source_cache_bytes": 536870912
+  },
+  "recipe": {
+    "manifest_sha256": "ff53d45bda350a3a25c6f7a3da31e1ae1b712fade3bb83da0a1f0e5cfbc4774b",
+    "member": "payload/recipe.json",
+    "run_id": "20261124T112631071665Z-d29f7055496a4703",
+    "sha256": "171d2c1276bb87c6e299e654ca88412ed72578bfca50b5306691514b841fd255"
+  },
+  "remaining_gpu_seconds": 27742.968000000008,
+  "run_id": "20261124T121957490225Z-e2c00b098fb14ff4",
+  "schema": "el-many-upstream-resource-closeout-1",
+  "source_sfm_cpu_seconds": 317.74967300000003,
+  "succeeded": 15,
+  "successful_fit_seconds": 867.9079999999958,
+  "successful_native_process_cpu_seconds": 983.078125,
+  "total_source_renders": 1053,
+  "total_target_predictions": 102,
+  "train_development_queue": {
+    "manifest_sha256": "b734132005d70fb905cf9177bf11aae1b0ec013956ebee931597b8eddcc59dcf",
+    "member": "payload/queue.json",
+    "run_id": "20261124T114130104099Z-38e6aed4504a41fd",
+    "sha256": "6b6c1b2d6b593d4b819b85920fde3ecb37d98521ba39a58c9909c4e374d387cc"
+  },
+  "training_updates_definition": "Each successful fit executes 6000 single-source loss/backward and in-memory optimizer iterations. The official checkpoint is serialized before the 6000th optimizer application, and therefore contains the first 5999 updates."
+}

@@ -87,7 +87,8 @@ def close(a,cfg,paths):
         independently_reconciled_intake={"original":intake["native"],"original_direct_parent":intake["stock_direct_parent_status"],
             "later_verified":cfg["sources"]["runtime_intake"],"fits":0},
         resources={k:resources[k] for k in ("gpu_fit_worker_seconds","fit_attempts","accounted_cpu_core_seconds",
-            "max_allowance_uncovered_seconds","all_manifest_logical_bytes","unique_payload_bytes","allocated_B_archive_bytes")},
+            "max_allowance_uncovered_seconds","all_manifest_logical_bytes","unique_payload_bytes","allocated_B_archive_bytes",
+            "B_working_directories_allocated_bytes")},
         limits=limits,external=[r for r in result["scenes"] if r["scene"] in ("living_room","bridge")],
         parents=cfg["sources"])
     save(a.out/"status.json",receipt)
@@ -108,6 +109,8 @@ def close(a,cfg,paths):
         f"| Additional allowance if every logical core was active during unsampled intervals | {rs['max_allowance_uncovered_seconds']:.2f} s | included in the budget check |",
         f"| Mac terminal archive, allocated blocks | {rs['allocated_B_archive_bytes']:,} bytes | {limits['new_archive_bytes']:,} bytes |",
         f"| Unique payload content | {rs['unique_payload_bytes']:,} bytes | measured separately |",
+        f"| Local B research runtime | {rs['B_working_directories_allocated_bytes']['isolated_research_runtime']:,} allocated bytes | working installation |",
+        f"| Local B stage configs and controller logs | {rs['B_working_directories_allocated_bytes']['stage_controller_configs_and_logs']:,} allocated bytes | working files |",
         f"| Manifest logical bytes, including repeated source snapshots and input evidence | {rs['all_manifest_logical_bytes']:,} bytes | measured separately |","",
         "Per-run CPU accounting takes the larger of a direct process timer and integrated tree samples, where available. "
         "Short-lived children may escape the sampler. The GPU charge includes native fitting, reload, rendering, parity checks and process overhead. "
@@ -139,6 +142,7 @@ def inventory(a,cfg,paths):
         assets[name]=dict(role=key,license=rights,bytes=f.stat().st_size,sha256=pin["sha256"],parent=pin)
     output=dict(schema="el-many-source-release-1",tag=TAG,run_id=os.environ["EL_RUN_ID"],status=status["status"],
         code_commit=cfg["code_commit"],science_code_commit=status["science_code_commit"],A_BASELINE_ID=PHASE_A,
+        protocol_id=load(paths["study"])["study"]["schema"],protocol_sha256=load(paths["study"])["protocol_sha256"],
         package_version="0.1.0.dev0",model_id=status["model_id"],model_sha256=status["model_sha256"],
         parents={k:v for k,v in cfg["sources"].items() if k not in ASSETS},assets=assets)
     save(a.out/MANIFEST,output)

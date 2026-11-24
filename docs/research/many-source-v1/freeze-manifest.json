@@ -1,0 +1,133 @@
+{
+  "all_confirmation_references_closed": true,
+  "feature_schema_sha256": "42298817f3c1cd333430dd20cc9305be23cde4174f09e2951fb7667b1c55078d",
+  "final_model": {
+    "manifest_sha256": "5c436f26c29c0a1cf1b907d35d6aa740774272c292e39eadb2fd113c4f244179",
+    "member": "payload/model.json",
+    "run_id": "20261124T115857282953Z-3f6e989f5d4844b1",
+    "sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721"
+  },
+  "old_models": {
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "parents": {
+    "bank_build": {
+      "manifest_sha256": "2c2929dc7323fa80b4d7bd9e64842c8fbe89082122d5609d5b04fd90e540038d",
+      "member": "payload/build.json",
+      "run_id": "20261124T112946015168Z-763e43c778fe4d7b",
+      "sha256": "e6a857aba5d644f157c5c111ffa16b665f1aa140d8f28704aed4a4309c334280"
+    },
+    "choice": {
+      "manifest_sha256": "0b4cc51de834d2c67a8343232a90dee2d5e25e7dd3269652621a670f2e66eb7b",
+      "member": "payload/selection.json",
+      "run_id": "20261124T115854571196Z-8fbf627be77940f6",
+      "sha256": "5806d9eb9c0902ecf5ed0d763105aa8160df49d39e51ba15dc06ef950cfc6205"
+    },
+    "development_diagnostics": {
+      "manifest_sha256": "98abed85320d7ae425daa850b9d98f790d52acf5739024407842b091ecc4e214",
+      "member": "payload/diagnostics.json",
+      "run_id": "20261124T115849245504Z-645bff342f1b4378",
+      "sha256": "ec9676eb67ac36e215006735ac82f587d6f6fbc0162fdcebb8c7b4921243ac82"
+    },
+    "development_interface": {
+      "manifest_sha256": "1d71327533c257e998eb16e12051a705f26f598ef426969b271c72a3514553bc",
+      "member": "payload/verified.json",
+      "run_id": "20261124T114732370148Z-2abbf51676c54cdb",
+      "sha256": "264ea99a7439b4e600703315ec0e8b2ad0ee5395591c4ef2542e457c568ff760"
+    },
+    "final_fit": {
+      "manifest_sha256": "5c436f26c29c0a1cf1b907d35d6aa740774272c292e39eadb2fd113c4f244179",
+      "member": "payload/fits.json",
+      "run_id": "20261124T115857282953Z-3f6e989f5d4844b1",
+      "sha256": "8fd5e996be252e6b953eec53b64fd6da2d7b063c785a4d1e2882bd023baab57a"
+    },
+    "geometry_protocol": {
+      "manifest_sha256": "07bbd675278ffc2050263a4a5496d190b9e5db0f60be301e0c796e09a0039769",
+      "member": "payload/visibility-protocol.json",
+      "run_id": "20261124T113624317227Z-b0cf54c4c9af4654",
+      "sha256": "b7b7b8fd889569686a53fc590738a723264f6cee045ba99b27b54207c03000c3"
+    },
+    "independent_arithmetic_protocol": {
+      "manifest_sha256": "5e6da9695b2145ea4fb1601a05ee8e9813d9ca8b36cc3df3600a2cd21785d4a3",
+      "member": "payload/arithmetic-protocol.json",
+      "run_id": "20261124T115352569411Z-1c93ea8b27cf40fd",
+      "sha256": "05c3edbb61df6495dacd880264021ce80e119c9649b8878b37cec8dd923b841f"
+    },
+    "legacy": {
+      "manifest_sha256": "f8e108526ee096811ce2e196eeb538f85a75b52c5e3a4ab90b2470379b185aa7",
+      "member": "payload/cpu/release.json",
+      "run_id": "20261124T041052425868Z-d308c134e69d4d4b",
+      "sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d"
+    },
+    "model": {
+      "manifest_sha256": "5c436f26c29c0a1cf1b907d35d6aa740774272c292e39eadb2fd113c4f244179",
+      "member": "payload/model.json",
+      "run_id": "20261124T115857282953Z-3f6e989f5d4844b1",
+      "sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721"
+    },
+    "pilot_budget": {
+      "manifest_sha256": "982f9ff04de314630d8214e09fcc361a7a2dce163f6cdb0a845bcb49fb8b7f96",
+      "member": "payload/budget.json",
+      "run_id": "20261124T114127469301Z-93f47cf2d6cd4b10",
+      "sha256": "79e69a9eb9a56ea5295624973b45295bbaa8c67364eceaa62eadcc2e92b1e6f1"
+    },
+    "roles": {
+      "manifest_sha256": "21175437a236664e86db780a115c66b5016872f07d9bfac0d7c3bbcce7e04d14",
+      "member": "payload/registration.json",
+      "run_id": "20261124T111537305132Z-2244a0f585274730",
+      "sha256": "f65b0de0586763caafaec1869a90abc865c18fbbbdfcba70c9708099c43c1947"
+    },
+    "runtime": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "8307790b48e94b581417b511dacebd6bc1b8cbc3732a49294173767d5ca52374"
+    },
+    "study": {
+      "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+      "member": "payload/study.json",
+      "run_id": "20261124T111533951307Z-8b7523eb307440af",
+      "sha256": "fd4ea8f80597cd7c21b4f548131d1a9f96780747d5c65503f83b6b1b79a22777"
+    },
+    "upstream_recipe": {
+      "manifest_sha256": "ff53d45bda350a3a25c6f7a3da31e1ae1b712fade3bb83da0a1f0e5cfbc4774b",
+      "member": "payload/recipe.json",
+      "run_id": "20261124T112631071665Z-d29f7055496a4703",
+      "sha256": "171d2c1276bb87c6e299e654ca88412ed72578bfca50b5306691514b841fd255"
+    }
+  },
+  "run_id": "20261124T120332809100Z-ec53d7a4a3b94042",
+  "schema": "el-many-confirmation-model-freeze-1",
+  "science_code_commit": "6e55dd6969b58faa08dc4a7033d7c6687a919dad",
+  "science_programs": {
+    "scripts/many_data_access.py": "204d1ff130f8cc6b76423c28983de72a3325a7100f95beb9d7f0aa4b7eee13c9",
+    "scripts/many_data_prepare.py": "0d8827190e8141190da29137ed268007d3f928e6e7c8096b3b742d469b15336c",
+    "scripts/many_data_terminal.py": "7adcf115879ff7d9757c718136dda0ced46087d8042b6e34113620d79834f43a",
+    "scripts/many_data_visibility.cpp": "f67463c6371cab28362fe7b6984d12b06c89fd325089cf807aa9598fab46f3ea",
+    "scripts/many_data_visibility.py": "9503ac5e08f50194a88ab8dda9aae4a2ae2420b75246722df7d96815a6e0c563",
+    "scripts/many_evaluate.py": "6ad2efdfdf3f56e624216b39a41d16682d1552a896b53211487a9478e3dcec4c",
+    "scripts/many_head.py": "e9e45d891211b138f084537d5d9fd2cb08e6462c014f339a90dacb90c4f82684",
+    "scripts/many_matrix.py": "02610a6615e8b434dff76349c87e83e18fa5a942e11d37494bac0a780491fc03",
+    "scripts/many_results.py": "f5357786434f135743dc83f45643d082a52ac580b10dba43fa053af48ef81f89",
+    "scripts/many_science_control.py": "e7fafe1f80ab11e1fd1223b5ac4872103dea96af0c2949b83334daffd40c6b8f"
+  },
+  "strong_simple_rule": "residual",
+  "upstream_indeterminate_rule": "Report missing outputs or empty P2 common domain and the development source fitting, appearance range, opacity and projection diagnostics. A calculable P2 remains reported even if image quality is poor.",
+  "upstream_recipe": {
+    "manifest_sha256": "ff53d45bda350a3a25c6f7a3da31e1ae1b712fade3bb83da0a1f0e5cfbc4774b",
+    "member": "payload/recipe.json",
+    "run_id": "20261124T112631071665Z-d29f7055496a4703",
+    "sha256": "171d2c1276bb87c6e299e654ca88412ed72578bfca50b5306691514b841fd255"
+  }
+}

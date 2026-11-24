@@ -1,0 +1,8 @@
+{
+  "calibration_fits": 0,
+  "model_id": "b-cpu-lr-l2-0.1-final",
+  "quota": "evaluation only; per-target floor(20% of common finite labelled pixels)",
+  "schema": "el-many-rank-operating-point-1",
+  "tau": null,
+  "units": "uncalibrated error ranking"
+}

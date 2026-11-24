@@ -77,3 +77,15 @@ The generated stop label is `b-score-stop-<scene-with-hyphens>-r<count>`. The ha
 The first two b04 geometry jobs stopped during recorder lineage validation, before their workers began. The recorder tracks source snapshots and scientific payload assets separately. The completed evaluator therefore references a dedicated asset whose bytes match the original acquisition's manifest-listed mesh program. Both early administrative failures remain in the technical ledger. The visibility probe grid, geometry and occlusion tolerances retain their preregistered definitions. [Authored visibility protocol](../../../../protocol/many-source-visibility-v1.json)
 
 Three confirmation arithmetic checks were registered before any confirmation H photo access. They cover h00 for living_room R55, bridge R100 and b05-perforated-gallery R128. An independent reader starts with the native H PNG, the native predicted RGB array and the ordered-query rank arrays, applies the frozen P1/P2 formulas, and compares integer totals and pixel identities with the primary evaluator. [Arithmetic registration](../../../../protocol/many-source-arithmetic-v1.json) · [Independent implementation](../../../../scripts/many_data_arithmetic.py)
+
+## Confirmation receipts
+
+The common opening was recorded after all six confirmation checkpoints had reached successful scoring terminals for their 44 planned target views. The four evaluator vaults first decoded 32 distinct confirmation photographs after that opening. Together with training and development, they account for 66 distinct H photographs. The six authored families produced 804 dense optical-Z images, 5,628 independent dense-grid reference rays, 69,984 fixed sparse target probes and 13,824 exhaustive checks of individual source rays. [Final authorization times, geometry counts and stage costs](final-reference-access.json)
+
+The separate arithmetic reader matched the primary evaluator for all three preselected h00 views. The labels, common domain and accepted-pixel identity hashes matched exactly. In each row 95,256 pixels had independent labels and 19,051 pixels were accepted by each method. The table gives each method's count of observed RGB errors inside its accepted quota. These rows check arithmetic at the registered views. The study's scene-level comparison combines all planned views. [Native integer counts, hashes and P1/P2 recomputation](independent-primary-arithmetic.json)
+
+| Fixed first target | All independently labelled errors | B-CPU-LR accepted errors | Frozen residual-rule accepted errors | Coverage Q4 minus fixed Q4 correct-gap rate |
+|---|---:|---:|---:|---:|
+| living_room R55 | 17,242 | 4,906 | 3,569 | −4.2531 percentage points |
+| bridge R100 | 27,490 | 866 | 2,553 | −40.6620 percentage points |
+| b05-perforated-gallery R128 | 4,579 | 0 | 0 | +0.1169 percentage points |
