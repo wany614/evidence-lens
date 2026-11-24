@@ -1,0 +1,109 @@
+{
+  "anonymous_readback": {
+    "manifest_sha256": "3233d5986c719a891e07ffa1998e3efae8842c40984af88a55807fcbd89600ec",
+    "member": "payload/readback.json",
+    "run_id": "20261124T111130398649Z-9f07d2bcce9b4ad7",
+    "sha256": "abf6b4faef7db23ee26dc2acb7976d7e3d1e11a35b64342dc7b978913b58c6fe"
+  },
+  "anonymous_total_bytes": 137865941,
+  "baseline": {
+    "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+    "member": "payload/BASELINE_MANIFEST.json",
+    "run_id": "20261124T111058386191Z-d99a4c418276454c",
+    "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
+  },
+  "code_commit": "c259c987b77296f368d78a9b09ef504226ac6cc3",
+  "distribution_status": "published",
+  "files": [
+    {
+      "anonymous": true,
+      "bytes": 14149,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "BASELINE_MANIFEST.json",
+      "seconds_including_verification": 0.34583824999572244,
+      "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/BASELINE_MANIFEST.json"
+    },
+    {
+      "anonymous": true,
+      "bytes": 676,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "SHA256SUMS",
+      "seconds_including_verification": 0.32172345799335744,
+      "sha256": "b31dd48b3c596f7c0e420efdba27d1b571a875d6b510f01e59129822ee7aabd2",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/SHA256SUMS"
+    },
+    {
+      "anonymous": true,
+      "bytes": 16416321,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence-lens-source-v0.5.0.zip",
+      "seconds_including_verification": 1.4698310419917107,
+      "sha256": "2d3535766500a4ab0db890417966c90a9a736b50f8265d675a54786cab6bbe7d",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/evidence-lens-source-v0.5.0.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 405919,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence_lens-0.5.0-py3-none-any.whl",
+      "seconds_including_verification": 0.4053134999994654,
+      "sha256": "40d9b6ffb9d881c63d4710fee71112920dd665da831ef744fb062a20f86de734",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/evidence_lens-0.5.0-py3-none-any.whl"
+    },
+    {
+      "anonymous": true,
+      "bytes": 1698635,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "v05-acceptance-and-examples.zip",
+      "seconds_including_verification": 0.45220070899813436,
+      "sha256": "d0a7cd955e47f6a73eba6f16d2e415f1ae08143677dee8a3e3a9a803c902e428",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/v05-acceptance-and-examples.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 87865361,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "v05-bell-bundles.zip",
+      "seconds_including_verification": 5.417546917000436,
+      "sha256": "8609b9ec481dfde7e3c960c70d93cd99f1402ce990993393e0f1b72f668f36b0",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/v05-bell-bundles.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 28581438,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "v05-bell-independent-references.zip",
+      "seconds_including_verification": 1.9148130420071539,
+      "sha256": "2173c9f06ac364e1d2e6650c5a252c576e1022f2d823cfbd6987607d7a605ab0",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/v05-bell-independent-references.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 2883442,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "v05-bell-source-observations.zip",
+      "seconds_including_verification": 0.5007126659911592,
+      "sha256": "3e291a4f1a5b6e9ec1ee3ba27c2bd4193e01f59a409038d3a8019fa7048cbf52",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/v0.5.0/v05-bell-source-observations.zip"
+    }
+  ],
+  "publication": {
+    "manifest_sha256": "20dc299ba372dc183042d79a2ec5d0fd50de453b3179a32a75e1ffeff96b92f8",
+    "member": "payload/github.json",
+    "run_id": "20261124T111125138114Z-6196d1a91dbc4792",
+    "sha256": "a59c65fd6fcc4e1940384f17e7153268049e8966b35492c6fc88cda678ebfe14"
+  },
+  "published_at": "2026-11-24T11:11:28Z",
+  "release_url": "https://github.com/wany614/evidence-lens/releases/tag/v0.5.0",
+  "schema": "el-v05-distribution-readback-1",
+  "tag": "v0.5.0"
+}

@@ -185,6 +185,8 @@ def render(public):
         "",
         "The Linux arm64 container ran with a read-only root, its network disabled and loopback as its only visible interface. Its fresh default installation used NumPy and Pillow. Optional neural installation on Linux remains unmeasured. Mac and Windows installed the vision extra and loaded the complete original MS-frozen and MS-ft tensors. [Mac official-model checks](../../releases/v0.5.0/NEURAL_GRID.md) · [Windows official-model checks](neural-windows.json)",
         "",
+        f"The Windows CPU recorder ran for {public['windows_run_window']['recorder_elapsed_seconds']:.3f} seconds. Its window overlapped a separate GPU control for {public['windows_run_window']['gpu_control_overlap']['wall_overlap_seconds_from_utc']:.3f} seconds. The platform table gives observed scoring costs for these installation checks. [Native timing and dependency evidence](platforms.json)",
+        "",
         "## Direct comparison with Mac",
         "",
         "Each method contributes 42 paired views, comprising six historical controls and six views on each of the six prepared routes. The comparison reads the two platforms’ original risk, validity, state and unknown-reason arrays. Differences use host minus Mac on common finite support. The two quotas select the lowest 10% and 20% of eligible pixels separately in each view, breaking equal-risk ties by row-major pixel index. The downloadable per-view records also give each four-method common-support comparison where available. [Linux per-view differences](views-linux.json) · [Windows per-view differences](views-windows.json)",
@@ -266,12 +268,23 @@ def project(a):
         and linux["readonly_root"],
         "different Linux execution boundary",
     )
+    terminal = load(files["windows_terminal"])
     public = {
         "schema": "el-v05-public-platform-acceptance-1",
         "run_id": os.environ["EL_RUN_ID"],
         "provenance": cfg["sources"],
         "wheel_build_code_commit": build["code_commit"],
         "platforms": hosts,
+        "windows_run_window": {
+            k: terminal[k]
+            for k in (
+                "start_utc",
+                "end_utc",
+                "recorder_elapsed_seconds",
+                "gpu_control_overlap",
+                "dependency_installation",
+            )
+        },
         "cross_host": numbers,
         "official_neural": {
             h: neural_summary(load(files[h.lower() + "_neural"])) for h in ("Mac", "Windows")
@@ -299,6 +312,7 @@ def control(store):
         "mac_install": mac,
         "linux_native": lin,
         "windows_readback": win_readback,
+        "windows_terminal": bind(store, win_readback["run_id"], "inputs/return_receipt/completed.json"),
         "ticket": sel("a-cpu-platform-ticket"),
         "wheel_build": sel("a-release-build"),
         "mac_neural": sel("a-neural-dispatch-mac"),

@@ -32,8 +32,8 @@ def windows_intake(store, receipt):
         )
         require(
             info["run_id"] == native["run_id"] == rid
-            and info["run_kind"] == "transfer_verify"
-            and info["trial_id"] == "a-windows-installed-cpu"
+            and (info["run_kind"], info["trial_id"])
+            in {("transfer_verify", "a-windows-installed-cpu"), ("archive_verify", "a-cpu-windows")}
             and info["experiment_id"] == "dual-track-a"
             and end["manifest_sha256"] == manifest
             and end["execution_status"] == "succeeded",
@@ -47,6 +47,25 @@ def windows_intake(store, receipt):
             and set(native["groups"]) == {"default", "vision"}
             and native["score_arrays_count"] == 168,
             "wrong Windows workload or receipt",
+        )
+        dispatch = load(resolve((store, store / "history"), ticket))
+        input_hashes = {item["role"]: {f["sha256"] for f in item["files"]} for item in inputs["inputs"]}
+        require(
+            input_hashes.get("worker") == {dispatch["worker_sha256"]}
+            and input_hashes.get("old_wheel") == {dispatch["old_wheel_sha256"]}
+            and input_hashes.get("original") == {dispatch["original_sha256"]},
+            "native CPU worker, original wheel or controls differ from ticket",
+        )
+        neural = json.loads(z.read("payload/neural.json"))
+        require(
+            neural["passed"]
+            and neural["run_id"] == rid
+            and len(neural["methods"]) == 2
+            and all(
+                len(m["cases"]) == len(m["official_default_dispatch_cases"]) == 6
+                for m in neural["methods"].values()
+            ),
+            "incomplete native official model and grid diagnostics",
         )
         require(
             any(
@@ -109,6 +128,8 @@ def windows_intake(store, receipt):
         {
             "native_payload": rid,
             "native_manifest_sha256": manifest,
+            "native_run_kind": info["run_kind"],
+            "native_trial_id": info["trial_id"],
             "container_sha256": container,
             "container_bytes": path.stat().st_size,
             "return_receipt_sha256": sha(receipt),
@@ -214,6 +235,8 @@ if __name__ == "__main__":
                 "run_id": os.environ["EL_RUN_ID"],
                 "native_run_id": cfg["native_payload"],
                 "native_manifest_sha256": cfg["native_manifest_sha256"],
+                "native_run_kind": cfg["native_run_kind"],
+                "native_trial_id": cfg["native_trial_id"],
                 "sources": cfg["sources"],
                 "container_sha256": cfg["container_sha256"],
                 "container_bytes": cfg["container_bytes"],
