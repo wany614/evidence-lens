@@ -20,3 +20,5 @@ evidence-lens-bank audit-bank --bank bank --target h00 --strategy coverage --bud
 Read the rank as relative estimated RGB error. Its operating threshold is unset. Geometric comparability and the reported witnesses use the reconstruction's predicted camera depth. The public reports use the authored b04 material under its registered rights. [Data and rights](../../../docs/research/many-source-v1/rights.md)
 
 The optional historical four-source transfer accepts `--legacy MS-L1 MS-ft --legacy-models /path/to/released/cpu` on `score` with `--budget 4`. It requires the `vision` extra and the original released MS-ft weights. The finite-query B-CPU-LR example above runs with the base CPU installation. [Historical model release](https://github.com/wany614/evidence-lens/releases/tag/v0.3.0-rc.1)
+
+The authored scene, cameras and derived demonstration images are credited to wany614 under CC BY 4.0. The original prototype code and fitted logistic coefficients use Apache-2.0. The upstream trainer and historical transfer weights retain their respective notices. [Rights by component](../../../docs/research/many-source-v1/rights.md)

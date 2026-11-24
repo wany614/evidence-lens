@@ -207,16 +207,20 @@ def prepare(a, protocol):
         analysis_dir = tmp / "analysis"
         analysis_dir.mkdir()
         render = Renderer(a.renderer, tmp, a.scene, value["seed"]) if is_original else None
+        first_pixels_start = datetime.now(timezone.utc).isoformat()
+        authored_render_starts = {}
         if is_original:
             originals = {}
             for i in ids:
                 view = views[i]
                 dest = raw / (i + ".png")
+                authored_render_starts[i] = datetime.now(timezone.utc).isoformat()
                 pixels = render.render(view["K"], view["c2w"], view["width"], view["height"], color=True)
                 Image.fromarray(pixels).save(dest, compress_level=3)
                 originals[i] = dest
         else:
             originals = extract_role(a.archive, metadata, ids, role, raw)
+        first_pixels_end = datetime.now(timezone.utc).isoformat()
         originals_manifest = {}
         analysis = {}
         seconds = 0
@@ -228,6 +232,7 @@ def prepare(a, protocol):
             for i in ids:
                 src = originals[i]
                 raw_member = "original/" + i + src.suffix.lower()
+                individual_read = datetime.now(timezone.utc).isoformat()
                 originals_manifest[i] = member(src, raw_member)
                 originals_manifest[i]["original_name"] = views[i]["original_name"]
                 z.write(src, raw_member)
@@ -240,6 +245,8 @@ def prepare(a, protocol):
                     "original_bytes": src.stat().st_size,
                     "decode_start_utc": before,
                     "decode_seconds": elapsed,
+                    "first_individual_raw_file_open_utc": individual_read,
+                    "authored_render_start_utc": authored_render_starts.get(i),
                 }
                 analysis[i] = member(ap, "analysis/" + ap.name)
                 if not source_mode:
@@ -273,6 +280,13 @@ def prepare(a, protocol):
             "first_access_role": role,
             "H_photo_decodes": 0 if source_mode else len(H),
             "photo_decode_events": accesses,
+            "original_pixel_materialization": {
+                "started_at_utc": first_pixels_start,
+                "ended_at_utc": first_pixels_end,
+                "operation": "individually timestamped authored image renders"
+                if is_original
+                else "one role-restricted archive extraction; timestamps bracket the entire extraction",
+            },
             "file_bytes_read_for_verified_opaque_transport": 0 if is_original else a.archive.stat().st_size,
         }
         if source_mode:

@@ -281,3 +281,45 @@ def test_failure_cutoff_requires_observed_unrecoverable_budget():
     }
     with pytest.raises(ValueError, match="remaining budget"):
         cutoff_condition(decision, "scene", 16, "unsuccessful-run", limits)
+
+
+def test_independent_order_statistic_matches_row_major_across_dense_ties():
+    from many_data_arithmetic import order_quota, hand_labels, mechanism
+
+    x = np.array([[0.3, 0.2, np.nan, 0.1, 0.2], [0.1, 0.2, 0.9, 0.1, 0.2]], np.float32)
+    domain = np.isfinite(x)
+    for k in (0, 1, 3, 4, 6, 9):
+        ids = sorted(np.flatnonzero(domain), key=lambda j: (x.ravel()[j], j))[:k]
+        np.testing.assert_array_equal(order_quota(x, domain, k), sorted(ids))
+    raw = np.zeros((252, 378, 3), np.uint8)
+    p = np.zeros_like(raw, dtype=np.float32)
+    p[0, 0] = [0, 0, 0.15]
+    p[0, 1] = [0.2, 0, 0]
+    p[0, 2] = np.nan
+    ref, valid, errors = hand_labels(p, raw)
+    assert (
+        ref.all()
+        and errors[0, :3].tolist() == [False, True, False]
+        and valid[0, :3].tolist() == [True, True, False]
+    )
+    full = {
+        "comparable": np.array([[2, 1, 0]]),
+        "incomplete": np.zeros((1, 3), bool),
+        "invalid_geometry": np.zeros((1, 3), bool),
+        "witness": np.array([[1, 0, -1]]),
+    }
+    cut = dict(full, comparable=np.array([[0, 1, 0]]))
+    stats = mechanism(
+        cut, full, ["r0", "r1"], ["r0"], np.ones((1, 3), bool), np.zeros((1, 3), bool), ["r1", "r0"]
+    )
+    assert stats["correct_gap_rate"] == 1 / 3 and stats["witness_source_ids"] == ["r1"]
+    with pytest.raises(ValueError, match="gap witness"):
+        mechanism(
+            cut,
+            dict(full, witness=np.array([[0, 0, -1]])),
+            ["r0", "r1"],
+            ["r0"],
+            np.ones((1, 3), bool),
+            np.zeros((1, 3), bool),
+            ["r1", "r0"],
+        )

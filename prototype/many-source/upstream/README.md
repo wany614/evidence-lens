@@ -35,11 +35,31 @@ Source-only matching uses six geometrically neighbouring cameras, reciprocal SIF
 
 The project’s headless training path uses valid 11 × 11, sigma 1.5 display-RGB SSIM through differentiable PyTorch operations. It checks objective values and first-image gradients against the independent `pytorch-msssim` reference used by the pinned fused-SSIM project tests. Source-only Euclidean KNN is checked against ordered independent distances. Actual per-view training counts, source-order digest, checkpoint parity and the resource times accompany each native archive. [Objective checks](../../../scripts/many_upstream_objectives.py) · [Pinned fused-SSIM tests](https://github.com/rahul-goel/fused-ssim/blob/328dc9836f513d00c4b5bc38fe30478b4435cbb5/tests/test.py)
 
+To inspect the exact change that ran, use the source file at the gsplat commit above and the distributed unified diff. The adapted file has SHA-256 `ce42db9ae2cd950bdbcfecb95a8b97aae365051fa06f884c34f5d518d1d71e1e`. The packet includes this file, the native source reader, the independently verified objective, and the two scalar helpers extracted from the same gsplat commit. [Executed patch](gsplat-simple-trainer.patch) · [Upstream license](GSPLAT-LICENSE.txt)
+
+```sh
+patch -o adapted-simple-trainer.py path/to/gsplat/examples/simple_trainer.py < gsplat-simple-trainer.patch
+```
+
+## Development reconstruction quality
+
+Each row compares the fixed checkpoint with the constant RGB mean of its authorized source photographs. MAE averages the three display-sRGB channels over the 378 × 252 analysis grid, then gives each view equal weight. After each source-only checkpoint was sealed, the development evaluator opened six independent authored views per reconstruction and ten independent ETH3D views.
+
+| Scene and sources | Source self-render MAE | Source mean control | Independent target MAE | Target mean control | Fitted Gaussians with opacity > 0.005 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Layered louvers, 16 | 0.01091 | 0.09280 | 0.01516 | 0.09176 | 56,860 |
+| Layered louvers, 128 | 0.01162 | 0.09266 | 0.01265 | 0.09177 | 55,399 |
+| ETH3D delivery_area, 34 | 0.01747 | 0.15732 | 0.04655 | 0.16277 | 50,562 |
+
+Each reconstruction retained 15,000 triangulated initialization points and ended with 60,000 fitted Gaussians. The corresponding fractions of target pixels with alpha at least 0.5 were 99.60%, 99.41% and 99.24%. Development record `20261124T115849245504Z-645bff342f1b4378` has manifest SHA-256 `98abed85320d7ae425daa850b9d98f790d52acf5739024407842b091ecc4e214` and diagnostics SHA-256 `ec9676eb67ac36e215006735ac82f587d6f6fbc0162fdcebb8c7b4921243ac82`.
+
+## Dependencies and data rights
+
 The source adapter and its integration use the project software license. gsplat and its separately installed CUDA runtime retain their own notices. The examples contain authored project imagery. ETH3D photographs and reconstructions derived from them are held in the research archive under the dataset's applicable terms. [gsplat and dependency notices](../../../THIRD_PARTY_NOTICES.md)
 
 | Component | Use and license |
 | --- | --- |
-| gsplat 1.5.3 and the official trainer | CUDA Gaussian projection, SH, optimization loop and MCMC densification. The private worker packet includes the original Apache-2.0 license and a unified diff identifying the project changes. [Official revision](https://github.com/nerfstudio-project/gsplat/tree/937e29912570c372bed6747a5c9bf85fed877bae) |
+| gsplat 1.5.3 and the official trainer | CUDA Gaussian projection, SH, optimization loop and MCMC densification. The public diff and the worker packet preserve the source revision and attribution. [Original Apache-2.0 license](GSPLAT-LICENSE.txt) · [Official revision](https://github.com/nerfstudio-project/gsplat/tree/937e29912570c372bed6747a5c9bf85fed877bae) |
 | OpenCV 4.11.0, Python wheel 4.11.0.86 | CPU SIFT, tracking and triangulation. The OpenCV project uses Apache-2.0. The Python wheel and bundled third-party components include their own notices. [OpenCV license](https://github.com/opencv/opencv/blob/4.11.0/LICENSE) |
 | fused-SSIM commit `328dc9836f513d00c4b5bc38fe30478b4435cbb5` | MIT-licensed upstream objective and test definition inspected for this adaptation. [Upstream license](https://github.com/rahul-goel/fused-ssim/blob/328dc9836f513d00c4b5bc38fe30478b4435cbb5/LICENSE) |
 | pytorch-msssim 1.0.0 | MIT-licensed independent value/gradient oracle used before the first fit. [Reference license](https://github.com/VainF/pytorch-msssim/blob/v1.0.0/LICENSE) |

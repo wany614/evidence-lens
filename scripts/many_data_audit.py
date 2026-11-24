@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+from datetime import datetime
 import hashlib
 import io
 import json
@@ -316,7 +317,7 @@ def resource_row(label, owner, receipt, inodes):
             sampled += dt * float(now["tree_cpu_percent"]) / 100
             covered += dt
     worker = receipt.get("resource", {})
-    process = worker.get("cpu_seconds", receipt.get("cpu_s"))
+    process = worker.get("cpu_seconds", worker.get("worker_cpu_seconds", receipt.get("cpu_s")))
     child = worker.get("child_cpu_seconds", 0)
     return {
         "label": label,
@@ -328,7 +329,9 @@ def resource_row(label, owner, receipt, inodes):
         "telemetry_interval_tree_cpu_seconds": sampled if covered else None,
         "telemetry_covered_interval_seconds": covered,
         "worker_process_plus_child_cpu_seconds": process + child if process is not None else None,
-        "worker_wall_seconds": worker.get("wall_seconds", receipt.get("wall_s")),
+        "worker_wall_seconds": worker.get(
+            "wall_seconds", worker.get("worker_wall_seconds", receipt.get("wall_s"))
+        ),
         "manifest_file_bytes_plus_seal": apparent,
         "payload_bytes": sum(v["bytes"] for k, v in owner.files.items() if k.startswith("payload/")),
     }
@@ -579,9 +582,161 @@ def geometry_link_worker(a):
     )
 
 
+def final_access(s):
+    pins = {
+        k: selected(s, label)
+        for k, label in {
+            "preopening": "b-data-preopening-audit",
+            "registration": "b-data-registration",
+            "train_open": "b-train-dev-h-opening",
+            "confirm_open": "b-confirmation-h-opening",
+            "geometry_registration": "b-visibility-probe-registration",
+            "geometry_source": "b-visibility-source-geometry",
+        }.items()
+    }
+    spec = load(resolve((s,), pins["registration"]))
+    for i, row in enumerate(spec["originals"] + spec["external"]["roster"]):
+        slug = row["id"].replace("_", "-")
+        pins["truth" + str(i)] = selected(s, "b-truth-" + slug)
+        if "seed" in row:
+            pins["exact" + str(i)] = selected(s, "b-exact-visibility-" + slug)
+    return stage(
+        s,
+        "b-data-final-access",
+        "archive_verify",
+        pins,
+        {"scope": "authorized H first records and evaluator-only exact geometry; no photo decode"},
+        [
+            "{python}",
+            "-B",
+            "{source}/scripts/many_data_audit.py",
+            "final-access-worker",
+            "--store",
+            str(s),
+            "--config",
+            "{config}",
+            "--out",
+            "{out}",
+        ],
+        "payload/access.json",
+        75000,
+    )
+
+
+def final_access_worker(a):
+    from many_data_prepare import confirmation_terminals
+
+    require(os.environ.get("EL_RUN_ID"), "record all H-access accounting")
+    pins = load(a.config)["sources"]
+    store = a.store
+    native = {}
+    rec = {}
+    for k, p in pins.items():
+        native[k], path = read_pinned((store,), p)
+        rec[k] = load(path)
+    protocol = rec["registration"]
+    confirmation_terminals(rec["confirm_open"], protocol)
+    rows = []
+    for i, row in enumerate(protocol["originals"] + protocol["external"]["roster"]):
+        k = "truth" + str(i)
+        t = rec[k]
+        sid = row["id"]
+        g = "confirm_open" if row["split"] == "confirmation" else "train_open"
+        first = lambda x: datetime.fromisoformat(x.replace("Z", "+00:00"))
+        ended = native[g].run["ended_at_utc"]
+        native_start = native[k].run["started_at_utc"]
+        stamps = [first(r["decode_start_utc"]) for r in t["photo_decode_events"].values()]
+        require(
+            t["opening_sha256"] == pins[g]["sha256"]
+            and t["H"] == rec[g]["allowed_targets"][sid]
+            and t["H_photo_decodes"] == len(t["H"])
+            and len(stamps) == len(t["H"])
+            and first(ended) <= first(native_start) <= min(stamps),
+            "an H acquisition precedes its actual common grant",
+        )
+        item = {
+            "scene_id": sid,
+            "role": row["split"],
+            "H_first_decodes": len(stamps),
+            "grant_completed_utc": ended,
+            "native_evaluator_started_utc": native_start,
+            "first_H_decode_utc": min(stamps).isoformat(),
+            "materialization_window": t.get("original_pixel_materialization"),
+            "photo_decode_seconds": t["image_decode_seconds"],
+            "decoded_original_bytes": t["decoded_original_bytes"],
+            "truth_receipt": pins[k],
+            "dense_optical_z_images": len(t["z"]),
+            "dense_independent_world_rays": sum(
+                x["pixel_rays"] for x in t["independent_world_ray_checks"].values()
+            ),
+            "authority": pins[g],
+        }
+        if "seed" in row:
+            ek = "exact" + str(i)
+            v = rec[ek]
+            require(
+                v["inputs"]["opening"] == pins[g]
+                and v["inputs"]["truth"] == pins[k]
+                and v["H"] == t["H"]
+                and v["inputs"]["protocol"] == pins["geometry_registration"]
+                and v["inputs"]["geometry_receipt"] == pins["geometry_source"],
+                "different exact geometry, split or native truth",
+            )
+            item.update(
+                exact_geometry_receipt=pins[ek],
+                exclusive_source_ids=len(v["source_ids"]),
+                sparse_target_probes=sum(d["all_probe_centres"] for d in v["geometry"].values()),
+                sparse_foreground_probes=sum(d["target_foreground_probes"] for d in v["geometry"].values()),
+                independent_exhaustive_source_ray_checks=sum(
+                    d["independent_exhaustive_check"]["source_checks"] for d in v["geometry"].values()
+                ),
+            )
+        rows.append(item)
+    extra_inodes = {}
+    resource_roles = [
+        k for k in rec if k.startswith("exact") or k.startswith("truth") and rec[k]["split"] == "confirmation"
+    ] + ["geometry_registration", "geometry_source"]
+    resources = [resource_row(k, native[k], rec[k], extra_inodes) for k in resource_roles]
+    save(
+        a.out / "access.json",
+        {
+            "schema": "el-many-final-reference-access-1",
+            "run_id": os.environ["EL_RUN_ID"],
+            "preopening": pins["preopening"],
+            "confirmation_opening": pins["confirm_open"],
+            "fixed_geometry_protocol": pins["geometry_registration"],
+            "scenes": rows,
+            "total_unique_H_photos": sum(r["H_first_decodes"] for r in rows),
+            "confirmation_H_first_decodes": sum(
+                r["H_first_decodes"] for r in rows if r["role"] == "confirmation"
+            ),
+            "confirmation_H_first_decodes_before_grant": 0,
+            "new_QA_H_decodes": 0,
+            "dense_optical_z_images": sum(r["dense_optical_z_images"] for r in rows),
+            "dense_independent_world_rays": sum(r["dense_independent_world_rays"] for r in rows),
+            "sparse_authored_target_probes": sum(r.get("sparse_target_probes", 0) for r in rows),
+            "independent_exhaustive_source_ray_checks": sum(
+                r.get("independent_exhaustive_source_ray_checks", 0) for r in rows
+            ),
+            "additional_data_stage_resources": resources,
+            "resource_scope": "New production stages beyond the pre-opening source audit. The global B resource ledger also includes data QA, science, technical failures and native transfer stages.",
+        },
+    )
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("action", choices=("record", "worker", "geometry-link", "geometry-link-worker"))
+    p.add_argument(
+        "action",
+        choices=(
+            "record",
+            "worker",
+            "geometry-link",
+            "geometry-link-worker",
+            "final-access",
+            "final-access-worker",
+        ),
+    )
     p.add_argument("--store", required=True, type=Path)
     p.add_argument("--config", type=Path)
     p.add_argument("--out", type=Path)
@@ -592,5 +747,9 @@ if __name__ == "__main__":
         print(json.dumps(geometry_link(args.store.resolve())), flush=True)
     elif args.action == "geometry-link-worker":
         geometry_link_worker(args)
+    elif args.action == "final-access":
+        print(json.dumps(final_access(args.store.resolve())), flush=True)
+    elif args.action == "final-access-worker":
+        final_access_worker(args)
     else:
         worker(args)

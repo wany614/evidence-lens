@@ -20,7 +20,8 @@ ROSTER={**{f:(16,128) for f in TRAIN},**DEV,**CONFIRM}
 RULES=("coverage","alpha_missing","residual")
 FROZEN_FILES=("scripts/many_matrix.py","scripts/many_evaluate.py","scripts/many_head.py",
               "scripts/many_data_access.py","scripts/many_data_visibility.py","scripts/many_data_visibility.cpp",
-              "scripts/many_data_terminal.py","scripts/many_results.py","scripts/many_science_control.py")
+              "scripts/many_data_prepare.py","scripts/many_data_terminal.py","scripts/many_results.py",
+              "scripts/many_science_control.py")
 
 
 def slug(f,n):
@@ -190,6 +191,7 @@ def gate(a):
         pins["development_diagnostics"]=selected(s,a.diagnostics_label)
         pins["bank_build"]=selected(s,"b-score-core-build")
         pins["geometry_protocol"]=selected(s,"b-visibility-probe-registration")
+        pins["independent_arithmetic_protocol"]=selected(s,"b-independent-arithmetic-registration")
         pins["development_interface"]=selected(s,"b-development-science-interface")
         pins["legacy"]=bind(s/"history","20261124T041052425868Z-d308c134e69d4d4b","payload/cpu/release.json")
         details["science_programs"]={f:sha(Path(f)) for f in FROZEN_FILES}

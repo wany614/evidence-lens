@@ -1,0 +1,121 @@
+--- official/examples/simple_trainer.py
++++ runtime/simple_trainer.py
+@@ -1,3 +1,4 @@
++from __future__ import annotations
+ import json
+ import math
+ import os
+@@ -7,37 +8,18 @@
+ from pathlib import Path
+ from typing import Dict, List, Optional, Tuple, Union
+ 
+-import imageio
+ import numpy as np
+ import torch
+ import torch.nn.functional as F
+ import tqdm
+-import tyro
+-import viser
+ import yaml
+-from datasets.colmap import Dataset, Parser
+-from datasets.traj import (
+-    generate_ellipse_path_z,
+-    generate_interpolated_path,
+-    generate_spiral_path,
+-)
+-from fused_ssim import fused_ssim
+ from torch import Tensor
+-from torch.nn.parallel import DistributedDataParallel as DDP
+-from torch.utils.tensorboard import SummaryWriter
+-from torchmetrics.image import PeakSignalNoiseRatio, StructuralSimilarityIndexMeasure
+-from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
+-from typing_extensions import Literal, assert_never
+-from utils import AppearanceOptModule, CameraOptModule, knn, rgb_to_sh, set_random_seed
+-
+-from gsplat import export_splats
+-from gsplat.compression import PngCompression
+-from gsplat.distributed import cli
+-from gsplat.optimizers import SelectiveAdam
++from typing import Literal, assert_never
+ from gsplat.rendering import rasterization
+ from gsplat.strategy import DefaultStrategy, MCMCStrategy
+-from gsplat_viewer import GsplatViewer, GsplatRenderTabState
+-from nerfview import CameraState, RenderTabState, apply_float_colormap
++from gsplat.optimizers import SelectiveAdam
++from upstream_math import rgb_to_sh, set_random_seed
++from many_upstream_native import Parser, Dataset, exact_knn as knn, valid_ssim as fused_ssim
+ 
+ 
+ @dataclass
+@@ -328,7 +310,7 @@
+         os.makedirs(self.ply_dir, exist_ok=True)
+ 
+         # Tensorboard
+-        self.writer = SummaryWriter(log_dir=f"{cfg.result_dir}/tb")
++        self.writer = None
+ 
+         # Load data: Training data should contain initial points and colors.
+         self.parser = Parser(
+@@ -343,7 +325,7 @@
+             patch_size=cfg.patch_size,
+             load_depths=cfg.depth_loss,
+         )
+-        self.valset = Dataset(self.parser, split="val")
++        self.valset = None
+         self.scene_scale = self.parser.scene_scale * 1.1 * cfg.global_scale
+         print("Scene scale:", self.scene_scale)
+ 
+@@ -452,32 +434,6 @@
+                     eps=1e-15,
+                 ),
+             ]
+-
+-        # Losses & Metrics.
+-        self.ssim = StructuralSimilarityIndexMeasure(data_range=1.0).to(self.device)
+-        self.psnr = PeakSignalNoiseRatio(data_range=1.0).to(self.device)
+-
+-        if cfg.lpips_net == "alex":
+-            self.lpips = LearnedPerceptualImagePatchSimilarity(
+-                net_type="alex", normalize=True
+-            ).to(self.device)
+-        elif cfg.lpips_net == "vgg":
+-            # The 3DGS official repo uses lpips vgg, which is equivalent with the following:
+-            self.lpips = LearnedPerceptualImagePatchSimilarity(
+-                net_type="vgg", normalize=False
+-            ).to(self.device)
+-        else:
+-            raise ValueError(f"Unknown LPIPS network: {cfg.lpips_net}")
+-
+-        # Viewer
+-        if not self.cfg.disable_viewer:
+-            self.server = viser.ViserServer(port=cfg.port, verbose=False)
+-            self.viewer = GsplatViewer(
+-                server=self.server,
+-                render_fn=self._viewer_render_fn,
+-                output_dir=Path(cfg.result_dir),
+-                mode="training",
+-            )
+ 
+     def rasterize_splats(
+         self,
+@@ -590,8 +546,8 @@
+             self.trainset,
+             batch_size=cfg.batch_size,
+             shuffle=True,
+-            num_workers=4,
+-            persistent_workers=True,
++            num_workers=0,
++            persistent_workers=False,
+             pin_memory=True,
+         )
+         trainloader_iter = iter(trainloader)
+@@ -723,7 +679,8 @@
+                 # monitor the pose error if we inject noise
+                 pose_err = F.l1_loss(camtoworlds_gt, camtoworlds)
+                 desc += f"pose err={pose_err.item():.6f}| "
+-            pbar.set_description(desc)
++            pbar.set_description(desc, refresh=False)
++            self.trainset.record_step(step, data['image_id'], loss, l1loss, ssimloss, len(self.splats['means']))
+ 
+             # write images (gt and render)
+             # if world_rank == 0 and step % 800 == 0:

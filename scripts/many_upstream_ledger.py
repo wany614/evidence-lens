@@ -163,9 +163,9 @@ def execute(cfg, paths, out, store):
     registered = cfg["observed_tags"]
     rows = {tag: case_summary(tag, size[tag], cfg, paths, store) for tag in registered}
     spent = sum(case["charged_gpu_seconds"] for case in rows.values())
-    require(all(0 < case["charged_gpu_seconds"] <= limits["max_worker_seconds_per_fit"] for case in rows.values())
-            and spent <= limits["max_gpu_seconds"] and len(rows) <= limits["max_fits_including_failures"],
-            "recorded worker or cumulative fit limit exceeded")
+    require(all(case["charged_gpu_seconds"] > 0 for case in rows.values()), "missing native elapsed time")
+    over_time = [tag for tag, case in rows.items() if case["charged_gpu_seconds"] > limits["max_worker_seconds_per_fit"]]
+    compliant = not over_time and spent <= limits["max_gpu_seconds"] and len(rows) <= limits["max_fits_including_failures"]
     rids = [case["native_record"]["run_id"] for case in rows.values()]
     require(len(set(rids)) == len(rids), "an upstream run counted twice")
     tickets = []
@@ -177,7 +177,7 @@ def execute(cfg, paths, out, store):
         tickets.append({"tag": tag, "pin": cfg["sources"]["ticket-" + tag], "trial": t["trial"], "packet": t["packet"]})
     if cfg["mode"] == "confirmation-queue":
         worst_case = spent + len(tickets) * limits["max_worker_seconds_per_fit"]
-        require(len(rows) == 9 and len(tickets) == 6 and len(rows) + len(tickets) <= limits["max_fits_including_failures"]
+        require(compliant and len(rows) == 9 and len(tickets) == 6 and len(rows) + len(tickets) <= limits["max_fits_including_failures"]
                 and worst_case <= limits["max_gpu_seconds"], "insufficient reserved time for the six mandatory fits")
         return save(out / "queue.json", {"schema": "el-many-confirmation-fit-queue-1", "run_id": os.environ["EL_RUN_ID"],
                     "freeze": cfg["sources"]["freeze"], "budget": cfg["sources"]["budget"], "fits": tickets,
@@ -190,6 +190,7 @@ def execute(cfg, paths, out, store):
          "common_model_freeze": cfg["sources"]["freeze"], "external_adapter": cfg["sources"]["external_import"],
          "train_development_queue": cfg["sources"]["development_queue"], "confirmation_queue": cfg["sources"]["confirmation_queue"],
          "issued_fit_count": len(rows), "succeeded": len(ok), "failed": len(rows) - len(ok), "policy": limits,
+         "fit_time_and_count_within_declared_limits":compliant, "cases_over_native_wall_cap":over_time,
          "charged_gpu_seconds": spent, "remaining_gpu_seconds": limits["max_gpu_seconds"] - spent,
          "successful_fit_seconds": sum(r["fit_seconds"] for r in ok),
          "successful_native_process_cpu_seconds": sum(r["native_process_cpu_seconds"] for r in ok),

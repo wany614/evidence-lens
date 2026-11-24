@@ -115,6 +115,13 @@ def verify_cutoff(store, pin, scene, count, rid, limits):
         == doc["budget"]["observed_used"],
         "different observed resource use in the native budget evidence",
     )
+    minimum = doc["budget"]["minimum_for_next_valid_attempt"]
+    if minimum:
+        require(
+            measured.get("minimum_next_valid_attempt_by_resource", {}).get(doc["budget"]["resource"])
+            == minimum,
+            "estimated retry lower bound has no matching recorded measurement",
+        )
     return doc
 
 
@@ -338,7 +345,7 @@ def evaluate_terminal(s, scene, count):
         not (s / "work/controller" / ("b-matrix-" + slug) / "selected.json").exists(),
         "complete ranks must use the registered standard evaluator",
     )
-    native, _, _ = native_failure(s, end["failed_native_run"]["run_id"])
+    native, original_run, _ = native_failure(s, end["failed_native_run"]["run_id"])
     require(native == end["failed_native_run"], "wrong original failure reference")
     opening = "b-confirmation-h-opening" if row["split"] == "confirmation" else "b-train-dev-h-opening"
     grant = selected(s, opening)
@@ -370,6 +377,21 @@ def evaluate_terminal(s, scene, count):
         pins["bank"] = selected(s, "b-bank-" + slug)
     if end.get("stage") == "model_score":
         require(pins.get("bank") == end["bank"], "missing independent predicted RGB after scoring failure")
+        require(original_run["run_kind"] == "model_score", "different original unsuccessful scoring kind")
+    else:
+        pins["fit_ticket"] = end["ticket"]
+        dispatch = load(resolve((s,), pins["fit_ticket"]))
+        source = load(resolve((s,), truth))["inputs"]["source"]
+        require(
+            original_run["run_kind"] == "model_fit"
+            and original_run["trial_id"] == dispatch["trial"]
+            and dispatch["scene_id"] == scene
+            and len(dispatch["R"]) == count
+            and dispatch["H_poses_only"] == end["target_ids"]
+            and dispatch["data"]["run_id"] == source["run_id"]
+            and dispatch["data"]["manifest_sha256"] == source["manifest_sha256"],
+            "failed native fit used a different source acquisition or H roster",
+        )
     runtime = load(resolve((s,), pins["runtime"]))
     cmd = [
         str(s / runtime["relative_executable"]),

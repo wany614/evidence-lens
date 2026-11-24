@@ -1,0 +1,10 @@
+{
+  "schema":"el-many-independent-arithmetic-registration-1",
+  "baseline_id":"sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "access":"First require the common recorded confirmation H opening. Select once by the registered case and target IDs independently of outcome. Read only the independent H photograph for h00 in each selected case.",
+  "cases":[{"family":"living_room","R":55,"target":"h00"},{"family":"bridge","R":100,"target":"h00"},{"family":"b05-perforated-gallery","R":128,"target":"h00"}],
+  "labels":"From raw predicted FP32 display RGB and independent uint8 RGB PNG divided by FP32(255), accumulate the three absolute channel differences in FP32 and divide by FP32(3). RGB error strictly above FP32(0.05); reference-finite and prediction-finite masks are counted separately.",
+  "P1":"Read the scored query count/flags for coverage-4, fixed-4, coverage-16 and coverage-all. A gap is a labelled correct position with no comparable queried source, a comparable source in the complete bank, and neither input invalid/incomplete. Verify actual source IDs and an outside-Q source witness. Divide by ALL labelled correct positions. Compare integer numerators and denominators before comparing both registered differences.",
+  "P2":"On coverage-16, read the two FP32 rank grids for B-CPU-LR and the development-frozen rule from the same NPZ and the same ordered Q. Intersect finite ranks and valid labels. Take floor(common_n/5). Locate the kth rank by partition, take all strictly lower and the first row-major exact ties needed to reach k. Compare both integer error counts, denominator, shared/selected hashes, independent label and valid hashes, and accepted share of the finite full reference.",
+  "comparison":"Hashes and integers must match exactly. Derive rate differences with integer numerators; permit at most 1e-15 absolute difference due to subtraction of rounded FP64 fractions. A genuine missing view, incomplete full audit, zero correct labels or zero quota is explicit NA. Count independent H decodes and separate full-reference from available independently labelled pixels."
+}
