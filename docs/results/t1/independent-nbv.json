@@ -1,0 +1,24 @@
+{
+  "checked_conditions": 42,
+  "checked_paired_objects": 6,
+  "checked_views": 252,
+  "comparable_pixels_including_logical_aliases": 11796480,
+  "erroneous_pixels_including_logical_aliases": 4734928,
+  "mismatches": 0,
+  "opening": {
+    "manifest_sha256": "b9040526979f23b39c60adc0f1ad699993cd456464d45fb6e2b5b90fd6941068",
+    "member": "payload/opening.json",
+    "run_id": "20261124T044751135267Z-7eafdcf5d2a44153",
+    "sha256": "b2cccd3449521f69aee20939167924f758e006995a6f67ab3dd1e432e601e3fc"
+  },
+  "report": {
+    "manifest_sha256": "13f24422bf02fb6dea3a414db53472367754135056a54a8b52db64fe2e27ad2d",
+    "member": "payload/nbv.json",
+    "run_id": "20261124T044825489277Z-1ca8f9b1522541fe",
+    "sha256": "26fde4627d9a1e941f3baf5cbc6dd3b89df9f375e4d3440d426baa2f3e4c1cdd"
+  },
+  "risk_minus_uniform_equal_object": -0.006617296151435029,
+  "run_id": "20261124T044829368776Z-3f0b55a69aa44e2d",
+  "scheduled_pixels_including_logical_aliases": 16515072,
+  "schema": "el-t1-independent-nbv-1"
+}

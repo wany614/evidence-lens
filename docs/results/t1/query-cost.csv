@@ -1,0 +1,7 @@
+object_id,probe_run,status,actual_final_gaussians,probe_recorder_seconds,reason,probe_gpu_seconds,unique_support,raw_support,feature_score_seconds,selector_seconds,fallback,max_source_rerender_difference
+set118,20261124T042243646091Z-f731016e036549fc,failed,16251,3.5310000000026776,"The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",,,,,,,
+set76,20261124T042248548043Z-731a6a818d6341fd,failed,17199,3.562999999994645,"The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",,,,,,,
+set45,20261124T042330698611Z-050e109ca0d84bec,,,4.546999999991385,,1.0840432999975746,3567,3589,0.16956158399989363,0.20943754199834075,,0.0
+set103,20261124T042342761592Z-f693229509d94779,,,4.937000000005355,,1.103460799989989,3984,3989,0.17033429100411013,0.2063708749919897,,0.0
+set61,20261124T042514271609Z-45a76b90b9f44b54,,,4.64100000000326,,1.092347300000256,3639,3651,0.1547733750048792,0.19319120899308473,,0.0
+set32,20261124T042558830568Z-649e9576bf5a4bff,,,4.812999999994645,,1.162109100012458,3490,3496,0.1609863750054501,0.19901820800441783,,0.0

@@ -1,0 +1,41 @@
+{
+  "actual_dispatch_zip_bytes": 13664506,
+  "actual_fits": 29,
+  "actual_windows_return_bytes": 786005420,
+  "aliases": 1,
+  "failed_conditions": 12,
+  "failed_run_classes": {
+    "frozen scientific probe": 2,
+    "recorder input preparation": 1
+  },
+  "first_reference_acquisition_started_utc": "2026-11-24T04:47:54.522081Z",
+  "joint_opening_sealed_utc": "2026-11-24T04:47:52.306971Z",
+  "new_risk_training_count": 0,
+  "physical_endpoint_recorder_s": 162.74700000000303,
+  "physical_fit_recorder_s": 1118.670999999973,
+  "physical_source_photos": 38,
+  "public_photographic_bytes": 0,
+  "recorded_runs_before_this_resource_census": 215,
+  "run_id": "20261124T050302137300Z-43cd5f8faec54823",
+  "run_status": {
+    "failed": 3,
+    "succeeded": 212
+  },
+  "schema": "el-t1-resources-1",
+  "source_trajectory_observations": 108,
+  "stage_s": {
+    "archive_verify": 70.15157170702878,
+    "dataset_build": 89.40260033903178,
+    "derivation": 22.389322417977382,
+    "evaluation": 22.231781042006332,
+    "generation": 1118.670999999973,
+    "model_score": 35.85841845799587,
+    "render": 188.778999999995,
+    "report": 1.8797507080016658
+  },
+  "store_bytes_free_at_census": 1009846173696,
+  "success_conditions": 30,
+  "uncached_source_fetches": 38,
+  "undispatched_conditions": 12,
+  "unique_reference_photos": 36
+}
