@@ -1,0 +1,307 @@
+{
+  "a2_original_diagnostics": {
+    "broken_npz": {
+      "exit": 1,
+      "message": "zipfile.BadZipFile: File is not a zip file",
+      "output_created": false,
+      "status": null,
+      "traceback": true
+    },
+    "camera_views_scalar": {
+      "exit": 2,
+      "message": "'NoneType' object is not subscriptable",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "generator_absent": {
+      "exit": 2,
+      "message": "'reconstruction_run_id'",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "generator_blank": {
+      "exit": 2,
+      "message": "missing or invalid generator run",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "prediction_views_scalar": {
+      "exit": 1,
+      "message": "AttributeError: 'list' object has no attribute 'get'",
+      "output_created": false,
+      "status": null,
+      "traceback": true
+    }
+  },
+  "a3_diagnostics": {
+    "broken_npz": {
+      "exit": 2,
+      "message": "Invalid NPZ archive: File is not a zip file",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "camera_views_scalar": {
+      "exit": 2,
+      "message": "camera.views[v01] must be an object",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "generator_absent": {
+      "exit": 2,
+      "message": "missing or invalid case.json reconstruction_run_id",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "generator_blank": {
+      "exit": 2,
+      "message": "missing or invalid case.json reconstruction_run_id",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    },
+    "prediction_views_scalar": {
+      "exit": 2,
+      "message": "prediction.views[s00] must be an object",
+      "output_created": false,
+      "status": "invalid",
+      "traceback": false
+    }
+  },
+  "asset_autocrlf_checkout": {
+    "src/evidence_lens_bundle/assets/MS-L1/coefficients.json": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a",
+    "src/evidence_lens_bundle/assets/MS-L1/model.json": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+    "src/evidence_lens_bundle/assets/MS-L1/preprocessing.json": "174223f021d208edb4dd57aa461ec6da9f6930b5e97c7c5c991dd1cf66e9cf04",
+    "src/evidence_lens_bundle/assets/profile.json": "99587dd70b67a84debb81fa1dc84e93729c8980bc4531edecfb56112a15eb191"
+  },
+  "changed_payload_members": [
+    "evidence_lens_bundle/bundle.py",
+    "evidence_lens_bundle/cli.py",
+    "evidence_lens_bundle/common.py",
+    "evidence_lens_bundle/legacy.py"
+  ],
+  "engineering_failures": [
+    {
+      "linux_process_started": false,
+      "manifest_sha256": "59e40b7b54cb75927b910bdf15e638b18b621001bea8c4e2c57e61f4f865cb9c",
+      "reason": "BundleError: incorrect input parent for gold",
+      "run_id": "20261124T014419453431Z-7159a79e26a64e1f"
+    },
+    {
+      "linux_process_started": false,
+      "manifest_sha256": "b6b5ca3fbd0c13b00dabe75323bc6aed12ac46d4b1efdc3fe12ffa4dda20249d",
+      "reason": "BundleError: input wheels references an undeclared parent",
+      "run_id": "20261124T014516111904Z-eefad2fcdbc34f42"
+    }
+  ],
+  "engineering_only": true,
+  "linux_grade": "maximum absolute FP32 difference and exact support/state; separate finite word comparison was not recorded by that worker",
+  "origins": {
+    "after": {
+      "manifest_sha256": "b4f68ec73e3d47bfc0536a9af893b7baa863a2b845ec5bec61383a3ff5df5a4f",
+      "member": "payload/boundary.json",
+      "run_id": "20261124T014345040916Z-af0a6ff98ddc40ef",
+      "sha256": "ab339b5db503c427d6052ebdd69bc267475be21b91e05c83882b17479f0b7409"
+    },
+    "attributes": {
+      "path": ".gitattributes",
+      "sha256": "3b15b613c3598519a0522ae5a8174b65033d001045c309681f0c9f8670cf7651"
+    },
+    "before": {
+      "manifest_sha256": "e92819a3fa4bd8601dc80d185186f44cb74fa58b295e39bc615925a6579ed0ce",
+      "member": "payload/boundary.json",
+      "run_id": "20261124T014213667407Z-1d802b3f0a5f42a6",
+      "sha256": "2661890d7abb212dcfd2f3dda597c78a8a03219ee7fb5e185e90e56e7428f8a1"
+    },
+    "broader": {
+      "manifest_sha256": "e57d06df558a47133b1cb65ccdbf5a4c4f9e1e2d2a4d7c76bc95a6ca29e6e663",
+      "member": "payload/boundaries.json",
+      "run_id": "20261124T014434640985Z-243ee61ffc4d480a",
+      "sha256": "7e0602ebe73e6f2c82b27e0a70a62dc220ccee0bec3f69bc695c9f087707771e"
+    },
+    "browser": {
+      "manifest_sha256": "bc0f933ac6ba3504a71d1d679b7b1c30cf5e1a824aff333e2fd4dccaee88a9f2",
+      "member": "payload/html-readback.json",
+      "run_id": "20261124T014434672698Z-1bcf5cc83fe64d41",
+      "sha256": "84fc73a05d28d84c1aef0114992000333b470cb2d1d6a0ffc040780e53c7958a"
+    },
+    "linux2": {
+      "manifest_sha256": "ceadfa8e6601b88017d156baa35ce305db30de1b14680c7a021727e5102dbe64",
+      "member": "payload/linux.json",
+      "run_id": "20261124T013106579066Z-2c031f4e43ef49ee",
+      "sha256": "92484f7e650335daa591158da3de434a53c697c0c5568d3bf4123bb21415d449"
+    },
+    "linux3": {
+      "manifest_sha256": "5697e704539fbab3dd8662373ed0d612d86a992b2735a8223eea9f437c02f82f",
+      "member": "payload/linux.json",
+      "run_id": "20261124T014636288634Z-1c7fd341a0ea47eb",
+      "sha256": "2c346f958c5595ab4199366bce9b52a5f622b2616e2c53b543087466a3e86a0a"
+    },
+    "mac2": {
+      "manifest_sha256": "480175831b2c6c8aee0ee135becc4c41b6409c285b60a002716b633f6c5a735a",
+      "member": "payload/compatibility.json",
+      "run_id": "20261124T013121489117Z-feb79369ddb14fb8",
+      "sha256": "07f5f93130e5a3c27aea729c45200b38d2cffb14ff1d3a80101736d1b76aeecd"
+    },
+    "mac3": {
+      "manifest_sha256": "0dd17295c3911c5751d0bfed744a6ac8359376e8f083960fa2891524c1733edc",
+      "member": "payload/compatibility.json",
+      "run_id": "20261124T014434723942Z-b4a9516501384920",
+      "sha256": "a7802b0d9f8eedc752da52fc95073bb20d3ab55678284e2585eec345294eecf6"
+    },
+    "portable2": {
+      "manifest_sha256": "bfa0980e7ee4b73d8c0ca127fc1bca82a861da32a4f3fec497562e22ec3a7d4a",
+      "member": "payload/portable.json",
+      "run_id": "20261124T012857839689Z-2277cea9226d4216",
+      "sha256": "c6c2964b6132811139d297cf3e375e9d572e6efd420bfa707a3654fb597209ee"
+    },
+    "portable3": {
+      "manifest_sha256": "b00a7cab0df697f0f9a7ccfa6312568c3d7aa9b8e904a3631d0a22286a2ddaea",
+      "member": "payload/portable.json",
+      "run_id": "20261124T014344985430Z-c005d3a087c4450b",
+      "sha256": "e33d30f767485c2553853efa7ac72cc3cb74b3d5ac3f5805e1749f19485d2e85"
+    },
+    "recovered": {
+      "manifest_sha256": "943a367f5ebac6fd7e5fa470fd9d1c0e11f05b2e2cf12a8e3c76cb7c5486789a",
+      "member": "payload/recovery-grade.json",
+      "run_id": "20261124T014526658371Z-23aa27a474784d77",
+      "sha256": "35d16d41e21c2e42513372cf4aeb32c409338a7442ed850f0eabcf27cd115ef8"
+    },
+    "wheel2": {
+      "manifest_sha256": "845cbe6690f74c589d1906f69450491e8ad5403e5f5d2d30d582fa5d9ee64de0",
+      "member": "payload/dist/evidence_lens-0.4.0a2-py3-none-any.whl",
+      "run_id": "20261124T012734289407Z-6d5b7f0cbccc4861",
+      "sha256": "3f51cc914f0020f42c9b2c693e4c3f013d2a8941f43453749d13b4886e433fa3"
+    },
+    "wheel3": {
+      "manifest_sha256": "33191a3df9097eef93ad5369e363c4c31fe983b9b40458866742ab478b429a48",
+      "member": "payload/dist/evidence_lens-0.4.0a3-py3-none-any.whl",
+      "run_id": "20261124T014327753969Z-68e141888fee47d7",
+      "sha256": "9e8e74d36b7a7db2e6e6b4ea087b4a15c7375cb01ce286ce6aa240dc20bec4b7"
+    },
+    "win2": {
+      "return_filename": "windows-bundle-cpu-receipt.json",
+      "sha256": "41b7de15a29706ce3c79af77ef08e1c7a44be21708ace68f24d6601bbfc21ef4",
+      "windows_manifest_sha256": "11a2fa0151e526bc576a0489e8fa9e3a7fb4d4e2193cbf3a29505ea6c2b35aa9",
+      "windows_recorder_run": "20261124T013205048313Z-85b40e948bda472a"
+    },
+    "win3": {
+      "return_filename": "windows-bundle-cpu-receipt.json",
+      "sha256": "a164bcee94cbd1e25420f4c9139a5af5fa8c841fe676fcd496fb302a5c70c4a5",
+      "windows_manifest_sha256": "0d8183d593a8b584b61789a65e46f777f5d69775160f69aeef26958bdc3078ca",
+      "windows_recorder_run": "20261124T014653875530Z-1da90aaa1bbc4d55"
+    },
+    "winenv2": {
+      "return_filename": "cpu-environment.json",
+      "sha256": "66f6f57f56883b7cf1866ffad74d0656265328e55a4be4d8a46f89d901d4e20d",
+      "windows_manifest_sha256": "11a2fa0151e526bc576a0489e8fa9e3a7fb4d4e2193cbf3a29505ea6c2b35aa9",
+      "windows_recorder_run": "20261124T013205048313Z-85b40e948bda472a"
+    },
+    "winenv3": {
+      "return_filename": "cpu-environment.json",
+      "sha256": "8af6ccc25bb5e2973409384385fad6ce94949d2ecc3b217077a1bd13bb6f857d",
+      "windows_manifest_sha256": "0d8183d593a8b584b61789a65e46f777f5d69775160f69aeef26958bdc3078ca",
+      "windows_recorder_run": "20261124T014653875530Z-1da90aaa1bbc4d55"
+    },
+    "wingrade2": {
+      "return_filename": "grade.json",
+      "sha256": "e2b22296a2d906d00a52a34a86ffb7bc15cbb456953ae79dee3a322aa01210b7",
+      "windows_manifest_sha256": "11a2fa0151e526bc576a0489e8fa9e3a7fb4d4e2193cbf3a29505ea6c2b35aa9",
+      "windows_recorder_run": "20261124T013205048313Z-85b40e948bda472a"
+    },
+    "wingrade3": {
+      "return_filename": "grade.json",
+      "sha256": "e2b22296a2d906d00a52a34a86ffb7bc15cbb456953ae79dee3a322aa01210b7",
+      "windows_manifest_sha256": "0d8183d593a8b584b61789a65e46f777f5d69775160f69aeef26958bdc3078ca",
+      "windows_recorder_run": "20261124T014653875530Z-1da90aaa1bbc4d55"
+    }
+  },
+  "rows": [
+    {
+      "condition": "M4",
+      "finite_bits_different": 0,
+      "finite_pairs": 388358,
+      "max_abs": 0.0,
+      "method": "MS-L1",
+      "pixels": 393216,
+      "platform": "macOS",
+      "state_changes": 0,
+      "support_changes": 0,
+      "version": "0.4.0a2",
+      "views": 6
+    },
+    {
+      "condition": "M4",
+      "finite_bits_different": 0,
+      "finite_pairs": 388358,
+      "max_abs": 0.0,
+      "method": "MS-L1",
+      "pixels": 393216,
+      "platform": "Windows",
+      "state_changes": 0,
+      "support_changes": 0,
+      "version": "0.4.0a2",
+      "views": 6
+    },
+    {
+      "condition": "M4",
+      "finite_bits_different": null,
+      "finite_pairs": 388358,
+      "max_abs": 0.0,
+      "method": "MS-L1",
+      "pixels": 393216,
+      "platform": "Linux",
+      "state_changes": 0,
+      "support_changes": 0,
+      "version": "0.4.0a2",
+      "views": 6
+    },
+    {
+      "condition": "M4",
+      "finite_bits_different": 0,
+      "finite_pairs": 388358,
+      "max_abs": 0.0,
+      "method": "MS-L1",
+      "pixels": 393216,
+      "platform": "macOS",
+      "state_changes": 0,
+      "support_changes": 0,
+      "version": "0.4.0a3",
+      "views": 6
+    },
+    {
+      "condition": "M4",
+      "finite_bits_different": 0,
+      "finite_pairs": 388358,
+      "max_abs": 0.0,
+      "method": "MS-L1",
+      "pixels": 393216,
+      "platform": "Windows",
+      "state_changes": 0,
+      "support_changes": 0,
+      "version": "0.4.0a3",
+      "views": 6
+    },
+    {
+      "condition": "M4",
+      "finite_bits_different": null,
+      "finite_pairs": 388358,
+      "max_abs": 0.0,
+      "method": "MS-L1",
+      "pixels": 393216,
+      "platform": "Linux",
+      "state_changes": 0,
+      "support_changes": 0,
+      "version": "0.4.0a3",
+      "views": 6
+    }
+  ],
+  "run_id": "20261124T015009384661Z-58425239e0994292",
+  "schema": "el-bundle-platform-acceptance-1",
+  "unchanged_wheel_payload_members": 82
+}

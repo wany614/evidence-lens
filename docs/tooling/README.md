@@ -9,7 +9,7 @@ The default **MS-L1** uses the released linear model and its original cutoff of 
 From a source checkout, install with `python -m pip install .` in a fresh virtual environment. Alternatively, the portable example includes the universal wheel. Install that wheel from the unpacked directory, then run:
 
 ```sh
-python -m pip install ./evidence_lens-0.4.0a2-py3-none-any.whl
+python -m pip install ./evidence_lens-0.4.0a3-py3-none-any.whl
 evidence-lens validate --bundle bundle
 evidence-lens score --bundle bundle --model MS-L1 --out scores
 evidence-lens report --scores scores --out report.html

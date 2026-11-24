@@ -1,5 +1,19 @@
 # Prepared-bundle compatibility
 
+## Clean CPU checks on three operating systems
+
+Both wheels, **0.4.0a2** and **0.4.0a3**, ran the published M4 bell-cage bundle through installation, validation, scoring and offline report generation. Each platform compared six 256 × 256 MS-L1 maps against the original reference scores. The six runs each compared 388,358 finite predictions across 393,216 pixels. All counted 4,858 unknown pixels, 316,145 low and 72,213 high. [Per-platform numerical receipts](platform-verification.json)
+
+| Platform | Maximum absolute difference for a2 and a3 | Changed finite masks or threshold states | Additional check |
+|---|---:|---:|---|
+| macOS arm64 | 0 | 0 | All finite FP32 words matched. Both versions also replayed all four models on M2 and M4. |
+| Linux arm64 | 0 | 0 | Each version used a fresh offline container. The Linux grader compared floating-point values. |
+| Windows x64 | 0 | 0 | All finite FP32 words matched. Each version used a fresh CPU environment. |
+
+Version a3 adds field-specific diagnostics for a missing or blank legacy reconstruction ID, malformed view metadata and a corrupt NPZ. The five installed-wheel checks each returned exit code 2 and a JSON error. The four packaged model/threshold assets also retained their published SHA-256 values through a fresh Git index checkout with automatic Windows-style line conversion enabled. A wheel comparison found changes in four input-handling modules. The other 82 payload members, including the numerical implementation and model files, were byte-identical. Two initial a3 Linux launcher runs stopped during input-parent checking before starting a container. The successful rerun used the original gold directory and Linux dependency wheels. [Inputs, dispositions and wheel comparison](platform-verification.json)
+
+## Four-model and historical Case checks
+
 The installed **0.4.0a2** CLI reproduced the four released models on the two original bell-cage reconstructions. Every finite FP32 score, finite mask and threshold state matched the previously distributed expected arrays. A separate process executed the unmodified numerical modules from the Stage C release on the same Mac. All FP32 words, including NaN locations and bit patterns, matched its fresh results.
 
 | Comparison | Method × view entries | Canvas method-pixels | Finite pairs | Maximum absolute difference | State differences |

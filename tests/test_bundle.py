@@ -233,3 +233,43 @@ def test_legacy_proof_rejects_unpinned_or_unrecognized_roles(tmp_path):
         verified_docs(tmp_path, "0" * 64)
     with pytest.raises(ValueError, match="evidence roles"):
         verified_docs(tmp_path, sha((tmp_path / "proof.json").read_bytes()))
+
+
+@pytest.mark.parametrize("role", ("case", "prediction", "views"))
+def test_invalid_legacy_producer_gets_a_field_error(tmp_path, capsys, role):
+    from test_stage3_multisource import case_fixture
+
+    root = tmp_path / "input"
+    case_fixture(root)
+    cm, pm = root / "case.json", root / "prediction.json"
+    c, p = json.loads(cm.read_bytes()), json.loads(pm.read_bytes())
+    if role == "views":
+        p["views"]["v01"] = []
+        message = "prediction.views[v01]"
+    else:
+        (c if role == "case" else p)["reconstruction_run_id"] = " "
+        message = role + ".json reconstruction_run_id"
+    write(pm, p)
+    c["prediction"] = row("prediction.json", pm.read_bytes())
+    write(cm, c)
+    target = tmp_path / "output"
+    assert (
+        main(
+            ["adapt-legacy", "--case", str(root), "--case-sha256", sha(cm.read_bytes()), "--out", str(target)]
+        )
+        == 2
+    )
+    error = json.loads(capsys.readouterr().err)
+    assert error["status"] == "invalid" and message in error["message"]
+    assert not target.exists()
+
+
+def test_validate_bad_npz_reports_invalid(tmp_path, capsys):
+    root = fixture(tmp_path / "input")
+    f = Bundle(root).producer["frames"][T[0]]["file"]
+    path = root / f["path"]
+    path.write_bytes(b"PK\x03\x04corrupt")
+    replace(root, "producer.json", ["frames", T[0], "file"], row(f["path"], path.read_bytes()))
+    assert main(["validate", "--bundle", str(root)]) == 2
+    err = json.loads(capsys.readouterr().err)
+    assert err["status"] == "invalid" and "NPZ" in err["message"]
