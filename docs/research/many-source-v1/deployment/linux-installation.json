@@ -1,0 +1,48 @@
+{
+  "base_cpu_torch_present": false,
+  "cpu_thread_environment": {
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "initial_distributions": [
+    "pip"
+  ],
+  "interfaces": [
+    "lo"
+  ],
+  "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+  "machine": "aarch64",
+  "os": "Linux",
+  "packages": {
+    "evidence-lens": "0.5.0",
+    "evidence-lens-many-source": "0.1.0.dev0",
+    "numpy": "2.5.5",
+    "pillow": "12.3.0"
+  },
+  "pip_check": "No broken requirements found.",
+  "python": "3.12.16",
+  "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+  "verified_product_files": {
+    "evidence_lens-0.5.0-py3-none-any.whl": 102,
+    "evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl": 9
+  },
+  "wheelhouse": {
+    "evidence_lens-0.5.0-py3-none-any.whl": {
+      "bytes": 405919,
+      "sha256": "40d9b6ffb9d881c63d4710fee71112920dd665da831ef744fb062a20f86de734"
+    },
+    "evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl": {
+      "bytes": 34932,
+      "sha256": "42f705cca13248a0622dc9afc22f34c681f3088a93fc1957b0a78618697e8cb3"
+    },
+    "numpy-2.5.5-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl": {
+      "bytes": 15284117,
+      "sha256": "a0750f2156d53446caca85663d0b65d67214e1664b9050454a731ea1418d176a"
+    },
+    "pillow-12.3.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl": {
+      "bytes": 6266838,
+      "sha256": "d9c7f76c0673154f044e9d78c8655fb4213f6ca31a836df48b40fe5d187717b9"
+    }
+  }
+}

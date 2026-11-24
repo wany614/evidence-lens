@@ -1,0 +1,202 @@
+{
+  "A": 16,
+  "R": 16,
+  "actual_q": [
+    "r008",
+    "r120",
+    "r000",
+    "r080"
+  ],
+  "archive": {
+    "bytes": 36470716,
+    "path": "evidence-lens-b04-r16-example.zip",
+    "sha256": "b8652911de40b4eb4a6ef97d5cbb5d85204ddc4c06904278cb662350090f870b"
+  },
+  "bank_sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250",
+  "head_sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721",
+  "installed": {
+    "base_wheel_sha256": "40d9b6ffb9d881c63d4710fee71112920dd665da831ef744fb062a20f86de734",
+    "feature_schema_sha256": "42298817f3c1cd333430dd20cc9305be23cde4174f09e2951fb7667b1c55078d",
+    "package_version": "0.1.0.dev0",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "prototype_wheel_sha256": "42f705cca13248a0622dc9afc22f34c681f3088a93fc1957b0a78618697e8cb3",
+    "python": "3.12.16",
+    "runtime": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "8307790b48e94b581417b511dacebd6bc1b8cbc3732a49294173767d5ca52374"
+    }
+  },
+  "parents": {
+    "bank": {
+      "manifest_sha256": "83bc29ab404448a64c552f61ac1e85332ad031bd24c3cabe65c339fd731cceb2",
+      "member": "payload/bank.json",
+      "run_id": "20261124T113848569248Z-4e427613e47143bf",
+      "sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250"
+    },
+    "baseline": {
+      "manifest_sha256": "0f317c6966e4ccfbe7f642c3b622ace90c0d0f6e68618a24b1065a708c9cc561",
+      "member": "payload/BASELINE_MANIFEST.json",
+      "run_id": "20261124T111058386191Z-d99a4c418276454c",
+      "sha256": "6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
+    },
+    "build": {
+      "manifest_sha256": "2c2929dc7323fa80b4d7bd9e64842c8fbe89082122d5609d5b04fd90e540038d",
+      "member": "payload/build.json",
+      "run_id": "20261124T112946015168Z-763e43c778fe4d7b",
+      "sha256": "e6a857aba5d644f157c5c111ffa16b665f1aa140d8f28704aed4a4309c334280"
+    },
+    "model": {
+      "manifest_sha256": "5c436f26c29c0a1cf1b907d35d6aa740774272c292e39eadb2fd113c4f244179",
+      "member": "payload/model.json",
+      "run_id": "20261124T115857282953Z-3f6e989f5d4844b1",
+      "sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721"
+    },
+    "protocol": {
+      "manifest_sha256": "8e04f790c4e727e1b3e116c4d4699ee0c90a66517af8ce58cf1385cecce616d0",
+      "member": "payload/protocol.json",
+      "run_id": "20261124T113528393538Z-24d7c1bbf14744c5",
+      "sha256": "21d8670783b10aff62d866b08b68147519041993a0c3837828641cfbe711eaee"
+    },
+    "runtime": {
+      "manifest_sha256": "f6f315cf9946950fcf12efd93618547981b67ad9d442c9090042fec06d63deb8",
+      "member": "payload/runtime.json",
+      "run_id": "20261124T113001525552Z-69754f547d8a4d68",
+      "sha256": "8307790b48e94b581417b511dacebd6bc1b8cbc3732a49294173767d5ca52374"
+    },
+    "study": {
+      "manifest_sha256": "7394f0821e5c3a85feb115ec3b38ac5ed2f41dd54fe3785e7f1fdc4f6936af8b",
+      "member": "payload/study.json",
+      "run_id": "20261124T111533951307Z-8b7523eb307440af",
+      "sha256": "fd4ea8f80597cd7c21b4f548131d1a9f96780747d5c65503f83b6b1b79a22777"
+    }
+  },
+  "reports": {
+    "audit-bank": {
+      "actual_q": [
+        "r008",
+        "r120",
+        "r000",
+        "r080"
+      ],
+      "finite_pixels": 95256,
+      "gap_witness_counts_by_source": {
+        "r032": 263,
+        "r040": 25,
+        "r048": 146
+      },
+      "html_sha256": "9cd5687ef0def03e3ec4dd0ef35593043b2c1d53c407ec67df40de63ca35fa5e",
+      "scope_counts": {
+        "audited_comparable_evidence": 93876,
+        "audited_library_no_comparable_evidence": 946,
+        "geometry_not_evaluable": 0,
+        "library_incomplete_or_unavailable": 0,
+        "selected_subset_only": 0,
+        "subset_comparability_gap": 434
+      },
+      "score_receipt_sha256": "296d6bb2bf467cbf448bb4e3a8152f70b9ac827b0c661e3d6efb6503da1e7e89",
+      "scores_npz_sha256": "61d119868b45d29a688abbfc181430cc97ad1e61dc5cb885559516e32574af34",
+      "wall_s_including_launch_and_html": 0.4404330409888644
+    },
+    "score": {
+      "actual_q": [
+        "r008",
+        "r120",
+        "r000",
+        "r080"
+      ],
+      "finite_pixels": 95256,
+      "gap_witness_counts_by_source": {},
+      "html_sha256": "da486143ed73256b3825433d765cfb8e25cf34d15ccfadfd7b3d5ea5a7ef82ef",
+      "scope_counts": {
+        "audited_comparable_evidence": 0,
+        "audited_library_no_comparable_evidence": 0,
+        "geometry_not_evaluable": 0,
+        "library_incomplete_or_unavailable": 0,
+        "selected_subset_only": 95256,
+        "subset_comparability_gap": 0
+      },
+      "score_receipt_sha256": "b00390ef5e4b693429c2208683f402f98b975dfdec87c20a7486c7937c749ebc",
+      "scores_npz_sha256": "18558a3620ba898f98fb2af6546a7a46ec5d6315c5e7c437605eed21242952cb",
+      "wall_s_including_launch_and_html": 0.2730870000086725
+    }
+  },
+  "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+  "scene_id": "b04-layered-louvers",
+  "schema": "el-b-public-bank-example-receipt-1",
+  "separate_audit_same_rank_words": true,
+  "source_terms": {
+    "A": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "H": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05"
+    ],
+    "R": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "calibration": "registered authored pinhole cameras",
+    "license": "CC BY 4.0, wany614 (authored geometry, images and data)",
+    "official_geometry_features_used": false,
+    "rgb_access": "deployment only reads actual R photographs. H has camera metadata only.",
+    "scene_id": "b04-layered-louvers",
+    "source_dataset": "original authored six-family study",
+    "source_ids": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "split": "development",
+    "terms": "CC BY 4.0, wany614 (authored geometry, images and data)"
+  },
+  "target": "h00"
+}

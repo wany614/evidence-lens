@@ -1,0 +1,382 @@
+{
+  "accessible_ids": [
+    "r000",
+    "r008",
+    "r016",
+    "r024",
+    "r032",
+    "r040",
+    "r048",
+    "r056",
+    "r064",
+    "r072",
+    "r080",
+    "r088",
+    "r096",
+    "r104",
+    "r112",
+    "r120"
+  ],
+  "analysis_profile": "analysis-378x252-v1",
+  "analysis_wh": [
+    378,
+    252
+  ],
+  "arrays": {
+    "bytes": 1003549,
+    "path": "scores.npz",
+    "sha256": "18558a3620ba898f98fb2af6546a7a46ec5d6315c5e7c437605eed21242952cb"
+  },
+  "audit": {
+    "actual_queried": 4,
+    "first_witness_source_ids": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "full_complete": false,
+    "full_scope_cost": null,
+    "model_used_query_count": 4,
+    "requested": false,
+    "unique_library_size": 16
+  },
+  "bank_sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250",
+  "baseline_id": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "canonical_source_ids": [
+    "r000",
+    "r008",
+    "r016",
+    "r024",
+    "r032",
+    "r040",
+    "r048",
+    "r056",
+    "r064",
+    "r072",
+    "r080",
+    "r088",
+    "r096",
+    "r104",
+    "r112",
+    "r120"
+  ],
+  "canvas_pixels": 95256,
+  "checkpoint_sha256": "9666db2f040cff27962204215e55867e85e84d57da60debb4bc88d52c66a194e",
+  "exact_photo_aliases": {},
+  "feature_schema_sha256": "42298817f3c1cd333430dd20cc9305be23cde4174f09e2951fb7667b1c55078d",
+  "first_witness_index": "zero based in canonical_source_ids; -1 unavailable",
+  "frame_receipt": {
+    "basis": "right_down_forward_camera_in_original_world",
+    "matrix": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "metric_anchor_ids": [],
+    "normalization": "fixed identity for all source subsets and held-out targets",
+    "unit": "m",
+    "unit_evidence": "designed metres",
+    "world_to_deployment": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "holdout_camera_ids": [
+    "h00",
+    "h01",
+    "h02",
+    "h03",
+    "h04",
+    "h05"
+  ],
+  "metric_anchor_ids": [],
+  "missing_queried_material": [],
+  "model": {
+    "legacy_q4_transfers": {},
+    "model_sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721",
+    "name": "B-CPU-LR",
+    "tau": null,
+    "threshold_status": "uncalibrated_ranking"
+  },
+  "permission": {
+    "A": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "H": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05"
+    ],
+    "R": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "calibration": "registered authored pinhole cameras",
+    "license": "CC BY 4.0, wany614 (authored geometry, images and data)",
+    "official_geometry_features_used": false,
+    "rgb_access": "deployment only reads actual R photographs. H has camera metadata only.",
+    "scene_id": "b04-layered-louvers",
+    "source_dataset": "original authored six-family study",
+    "source_ids": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "split": "development",
+    "terms": "CC BY 4.0, wany614 (authored geometry, images and data)"
+  },
+  "queried_source_ids": [
+    "r008",
+    "r120",
+    "r000",
+    "r080"
+  ],
+  "query_cost": {
+    "cache_capacity_bytes": 134217728,
+    "cache_evictions": 0,
+    "cache_hits": 0,
+    "cache_misses": 4,
+    "cache_peak_bytes": 12194900,
+    "comparable_pixel_source_pairs": 333779,
+    "elapsed_through_snapshot_seconds": 0.10279416698904242,
+    "in_frame_pixel_source_pairs": 333779,
+    "photometric_seconds": 0.022444874979555607,
+    "projection_seconds": 0.016433875003713183,
+    "source_bytes_read": 6756246,
+    "source_decode_seconds": 0.039463083987357095,
+    "source_depth_arrays_compared": 4,
+    "source_geometry_projections": 4,
+    "source_photometric_comparisons": 4,
+    "source_photos_decoded": 4,
+    "source_renders_decoded": 4,
+    "supported_photometric_pixel_source_pairs": 239305,
+    "target_available": true,
+    "target_bytes_read": 1560241,
+    "target_decode_seconds": 0.004069749993504956,
+    "target_geometry_decoded": 1,
+    "target_rgb_decoded": 1
+  },
+  "rank_eligible_pixels": 95256,
+  "reason_counts": {
+    "depth_unverified": 0,
+    "invalid_target_alpha": 0,
+    "invalid_target_rgb": 0,
+    "invalid_target_z": 0,
+    "queried_material_unavailable": 0,
+    "rank_available": 95256,
+    "target_alpha_below_minimum": 0,
+    "target_render_unavailable": 0
+  },
+  "reason_names": [
+    "rank_available",
+    "depth_unverified",
+    "target_render_unavailable",
+    "invalid_target_rgb",
+    "invalid_target_alpha",
+    "invalid_target_z",
+    "target_alpha_below_minimum",
+    "queried_material_unavailable"
+  ],
+  "reconstruction_ids": [
+    "r000",
+    "r008",
+    "r016",
+    "r024",
+    "r032",
+    "r040",
+    "r048",
+    "r056",
+    "r064",
+    "r072",
+    "r080",
+    "r088",
+    "r096",
+    "r104",
+    "r112",
+    "r120"
+  ],
+  "renderer_id": "nerfstudio-project/gsplat 1.5.3 simple_trainer/937e29912570c372bed6747a5c9bf85fed877bae",
+  "scene_id": "b04-layered-louvers",
+  "schema": "el-b-bank-result-1",
+  "scope_counts": {
+    "audited_comparable_evidence": 0,
+    "audited_library_no_comparable_evidence": 0,
+    "geometry_not_evaluable": 0,
+    "library_incomplete_or_unavailable": 0,
+    "selected_subset_only": 95256,
+    "subset_comparability_gap": 0
+  },
+  "scope_names": [
+    "selected_subset_only",
+    "subset_comparability_gap",
+    "audited_library_no_comparable_evidence",
+    "library_incomplete_or_unavailable",
+    "geometry_not_evaluable",
+    "audited_comparable_evidence"
+  ],
+  "selection_cost": {
+    "camera_candidates": 16,
+    "camera_tile_projection_tests": 1536,
+    "near_duplicate_pairs": 0,
+    "rig_separation_scale_scene_units": 3.8940807319711466,
+    "seconds": 0.017032458999892697,
+    "source_photos_decoded": 0,
+    "source_renders_decoded": 0,
+    "target_bytes_read": 1560241,
+    "target_geometry_decoded": 1,
+    "target_rgb_decoded": 0,
+    "tile_grid": [
+      12,
+      8
+    ],
+    "ungranted_ids": [],
+    "valid_target_tiles": 96
+  },
+  "selection_reasons": [
+    {
+      "marginal_tile_coverage": 1.0,
+      "near_duplicate_of_prior": false,
+      "new_view_diversity": 0.0,
+      "projections_inside": 96,
+      "selection_utility": 0.9979269461480069,
+      "source_id": "r008",
+      "target_distance_and_orientation": 0.0904199730138655
+    },
+    {
+      "marginal_tile_coverage": 0.4375,
+      "near_duplicate_of_prior": false,
+      "new_view_diversity": 0.721119879014759,
+      "projections_inside": 84,
+      "selection_utility": 0.5268253728616564,
+      "source_id": "r120",
+      "target_distance_and_orientation": 3.060161188669294
+    },
+    {
+      "marginal_tile_coverage": 0.34027777777777785,
+      "near_duplicate_of_prior": false,
+      "new_view_diversity": 0.1361351856703246,
+      "projections_inside": 92,
+      "selection_utility": 0.35494292384645876,
+      "source_id": "r000",
+      "target_distance_and_orientation": 0.29904760669888036
+    },
+    {
+      "marginal_tile_coverage": 0.21267361111111108,
+      "near_duplicate_of_prior": false,
+      "new_view_diversity": 0.5789007611774297,
+      "projections_inside": 80,
+      "selection_utility": 0.2825610581025181,
+      "source_id": "r080",
+      "target_distance_and_orientation": 2.104690351853541
+    }
+  ],
+  "source_selection": "coverage",
+  "target_camera_sha256": "3d7be52a1f7290779bf41fb1346b4ad88dfb224da29a2396a964b81f51092eed",
+  "target_id": "h00",
+  "target_prediction": {
+    "bytes": 1560241,
+    "path": "renders/0016.npz",
+    "sha256": "2bc9027562165c33209a1e0e0f763e32d4377c632b96e6e812e0743d6ec23d30"
+  }
+}

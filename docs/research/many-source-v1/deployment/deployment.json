@@ -1,0 +1,410 @@
+{
+  "all_tested_lru_peaks_within_512mib": true,
+  "all_tested_native_rss_within_2gib": true,
+  "archives": {
+    "inputs": {
+      "bytes": 36470716,
+      "path": "evidence-lens-b04-r16-example.zip",
+      "sha256": "b8652911de40b4eb4a6ef97d5cbb5d85204ddc4c06904278cb662350090f870b"
+    },
+    "outputs": {
+      "bytes": 2334367,
+      "path": "evidence-lens-b04-r16-reports.zip",
+      "sha256": "28549ce043feaebbbd50cb488869b419010e3d68f90f6d1bbaeae9bf920edd0e"
+    }
+  },
+  "fitted_cold_rank_hashes_all_thread_ceilings_equal": true,
+  "html_panels": {
+    "audit-bank": {
+      "canvas_pixels": 95256,
+      "decoded_grid_images": [
+        "Model rank",
+        "Comparable sources",
+        "Depth-supported sources",
+        "Depth conflicts",
+        "Colour conflicts",
+        "Query and audit state"
+      ],
+      "finite_pixels": 95256,
+      "gap_witness_counts_by_source": {
+        "r032": 263,
+        "r040": 25,
+        "r048": 146
+      },
+      "gap_witness_pixels": 434,
+      "int32_witness_cells_verified_against_arrays": 190512,
+      "linux_mac_decoded_panel_comparison": {
+        "identical_html_bytes": false,
+        "identical_non_png_html_including_witnesses": true,
+        "layers": [
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          }
+        ]
+      },
+      "mode": "audited",
+      "offline_chrome": {
+        "browser": "Chrome/157.0.8103.51",
+        "decoded_maps": [
+          [
+            "Model rank",
+            378,
+            252
+          ],
+          [
+            "Comparable sources",
+            378,
+            252
+          ],
+          [
+            "Depth-supported sources",
+            378,
+            252
+          ],
+          [
+            "Depth conflicts",
+            378,
+            252
+          ],
+          [
+            "Colour conflicts",
+            378,
+            252
+          ],
+          [
+            "Query and audit state",
+            378,
+            252
+          ]
+        ],
+        "displayed_text": "Pixel (369, 226) \u00b7 first comparable source none \u00b7 audit gap witness r032",
+        "external_http_requests_observed": 0,
+        "network_emulation": "offline",
+        "pixel": [
+          369,
+          226
+        ],
+        "viewport_css": [
+          460,
+          1000
+        ]
+      },
+      "pointer_test": {
+        "first": "none",
+        "gap": "r032",
+        "pixel": [
+          369,
+          226
+        ]
+      },
+      "rank_word_sha256": "ee4ef5f364899428f8f97720c88b3e26529404a5503c2037a689cd7fe6054d72",
+      "selected_witness_pixels": 93876
+    },
+    "score": {
+      "canvas_pixels": 95256,
+      "decoded_grid_images": [
+        "Model rank",
+        "Comparable sources",
+        "Depth-supported sources",
+        "Depth conflicts",
+        "Colour conflicts",
+        "Query and audit state"
+      ],
+      "finite_pixels": 95256,
+      "gap_witness_counts_by_source": {},
+      "gap_witness_pixels": 0,
+      "int32_witness_cells_verified_against_arrays": 190512,
+      "linux_mac_decoded_panel_comparison": {
+        "identical_html_bytes": false,
+        "identical_non_png_html_including_witnesses": true,
+        "layers": [
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          },
+          {
+            "same_png_bytes": false,
+            "same_rgb_pixels": true
+          }
+        ]
+      },
+      "mode": "finite",
+      "offline_chrome": {
+        "browser": "Chrome/157.0.8103.51",
+        "decoded_maps": [
+          [
+            "Model rank",
+            378,
+            252
+          ],
+          [
+            "Comparable sources",
+            378,
+            252
+          ],
+          [
+            "Depth-supported sources",
+            378,
+            252
+          ],
+          [
+            "Depth conflicts",
+            378,
+            252
+          ],
+          [
+            "Colour conflicts",
+            378,
+            252
+          ],
+          [
+            "Query and audit state",
+            378,
+            252
+          ]
+        ],
+        "displayed_text": "Pixel (248, 126) \u00b7 first comparable source r008 \u00b7 audit gap witness none",
+        "external_http_requests_observed": 0,
+        "network_emulation": "offline",
+        "pixel": [
+          248,
+          126
+        ],
+        "viewport_css": [
+          460,
+          1000
+        ]
+      },
+      "pointer_test": {
+        "first": "r008",
+        "gap": "none",
+        "pixel": [
+          248,
+          126
+        ]
+      },
+      "rank_word_sha256": "ee4ef5f364899428f8f97720c88b3e26529404a5503c2037a689cd7fe6054d72",
+      "selected_witness_pixels": 93876
+    }
+  },
+  "measurement_hosts": {
+    "fitted": {
+      "cpu_logical": 12,
+      "cpu_physical": 12,
+      "machine": "arm64",
+      "member": {
+        "manifest_sha256": "13aa524fa2aa1592cb2e05430a972a439e28e23dbb491eee3acd07a4a751d354",
+        "member": "environment.json",
+        "run_id": "20261124T115922562155Z-a19c0f467c74486d",
+        "sha256": "91d1036f919bfadb789eb7dd23e8d0509b5c702612974cda57aa3bab4e3a2df9"
+      },
+      "memory_total_bytes": 17179869184,
+      "platform": "macOS-27.2-arm64-arm-64bit"
+    },
+    "prefit": {
+      "cpu_logical": 12,
+      "cpu_physical": 12,
+      "machine": "arm64",
+      "member": {
+        "manifest_sha256": "3ed9d01ed4888e27a7ac2732d73d7dbc0c1ef40732649601e0e6d60ec3f13418",
+        "member": "environment.json",
+        "run_id": "20261124T113938671888Z-54034a86b30b405f",
+        "sha256": "91d1036f919bfadb789eb7dd23e8d0509b5c702612974cda57aa3bab4e3a2df9"
+      },
+      "memory_total_bytes": 17179869184,
+      "platform": "macOS-27.2-arm64-arm-64bit"
+    },
+    "scale": {
+      "cpu_logical": 12,
+      "cpu_physical": 12,
+      "machine": "arm64",
+      "member": {
+        "manifest_sha256": "2c02b02e9c19084b869c7690227dae40cbb45aad10ff612d373360f94ba72bb0",
+        "member": "environment.json",
+        "run_id": "20261124T115905797505Z-b94cac2024764649",
+        "sha256": "91d1036f919bfadb789eb7dd23e8d0509b5c702612974cda57aa3bab4e3a2df9"
+      },
+      "memory_total_bytes": 17179869184,
+      "platform": "macOS-27.2-arm64-arm-64bit"
+    }
+  },
+  "parents": {
+    "arrays0": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/score/scores.npz",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "18558a3620ba898f98fb2af6546a7a46ec5d6315c5e7c437605eed21242952cb"
+    },
+    "arrays1": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/audit-bank/scores.npz",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "61d119868b45d29a688abbfc181430cc97ad1e61dc5cb885559516e32574af34"
+    },
+    "example": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/example.json",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "111da715a1b98df0452ed7c7ca52036f1ee095f3f0308488c9b5f2d3a9781ec0"
+    },
+    "external": {
+      "manifest_sha256": "a8d29f99d1d614e60904e71a277954baf0e8cb9f64767f39d5f39db1b335515a",
+      "member": "payload/external.json",
+      "run_id": "20261124T115017266197Z-625f3360b3e04a72",
+      "sha256": "c97d0eb4b7c69606d7251cf6d48245e50388df84a400664561ad50a17d16c3e8"
+    },
+    "fitted": {
+      "manifest_sha256": "13aa524fa2aa1592cb2e05430a972a439e28e23dbb491eee3acd07a4a751d354",
+      "member": "payload/performance.json",
+      "run_id": "20261124T115922562155Z-a19c0f467c74486d",
+      "sha256": "f839043856a1cdbef7913b6f462cda11c0985abcc740b51d9267473179cb3e7d"
+    },
+    "html0": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/score/report.html",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "da486143ed73256b3825433d765cfb8e25cf34d15ccfadfd7b3d5ea5a7ef82ef"
+    },
+    "html1": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/audit-bank/report.html",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "9cd5687ef0def03e3ec4dd0ef35593043b2c1d53c407ec67df40de63ca35fa5e"
+    },
+    "linux_comparison": {
+      "manifest_sha256": "629c433ad24ca23010ae0935e14c386b2b4fc1aaff13dccc2388cb363eb27cf2",
+      "member": "payload/comparison.json",
+      "run_id": "20261124T120039484803Z-6e3a7d43bcce4b0a",
+      "sha256": "16594cdad41405629a8becb2baf88612d7ce32f7040f2303262eb651be79049a"
+    },
+    "linux_html0": {
+      "manifest_sha256": "ddf75afefc8bd01dc87fceddc3f9f64daa692821e719181c2b5b81d34fead394",
+      "member": "payload/score/report.html",
+      "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+      "sha256": "16aee69d6b5b19e3dc9e83d41d533cf1aa36f978d2e8475be2614e7c5d82a3cc"
+    },
+    "linux_html1": {
+      "manifest_sha256": "ddf75afefc8bd01dc87fceddc3f9f64daa692821e719181c2b5b81d34fead394",
+      "member": "payload/audit-bank/report.html",
+      "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+      "sha256": "70bc6d8faa2241c49fbfb70f9752ae9feda521e25843964d9b8849709f5526f7"
+    },
+    "linux_inspection": {
+      "manifest_sha256": "ddf75afefc8bd01dc87fceddc3f9f64daa692821e719181c2b5b81d34fead394",
+      "member": "payload/inspect.json",
+      "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+      "sha256": "4de609566e3ad73f3f0af3ccaf6096d6779a8ff8f4e97687e452c3ffaee43b1f"
+    },
+    "linux_installation": {
+      "manifest_sha256": "ddf75afefc8bd01dc87fceddc3f9f64daa692821e719181c2b5b81d34fead394",
+      "member": "payload/installation.json",
+      "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+      "sha256": "9665f1a915858bed79fd15712c0859c293defa34752c6d94ca413257a3f38554"
+    },
+    "linux_native": {
+      "manifest_sha256": "ddf75afefc8bd01dc87fceddc3f9f64daa692821e719181c2b5b81d34fead394",
+      "member": "payload/linux.json",
+      "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+      "sha256": "d2ce3fa5e3a0cc7c8267c46d7a3cbd9369d7bc3f092814e99bed9b9e002b1134"
+    },
+    "metadata0": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/score/scores.json",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "b00390ef5e4b693429c2208683f402f98b975dfdec87c20a7486c7937c749ebc"
+    },
+    "metadata1": {
+      "manifest_sha256": "8c2a5ff50f97f1f359bd125fcb5e1c65824e69927afc7de444a0fe9921d60979",
+      "member": "payload/audit-bank/scores.json",
+      "run_id": "20261124T115953681626Z-5e9e6504da5a4d1e",
+      "sha256": "296d6bb2bf467cbf448bb4e3a8152f70b9ac827b0c661e3d6efb6503da1e7e89"
+    },
+    "prefit": {
+      "manifest_sha256": "3ed9d01ed4888e27a7ac2732d73d7dbc0c1ef40732649601e0e6d60ec3f13418",
+      "member": "payload/performance.json",
+      "run_id": "20261124T113938671888Z-54034a86b30b405f",
+      "sha256": "2486693fba7e1a0eea46a2858ed4bdc63d7dc9623e3e12bd50490b915a7cc9e8"
+    },
+    "scale": {
+      "manifest_sha256": "2c02b02e9c19084b869c7690227dae40cbb45aad10ff612d373360f94ba72bb0",
+      "member": "payload/performance.json",
+      "run_id": "20261124T115905797505Z-b94cac2024764649",
+      "sha256": "0c6d3e67dd39ae28935397e96eb38f41441d16102b49e37ef6278ceb81be768c"
+    }
+  },
+  "preceding_projection_attempts": [
+    {
+      "detail": "Recorder metadata was submitted as an exported payload member.",
+      "execution": {
+        "manifest_sha256": "a356b4d4fd6cba98841e0099236413861f0fb89cfe40ef99908ae7b016498984",
+        "member": "run.json",
+        "run_id": "20261124T120011361476Z-391ce8bcce9b4f54",
+        "sha256": "456f10f2da983baacaf1b6892ce5f6f40363321b585069fde52e5d9ad884b1c5"
+      },
+      "stage": "b-bank-deployment-tables"
+    },
+    {
+      "detail": "The browser driver placed a fractional coordinate in the adjacent displayed pixel.",
+      "execution": {
+        "manifest_sha256": "8cfcbc613842f765a428735ab645e085cbd4faee6b4a5c7e65d53152248a6c69",
+        "member": "run.json",
+        "run_id": "20261124T120225193476Z-08e6832ca7c040d2",
+        "sha256": "555fd92b8adc42370f6e674b92b041ce14149875df11901282541ec4d4b6c105"
+      },
+      "stage": "b-bank-deployment-tables-verified"
+    }
+  ],
+  "run_id": "20261124T120432236841Z-ee4b89e5038c4457",
+  "schema": "el-b-bank-public-deployment-1",
+  "tables": {
+    "cpu-performance.csv": {
+      "rows": 4,
+      "sha256": "57ad8e629228dcdcf8695bb9ca148c8f5aa79d8b6337f36f92b047298b6ed7f8"
+    },
+    "hot-samples.csv": {
+      "rows": 28,
+      "sha256": "e5ed6db27c803863ecc76c2cd2a5b8b590e4b1733251a9ee934172d493071785"
+    },
+    "nested-scan.csv": {
+      "rows": 3,
+      "sha256": "205591cb2a95a2b9b0736c51ac13b4de724b5b706e22c8d04dbf1823cdaca60b"
+    }
+  }
+}

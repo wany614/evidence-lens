@@ -323,3 +323,105 @@ def test_independent_order_statistic_matches_row_major_across_dense_ties():
             np.zeros((1, 3), bool),
             ["r1", "r0"],
         )
+
+
+def test_independent_complete_arithmetic_matches_synthetic_rank_files(tmp_path):
+    from many_data_arithmetic import compute_ready
+    from evidence_lens_many.evaluation import mask_id
+
+    ids = [f"r{i:03d}" for i in range(20)]
+    witness = np.array([[6, 0, 17, 2, 5, 17, 7, 16, 1, 0]], np.int32)
+    valid = np.ones(witness.shape, bool)
+    high = np.array([[False, True, False, False, True, False, False, False, True, False]])
+    rank = np.array([[0.8, 0.0, 0.4, 0.2, 0.0, 0.2, 0.1, 0.5, 0.8, 0.9]], np.float32)
+    baseline = np.array([[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]], np.float32)
+    queries = {"coverage-4": ids[:4], "fixed-4": ids[4:8], "coverage-16": ids[:16], "coverage-20": ids}
+    manifest = {}
+    cells = {}
+    official = {}
+    output = tmp_path / "payload"
+    output.mkdir()
+    for name, sources in queries.items():
+        which = {ids.index(v) for v in sources}
+        selected_witness = np.isin(witness, list(which))
+        p = output / (name + ".npz")
+        arrays = {
+            "comparable": selected_witness.astype(np.uint32),
+            "incomplete": np.zeros_like(valid),
+            "invalid_geometry": np.zeros_like(valid),
+            "witness": np.where(selected_witness, witness, -1),
+        }
+        if name == "coverage-16":
+            arrays.update({"rank_B-CPU-LR": rank, "rank_coverage": baseline})
+        np.savez_compressed(p, **arrays)
+        digest = hashlib.sha256(p.read_bytes()).hexdigest()
+        manifest["payload/" + p.name] = {"bytes": p.stat().st_size, "sha256": digest}
+        cells[name] = {
+            "actual_k": len(sources),
+            "queries": sources,
+            "sha256": digest,
+            "bytes": p.stat().st_size,
+            "file": p.name,
+        }
+        correct = int((~high).sum())
+        num = int((~high & ~selected_witness).sum())
+        official[name] = {
+            "all_reference_correct": correct,
+            "correct_with_gap": num,
+            "correct_gap_rate": num / correct,
+            "audit_complete": True,
+        }
+    old = {
+        "mechanism": official,
+        "p1": {
+            "coverage4_minus_fixed4": official["coverage-4"]["correct_gap_rate"]
+            - official["fixed-4"]["correct_gap_rate"],
+            "coverage16_minus_coverage4": official["coverage-16"]["correct_gap_rate"]
+            - official["coverage-4"]["correct_gap_rate"],
+        },
+    }
+    first = quota(rank, valid, high, 20)
+    second = quota(baseline, valid, high, 20)
+    old["p2"] = {
+        "common": 10,
+        "quota": 2,
+        "rule": "coverage",
+        "new_errors": first["errors"],
+        "rule_errors": second["errors"],
+        "new_error_rate": first["error_rate"],
+        "rule_error_rate": second["error_rate"],
+        "new_minus_rule": first["error_rate"] - second["error_rate"],
+        "quota_over_reference": 0.2,
+        "common_hash": mask_id(valid),
+        "new_selection": first["pixel_indices_sha256"],
+        "rule_selection": second["pixel_indices_sha256"],
+    }
+    owner = SimpleNamespace(files=manifest, open=lambda n: tmp_path / n)
+    end = {"views": {"h00": {"cells": cells}}, "A": 20, "R": 20, "source_ids": ids}
+    got = compute_ready(
+        end,
+        owner,
+        {"accessible_ids": ids},
+        "h00",
+        valid,
+        high,
+        valid,
+        {"strong_simple_rule": "coverage"},
+        old,
+    )
+    assert (
+        got["P2"]["new_errors"] == 2 and got["P2"]["rule_errors"] == 1 and got["P2"]["new_minus_rule"] == 0.5
+    )
+    old["p2"]["new_selection"] = "changed"
+    with pytest.raises(ValueError, match="different independent P2 membership"):
+        compute_ready(
+            end,
+            owner,
+            {"accessible_ids": ids},
+            "h00",
+            valid,
+            high,
+            valid,
+            {"strong_simple_rule": "coverage"},
+            old,
+        )

@@ -1,0 +1,205 @@
+{
+  "bank_sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250",
+  "baseline_id": "sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23",
+  "depth_verified": true,
+  "duplicate_aliases": {},
+  "frame_receipt": {
+    "basis": "right_down_forward_camera_in_original_world",
+    "matrix": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "metric_anchor_ids": [],
+    "normalization": "fixed identity for all source subsets and held-out targets",
+    "unit": "m",
+    "unit_evidence": "designed metres",
+    "world_to_deployment": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "metric_anchor_ids": [],
+  "missing_target_prediction_ids": [],
+  "near_duplicate_pairs": [],
+  "permission": {
+    "A": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "H": [
+      "h00",
+      "h01",
+      "h02",
+      "h03",
+      "h04",
+      "h05"
+    ],
+    "R": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "calibration": "registered authored pinhole cameras",
+    "license": "CC BY 4.0, wany614 (authored geometry, images and data)",
+    "official_geometry_features_used": false,
+    "rgb_access": "deployment only reads actual R photographs. H has camera metadata only.",
+    "scene_id": "b04-layered-louvers",
+    "source_dataset": "original authored six-family study",
+    "source_ids": [
+      "r000",
+      "r008",
+      "r016",
+      "r024",
+      "r032",
+      "r040",
+      "r048",
+      "r056",
+      "r064",
+      "r072",
+      "r080",
+      "r088",
+      "r096",
+      "r104",
+      "r112",
+      "r120"
+    ],
+    "split": "development",
+    "terms": "CC BY 4.0, wany614 (authored geometry, images and data)"
+  },
+  "reconstruction_ids": [
+    "r000",
+    "r008",
+    "r016",
+    "r024",
+    "r032",
+    "r040",
+    "r048",
+    "r056",
+    "r064",
+    "r072",
+    "r080",
+    "r088",
+    "r096",
+    "r104",
+    "r112",
+    "r120"
+  ],
+  "reconstruction_provenance": "verified",
+  "registered_accessible_ids": [
+    "r000",
+    "r008",
+    "r016",
+    "r024",
+    "r032",
+    "r040",
+    "r048",
+    "r056",
+    "r064",
+    "r072",
+    "r080",
+    "r088",
+    "r096",
+    "r104",
+    "r112",
+    "r120"
+  ],
+  "scene_id": "b04-layered-louvers",
+  "target_camera_ids": [
+    "h00",
+    "h01",
+    "h02",
+    "h03",
+    "h04",
+    "h05"
+  ],
+  "unavailable_source_ids": [],
+  "unique_accessible_ids": [
+    "r000",
+    "r008",
+    "r016",
+    "r024",
+    "r032",
+    "r040",
+    "r048",
+    "r056",
+    "r064",
+    "r072",
+    "r080",
+    "r088",
+    "r096",
+    "r104",
+    "r112",
+    "r120"
+  ]
+}

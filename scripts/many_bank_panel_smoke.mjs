@@ -53,11 +53,11 @@ async function exercise() {
   await send('Page.navigate', { url: pathToFileURL(resolve(filename)).href }); await loaded;
   const layers = await js('Promise.all([...document.images].map(async i=>{await i.decode(); return [i.alt,i.naturalWidth,i.naturalHeight]}))');
   if (layers.length !== 6 || layers.some(a => a[1] !== 378 || a[2] !== 252)) throw Error('Browser did not decode six analysis-grid images');
-  const position = await js(`(()=>{const i=document.images[0];i.scrollIntoView({block:'center'}); const b=i.getBoundingClientRect();return {x:b.left+(${x}+.5)*b.width/378,y:b.top+(${y}+.5)*b.height/252}})()`);
+  const position = await js(`(()=>{const i=document.images[0];i.scrollIntoView({block:'center'}); const b=i.getBoundingClientRect();return {x:Math.ceil(b.left+${x}*b.width/378),y:Math.ceil(b.top+${y}*b.height/252)}})()`);
   await send('Input.dispatchMouseEvent', {type: 'mousePressed', ...position, button: 'left', clickCount: 1});
   await send('Input.dispatchMouseEvent', {type: 'mouseReleased', ...position, button: 'left', clickCount: 1});
   const text = await js('document.querySelector("#pixel").textContent');
-  if (!text.startsWith(`Pixel (${x}, ${y}) ·`) || remote.length) throw Error('Offline source-ID interaction failed');
+  if (!text.startsWith(`Pixel (${x}, ${y}) ·`) || remote.length) throw Error('Offline source-ID interaction failed: '+text+', HTTP requests '+remote.length);
   return { browser: version.product, viewport_css: [460,1000], network_emulation: 'offline', external_http_requests_observed: remote.length, decoded_maps: layers, pixel: [x,y], displayed_text: text };
 }
 let timer;

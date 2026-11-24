@@ -1,0 +1,125 @@
+{
+  "archive_sha256": "b8652911de40b4eb4a6ef97d5cbb5d85204ddc4c06904278cb662350090f870b",
+  "bank_sha256": "193b1b300f072c67fef3d5dca25f78fa4cc0b1a92613c7c4ccae30c4fe5ff250",
+  "image_id": "sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "inputs_role": "portable deployment bank, final head, wheels and validator",
+  "inspection_sha256": "4de609566e3ad73f3f0af3ccaf6096d6779a8ff8f4e97687e452c3ffaee43b1f",
+  "installation_sha256": "9665f1a915858bed79fd15712c0859c293defa34752c6d94ca413257a3f38554",
+  "model_sha256": "b9e6b761f2ff15d2c2aada851aa0e239f550163368107692b0c536843f11c721",
+  "native": {
+    "base_cpu_torch_present": false,
+    "cpu_thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "initial_distributions": [
+      "pip"
+    ],
+    "interfaces": [
+      "lo"
+    ],
+    "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+    "machine": "aarch64",
+    "os": "Linux",
+    "packages": {
+      "evidence-lens": "0.5.0",
+      "evidence-lens-many-source": "0.1.0.dev0",
+      "numpy": "2.5.5",
+      "pillow": "12.3.0"
+    },
+    "pip_check": "No broken requirements found.",
+    "python": "3.12.16",
+    "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+    "verified_product_files": {
+      "evidence_lens-0.5.0-py3-none-any.whl": 102,
+      "evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl": 9
+    },
+    "wheelhouse": {
+      "evidence_lens-0.5.0-py3-none-any.whl": {
+        "bytes": 405919,
+        "sha256": "40d9b6ffb9d881c63d4710fee71112920dd665da831ef744fb062a20f86de734"
+      },
+      "evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl": {
+        "bytes": 34932,
+        "sha256": "42f705cca13248a0622dc9afc22f34c681f3088a93fc1957b0a78618697e8cb3"
+      },
+      "numpy-2.5.5-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl": {
+        "bytes": 15284117,
+        "sha256": "a0750f2156d53446caca85663d0b65d67214e1664b9050454a731ea1418d176a"
+      },
+      "pillow-12.3.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl": {
+        "bytes": 6266838,
+        "sha256": "d9c7f76c0673154f044e9d78c8655fb4213f6ca31a836df48b40fe5d187717b9"
+      }
+    }
+  },
+  "network": "none",
+  "results": {
+    "audit-bank": {
+      "canvas_pixels": 95256,
+      "original_and_regenerated_html_sha256": "70bc6d8faa2241c49fbfb70f9752ae9feda521e25843964d9b8849709f5526f7",
+      "query": [
+        "r008",
+        "r120",
+        "r000",
+        "r080"
+      ],
+      "rank_eligible_pixels": 95256,
+      "reason_counts": {
+        "depth_unverified": 0,
+        "invalid_target_alpha": 0,
+        "invalid_target_rgb": 0,
+        "invalid_target_z": 0,
+        "queried_material_unavailable": 0,
+        "rank_available": 95256,
+        "target_alpha_below_minimum": 0,
+        "target_render_unavailable": 0
+      },
+      "scope_counts": {
+        "audited_comparable_evidence": 93876,
+        "audited_library_no_comparable_evidence": 946,
+        "geometry_not_evaluable": 0,
+        "library_incomplete_or_unavailable": 0,
+        "selected_subset_only": 0,
+        "subset_comparability_gap": 434
+      },
+      "scores_json_sha256": "c42e0a2402651b7739b43fe9756c88f61876bd33a4d6c92407921d7a7e8b18f1",
+      "scores_npz_sha256": "61d119868b45d29a688abbfc181430cc97ad1e61dc5cb885559516e32574af34"
+    },
+    "score": {
+      "canvas_pixels": 95256,
+      "original_and_regenerated_html_sha256": "16aee69d6b5b19e3dc9e83d41d533cf1aa36f978d2e8475be2614e7c5d82a3cc",
+      "query": [
+        "r008",
+        "r120",
+        "r000",
+        "r080"
+      ],
+      "rank_eligible_pixels": 95256,
+      "reason_counts": {
+        "depth_unverified": 0,
+        "invalid_target_alpha": 0,
+        "invalid_target_rgb": 0,
+        "invalid_target_z": 0,
+        "queried_material_unavailable": 0,
+        "rank_available": 95256,
+        "target_alpha_below_minimum": 0,
+        "target_render_unavailable": 0
+      },
+      "scope_counts": {
+        "audited_comparable_evidence": 0,
+        "audited_library_no_comparable_evidence": 0,
+        "geometry_not_evaluable": 0,
+        "library_incomplete_or_unavailable": 0,
+        "selected_subset_only": 95256,
+        "subset_comparability_gap": 0
+      },
+      "scores_json_sha256": "2e1b5ac12d271e5774c64b670f490db6636ba0c56a8ba8d66440d613ab297164",
+      "scores_npz_sha256": "18558a3620ba898f98fb2af6546a7a46ec5d6315c5e7c437605eed21242952cb"
+    }
+  },
+  "root_read_only": true,
+  "run_id": "20261124T120011607929Z-77ea57c62b594e6b",
+  "schema": "el-b-many-clean-linux-1"
+}

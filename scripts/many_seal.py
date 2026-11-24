@@ -19,16 +19,18 @@ MANIFEST="B_MANIFEST.json"
 PHASE_A="sha256:6e8e837afa0818cdf8c100b494672b46c10bdbd22e522f388983543f0a5b0f23"
 STAGES={"baseline":"a-baseline","roles":"b-data-registration","study":"b-study-registration","freeze":"b-model-freeze",
         "opening":"b-confirmation-h-opening","upstream":"b-upstream-closeout","results":"b-scientific-results",
-        "independent":"b-independent-arithmetic-check","model":"b-model-package","deployment":"b-bank-deployment-tables",
+        "independent":"b-independent-arithmetic-check","model":"b-model-package","deployment":"b-bank-deployment-public",
         "resources":"b-resources-and-failures","examples":"b-upstream-adapter-examples",
         "external":"b-external-import-acceptance","source_audit":"b-data-preopening-audit","runtime":"b-score-runtime",
-        "tests":"b-frozen-science-regressions"}
+        "tests":"b-frozen-science-regressions","access":"b-data-final-access","runtime_intake":"b-upstream-runtime",
+        "numeric_report":"b-scientific-summary-html","input_alignment":"b-fit-input-alignment",
+        "update_attribution":"b-checkpoint-update-attribution"}
 ASSETS={
     "wheel":("b-score-core-build",WHEEL,"Apache-2.0 original code. Dependency and model notices are separate."),
     "trained":("b-model-package",ARCHIVE,"Apache-2.0 original parameters and preprocessing; CC BY 4.0 original writing and grantable measurements."),
     "numerical":("b-scientific-results","many-source-results.zip","CC BY 4.0, to the extent rights apply to the original measurements and writing."),
     "bank":("b-bank-public-example","evidence-lens-b04-r16-example.zip","Apache-2.0 original parameters; CC BY 4.0 authored RGB, depth, opacity and cameras."),
-    "reports":("b-bank-deployment-tables","evidence-lens-b04-r16-reports.zip","CC BY 4.0 original panels and grantable measurements."),
+    "reports":("b-bank-deployment-public","evidence-lens-b04-r16-reports.zip","CC BY 4.0 original panels and grantable measurements."),
     "native":("b-upstream-adapter-examples","many-authored-native-b04-r16.zip","Apache-2.0 original Gaussian parameters; CC BY 4.0 authored observations and renders."),
     "negative":("b-upstream-adapter-examples","many-incomplete-native-example.zip","CC BY 4.0 original missing-field specimen and description.")}
 
@@ -58,12 +60,15 @@ def close(a,cfg,paths):
     fails=[r for r in totals if r["status"]!="succeeded"]
     limits=up["policy"]
     checks={
+        "sealed_A_baseline":"sha256:"+sha(paths["baseline"])==PHASE_A and up["baseline_id"]==PHASE_A,
         "all_planned_upstream_returns":up["issued_fit_count"]==15 and up["succeeded"]==15,
         "all_planned_confirmation_measurements":all(r["views"]==r["complete_p2_views"] for r in result["scenes"] if r["role"]=="confirmation"),
         "signed_new_head":freeze["final_model"]["sha256"]==model["weights_sha256"],
         "prepared_banks":up["total_source_renders"]==1053 and up["total_target_predictions"]==102,
         "closed_reference_path":up["independent_confirmation_photos_accessed_by_upstream"]==0 and
             set(opening["terminals"])=={"living_room","bridge","b05-perforated-gallery","b06-corner-alcoves"},
+        "independent_access_log":load(paths["access"])["confirmation_H_first_decodes_before_grant"]==0,
+        "input_photo_and_intrinsic_check":load(paths["input_alignment"])["exact_k_views_fp32"]==1053,
         "gpu_time":resources["gpu_fit_worker_seconds"]<=limits["max_gpu_seconds"],
         "fit_limit":resources["fit_attempts"]<=limits["max_fits_including_failures"],
         "cpu_time":resources["accounted_cpu_core_seconds"]+resources["max_allowance_uncovered_seconds"]<=limits["max_cpu_core_seconds"],
@@ -71,11 +76,16 @@ def close(a,cfg,paths):
         "scoring_rss":cpu["all_tested_native_rss_within_2gib"],
         "source_cache":cpu["all_tested_lru_peaks_within_512mib"]}
     status=result["comparison_status"] if all(checks.values()) else "blocked_or_incomplete"
+    intake=load(paths["runtime_intake"])
+    require("quarantined" in intake["stock_direct_parent_status"] and intake["inventory"]["fits"]==0,
+            "native runtime inventory disposition differs")
     receipt=dict(schema="el-many-study-closeout-1",run_id=os.environ["EL_RUN_ID"],status=status,
         numerical_endpoint=result["comparison_status"],checks=checks,A_BASELINE_ID=PHASE_A,
         science_code_commit=freeze["science_code_commit"],model_id=model["model_id"],model_sha256=model["weights_sha256"],
         strong_rule=freeze["strong_simple_rule"],opening_run=opening["run_id"],run_count=len(totals),
         failures=[{"id":r["run_id"],"stage":r["trial"],"status":r["status"],"exit_code":r.get("exit_code")} for r in fails],
+        independently_reconciled_intake={"original":intake["native"],"original_direct_parent":intake["stock_direct_parent_status"],
+            "later_verified":cfg["sources"]["runtime_intake"],"fits":0},
         resources={k:resources[k] for k in ("gpu_fit_worker_seconds","fit_attempts","accounted_cpu_core_seconds",
             "max_allowance_uncovered_seconds","all_manifest_logical_bytes","unique_payload_bytes","allocated_B_archive_bytes")},
         limits=limits,external=[r for r in result["scenes"] if r["scene"] in ("living_room","bridge")],
@@ -103,7 +113,17 @@ def close(a,cfg,paths):
         "Short-lived children may escape the sampler. The GPU charge includes native fitting, reload, rendering, parity checks and process overhead. "
         "Machine-wide NVIDIA measurements and per-process PyTorch allocation measure different resources. The Mac block count includes hardlinked files once; "
         "Windows working files and cloud transport replicas have separate receipts.","","## Native failure history",""]
-    lines += [f"- `{r['run_id']}` · `{r['trial']}` · {r['status']}, exit {r.get('exit_code')}." for r in fails] or ["No unsuccessful native B record in this cut."]
+    fixes={
+        "b-visible-b04-layered-louvers":"A source snapshot was assigned as a direct payload parent. The original mesh code was later sealed as a named payload member.",
+        "b-exact-visible-b04-layered-louvers":"The first provenance repair still failed before the geometry worker started. The signed source bridge and exact-visibility run subsequently passed.",
+        "b-bank-deployment-tables":"The verifier rejected a host environment file declared as its parent's payload member. The later projection verified metadata against the native manifest.",
+        "b-bank-deployment-tables-verified":"The browser probe's fractional pointer coordinate selected an adjacent pixel. A verified integer CSS coordinate reproduced the stored witness.",
+        "b-study-regressions":"The original test checkout omitted the committed protocol directory. A strict retry rejected the changed harness. The complete regression checkout ran as a separately recorded operation."}
+    lines += [f"- `{r['run_id']}` · `{r['trial']}` · {r['status']}, exit {r.get('exit_code')}. "
+              +fixes.get(r["trial"],"The immutable native completion records the worker disposition.") for r in fails] or ["No unsuccessful native B record in this cut."]
+    lines+=["","The first Windows environment inventory also reached the receiver with its extracted kit assigned to an incorrect direct parent. "
+            f"Original inventory `{intake['native']['run_id']}`; independent member-by-member reconciliation `{cfg['sources']['runtime_intake']['run_id']}`. "
+            "It read zero photographs and ran zero fits. The original sealed ZIP and its receiver disposition remain in the private exchange."]
     lines+=["","[Per-run measurements](runs.csv) · [Scorer hot, cold and full-bank measurements](deployment/README.md)"]
     (a.out/"resources-and-failures.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
 

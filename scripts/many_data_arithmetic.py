@@ -14,7 +14,7 @@ from PIL import Image
 
 from dual_records import resolve, selected, stage
 from dtu_eval import read_pinned
-from evidence_lens._bundle import load, save
+from evidence_lens._bundle import load, save, sha
 from evidence_lens._verify import require
 from many_data_prepare import confirmation_terminals
 
@@ -25,6 +25,7 @@ def record(s):
         k: selected(s, label)
         for k, label in {
             "protocol": "b-independent-arithmetic-registration",
+            "program": "b-independent-arithmetic-program",
             "roles": "b-data-registration",
             "freeze": "b-model-freeze",
             "opening": "b-confirmation-h-opening",
@@ -309,7 +310,12 @@ def worker(a):
     documents = {}
     for key, p in pins.items():
         owners[key], path = read_pinned((a.store,), p)
-        documents[key] = load(path)
+        if key == "program":
+            require(
+                sha(path) == sha(Path(__file__)), "independent arithmetic differs from its pre-opening code"
+            )
+        else:
+            documents[key] = load(path)
     grant = documents["opening"]
     registration = documents["protocol"]
     frozen = documents["freeze"]
@@ -400,6 +406,7 @@ def worker(a):
             "schema": "el-many-independent-primary-arithmetic-1",
             "run_id": os.environ["EL_RUN_ID"],
             "protocol": pins["protocol"],
+            "program": pins["program"],
             "opening": pins["opening"],
             "model_freeze": pins["freeze"],
             "cases": rows,
@@ -415,7 +422,7 @@ def worker(a):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("record", "worker", "register"))
+    parser.add_argument("action", choices=("record", "worker", "register", "seal-program"))
     parser.add_argument("--store", required=True, type=Path)
     parser.add_argument("--config", type=Path)
     parser.add_argument("--out", type=Path)
@@ -441,6 +448,34 @@ if __name__ == "__main__":
             "payload/arithmetic-protocol.json",
             9000,
             {"protocol": Path(__file__).resolve().parents[1] / "protocol/many-source-arithmetic-v1.json"},
+        )
+        print(json.dumps(p), flush=True)
+    elif a.action == "seal-program":
+        s = a.store.resolve()
+        require(
+            not (s / "work/controller/b-confirmation-h-opening/selected.json").exists(),
+            "pre-opening code seal must precede actual H permission",
+        )
+        p = stage(
+            s,
+            "b-independent-arithmetic-program",
+            "archive_verify",
+            {
+                "registration": selected(s, "b-independent-arithmetic-registration"),
+                "freeze": selected(s, "b-model-freeze"),
+            },
+            {"scope": "complete comparator code for the three frozen h00 positions before common H access"},
+            [
+                "{python}",
+                "-I",
+                "-c",
+                "import shutil,sys; shutil.copyfile(sys.argv[1],sys.argv[2])",
+                "{input:program}",
+                "{out}/arithmetic.py",
+            ],
+            "payload/arithmetic.py",
+            36000,
+            {"program": Path(__file__).resolve()},
         )
         print(json.dumps(p), flush=True)
     elif a.action == "record":

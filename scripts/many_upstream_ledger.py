@@ -39,28 +39,33 @@ def inputs_for_case(store, tag, files, native_metadata):
 
 def register(store, mode):
     confirmation = mode == "confirmation-queue"
+    development_resources = mode == "development-resources"
     files = {"study": selected(store, "b-study-registration"),
-             "freeze": selected(store, "b-model-freeze"),
              "recipe": selected(store, "b-upstream-recipe"),
              "budget": selected(store, "b-pilot-budget"),
              "development": selected(store, "b-development-diagnostics"),
              "development_queue": selected(store, "b-training-development-fit-queue")}
-    if not confirmation:
+    if not development_resources:
+        files["freeze"] = selected(store, "b-model-freeze")
+        files["development_resources"] = selected(store, "b-upstream-training-development-resources")
+    if mode == "closeout":
         files["confirmation_queue"] = selected(store, "b-confirmation-fit-queue")
         files["external_import"] = selected(store, "b-external-import-acceptance")
-    cases = DEVELOPMENT_TRAINING if confirmation else (*DEVELOPMENT_TRAINING, *REMAINING)
+    cases = (*DEVELOPMENT_TRAINING, *REMAINING) if mode == "closeout" else DEVELOPMENT_TRAINING
     native_metadata = {}
     for tag in cases:
         inputs_for_case(store, tag, files, native_metadata)
-    for tag in REMAINING:
+    confirm_tags = () if development_resources else REMAINING
+    for tag in confirm_tags:
         files["ticket-" + tag] = selected(store, "b-fit-ticket-" + tag)
     cmd = ["{python}", "-B", "{source}/scripts/many_upstream_ledger.py", "worker", "--config", "{config}", "--out", "{out}", "--store", str(store)]
     for name in files:
         cmd += ["--input", name, "{input:" + name + "}"]
-    name = "b-confirmation-fit-queue" if confirmation else "b-upstream-closeout"
-    output = "payload/queue.json" if confirmation else "payload/upstream.json"
+    name, output = {"confirmation-queue": ("b-confirmation-fit-queue","payload/queue.json"),
+                    "development-resources": ("b-upstream-training-development-resources","payload/resources.json"),
+                    "closeout": ("b-upstream-closeout","payload/upstream.json")}[mode]
     return stage(store, name, "archive_verify" if confirmation else "report", files,
-                 {"mode": mode, "observed_tags": cases, "confirmation_tags": REMAINING, "native_metadata":native_metadata},
+                 {"mode": mode, "observed_tags": cases, "confirmation_tags": confirm_tags, "native_metadata":native_metadata},
                  cmd, output, 170000)
 
 
@@ -152,13 +157,10 @@ def case_summary(tag, sizes, cfg, files, store):
 
 
 def execute(cfg, paths, out, store):
-    study, frozen, recipe, pilot = (load(paths[k]) for k in ("study", "freeze", "recipe", "budget"))
+    study, recipe, pilot = (load(paths[k]) for k in ("study", "recipe", "budget"))
     limits = study["study"]["budget"]
-    require(frozen["schema"] == "el-many-confirmation-model-freeze-1" and frozen["all_confirmation_references_closed"]
-            and frozen["upstream_recipe"] == cfg["sources"]["recipe"] and recipe["baseline_id"] == study["baseline"]
-            and frozen["parents"]["development_diagnostics"] == cfg["sources"]["development"]
-            and pilot["projected_15_fits_budget"] and frozen["parents"]["pilot_budget"] == cfg["sources"]["budget"],
-            "required recipe, A baseline, independent development or budget lineage changed")
+    require(recipe["baseline_id"] == study["baseline"] and pilot["projected_15_fits_budget"],
+            "A baseline or prospective pilot budget differs")
     size = {key: (n, nh) for key, n, nh in COHORT}
     registered = cfg["observed_tags"]
     rows = {tag: case_summary(tag, size[tag], cfg, paths, store) for tag in registered}
@@ -168,6 +170,22 @@ def execute(cfg, paths, out, store):
     compliant = not over_time and spent <= limits["max_gpu_seconds"] and len(rows) <= limits["max_fits_including_failures"]
     rids = [case["native_record"]["run_id"] for case in rows.values()]
     require(len(set(rids)) == len(rids), "an upstream run counted twice")
+    if cfg["mode"] == "development-resources":
+        require(tuple(registered)==DEVELOPMENT_TRAINING,"unregistered development/training cohort")
+        return save(out/"resources.json",{"schema":"el-many-development-training-resources-1","run_id":os.environ["EL_RUN_ID"],
+                    "recipe":cfg["sources"]["recipe"],"development":cfg["sources"]["development"],"pilot_budget":cfg["sources"]["budget"],
+                    "cases":rows,"issued":len(rows),"succeeded":sum(r["status"]=="succeeded" for r in rows.values()),
+                    "charged_native_gpu_seconds":spent,"remaining_gpu_seconds":limits["max_gpu_seconds"]-spent,
+                    "source_sfm_cpu_seconds":sum(r["source_sfm_seconds"] for r in rows.values()),
+                    "fit_time_and_count_within_declared_limits":compliant,"cases_over_native_wall_cap":over_time})
+    frozen = load(paths["freeze"])
+    dev_resources = load(paths["development_resources"])
+    require(frozen["schema"] == "el-many-confirmation-model-freeze-1" and frozen["all_confirmation_references_closed"]
+            and frozen["upstream_recipe"] == cfg["sources"]["recipe"]
+            and frozen["parents"]["development_diagnostics"] == cfg["sources"]["development"]
+            and frozen["parents"]["pilot_budget"] == cfg["sources"]["budget"]
+            and all(dev_resources["cases"][key]==rows[key] for key in DEVELOPMENT_TRAINING),
+            "required upstream recipe, development resource census or common freeze differs")
     tickets = []
     for tag in cfg["confirmation_tags"]:
         t = load(paths["ticket-" + tag])
@@ -180,16 +198,33 @@ def execute(cfg, paths, out, store):
         require(compliant and len(rows) == 9 and len(tickets) == 6 and len(rows) + len(tickets) <= limits["max_fits_including_failures"]
                 and worst_case <= limits["max_gpu_seconds"], "insufficient reserved time for the six mandatory fits")
         return save(out / "queue.json", {"schema": "el-many-confirmation-fit-queue-1", "run_id": os.environ["EL_RUN_ID"],
-                    "freeze": cfg["sources"]["freeze"], "budget": cfg["sources"]["budget"], "fits": tickets,
+                    "freeze": cfg["sources"]["freeze"], "budget": cfg["sources"]["budget"],
+                    "measured_development":cfg["sources"]["development_resources"], "fits": tickets,
                     "spent_native_gpu_seconds": spent, "max_total_if_all_six_use_full_hour": worst_case,
                     "available_seconds": limits["max_gpu_seconds"]-spent, "fit_count_before_this_queue": len(rows),
                     "target_reference_access": "closed", "instructions": "Run each ticket once and return its own immutable native record."})
     ok = [r for r in rows.values() if r["status"] == "succeeded"]
+    artifact_bytes = {}
+    for tag, case in rows.items():
+        if case["status"] != "succeeded":
+            continue
+        bank = load(paths["bank-" + tag])
+        proof = load(paths["proof-" + tag])
+        fit = load(paths["training-" + tag])
+        source = bank["sources"].values()
+        artifact_bytes[tag] = {
+            "native_transfer_zip": proof["native"]["bytes"], "native_checkpoint": fit["native_checkpoint"]["bytes"],
+            "scoring_bank_source_photographs": sum(v["photo"]["bytes"] for v in source),
+            "scoring_bank_source_self_renders": sum(v["render"]["bytes"] for v in source),
+            "scoring_bank_target_predictions": sum(v["render"]["bytes"] for v in bank["targets"].values())}
     save(out / "upstream.json", {"schema": "el-many-upstream-resource-closeout-1", "run_id": os.environ["EL_RUN_ID"],
          "baseline_id": study["baseline"], "recipe": cfg["sources"]["recipe"], "development": cfg["sources"]["development"],
          "common_model_freeze": cfg["sources"]["freeze"], "external_adapter": cfg["sources"]["external_import"],
+         "measured_development_resources":cfg["sources"]["development_resources"],
          "train_development_queue": cfg["sources"]["development_queue"], "confirmation_queue": cfg["sources"]["confirmation_queue"],
          "issued_fit_count": len(rows), "succeeded": len(ok), "failed": len(rows) - len(ok), "policy": limits,
+         "training_updates_definition":"Each successful fit executes 6000 single-source loss/backward and in-memory optimizer iterations. The official checkpoint is serialized before the 6000th optimizer application, and therefore contains the first 5999 updates.",
+         "device_memory_scope":"On Windows the nvidia-smi samples are whole-device measurements; WDDM may withhold process-level counters. The maximum PyTorch allocated/reserved counts in this ledger are framework-local; a missing WDDM process counter stays null.",
          "fit_time_and_count_within_declared_limits":compliant, "cases_over_native_wall_cap":over_time,
          "charged_gpu_seconds": spent, "remaining_gpu_seconds": limits["max_gpu_seconds"] - spent,
          "successful_fit_seconds": sum(r["fit_seconds"] for r in ok),
@@ -199,12 +234,14 @@ def execute(cfg, paths, out, store):
          "max_cuda_reserved_bytes": max((r["native_peak_torch_reserved_bytes"] for r in ok), default=None),
          "max_device_observed_mib": max((r["telemetry"]["observed_peak_whole_device_mib"] for r in ok
                                          if r["telemetry"]["observed_peak_whole_device_mib"] is not None), default=None),
+         "artifact_bytes_by_case":artifact_bytes,
+         "artifact_byte_scope":"Logical transferred ZIP, checkpoint and scoring-bank component sizes. The same content occurs in multiple representations; these columns are not an estimate of physical disk use.",
          "independent_confirmation_photos_accessed_by_upstream": 0, "cases": rows})
 
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("action", choices=("confirmation-queue", "closeout", "worker"))
+    p.add_argument("action", choices=("development-resources", "confirmation-queue", "closeout", "worker"))
     for name in ("store", "exchange", "config", "out", "sfm-python"):
         p.add_argument("--" + name, type=Path)
     p.add_argument("--input", nargs=2, action="append", default=[])

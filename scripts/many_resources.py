@@ -125,7 +125,7 @@ def account(s):
 def main(a):
     if a.record:
         pins={k:selected(a.store,v) for k,v in {"study":"b-study-registration","results":"b-scientific-results",
-            "upstream":"b-upstream-closeout","cpu":"b-bank-deployment-tables","independent":"b-independent-arithmetic-check",
+            "upstream":"b-upstream-closeout","cpu":"b-bank-deployment-public","independent":"b-independent-arithmetic-check",
             "model":"b-model-package"}.items()}
         if (a.store/"work/controller/b-bank-linux-mac-comparison/selected.json").is_file():
             pins["linux"]=selected(a.store,"b-bank-linux-mac-comparison")

@@ -158,6 +158,29 @@ def verify_report(html, metadata, scores, native, dispatch):
         }
 
 
+def compare_html(mac, linux):
+    from PIL import Image
+
+    pattern = r"data:image/png;base64,[A-Za-z0-9+/=]+"
+    m, l = (p.read_text(encoding="utf-8") for p in (mac, linux))
+    mac_layers, linux_layers = (re.findall(pattern, p) for p in (m, l))
+    check(len(mac_layers) == len(linux_layers) == 6, "different platform panel count")
+    layers = []
+    for a, b in zip(mac_layers, linux_layers, strict=True):
+        images = []
+        for encoded in (a, b):
+            with Image.open(io.BytesIO(base64.b64decode(encoded.split(",", 1)[1], validate=True))) as im:
+                check(im.mode == "RGB" and im.size == (378, 252), "different reported RGB pane")
+                images.append(im.tobytes())
+        layers.append({"same_png_bytes": a == b, "same_rgb_pixels": images[0] == images[1]})
+    return {
+        "identical_html_bytes": sha(mac) == sha(linux),
+        "identical_non_png_html_including_witnesses": re.sub(pattern, "[PNG]", m)
+        == re.sub(pattern, "[PNG]", l),
+        "layers": layers,
+    }
+
+
 def performance_tables(pins, values):
     rows, samples = [], []
     fitted = values["fitted"]
@@ -300,13 +323,13 @@ def worker(args):
         if role in ("prefit", "fitted", "scale"):
             check(doc["mode"] == role, "wrong measured mode")
     project = args.out
-    host = {}
-    for mode, member in zip(("prefit", "fitted", "scale"), args.environment, strict=True):
-        env = load(member)
-        check(sha(member) == pins["environment_" + mode]["sha256"], "different measured host receipt")
-        host[mode] = {
-            k: env[k] for k in ("platform", "machine", "cpu_physical", "cpu_logical", "memory_total_bytes")
-        }
+    host = cfg["measurement_hosts"]
+    for mode, env in host.items():
+        check(
+            env["member"]["run_id"] == pins[mode]["run_id"]
+            and env["member"]["manifest_sha256"] == pins[mode]["manifest_sha256"],
+            "different measured host receipt",
+        )
     rows, samples, scales = performance_tables(pins, values)
     write_csv(project / "cpu-performance.csv", rows)
     write_csv(project / "hot-samples.csv", samples)
@@ -334,15 +357,25 @@ def worker(args):
         x, y = probe["pixel"]
         result = subprocess.run(
             [args.node, args.panel_script, args.chrome, table["report.html"], str(x), str(y)],
-            check=True,
+            check=False,
             capture_output=True,
             text=True,
             timeout=45,
         )
+        check(result.returncode == 0, "offline pointer test: " + result.stderr[-900:])
         browser = json.loads(result.stdout)
         expected = f"Pixel ({x}, {y}) · first comparable source {probe['first']} · audit gap witness {probe['gap']}"
         check(browser["displayed_text"] == expected, "browser displayed different source IDs")
         panels[action]["offline_chrome"] = browser
+        linux_receipt = load(args.linux_native)
+        check(
+            sha(args.linux_html[index])
+            == linux_receipt["results"][action]["original_and_regenerated_html_sha256"],
+            "different Linux report",
+        )
+        panels[action]["linux_mac_decoded_panel_comparison"] = compare_html(
+            table["report.html"], args.linux_html[index]
+        )
         members.update({action + "/" + name: path for name, path in table.items()})
     check(
         panels["score"]["rank_word_sha256"] == panels["audit-bank"]["rank_word_sha256"],
@@ -362,12 +395,17 @@ def worker(args):
     )
     for role in ("prefit", "fitted", "scale", "external", "example"):
         shutil.copyfile(getattr(args, role), project / (role + ".json"))
+    for role in ("linux_native", "linux_comparison", "linux_installation", "linux_inspection"):
+        source = getattr(args, role)
+        check(sha(source) == pins[role]["sha256"], "different platform receipt")
+        shutil.copyfile(source, project / (role.replace("_", "-") + ".json"))
     digests = {r["rank_sha256"] for r in rows if r["stage"] == "fitted"}
     receipt = {
         "schema": "el-b-bank-public-deployment-1",
         "run_id": os.environ["EL_RUN_ID"],
         "parents": pins,
         "measurement_hosts": host,
+        "preceding_projection_attempts": cfg["preceding_projection_attempts"],
         "archives": archives,
         "html_panels": panels,
         "fitted_cold_rank_hashes_all_thread_ceilings_equal": len(digests) == 1,
@@ -391,10 +429,16 @@ def worker(args):
 
 
 def run(args):
-    from dual_records import bind, selected, stage
+    from dtu_eval import read_pinned
+    from dual_records import bind, resolve, selected, stage
 
     s = args.store.resolve()
     pins = {role: selected(s, label) for role, label in CASES.items()}
+    pins["linux_native"] = selected(s, "b-bank-linux-clean-replay")
+    pins["linux_comparison"] = selected(s, "b-bank-linux-mac-comparison")
+    linux_run = pins["linux_native"]["run_id"]
+    for suffix, name in (("installation", "installation.json"), ("inspection", "inspect.json")):
+        pins["linux_" + suffix] = bind(s, linux_run, "payload/" + name)
     native_example = pins["example"]["run_id"]
     cmd = [
         "{python}",
@@ -408,27 +452,74 @@ def run(args):
     ]
     for role in CASES:
         cmd += ["--" + role, "{input:" + role + "}"]
+    for role in ("linux_native", "linux_comparison", "linux_installation", "linux_inspection"):
+        cmd += ["--" + role.replace("_", "-"), "{input:" + role + "}"]
+    host = {}
     for mode in ("prefit", "fitted", "scale"):
-        env_role = "environment_" + mode
-        pins[env_role] = bind(s, pins[mode]["run_id"], "environment.json")
-        cmd += ["--environment", "{input:" + env_role + "}"]
+        env_pin = bind(s, pins[mode]["run_id"], "environment.json")
+        env = load(resolve((s, s / "history"), env_pin))
+        host[mode] = {
+            "member": env_pin,
+            **{
+                k: env[k]
+                for k in ("platform", "machine", "cpu_physical", "cpu_logical", "memory_total_bytes")
+            },
+        }
+    predecessors = []
+    for label, bucket, evidence, reason in (
+        (
+            "b-bank-deployment-tables",
+            "quarantine",
+            "input assets missing from declared parent: environment_prefit",
+            "Recorder metadata was submitted as an exported payload member.",
+        ),
+        (
+            "b-bank-deployment-tables-verified",
+            "runs",
+            "many_bank_panel_smoke.mjs",
+            "The browser driver placed a fractional coordinate in the adjacent displayed pixel.",
+        ),
+    ):
+        original = s / "work/controller" / label / "attempt-01.jsonl"
+        if not original.is_file():
+            continue
+        failed = json.loads(original.read_text().splitlines()[-1])
+        folder = s / bucket / failed["run_id"]
+        check(
+            failed["execution_status"] == "failed"
+            and evidence in (failed["failure_reason"] + (folder / "stderr.log").read_text()),
+            "unexpected previous publication-stage disposition",
+        )
+        prev = {
+            "run_id": failed["run_id"],
+            "manifest_sha256": failed["manifest_sha256"],
+            "member": "run.json",
+            "sha256": sha(folder / "run.json"),
+        }
+        read_pinned((s, s / "history"), prev, success=False)
+        predecessors.append({"stage": label, "execution": prev, "detail": reason})
     panel_script = Path(__file__).with_name("many_bank_panel_smoke.mjs")
     node = shutil.which("node")
     check(node and args.chrome.is_file(), "local Chrome and Node are required for the offline witness test")
     cmd += ["--node", node, "--chrome", str(args.chrome), "--panel-script", "{input:panel_program}"]
     for i, action in enumerate(ACTIONS):
+        role = "linux_html" + str(i)
+        pins[role] = bind(s, linux_run, f"payload/{action}/report.html")
+        cmd += ["--linux-html", "{input:" + role + "}"]
         for key, path in (("html", "report.html"), ("metadata", "scores.json"), ("arrays", "scores.npz")):
             role = key + str(i)
             pins[role] = bind(s, native_example, f"payload/{action}/{path}")
             cmd += ["--" + key, "{input:" + role + "}"]
     return stage(
         s,
-        "b-bank-deployment-tables",
+        "b-bank-deployment-public",
         "report",
         pins,
         {
             "evidence": "native engineering results, authored example only",
             "worker_sha256": sha(Path(__file__)),
+            "measurement_hosts": host,
+            "preceding_projection_attempts": predecessors,
         },
         cmd,
         "payload/deployment.json",
@@ -441,9 +532,18 @@ def run(args):
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("action", choices=["run", "worker"])
-    for arg in ("store", "config", "out", *CASES):
+    for arg in (
+        "store",
+        "config",
+        "out",
+        "linux-native",
+        "linux-comparison",
+        "linux-installation",
+        "linux-inspection",
+        *CASES,
+    ):
         p.add_argument("--" + arg, type=Path)
-    for arg in ("html", "metadata", "arrays", "environment"):
+    for arg in ("html", "metadata", "arrays", "linux-html"):
         p.add_argument("--" + arg, type=Path, action="append")
     p.add_argument(
         "--chrome", type=Path, default=Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
