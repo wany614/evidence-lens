@@ -1,0 +1,43 @@
+{
+  "comparable_views": 180,
+  "conditions": [
+    "M2-fixed",
+    "M4-fixed",
+    "M4-uniform",
+    "M4-risk",
+    "M4-random-137101",
+    "M4-random-137102",
+    "M4-random-137103"
+  ],
+  "exact_ties": 1,
+  "object_mask": null,
+  "objects": [
+    "set118",
+    "set76",
+    "set45",
+    "set103",
+    "set61",
+    "set32"
+  ],
+  "opening": {
+    "manifest_sha256": "b9040526979f23b39c60adc0f1ad699993cd456464d45fb6e2b5b90fd6941068",
+    "member": "payload/opening.json",
+    "run_id": "20261124T044751135267Z-7eafdcf5d2a44153",
+    "sha256": "b2cccd3449521f69aee20939167924f758e006995a6f67ab3dd1e432e601e3fc"
+  },
+  "paired_defined": 4,
+  "risk_better": 2,
+  "risk_minus_uniform_object_equal": -0.006617296151435029,
+  "risk_training": 0,
+  "run_id": "20261124T044825489277Z-1ca8f9b1522541fe",
+  "scheduled_views": 252,
+  "schema": "el-t1-nbv-endpoints-1",
+  "terminals": {
+    "manifest_sha256": "f652dc473a85e62306437c8631f376aef13b72909178e51a35b6508f5c53536e",
+    "member": "payload/terminals.json",
+    "run_id": "20261124T044706519514Z-c0c1442fff894311",
+    "sha256": "29866b3665656bd72f42c483655f3de0e080d81f53d1325c65347959cfc402bb"
+  },
+  "threshold_refits": 0,
+  "uniform_better": 1
+}

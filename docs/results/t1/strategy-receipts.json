@@ -1,0 +1,2073 @@
+{
+  "schema": "el-t1-strategy-receipts-1",
+  "trajectories": [
+    {
+      "decision": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "a03da147cce485aef5f317f33be96793c32637bd0d306c6b1350e0a7a100ee6f"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 16251,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "ac3395a129a26a1354e5c6c04d361b2d2c33c3f58ae1ea82efcf8a99df90ac42",
+          "member": "run.json",
+          "run_id": "20261124T042243646091Z-f731016e036549fc",
+          "sha256": "19201dc28c30defd1d943f2ba0f28e062c4ae38e33ba0c3c71ddbefdef206e5e"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "5af8160bc13a96753badd2d4e27aec85fd6e70fddfd735172ad3103a79520e66",
+          "run_id": "20261124T042032489915Z-3a4f50090b344cab"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "4d9071f05f99ec45c6649c20608706c7c64f5cbee893d40ef809f1ae94cf494f",
+        "object_id": "set118",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": null,
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": null,
+        "required_gaussians": 20000,
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "uniform"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/risk.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "0977b1392c158e5ab353968d609117ffb57c599032a9e399c84f4f6e6ee9fa18"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 16251,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "ac3395a129a26a1354e5c6c04d361b2d2c33c3f58ae1ea82efcf8a99df90ac42",
+          "member": "run.json",
+          "run_id": "20261124T042243646091Z-f731016e036549fc",
+          "sha256": "19201dc28c30defd1d943f2ba0f28e062c4ae38e33ba0c3c71ddbefdef206e5e"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "5af8160bc13a96753badd2d4e27aec85fd6e70fddfd735172ad3103a79520e66",
+          "run_id": "20261124T042032489915Z-3a4f50090b344cab"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "4d9071f05f99ec45c6649c20608706c7c64f5cbee893d40ef809f1ae94cf494f",
+        "object_id": "set118",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": null,
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": null,
+        "required_gaussians": 20000,
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "risk"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "b2e238d8030ba96555feb65a9aa18c3057b3f17aadc8af17daf31667d6a24ee2"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 16251,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "ac3395a129a26a1354e5c6c04d361b2d2c33c3f58ae1ea82efcf8a99df90ac42",
+          "member": "run.json",
+          "run_id": "20261124T042243646091Z-f731016e036549fc",
+          "sha256": "19201dc28c30defd1d943f2ba0f28e062c4ae38e33ba0c3c71ddbefdef206e5e"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "5af8160bc13a96753badd2d4e27aec85fd6e70fddfd735172ad3103a79520e66",
+          "run_id": "20261124T042032489915Z-3a4f50090b344cab"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "4d9071f05f99ec45c6649c20608706c7c64f5cbee893d40ef809f1ae94cf494f",
+        "object_id": "set118",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": "The registered seed fixates a pair without images; the frozen joint selector did not execute.",
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": [
+          17,
+          40
+        ],
+        "required_gaussians": 20000,
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "random-137101"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "9c84488371c5c152f181440ac7f6ae8dc4b0b1dab64e7c678d706047c994ff5a"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 16251,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "ac3395a129a26a1354e5c6c04d361b2d2c33c3f58ae1ea82efcf8a99df90ac42",
+          "member": "run.json",
+          "run_id": "20261124T042243646091Z-f731016e036549fc",
+          "sha256": "19201dc28c30defd1d943f2ba0f28e062c4ae38e33ba0c3c71ddbefdef206e5e"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "5af8160bc13a96753badd2d4e27aec85fd6e70fddfd735172ad3103a79520e66",
+          "run_id": "20261124T042032489915Z-3a4f50090b344cab"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "4d9071f05f99ec45c6649c20608706c7c64f5cbee893d40ef809f1ae94cf494f",
+        "object_id": "set118",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": "The registered seed fixates a pair without images; the frozen joint selector did not execute.",
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": [
+          10,
+          20
+        ],
+        "required_gaussians": 20000,
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "random-137102"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "edcc9daa9b37305e059956e79624d85abe958e838ded43ca614d4229b4e7ef11"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 16251,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "ac3395a129a26a1354e5c6c04d361b2d2c33c3f58ae1ea82efcf8a99df90ac42",
+          "member": "run.json",
+          "run_id": "20261124T042243646091Z-f731016e036549fc",
+          "sha256": "19201dc28c30defd1d943f2ba0f28e062c4ae38e33ba0c3c71ddbefdef206e5e"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "5af8160bc13a96753badd2d4e27aec85fd6e70fddfd735172ad3103a79520e66",
+          "run_id": "20261124T042032489915Z-3a4f50090b344cab"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "4d9071f05f99ec45c6649c20608706c7c64f5cbee893d40ef809f1ae94cf494f",
+        "object_id": "set118",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": "The registered seed fixates a pair without images; the frozen joint selector did not execute.",
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": [
+          7,
+          40
+        ],
+        "required_gaussians": 20000,
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "random-137103"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "e31650b186fde42e356a5c3d0ccc441bffca0f7b0d14dedc90e7836245170e15"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 17199,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "0b288a81f0a70ba24b01b3417af1937e87ca2f99857584448776b4c0c71e9174",
+          "member": "run.json",
+          "run_id": "20261124T042248548043Z-731a6a818d6341fd",
+          "sha256": "cd425380f9f8f7ff04cc3492a98e1ae405fc4481e1a7fa3a1e8779d28fa8bafc"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "533400e0c6d5f145ae4e7ca91276efe9757e54eb19953c39f81e34122b9b181d",
+          "run_id": "20261124T042116040011Z-7e4caf3c13724128"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "7367b18bdeb45fb698a24770c57b9171067c5d91ffb0085003b4d6d23d0355fd",
+        "object_id": "set76",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": null,
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": null,
+        "required_gaussians": 20000,
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "uniform"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/risk.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "f9b6e61ca37bf6f740e13809a368ef3aa3b5949517cb5e45f758747b8a5c7867"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 17199,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "0b288a81f0a70ba24b01b3417af1937e87ca2f99857584448776b4c0c71e9174",
+          "member": "run.json",
+          "run_id": "20261124T042248548043Z-731a6a818d6341fd",
+          "sha256": "cd425380f9f8f7ff04cc3492a98e1ae405fc4481e1a7fa3a1e8779d28fa8bafc"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "533400e0c6d5f145ae4e7ca91276efe9757e54eb19953c39f81e34122b9b181d",
+          "run_id": "20261124T042116040011Z-7e4caf3c13724128"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "7367b18bdeb45fb698a24770c57b9171067c5d91ffb0085003b4d6d23d0355fd",
+        "object_id": "set76",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": null,
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": null,
+        "required_gaussians": 20000,
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "risk"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "f4ef81b597d1371e4782165b42facc53067c2aa642a76b155dda686e8ff353f6"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 17199,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "0b288a81f0a70ba24b01b3417af1937e87ca2f99857584448776b4c0c71e9174",
+          "member": "run.json",
+          "run_id": "20261124T042248548043Z-731a6a818d6341fd",
+          "sha256": "cd425380f9f8f7ff04cc3492a98e1ae405fc4481e1a7fa3a1e8779d28fa8bafc"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "533400e0c6d5f145ae4e7ca91276efe9757e54eb19953c39f81e34122b9b181d",
+          "run_id": "20261124T042116040011Z-7e4caf3c13724128"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "7367b18bdeb45fb698a24770c57b9171067c5d91ffb0085003b4d6d23d0355fd",
+        "object_id": "set76",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": "The registered seed fixates a pair without images; the frozen joint selector did not execute.",
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": [
+          23,
+          40
+        ],
+        "required_gaussians": 20000,
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "random-137101"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "d880b7c3b7cf2c100088c9d7cae49a94312f4a4596a4eb8fcb5e6f2b89b8e890"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 17199,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "0b288a81f0a70ba24b01b3417af1937e87ca2f99857584448776b4c0c71e9174",
+          "member": "run.json",
+          "run_id": "20261124T042248548043Z-731a6a818d6341fd",
+          "sha256": "cd425380f9f8f7ff04cc3492a98e1ae405fc4481e1a7fa3a1e8779d28fa8bafc"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "533400e0c6d5f145ae4e7ca91276efe9757e54eb19953c39f81e34122b9b181d",
+          "run_id": "20261124T042116040011Z-7e4caf3c13724128"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "7367b18bdeb45fb698a24770c57b9171067c5d91ffb0085003b4d6d23d0355fd",
+        "object_id": "set76",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": "The registered seed fixates a pair without images; the frozen joint selector did not execute.",
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": [
+          20,
+          40
+        ],
+        "required_gaussians": 20000,
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "random-137102"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "cc23aebe057d7e87c55ce4038a3929446ac27b5df1a33d3839b0c9e67f49c997"
+      },
+      "observation": null,
+      "original_receipt": {
+        "actual_candidate_observations": 0,
+        "actual_final_gaussians": 17199,
+        "candidate_photo_access_authorized": false,
+        "candidate_range_requests": 0,
+        "completed_pair_decisions": 0,
+        "evaluation_reference_reads": 0,
+        "failed_probe": {
+          "manifest_sha256": "0b288a81f0a70ba24b01b3417af1937e87ca2f99857584448776b4c0c71e9174",
+          "member": "run.json",
+          "run_id": "20261124T042248548043Z-731a6a818d6341fd",
+          "sha256": "cd425380f9f8f7ff04cc3492a98e1ae405fc4481e1a7fa3a1e8779d28fa8bafc"
+        },
+        "fallback_reason": null,
+        "generation": {
+          "manifest_sha256": "533400e0c6d5f145ae4e7ca91276efe9757e54eb19953c39f81e34122b9b181d",
+          "run_id": "20261124T042116040011Z-7e4caf3c13724128"
+        },
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "7367b18bdeb45fb698a24770c57b9171067c5d91ffb0085003b4d6d23d0355fd",
+        "object_id": "set76",
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "random_pair_note": "The registered seed fixates a pair without images; the frozen joint selector did not execute.",
+        "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+        "registered_random_pair_only": [
+          7,
+          13
+        ],
+        "required_gaussians": 20000,
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "schema": "el-t1-strategy-unavailable-1",
+        "selected_official_ids": null,
+        "status": "failed",
+        "strategy_id": "random-137103"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "d42963d0cc303682d13cfdc8cc5913b61f64f753a1c8b02d8b40725b429474ba",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "sha256": "f230d907c4a9ec93e2a3c84c2e5e9a84b46ec3018410408424997e4d6279e375"
+      },
+      "observation": {
+        "manifest_sha256": "4fbd00e353240fcb7d3d205a559311b183b1bb9d00ad86db717af953a709cabf",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042459410578Z-c5c4576a39ec470f",
+        "sha256": "eed9bcedf9c3f4066e9f4493de220219a1dd627cb19edadada898c8512aebadd"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3567,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "0ae4d17eb1c77e0648e5e236f08c5d87020d1d4ddd5bb743d72cf95cd30f442b",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set45",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 885,
+            "lattice": 1024,
+            "unknown_full": 6786,
+            "unknown_lattice": 102
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 761,
+            "lattice": 1024,
+            "unknown_full": 13989,
+            "unknown_lattice": 219
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 993,
+            "lattice": 1024,
+            "unknown_full": 673,
+            "unknown_lattice": 9
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 950,
+            "lattice": 1024,
+            "unknown_full": 4017,
+            "unknown_lattice": 59
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          23,
+          31
+        ],
+        "strategy_id": "uniform",
+        "support_sha256": "0aae7261b3fe8936ebd692014bc5f3f697068ce8c98a5d65131a9e9a84dde1b7"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "d42963d0cc303682d13cfdc8cc5913b61f64f753a1c8b02d8b40725b429474ba",
+        "member": "payload/risk.json",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "sha256": "d64677ccccf12d99214b719520f7aa6076c4a91e66f4383e649d337aaa9ef906"
+      },
+      "observation": {
+        "manifest_sha256": "a2114ef60564b165483c7f0699040f6ee8ab5e43b573def3fcf65efd16c74634",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042502792851Z-7c2eacde8fd54e32",
+        "sha256": "d0c10516f59b57c71a63faa1bd34cc0e1cff93cd479d5687d8a189a8ffb315af"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3567,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "0ae4d17eb1c77e0648e5e236f08c5d87020d1d4ddd5bb743d72cf95cd30f442b",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set45",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 885,
+            "lattice": 1024,
+            "unknown_full": 6786,
+            "unknown_lattice": 102
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 761,
+            "lattice": 1024,
+            "unknown_full": 13989,
+            "unknown_lattice": 219
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 993,
+            "lattice": 1024,
+            "unknown_full": 673,
+            "unknown_lattice": 9
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 950,
+            "lattice": 1024,
+            "unknown_full": 4017,
+            "unknown_lattice": 59
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          10,
+          17
+        ],
+        "strategy_id": "risk",
+        "support_sha256": "0aae7261b3fe8936ebd692014bc5f3f697068ce8c98a5d65131a9e9a84dde1b7"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "d42963d0cc303682d13cfdc8cc5913b61f64f753a1c8b02d8b40725b429474ba",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "sha256": "1a9c5e09c96faf4595245e3e17d0339f67d98a3c67d742cd10e258b655cfac5e"
+      },
+      "observation": {
+        "manifest_sha256": "28524c16e4b176c2dc4bbb397dc2d12c22fa6857ce160b0e2d402f2b7c7d5278",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042506147290Z-d7f48455413c4160",
+        "sha256": "08589903187a734b34efb5d7d367ecc9baa0a83f6563d3e84f05377ccaa75b83"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3567,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "0ae4d17eb1c77e0648e5e236f08c5d87020d1d4ddd5bb743d72cf95cd30f442b",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set45",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 885,
+            "lattice": 1024,
+            "unknown_full": 6786,
+            "unknown_lattice": 102
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 761,
+            "lattice": 1024,
+            "unknown_full": 13989,
+            "unknown_lattice": 219
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 993,
+            "lattice": 1024,
+            "unknown_full": 673,
+            "unknown_lattice": 9
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 950,
+            "lattice": 1024,
+            "unknown_full": 4017,
+            "unknown_lattice": 59
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          20
+        ],
+        "strategy_id": "random-137101",
+        "support_sha256": "0aae7261b3fe8936ebd692014bc5f3f697068ce8c98a5d65131a9e9a84dde1b7"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "d42963d0cc303682d13cfdc8cc5913b61f64f753a1c8b02d8b40725b429474ba",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "sha256": "ee5baa1f25abfa61603bdd6020ecfe74abf67ea9f19decb0f7887da21625b797"
+      },
+      "observation": {
+        "manifest_sha256": "d4b2d8ef823f632504d2e058e7ab4203ac4b096e50340a73ddc863d5ca2c92ea",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042510395113Z-c046b752f9324350",
+        "sha256": "61ecdd9c5af87ece081312c04a923f531a1956252deb5319de6d1f9853dcb6d8"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3567,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "0ae4d17eb1c77e0648e5e236f08c5d87020d1d4ddd5bb743d72cf95cd30f442b",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set45",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 885,
+            "lattice": 1024,
+            "unknown_full": 6786,
+            "unknown_lattice": 102
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 761,
+            "lattice": 1024,
+            "unknown_full": 13989,
+            "unknown_lattice": 219
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 993,
+            "lattice": 1024,
+            "unknown_full": 673,
+            "unknown_lattice": 9
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 950,
+            "lattice": 1024,
+            "unknown_full": 4017,
+            "unknown_lattice": 59
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          40
+        ],
+        "strategy_id": "random-137102",
+        "support_sha256": "0aae7261b3fe8936ebd692014bc5f3f697068ce8c98a5d65131a9e9a84dde1b7"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "d42963d0cc303682d13cfdc8cc5913b61f64f753a1c8b02d8b40725b429474ba",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "sha256": "3486bdee1977b5a588f023cf1927b39e208bed6b06b42e2e1981bd9ad5b1a14a"
+      },
+      "observation": {
+        "manifest_sha256": "7b05fbd38471faa07217ff796235ab20b4a85eb403745a5d6c3a8533883da1f6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042513754254Z-a3b10fa6f183497c",
+        "sha256": "247badb68775db89c23c5fd518715462add2daeb8b1cde678965fb8cbfe98c6f"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3567,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "0ae4d17eb1c77e0648e5e236f08c5d87020d1d4ddd5bb743d72cf95cd30f442b",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set45",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 885,
+            "lattice": 1024,
+            "unknown_full": 6786,
+            "unknown_lattice": 102
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 761,
+            "lattice": 1024,
+            "unknown_full": 13989,
+            "unknown_lattice": 219
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 993,
+            "lattice": 1024,
+            "unknown_full": 673,
+            "unknown_lattice": 9
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 950,
+            "lattice": 1024,
+            "unknown_full": 4017,
+            "unknown_lattice": 59
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042453081347Z-e12adb7de7b04b6e",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          7,
+          17
+        ],
+        "strategy_id": "random-137103",
+        "support_sha256": "0aae7261b3fe8936ebd692014bc5f3f697068ce8c98a5d65131a9e9a84dde1b7"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "34c5183f1067a166810f590117f279c5a083b36198a64e018049b25dfa4f296f",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "sha256": "2949e0c9e3139e9343617d2aff401ac35df8ff6216ce454c655288a16f01f942"
+      },
+      "observation": {
+        "manifest_sha256": "9e17b69680ff8f035cff335890bb1b634293b5eabd51a764cd280979bd1b9d8c",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042552170738Z-498da62f3fa54ab1",
+        "sha256": "3f06d3ec63c99edb06409ea14e7af77ba4e47bf7e004f47e67fe6c54a7a62989"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3984,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "13b6eb4c742206897931de9030aeae4090ecc573cfb00dd544d5341036439c35",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set103",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 988,
+            "lattice": 1024,
+            "unknown_full": 2191,
+            "unknown_lattice": 36
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 969,
+            "lattice": 1024,
+            "unknown_full": 3107,
+            "unknown_lattice": 48
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1021,
+            "lattice": 1024,
+            "unknown_full": 161,
+            "unknown_lattice": 3
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 1011,
+            "lattice": 1024,
+            "unknown_full": 1005,
+            "unknown_lattice": 13
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          10,
+          17
+        ],
+        "strategy_id": "uniform",
+        "support_sha256": "d8c40e91301ce1c13fcffb34c764dc00ea2df94857c9c6b08b023f45428a8d38"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "34c5183f1067a166810f590117f279c5a083b36198a64e018049b25dfa4f296f",
+        "member": "payload/risk.json",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "sha256": "ccbfa4626dd3eb8823ef95961d71197c531deec011222ce00e018b82955fc888"
+      },
+      "observation": {
+        "manifest_sha256": "a575e837a124c3cfabc03076fe8b7ea1bbc969c81f12c0e806a563a3c036df2f",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042555836304Z-dd58efdeaac94028",
+        "sha256": "e7d3fb17879c56d344ccab15572e5d8ac6031901a77f68ad3f3f1c910ab343d7"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3984,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "13b6eb4c742206897931de9030aeae4090ecc573cfb00dd544d5341036439c35",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set103",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 988,
+            "lattice": 1024,
+            "unknown_full": 2191,
+            "unknown_lattice": 36
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 969,
+            "lattice": 1024,
+            "unknown_full": 3107,
+            "unknown_lattice": 48
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1021,
+            "lattice": 1024,
+            "unknown_full": 161,
+            "unknown_lattice": 3
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 1011,
+            "lattice": 1024,
+            "unknown_full": 1005,
+            "unknown_lattice": 13
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          13,
+          17
+        ],
+        "strategy_id": "risk",
+        "support_sha256": "d8c40e91301ce1c13fcffb34c764dc00ea2df94857c9c6b08b023f45428a8d38"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "34c5183f1067a166810f590117f279c5a083b36198a64e018049b25dfa4f296f",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "sha256": "667abe62b9099a552b07a611c81ce1f74178936afd63fe13290509b5d6f923cd"
+      },
+      "observation": {
+        "manifest_sha256": "2c73132fcfce215a20c287fcb7b69ff3f55df1827ff6795b6de49d2bb7003cd3",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042559554796Z-56dc05f41d17466b",
+        "sha256": "7170395ba3cc91170fef62fa7e3fca8451e58c3cb237dc97eda3b49d9543e67a"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3984,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "13b6eb4c742206897931de9030aeae4090ecc573cfb00dd544d5341036439c35",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set103",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 988,
+            "lattice": 1024,
+            "unknown_full": 2191,
+            "unknown_lattice": 36
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 969,
+            "lattice": 1024,
+            "unknown_full": 3107,
+            "unknown_lattice": 48
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1021,
+            "lattice": 1024,
+            "unknown_full": 161,
+            "unknown_lattice": 3
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 1011,
+            "lattice": 1024,
+            "unknown_full": 1005,
+            "unknown_lattice": 13
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          10,
+          31
+        ],
+        "strategy_id": "random-137101",
+        "support_sha256": "d8c40e91301ce1c13fcffb34c764dc00ea2df94857c9c6b08b023f45428a8d38"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "34c5183f1067a166810f590117f279c5a083b36198a64e018049b25dfa4f296f",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "sha256": "ffcf58894ab74f0648774f9972b3659ed19ff5a7fae4ed834a0671426186b11c"
+      },
+      "observation": {
+        "manifest_sha256": "a9b23c714eecab332f6652bcf137dd8d178c60a70a2183f0b326be927c7ccc5e",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042603263676Z-494d1ea494ed49e2",
+        "sha256": "b08d642310541e0deea6b08cb9a43ab2deee4716dff6e35ed7caf4a31b2bf439"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3984,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "13b6eb4c742206897931de9030aeae4090ecc573cfb00dd544d5341036439c35",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set103",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 988,
+            "lattice": 1024,
+            "unknown_full": 2191,
+            "unknown_lattice": 36
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 969,
+            "lattice": 1024,
+            "unknown_full": 3107,
+            "unknown_lattice": 48
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1021,
+            "lattice": 1024,
+            "unknown_full": 161,
+            "unknown_lattice": 3
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 1011,
+            "lattice": 1024,
+            "unknown_full": 1005,
+            "unknown_lattice": 13
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          10,
+          23
+        ],
+        "strategy_id": "random-137102",
+        "support_sha256": "d8c40e91301ce1c13fcffb34c764dc00ea2df94857c9c6b08b023f45428a8d38"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "34c5183f1067a166810f590117f279c5a083b36198a64e018049b25dfa4f296f",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "sha256": "41e465e6061f48c63f09f16274782d72c9b2109d43725fee1524cef0713c6455"
+      },
+      "observation": {
+        "manifest_sha256": "4c63d3c6733c66a09a1dc909f313b5d51b9bbba9bdfa77edecc151dac3815ed4",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042607621902Z-7e7ed76a245049d6",
+        "sha256": "5996485171a53fa3530580206e8217e42e080cb0134a83a7722d090ac13ef28c"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3984,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "13b6eb4c742206897931de9030aeae4090ecc573cfb00dd544d5341036439c35",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set103",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 988,
+            "lattice": 1024,
+            "unknown_full": 2191,
+            "unknown_lattice": 36
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 969,
+            "lattice": 1024,
+            "unknown_full": 3107,
+            "unknown_lattice": 48
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1021,
+            "lattice": 1024,
+            "unknown_full": 161,
+            "unknown_lattice": 3
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 1011,
+            "lattice": 1024,
+            "unknown_full": 1005,
+            "unknown_lattice": 13
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042546414719Z-83fc694c83df4243",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          31
+        ],
+        "strategy_id": "random-137103",
+        "support_sha256": "d8c40e91301ce1c13fcffb34c764dc00ea2df94857c9c6b08b023f45428a8d38"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "9c9233d44c45995bb41e95343aef9ea2f11e22ae5d785ee88d319eff67d17081",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "sha256": "c1eb59787710d246be71bf4742345a0a9c5c66058aa2a88984bffc0e1e543c39"
+      },
+      "observation": {
+        "manifest_sha256": "86fc4d3450a1becb2e00ec00e6032f938585226801636465f16f6ccf4e66469a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042700263552Z-c11b4281accb4168",
+        "sha256": "0f0e6371cb8e72c64c4727d4d6027170bb2cf319df7d1c9fab4c73be01ed9bce"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3639,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "bd26574733d2543168b1a228481971c4e5b4ccad0764d49ed6286bb79df57207",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set61",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 890,
+            "lattice": 1024,
+            "unknown_full": 7363,
+            "unknown_lattice": 115
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 849,
+            "lattice": 1024,
+            "unknown_full": 9228,
+            "unknown_lattice": 148
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1009,
+            "lattice": 1024,
+            "unknown_full": 529,
+            "unknown_lattice": 8
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 903,
+            "lattice": 1024,
+            "unknown_full": 3828,
+            "unknown_lattice": 58
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          31
+        ],
+        "strategy_id": "uniform",
+        "support_sha256": "93bef26d963b978b3060b495fba0806cf8a5fb2ba41fc2f7881e44c9b3275be4"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "9c9233d44c45995bb41e95343aef9ea2f11e22ae5d785ee88d319eff67d17081",
+        "member": "payload/risk.json",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "sha256": "0d7442a4ef1a4ae62f041bd365cec8eda1c9aee97138ce9189a125c744747d27"
+      },
+      "observation": {
+        "manifest_sha256": "cace0a0220026b26ea0080fa3239fbfba5c8dba1f5a479dc8910fddd3bf8b09d",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042704032956Z-790c7ac9f12040c2",
+        "sha256": "f6fabf4fa801ab6de38af5dedb278a50949d78c9db2900326f4d2b2d3b63b3c5"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3639,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "bd26574733d2543168b1a228481971c4e5b4ccad0764d49ed6286bb79df57207",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set61",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 890,
+            "lattice": 1024,
+            "unknown_full": 7363,
+            "unknown_lattice": 115
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 849,
+            "lattice": 1024,
+            "unknown_full": 9228,
+            "unknown_lattice": 148
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1009,
+            "lattice": 1024,
+            "unknown_full": 529,
+            "unknown_lattice": 8
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 903,
+            "lattice": 1024,
+            "unknown_full": 3828,
+            "unknown_lattice": 58
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          31
+        ],
+        "strategy_id": "risk",
+        "support_sha256": "93bef26d963b978b3060b495fba0806cf8a5fb2ba41fc2f7881e44c9b3275be4"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "9c9233d44c45995bb41e95343aef9ea2f11e22ae5d785ee88d319eff67d17081",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "sha256": "c1087bab56bc23606fe2a273f93d4ec898f39768bcb84d4088ac2fdb7d1f8ccb"
+      },
+      "observation": {
+        "manifest_sha256": "998e5a1dfcfb389f600621bef4802afcf5b205078734be2c549cc962083eb63a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042705231983Z-512aacf88a3b49ae",
+        "sha256": "8c99f790afabbf2da4f9c1fdb3bebd46d6d4c367a820adfbdfa7f647bed98cc9"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3639,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "bd26574733d2543168b1a228481971c4e5b4ccad0764d49ed6286bb79df57207",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set61",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 890,
+            "lattice": 1024,
+            "unknown_full": 7363,
+            "unknown_lattice": 115
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 849,
+            "lattice": 1024,
+            "unknown_full": 9228,
+            "unknown_lattice": 148
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1009,
+            "lattice": 1024,
+            "unknown_full": 529,
+            "unknown_lattice": 8
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 903,
+            "lattice": 1024,
+            "unknown_full": 3828,
+            "unknown_lattice": 58
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          10,
+          13
+        ],
+        "strategy_id": "random-137101",
+        "support_sha256": "93bef26d963b978b3060b495fba0806cf8a5fb2ba41fc2f7881e44c9b3275be4"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "9c9233d44c45995bb41e95343aef9ea2f11e22ae5d785ee88d319eff67d17081",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "sha256": "556ff687d6aec3a2c3bb7027ea55f1b29a78fbd3f5ab7ac83948dc51b6c07b11"
+      },
+      "observation": {
+        "manifest_sha256": "0f9653353bb645f131ddfaf3c1ad68014fa0b46cc6f49018df7628c7444c7822",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042709739442Z-0d26d34aeee94add",
+        "sha256": "532cfb075bc48a95c22d99320d41ec477cc372e64b4c564af7c757a6979f5499"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3639,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "bd26574733d2543168b1a228481971c4e5b4ccad0764d49ed6286bb79df57207",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set61",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 890,
+            "lattice": 1024,
+            "unknown_full": 7363,
+            "unknown_lattice": 115
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 849,
+            "lattice": 1024,
+            "unknown_full": 9228,
+            "unknown_lattice": 148
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1009,
+            "lattice": 1024,
+            "unknown_full": 529,
+            "unknown_lattice": 8
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 903,
+            "lattice": 1024,
+            "unknown_full": 3828,
+            "unknown_lattice": 58
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          7,
+          20
+        ],
+        "strategy_id": "random-137102",
+        "support_sha256": "93bef26d963b978b3060b495fba0806cf8a5fb2ba41fc2f7881e44c9b3275be4"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "9c9233d44c45995bb41e95343aef9ea2f11e22ae5d785ee88d319eff67d17081",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "sha256": "ec218811b93fe9f8d219b7d3687124fdd4641683a7a7477cab0333051e2721be"
+      },
+      "observation": {
+        "manifest_sha256": "42de3376b83b7da9af65d98640aa3905851931ba1a6fa1f5c29f3c8728a006ce",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042714043305Z-6e9a9743b70f4713",
+        "sha256": "a6868e28591f4d3e3fe53a9e011f663be15ef15f5615acb0469786ecb875044f"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3639,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "bd26574733d2543168b1a228481971c4e5b4ccad0764d49ed6286bb79df57207",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set61",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 890,
+            "lattice": 1024,
+            "unknown_full": 7363,
+            "unknown_lattice": 115
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 849,
+            "lattice": 1024,
+            "unknown_full": 9228,
+            "unknown_lattice": 148
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1009,
+            "lattice": 1024,
+            "unknown_full": 529,
+            "unknown_lattice": 8
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 903,
+            "lattice": 1024,
+            "unknown_full": 3828,
+            "unknown_lattice": 58
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042654270612Z-5cc3426d4da14ac0",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          20,
+          31
+        ],
+        "strategy_id": "random-137103",
+        "support_sha256": "93bef26d963b978b3060b495fba0806cf8a5fb2ba41fc2f7881e44c9b3275be4"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "ba021a3e9705a4c516ff58da16f84aebf4cb87c748fc4eb4cd68a7c02e554df4",
+        "member": "payload/uniform.json",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "sha256": "cb7a3c379fb53ba7a9d58027a70cb68272a54a4ddebd782b7954bc1a1d0aefa0"
+      },
+      "observation": {
+        "manifest_sha256": "139cdf294940ec8a1b3f4be1ae124f333de1de63fcc2c2c297e8d23697e4bedd",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042734126305Z-2ad39d40d7104de8",
+        "sha256": "f2792fe5491c205de58729fcb94f0f63ad67d11a0199589e99e537ad5c58812f"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3490,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "2f884ae55b7279fe472ba9133f4bdbc3b80a5742ee2cf4485af701b01d938ddb",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set32",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 819,
+            "lattice": 1024,
+            "unknown_full": 11037,
+            "unknown_lattice": 173
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 803,
+            "lattice": 1024,
+            "unknown_full": 13563,
+            "unknown_lattice": 208
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1013,
+            "lattice": 1024,
+            "unknown_full": 6,
+            "unknown_lattice": 0
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 861,
+            "lattice": 1024,
+            "unknown_full": 9914,
+            "unknown_lattice": 152
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          23,
+          31
+        ],
+        "strategy_id": "uniform",
+        "support_sha256": "f7d24dfbcf9a2caa9b4de9efaf36bbbf9b28d59f8e66d12a4088c9cb5ee6b4b5"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "ba021a3e9705a4c516ff58da16f84aebf4cb87c748fc4eb4cd68a7c02e554df4",
+        "member": "payload/risk.json",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "sha256": "3b8ebd54b594d218f1dac9bff477689457d1a28e363081ab75c3f5fbf0a0f904"
+      },
+      "observation": {
+        "manifest_sha256": "20085f9a93c4ad8c692dea889bde8a9252ba57099b5a884e3595bac325bd5c05",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042738281916Z-1d05c8c85cbb44d2",
+        "sha256": "7d078e081ca4a56985b3f1dbee3a836612c495625ed7e521607a7ca550b1206e"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3490,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "2f884ae55b7279fe472ba9133f4bdbc3b80a5742ee2cf4485af701b01d938ddb",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set32",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 819,
+            "lattice": 1024,
+            "unknown_full": 11037,
+            "unknown_lattice": 173
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 803,
+            "lattice": 1024,
+            "unknown_full": 13563,
+            "unknown_lattice": 208
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1013,
+            "lattice": 1024,
+            "unknown_full": 6,
+            "unknown_lattice": 0
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 861,
+            "lattice": 1024,
+            "unknown_full": 9914,
+            "unknown_lattice": 152
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          31
+        ],
+        "strategy_id": "risk",
+        "support_sha256": "f7d24dfbcf9a2caa9b4de9efaf36bbbf9b28d59f8e66d12a4088c9cb5ee6b4b5"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "ba021a3e9705a4c516ff58da16f84aebf4cb87c748fc4eb4cd68a7c02e554df4",
+        "member": "payload/random-137101.json",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "sha256": "37b21dcf6e732dd1bf521dc7cc76c2d8bb51a5999369f86b95dbd7240b5d410c"
+      },
+      "observation": {
+        "manifest_sha256": "ad5039f2a1eeeff3a760b4aa701fb5eafe2e5cebd9f58a9aed1211ff5cdc1f6b",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042742165608Z-7512e9421f1c4755",
+        "sha256": "4c7016184097ebb3134312a1c423967d27037cbe23adc16aecd50d2a34922af4"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3490,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "2f884ae55b7279fe472ba9133f4bdbc3b80a5742ee2cf4485af701b01d938ddb",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set32",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 819,
+            "lattice": 1024,
+            "unknown_full": 11037,
+            "unknown_lattice": 173
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 803,
+            "lattice": 1024,
+            "unknown_full": 13563,
+            "unknown_lattice": 208
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1013,
+            "lattice": 1024,
+            "unknown_full": 6,
+            "unknown_lattice": 0
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 861,
+            "lattice": 1024,
+            "unknown_full": 9914,
+            "unknown_lattice": 152
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          7,
+          10
+        ],
+        "strategy_id": "random-137101",
+        "support_sha256": "f7d24dfbcf9a2caa9b4de9efaf36bbbf9b28d59f8e66d12a4088c9cb5ee6b4b5"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "ba021a3e9705a4c516ff58da16f84aebf4cb87c748fc4eb4cd68a7c02e554df4",
+        "member": "payload/random-137102.json",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "sha256": "2cea1a340c6924fc84e29fe5664458e8b8d5fe7b71c34c8bab860b86243ac7df"
+      },
+      "observation": {
+        "manifest_sha256": "889ba2de217469c61d162e9c14969de38f01e42cd6f768d866fa164e2a636dc8",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042746723925Z-13270a96e71b4bf7",
+        "sha256": "151820daaa2acd4a430292a65d4aaa23bf681ae6fbdbcd07ffb9df2ae301a8b2"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3490,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "2f884ae55b7279fe472ba9133f4bdbc3b80a5742ee2cf4485af701b01d938ddb",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set32",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 819,
+            "lattice": 1024,
+            "unknown_full": 11037,
+            "unknown_lattice": 173
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 803,
+            "lattice": 1024,
+            "unknown_full": 13563,
+            "unknown_lattice": 208
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1013,
+            "lattice": 1024,
+            "unknown_full": 6,
+            "unknown_lattice": 0
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 861,
+            "lattice": 1024,
+            "unknown_full": 9914,
+            "unknown_lattice": 152
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          7,
+          13
+        ],
+        "strategy_id": "random-137102",
+        "support_sha256": "f7d24dfbcf9a2caa9b4de9efaf36bbbf9b28d59f8e66d12a4088c9cb5ee6b4b5"
+      }
+    },
+    {
+      "decision": {
+        "manifest_sha256": "ba021a3e9705a4c516ff58da16f84aebf4cb87c748fc4eb4cd68a7c02e554df4",
+        "member": "payload/random-137103.json",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "sha256": "20c09fddb8c7fd31c5c7003d9fbbe29ecf24b6eba6a22d4f6a0a93e58d3b8e13"
+      },
+      "observation": {
+        "manifest_sha256": "500db9132270f239f30a9c179462d8bb40bf0c9ed2fe8046452662f8d9801212",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042750826367Z-81b1fc20b87344a1",
+        "sha256": "3bb254dadeabe9753e882d74ae8ac1c9674bf615b77a9005bb42a6d186742970"
+      },
+      "original_receipt": {
+        "allocation": "both camera IDs sealed together before either new photo",
+        "assessed_query_points": 3490,
+        "cameras_sha256": "9e881cc217212a95706c65c80c9f765bdaf2604dbaa22b31ca055792e0d14d4c",
+        "fallback_reason": null,
+        "legal_photo_ids_before_selection": [
+          24,
+          22
+        ],
+        "m2_checkpoint_sha256": "2f884ae55b7279fe472ba9133f4bdbc3b80a5742ee2cf4485af701b01d938ddb",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "object_id": "set32",
+        "per_query": {
+          "q00": {
+            "canvas": 65536,
+            "eligible_lattice": 819,
+            "lattice": 1024,
+            "unknown_full": 11037,
+            "unknown_lattice": 173
+          },
+          "q01": {
+            "canvas": 65536,
+            "eligible_lattice": 803,
+            "lattice": 1024,
+            "unknown_full": 13563,
+            "unknown_lattice": 208
+          },
+          "q02": {
+            "canvas": 65536,
+            "eligible_lattice": 1013,
+            "lattice": 1024,
+            "unknown_full": 6,
+            "unknown_lattice": 0
+          },
+          "q03": {
+            "canvas": 65536,
+            "eligible_lattice": 861,
+            "lattice": 1024,
+            "unknown_full": 9914,
+            "unknown_lattice": 152
+          }
+        },
+        "pool": [
+          7,
+          10,
+          13,
+          17,
+          20,
+          23,
+          31,
+          40
+        ],
+        "protocol_fingerprint": "75e2131ee42d2843cdb03a07c9943c3267710c0c430abed5e8c62d79d2e9f2ec",
+        "run_id": "20261124T042727220864Z-1887beba31a54f00",
+        "schema": "el-b2-nbv-selection-1",
+        "selected_official_ids": [
+          17,
+          40
+        ],
+        "strategy_id": "random-137103",
+        "support_sha256": "f7d24dfbcf9a2caa9b4de9efaf36bbbf9b28d59f8e66d12a4088c9cb5ee6b4b5"
+      }
+    }
+  ]
+}

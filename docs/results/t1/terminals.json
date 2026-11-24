@@ -1,0 +1,2280 @@
+{
+  "T1_objects": [
+    "set118",
+    "set76",
+    "set45",
+    "set103",
+    "set61",
+    "set32"
+  ],
+  "additional_selected_risk_scores": 0,
+  "aliases": 1,
+  "cells": [
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "ce0633a7e6c2f6aa67b65beaed9e6f49e543ed05e3177237193b35631acb7088",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042235227624Z-fd762ee97b564207",
+        "sha256": "b1a4c025a088a899487d7c12ef35af375fd0c6f64031c85953614ed29f94d00a"
+      },
+      "condition": "M2-fixed",
+      "fit_key_sha256": "f1dd712b31b270b7ac7ea1eaa33e22bf9e2f49697eca86438ae99f5bf78f2cf3",
+      "generation": {
+        "manifest_sha256": "5af8160bc13a96753badd2d4e27aec85fd6e70fddfd735172ad3103a79520e66",
+        "run_id": "20261124T042032489915Z-3a4f50090b344cab"
+      },
+      "initial_points": 29,
+      "initialization": {
+        "manifest_sha256": "a51f3bc5cd8e094f2783ae8022760d9926f1a0c64aeaf9e6ec965646253db1f3",
+        "member": "payload/init.json",
+        "run_id": "20261124T041102361656Z-037263b46db24908",
+        "sha256": "6ccd55f7abd74fea764df215cf2929f5674c8ae0b73d198cf1295c13cf976c67"
+      },
+      "initialization_array_sha256": "9c1162ec17fe1befdcf18dfee54c7372be93f74df341b434922ad962897cfc90",
+      "initialization_json_sha256": "6ccd55f7abd74fea764df215cf2929f5674c8ae0b73d198cf1295c13cf976c67",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set118",
+      "official_camera_order": [
+        24,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "ce0633a7e6c2f6aa67b65beaed9e6f49e543ed05e3177237193b35631acb7088",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042235227624Z-fd762ee97b564207",
+        "sha256": "d07ff8e2790501393be9829d74ab344e37f165bd6b7a3db87cbc90483ff8fe70"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "cd4ab5558ba5d3a751671b4f5c3cffb60e422bd909bfa2391a87ba4d94695b66",
+        "run_id": "20261124T042109162295Z-4868a909bf114eb6"
+      },
+      "scientific_job_sha256": "0f043949fd0c2deecd00379b55adf88b931830f23729b10fad5706739ee30b41",
+      "source": {
+        "manifest_sha256": "8caeeca92b65eeab9372ea1322d2b3c69b8c1272492b8631b239789acd15afb8",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T041057887060Z-ed115219ffb44fa7",
+        "sha256": "5a83a72e2749a7e24515517bf6812b3553fb965ffc0833e239c3026636f5ff7a"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "4b810fb8948ab98bba01f433e3eb4cd9e600eacda81ed10973197a29839166f0",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T041103892905Z-22386182139c47ab",
+        "sha256": "bd3a91ce3f02f49171265e1aa5cf08d9db5d069c035941d82b0bde348529984d"
+      }
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-fixed",
+      "disposition": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set118",
+      "official_camera_order": [],
+      "planned_source_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-uniform",
+      "disposition": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set118",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-risk",
+      "disposition": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set118",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-random-137101",
+      "disposition": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set118",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-random-137102",
+      "disposition": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set118",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-random-137103",
+      "disposition": {
+        "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042721271294Z-e420d82edec24f85",
+        "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set118",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "8696a039b0397437ad168274f022ec6040638de56561df1c6db243886114ec0c",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042253882742Z-b1a3d6e69dc2434c",
+        "sha256": "ae4f451159d2b34ffaeb22a214f2ca003cc16449b63adef64f72374a0d9e1f5d"
+      },
+      "condition": "M2-fixed",
+      "fit_key_sha256": "fb47dd061da61c4e3b1959f0a42bcc14af0bbbba09a20d89eea49278ca131057",
+      "generation": {
+        "manifest_sha256": "533400e0c6d5f145ae4e7ca91276efe9757e54eb19953c39f81e34122b9b181d",
+        "run_id": "20261124T042116040011Z-7e4caf3c13724128"
+      },
+      "initial_points": 31,
+      "initialization": {
+        "manifest_sha256": "9fda0b6bba69ce94bb8225f710ad608ecc4292726e5ef1684512fc8dce556136",
+        "member": "payload/init.json",
+        "run_id": "20261124T041106255620Z-eba2c33131b54f21",
+        "sha256": "4f54d7991d1bdbd6c955f22a7dbec5a42b5f0217fc7946053e7f56ffeaed10ee"
+      },
+      "initialization_array_sha256": "0ac585b6ce4638ab4159815bf814062d5b010067b18b4b9b6eff60356bab1fd4",
+      "initialization_json_sha256": "4f54d7991d1bdbd6c955f22a7dbec5a42b5f0217fc7946053e7f56ffeaed10ee",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set76",
+      "official_camera_order": [
+        24,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "8696a039b0397437ad168274f022ec6040638de56561df1c6db243886114ec0c",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042253882742Z-b1a3d6e69dc2434c",
+        "sha256": "33526d8d3fcee2b642019da09b577b361362f910fd09546e9bc576a23b9a73c8"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "80e11d3f11087dfd7b45861ee30053f9d3fc7fbf34d04a563da94f1f49f39e28",
+        "run_id": "20261124T042151377143Z-a6423a9efcef448c"
+      },
+      "scientific_job_sha256": "499486a861d2c0187474bef13838112892c14ed2ed0086e097f4b2902e1568cb",
+      "source": {
+        "manifest_sha256": "90c5620f8052ebe839441d7427f07e7ad11c5a110065ca3706342f0d8662bde6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T041104451208Z-ba1d54df131f46c5",
+        "sha256": "69c4bbb11aca83b556746a71b95140434d7f0c609a3b6de833bf442d77460dfc"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "131716f6126e65fcc89af2a1a27c7007e143eb7777e2414ba818af28833acdc2",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T041107061777Z-187cc260294847fe",
+        "sha256": "04e194b471de3e36b6edbca1e045ea975ff4e429092632019151ef27be0b80db"
+      }
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-fixed",
+      "disposition": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set76",
+      "official_camera_order": [],
+      "planned_source_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-uniform",
+      "disposition": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set76",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-risk",
+      "disposition": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set76",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-random-137101",
+      "disposition": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set76",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-random-137102",
+      "disposition": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set76",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "candidate_photo_access_authorized": false,
+      "case": null,
+      "condition": "M4-random-137103",
+      "disposition": {
+        "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+        "member": "payload/choices.json",
+        "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+        "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+      },
+      "fit_key_sha256": null,
+      "generation": null,
+      "initial_points": null,
+      "initialization": null,
+      "initialization_method": null,
+      "object_id": "set76",
+      "official_camera_order": [],
+      "planned_source_order": null,
+      "qualified": null,
+      "readback": null,
+      "reason": "The frozen probe requires exactly 20000 final Gaussians. The eligible, successfully fitted M2 endpoint had fewer. No query/visibility support or registered geometric fallback was computed.",
+      "render": null,
+      "source": null,
+      "status": "failed",
+      "ticket": null
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "200f90256b060f58a3b05ff18b10cca81664b2a199c6e50d8739e8f5eddb4fb3",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042322779942Z-6dcc25d4b078443c",
+        "sha256": "491e80bd7d50f1a8f4278d5e3137874315a7313e949f553ffa1c18de61c3ac31"
+      },
+      "condition": "M2-fixed",
+      "fit_key_sha256": "de17bb8feed510acbf8a2d0c132e1fafbfc1b96a151057c8211f8cd6ff3c7233",
+      "generation": {
+        "manifest_sha256": "beb8ba28e281a869555e09a98983687f3dc03bcf5d42cd2736a4ec5eac4639bb",
+        "run_id": "20261124T042158250132Z-5cb2c5a8ce1c407b"
+      },
+      "initial_points": 93,
+      "initialization": {
+        "manifest_sha256": "80f562ec4862d4c2305d3846387d1870335ed28d5df4f68e88f3889c97a7c0a1",
+        "member": "payload/init.json",
+        "run_id": "20261124T041109519142Z-0cf71a5ad3b74a94",
+        "sha256": "890ad687c9c5f1fee663d281a3a57e8c83fdfa2a297da47f704f6ee340f6f7c1"
+      },
+      "initialization_array_sha256": "b95a94fa2fb3150d7aef126f9877acdd3b05a982713219f8d021442859b8aeaa",
+      "initialization_json_sha256": "890ad687c9c5f1fee663d281a3a57e8c83fdfa2a297da47f704f6ee340f6f7c1",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "200f90256b060f58a3b05ff18b10cca81664b2a199c6e50d8739e8f5eddb4fb3",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042322779942Z-6dcc25d4b078443c",
+        "sha256": "f34910151cc234d08d0d0ba23e24c620a4b31dabac29e6a1aa1e0e72bec1cf4f"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "3aa100f57cad3c2d96fd891d3aefc5bcae6a4fd6ac2ba8d8a6d8d4e7ac001864",
+        "run_id": "20261124T042237721418Z-00edc1f5ede943c1"
+      },
+      "scientific_job_sha256": "76fa43f8749cd1997219146e2e02b7d514419f43c16b1b8e150eed57bfd0fd6e",
+      "source": {
+        "manifest_sha256": "d9f97228298d547fcd355cf3c5c4637b3947f7c682f7212bf77770cc4e9464e8",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T041107642738Z-c4489699f5f64759",
+        "sha256": "c1ab4cfe019beb442fcb83d3d68aac2bfa5f9dcc98e15d311f050a9cd312eb05"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "19f0d5666d2b8f7206efa92c4b6c9da32138b05255f8a328915c511b0e0a72d5",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T041110296964Z-88bd8858409240b7",
+        "sha256": "b0e98f7777b834e8d62d71200a53a83122e1e3dfa26a5e7e2e2bd72947427d6c"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "7c6051d2d6952c58104810f07a9ef16dd50d175ec89989c7c1dc55e68f71cece",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042922758440Z-e0848f3c457e415c",
+        "sha256": "54e9c8d2e4d2c81994e46f9b92a6f872ced0f6a9c3b69bf940254f938af9f73a"
+      },
+      "condition": "M4-fixed",
+      "fit_key_sha256": "24f339641ea5cd4b71f30e69852f2ac22db16ced64a22eb726baf32451510458",
+      "generation": {
+        "manifest_sha256": "6c2d807a69b0c0c345496f0cf41cc0ad274af0d4b95e4cfe9390a64894939a05",
+        "run_id": "20261124T042730847038Z-896110e3fb7e4fd3"
+      },
+      "initial_points": 342,
+      "initialization": {
+        "manifest_sha256": "6257bacf4f17b0b112a076d60a8cd00f42685bf6dcd7ac79631cc932e5b145df",
+        "member": "payload/init.json",
+        "run_id": "20261124T042457236092Z-cea496256cc94b86",
+        "sha256": "15cc3a069d8a492f80536dd4c80666dd29fac4f1c8b650d88de1119c060a9afa"
+      },
+      "initialization_array_sha256": "c1c10041cdf4cfb65ae89d19145f11538f94894c2b7d30ed94915a20c1ed8e95",
+      "initialization_json_sha256": "15cc3a069d8a492f80536dd4c80666dd29fac4f1c8b650d88de1119c060a9afa",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "7c6051d2d6952c58104810f07a9ef16dd50d175ec89989c7c1dc55e68f71cece",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042922758440Z-e0848f3c457e415c",
+        "sha256": "27ce20a8ae25b1bb33f6c9b90f6f0b088935865d7f42215679b21a03d37edad2"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "35456e8f4ff169bc3e184799834354f840f706ae1e83e3192857759ecbe40284",
+        "run_id": "20261124T042808684746Z-40a1995abac7425a"
+      },
+      "scientific_job_sha256": "477be87b7b735f7a41ea3a8c4932c777a019f9fb1c298fbb67ec5ec69951c73a",
+      "source": {
+        "manifest_sha256": "d43d4a6bd870a7de008196968db774d1dd2d6fb8ce3c5a8e88edcc260a7f5285",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042454474128Z-6b3bdbcda21948dd",
+        "sha256": "dda61b1ca59b0a4a7fe7d2217b994c76d92f50c142fa62b7f755ffd7f5e3977e"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "2931cd2a62306297dffc7b66b0c9f8b9817a0266ee4a63401cc46f4a3ffdfc43",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042458559114Z-b6ae627b499a49be",
+        "sha256": "90b7d29610e737c1b18d9635271ed7ba5c125fd34396c7f0ac3005d5658be82a"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "32dde43148fdbf0fa629da7e8e103e2ba35ad1ad61ffc05c160086fe1ad084e0",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042947642419Z-5696252b8118406c",
+        "sha256": "ecb14f4e28b56fc3b78f3ba1571d62db59fb0312c437aac4830526d3dd62612d"
+      },
+      "condition": "M4-uniform",
+      "fit_key_sha256": "ee3ce20ae8ebefcb1cf755e6df642de8171c1ace4766b2a1d0d3d8297d8f6416",
+      "generation": {
+        "manifest_sha256": "bbb3e2ce12a9fdbda5004babbd2632770e4e7fc303703658517ccd437dcb09db",
+        "run_id": "20261124T042816094826Z-e90806af9e7a445e"
+      },
+      "initial_points": 289,
+      "initialization": {
+        "manifest_sha256": "b4453c8640dec14268dc2bae8ab4475a7d5c4d7ecbef5e2a20b7306e9540248a",
+        "member": "payload/init.json",
+        "run_id": "20261124T042500976843Z-bd341bd0fc49425f",
+        "sha256": "aa01728269cb814cc04380567d0ffb3e9a9ce96f1102ff132c0de0748bfb904a"
+      },
+      "initialization_array_sha256": "95a0c62f7cc8803d164e8c2ea179acb925e6631ece0ff84f1542a924ca139077",
+      "initialization_json_sha256": "aa01728269cb814cc04380567d0ffb3e9a9ce96f1102ff132c0de0748bfb904a",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        23,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        23,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "32dde43148fdbf0fa629da7e8e103e2ba35ad1ad61ffc05c160086fe1ad084e0",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042947642419Z-5696252b8118406c",
+        "sha256": "03aee23414c46bace0d0e85d92e8ed2a8d7a2ea3fb0dc1b6f7eedaef766b2065"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "6099ec24f9c543a3f8860b16ee040890a067f055e804ccad6afecae872b4c135",
+        "run_id": "20261124T042856621576Z-e94d1ccd61624059"
+      },
+      "scientific_job_sha256": "ebb79a493ea01ba56a4fb8db57794cea2bcee914f672dcc27a5558fce0803b80",
+      "source": {
+        "manifest_sha256": "4fbd00e353240fcb7d3d205a559311b183b1bb9d00ad86db717af953a709cabf",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042459410578Z-c5c4576a39ec470f",
+        "sha256": "eed9bcedf9c3f4066e9f4493de220219a1dd627cb19edadada898c8512aebadd"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "c7ab65a244d2ae400df330cfdf70206594b2a5871735667746f37995b900863e",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042501946580Z-d7a5aabda7d84f6b",
+        "sha256": "e56bb294f9a2cdcd2e27133e78b0b226814cff45a9fa672aa732aa2539954d44"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "3042a0473a6725083a0fc9d55441b1e1d762acdaa494816ae34b9faa6baa3ac3",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043037667017Z-544d41b0f7a84fab",
+        "sha256": "c6b85711f6c2ca73e766c558a66c9fdc4c6823ee292aaa50c119bf6c24922c31"
+      },
+      "condition": "M4-risk",
+      "fit_key_sha256": "35e0a36578891bdf8556fe65bb26d2bbaefb57e6c62e1ad96391f9ef7ce6945c",
+      "generation": {
+        "manifest_sha256": "242ed1ab9a194204ca358fd38bc44643271200b4f5e8fbb51868c4e289ecd1a2",
+        "run_id": "20261124T042904165102Z-e0e22b597d024a74"
+      },
+      "initial_points": 238,
+      "initialization": {
+        "manifest_sha256": "3730fd6fd3502b0a1eb94df38284e34140ad3ad5672041e0ff8e81c203c3c98c",
+        "member": "payload/init.json",
+        "run_id": "20261124T042504225191Z-11cb0235ce824c8a",
+        "sha256": "2b82a9d8df6e9633d64fcba4b2a85b23fbb8c316fe130dec0afa06fbc46de543"
+      },
+      "initialization_array_sha256": "1bec82db004a35cf17358566a170c535d7ba0ab24599ad1cdb66694206297a6d",
+      "initialization_json_sha256": "2b82a9d8df6e9633d64fcba4b2a85b23fbb8c316fe130dec0afa06fbc46de543",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        10,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        10,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "3042a0473a6725083a0fc9d55441b1e1d762acdaa494816ae34b9faa6baa3ac3",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043037667017Z-544d41b0f7a84fab",
+        "sha256": "5c92cbd0d6bfe1865e757b6642732a27712c7a06919f320e930e6fd426897535"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "a794184f23bc9d3f10a0d79a20807f3d585e79776abfd589e7dbd7c12efa3eb9",
+        "run_id": "20261124T042944331318Z-a9ab64675d1e4640"
+      },
+      "scientific_job_sha256": "072fee426e51604136dfa685cb7120138d613ac4eafa1ef842067040a9421935",
+      "source": {
+        "manifest_sha256": "a2114ef60564b165483c7f0699040f6ee8ab5e43b573def3fcf65efd16c74634",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042502792851Z-7c2eacde8fd54e32",
+        "sha256": "d0c10516f59b57c71a63faa1bd34cc0e1cff93cd479d5687d8a189a8ffb315af"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "49646adeb29cfe775049a2c3ed496febd0962e9780a9f4353d9e8d971ef5c051",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042505229433Z-ec917778909a4075",
+        "sha256": "aa1a20ce9d2e43168456efe9d5f5f12fe64eb77cb5ee8f6185ebb9e08cc2ea40"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "00d457919f0053a10005d63f0654df35126a3b84e0bc38b95e69e993bb26eecf",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043154588863Z-ea00784c08da4379",
+        "sha256": "178752b3f69e8ed13dc0f89ffce9492f5fab204bb5cbfa7aa1213a16632abb04"
+      },
+      "condition": "M4-random-137101",
+      "fit_key_sha256": "86eef987c1067f922d95fb5b6d4843e93b3545014d66e5ce7dd572e189b42867",
+      "generation": {
+        "manifest_sha256": "957dd4afdb06220a8105849cd8203da4d2001804073eef51f2e14f170b8206b5",
+        "run_id": "20261124T042951096889Z-61fab487edb64dbd"
+      },
+      "initial_points": 228,
+      "initialization": {
+        "manifest_sha256": "eb8a8674876d2e9e08d21de020abde746258dd0ce12c77808058f36d609a031c",
+        "member": "payload/init.json",
+        "run_id": "20261124T042508464435Z-b0362c879f684ac1",
+        "sha256": "7fd5dce08d86877e967577978e5f76ddc1babc1f8172302cc015cd317daaa83f"
+      },
+      "initialization_array_sha256": "0df8b6b3e60c6c3663ee2ae72a2efad48a7cfbc9288259df9d41711870c11f5a",
+      "initialization_json_sha256": "7fd5dce08d86877e967577978e5f76ddc1babc1f8172302cc015cd317daaa83f",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        17,
+        20,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        20,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "00d457919f0053a10005d63f0654df35126a3b84e0bc38b95e69e993bb26eecf",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043154588863Z-ea00784c08da4379",
+        "sha256": "e0f7ac1ba960ba410ba96e4a7bdf984b1bdc760a62aa0255cccfd9ba67a06283"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "0ef46e7a0a96787808fef83f9e0b7515fa16ed995b32a32cebf9b367cb4ad933",
+        "run_id": "20261124T043031638701Z-12208ab8f6ca48fe"
+      },
+      "scientific_job_sha256": "17c7c351dab87fb24a6c42c4cd478400ffd35c755321fecf2ec0f1ce61d22328",
+      "source": {
+        "manifest_sha256": "28524c16e4b176c2dc4bbb397dc2d12c22fa6857ce160b0e2d402f2b7c7d5278",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042506147290Z-d7f48455413c4160",
+        "sha256": "08589903187a734b34efb5d7d367ecc9baa0a83f6563d3e84f05377ccaa75b83"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "1745ec2d70b7846b432cc24046c8b1d95e786b7fab62425123bd1088d5bc4734",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042509530869Z-d576fed243ea4edc",
+        "sha256": "da007ce11cac69121c1ab0c74d8b57fc6607b70f34a64d723f19e0596b73e156"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "3efbded86dd062ab6b1bed680f85301fae7fa71c2d3c9ee4146940564c082963",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043220275631Z-101bfd4d9a7b4d29",
+        "sha256": "dc622de2aab7ad2f31ad853b762cb4ba2b3ed0a7a6932179fe18a79371a87d98"
+      },
+      "condition": "M4-random-137102",
+      "fit_key_sha256": "efbd86ae920ed078709bc7143c81535042512ef0b6c9627df6dc8587689f93fa",
+      "generation": {
+        "manifest_sha256": "381ee0655d819c23979e3f239272ae6e780ab18b8fdd0169efca6fa49444448f",
+        "run_id": "20261124T043038952601Z-06b7bba0d36a4aa8"
+      },
+      "initial_points": 244,
+      "initialization": {
+        "manifest_sha256": "44723b7ec5db19782e892de2c538f79cbc0a654af7c251edaf82a0be2ee0bb8b",
+        "member": "payload/init.json",
+        "run_id": "20261124T042511868809Z-f8c46218696d4e19",
+        "sha256": "4886def4c5b8e2a86ae5068d8479e3ee950cd1bd492d762da1143bfd5bcd74ca"
+      },
+      "initialization_array_sha256": "65fc85663b79e452278b2fe086cc1db50f624b004f699f15f22fb5d7cdf396ec",
+      "initialization_json_sha256": "4886def4c5b8e2a86ae5068d8479e3ee950cd1bd492d762da1143bfd5bcd74ca",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        17,
+        40,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        40,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "3efbded86dd062ab6b1bed680f85301fae7fa71c2d3c9ee4146940564c082963",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043220275631Z-101bfd4d9a7b4d29",
+        "sha256": "c1798bb7ff6957fd2d578b411bca25ad7e87ea270461277d70070d137cd368db"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "c03ed34fc666193e5135df3a2ad590627e48c769b2cfae762169b9eb3c698759",
+        "run_id": "20261124T043120755869Z-0528224746034783"
+      },
+      "scientific_job_sha256": "f3cf8c46d9a5331bf418d778a7e469904178aa97349d05ca6e404b1aeefdbc30",
+      "source": {
+        "manifest_sha256": "d4b2d8ef823f632504d2e058e7ab4203ac4b096e50340a73ddc863d5ca2c92ea",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042510395113Z-c046b752f9324350",
+        "sha256": "61ecdd9c5af87ece081312c04a923f531a1956252deb5319de6d1f9853dcb6d8"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "c0e718038e8259897872edadbf63fb2ef8bbe065fda77e8f554ad2430e305ef9",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042512867430Z-4785702ccd7149bc",
+        "sha256": "114c1827c18b399348170a1bc24d7db979994fb44dfefba757b3953634539308"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "4f22caf9a491be1f185d36bcae3b9340eba278e9cd510be637c1cab6ed9073b5",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043304378456Z-6d393e19fb6f4a64",
+        "sha256": "3cdcc2f83e289be65d1cdcbb3b89a646a723d4d62c12b83d68c7da5ca8ec8715"
+      },
+      "condition": "M4-random-137103",
+      "fit_key_sha256": "e73775de2e16a07d9c5354bc086e30b63376ff54d0ea5fca1a293ef6c1d78ae0",
+      "generation": {
+        "manifest_sha256": "6d8f136f17b74790711f25fd78a074ac65cda80e3f2701a8dc7444503885ece8",
+        "run_id": "20261124T043127822584Z-3ed81aba0eaf49fa"
+      },
+      "initial_points": 240,
+      "initialization": {
+        "manifest_sha256": "bf2252183f4539b3f7928177a0e02e0a57c91d145781d12c3cca1184d5d098ab",
+        "member": "payload/init.json",
+        "run_id": "20261124T042515325525Z-cf7d5744acd446cd",
+        "sha256": "4354bc16cc5e5d4d02061f933d10d7db8edadfe44b50382e7aad5d2e90d3f8c1"
+      },
+      "initialization_array_sha256": "e3b87267f87f61f6af82ee9016701d999e6b5112897790184fe7a00e0ef610f3",
+      "initialization_json_sha256": "4354bc16cc5e5d4d02061f933d10d7db8edadfe44b50382e7aad5d2e90d3f8c1",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set45",
+      "official_camera_order": [
+        24,
+        7,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        7,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "4f22caf9a491be1f185d36bcae3b9340eba278e9cd510be637c1cab6ed9073b5",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043304378456Z-6d393e19fb6f4a64",
+        "sha256": "39fe8fe861a40c73782011bac74fe13de8d8b049571def001ba7c0ecc611c99a"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "5a33d6cd87350e725a9700137c8e306bd46d885c1b0852e4e9b9f50c6bf7aca2",
+        "run_id": "20261124T043208414893Z-76a04c79fcdd40ef"
+      },
+      "scientific_job_sha256": "fb3b82dfe077ea07860d9a5d814476d4e5c8ffe018f3defa6a94110d4ef3e5ba",
+      "source": {
+        "manifest_sha256": "7b05fbd38471faa07217ff796235ab20b4a85eb403745a5d6c3a8533883da1f6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042513754254Z-a3b10fa6f183497c",
+        "sha256": "247badb68775db89c23c5fd518715462add2daeb8b1cde678965fb8cbfe98c6f"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "bee56aaaaa70ad7e04ea6162acd7610058e9a23765b1e9498c50b0f681677653",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042516313680Z-331eaee2993b4735",
+        "sha256": "e8a305afdb63b888097ededa7a9db943c9af51f6727365fdcefedb6c4d18aaf7"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "468798884c67cf607e57cad9732e239f890c2672512400e2f145c5664cba23f0",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042507528354Z-15e42b415d904845",
+        "sha256": "3c190556f1cfd32021c603cc826c9fd5ff8c849d1b67d705a46c2f5bd55e5a5a"
+      },
+      "condition": "M2-fixed",
+      "fit_key_sha256": "59164f3796b6c72b4c9ddb47fe6f16361e878e324c01f134a533f888a8850911",
+      "generation": {
+        "manifest_sha256": "2f0bbc1ac8c434c4422d4347518702b3a357997bbdc7c7c5f963223a842475bb",
+        "run_id": "20261124T042253016265Z-856a7b8edb7e4a3c"
+      },
+      "initial_points": 2048,
+      "initialization": {
+        "manifest_sha256": "9d5c0f98c97842e716739e37011e0b6fca2335dca362cb5331aa24014ec8bc04",
+        "member": "payload/init.json",
+        "run_id": "20261124T041112798886Z-d054b14291dd4519",
+        "sha256": "76dbd6c8227d8270bf19e2509e8b961c359346c374723c0a1f0cbc6733f4cfa4"
+      },
+      "initialization_array_sha256": "1c052682eac399df96138a55f39cb7abbee7fdee7ec72e0f4e1d8d795714142d",
+      "initialization_json_sha256": "76dbd6c8227d8270bf19e2509e8b961c359346c374723c0a1f0cbc6733f4cfa4",
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        22
+      ],
+      "qualified": false,
+      "readback": {
+        "manifest_sha256": "468798884c67cf607e57cad9732e239f890c2672512400e2f145c5664cba23f0",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042507528354Z-15e42b415d904845",
+        "sha256": "3ed768175869ba105375b64e1c6805d76339a0047b2692c4d04a925dd255fa9d"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "ccf5932ee43b77c74215cbfe6de0a74c2971c9530d66e3089d32180073580483",
+        "run_id": "20261124T042336247713Z-b146dbf1cab546ce"
+      },
+      "scientific_job_sha256": "9bfe46888ed09d7f3189ff4b0915e6be6730f2192cea4917ac7787fd92377798",
+      "source": {
+        "manifest_sha256": "ff1eb8f817579a0bd4b58af6a822acfb67e29e6a9d04e268258edc1ca7e9ec58",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T041110834369Z-38fbcbf85be64c45",
+        "sha256": "1a3a0610a69f616112e2684c2870500bd91ae9b4937314c02df776148c0ac445"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "2f0497e471b7e6adb18e84660ccd2b553cb46d8ba5e9a106a92aacef14e8845e",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T041113624028Z-ae274d8109ca4f60",
+        "sha256": "6049af878e3ce0e8c763aa98c934531f8e6d93bff286a4b77a381c6642062bfc"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "f9d5a086ca2098880a1748c04c73faf46cb9336b9a577b23981e731fc129884b",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043347118908Z-bb5964dc072f4698",
+        "sha256": "1269c6245aaa43709ce0ab1c91789443c8ebbb0444b23b6b1108d956a53185df"
+      },
+      "condition": "M4-fixed",
+      "fit_key_sha256": "39fa09032250da20954ead1c2f6ede3a76ab9644802a87ce76f05d015e76d13b",
+      "generation": {
+        "manifest_sha256": "32d7014252ee8f5adf480ad3b24b68964c7c64388a793890ccdccb6d2c49e6d7",
+        "run_id": "20261124T043216965835Z-5e02c73a0bdd4c06"
+      },
+      "initial_points": 157,
+      "initialization": {
+        "manifest_sha256": "4cc8d7ccf7e6449d8db9300966174f820156faddb0ab0e625a634c7b925634ba",
+        "member": "payload/init.json",
+        "run_id": "20261124T042550115545Z-d5689cffcfe24fee",
+        "sha256": "dc35521b22da42b18337349eaba7f091b4e4e77ab7ea284938bdc9feb1bd0382"
+      },
+      "initialization_array_sha256": "ec9da0accf3b94a3469a4af34577a6c50220874cf2cb80c52c209c4412d8f156",
+      "initialization_json_sha256": "dc35521b22da42b18337349eaba7f091b4e4e77ab7ea284938bdc9feb1bd0382",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "f9d5a086ca2098880a1748c04c73faf46cb9336b9a577b23981e731fc129884b",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043347118908Z-bb5964dc072f4698",
+        "sha256": "602e5625472072c599c2f32ae41fd36e3a9fa10691c9dc88a66426d65721c025"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "5829e7425ca6ae657ffaf3ad4de7079fe5a5124645484a0add0e0e7f83bfe6d9",
+        "run_id": "20261124T043257576003Z-c85ce1657d194fea"
+      },
+      "scientific_job_sha256": "d987ecc17b91d7df88a6c2a477001ff2fead5782935218cc82ca433841e444c7",
+      "source": {
+        "manifest_sha256": "a251d34e5407b556a3c0b7849faf665a3c1a222951fc01645e3c12ffe121f5d0",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042547795701Z-8b2cb85df76241a5",
+        "sha256": "a6e3668d83c000252b82b052bfa613442da11e2638932edb5658a109b211c338"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "c50350d298ef04e6b662488728ece67c20b82155cdd3b1eca440413c08aa6863",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042551274774Z-06f0feea002e4667",
+        "sha256": "15a487d1603ab48d68412c0cbe43229aa8f7a320124a41dcfc1c521f43658b7a"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "6d14e633a4a46c1a7cef1ad73377dbd41468ab7105a8534510c4c4a3f46f14e3",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043438238516Z-f6566930e04d444b",
+        "sha256": "c899bb4a66382d15a04f29c528d1204d575199e6b1c1b944cc0e5e706ecdca9c"
+      },
+      "condition": "M4-uniform",
+      "fit_key_sha256": "6cac2c3e916f16b643d494ad757e77443903ffae5c13fe554d9603ee4ccba07c",
+      "generation": {
+        "manifest_sha256": "6d2c2440f5c8e215b6cfef16a9eac59e7df9faec49ef49fec2f44a47f3c19c34",
+        "run_id": "20261124T043304632731Z-bb593cc0829a4020"
+      },
+      "initial_points": 86,
+      "initialization": {
+        "manifest_sha256": "73e0715ea8b4551ccb86bebf0e20ad4000883dc666a4bbc6b043aac5f9f60926",
+        "member": "payload/init.json",
+        "run_id": "20261124T042553779529Z-c2df3ad421694aa5",
+        "sha256": "f909b9b92d07e277e64c2bff30c94e29f66fc2a1cc60f3eb9f97afd693ffcf18"
+      },
+      "initialization_array_sha256": "601dd735f46efd32342ed6cf49256c4d7688d5a3354df043892783f7ffa9810e",
+      "initialization_json_sha256": "f909b9b92d07e277e64c2bff30c94e29f66fc2a1cc60f3eb9f97afd693ffcf18",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        10,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        10,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "6d14e633a4a46c1a7cef1ad73377dbd41468ab7105a8534510c4c4a3f46f14e3",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043438238516Z-f6566930e04d444b",
+        "sha256": "3abfdb20205dae7092ddd049fb0ab5df0f6d80fc89b6b0031c86023b94ce189d"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "f77e399681422003b3be7471c96013f7c0889767cf1f49ced061a01fae516377",
+        "run_id": "20261124T043345909249Z-825b7548f6964d71"
+      },
+      "scientific_job_sha256": "bfaa06a1e6af2290bb8ec000e050e63c25f99df1c3fec597b0f95b492609ba56",
+      "source": {
+        "manifest_sha256": "9e17b69680ff8f035cff335890bb1b634293b5eabd51a764cd280979bd1b9d8c",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042552170738Z-498da62f3fa54ab1",
+        "sha256": "3f06d3ec63c99edb06409ea14e7af77ba4e47bf7e004f47e67fe6c54a7a62989"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "1b07fc9e2e7adfd9145904b8c9b8a21ee0d42c3908910f48fad81630e5d63f95",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042554804325Z-feab4a58b1e947a7",
+        "sha256": "fb4b26130ad89cce1f6243336ac599523d955113f75ae2a593cfccf125b15df7"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "902a484863217c7aa1d71e2dfcd7d7c48eddf2b7d925682cdfa3eb277298eb63",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043523371090Z-d6b8198b95ad4787",
+        "sha256": "4145912ef5f777db6ed093b91ebb6aaace4b87f64cd6416792bebf31ccd8a494"
+      },
+      "condition": "M4-risk",
+      "fit_key_sha256": "e71d0354d38e5c378c4b3f922dce9d539279b4220cb02e526a0b3781ea16cb3d",
+      "generation": {
+        "manifest_sha256": "32e14ff6faf8bed19607f3c8ca3a47606be7e8d1d4c2803ee7a6247e500e820c",
+        "run_id": "20261124T043352797176Z-86ff1dfdd6da49ce"
+      },
+      "initial_points": 79,
+      "initialization": {
+        "manifest_sha256": "7a6c1086a617fc9ef29a7e54ec4e828df345245aaf079c60fa2b22631fbf24ba",
+        "member": "payload/init.json",
+        "run_id": "20261124T042557480976Z-66d2d223a1864dac",
+        "sha256": "839de4df0b43ff4b4dd9466690aa57f02abb997dda911a76df64a95b13b083a3"
+      },
+      "initialization_array_sha256": "449edb94fe09fd9de1a2d1cb0563943850462748d109684dfdcdc5c321523e26",
+      "initialization_json_sha256": "839de4df0b43ff4b4dd9466690aa57f02abb997dda911a76df64a95b13b083a3",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        13,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        13,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "902a484863217c7aa1d71e2dfcd7d7c48eddf2b7d925682cdfa3eb277298eb63",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043523371090Z-d6b8198b95ad4787",
+        "sha256": "f346d25efc09d0aa1c0b32dc576f345e84b78f109219aaea3a449327d1eb2cff"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "04b7d10080a0ffc6a05e5ffa198e8076a27725a8fe597d158c5e02b5c804405f",
+        "run_id": "20261124T043434127932Z-e7e3b94483da4980"
+      },
+      "scientific_job_sha256": "d530b86e959ce9f885d6cfb0a9a633740b01457c1da6a37475dd18ff8a887d6e",
+      "source": {
+        "manifest_sha256": "a575e837a124c3cfabc03076fe8b7ea1bbc969c81f12c0e806a563a3c036df2f",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042555836304Z-dd58efdeaac94028",
+        "sha256": "e7d3fb17879c56d344ccab15572e5d8ac6031901a77f68ad3f3f1c910ab343d7"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "c015080db0634f3352c54ee8b9aba3d973f65519533acf42bcda744e5d9fb8b3",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042558551325Z-e8a043092eb04bc7",
+        "sha256": "7198f579ff900affadcf7052f21ddc5c049bb531b023daf619b44599c73a45b5"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "22cb9546b4196a698b3dc241ab7bf4510839252927c5ac810b70247ba028e474",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043615564443Z-a91d2461dd1b4185",
+        "sha256": "79cd7e897cc4f5fa847dfeb68923523c64c4fd9f8078e652479b1cd7b1264448"
+      },
+      "condition": "M4-random-137101",
+      "fit_key_sha256": "d8678727a2e360f7914ebc79bbd6554c4620f9864693492ab24345e702450cd3",
+      "generation": {
+        "manifest_sha256": "9909ae9688292f15622b37d5a6a14d66a261bbd698c030c22d47ff98f386fc47",
+        "run_id": "20261124T043440954413Z-1fe1113775794aac"
+      },
+      "initial_points": 53,
+      "initialization": {
+        "manifest_sha256": "629a3cc868ce19659cce87f4908a8bf6822979a7e0f3309cebeb4978a9dae8cb",
+        "member": "payload/init.json",
+        "run_id": "20261124T042601161649Z-de9a5320d9c64219",
+        "sha256": "a69479c579909fb390f3ddb9c27142fc619c2a6e9a6c21c263cbf95fa84f12c4"
+      },
+      "initialization_array_sha256": "c83c3e596aed19ebaaccfaa6e68456456f4811131e9d382fc88bdab71dc85643",
+      "initialization_json_sha256": "a69479c579909fb390f3ddb9c27142fc619c2a6e9a6c21c263cbf95fa84f12c4",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        10,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        10,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "22cb9546b4196a698b3dc241ab7bf4510839252927c5ac810b70247ba028e474",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043615564443Z-a91d2461dd1b4185",
+        "sha256": "e25022c81f921391b54761244cdf187a0ed595e0d6287a43bbf3a09558b7b249"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "f52074caa7f33e49d48ebf3b63f7a15977ce98d94f7a4cdeba5a9313de046197",
+        "run_id": "20261124T043519888376Z-17ff127dc34e432b"
+      },
+      "scientific_job_sha256": "b2e781b95967c250ea6709755341442a66f457cf38231d8980b035f8bc2fc9e7",
+      "source": {
+        "manifest_sha256": "2c73132fcfce215a20c287fcb7b69ff3f55df1827ff6795b6de49d2bb7003cd3",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042559554796Z-56dc05f41d17466b",
+        "sha256": "7170395ba3cc91170fef62fa7e3fca8451e58c3cb237dc97eda3b49d9543e67a"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "106aa9fe1105abfb34537a50f7733cb3d0d72d37bfe2422f48c7c495f3b598c5",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042602245747Z-ed3be6494abe4838",
+        "sha256": "25f4cfa98688534cf00577a0e89411149f8d151d390ace23f2dae6766309cbf3"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "0a85dcc8caa6e5865d8241772b9d0d5dde14df29f5ce7f1bcdfcf8b2bb30b25e",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043659988631Z-be26437d104747c0",
+        "sha256": "2bea1ecb0df938797bc5d88a95245f728b27f42046b7eccdbccaa608ed3159b9"
+      },
+      "condition": "M4-random-137102",
+      "fit_key_sha256": "843ca9458595e90aa19d6d86a520baefcda5b3893ea19e4ccfc7b71df109d9a4",
+      "generation": {
+        "manifest_sha256": "643c467a63b8c85026f3bdf71706a9cf1e9a5e00f96f00a723f0906b8699ef1a",
+        "run_id": "20261124T043527606045Z-d9b0762b46fd4b7f"
+      },
+      "initial_points": 136,
+      "initialization": {
+        "manifest_sha256": "50963ad3c961961c9d570b8468832c41ebd0ea26823e6de2c0386fe1d74b4e71",
+        "member": "payload/init.json",
+        "run_id": "20261124T042604429282Z-12df6d3b48d242bf",
+        "sha256": "d33b699e148e73a5707c9022049a61501ac8f46f51850269569670306e3d747f"
+      },
+      "initialization_array_sha256": "4490e35b2d8c7718987502014e61ee34448cbbe9e64ef24270d3aa8001045493",
+      "initialization_json_sha256": "d33b699e148e73a5707c9022049a61501ac8f46f51850269569670306e3d747f",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        10,
+        23,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        10,
+        23,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "0a85dcc8caa6e5865d8241772b9d0d5dde14df29f5ce7f1bcdfcf8b2bb30b25e",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043659988631Z-be26437d104747c0",
+        "sha256": "1f396e0e818d09a810fb82e0a2fced015b3ef74fe54d3d47be462dbfcd48cb3f"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "f53408a6087a6eedfde22584b3f9d19e08eb42a42185adce38ff8c9d043466aa",
+        "run_id": "20261124T043610445141Z-3e8c4ee5c28b4f1f"
+      },
+      "scientific_job_sha256": "e351726645c8b4434493dbba6d33ba3159a2fe4a132f8166009b03ac90993135",
+      "source": {
+        "manifest_sha256": "a9b23c714eecab332f6652bcf137dd8d178c60a70a2183f0b326be927c7ccc5e",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042603263676Z-494d1ea494ed49e2",
+        "sha256": "b08d642310541e0deea6b08cb9a43ab2deee4716dff6e35ed7caf4a31b2bf439"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "5eed8c51e143379c07d00ad87ef9c8f326d48c46dbc3cfbbec176113fd5d5695",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042605548447Z-5eebdb66c3754bf7",
+        "sha256": "fb79f68e3b33df7ee985c64131b511cc0cd1749d14edc4c564c36ca247f29dbb"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "b261d28c80a7b498afbfca719abe297393e123e6949254a73f3a1d1df3b825d1",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043751953062Z-0963771bc28a4546",
+        "sha256": "0d7a8483c1716f5109b9cee49013d6e1f83044dc6d4df3126a38b529a4b07599"
+      },
+      "condition": "M4-random-137103",
+      "fit_key_sha256": "fc6f4f01269ec8bffe0dc4f803412b8e3f77e9b6d6fe6b9d53f891cee77b7ad4",
+      "generation": {
+        "manifest_sha256": "3a9d42415be5bc7e2df4a8c739c19597fb5ae0270020d119fddf7907abd045b4",
+        "run_id": "20261124T043618377758Z-8a86f873e52f4d35"
+      },
+      "initial_points": 2048,
+      "initialization": {
+        "manifest_sha256": "502b07be6a21481668d85e1a95cad32a3e0c26598a2c6cdf2188c71cff3cd58b",
+        "member": "payload/init.json",
+        "run_id": "20261124T042608884544Z-063ef4ff60be4eb6",
+        "sha256": "f806abdde49e0c3964b51567d1acd4d190206b178a0c4b80fb89794ca8259864"
+      },
+      "initialization_array_sha256": "1c052682eac399df96138a55f39cb7abbee7fdee7ec72e0f4e1d8d795714142d",
+      "initialization_json_sha256": "f806abdde49e0c3964b51567d1acd4d190206b178a0c4b80fb89794ca8259864",
+      "initialization_method": "endpoint_stratified_inverse_depth",
+      "object_id": "set103",
+      "official_camera_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "qualified": false,
+      "readback": {
+        "manifest_sha256": "b261d28c80a7b498afbfca719abe297393e123e6949254a73f3a1d1df3b825d1",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043751953062Z-0963771bc28a4546",
+        "sha256": "0eb3621850e7ebeba3e40af5e70b9c83e5a83fd9a936995c46d070447fbfd170"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "801002b889a1bc6acf7d8c8caa697f45980928b52cf68beef067fa8ae0df2024",
+        "run_id": "20261124T043701782214Z-e3913d6548a1464f"
+      },
+      "scientific_job_sha256": "bedc5009948c7afc9365e2bfa17d15491f7cf0e9057185cc1ac05203635129ca",
+      "source": {
+        "manifest_sha256": "4c63d3c6733c66a09a1dc909f313b5d51b9bbba9bdfa77edecc151dac3815ed4",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042607621902Z-7e7ed76a245049d6",
+        "sha256": "5996485171a53fa3530580206e8217e42e080cb0134a83a7722d090ac13ef28c"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "e11cf0f386d7f02a6cec8b8e0c18d8fe173df172e465e1f468cd95aaa466dde2",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042609988156Z-e51729a77214471e",
+        "sha256": "0625e0f32f2c8ef6d3d35cc23306fead0b9ee71e01f62ba70b5ac3e8638cb76a"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "f164bd2a42ed2e4688456dcc30cfa89bf6ffb6fa2c4ce8ed0c21ec6e0402136a",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042542755607Z-6eb83c8078cb418c",
+        "sha256": "6f149e2a0c95040576b3ae0312ff8b672b35daf141c24eea4ade049fd926383b"
+      },
+      "condition": "M2-fixed",
+      "fit_key_sha256": "616326e46f2737841935db48cac38e76d9bec67c00804017df09c54f82efe4f7",
+      "generation": {
+        "manifest_sha256": "ff70838d91e6935ee609c5f71c76074474f21f0c1726334604b3201392df28f9",
+        "run_id": "20261124T042348825307Z-ec160b740a4f44f7"
+      },
+      "initial_points": 95,
+      "initialization": {
+        "manifest_sha256": "ae168ff08a9df3b023dd7664eda25a2422c2ce769841fdf39e409f39cce61c31",
+        "member": "payload/init.json",
+        "run_id": "20261124T041116038895Z-c2c654c8c3354a89",
+        "sha256": "e1b0f08fda01a9d681b6b0e4da112a8571564c17b2ba6643a40a398d9bed0543"
+      },
+      "initialization_array_sha256": "b7bf184f0b064fcf1daedb850ce343f5cebfe27d24c798d322f1a736591b0560",
+      "initialization_json_sha256": "e1b0f08fda01a9d681b6b0e4da112a8571564c17b2ba6643a40a398d9bed0543",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "f164bd2a42ed2e4688456dcc30cfa89bf6ffb6fa2c4ce8ed0c21ec6e0402136a",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042542755607Z-6eb83c8078cb418c",
+        "sha256": "3657fb6493c8f57c9acc5880429e597ae9bb7ef125c64744aaaeaf4def230bfe"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "be5f970e94a656be8986a0f089b975d91a1a2089e67d16952aef30896007d1d0",
+        "run_id": "20261124T042429667152Z-1bcda9ee95ee465e"
+      },
+      "scientific_job_sha256": "73bba9d5985ee93757fe3564bfe7c36803ca88722779e5cc48ffec383b159891",
+      "source": {
+        "manifest_sha256": "dfcbf19fa0169975757a20b0cb8af3b4f1c364a6754f7b9058fed04a80a37c87",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T041114174124Z-53195efd7fde48db",
+        "sha256": "2441dca8ba6d3e72737cf2f1dca26ceb7144d3f7821ca49bc928e679ffe04ec8"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "7119110584c9bafbeab55f104fef0aed3e28bedd557345d43dd2a7706f4e266f",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T041116890188Z-b7a08be68ea14e5f",
+        "sha256": "500b2a2ef470bff9b78ae3db7afa1104748fb98ef32c74e80d053f4cd9c9021a"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "7f8a5f09c99b6bcd939281249681966f91c641d4473f1232941b32b355035dae",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043843195004Z-57fafb0518d24d94",
+        "sha256": "8eb2fc1307eb63d3dd4f33879f4cdf3612fe398a53ff9a7612b6542e10e80e01"
+      },
+      "condition": "M4-fixed",
+      "fit_key_sha256": "a8bcb0342e89af30bac97a63f6954d308a6fb123db2f5b7088cb64692d3b6b1c",
+      "generation": {
+        "manifest_sha256": "f977815cbb940b76a7b8cefc71c640bb39d3ffce160c27f47e87e92278a195b6",
+        "run_id": "20261124T043710713151Z-e93aa481ade74a20"
+      },
+      "initial_points": 275,
+      "initialization": {
+        "manifest_sha256": "5da06b3c8ebd60a136d47b4b38d2b73064ed7c2bdf1ef7dda338e8163315589a",
+        "member": "payload/init.json",
+        "run_id": "20261124T042658007806Z-7e727442e0604a3f",
+        "sha256": "7e310f668b6ec0b92e75153913b797a3e0ca975e3c6972d195d347d3fda5cf6c"
+      },
+      "initialization_array_sha256": "c7abe0fee84bb3e1e236f63cbf6f3b798551dd7dc7960d264fa4ea9fedd33b7b",
+      "initialization_json_sha256": "7e310f668b6ec0b92e75153913b797a3e0ca975e3c6972d195d347d3fda5cf6c",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "7f8a5f09c99b6bcd939281249681966f91c641d4473f1232941b32b355035dae",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043843195004Z-57fafb0518d24d94",
+        "sha256": "ed904b06787fa597c60a6c52ad45857012d9efc420ff18adaa1439b618f99e31"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "26e83533059cf85b2af0d50aa2c15627093f0fd5dda818bfc5037aabd190971b",
+        "run_id": "20261124T043748352478Z-9210c8036fdb4b7a"
+      },
+      "scientific_job_sha256": "fb363aff540d46a623da0cfeb3e38ca92e0f0d37f0dfe61f48b495e8861edd7f",
+      "source": {
+        "manifest_sha256": "11762ce0017c56936f62aaf649b22c5050778466d58974dc5a8b38df2739bfb7",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042655660656Z-bec36efa8bdd4a31",
+        "sha256": "fe763dd4d338d352ea66bcb9a85b491eae1cfb98682ae1fb03dcf2af8ab59311"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "4827c7bbcd3575b914a3437c50458a28b7e3632607f372d1a637a6b485840b0d",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042659261952Z-853889ab8fa24ed5",
+        "sha256": "fdc1d6e7aaf6d6788c42e1ac51f4f1de44d2bd6e9fecf269285161b8e4fd19c0"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "4ffa7d57e09a9e93af419e6167d93af7cf962680c46b9aa836dd06b9ae0feb28",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043933552635Z-bde6c89a3323427d",
+        "sha256": "d0b9f8a1066ba92ff91783b1b37e73ecc4977b7c36d5d43fc1db15fcfa21db8a"
+      },
+      "condition": "M4-uniform",
+      "fit_key_sha256": "6b2623da2ece5b025b008f3821ee3749b626f9f567b29311e6b42cd44200f5ea",
+      "generation": {
+        "manifest_sha256": "ac3fb93162fa4a32f13c3c37d51e617612a6413e9516ce01ee11a93d0916b473",
+        "run_id": "20261124T043755625419Z-d1b4a26f39fe4b88"
+      },
+      "initial_points": 204,
+      "initialization": {
+        "manifest_sha256": "a05fae82614ce0e8e5bfabe14398a0a3f54bb36cd41c60c915a4ff0d71586986",
+        "member": "payload/init.json",
+        "run_id": "20261124T042701893628Z-6965af08a3cd4000",
+        "sha256": "569a4c71d12cbf8ada8e3ef597433f2afff4054cbb95039adac5d5b8b27128fd"
+      },
+      "initialization_array_sha256": "2b70ea5cbcfdc4a5bd58e86229167348c4620fd906913b9f23583af45d38fa89",
+      "initialization_json_sha256": "569a4c71d12cbf8ada8e3ef597433f2afff4054cbb95039adac5d5b8b27128fd",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "4ffa7d57e09a9e93af419e6167d93af7cf962680c46b9aa836dd06b9ae0feb28",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043933552635Z-bde6c89a3323427d",
+        "sha256": "43a21c28dfd584304e81052d13e361862100826320d1c1494ef5dd8dc53d2a7b"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "0d9df95a5e546e9ebe2692ee5fc67d2046f816c3e6c08784739017973ebe5c56",
+        "run_id": "20261124T043838317476Z-f1e3ae2d82e74854"
+      },
+      "scientific_job_sha256": "8317000a101921227d47fa26d255489cfcc12b1ebcf2b2fe6d511d02bf1638e4",
+      "source": {
+        "manifest_sha256": "86fc4d3450a1becb2e00ec00e6032f938585226801636465f16f6ccf4e66469a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042700263552Z-c11b4281accb4168",
+        "sha256": "0f0e6371cb8e72c64c4727d4d6027170bb2cf319df7d1c9fab4c73be01ed9bce"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "be1cb91fa72f51d3c14d0ed619802650f9e489bc434c763f6acde6cce132dd9a",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042702986702Z-fe1d5682f5084883",
+        "sha256": "191ec03792b435daa700e7126f86b0f6c1d8e8f6e19110ccd4035a04ed8910ba"
+      }
+    },
+    {
+      "alias_of": "M4-uniform",
+      "case": {
+        "manifest_sha256": "4ffa7d57e09a9e93af419e6167d93af7cf962680c46b9aa836dd06b9ae0feb28",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T043933552635Z-bde6c89a3323427d",
+        "sha256": "d0b9f8a1066ba92ff91783b1b37e73ecc4977b7c36d5d43fc1db15fcfa21db8a"
+      },
+      "condition": "M4-risk",
+      "fit_key_sha256": "6b2623da2ece5b025b008f3821ee3749b626f9f567b29311e6b42cd44200f5ea",
+      "generation": {
+        "manifest_sha256": "ac3fb93162fa4a32f13c3c37d51e617612a6413e9516ce01ee11a93d0916b473",
+        "run_id": "20261124T043755625419Z-d1b4a26f39fe4b88"
+      },
+      "initial_points": 204,
+      "initialization": {
+        "manifest_sha256": "a05fae82614ce0e8e5bfabe14398a0a3f54bb36cd41c60c915a4ff0d71586986",
+        "member": "payload/init.json",
+        "run_id": "20261124T042701893628Z-6965af08a3cd4000",
+        "sha256": "569a4c71d12cbf8ada8e3ef597433f2afff4054cbb95039adac5d5b8b27128fd"
+      },
+      "initialization_array_sha256": "2b70ea5cbcfdc4a5bd58e86229167348c4620fd906913b9f23583af45d38fa89",
+      "initialization_json_sha256": "569a4c71d12cbf8ada8e3ef597433f2afff4054cbb95039adac5d5b8b27128fd",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "4ffa7d57e09a9e93af419e6167d93af7cf962680c46b9aa836dd06b9ae0feb28",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T043933552635Z-bde6c89a3323427d",
+        "sha256": "43a21c28dfd584304e81052d13e361862100826320d1c1494ef5dd8dc53d2a7b"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "0d9df95a5e546e9ebe2692ee5fc67d2046f816c3e6c08784739017973ebe5c56",
+        "run_id": "20261124T043838317476Z-f1e3ae2d82e74854"
+      },
+      "scientific_job_sha256": "8317000a101921227d47fa26d255489cfcc12b1ebcf2b2fe6d511d02bf1638e4",
+      "source": {
+        "manifest_sha256": "cace0a0220026b26ea0080fa3239fbfba5c8dba1f5a479dc8910fddd3bf8b09d",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042704032956Z-790c7ac9f12040c2",
+        "sha256": "f6fabf4fa801ab6de38af5dedb278a50949d78c9db2900326f4d2b2d3b63b3c5"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "be1cb91fa72f51d3c14d0ed619802650f9e489bc434c763f6acde6cce132dd9a",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042702986702Z-fe1d5682f5084883",
+        "sha256": "191ec03792b435daa700e7126f86b0f6c1d8e8f6e19110ccd4035a04ed8910ba"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "d0141d7668cff43c951a973d11bb61b5697fc73d8adef62304b018f47148328b",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044007179629Z-218dd2e132b44271",
+        "sha256": "6230314df2f54426de03ae8502e69e0167f7381ff57b2f014b182364f3849951"
+      },
+      "condition": "M4-random-137101",
+      "fit_key_sha256": "caf5d3fbd03997119b1917ba2b2281743ccca730c3338f0f7dbc006422eb38b4",
+      "generation": {
+        "manifest_sha256": "30fbc03956b6f649992ce2ecbd919f89abe19bd983f01b532baa759b09b84f5f",
+        "run_id": "20261124T043845398612Z-e9979984a7114107"
+      },
+      "initial_points": 169,
+      "initialization": {
+        "manifest_sha256": "c79a2057b7fd3a918a071f0e09528a949cad8c6aba70ed9e5d0998c5eaf13179",
+        "member": "payload/init.json",
+        "run_id": "20261124T042707565889Z-84f6bb23e3b04617",
+        "sha256": "f00e0960021e55b177b03c92cc00130f84a80a06ea359c7dd2b4c8a36e827a11"
+      },
+      "initialization_array_sha256": "d108c768ecb9a478d73b988ef3fff21a4999b3671d8b9dd144ee6459c9575049",
+      "initialization_json_sha256": "f00e0960021e55b177b03c92cc00130f84a80a06ea359c7dd2b4c8a36e827a11",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        10,
+        13,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        10,
+        13,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "d0141d7668cff43c951a973d11bb61b5697fc73d8adef62304b018f47148328b",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044007179629Z-218dd2e132b44271",
+        "sha256": "79e537369d64ca679b1ae0611a594cd7e0b4607454d17cdd3230f8a639af160b"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "116ba9e4bf7816043130dcf51794ef9eebecd3b0b2ab844d3e5e4edb69badb7b",
+        "run_id": "20261124T043923860785Z-51524eb0d82d4e22"
+      },
+      "scientific_job_sha256": "a91befadf578e4fb9bd559c2a29bb4f817a9379ea469dd2ae24442e7c4ea315a",
+      "source": {
+        "manifest_sha256": "998e5a1dfcfb389f600621bef4802afcf5b205078734be2c549cc962083eb63a",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042705231983Z-512aacf88a3b49ae",
+        "sha256": "8c99f790afabbf2da4f9c1fdb3bebd46d6d4c367a820adfbdfa7f647bed98cc9"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "ad7e36e88334a6aaa3bdb5c0ce02240440113ad1e2a293bac2e57daca9d2cb39",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042708774754Z-30a98eeaad1f433f",
+        "sha256": "d8255731200d1f1ea63e12e9abeaf47f4ad8b7a9c943820e218ba3fa0fd43068"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "0852b6c1f278d198d863299dbbdd1c96b7424094006816598b4a716bee6309ec",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044105269424Z-1d73cc04b79b4f69",
+        "sha256": "1ccbd7ebffeeea4e67c092de324268a067d9c6abab1b721927b04b58a3a9ad2a"
+      },
+      "condition": "M4-random-137102",
+      "fit_key_sha256": "f428b51dce1afc818ec985a2f56f81b22016f5c0a4408a2fde7772a61b2c0fdc",
+      "generation": {
+        "manifest_sha256": "f2678e848eb039fc54e8257a1e6564e192e752fbfd705f20071bfd4fb4ef5a99",
+        "run_id": "20261124T043931158926Z-b4a9d8f8f9304816"
+      },
+      "initial_points": 133,
+      "initialization": {
+        "manifest_sha256": "1d33c70c784129fdf5b79c870c0b1bbc9669f85a4e78d79c6859fd660b8e607f",
+        "member": "payload/init.json",
+        "run_id": "20261124T042711841166Z-e32834a270984213",
+        "sha256": "56138a048629785be031164c79b2111030d0c34fb805e1b424868cf31240fcbb"
+      },
+      "initialization_array_sha256": "8eed642235627cf74759a8848188f19b96b79f586b60609b122cb76acaccfe31",
+      "initialization_json_sha256": "56138a048629785be031164c79b2111030d0c34fb805e1b424868cf31240fcbb",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        7,
+        20,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        7,
+        20,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "0852b6c1f278d198d863299dbbdd1c96b7424094006816598b4a716bee6309ec",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044105269424Z-1d73cc04b79b4f69",
+        "sha256": "cbc1d7c6c381c7472917e887934043f78514c542195f239dd6c31de611de0192"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "e14dd9fd67adf40543f8599023425cc57c9f41fb96af861ab158f291d7e7f0dc",
+        "run_id": "20261124T044011115694Z-f3cc763a5828491f"
+      },
+      "scientific_job_sha256": "f99bd50604c335fb2b7821d681923164dafb9d2cf50003d3a9e97875ca33f0eb",
+      "source": {
+        "manifest_sha256": "0f9653353bb645f131ddfaf3c1ad68014fa0b46cc6f49018df7628c7444c7822",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042709739442Z-0d26d34aeee94add",
+        "sha256": "532cfb075bc48a95c22d99320d41ec477cc372e64b4c564af7c757a6979f5499"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "2dd055352fadbf41f23cedf77da194308189e57046cbd2b653a736311a700bf0",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042712981102Z-d7e70afc5600417c",
+        "sha256": "0f86d26804bc2fe6814136f08653249e0334ee30de03d032d35261fb2c886904"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "5460659a0aebc234076868d71068b065c4cdf7a1cc44c2b2fb81cd8576ec607d",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044147947688Z-937f3f60a5de4ecf",
+        "sha256": "b2b7742839a47b68afff756e2379d33c8c6b817840289492d3cb92843b501b54"
+      },
+      "condition": "M4-random-137103",
+      "fit_key_sha256": "06170bd3353d4c10e3ad6f470942d2f2485a730ac0d84a06bac2dfacd86b4e96",
+      "generation": {
+        "manifest_sha256": "4cb7562d4a1c4dc29d7bc615c3eb031a9c61b2ce45d3bfcdfa2b97472a8841b5",
+        "run_id": "20261124T044018316957Z-449bc7530444425e"
+      },
+      "initial_points": 140,
+      "initialization": {
+        "manifest_sha256": "b79d1b25fae2fbf8c436e2426bfb17b91e08c2d0549d7731854d1216942637fa",
+        "member": "payload/init.json",
+        "run_id": "20261124T042715178003Z-bbf10068b8ab4fc0",
+        "sha256": "ca8f4151f82a3206e42aed2e7466fb2276440f1838e770d1a2878f2f4388f1da"
+      },
+      "initialization_array_sha256": "8e241e3c10a2955c445c8e19136663e18ba4730ee78edb9ab70baf69cdf8f727",
+      "initialization_json_sha256": "ca8f4151f82a3206e42aed2e7466fb2276440f1838e770d1a2878f2f4388f1da",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set61",
+      "official_camera_order": [
+        24,
+        20,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        20,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "5460659a0aebc234076868d71068b065c4cdf7a1cc44c2b2fb81cd8576ec607d",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044147947688Z-937f3f60a5de4ecf",
+        "sha256": "8e02e0c55e8c5d376005c396663b292cfd99f780e4fbf53c0ad37948cc1904dd"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "ed5008de9fcf8932b3960edf0c24194521ac5faec942a0c069bbb7b16fd5af38",
+        "run_id": "20261124T044058833787Z-01d5bc9b3e884821"
+      },
+      "scientific_job_sha256": "157224ce781117410331cb9bfde91cdd57c327a0427220ac0b67ad7c5a060e8d",
+      "source": {
+        "manifest_sha256": "42de3376b83b7da9af65d98640aa3905851931ba1a6fa1f5c29f3c8728a006ce",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042714043305Z-6e9a9743b70f4713",
+        "sha256": "a6868e28591f4d3e3fe53a9e011f663be15ef15f5615acb0469786ecb875044f"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "f5fb3062afbdd9e9bfff82468a33c9d6c2a2c1527189ae586a43f671db36598e",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042716345040Z-3b3f136fb78f4345",
+        "sha256": "fcc175d47e1e7f62e9b33900842a52b4381cd2bbb97004ce2eab7470c7935cc9"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "aa917fd7f8844518f3773c92a07870d2767537f588d9fdfc8d2c181e4b4e5d03",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T042607466277Z-c1e40033acbe4ae8",
+        "sha256": "db685186e3b85fb79853becf1764bc96a641d5e2af695f6b54f548b2c7807737"
+      },
+      "condition": "M2-fixed",
+      "fit_key_sha256": "7268675e2e9d32faa0faf1587d5f9785690317ac516c44fddfc7afd160a0d951",
+      "generation": {
+        "manifest_sha256": "30b8ca205b8ccce69aec47e27ee2a6283b1413a81ce05e919d965eec8a466bf3",
+        "run_id": "20261124T042435649017Z-4cdb907582084549"
+      },
+      "initial_points": 24,
+      "initialization": {
+        "manifest_sha256": "6eabdbf295bd6c21e9384c78ae5ebfacc1c75baabef20bc3ae70185d70c55dd3",
+        "member": "payload/init.json",
+        "run_id": "20261124T041119335453Z-b1ff0350705c4076",
+        "sha256": "22ca5a123008b753082a728c2c40ada71981f82b19b7e4cbf83c763f6df47a81"
+      },
+      "initialization_array_sha256": "70aaa549be2c6354ea848685b4277a2688d29d6c1be73b2b13d51f46ad49d8f3",
+      "initialization_json_sha256": "22ca5a123008b753082a728c2c40ada71981f82b19b7e4cbf83c763f6df47a81",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "aa917fd7f8844518f3773c92a07870d2767537f588d9fdfc8d2c181e4b4e5d03",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T042607466277Z-c1e40033acbe4ae8",
+        "sha256": "8a1903d3a000ce75cda1414b519131df88ae2b6711d058457df1a44cba6944b3"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "0a5fe2ea68176f0f80ccfb9be7d70baf5bbefbcda22ae4f80f07518fe658fa88",
+        "run_id": "20261124T042520060084Z-fca3fec2fb164dac"
+      },
+      "scientific_job_sha256": "523f4d337207fef041098392ab68517500e1889c8cece65d7c7d1139a2074cdd",
+      "source": {
+        "manifest_sha256": "63ecc74a49d4c54252a6698e357f49a43061217624640ad19b7ecf4c4a5279a6",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T041117496632Z-e86c6df46ca84ade",
+        "sha256": "46d1f9443c0f447f9e4a053023753a88327577be86656dfd9e0c8d931bf6eeef"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "4cda426472630b87789010b524eec9a5b74a1a8ae59baa3cbe1075415df8bf42",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T041120206764Z-fd43437bce734a72",
+        "sha256": "272b4d50e1d2a74c19e4eb55b9250dbb01494d29afa482e08cce4b5c5ad8bfb4"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "7a97c78d29a564c5783af51196b675370d851ad56f8df900a49b7dee63f1d054",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044237451580Z-da1e999c1b2a449a",
+        "sha256": "507ac57303a4f07b74a58ac12758548fda1a31bfd93b55f70a6beaed90f7cc39"
+      },
+      "condition": "M4-fixed",
+      "fit_key_sha256": "444186cb3f25110f897f3046343c077bca00e5c00985a1dcf7a026dc2a4cda46",
+      "generation": {
+        "manifest_sha256": "bcfc45efadcfccdf88de14dd1e32a404e88f48142c7dad76ac80b6874434bef5",
+        "run_id": "20261124T044106695985Z-f98ea610e9d8453e"
+      },
+      "initial_points": 178,
+      "initialization": {
+        "manifest_sha256": "f52d8686d71eae9fbb8b1c7cbf438e33928c904a919a17d3b062400db3cd0176",
+        "member": "payload/init.json",
+        "run_id": "20261124T042731623822Z-8bafa258996a4715",
+        "sha256": "7a79c773a1e22beee75cacc9bc377c462950fea78e0304751c21908adf969e8c"
+      },
+      "initialization_array_sha256": "5e58127cd98f8f79454b50e9fb472a4a4a1b3b010f7cc7370ab7434b9e272072",
+      "initialization_json_sha256": "7a79c773a1e22beee75cacc9bc377c462950fea78e0304751c21908adf969e8c",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        23,
+        17,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "7a97c78d29a564c5783af51196b675370d851ad56f8df900a49b7dee63f1d054",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044237451580Z-da1e999c1b2a449a",
+        "sha256": "b6d962612c85c47f7aa7d45949bb46992531a58d903c22f12e87374a090986fe"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "4ef2b26bacc945e3895811c31ac204d4bc9b79af68172294ac6c70e6c9a7eab4",
+        "run_id": "20261124T044144620600Z-ff9fe0e8c96840ae"
+      },
+      "scientific_job_sha256": "a639848071305d87b679e87569f1a46ef9d651c4a946551973fb7749501caaf5",
+      "source": {
+        "manifest_sha256": "50ec881128605cb01b95682c185ab0332a0ff82d0095950717131f0ef3b998c1",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042729198963Z-e07474ebfe9645f9",
+        "sha256": "17745243035634a864e0c55f4da6cb502fa804443096cd6a7c72f1ead30c1d7e"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "c16579e74ec283a4c3ba0fc8dda4922b56a52310eb5327d1b6084f793ce103e6",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042733035853Z-a5a52764732f4bc8",
+        "sha256": "68b325f253be66fe3e2238798f5dd7f60a12fd085597a57a72869a533098a097"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "458abe119eeae3ecf93697de259fd3041ec96d21e2b668f76ef2957e7f3e4374",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044319000456Z-54c5ad74b8dc4ca0",
+        "sha256": "15dadb37984eb9a4b43fb0c20f861a3edcaf662a9949d4c70620e3c8377ab8f2"
+      },
+      "condition": "M4-uniform",
+      "fit_key_sha256": "7116943f06825f3383fb311f9ee3dcbdd92e5fbbd15922937e61ce80991b2eed",
+      "generation": {
+        "manifest_sha256": "4f512b3fe4b568c3e5874c2252b9c82964f8be18df16d30961f16f724334952b",
+        "run_id": "20261124T044152055628Z-766c050aa5b348d2"
+      },
+      "initial_points": 136,
+      "initialization": {
+        "manifest_sha256": "04e57748fec15a39d34034595f6e16a3cbc4adbb6b74d3d4752baf24eab1134a",
+        "member": "payload/init.json",
+        "run_id": "20261124T042735855915Z-52567d80ed904dd7",
+        "sha256": "45483ffea832c0f08fed35333c56811b16bb3bc6a17c05ae247e100e8e325b2f"
+      },
+      "initialization_array_sha256": "ea8c7ab1622f972643e5437cb1034d8b404f428193265ef1c1dbae61b872c140",
+      "initialization_json_sha256": "45483ffea832c0f08fed35333c56811b16bb3bc6a17c05ae247e100e8e325b2f",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        23,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        23,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "458abe119eeae3ecf93697de259fd3041ec96d21e2b668f76ef2957e7f3e4374",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044319000456Z-54c5ad74b8dc4ca0",
+        "sha256": "e3932d40ded44af35d8f8d47e3f7a33938a7a64cf4c5201829c62eda992f2d7c"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "c246a2c8871d73ff84e85194d300223793ab3f447524cc38760683a5e406629c",
+        "run_id": "20261124T044231981091Z-dd265efb093649fa"
+      },
+      "scientific_job_sha256": "ad70c9ba391c6ee26bc6597bc78b4382333bf4ae2b7149a56e11e02d39c91db6",
+      "source": {
+        "manifest_sha256": "139cdf294940ec8a1b3f4be1ae124f333de1de63fcc2c2c297e8d23697e4bedd",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042734126305Z-2ad39d40d7104de8",
+        "sha256": "f2792fe5491c205de58729fcb94f0f63ad67d11a0199589e99e537ad5c58812f"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "0a39a9a77a4eb18980c549c9b7bb7702d3d04964d42972795c10e2ba936c0875",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042737107650Z-8627dfa4654f4891",
+        "sha256": "fdcd9918d4806ce6df9bfc6a0ea112d21cb41e05b2058281c4b1706da7583bf1"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "0123d6101c6c6576cc24bc99fce6f7a8d79d81a08b76c2c30d721d50c2360e2e",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044409576122Z-4d1b0cf59d8d4e76",
+        "sha256": "8dec1c1be6fecf18087f140f1bd2cc8536d2c430f20e97ea3bf67ec31a5755ef"
+      },
+      "condition": "M4-risk",
+      "fit_key_sha256": "abb73384b5d9f225c2162d2d880bc0ea0004637d37b93b670678cbf2d655cc7b",
+      "generation": {
+        "manifest_sha256": "637e916ec0298a7d6b4a0ef7ea3d27ca4c53d13a5c5d5e152afa21728c3566c3",
+        "run_id": "20261124T044239315477Z-0be218ef34194110"
+      },
+      "initial_points": 119,
+      "initialization": {
+        "manifest_sha256": "82efb6a9f36c411b95e9492ce241afa23d2687593af48ad72b325b461c895687",
+        "member": "payload/init.json",
+        "run_id": "20261124T042739572343Z-9e21d3d96546495e",
+        "sha256": "76a9872180a56d2a2b5ee7fdf965dc13775b482d03a056fc71fb39da68544ef6"
+      },
+      "initialization_array_sha256": "cd0eeeebc1403ce6b9c3c91e216e48a581cc580ceb701325ac2b93c179204c32",
+      "initialization_json_sha256": "76a9872180a56d2a2b5ee7fdf965dc13775b482d03a056fc71fb39da68544ef6",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        31,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "0123d6101c6c6576cc24bc99fce6f7a8d79d81a08b76c2c30d721d50c2360e2e",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044409576122Z-4d1b0cf59d8d4e76",
+        "sha256": "f0e9abbd967a539f3690106770b9d0b94ab98496ce0ac176a49142c4a7f9f1d4"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "520dea3850bfc0a52fa6ab57bf98aee61ad832ab8839e8b9eb222f5d7003f3ed",
+        "run_id": "20261124T044319777927Z-f5cd57c6e1434e0e"
+      },
+      "scientific_job_sha256": "e92138661145bd51149a91391551b8452b6f7e8155700113be7bfda1ecdb16e4",
+      "source": {
+        "manifest_sha256": "20085f9a93c4ad8c692dea889bde8a9252ba57099b5a884e3595bac325bd5c05",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042738281916Z-1d05c8c85cbb44d2",
+        "sha256": "7d078e081ca4a56985b3f1dbee3a836612c495625ed7e521607a7ca550b1206e"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "294365b524a1a42a78f867495215bd25fb24be865da1510da79b920ebe1bdbf3",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042741002818Z-05ba7fd1110e47a0",
+        "sha256": "4e796be24ec2f7b405e888d8664634b39ef68c8ea8b9a7d7bd61a41a7026b645"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "8d26d206ca9085d7e7144a39b819549d87929a84169641f7e5e40119e6e8f909",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044502352560Z-9eabbf4163a44f8e",
+        "sha256": "03f6fc94dad2994410f251dfed58d08d445c19e5838fee4497c06e6575e5208c"
+      },
+      "condition": "M4-random-137101",
+      "fit_key_sha256": "a9d963900211da82610429a50726cc6c25cb2f5462134f5629e3c1117fc3e618",
+      "generation": {
+        "manifest_sha256": "4685392d058a518a65d5771bf3859998909bea7ee61fe52ee6b6664c1abf5d8b",
+        "run_id": "20261124T044327128185Z-da26fb8b0dfd464f"
+      },
+      "initial_points": 75,
+      "initialization": {
+        "manifest_sha256": "73600a7e12748a0b2196b4901c322e4a03d084f442414e354b8f592a683272b8",
+        "member": "payload/init.json",
+        "run_id": "20261124T042744333479Z-55c8a87ad3de4290",
+        "sha256": "d34eb1f8a3e58cf5e2f760fb51e23404f28ddc6473b3bd0e9478b647e655cce5"
+      },
+      "initialization_array_sha256": "644c4ffa77ab8229456d7ac7e717f906a2c13ef6afb5719e2797b47655d9a7f7",
+      "initialization_json_sha256": "d34eb1f8a3e58cf5e2f760fb51e23404f28ddc6473b3bd0e9478b647e655cce5",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        7,
+        10,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        7,
+        10,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "8d26d206ca9085d7e7144a39b819549d87929a84169641f7e5e40119e6e8f909",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044502352560Z-9eabbf4163a44f8e",
+        "sha256": "2e207cebc9e0d3e853c64c3d3f20a8a1bcb30833d6572e880451facf7eee2ce4"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "08facfc931eb68050c7ae6f7b1d5c0822593630a5ceac7307ff31e6d21999081",
+        "run_id": "20261124T044409911130Z-b67dc7270efb4bef"
+      },
+      "scientific_job_sha256": "8495a837e3ed33025f77814903470543ccb761efb5648f26151366e5690ab1f1",
+      "source": {
+        "manifest_sha256": "ad5039f2a1eeeff3a760b4aa701fb5eafe2e5cebd9f58a9aed1211ff5cdc1f6b",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042742165608Z-7512e9421f1c4755",
+        "sha256": "4c7016184097ebb3134312a1c423967d27037cbe23adc16aecd50d2a34922af4"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "6f2844f51fb110013560c35d28bb5c07a3e907d5578d3a8482bbcd68f1ed2bca",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042745621758Z-fc60410326384df7",
+        "sha256": "5c8e33168050c89804432e44fb89015041361da7714507c8bb98528bb271b523"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "f4ee373d84ea36a05be4a77aab47e7bdf2467c0f411847eb4e939912acce301e",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044545888634Z-1d8e7f438d684a2d",
+        "sha256": "732756f03fc0525405dc5750548af10925ad3b29f6efb993aebec68637ad9096"
+      },
+      "condition": "M4-random-137102",
+      "fit_key_sha256": "3eecfdd6735e456f98f83614baf081fbbfca47fa8823d64d3aa72d924e509f08",
+      "generation": {
+        "manifest_sha256": "bae06e9a1edf7aae6477196a1e160d646b8e193f4cc764201fddfd4dfe5553d4",
+        "run_id": "20261124T044417261724Z-cd054e10cc7245c0"
+      },
+      "initial_points": 66,
+      "initialization": {
+        "manifest_sha256": "f51b7c43d3d47cf491d118e6c3f8e2126f1effd38fb97d34f599a94a7b10b64a",
+        "member": "payload/init.json",
+        "run_id": "20261124T042748460788Z-c86056110c0d44c4",
+        "sha256": "6d67e8c69c0fb35b64b6a8db7a8ecf9561f4764fca72ed914a91cb39940b7580"
+      },
+      "initialization_array_sha256": "e98558e65e82d43a4a41b004bc7b842ad92660e2ce2775eb43e77d84d2ea18e9",
+      "initialization_json_sha256": "6d67e8c69c0fb35b64b6a8db7a8ecf9561f4764fca72ed914a91cb39940b7580",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        7,
+        13,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        7,
+        13,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "f4ee373d84ea36a05be4a77aab47e7bdf2467c0f411847eb4e939912acce301e",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044545888634Z-1d8e7f438d684a2d",
+        "sha256": "3a4816e981c45f8a4ae02214eb99c6194dede6165a1d94877ae5ab7b939c9bce"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "41f2297ab22b5a29479ae9ce77374711a86e6903de209f0fb5c8e446eefb7c61",
+        "run_id": "20261124T044456780169Z-83ba8a27f589485d"
+      },
+      "scientific_job_sha256": "6e5a22ce194d8cfbcab6b083b5f547900f838a95994f3b190d3c7d20dfc08d13",
+      "source": {
+        "manifest_sha256": "889ba2de217469c61d162e9c14969de38f01e42cd6f768d866fa164e2a636dc8",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042746723925Z-13270a96e71b4bf7",
+        "sha256": "151820daaa2acd4a430292a65d4aaa23bf681ae6fbdbcd07ffb9df2ae301a8b2"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "7f7636ffc9acb86170e5b88563d98e93b2e83e9c37a59ccd20b3d95f1ef8c54e",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042749666521Z-bc9c0ea015a3437c",
+        "sha256": "2969fcf8daf9cd675dbc469f1ab6e7a5f9abc08aa298c868e9d7435ef1ba5342"
+      }
+    },
+    {
+      "alias_of": null,
+      "case": {
+        "manifest_sha256": "bde6ada9da356543a2fbc5cce88c223a63ba42d77bb24df633ca170d5c6b3713",
+        "member": "payload/case/case.json",
+        "run_id": "20261124T044639622224Z-2c37d403d9594c2f",
+        "sha256": "c596ed731b4b773d97577c292eace9a64b92a07d90fd9d7273e07ba55ff82058"
+      },
+      "condition": "M4-random-137103",
+      "fit_key_sha256": "e0637d2a366edad3c25b674617f70cbaebaf86b3aa980fd9f78a3030a2eba6dd",
+      "generation": {
+        "manifest_sha256": "828f015c4ff115af9d8666e6ffd671e5bcf96c2d19378ba9ab7af6239899bae6",
+        "run_id": "20261124T044504225303Z-e2367da76fe64f03"
+      },
+      "initial_points": 118,
+      "initialization": {
+        "manifest_sha256": "4b05f07bcb7df2b8d90e6b702945ee80c70d3ce99f339852d7132a5f3908b758",
+        "member": "payload/init.json",
+        "run_id": "20261124T042752693065Z-1278e974fe2a4527",
+        "sha256": "377b7d55b76ecb6731fc182ad7f915de190d1712d544b45f122fba2d68800ae3"
+      },
+      "initialization_array_sha256": "cfa53d731cacad3b912a9605364999ebadb1f6ace0b29f3352bcc248cd971395",
+      "initialization_json_sha256": "377b7d55b76ecb6731fc182ad7f915de190d1712d544b45f122fba2d68800ae3",
+      "initialization_method": "known_pose_sift_triangulation",
+      "object_id": "set32",
+      "official_camera_order": [
+        24,
+        17,
+        40,
+        22
+      ],
+      "planned_source_order": [
+        24,
+        17,
+        40,
+        22
+      ],
+      "qualified": true,
+      "readback": {
+        "manifest_sha256": "bde6ada9da356543a2fbc5cce88c223a63ba42d77bb24df633ca170d5c6b3713",
+        "member": "payload/reconstruction-readback.json",
+        "run_id": "20261124T044639622224Z-2c37d403d9594c2f",
+        "sha256": "b90e7d77f22387aa9baf038ef3db783ae186a65d0f0c52a459ec2f4a82a8ffa5"
+      },
+      "reason": null,
+      "render": {
+        "manifest_sha256": "9b9fbbede3b88010aae7d07e6f5d204c264e402117283c31824e39f334f722d1",
+        "run_id": "20261124T044542955598Z-2f77177dcdae4b11"
+      },
+      "scientific_job_sha256": "572fa56225d4cc7db177e5095b605b7ed3aa7fe3cb1744f0b0ca20b4ea10c826",
+      "source": {
+        "manifest_sha256": "500db9132270f239f30a9c179462d8bb40bf0c9ed2fe8046452662f8d9801212",
+        "member": "payload/source-provenance.json",
+        "run_id": "20261124T042750826367Z-81b1fc20b87344a1",
+        "sha256": "3bb254dadeabe9753e882d74ae8ac1c9674bf615b77a9005bb42a6d186742970"
+      },
+      "status": "succeeded",
+      "ticket": {
+        "manifest_sha256": "f79b581543546221c3df549d52de66ba98993452079426ada671a9b2c92e587b",
+        "member": "payload/ticket.json",
+        "run_id": "20261124T042753928766Z-4b7b8d6096524703",
+        "sha256": "c750401d6eb50cc5c02b994c6c4ed1a9c9bc53f2b453256d6d4d51319c75786d"
+      }
+    }
+  ],
+  "condition_count": 42,
+  "conditions": [
+    "M2-fixed",
+    "M4-fixed",
+    "M4-uniform",
+    "M4-risk",
+    "M4-random-137101",
+    "M4-random-137102",
+    "M4-random-137103"
+  ],
+  "entry": {
+    "manifest_sha256": "5d81587227a11560c8349a9e3c68604b838218b4c8766c3b69003e0ec0f908a1",
+    "member": "payload/entry.json",
+    "run_id": "20261124T040929244925Z-29ed9ca73ca94672",
+    "sha256": "971d8c212153d39caca44747e0fad8b4b28c1bc08f4d15e25f5720e7992ac818"
+  },
+  "evaluation_code_sha256": {
+    "t1_nbv_evaluate.py": "5abfa86658854c20d5d8f9f3523f64b97b3d886944371cc925bddaadeb95d9e0",
+    "t1_nbv_independent.py": "42742e02ff3f855e20a24e683f112ed93e4270fe8d9e7b5218e0f6fac03907db"
+  },
+  "failed_conditions": 12,
+  "freeze": {
+    "manifest_sha256": "fec5d3267412b8fd5a58b79304d5c50ada6c157b7875c7bff7c6a902bf0190b8",
+    "member": "payload/t1-freeze.json",
+    "run_id": "20261124T023243052988Z-5e3007d1b3ed48dc",
+    "sha256": "b59dddc26d22cb28908ba5b4d27d7795871998e878408243a178ad1c7a2bf946"
+  },
+  "new_risk_training_count": 0,
+  "preopening_reference_photo_reads": 0,
+  "reconstruction_fit_count": 29,
+  "run_id": "20261124T044706519514Z-c0c1442fff894311",
+  "schema": "el-t1-reconstruction-terminals-1",
+  "sealed_decisions": 20,
+  "sealed_strategy_terminals": 30,
+  "unavailable_decisions": 10,
+  "undispatched_conditions": 12
+}

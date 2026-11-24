@@ -1,0 +1,7 @@
+object_id,sealed_pair_decisions,candidate_access_authorized,distinct_source_photos_before_opening,distinct_candidate_photos_before_opening,observed_candidate_ids,reference_photos_before_opening,reference_photos_after_opening
+set118,0,False,2,0,,0,6
+set76,0,False,2,0,,0,6
+set45,5,True,9,7,7 10 17 20 23 31 40,0,6
+set103,5,True,7,5,10 13 17 23 31,0,6
+set61,5,True,9,7,7 10 13 17 20 23 31,0,6
+set32,5,True,9,7,7 10 13 17 23 31 40,0,6
