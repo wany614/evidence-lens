@@ -1,0 +1,104 @@
+{
+  "asset_count": 9,
+  "bytes": 91436242,
+  "code_commit": "19cd7079ee5d4e470af4ca6b2543ad916ef0a4b4",
+  "downloads": [
+    {
+      "anonymous": true,
+      "bytes": 11985,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "B_MANIFEST.json",
+      "seconds_including_verification": 0.38931199999933597,
+      "sha256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/B_MANIFEST.json"
+    },
+    {
+      "anonymous": true,
+      "bytes": 805,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "SHA256SUMS",
+      "seconds_including_verification": 0.33351004199357703,
+      "sha256": "2d4dc77e899cdb1bfd2d7c5e3eb0060ff0a9d6b3c09ea7ab38e49d098abaa9b0",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/SHA256SUMS"
+    },
+    {
+      "anonymous": true,
+      "bytes": 36470716,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence-lens-b04-r16-example.zip",
+      "seconds_including_verification": 2.899986208998598,
+      "sha256": "b8652911de40b4eb4a6ef97d5cbb5d85204ddc4c06904278cb662350090f870b",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/evidence-lens-b04-r16-example.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 2334367,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence-lens-b04-r16-reports.zip",
+      "seconds_including_verification": 0.49500345799606293,
+      "sha256": "28549ce043feaebbbd50cb488869b419010e3d68f90f6d1bbaeae9bf920edd0e",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/evidence-lens-b04-r16-reports.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 29523,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence-lens-many-source-model-0.1.0.dev0.zip",
+      "seconds_including_verification": 0.2952191660006065,
+      "sha256": "69f7ef75f6a6a5d9a97945d5e82f1c184357425e5000b8573dffbc9162f14ad5",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/evidence-lens-many-source-model-0.1.0.dev0.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 34932,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl",
+      "seconds_including_verification": 0.33284425000601914,
+      "sha256": "42f705cca13248a0622dc9afc22f34c681f3088a93fc1957b0a78618697e8cb3",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/evidence_lens_many_source-0.1.0.dev0-py3-none-any.whl"
+    },
+    {
+      "anonymous": true,
+      "bytes": 49618251,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "many-authored-native-b04-r16.zip",
+      "seconds_including_verification": 2.982688792006229,
+      "sha256": "24739674726be8f682cd5376a36fb7a967dd0090a79edec2c1db616f6e6c3394",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/many-authored-native-b04-r16.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 1232727,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "many-incomplete-native-example.zip",
+      "seconds_including_verification": 0.4009121669951128,
+      "sha256": "9311297f5890be6bac363a7cf9212ca43dc6997e4e9da634f40e85fbf1e386b5",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/many-incomplete-native-example.zip"
+    },
+    {
+      "anonymous": true,
+      "bytes": 1702936,
+      "environment_proxy": false,
+      "http_status": 200,
+      "name": "many-source-results.zip",
+      "seconds_including_verification": 0.4236378329951549,
+      "sha256": "bc668be8321ae35bd2695834754565d31fc05587c80bde5faf5141298d91ac9b",
+      "url": "https://github.com/wany614/evidence-lens/releases/download/many-source-v0.1.0-dev.0/many-source-results.zip"
+    }
+  ],
+  "manifest_sha256": "4bfb061fa5fc847cf031075e8d0d8530da9a19e8f38da821e07c4b00f995ffc0",
+  "repo": "wany614/evidence-lens",
+  "run_id": "20261124T122758951718Z-0096333565594edf",
+  "schema": "el-many-public-downloads-1",
+  "status": "published_experimental",
+  "tag": "many-source-v0.1.0-dev.0",
+  "url": "https://github.com/wany614/evidence-lens/releases/tag/many-source-v0.1.0-dev.0"
+}
