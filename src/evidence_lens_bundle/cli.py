@@ -1,4 +1,4 @@
-"""CPU risk scoring for prepared native 256×256 M2/M4 evidence. Rendering new views from supported Gaussian assets requires the separate CUDA gsplat command."""
+"""CPU risk scoring for prepared M2/M4 evidence on registered analysis grids. Rendering new views from supported Gaussian assets requires the separate CUDA gsplat command."""
 
 import argparse
 import json
@@ -9,9 +9,11 @@ from zipfile import BadZipFile
 
 def main(argv=None):
     from .common import Unsupported
+    from evidence_lens_asset.gaussian import PROFILES
 
     p = argparse.ArgumentParser(prog="evidence-lens", description=__doc__)
     sub = p.add_subparsers(dest="command", required=True)
+    sub.add_parser("profiles", help="List the finite analysis and encoder grids")
     a = sub.add_parser("adapt-legacy", help="Convert an authenticated legacy Stage C Case")
     a.add_argument("--case", type=Path, required=True)
     a.add_argument("--case-sha256", required=True)
@@ -38,6 +40,8 @@ def main(argv=None):
     r = sub.add_parser("report", help="Render a self-contained HTML report from numerical score outputs")
     r.add_argument("--scores", type=Path, required=True)
     r.add_argument("--scores-sha256")
+    r.add_argument("--display-size", type=int, nargs=2, metavar=("W", "H"),
+                   help="Export at this aspect-preserving display size. Counts stay on the analysis grid.")
     r.add_argument("--out", type=Path, required=True)
     for name, description in (
         ("inspect", "Inspect calibrated cameras, sources and a supported Gaussian asset on CPU"),
@@ -49,7 +53,7 @@ def main(argv=None):
         cmd.add_argument("--images", type=Path, required=True, help="Authorized source image root")
         cmd.add_argument("--gaussians", type=Path, required=True)
         cmd.add_argument(
-            "--gaussian-profile", choices=("graphdeco-v1", "evidence-lens-npz-v1"), required=True
+            "--gaussian-profile", choices=PROFILES, required=True
         )
         cmd.add_argument(
             "--plan",
@@ -63,7 +67,12 @@ def main(argv=None):
         cmd.add_argument("--out", type=Path, required=True)
     args = p.parse_args(argv)
     try:
-        if args.command in ("inspect", "render-asset"):
+        if args.command == "profiles":
+            from .grids import PATCH, PROFILE_SIZES
+            result = {"legacy": {"analysis_wh": [256, 256], "encoder_wh": [252, 252]},
+                      "analysis_profiles": [{"id": name, "analysis_wh": [w, h],
+                        "encoder_wh": [w + (-w) % PATCH, h + (-h) % PATCH]} for name, (w, h) in PROFILE_SIZES.items()]}
+        elif args.command in ("inspect", "render-asset"):
             asset_args = (
                 args.colmap,
                 args.images,
@@ -124,7 +133,7 @@ def main(argv=None):
         else:
             from .report import render
 
-            result = render(args.scores, args.out, args.scores_sha256)
+            result = render(args.scores, args.out, args.scores_sha256, display_override=args.display_size)
     except BadZipFile as e:
         print(json.dumps({"status": "invalid", "message": "Invalid NPZ archive: " + str(e)}), file=sys.stderr)
         return 2

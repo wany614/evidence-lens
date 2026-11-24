@@ -1,6 +1,6 @@
 # Resident CPU scoring
 
-The file CLI defaults to MS-L1 and remains the numerical reference. A resident scorer keeps the released weights in memory and scores an already available native grid. It uses the original cutoff and returns fresh arrays for every call. Sources come from a fixed 256 × 256 M2 or M4 reconstruction with native FP32 display-sRGB predictions, expected camera-Z in metres, accumulated opacity, and calibrated undistorted pinhole cameras. Preparation and CPU risk scoring consume an existing map. New views from COLMAP and a supported Gaussian asset require the separate CUDA gsplat renderer.
+The file CLI defaults to MS-L1 and serves as the numerical reference. A resident scorer loads the released weights once and returns fresh arrays for each target. M2 and M4 reconstructions supply native FP32 display-sRGB predictions, expected camera-Z in metres, accumulated opacity and undistorted pinhole cameras. CPU scoring consumes an existing map. Rendering new views from COLMAP and a supported Gaussian asset uses the separate CUDA gsplat renderer.
 
 ## Call the array API
 
@@ -26,11 +26,15 @@ For MS-ft or MS-frozen, use `load_scorer("MS-ft", models_dir="/path/to/cpu", thr
 
 ## Inputs and ownership
 
-Source IDs retain their authorized insertion order. Each source tuple holds an RGB array of shape (256, 256, 3), a self-render with keys rgb/z/alpha or an explicitly failed self-render, and a Camera. Prepared PNGs decode to finite FP32 display sRGB divided by 255. Target RGB uses the same shape and dtype. Z and alpha are FP32 (256, 256). The registered kernels handle nonfinite prediction values using their original reason priority. Cameras carry FP64 integer-centre K (3 × 3) and OpenCV c2w (4 × 4). Nearest-neighbor projection uses floor(u + 0.5). Finite multi-source reductions keep their original float64 accumulation.
+Source IDs retain their authorized insertion order. Each source tuple holds an RGB array of shape (H, W, 3), its self-render or an explicit failure, and a Camera. Prepared PNGs decode to finite FP32 display sRGB divided by 255. Target RGB uses the same shape and dtype. Camera-Z and alpha are FP32 (H, W). Cameras carry FP64 integer-centre K (3 × 3) and OpenCV c2w (4 × 4). Nearest-neighbor projection uses floor(u + 0.5). Finite multi-source reductions use float64 accumulation.
+
+The released `el-evidence-bundle-1` selects the original 256 × 256 processing. To select a versioned grid, use `el-evidence-bundle-2` and its producer's SHA-256 of the complete `grids` object. Supported width × height pairs are 256 × 256, 448 × 252, 252 × 448, 378 × 252 and 375 × 251. Each view carries original dimensions, original K, crop and the pixel-centre transform to the analysis K. Both visual models use the versioned patch grid even for the new square. Analysis, support and result arrays always use the declared H and W. The versioned profiles transfer the original learned weights and thresholds. Empirical calibration of the historical layout applies only to the original processing contract.
 
 The binding identifies the source order, primary and common endpoints, actual source/self-render/calibration bytes, geometry, depth evidence, map checkpoint, map/source revisions, renderer run and receipt, renderer configuration when known, and source admission policy. In-memory producers can supply that schema directly. Use null in source_files when no encoded file exists. The scorer still hashes every actual source, self-render and camera. Prepared-file adapters check decoded-source hashes and target pixel content against their authenticated file bytes. Construct frame metadata at admission, before starting resident latency measurements. The adapter can retain 256 digest records per Bundle and rereads a verified prediction on a metadata miss.
 
 The scorer copies each prepared source into immutable bytes-backed arrays. The caller may reuse its input buffers after a synchronous call returns. Keep target arrays, camera and metadata fixed throughout a call. Returned arrays belong to that result and can be modified or retained independently. One scorer allows one active call at a time. PyTorch’s CPU thread count is process-global. Use separate processes to compare neural thread configurations. The threads argument controls the PyTorch visual path.
+
+For a v2 file, `binding_from_bundle` creates `el-resident-binding-2` with the full grid registry and its digest. `frame_meta_from_bundle` supplies the target view ID, its per-view grid and the binding digest. A live producer must provide those same three fields for each target. New live camera IDs may supply their own original-to-analysis transform under the active profile. File-backed targets must already appear in the registry. Source snapshots bind the full registry, model identity, ordered source content and camera bytes. Target ray caches also bind the exact analysis K and per-view grid digest.
 
 ## Results and measurement
 

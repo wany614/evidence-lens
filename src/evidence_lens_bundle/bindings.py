@@ -9,7 +9,7 @@ import numpy as np
 from evidence_lens.multisource_io import cameras
 from evidence_lens.scoring_io import Camera
 from .bundle import ids
-from .common import SEMANTICS, Unsupported, digest, encoded, exact_keys, require, sha, text
+from .common import SEMANTICS, Unsupported, digest, encoded, exact_keys, json_bytes, require, sha, text
 
 CAMERA = {
     "schema": "el-camera-1",
@@ -44,10 +44,10 @@ def array_sha(a):
     return h.hexdigest()
 
 
-def camera_identity(cam):
+def camera_identity(cam, analysis_size=(256, 256)):
     require(
-        isinstance(cam, Camera) and (cam.height, cam.width) == (256, 256),
-        "released model requires a native 256x256 Camera",
+        isinstance(cam, Camera) and (cam.width, cam.height) == tuple(analysis_size),
+        f"expected native {analysis_size[0]}x{analysis_size[1]} Camera",
         Unsupported,
     )
     require(
@@ -73,11 +73,11 @@ def render_identity(frame):
     return {k: array_sha(frame[k]) for k in ("rgb", "z", "alpha")}
 
 
-def source_identity(image, frame, camera):
+def source_identity(image, frame, camera, analysis_size=(256, 256)):
     return {
         "rgb_sha256": array_sha(image),
         "self_render_arrays": render_identity(frame),
-        "camera": camera_identity(camera),
+        "camera": camera_identity(camera, analysis_size),
     }
 
 
@@ -89,7 +89,9 @@ def _verified_digest(bundle, source_id=None, target_id=None):
         memo = bundle._deployment_array_digests = OrderedDict()
     if key not in memo:
         if source_id is not None:
-            memo[key] = sha(encoded(source_identity(*bundle.source(source_id))))
+            memo[key] = sha(
+                encoded(source_identity(*bundle.source(source_id), analysis_size=bundle.analysis_size))
+            )
         else:
             memo[key] = sha(encoded(render_identity(bundle.frame(target_id))))
         # At most 256 SHA-256 strings plus view IDs per Bundle. No prediction array is held.
@@ -116,14 +118,29 @@ def binding_from_bundle(bundle, *, map_revision=None, source_revision=None):
             {
                 "files": source_files,
                 "ordered_ids": list(bundle.order),
-                "cameras": {s: camera_identity(bundle.cameras[s]) for s in bundle.order},
+                "cameras": {
+                    s: camera_identity(bundle.cameras[s], bundle.analysis_size) for s in bundle.order
+                },
+                **(
+                    {
+                        "source_grids": {s: bundle.grids["views"][s] for s in bundle.order},
+                        "analysis_profile": bundle.analysis_profile,
+                    }
+                    if bundle.versioned_grid
+                    else {}
+                ),
                 "primary": bundle.primary,
                 "endpoints": list(bundle.endpoints),
             }
         )
     )
     return {
-        "schema": "el-resident-binding-1",
+        "schema": "el-resident-binding-2" if bundle.versioned_grid else "el-resident-binding-1",
+        **(
+            {"grids": json_bytes(encoded(bundle.grids)), "grids_sha256": bundle.producer["grids_sha256"]}
+            if bundle.versioned_grid
+            else {}
+        ),
         "map_revision": map_revision or p["generator"]["run_id"],
         "source_revision": source_revision or source_version,
         "checkpoint_sha256": p["checkpoint_sha256"],
@@ -148,6 +165,24 @@ def binding_from_bundle(bundle, *, map_revision=None, source_revision=None):
     }
 
 
+def check_grid_cameras(grids, views):
+    """Recheck each observed camera against that view's raw-to-analysis contract."""
+    from .grids import validate_grids
+
+    require(
+        isinstance(grids, dict)
+        and isinstance(grids.get("views"), dict)
+        and set(views) <= grids["views"].keys(),
+        "missing original-to-analysis grid for an observed view",
+    )
+    require(all(isinstance(cam, Camera) for cam in views.values()), "expected analysis cameras")
+    selected = {**grids, "views": {name: grids["views"][name] for name in views}}
+    camera_doc = {
+        "views": {name: {"width": cam.width, "height": cam.height, "K": cam.K} for name, cam in views.items()}
+    }
+    return validate_grids(selected, camera_doc, tuple(views))
+
+
 def check_binding(b, source_ids):
     required = {
         "schema",
@@ -170,9 +205,12 @@ def check_binding(b, source_ids):
         "source_selection_policy",
         "task_label_schema",
     }
+    versioned = isinstance(b, dict) and b.get("schema") == "el-resident-binding-2"
+    if versioned:
+        required.update(("grids", "grids_sha256"))
     exact_keys(b, required, "version binding")
     require(
-        b["schema"] == "el-resident-binding-1"
+        b["schema"] in ("el-resident-binding-1", "el-resident-binding-2")
         and b["semantics"] == SEMANTICS
         and b["camera_convention"] == CAMERA
         and b["task_label_schema"] == TASK,
@@ -207,6 +245,16 @@ def check_binding(b, source_ids):
         text(geo[k], k)
     order = ids(b["source_order"], "source ID")
     require(order == tuple(source_ids), "input insertion order differs from authorized source order")
+    if versioned:
+        from .grids import validate_grid_record
+
+        require(sha(encoded(b["grids"])) == b["grids_sha256"], "source analysis grid digest differs")
+        require(
+            isinstance(b["grids"], dict) and isinstance(b["grids"].get("views"), dict),
+            "missing source analysis grids",
+        )
+        validate_grid_record(b["grids"], tuple(b["grids"]["views"]))
+        check_grid_cameras(b["grids"], {name: source_ids[name][2] for name in order})
     require(
         b["condition"] in ("M2", "M4") and len(order) == int(b["condition"][1]),
         "only matching M2/M4 source sets are supported",
@@ -257,7 +305,13 @@ def frame_meta_from_bundle(
         else binding
     )
     require(
-        b["checkpoint_sha256"] == bundle.producer["checkpoint_sha256"]
+        b["schema"] == ("el-resident-binding-2" if bundle.versioned_grid else "el-resident-binding-1")
+        and (
+            not bundle.versioned_grid
+            or b.get("grids_sha256") == bundle.producer["grids_sha256"]
+            and b.get("grids") == bundle.grids
+        )
+        and b["checkpoint_sha256"] == bundle.producer["checkpoint_sha256"]
         and b["renderer_revision"] == bundle.producer["renderer"]["run_id"]
         and b["renderer_receipt_sha256"] == bundle.producer["renderer"]["receipt_sha256"]
         and b["source_order"] == list(bundle.order)
@@ -279,7 +333,10 @@ def frame_meta_from_bundle(
         "frame_id": view if frame_id is None else frame_id,
         "target_view_id": view,
         "bundle_sha256": bundle.sha256,
-        "target_camera": camera_identity(bundle.cameras[view]),
+        "target_camera": camera_identity(bundle.cameras[view], bundle.analysis_size),
+        **(
+            {"target_grid": json_bytes(encoded(bundle.grids["views"][view]))} if bundle.versioned_grid else {}
+        ),
         "render_status": item["status"],
         "render_failure": item.get("reason"),
         "target_file_sha256": item.get("file", {}).get("sha256"),
@@ -287,7 +344,7 @@ def frame_meta_from_bundle(
     }
 
 
-def check_frame_meta(meta, binding_versions, cam, frame):
+def check_frame_meta(meta, binding_versions, cam, frame, *, versioned_grid=False):
     required = {*VERSIONS, "frame_id", "sequence_id"}
     optional = {
         "bundle_sha256",
@@ -303,10 +360,16 @@ def check_frame_meta(meta, binding_versions, cam, frame):
         "pose_covariance",
         "dynamic_mask",
     }
+    if versioned_grid:
+        required.update(("target_grid", "target_view_id", "source_binding_sha256"))
     require(
         isinstance(meta, dict) and required <= meta.keys() <= required | optional,
         "unexpected or missing deployment frame metadata",
     )
+    if versioned_grid:
+        digest(meta["source_binding_sha256"], "source binding")
+        text(meta["target_view_id"], "target view")
+        require(isinstance(meta["target_grid"], dict), "missing original-to-analysis target grid")
     require(
         tuple(meta[k] for k in VERSIONS) == binding_versions, "frame version differs from source snapshot"
     )

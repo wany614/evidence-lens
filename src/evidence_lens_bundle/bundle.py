@@ -52,6 +52,12 @@ class Bundle:
         if expected_sha256 is not None:
             require(expected_sha256 == self.sha256, "bundle SHA-256 differs")
         b = self.meta = json_bytes(raw)
+        require(
+            b.get("schema") in ("el-evidence-bundle-1", "el-evidence-bundle-2"),
+            "unsupported bundle schema",
+            Unsupported,
+        )
+        self.versioned_grid = b["schema"] == "el-evidence-bundle-2"
         exact_keys(
             b,
             (
@@ -68,10 +74,10 @@ class Bundle:
                 "sources",
                 "producer",
                 "risk_profile",
+                *(("grids",) if self.versioned_grid else ()),
             ),
             "bundle (deployment evidence only)",
         )
-        require(b["schema"] == "el-evidence-bundle-1", "unsupported bundle schema", Unsupported)
         self.condition = b["condition"]
         self.order = ids(b["source_order"], "source ID")
         self.targets = ids(b["target_order"], "target ID")
@@ -146,6 +152,14 @@ class Bundle:
         lens = tuple(self.order) + self.targets
         view_objects(cam, "camera")
         self.cameras = cameras(cam, lens)
+        self.grids = b["grids"] if self.versioned_grid else None
+        self.analysis_profile = None
+        self.analysis_size = (256, 256)
+        if self.versioned_grid:
+            from .grids import validate_grids
+
+            self.analysis_profile = validate_grids(self.grids, cam, lens)
+            self.analysis_size = tuple(self.grids["analysis_size"])
         for name in lens:
             v = cam["views"][name]
             require(
@@ -154,8 +168,8 @@ class Bundle:
                 Unsupported,
             )
             require(
-                self.cameras[name].shape == (256, 256),
-                "released model domain requires native 256 x 256: " + name,
+                (self.cameras[name].width, self.cameras[name].height) == self.analysis_size,
+                f"expected native {self.analysis_size[0]} x {self.analysis_size[1]} analysis camera: " + name,
                 Unsupported,
             )
         producer = self.producer = json_bytes(member(self.root, b["producer"], expected="producer.json"))
@@ -174,10 +188,17 @@ class Bundle:
                 "depth_verified",
                 "depth_probe_sha256",
                 "frames",
+                *(("grids_sha256",) if self.versioned_grid else ()),
             ),
             "producer",
         )
-        require(producer["schema"] == "el-render-evidence-1", "unsupported producer schema", Unsupported)
+        expected_producer = "el-render-evidence-2" if self.versioned_grid else "el-render-evidence-1"
+        require(producer["schema"] == expected_producer, "unsupported producer schema", Unsupported)
+        if self.versioned_grid:
+            require(
+                producer["grids_sha256"] == sha(encoded(self.grids)),
+                "producer analysis grid provenance differs from the bundle",
+            )
         for role in ("generator", "renderer"):
             ident = producer[role]
             exact_keys(ident, ("run_id", "receipt_sha256"), role)
@@ -233,7 +254,16 @@ class Bundle:
         for t in self.targets:
             self.frame(t)
         return {
-            "schema": "el-bundle-validation-1",
+            "schema": "el-bundle-validation-2" if self.versioned_grid else "el-bundle-validation-1",
+            **(
+                {
+                    "analysis_profile": self.analysis_profile,
+                    "analysis_size": list(self.analysis_size),
+                    "grids_sha256": self.producer["grids_sha256"],
+                }
+                if self.versioned_grid
+                else {}
+            ),
             "bundle_sha256": self.sha256,
             "condition": self.condition,
             "source_order": list(self.order),

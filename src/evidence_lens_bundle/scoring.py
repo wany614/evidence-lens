@@ -87,6 +87,7 @@ def calculate(bundle, view, frame, sources, method, m, tau, *, timing=None):
         method,
         m,
         tau,
+        rectangular=bundle.versioned_grid,
         timing=timing,
     )
 
@@ -103,6 +104,7 @@ def calculate_frame(
     *,
     rays=None,
     self_mae_maps=None,
+    rectangular=False,
     timing=None,
 ):
     started = perf_counter()
@@ -129,7 +131,14 @@ def calculate_frame(
     else:
         from evidence_lens_multirisk.deploy import score_grid
 
-        original = score_grid(m, frame["rgb"], feat["X"], feat["scoreable"], "cpu")
+        original = score_grid(
+            m,
+            frame["rgb"],
+            feat["X"],
+            feat["scoreable"],
+            "cpu",
+            **({"rectangular": True} if rectangular else {}),
+        )
         risk = original["risk"]
     after_model = perf_counter()
     if frame is None:
@@ -236,7 +245,9 @@ def score(
             photos.append(
                 {
                     "id": s,
-                    "original_sha256": bundle.meta["sources"][s]["sha256"],
+                    ("analysis_png_sha256" if bundle.versioned_grid else "original_sha256"): bundle.meta[
+                        "sources"
+                    ][s]["sha256"],
                     "display": save(f"sources/{i:03d}.png", rgb_preview(photo)),
                     "self_render_status": bundle.producer["frames"][s]["status"],
                 }
@@ -284,7 +295,18 @@ def score(
             }
         endpoint = [bundle.cameras[s].c2w[:3, 3] for s in bundle.endpoints]
         receipt = {
-            "schema": "el-bundle-scores-1",
+            "schema": "el-bundle-scores-2" if bundle.versioned_grid else "el-bundle-scores-1",
+            **(
+                {
+                    "grids": bundle.grids,
+                    "grids_sha256": bundle.producer["grids_sha256"],
+                    "analysis_size": list(bundle.analysis_size),
+                    "analysis_profile": bundle.analysis_profile,
+                    "threshold_applicability": "transferred_original_threshold_uncalibrated",
+                }
+                if bundle.versioned_grid
+                else {}
+            ),
             "run_id": os.getenv("EL_RUN_ID"),
             "bundle_sha256": bundle.sha256,
             "creation": bundle.meta["creation"],
@@ -301,7 +323,12 @@ def score(
             "scorer_source_ids": list(source_ids),
             "sources": photos,
             "input_domain": bundle.meta["input_domain"],
-            "tested_domain": "Native 256 x 256, M2/M4; original synthetic data and reported sparse-view photo experiments.",
+            "tested_domain": (
+                "Original 256 x 256 M2/M4 training and photo evaluations. The selected analysis "
+                "profile uses transferred weights and the original thresholds."
+                if bundle.versioned_grid
+                else "Native 256 x 256, M2/M4; original synthetic data and reported sparse-view photo experiments."
+            ),
             "geometry": bundle.meta["geometry"],
             "depth_verified": bundle.producer["depth_verified"],
             "profile_id": PROFILE,

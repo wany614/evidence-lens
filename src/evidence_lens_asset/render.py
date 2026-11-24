@@ -32,7 +32,9 @@ def device():
 
         version = importlib.metadata.version("gsplat")
     except (ImportError, importlib.metadata.PackageNotFoundError) as e:
-        raise Unsupported("asset rendering requires CUDA PyTorch and gsplat 1.5.3") from e
+        raise Unsupported(
+            "asset rendering requires CUDA PyTorch and gsplat 1.5.3"
+        ) from e
     require(
         version == "1.5.3" and torch.cuda.is_available(),
         "asset rendering requires CUDA and gsplat 1.5.3",
@@ -43,10 +45,12 @@ def device():
     return torch
 
 
-def layer(torch, values, camera, mode="RGB+ED", direct_rgb=None):
+def layer(torch, values, camera, mode="RGB+ED", direct_rgb=None, *, recovery=None):
     from gsplat import rasterization
 
-    as_tensor = lambda x: torch.as_tensor(np.ascontiguousarray(x), dtype=torch.float32, device="cuda")
+    as_tensor = lambda x: torch.as_tensor(
+        np.ascontiguousarray(x), dtype=torch.float32, device="cuda"
+    )
     k = np.array(camera["K"], dtype=np.float64)
     k[:2, 2] += 0.5
     w2c = np.linalg.inv(np.asarray(camera["c2w"], dtype=np.float64))
@@ -60,6 +64,7 @@ def layer(torch, values, camera, mode="RGB+ED", direct_rgb=None):
     else:
         colors = as_tensor(a["color_logits"]).sigmoid()
         degree = None
+    near, far = recovery["clip_m"] if recovery is not None else (0.01, 100.0)
     result, opacity, _ = rasterization(
         means=as_tensor(a["means"]),
         quats=torch.nn.functional.normalize(as_tensor(a["quats"]), dim=-1),
@@ -70,20 +75,24 @@ def layer(torch, values, camera, mode="RGB+ED", direct_rgb=None):
         Ks=as_tensor(k[None]),
         width=camera["width"],
         height=camera["height"],
-        near_plane=0.01,
-        far_plane=100.0,
-        eps2d=0.3,
+        near_plane=near,
+        far_plane=far,
+        eps2d=recovery["eps2d"] if recovery is not None else 0.3,
         packed=False,
         rasterize_mode="classic",
         camera_model="pinhole",
         render_mode=mode,
         sh_degree=degree,
-        backgrounds=None,
+        backgrounds=torch.zeros((1, 3), dtype=torch.float32, device="cuda")
+        if recovery is not None
+        else None,
     )
     rgb = result[0, ..., :3].clamp_min(0)
     if "color_logits" in a and direct_rgb is None:
         rgb = torch.where(
-            rgb <= 0.0031308, 12.92 * rgb, 1.055 * rgb.clamp_min(0.0031308).pow(1 / 2.4) - 0.055
+            rgb <= 0.0031308,
+            12.92 * rgb,
+            1.055 * rgb.clamp_min(0.0031308).pow(1 / 2.4) - 0.055,
         )
     alpha = opacity[0, ..., 0].cpu().numpy()
     z = result[0, ..., 3].cpu().numpy().copy()
@@ -108,7 +117,12 @@ def depth_probe(torch):
         "opacity_logits": np.zeros(4, np.float32),
         "color_logits": np.zeros((4, 3), np.float32),
     }
-    cam = {"K": [[64, 0, 32], [0, 64, 32], [0, 0, 1]], "c2w": np.eye(4), "height": 65, "width": 65}
+    cam = {
+        "K": [[64, 0, 32], [0, 64, 32], [0, 0, 1]],
+        "c2w": np.eye(4),
+        "height": 65,
+        "width": 65,
+    }
     ed = layer(torch, a, cam)
     acc = layer(torch, a, cam, "RGB+D")
     rows = []
@@ -117,10 +131,20 @@ def depth_probe(torch):
         z = float(ed["z"][y, x])
         depth_sum = float(acc["z"][y, x])
         require(
-            abs(alpha - 0.75) <= 1e-4 and abs(z - 8 / 3) <= 1e-4 and abs(z - depth_sum / alpha) <= 1e-4,
+            abs(alpha - 0.75) <= 1e-4
+            and abs(z - 8 / 3) <= 1e-4
+            and abs(z - depth_sum / alpha) <= 1e-4,
             "renderer failed off-axis metric expected camera-Z probe",
         )
-        rows.append({"x": x, "y": y, "alpha": alpha, "expected_camera_z_m": z, "weighted_depth_m": depth_sum})
+        rows.append(
+            {
+                "x": x,
+                "y": y,
+                "alpha": alpha,
+                "expected_camera_z_m": z,
+                "weighted_depth_m": depth_sum,
+            }
+        )
     return {
         "schema": "el-asset-cuda-depth-probe-1",
         "renderer": "gsplat 1.5.3 CUDA",
@@ -129,7 +153,9 @@ def depth_probe(torch):
     }
 
 
-def render(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_profile, output):
+def render(
+    model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_profile, output
+):
     started = time.perf_counter()
     stats, cam, photos, arr = inspect(
         model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_profile
@@ -147,13 +173,24 @@ def render(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_p
         detail = save("asset-input.json", encoded(stats))
         c = save("cameras.json", encoded(cam))
         probe = save("depth-probe.json", encoded(depth_probe(torch)))
-        sources = {name: save(f"sources/{i:03d}.png", raw) for i, (name, raw) in enumerate(photos.items())}
+        sources = {
+            name: save(f"sources/{i:03d}.png", raw)
+            for i, (name, raw) in enumerate(photos.items())
+        }
         frames = {}
         for i, v in enumerate(stats["source_order"] + stats["target_order"]):
             path = f"renders/{i:03d}.npz"
             (dest / path).parent.mkdir(parents=True, exist_ok=True)
-            np.savez_compressed(dest / path, **layer(torch, arr, cam["views"][v]))
-            frames[v] = {"status": "ready", "file": row(path, (dest / path).read_bytes())}
+            np.savez_compressed(
+                dest / path,
+                **layer(
+                    torch, arr, cam["views"][v], recovery=stats.get("recovery_render")
+                ),
+            )
+            frames[v] = {
+                "status": "ready",
+                "file": row(path, (dest / path).read_bytes()),
+            }
         torch.cuda.synchronize()
         identity = save(
             "renderer.json",
@@ -194,6 +231,11 @@ def render(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_p
             "depth_probe_sha256": probe["sha256"],
             "frames": frames,
         }
+        grids = stats.get("grids")
+        if grids is not None:
+            producer.update(
+                schema="el-render-evidence-2", grids_sha256=sha(encoded(grids))
+            )
         b = {
             k: stats[k]
             for k in (
@@ -232,6 +274,12 @@ def render(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_p
                 "release_index_sha256": RELEASE_INDEX_SHA256,
             },
         )
+        if grids is not None:
+            b.update(schema="el-evidence-bundle-2", grids=grids)
+            b["geometry"].update(
+                crop="Original integer crop recorded per camera in grids",
+                resize="Source RGB8 uses calibrated crop and LANCZOS; RGB/alpha/expected Z rendered natively",
+            )
         write(dest / "bundle.json", b)
         result = Bundle(dest).validate()
     return result

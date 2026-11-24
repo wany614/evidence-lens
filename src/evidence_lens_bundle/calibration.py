@@ -150,6 +150,8 @@ def select(bundle, method, profile_path, profile_sha, scope_path, scope_sha):
     for k in ("recipe_sha256", "source_camera_sha256", "render_camera_sha256"):
         digest(s[k], k)
     mismatches = []
+    if getattr(bundle, "versioned_grid", False):
+        mismatches.append("registered calibration requires the original 256 x 256 analysis and preprocessing")
     if method != p["method"]:
         mismatches.append("scoring method")
     if bundle.condition != condition or list(bundle.order) != source_ids or bundle.primary != "s00":

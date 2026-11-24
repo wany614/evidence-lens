@@ -13,9 +13,10 @@ PERCENTS = (1, 2, 5, 10, 20, 40, 60, 80)
 CHANNELS = ("risk", "valid", "state", "unknown_reason")
 
 
-def compare_arrays(old, new, threshold):
+def compare_arrays(old, new, threshold, *, grid_shape=(256, 256)):
     a, b = old["risk"], new["risk"]
-    require(a.dtype == b.dtype == np.float32 and a.shape == b.shape == (256, 256), "invalid score grid")
+    require(a.dtype == b.dtype == np.float32 and a.shape == b.shape == grid_shape, "invalid score grid")
+    require(all(old[k].shape == new[k].shape == grid_shape for k in CHANNELS[1:]), "invalid support grid")
     paired = old["valid"] & new["valid"]
     a64, b64 = a[paired].astype(np.float64), b[paired].astype(np.float64)
     signed = b64 - a64
@@ -54,10 +55,14 @@ def compare_arrays(old, new, threshold):
     }
 
 
-def matched_sets(old, new, obj, condition, view, l1_threshold):
+def matched_sets(old, new, obj, condition, view, l1_threshold, *, grid_shape=(256, 256)):
     """Reproduce the registered PCG64 cutoff-tie ordering without accessing an evaluation mask."""
 
     def common(group):
+        require(
+            all(group[m]["valid"].shape == group[m]["risk"].shape == grid_shape for m in METHODS),
+            "invalid matched-coverage grid",
+        )
         return np.logical_and.reduce([group[m]["valid"] for m in METHODS]).ravel()
 
     left, right = common(old), common(new)
@@ -104,13 +109,13 @@ def matched_sets(old, new, obj, condition, view, l1_threshold):
         "old_common": int(left.sum()),
         "new_common": int(right.sum()),
         "changed_common_mask": int((left != right).sum()),
-        "old_domain_sha256": array_sha(left.reshape(256, 256)),
-        "new_domain_sha256": array_sha(right.reshape(256, 256)),
+        "old_domain_sha256": array_sha(left.reshape(grid_shape)),
+        "new_domain_sha256": array_sha(right.reshape(grid_shape)),
         "methods": result,
     }
 
 
-def checked_arrays(arrays, threshold, *, legacy_reason=None):
+def checked_arrays(arrays, threshold, *, legacy_reason=None, grid_shape=(256, 256)):
     from evidence_lens.l1 import risk_state
 
     if legacy_reason is not None:
@@ -118,7 +123,7 @@ def checked_arrays(arrays, threshold, *, legacy_reason=None):
         arrays = {**arrays, "unknown_reason": legacy_reason}
     require(set(arrays) == set(CHANNELS), "unexpected score-array roles")
     for k, dt in zip(CHANNELS, (np.float32, np.bool_, np.uint8, np.uint8)):
-        require(arrays[k].dtype == dt and arrays[k].shape == (256, 256), "invalid score channel: " + k)
+        require(arrays[k].dtype == dt and arrays[k].shape == grid_shape, "invalid score channel: " + k)
     v, r, reason = arrays["valid"], arrays["risk"], arrays["unknown_reason"]
     require(
         np.array_equal(v, np.isfinite(r))

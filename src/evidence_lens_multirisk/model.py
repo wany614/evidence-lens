@@ -7,7 +7,9 @@ import torch
 from safetensors.torch import load_file
 
 from evidence_lens_vision.contract import digest, read, require
-from evidence_lens_vision.model import ARCH, RiskModel, image_tensor
+from evidence_lens_vision.model import (
+    ARCH, RiskModel, image_tensor, rectangular_image_tensor, rectangular_project, rectangular_sample,
+)
 
 B_INDEX = "08af4cba3537f6f677b24d045c4c374d2d46eedc63a20abc874cfcad3f7ddac5"
 B_WEIGHTS = "f372bd34faa1b345ae2486fe6c96aea00d8d9ac5749b0b2c237f9ed08d50f228"
@@ -133,7 +135,7 @@ def transform(raw, pre):
     return result
 
 
-def native_score(model, rgb, x, scoreable, pre, device, tau=None):
+def native_score(model, rgb, x, scoreable, pre, device, tau=None, *, rectangular=False):
     h, w = rgb.shape[:2]
     require(
         x.dtype == np.float32
@@ -144,13 +146,22 @@ def native_score(model, rgb, x, scoreable, pre, device, tau=None):
     )
     risk = np.full(h * w, np.nan, np.float32)
     with torch.inference_mode():
-        image, valid_patches, frame, observed = image_tensor(rgb, device)
-        features = model.project(image)
+        if rectangular:
+            image, valid_patches, frame, observed = rectangular_image_tensor(rgb, device)
+            features = rectangular_project(model, image)
+        else:
+            image, valid_patches, frame, observed = image_tensor(rgb, device)
+            features = model.project(image)
         idx = np.flatnonzero((scoreable & observed).ravel())
         for begin in range(0, len(idx), 16384):
             subset = idx[begin : begin + 16384]
             numeric = torch.from_numpy(transform(x.reshape(h * w, -1)[subset], pre)).to(device)
-            logits, supported = model.at(features, valid_patches, frame, subset, numeric)
+            if rectangular:
+                visual, fraction = rectangular_sample(features, valid_patches, frame, subset)
+                logits = model.head(torch.cat((visual, numeric), 1)).flatten()
+                supported = fraction > 0
+            else:
+                logits, supported = model.at(features, valid_patches, frame, subset, numeric)
             require(
                 torch.isfinite(logits[supported]).all().item(), "nonfinite neural score on eligible evidence"
             )

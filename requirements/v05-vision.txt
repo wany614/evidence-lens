@@ -1,0 +1,4 @@
+-r v05-default.txt
+torch==2.8.0
+safetensors==0.8.0
+psutil==7.2.2

@@ -19,6 +19,7 @@ from .bindings import (
     camera_identity,
     check_binding,
     check_frame_meta,
+    check_grid_cameras,
     frame_meta_from_bundle,
     render_identity,
     source_identity,
@@ -99,6 +100,9 @@ class PreparedSources:
     _self_mae: object
     _primary: str
     _verified: bool
+    _analysis_size: tuple
+    _grid_header: bytes | None
+    _view_grid_digests: object
     prepare_seconds: float = 0.0
     cache_hit: bool = False
 
@@ -146,9 +150,11 @@ class Scorer:
             require(isinstance(source_evidence, dict), "ordered source ID mapping required")
             check_binding(version_binding, source_evidence)
             b = version_binding
+            grids = b.get("grids")
+            analysis_size = tuple(grids["analysis_size"]) if grids is not None else (256, 256)
             sources = {}
             for name, (image, frame, cam) in source_evidence.items():
-                sources[name] = source_identity(image, frame, cam)
+                sources[name] = source_identity(image, frame, cam, analysis_size)
                 if b["source_files"] is not None:
                     declared = b["source_files"][name]
                     ready = declared["self_render"]["status"] == "ready"
@@ -184,6 +190,16 @@ class Scorer:
                     size += image.nbytes + cam.K.nbytes + cam.c2w.nbytes
                     if frame is not None:
                         size += sum(a.nbytes for a in frame.values())
+            grid_header = None
+            view_grid_digests = None
+            if grids is not None:
+                grid_header = encoded({k: data for k, data in grids.items() if k != "views"})
+                view_grid_digests = MappingProxyType(
+                    {name: sha(encoded(data)) for name, data in grids["views"].items()}
+                )
+                size += len(grid_header) + sum(
+                    len(name.encode()) + len(digest) for name, digest in view_grid_digests.items()
+                )
             residuals = None
             if self.method != "B-L1-transfer":
                 extra = sum(
@@ -210,6 +226,9 @@ class Scorer:
                 residuals,
                 primary,
                 b["depth_verified"],
+                analysis_size,
+                grid_header,
+                view_grid_digests,
             )
             self._cache.put(("sources", key), context, size)
             return replace(context, prepare_seconds=perf_counter() - start)
@@ -229,8 +248,27 @@ class Scorer:
                     torch.get_num_threads() == self._threads,
                     "PyTorch process thread configuration changed; isolate different settings in separate processes",
                 )
-            cam = camera_identity(target_camera)
-            check_frame_meta(frame_meta, context._versions, cam, target_prediction)
+            cam = camera_identity(target_camera, context._analysis_size)
+            versioned = context._grid_header is not None
+            check_frame_meta(frame_meta, context._versions, cam, target_prediction, versioned_grid=versioned)
+            target_grid_sha = None
+            grid_profile = None
+            if versioned:
+                view = frame_meta["target_view_id"]
+                original = frame_meta["target_grid"]
+                target_grid_sha = sha(encoded(original))
+                expected = context._view_grid_digests.get(view)
+                require(
+                    expected is None or target_grid_sha == expected,
+                    "target grid differs from the source context",
+                )
+                require(
+                    frame_meta.get("bundle_sha256") is None or expected is not None,
+                    "file-backed target lacks a registered camera grid",
+                )
+                grid_profile = check_grid_cameras(
+                    {**json_bytes(context._grid_header), "views": {view: original}}, {view: target_camera}
+                )
             if frame_meta.get("source_binding_sha256") is not None:
                 require(
                     frame_meta["source_binding_sha256"] == context.binding_sha256,
@@ -252,6 +290,8 @@ class Scorer:
             rays = None
             if self._cache.capacity and self.method != "B-L1-transfer" and target_prediction is not None:
                 ray_key = ("rays", context.key, cam["K_sha256"], target_camera.shape)
+                if versioned:
+                    ray_key += (target_grid_sha,)
                 rays = self._cache.get(ray_key)
                 if rays is None:
                     rays = camera_rays(target_camera)
@@ -269,6 +309,7 @@ class Scorer:
                 self.threshold,
                 rays=rays,
                 self_mae_maps=context._self_mae,
+                rectangular=versioned,
                 timing=timing,
             )
             after_kernel = perf_counter()
@@ -279,6 +320,15 @@ class Scorer:
                 **dict(zip(VERSIONS, context._versions)),
                 "frame_meta": meta,
                 "target_camera": cam,
+                **(
+                    {
+                        "analysis_profile": grid_profile,
+                        "analysis_size": list(context._analysis_size),
+                        "target_grid_sha256": target_grid_sha,
+                    }
+                    if versioned
+                    else {}
+                ),
                 "target_prediction": prediction_id,
                 "target_array_sha256": prediction_sha,
                 "model_id": self.model_id,
@@ -297,6 +347,15 @@ class Scorer:
                 "calibration_profile": None,
                 "applicability": "supported_native_input_contract",
                 "external_calibration": "unestablished",
+                **(
+                    {
+                        "analysis_profile": grid_profile,
+                        "analysis_size": list(context._analysis_size),
+                        "applicability": "transferred_original_threshold_uncalibrated",
+                    }
+                    if versioned
+                    else {}
+                ),
             }
             result.update(identity=identity, profile=profile, timing=timing)
             end = perf_counter()

@@ -29,7 +29,9 @@ def checksum(path):
 
 def metrology(document):
     evidence = document.get("metric")
-    require(isinstance(evidence, dict), "missing metric scale and its source", Unsupported)
+    require(
+        isinstance(evidence, dict), "missing metric scale and its source", Unsupported
+    )
     scale = evidence.get("meters_per_unit")
     require(
         type(scale) in (int, float) and np.isfinite(scale) and scale > 0,
@@ -38,7 +40,8 @@ def metrology(document):
     )
     text(evidence.get("source"), "metric evidence description")
     require(
-        evidence.get("kind") in ("explicit_metric_declaration", "surveyed_source_baseline"),
+        evidence.get("kind")
+        in ("explicit_metric_declaration", "surveyed_source_baseline"),
         "unsupported scale evidence",
         Unsupported,
     )
@@ -67,13 +70,53 @@ def source_png(root, name, camera):
     return f.getvalue(), {"name": name, "sha256": sha(original), "bytes": len(original)}
 
 
-def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_profile):
+def inspect(
+    model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_profile
+):
     plan = json_bytes(Path(plan_path).read_bytes())
-    require(plan.get("schema") == "el-asset-view-plan-1", "unsupported asset view plan", Unsupported)
+    version = plan.get("schema")
+    require(
+        version in ("el-asset-view-plan-1", "el-asset-view-plan-2"),
+        "unsupported asset view plan",
+        Unsupported,
+    )
     text(plan.get("input_domain"), "input domain")
+    if version == "el-asset-view-plan-2" and "source_authorization" in plan:
+        from evidence_lens_bundle.common import encoded
+        from .permissions import source_grant
+
+        grant = plan["source_authorization"]
+        contract = grant["registration"]
+        require(
+            sha(encoded(contract)) == grant["registration_sha256"],
+            "source registration hash differs",
+        )
+        choice = grant.get("choice") if grant["branch"] == "optional-M4" else None
+        if choice is not None:
+            require(
+                sha(encoded(choice)) == grant.get("choice_sha256"),
+                "optional choice or failure hash differs",
+            )
+        allowed = source_grant(contract, grant["branch"], choice)
+        require(
+            allowed == [v["id"] for v in plan["sources"]],
+            "input image order exceeds its branch-specific grant",
+        )
     scale, evidence = metrology(plan)
     cams, imgs = colmap.load(model_dir, encoding)
-    arr = gaussian.load(gaussian_path, gaussian_profile, scale)
+    recovery = {}
+    arr = gaussian.load(gaussian_path, gaussian_profile, scale, metadata=recovery)
+    if gaussian_profile == gaussian.RECOVERY:
+        clip = plan.get("recovery_clip_m")
+        require(
+            isinstance(clip, list)
+            and len(clip) == 2
+            and all(type(v) in (float, int) and np.isfinite(v) for v in clip)
+            and 0 < clip[0] < clip[1],
+            "recovery render requires the original camera clipping planes in recovery_clip_m",
+            Unsupported,
+        )
+        recovery["clip_m"] = clip
     require(
         isinstance(plan.get("sources"), list)
         and len(plan["sources"]) in (2, 4)
@@ -100,9 +143,14 @@ def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_
                 camera_id, q, t, filename = imgs[i]
                 cam = dict(cams[camera_id], c2w=colmap.pose(q, t, scale))
                 if role == "sources":
-                    photos[name], photo_proofs[name] = source_png(images_dir, filename, cam)
+                    photos[name], photo_proofs[name] = source_png(
+                        images_dir, filename, cam
+                    )
             else:
-                require(role == "targets", "source must reference a calibrated original image")
+                require(
+                    role == "targets",
+                    "source must reference a calibrated original image",
+                )
                 exact_keys(entry, ("id", "camera_m_integer_center"), "novel target")
                 cam = entry["camera_m_integer_center"]
                 require(
@@ -112,11 +160,12 @@ def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_
                     "novel camera must declare an undistorted metric pinhole",
                     Unsupported,
                 )
-            require(
-                cam["width"] == cam["height"] == 256,
-                "released scorer uses prepared native 256 x 256 cameras",
-                Unsupported,
-            )
+            if version == "el-asset-view-plan-1":
+                require(
+                    cam["width"] == cam["height"] == 256,
+                    "legacy plan requires native 256 x 256 cameras",
+                    Unsupported,
+                )
             derived[name] = cam
     source_order = list(photos)
     targets = [i["id"] for i in plan["targets"]]
@@ -146,7 +195,9 @@ def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_
             "invalid metric baseline",
             Unsupported,
         )
-        measured = np.linalg.norm(np.asarray(derived[a]["c2w"])[:3, 3] - np.asarray(derived[b]["c2w"])[:3, 3])
+        measured = np.linalg.norm(
+            np.asarray(derived[a]["c2w"])[:3, 3] - np.asarray(derived[b]["c2w"])[:3, 3]
+        )
         require(
             abs(measured - distance) <= tolerance,
             "metric scale disagrees with declared source baseline",
@@ -161,6 +212,44 @@ def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_
         "views": derived,
     }
     check_cameras(doc, [*photos, *targets])
+    grids = None
+    if version == "el-asset-view-plan-2":
+        from evidence_lens_bundle.grids import build_grids, resample_photo
+
+        grids = build_grids(
+            plan.get("analysis_profile"), derived, display_size=plan.get("display_size")
+        )
+        if "grids" in plan:
+            require(
+                plan["grids"] == grids,
+                "view-plan grid differs from the calibrated originals",
+            )
+        size = grids["analysis_size"]
+        for name, view_grid in grids["views"].items():
+            old = derived[name]
+            # A novel COLMAP view can carry legacy redundant calibrations. Recompute them on its new grid.
+            current = {
+                **old,
+                "K": view_grid["analysis_K"],
+                "width": size[0],
+                "height": size[1],
+            }
+            if "K_edge" in current:
+                current["K_edge"] = (
+                    np.array([[1, 0, 0.5], [0, 1, 0.5], [0, 0, 1]])
+                    @ np.asarray(current["K"])
+                ).tolist()
+            derived[name] = current
+            if name in photos:
+                with Image.open(io.BytesIO(photos[name])) as image:
+                    sampled = resample_photo(image, view_grid, size)
+                out = io.BytesIO()
+                Image.fromarray(np.asarray(sampled, dtype=np.uint8)).save(
+                    out, format="PNG"
+                )
+                photos[name] = out.getvalue()
+                photo_proofs[name]["analysis_png_sha256"] = sha(photos[name])
+        check_cameras(doc, [*photos, *targets])
     suffix = "txt" if encoding == "text" else "bin"
     stats = {
         "schema": "el-asset-inspection-1",
@@ -174,7 +263,10 @@ def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_
         "condition": "M" + str(len(photos)),
         "metric": evidence,
         "images": photo_proofs,
-        "colmap_files": {n: checksum(Path(model_dir) / f"{n}.{suffix}") for n in ("images", "cameras")},
+        "colmap_files": {
+            n: checksum(Path(model_dir) / f"{n}.{suffix}")
+            for n in ("images", "cameras")
+        },
         "plan_sha256": checksum(plan_path),
         "asset_sha256": checksum(gaussian_path),
         "producer_role": "Imported reconstruction asset; upstream training run unspecified",
@@ -189,4 +281,12 @@ def inspect(model_dir, images_dir, gaussian_path, plan_path, encoding, gaussian_
         },
         "scorer": {"device": "cpu", "default": "MS-L1"},
     }
+    if grids is not None:
+        stats.update(
+            schema="el-asset-inspection-2",
+            grids=grids,
+            source_resampling="calibrated integer crop and display-sRGB8 Pillow LANCZOS v1",
+        )
+    if recovery:
+        stats["recovery_render"] = recovery
     return stats, doc, photos, arr

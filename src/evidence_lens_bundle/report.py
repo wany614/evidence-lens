@@ -12,6 +12,7 @@ from evidence_lens.l1 import risk_state
 from .common import (
     PROFILE,
     RELEASE_INDEX_SHA256,
+    encoded,
     json_bytes,
     member,
     no_replace_file,
@@ -68,25 +69,32 @@ def png(rgb):
     return s.getvalue()
 
 
-def image_tag(raw, alt):
-    return '<img width="256" height="256" src="' + data_url(raw, "image/png") + '" alt="' + esc(alt) + '">'
+def image_tag(raw, alt, size=(256, 256), *, display_size=None, categorical=False):
+    if display_size is not None and tuple(display_size) != tuple(size):
+        with Image.open(io.BytesIO(raw)) as image:
+            method = Image.Resampling.NEAREST if categorical else Image.Resampling.LANCZOS
+            raw = png(np.asarray(image.resize(tuple(display_size), method)))
+        size = display_size
+    style = ' style="image-rendering:pixelated"' if categorical else ''
+    return (f'<img width="{size[0]}" height="{size[1]}"{style} src="'
+            + data_url(raw, "image/png") + '" alt="' + esc(alt) + '">')
 
 
 def ratio(n, d):
     return f"{100 * n / d:.1f}%" if d else "undefined"
 
 
-def preview(data):
+def preview(data, size=(256, 256)):
     with Image.open(io.BytesIO(data)) as im:
         require(
-            im.format == "PNG" and im.mode == "RGB" and im.size == (256, 256),
+            im.format == "PNG" and im.mode == "RGB" and im.size == tuple(size),
             "invalid preview dimensions or encoding",
         )
         im.load()
     return data
 
 
-def read_arrays(raw, tau):
+def read_arrays(raw, tau, size=(256, 256)):
     with np.load(io.BytesIO(raw), allow_pickle=False) as npz:
         require(
             len(npz.files) == 4 and set(npz.files) == {"risk", "valid", "state", "unknown_reason"},
@@ -99,7 +107,7 @@ def read_arrays(raw, tau):
         ("state", np.uint8),
         ("unknown_reason", np.uint8),
     ):
-        require(a[k].dtype == dtype and a[k].shape == (256, 256), "invalid numerical score member: " + k)
+        require(a[k].dtype == dtype and a[k].shape == (size[1], size[0]), "invalid numerical score member: " + k)
     finite = np.isfinite(a["risk"])
     require(
         np.isnan(a["risk"][~finite]).all()
@@ -150,14 +158,31 @@ tbody tr+tr{border-top:1px solid #e9eded}.key{display:inline-flex;align-items:ce
 """
 
 
-def render(root, output, expected_sha256=None):
+def render(root, output, expected_sha256=None, *, display_override=None):
     raw = read_file(root, "scores.json")
     r = json_bytes(raw)
     if expected_sha256:
         require(sha(raw) == expected_sha256, "score receipt identity differs")
+    from .grids import checked_display_size, validate_grid_record
+
+    is_v2 = r["schema"] == "el-bundle-scores-2"
+    size = (256, 256)
+    display_size = size
+    if is_v2:
+        grids = r["grids"]
+        analysis_profile = validate_grid_record(grids, tuple(r["source_order"]) + tuple(r["target_order"]))
+        require(sha(encoded(grids)) == r["grids_sha256"]
+                and analysis_profile == r["analysis_profile"] and r["analysis_size"] == grids["analysis_size"],
+                "score receipt and image grid identity differ")
+        size = tuple(grids["analysis_size"])
+        display_size = tuple(grids["display"]["size"])
+        require(not (r.get("calibration_profile") or {}).get("applied"),
+                "the original calibration is unavailable for a new analysis grid")
+    if display_override is not None:
+        display_size = checked_display_size(size, display_override)
     model = profile()["models"].get(r["method"])
     require(
-        r["schema"] == "el-bundle-scores-1"
+        (is_v2 or r["schema"] == "el-bundle-scores-1")
         and r["model"] == model
         and model is not None
         and r["profile_id"] == PROFILE
@@ -176,12 +201,12 @@ def render(root, output, expected_sha256=None):
     header = f"<header><h1>Novel-view risk report</h1><p>{esc(r['input_domain'])} · {esc(r['method'])} · {esc(r['condition'])} · CPU</p></header>"
     source_tiles = []
     for i, s in enumerate(r["sources"]):
-        img = preview(member(root, s["display"], expected=f"sources/{i:03d}.png"))
+        img = preview(member(root, s["display"], expected=f"sources/{i:03d}.png"), size)
         caption = esc(s["id"]) + (" · primary" if s["id"] == r["primary_source_id"] else "")
         if s["self_render_status"] == "render_failed":
             caption += " · self-render failed"
         source_tiles.append(
-            f"<figure>{image_tag(img, 'Source ' + s['id'])}<figcaption>{caption}</figcaption></figure>"
+            f"<figure>{image_tag(img, 'Source ' + s['id'], size)}<figcaption>{caption}</figcaption></figure>"
         )
     calibration = r.get("calibration_profile")
     calibrated_total = {key: 0 for key in ("canvas", "low", "high", "unknown")}
@@ -189,7 +214,7 @@ def render(root, output, expected_sha256=None):
     summed = None
     for i, v in enumerate(r["views"]):
         folder = f"views/{i:03d}/"
-        a = read_arrays(member(root, v["arrays"], expected=folder + "scores.npz"), model["threshold"])
+        a = read_arrays(member(root, v["arrays"], expected=folder + "scores.npz"), model["threshold"], size)
         c = counts(a)
         why = reasons(a)
         require(
@@ -213,13 +238,13 @@ def render(root, output, expected_sha256=None):
                 v["render"]["status"] == "ready" and why["render_failed"] == 0, "conflicting render status"
             )
             target = image_tag(
-                preview(member(root, v["prediction"], expected=folder + "prediction.png")),
-                "Target prediction " + v["id"],
+                preview(member(root, v["prediction"], expected=folder + "prediction.png"), size),
+                "Target prediction " + v["id"], size, display_size=display_size,
             )
         pictures = [
             target,
             *[
-                image_tag(png(im), title + " " + v["id"])
+                image_tag(png(im), title + " " + v["id"], size, display_size=display_size, categorical=True)
                 for im, title in zip(maps(a), ("Continuous risk", "Threshold state", "Unknown reasons"))
             ],
         ]
@@ -266,7 +291,7 @@ def render(root, output, expected_sha256=None):
                 visual[stored == key] = color
             tiles += (
                 "<figure>"
-                + image_tag(png(visual), "Empirical threshold state " + v["id"])
+                + image_tag(png(visual), "Empirical threshold state " + v["id"], size, display_size=display_size, categorical=True)
                 + "<figcaption>Empirical threshold state</figcaption></figure>"
             )
             explanation += f"<p>At the empirical cutoff, {spec['counts']['low']:,} low, {spec['counts']['high']:,} high and {spec['counts']['unknown']:,} unknown.</p>"
@@ -306,6 +331,17 @@ def render(root, output, expected_sha256=None):
         ("Measured CPU score worker (s)", f"{r['cost']['worker_to_receipt_seconds']:.3f}"),
         ("Of which bundle and model loading (s)", f"{r['cost']['bundle_and_model_load_seconds']:.3f}"),
     ]
+    grid_note = ""
+    if is_v2:
+        encoder_w, encoder_h = grids["encoder"]["input_size"]
+        grid_note = (f"Encoder input {encoder_w} × {encoder_h}. Display raster {display_size[0]} × {display_size[1]}. "
+                     "All counts use the analysis grid. ")
+        details.extend([("Analysis profile", analysis_profile), ("Grid receipt SHA-256", r["grids_sha256"]),
+                        ("Original grids (width × height)", ", ".join(
+                            f"{name} {dims[0]} × {dims[1]}" for name, view in grids["views"].items()
+                            for dims in [view["original_size"]]))])
+    elif display_size != size:
+        grid_note = f"Display raster {display_size[0]} × {display_size[1]}. All counts use the analysis grid. "
     if calibration:
         status = calibration["status"]
         captions = {
@@ -331,7 +367,7 @@ def render(root, output, expected_sha256=None):
     prov = "".join(f"<tr><th>{esc(k)}</th><td><code>{esc(n)}</code></td></tr>" for k, n in details)
     out = f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Novel-view risk report · {esc(r["method"])}</title><style>{STYLE}</style>
 <main>{header}<div class="stats">{stats}</div><h2>Source photographs</h2><div class="sources">{"".join(source_tiles)}</div>
-<h2>Target predictions</h2><p>{calibration_note}</p><p>CPU scoring uses prepared 256 × 256 RGB, camera-Z and opacity. Rendering new views from a supported Gaussian asset uses the separate CUDA gsplat renderer. Risk ranks potential reconstruction error. The original threshold assigns low and high states. Unknown marks missing evidence. Coverage includes every target pixel.</p>
+<h2>Target predictions</h2><p>{calibration_note}</p><p>CPU scoring uses prepared {size[0]} × {size[1]} RGB, camera-Z and opacity. {grid_note}Rendering new views from a supported Gaussian asset uses the separate CUDA gsplat renderer. Risk ranks potential reconstruction error. The original threshold assigns low and high states. Unknown marks missing evidence. Coverage includes every target pixel.</p>
 <div class="legend">Risk 0<span class="scale"></span>1 &nbsp; {legend}</div>
 <p class="filter" hidden><label for="pick">Target view </label><select id="pick">{options}<option value="all">All views</option></select></p>
 {"".join(parts)}<details><summary>Model, inputs and measured cost</summary><p>Verified model domain: {esc(r["tested_domain"])}</p><table>{prov}</table></details>
@@ -344,4 +380,5 @@ def render(root, output, expected_sha256=None):
         "score_sha256": sha(raw),
         "html_sha256": sha(out.encode()),
         "html_bytes": len(out.encode()),
+        "analysis_wh": list(size), "display_wh": list(display_size),
     }

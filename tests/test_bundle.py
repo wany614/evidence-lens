@@ -28,7 +28,7 @@ T = ["end/701", "17"]
 H = "1" * 64
 
 
-def fixture(root):
+def fixture(root, *, analysis_profile=None):
     root.mkdir()
 
     def obj(name, data):
@@ -47,35 +47,45 @@ def fixture(root):
     }
     frames = {}
     photos = {}
+    intrinsics = [[125, 0, 127.5], [0, 125, 127.5], [0, 0, 1]]
+    grids = None
+    w = h = 256
+    if analysis_profile is not None:
+        from evidence_lens_bundle.grids import build_grids
+
+        original = {"width": 256, "height": 256, "K": intrinsics, "distortion": "none"}
+        grids = build_grids(analysis_profile, {n: original for n in S + T})
+        w, h = grids["analysis_size"]
     for i, n in enumerate(S + T):
         pose = np.eye(4)
         pose[0, 3] = i * 0.01
         camera["views"][n] = {
-            "K": [[125, 0, 127.5], [0, 125, 127.5], [0, 0, 1]],
+            "K": grids["views"][n]["analysis_K"] if grids else intrinsics,
             "c2w": pose.tolist(),
-            "width": 256,
-            "height": 256,
+            "width": w,
+            "height": h,
             "projection": "pinhole",
             "distortion": "none",
         }
         if n in S:
             b = io.BytesIO()
-            Image.new("RGB", (256, 256), (20 + 12 * i, 30, 60)).save(b, "PNG")
+            Image.new("RGB", (w, h), (20 + 12 * i, 30, 60)).save(b, "PNG")
             photos[n] = obj(f"sources/{i}.png", b.getvalue())
         if n == T[-1]:
             frames[n] = {"status": "render_failed", "reason": "declared camera render failure"}
             continue
-        zz = np.full((256, 256), 2, np.float32)
+        zz = np.full((h, w), 2, np.float32)
         if n in T:
             zz[0, 0] = np.nan
         a = io.BytesIO()
         np.savez_compressed(
-            a, rgb=np.full((256, 256, 3), 0.25 + i * 0.02, np.float32), z=zz, alpha=np.ones_like(zz)
+            a, rgb=np.full((h, w, 3), 0.25 + i * 0.02, np.float32), z=zz, alpha=np.ones_like(zz)
         )
         frames[n] = {"status": "ready", "file": obj(f"renders/{i}.npz", a.getvalue())}
     c = obj("cameras.json", encoded(camera))
     producer = {
-        "schema": "el-render-evidence-1",
+        "schema": "el-render-evidence-2" if grids else "el-render-evidence-1",
+        **({"grids_sha256": sha(encoded(grids))} if grids else {}),
         "generator": {"run_id": "test-gen", "receipt_sha256": H},
         "renderer": {"run_id": "test-render", "receipt_sha256": H},
         "checkpoint_sha256": H,
@@ -89,7 +99,8 @@ def fixture(root):
         "frames": frames,
     }
     d = {
-        "schema": "el-evidence-bundle-1",
+        "schema": "el-evidence-bundle-2" if grids else "el-evidence-bundle-1",
+        **({"grids": grids} if grids else {}),
         "creation": {
             "run_id": "fixture-adapter",
             "implementation": "test only",

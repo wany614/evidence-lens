@@ -143,12 +143,17 @@ class Frame:
         return (torch.stack((x, y), -1) * (2 / GRID) - 1).reshape(1, -1, 1, 2)
 
 
-def image_tensor(rgb, device):
+def finite_rgb_channels(rgb):
     if rgb.ndim != 3 or rgb.shape[-1] != 3 or rgb.dtype != np.float32:
         raise ValueError("expected float32 H×W×3 display-sRGB")
     finite_rgb = np.isfinite(rgb)
     if np.any((rgb[finite_rgb] < 0) | (rgb[finite_rgb] > 1)):
         raise ValueError("finite target RGB outside display-sRGB [0,1]")
+    return finite_rgb
+
+
+def image_tensor(rgb, device):
+    finite_rgb = finite_rgb_channels(rgb)
     frame = Frame.from_shape(*rgb.shape[:2])
     observed = np.all(finite_rgb, axis=-1)
     array = np.where(observed[...,None], rgb, 0).astype(np.float32, copy=False)
@@ -207,3 +212,107 @@ class RiskModel(nn.Module):
         patches = projected[0].flatten(1).T.index_select(0,ids.flatten()).reshape(len(indices),4,32)
         features = (patches*coeff.unsqueeze(-1)).sum(1) / fraction.clamp_min(1e-8).unsqueeze(-1)
         return self.head(torch.cat((features,numeric),1)).flatten(), fraction > 0
+
+
+@dataclass(frozen=True)
+class RectangularFrame:
+    """Native analysis pixels at the upper left of a minimally padded ViT input."""
+
+    height: int
+    width: int
+
+    @property
+    def patch_shape(self):
+        return (self.height + PATCH - 1) // PATCH, (self.width + PATCH - 1) // PATCH
+
+    @property
+    def encoded_shape(self):
+        rows, columns = self.patch_shape
+        return rows * PATCH, columns * PATCH
+
+    def patch_coordinates(self, indices, device):
+        ids = torch.as_tensor(indices, dtype=torch.long, device=device)
+        if ids.ndim != 1 or torch.any((ids < 0) | (ids >= self.height * self.width)):
+            raise ValueError("indices must identify pixels on the unpadded analysis grid")
+        x = (ids.remainder(self.width).float() + 0.5) / PATCH - 0.5
+        y = (torch.div(ids, self.width, rounding_mode="floor").float() + 0.5) / PATCH - 0.5
+        return x, y
+
+
+def rectangular_image_tensor(rgb, device):
+    observed = np.all(finite_rgb_channels(rgb), axis=-1)
+    h, w = observed.shape
+    if not h or not w:
+        raise ValueError("analysis image must have positive height and width")
+    frame = RectangularFrame(h, w)
+    eh, ew = frame.encoded_shape
+    # Mean-color fill gives normalized zero for an unavailable or padded RGB sample.
+    filled = np.where(observed[..., None], rgb, np.asarray(MEAN, dtype=np.float32))
+    native = torch.from_numpy(np.ascontiguousarray(filled)).to(device).permute(2, 0, 1)[None]
+    mean, std = (native.new_tensor(v).reshape(1, 3, 1, 1) for v in (MEAN, STD))
+    pad = (0, ew - w, 0, eh - h)
+    image = F.pad((native - mean) / std, pad)
+    mask = torch.from_numpy(observed).to(device=device, dtype=native.dtype)[None, None]
+    support = F.avg_pool2d(F.pad(mask, pad), PATCH, PATCH)
+    return image, support, frame, observed
+
+
+def rectangular_positions(backbone, patch_rows, patch_columns):
+    """Ordinary DINOv2 ViT-S/14 uses a 37×37 learned lattice and the +0.1 offset on each axis."""
+    table = backbone.pos_embed
+    side = math.isqrt(table.shape[1] - 1)
+    if side * side != table.shape[1] - 1:
+        raise ValueError("expected one CLS position and a square pretrained patch lattice")
+    if patch_rows == patch_columns == side:
+        return table
+    patch = table[:, 1:].float().reshape(1, side, side, table.shape[-1]).permute(0, 3, 1, 2)
+    patch = F.interpolate(
+        patch, scale_factor=((patch_rows + 0.1) / side, (patch_columns + 0.1) / side),
+        mode="bicubic", align_corners=False, antialias=False,
+    )
+    if patch.shape[-2:] != (patch_rows, patch_columns):
+        raise ValueError("positional interpolation yielded a different patch lattice")
+    return torch.cat((table[:, :1], patch.flatten(2).transpose(1, 2)), dim=1)
+
+
+def rectangular_input_tokens(backbone, image):
+    if image.ndim != 4 or image.shape[1] != 3 or any(n <= 0 or n % PATCH for n in image.shape[-2:]):
+        raise ValueError("expected normalized NCHW RGB with patch-aligned spatial dimensions")
+    rows, columns = (n // PATCH for n in image.shape[-2:])
+    patches = backbone.patch_embed(image)
+    cls = backbone.cls_token.expand(patches.shape[0], -1, -1)
+    tokens = torch.cat((cls, patches), dim=1)
+    return tokens + rectangular_positions(backbone, rows, columns).to(tokens.dtype)
+
+
+def rectangular_backbone(backbone, image):
+    tokens = rectangular_input_tokens(backbone, image)
+    for block in backbone.blocks:
+        tokens = block(tokens)
+    return backbone.norm(tokens)
+
+
+def rectangular_project(model, image):
+    rows, columns = (n // PATCH for n in image.shape[-2:])
+    # The two released models have exactly one CLS and zero register tokens.
+    patches = rectangular_backbone(model.backbone, image)[:, 1:]
+    projected = model.projection(patches).transpose(1, 2)
+    return projected.reshape(image.shape[0], projected.shape[1], rows, columns)
+
+
+def rectangular_sample(projected, support, frame, indices):
+    rows, columns = frame.patch_shape
+    if projected.shape[0] != 1 or projected.shape[-2:] != (rows, columns) or support.shape != (1, 1, rows, columns):
+        raise ValueError("projection and support must describe the same native patch lattice")
+    x, y = frame.patch_coordinates(indices, projected.device)
+    x, y = x.clamp(0, columns - 1), y.clamp(0, rows - 1)
+    x0, y0 = x.floor().long(), y.floor().long()
+    x1, y1 = (x0 + 1).clamp_max(columns - 1), (y0 + 1).clamp_max(rows - 1)
+    dx, dy = x - x0, y - y0
+    ids = torch.stack((y0 * columns + x0, y0 * columns + x1, y1 * columns + x0, y1 * columns + x1), 1)
+    coeff = torch.stack(((1 - dx) * (1 - dy), dx * (1 - dy), (1 - dx) * dy, dx * dy), 1)
+    weights = coeff * support.flatten()[ids]
+    fraction = weights.sum(dim=1)
+    neighbors = projected[0].flatten(1).T[ids]
+    sampled = (neighbors * weights.unsqueeze(-1)).sum(dim=1) / fraction.clamp_min(1e-8).unsqueeze(-1)
+    return sampled, fraction

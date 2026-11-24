@@ -146,9 +146,9 @@ def load_model(folder, expected, device="cpu"):
     return model.to(device).eval(), pre, idx
 
 
-def score_grid(model_info, rgb, x, ok, device):
+def score_grid(model_info, rgb, x, ok, device, *, rectangular=False):
     model, pre, idx = model_info
-    return native_score(model, rgb, x, ok, pre, device, idx["threshold"])
+    return native_score(model, rgb, x, ok, pre, device, idx["threshold"], rectangular=rectangular)
 
 
 def score_native(package, index_sha, case, case_sha, view, scope, output, threads, model_info=None):

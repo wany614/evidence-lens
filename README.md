@@ -2,6 +2,10 @@
 
 Evidence Lens estimates where a synthesized view is likely to disagree with an independent image from the same camera. Its CPU scorer reads calibrated source images and predicted RGB, opacity and expected camera depth. It returns a continuous risk map and a low, high or unknown state for each target pixel. Researchers can compare the maps with Blender references through a separate evaluation command.
 
+## Image grids in v0.5.0
+
+Use the CPU CLI with an original 256-square bundle or a versioned rectangular bundle. Each camera records how the analysis grid was obtained. The report keeps numerical counts on those pixels when the display is enlarged. [Installation and authored example](docs/releases/v0.5.0/README.md) · [Models and intended use](docs/releases/v0.5.0/MODEL_CARD.md)
+
 ## General CPU tools
 
 The release includes a prepared four-model replay, a real fine-tuned CPU model, a resident array API and original static camera trajectories. MS-L1 is the default. The research report compares frozen scores on DTU, records the empirical threshold results and explains where the models have been evaluated. [Install and reproduce](docs/releases/v0.4.0/README.md) · [Model card](docs/releases/v0.4.0/MODEL_CARD.md) · [Research report](docs/general-closeout/README.md)
