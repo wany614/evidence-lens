@@ -1,6 +1,6 @@
 # Evidence Lens — research history
 
-This page preserves the previous project homepage as it stood before the documentation reorganisation. The historical results, instructions and limitations retain their original scope; relative links have been adjusted for this directory. See the [current homepage](../README.md) for the supported release and entry points. [Original archived homepage](https://github.com/wany614/evidence-lens/blob/d08a256eb7957becf06ec67b2582609d50ea2fa8/README.md).
+This page preserves the previous project homepage as it stood before the documentation reorganisation. The historical results, instructions and limitations retain their original scope; relative links have been adjusted for this directory. See the [current homepage](../README.md) for the supported release and entry points.
 
 ---
 

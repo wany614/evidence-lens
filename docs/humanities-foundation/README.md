@@ -2,7 +2,7 @@
 
 Open the [case viewer](../../examples/evidence-foundation/index.html) and choose a camera. First inspect the reconstructed frame. Switch on the model assessment to see what its score and unknown states say about that frame. The source view identifies the synthetic camera images queried and the procedure that selected them. The independent evaluation opens separately.
 
-六个铃架视角共用一套四源重建。另一个原创案例固定同一张廊道预测，依次查询 4、8、16、32 和 128 张来源。读者可以核对哪些像素多了一份可比较的证据，以及预测图本身是否改变。这两例都用合成相机生成源图。观众如何理解它们、它们能否与历史材料建立联系，仍是开放问题。
+六个铃架视角共用一套四源重建。另一个原创案例固定同一张廊道预测，依次查询 4、8、16、32 和 128 张来源。读者可以核对哪些像素多了一份可比较的证据，以及预测图本身是否改变。这两例都用合成相机生成源图。这些案例只展示图像误差、来源证据与研究过程，不评价实际观众反应或历史真实性。
 
 | Reading | What you can check |
 |---|---|
@@ -11,9 +11,10 @@ Open the [case viewer](../../examples/evidence-foundation/index.html) and choose
 | [Three primary readings](THEORY_SOURCES.md) | The passages actually read, their versions and the limits of applying them here. [Citable bibliography](bibliography.bib) |
 | [Case index](../../examples/evidence-foundation/case-index.json) | Original scene, camera, queried sources, prediction identity, reference and reproduction rights. |
 | [Decisions and contributions](CONTRIBUTIONS.md) | Who introduced the concern, designed the comparison, implemented it and reviewed the materials. |
-| [Open questions](OPEN_QUESTIONS.md) | Competing interpretations which the current materials leave to future discussion. |
 
 ## Materials fixed for this edition
+
+The release manifest and checksums identify the original, fixed release snapshot and downloadable assets. The explanatory documentation on the main branch may be revised independently; those revisions do not replace the registered measurements.
 
 The bell uses release **v0.5.0**, commit `c259c987b77296f368d78a9b09ef504226ac6cc3`. Its original image-grid tests and historical performance measures retain their own denominators. [Published baseline](https://github.com/wany614/evidence-lens/releases/tag/v0.5.0) · [Baseline manifest](../releases/v0.5.0/BASELINE_MANIFEST.json)
 

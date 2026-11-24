@@ -37,13 +37,13 @@ Mac 对原创 R16/K16 的新头，首个结果耗时 0.376–0.382 秒，其中�
 
 廊道共有 4,579/95,256 个独立 RGB 错误。对其余 90,677 个正确像素，覆盖优先查询 4/8/16/32/128 个来源分别漏掉 180/120/109/12/0 个可比证据。固定四源在该视角漏 74 个，少于覆盖四源的 180 个。完整库仍有 220/95,256 个位置未找到可比证据。全库相对自身的遗漏为零是定义结果。独立程序复算 132 个源视图、240 张离线 PNG 和 29 个条件的 87 张排名／状态／原因图；浏览器另行检查了 7 组独立评价。 [数据复核](../humanities-foundation/case-data-check.json) · [离线 Chrome 验收](../../examples/evidence-foundation/viewer-check.json)
 
-理论卡分别核验 Bolter 与 Grusin 1996 年期刊 pp. 313–314、London Charter 英文 2.1 第 4.4–4.7 节及两个术语、Seville 2017 英文第 4 和 7 原则。媒介再中介、图像误差、查询所得证据、过程可查性与历史真实性各有对应的材料和边界。Wany 保留论文选题与论证选择。外部评审提出四图可能漏证据，ChatGPT 将其变成实验条件，Claude 复核所给材料和代码，Codex 执行与核验。 [理论卡与原文](../humanities-foundation/THEORY_SOURCES.md) · [贡献记录](../humanities-foundation/CONTRIBUTIONS.md) · [Research Log](https://docs.google.com/document/d/1-aLBWAepKhZd6Wpv_CW1x8Hfds5-9DAePKEfhpftKak/edit)
+理论卡分别核验 Bolter 与 Grusin 1996 年期刊 pp. 313–314、London Charter 英文 2.1 第 4.4–4.7 节及两个术语、Seville 2017 英文第 4 和 7 原则。媒介再中介、图像误差、查询所得证据、过程可查性与历史真实性各有对应的材料和边界。项目负责人引入了有关有限查询可能漏掉来源证据的外部反馈，并推动多来源研究；ChatGPT 细化实验条件，Claude 审阅所提供的材料与代码，Codex 执行与核验。 [理论卡与原文](../humanities-foundation/THEORY_SOURCES.md) · [贡献记录](../humanities-foundation/CONTRIBUTIONS.md)
 
 ## 归档、权利与停止点
 
 B 科学与部署结账口径共 188 个终态，其中六项失败。公开草稿首次建立时列表尚未同步，保留失败记录并在同一草稿上重试成功。另有一单零拟合的 Windows 环境清点遇到接收端父件归属问题，随后完成独立核对。上游训练及确认对象的失败均为零。外部下载共 2,419,531,415 字节。科学结账中的 15 次 GPU 工单按完整记录器墙钟计 1,090.73 秒；CPU 计 1,978.42 核秒，未采样区间另预留不超过 3,874.22 核秒。Mac 侧 B 终态归档实际占用 12,485,156,864 字节，Windows 六个确认工单新增项目分配量为 2,165,888,008 字节。不同位置的归档、传输副本和工作目录分别计量。 [逐运行账本](../research/many-source-v1/resources-and-failures.md) · [Windows 确认磁盘](../research/many-source-v1/windows-confirmation-storage.json)
 
-原创代码与新头参数按 Apache-2.0，原创展示和可授权的实测资料按 CC BY 4.0；旧模型组件沿其既有许可。ETH3D 使用 CC BY-NC-SA 4.0，公开仓库提供来源、数值与哈希。第三方照片及派生图、理论原文的副本保存在研究归档。专精模型、真实控制、观众研究、历史真实性验证和论文定题均留待后续。 [分项权利说明](../research/many-source-v1/rights.md) · [七层判断与反例](../humanities-foundation/CONCEPTS_AND_CLAIMS.md)
+原创代码与新头参数按 Apache-2.0，原创展示和可授权的实测资料按 CC BY 4.0；旧模型组件沿其既有许可。ETH3D 使用 CC BY-NC-SA 4.0，公开仓库提供来源、数值与哈希。第三方照片及派生图、理论原文的副本保存在研究归档。本研究不验证专用模型、实际控制、观众反应或历史真实性。 [分项权利说明](../research/many-source-v1/rights.md) · [七层判断与反例](../humanities-foundation/CONCEPTS_AND_CLAIMS.md)
 
 ### 核心运行索引
 
@@ -63,6 +63,6 @@ C 标签的提交为 `23d05371d3c8f2a09afb3a6dcf633513b0e457e4`。可单独下�
 
 以 C 匿名回读完成为截止，Mac 接收端可核对 267 个不同终态原生 run。A 为 48 成功、9 失败，B 为 192 成功、7 失败，C 为 11 成功、0 失败。这个数字包含验收和发布操作，表中另列未进入同一终态目录的 Windows 环境清点接收记录。包含发布收尾时，Mac 的完整 B 原生归档实际占用 12,610,924,544 字节，15 次 GPU 工单累计按完整墙钟结账 1,090.73 秒。CPU 核算 1,980.99 核秒，全部未采样区间按逻辑核饱和计的附加上界为 4,114.66 核秒。归档统计和匿名 ZIP 再重放均发生在截止时刻之后。 [全 267 条运行及失败](run-ledger.json)
 
-原 Research Log 已逐轮追加 RL-025 至 RL-032，并从 Google 文档读回，八个条目各出现一次。B 阶段的一次 Claude Opus max 调用超时；之后实际取得 Opus high 的代码复核。在 C 的两次 Opus high 复核中，Claude 依据收到的文稿和代码指出合成来源的表述、哈希所能证明的范围及打包前后父件一致性问题。Codex 对原文、代码与原始数组进行检查并修正。 [Research Log](https://docs.google.com/document/d/1-aLBWAepKhZd6Wpv_CW1x8Hfds5-9DAePKEfhpftKak/edit) · [贡献与审阅的职责范围](../humanities-foundation/CONTRIBUTIONS.md)
+技术审阅涵盖合成来源的准确表述、哈希证据的适用范围及打包前后父件的一致性。相关核对与修正由 Codex 执行。 [贡献与审阅范围](../humanities-foundation/CONTRIBUTIONS.md)
 
 Windows D 盘的期末清点用卷与文件 ID 跨目录去重。15 项拟合、其本地回传 ZIP 与队列控制占 5,153,342,648 字节，单列的依赖清点占 532,096 字节，合计 5,153,874,744 字节、5,050 个唯一文件。此前六单的增量已包含在这个存量中。缺少全 B 开始时的完整物理快照，共享运行环境的净变化也无法分摊。15 个云端回件为 2,392,041,507 逻辑字节，云服务的实际物理分配未知。 [Windows 终态原生清点的 Mac 核验](windows-final-storage.json)

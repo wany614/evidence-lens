@@ -24,7 +24,7 @@ The CPU tools use calibrated source images, source-view renders and predicted co
 | --- | --- | --- |
 | **A · v0.5.0** | Released CPU scoring toolkit for prepared two- and four-source bundles, registered rectangular grids and the legacy square path. | [Release](https://github.com/wany614/evidence-lens/releases/tag/v0.5.0) · [Guide](docs/releases/v0.5.0/README.md) · [Acceptance](docs/releases/v0.5.0/ACCEPTANCE.md) |
 | **B · Many-source dev.0** | Separate experimental source-bank retrieval, streaming evidence aggregation and a trained NumPy risk ranker. The registered ranking result is negative. | [Research release](https://github.com/wany614/evidence-lens/releases/tag/many-source-v0.1.0-dev.0) · [Study and CLI](docs/research/many-source-v1/README.md) |
-| **C · Humanities foundation v1** | Offline case viewer, model and data lineage, primary theory readings and open questions about evidence and remediation. | [Exhibit release](https://github.com/wany614/evidence-lens/releases/tag/humanities-foundation-v1) · [Research materials](docs/humanities-foundation/README.md) |
+| **C · Humanities foundation v1** | Offline case viewer, model and data lineage, primary theory readings and the scope of evidence and remediation. | [Exhibit release](https://github.com/wany614/evidence-lens/releases/tag/humanities-foundation-v1) · [Research materials](docs/humanities-foundation/README.md) |
 
 The three editions are separately archived. The experimental many-source package is not a capability claimed by the v0.5.0 two-/four-source scorer.
 
@@ -117,9 +117,9 @@ The project began with a first-year Digital Media & Culture student's question a
 | Codex | Software implementation, training, experiments, validation, packaging and publication. |
 | Claude | Technical reviews of supplied protocols, code excerpts and research materials. |
 
-[The contribution record and linked Research Log](docs/humanities-foundation/CONTRIBUTIONS.md) distinguish human decisions, AI implementation and the scope of each review. AI-assisted review and cross-platform numerical replay are not substitutes for independent replication by other researchers.
+[The contribution record](docs/humanities-foundation/CONTRIBUTIONS.md) distinguishes human decisions, AI implementation and the scope of each review. AI-assisted review and cross-platform numerical replay are not substitutes for independent replication by other researchers.
 
-The humanities foundation uses remediation in the media-theory sense (Bolter and Grusin) and visualisation documentation to explore how photographs, reconstructions and assessment interfaces organise evidence. It distinguishes visual plausibility, measured image agreement, source support, process traceability and historical or cultural interpretation. [Concepts and claims](docs/humanities-foundation/CONCEPTS_AND_CLAIMS.md) · [Primary theory cards](docs/humanities-foundation/THEORY_SOURCES.md) · [Open questions](docs/humanities-foundation/OPEN_QUESTIONS.md).
+The humanities foundation uses remediation in the media-theory sense (Bolter and Grusin) and visualisation documentation to explore how photographs, reconstructions and assessment interfaces organise evidence. It distinguishes visual plausibility, measured image agreement, source support, process traceability and historical or cultural interpretation. [Concepts and claims](docs/humanities-foundation/CONCEPTS_AND_CLAIMS.md) · [Primary theory cards](docs/humanities-foundation/THEORY_SOURCES.md).
 
 ## Scope and limitations
 
