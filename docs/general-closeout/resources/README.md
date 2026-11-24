@@ -1,0 +1,7 @@
+# General-stage storage census
+
+The prepublication Mac census counted 257 sealed native records between 05:11:22.803 and 05:11:23.926 UTC on 24 November 2026. Of these records, 253 succeeded and four failed. Their 133,719 regular-file paths held 5,742,500,840 logical bytes. The run table gives the native completion manifest, status, recorder wall interval and sampled peak process-tree RSS where available. Overlapping recorder intervals include concurrent and nested work. [Census](candidate/resources.json) · [Native run table](candidate/runs.csv) · [Recorder origin](candidate/origin.json)
+
+The local general store also held shared assets, transport archives, controller work and indexes. Across those components, 135,436 regular-file paths held 6,784,131,894 logical bytes. Counting each inode once gave 5,282,608,650 logical bytes and 5,596,258,304 bytes in allocated file blocks. APFS can share extents between different inodes. The census skipped 1,465 symbolic links, including historical-store links, and excluded its own active recorder directory. The volume had 1,009,774,370,816 bytes free after the scan. [Component table](candidate/components.csv)
+
+The T1 study ledger separately reports 29 physical fits, shared work, failed attempts, GPU memory, transfers and access costs. The prior two research batches retain separate censuses. [T1 resources](../../results/t1/resources.md) · [First batch](../../results/t0/resources/resources.json) · [Second batch](../../results/batch-two/resources/README.md)

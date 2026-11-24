@@ -48,6 +48,12 @@ def environment(method):
         },
         "cpu_normalization": "100% per busy logical CPU; machine fraction divides by available logical CPUs",
     }
+    try:
+        dependencies = np.show_config(mode="dicts").get("Build Dependencies", {})
+    except TypeError:
+        dependencies = {}
+    env["numpy_blas"] = {k: dependencies.get("blas", {}).get(k) for k in ("name", "version", "found")}
+    env["numpy_lapack"] = {k: dependencies.get("lapack", {}).get(k) for k in ("name", "version", "found")}
     if method in ("MS-ft", "MS-frozen"):
         import torch
 

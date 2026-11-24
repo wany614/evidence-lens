@@ -1,0 +1,103 @@
+platform,method,configured_neural_threads,os,machine,processor,python,numpy,torch,physical_cpus,logical_cpus,available_logical_cpus,torch_interop_threads,numpy_blas,numpy_lapack,numpy_blas_version,parallel_backend,thread_environment,loaded_pools
+mac,MS-L1,,macOS-27.2-arm64-arm-64bit,arm64,arm,3.12.16,2.5.5,,12,12,12,,accelerate,accelerate,unknown,,"{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}",
+mac,MS-ft,1,macOS-27.2-arm64-arm-64bit,arm64,arm,3.12.16,2.5.5,2.8.0,12,12,12,12,accelerate,accelerate,unknown,"ATen/Parallel:
+	at::get_num_threads() : 1
+	at::get_num_interop_threads() : 12
+OpenMP 201811
+	omp_get_max_threads() : 1
+MKLDNN not found
+std::thread::hardware_concurrency() : 12
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}",
+mac,MS-ft,2,macOS-27.2-arm64-arm-64bit,arm64,arm,3.12.16,2.5.5,2.8.0,12,12,12,12,accelerate,accelerate,unknown,"ATen/Parallel:
+	at::get_num_threads() : 2
+	at::get_num_interop_threads() : 12
+OpenMP 201811
+	omp_get_max_threads() : 2
+MKLDNN not found
+std::thread::hardware_concurrency() : 12
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}",
+mac,MS-ft,4,macOS-27.2-arm64-arm-64bit,arm64,arm,3.12.16,2.5.5,2.8.0,12,12,12,12,accelerate,accelerate,unknown,"ATen/Parallel:
+	at::get_num_threads() : 4
+	at::get_num_interop_threads() : 12
+OpenMP 201811
+	omp_get_max_threads() : 4
+MKLDNN not found
+std::thread::hardware_concurrency() : 12
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}",
+mac,MS-ft,8,macOS-27.2-arm64-arm-64bit,arm64,arm,3.12.16,2.5.5,2.8.0,12,12,12,12,accelerate,accelerate,unknown,"ATen/Parallel:
+	at::get_num_threads() : 8
+	at::get_num_interop_threads() : 12
+OpenMP 201811
+	omp_get_max_threads() : 8
+MKLDNN not found
+std::thread::hardware_concurrency() : 12
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}",
+windows,MS-L1,,Windows-11-10.0.26200-SP0,AMD64,"Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",3.12.10,2.5.5,,14,20,20,,scipy-openblas,scipy-openblas,0.3.34.237.2,,"{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}","[{""user_api"": ""blas"", ""internal_api"": ""openblas"", ""num_threads"": 20, ""version"": ""0.3.34.237.2"", ""threading_layer"": ""pthreads"", ""architecture"": ""Haswell""}]"
+windows,MS-ft,1,Windows-11-10.0.26200-SP0,AMD64,"Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",3.12.10,2.5.5,2.8.0+cpu,14,20,20,14,scipy-openblas,scipy-openblas,0.3.34.237.2,"ATen/Parallel:
+	at::get_num_threads() : 1
+	at::get_num_interop_threads() : 14
+OpenMP 2019
+	omp_get_max_threads() : 1
+Intel(R) oneAPI Math Kernel Library Version 2025.2-Product Build 20250620 for Intel(R) 64 architecture applications
+	mkl_get_max_threads() : 1
+Intel(R) MKL-DNN v3.7.1 (Git Hash 8d263e693366ef8db40acc569cc7d8edf644556d)
+std::thread::hardware_concurrency() : 20
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+	MKL_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}","[{""user_api"": ""blas"", ""internal_api"": ""openblas"", ""num_threads"": 20, ""version"": ""0.3.34.237.2"", ""threading_layer"": ""pthreads"", ""architecture"": ""Haswell""}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 1, ""version"": null, ""threading_layer"": null, ""architecture"": null}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 1, ""version"": null, ""threading_layer"": null, ""architecture"": null}]"
+windows,MS-ft,2,Windows-11-10.0.26200-SP0,AMD64,"Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",3.12.10,2.5.5,2.8.0+cpu,14,20,20,14,scipy-openblas,scipy-openblas,0.3.34.237.2,"ATen/Parallel:
+	at::get_num_threads() : 2
+	at::get_num_interop_threads() : 14
+OpenMP 2019
+	omp_get_max_threads() : 2
+Intel(R) oneAPI Math Kernel Library Version 2025.2-Product Build 20250620 for Intel(R) 64 architecture applications
+	mkl_get_max_threads() : 2
+Intel(R) MKL-DNN v3.7.1 (Git Hash 8d263e693366ef8db40acc569cc7d8edf644556d)
+std::thread::hardware_concurrency() : 20
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+	MKL_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}","[{""user_api"": ""blas"", ""internal_api"": ""openblas"", ""num_threads"": 20, ""version"": ""0.3.34.237.2"", ""threading_layer"": ""pthreads"", ""architecture"": ""Haswell""}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 2, ""version"": null, ""threading_layer"": null, ""architecture"": null}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 1, ""version"": null, ""threading_layer"": null, ""architecture"": null}]"
+windows,MS-ft,4,Windows-11-10.0.26200-SP0,AMD64,"Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",3.12.10,2.5.5,2.8.0+cpu,14,20,20,14,scipy-openblas,scipy-openblas,0.3.34.237.2,"ATen/Parallel:
+	at::get_num_threads() : 4
+	at::get_num_interop_threads() : 14
+OpenMP 2019
+	omp_get_max_threads() : 4
+Intel(R) oneAPI Math Kernel Library Version 2025.2-Product Build 20250620 for Intel(R) 64 architecture applications
+	mkl_get_max_threads() : 4
+Intel(R) MKL-DNN v3.7.1 (Git Hash 8d263e693366ef8db40acc569cc7d8edf644556d)
+std::thread::hardware_concurrency() : 20
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+	MKL_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}","[{""user_api"": ""blas"", ""internal_api"": ""openblas"", ""num_threads"": 20, ""version"": ""0.3.34.237.2"", ""threading_layer"": ""pthreads"", ""architecture"": ""Haswell""}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 4, ""version"": null, ""threading_layer"": null, ""architecture"": null}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 1, ""version"": null, ""threading_layer"": null, ""architecture"": null}]"
+windows,MS-ft,8,Windows-11-10.0.26200-SP0,AMD64,"Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",3.12.10,2.5.5,2.8.0+cpu,14,20,20,14,scipy-openblas,scipy-openblas,0.3.34.237.2,"ATen/Parallel:
+	at::get_num_threads() : 8
+	at::get_num_interop_threads() : 14
+OpenMP 2019
+	omp_get_max_threads() : 8
+Intel(R) oneAPI Math Kernel Library Version 2025.2-Product Build 20250620 for Intel(R) 64 architecture applications
+	mkl_get_max_threads() : 8
+Intel(R) MKL-DNN v3.7.1 (Git Hash 8d263e693366ef8db40acc569cc7d8edf644556d)
+std::thread::hardware_concurrency() : 20
+Environment variables:
+	OMP_NUM_THREADS : [not set]
+	MKL_NUM_THREADS : [not set]
+ATen parallel backend: OpenMP
+","{""MKL_NUM_THREADS"": null, ""OMP_NUM_THREADS"": null, ""OPENBLAS_NUM_THREADS"": null, ""VECLIB_MAXIMUM_THREADS"": null}","[{""user_api"": ""blas"", ""internal_api"": ""openblas"", ""num_threads"": 20, ""version"": ""0.3.34.237.2"", ""threading_layer"": ""pthreads"", ""architecture"": ""Haswell""}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 8, ""version"": null, ""threading_layer"": null, ""architecture"": null}, {""user_api"": ""openmp"", ""internal_api"": ""openmp"", ""num_threads"": 1, ""version"": null, ""threading_layer"": null, ""architecture"": null}]"

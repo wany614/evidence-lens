@@ -1,0 +1,282 @@
+{
+  "schema": "el-static-engineering-measurements-1",
+  "attribution": {
+    "creator": "wany614 / Evidence Lens",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "originals": "Authored helical beads and offset bell cage, with registered views and source photographs."
+  },
+  "timing_boundaries": {
+    "g3": "One real prepared target per score. File service includes score-file persistence. Resident service returns arrays. HTML is timed separately.",
+    "g4": "Scheduled predecoded CPU inputs. Service is dequeue to scored result. Age starts at observed input readiness. A separate host monotonic stopwatch extends from the schedule origin through producer completion and queue drain. Both stamps are in the native replay receipt; delivered throughput counts finished frames over their difference.",
+    "resource_samples": "0.1-second process-tree sampler. One occupied logical CPU equals 100 percent. Frame clocks use host-local monotonic time.",
+    "quantiles": "Sample p50/p95/p99/max. Repeated trajectory views are engineering calls."
+  },
+  "cpu_ticket_sha256": "fad00db69c7127466f64014a5073e84262d289815fe6858bed87d5b910e84b6c",
+  "engineering_config_sha256": "a31f0caef9bee1f17bb98c8cdb5feef544c916ad32806b6f46360f8051412c64",
+  "sources": {
+    "mac": {
+      "g3": {
+        "run_id": "20261124T044909556355Z-524ecb53b3cc484a",
+        "manifest_sha256": "26cd1dd45368edf54be01876080b37d2267cb89f6b0797a8f3ff032c05e05adb",
+        "native_execution": "succeeded",
+        "completion_sha256": "c0d12baa01a08752b864f2399674356b8480d455cbae1cdeddda4feac127fa27",
+        "receipt_sha256": "e16a40a442c062b6a465b72522adca329738f878de3fb4ee15a153df20bb6ef0",
+        "verified_raw_members": 180,
+        "status": "done",
+        "budget_seconds": 1800.0,
+        "measured_seconds": 413.43137479199504,
+        "selected_threads": {
+          "MS-L1": 4,
+          "MS-ft": 8
+        },
+        "requested_hot_frames_per_configuration": 200,
+        "configurations_reported": 24,
+        "failures": []
+      },
+      "g4": {
+        "run_id": "20261124T045615289125Z-ab6f1bb58c4a4d60",
+        "manifest_sha256": "c58561c3c12e19bcb8053e8a4d45864b1b64c223f042376f20dbafc004167bbb",
+        "native_execution": "succeeded",
+        "completion_sha256": "f4b6b8018fb4676891dacf2a706e77f07c32905bfb4bbcc72e46fe206267ddb8",
+        "receipt_sha256": "6e51566e5fcb40d81bc0d14d5e7acab4da9c5af83c4435c8ee85d87584ca49b7",
+        "verified_raw_members": 37,
+        "status": "done",
+        "renderer_run": "20261124T042527050139Z-cd01a83985f94a14",
+        "labels_accessed": false,
+        "new_risk_training_updates": 0,
+        "parity": {
+          "MS-L1": {
+            "different_words": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "frames": 528,
+            "passed": true,
+            "resource": {
+              "available_cpu_fraction": 0.08199425247422122,
+              "cpu_seconds_source": "process_time; no child observed",
+              "mean_busy_logical_cpus": 0.9839310296906547,
+              "peak_sampled_os_threads": 2,
+              "peak_sampled_tree_rss_bytes": 951959552,
+              "process_cpu_seconds": 43.04857500000001,
+              "process_tree_cpu_seconds": 43.04857500000001,
+              "rss_end_bytes": 951959552,
+              "rss_start_bytes": 41598976,
+              "sample_period_seconds": 0.1,
+              "samples": 401,
+              "wall_seconds": 43.751618457987206
+            },
+            "seconds": 43.744102915996336
+          },
+          "MS-ft": {
+            "different_words": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "frames": 480,
+            "passed": true,
+            "resource": {
+              "available_cpu_fraction": 0.1268577417939323,
+              "cpu_seconds_source": "process_time; no child observed",
+              "mean_busy_logical_cpus": 1.5222929015271878,
+              "peak_sampled_os_threads": 9,
+              "peak_sampled_tree_rss_bytes": 1183694848,
+              "process_cpu_seconds": 108.58253800000001,
+              "process_tree_cpu_seconds": 108.58253800000001,
+              "rss_end_bytes": 816988160,
+              "rss_start_bytes": 951975936,
+              "sample_period_seconds": 0.1,
+              "samples": 654,
+              "wall_seconds": 71.32828241599782
+            },
+            "seconds": 71.31854345899774
+          }
+        },
+        "registered_workloads": {
+          "bell-M4-MS-L1-10Hz": {
+            "status": "done",
+            "failure_reasons": "[]"
+          },
+          "bell-M4-MS-L1-30Hz": {
+            "status": "done",
+            "failure_reasons": "[]"
+          },
+          "bell-M4-MS-ft-10Hz": {
+            "status": "done",
+            "failure_reasons": "[]"
+          },
+          "bell-M4-MS-ft-30Hz": {
+            "status": "done",
+            "failure_reasons": "[]"
+          },
+          "version-switch": {
+            "status": "done",
+            "failure_reasons": "[]"
+          }
+        }
+      }
+    },
+    "windows": {
+      "g3": {
+        "run_id": "20261124T045003997485Z-0ac6de2edc7b4a91",
+        "manifest_sha256": "c5ee7c0a1ce972b3b9fe0cf39d6e905a828a0a9aa6b393910f9a3d770937d2ab",
+        "native_execution": "succeeded",
+        "completion_sha256": "2a33476d3fbbf3b0449cdbbd24200cbb2698b285fae68ed3db55e5ace21dc6a1",
+        "receipt_sha256": "0c1870e25a578ab2fdce3099e6bdca30a96f74b26c09a9664f8b70d4dc1443d3",
+        "verified_raw_members": 180,
+        "status": "done",
+        "budget_seconds": 1800.0,
+        "measured_seconds": 1360.8280000000086,
+        "selected_threads": {
+          "MS-L1": 4,
+          "MS-ft": 4
+        },
+        "requested_hot_frames_per_configuration": 200,
+        "configurations_reported": 24,
+        "failures": []
+      },
+      "g4": {
+        "run_id": "20261124T051249715138Z-af1a8204c27b4b03",
+        "manifest_sha256": "ec4a8f02eec1ca7519b8af9d4c1777ecaee8552fb9ab6bd8e8850a0357769e1a",
+        "native_execution": "succeeded",
+        "completion_sha256": "0ce24a6a926db061fd150e9fc035e59056b04cb5daad3bcbfc02d3169802ac4f",
+        "receipt_sha256": "a8a5d934d622ac397743ba5b7f948dfb465f176e237833e703b8eb842324a4cd",
+        "verified_raw_members": 23,
+        "status": "done",
+        "renderer_run": "20261124T042527050139Z-cd01a83985f94a14",
+        "labels_accessed": false,
+        "new_risk_training_updates": 0,
+        "parity": {
+          "MS-L1": {
+            "different_words": {
+              "risk": 0,
+              "state": 0,
+              "unknown_reason": 0,
+              "valid": 0
+            },
+            "frames": 528,
+            "passed": true,
+            "resource": {
+              "available_cpu_fraction": 0.049899361439581916,
+              "cpu_seconds_source": "process_time; no child observed",
+              "mean_busy_logical_cpus": 0.9979872287916384,
+              "peak_sampled_os_threads": 27,
+              "peak_sampled_tree_rss_bytes": 396730368,
+              "process_cpu_seconds": 131.828125,
+              "process_tree_cpu_seconds": 131.828125,
+              "rss_end_bytes": 52756480,
+              "rss_start_bytes": 39596032,
+              "sample_period_seconds": 0.1,
+              "samples": 1173,
+              "wall_seconds": 132.09399999999732
+            },
+            "seconds": 132.0550665000046
+          }
+        },
+        "registered_workloads": {
+          "bell-M4-MS-L1-10Hz": {
+            "status": "done",
+            "failure_reasons": "[]"
+          },
+          "bell-M4-MS-L1-30Hz": {
+            "status": "done",
+            "failure_reasons": "[]"
+          },
+          "version-switch": {
+            "status": "done",
+            "failure_reasons": "[]"
+          }
+        }
+      }
+    }
+  },
+  "tables": {
+    "g3-configurations.csv": {
+      "rows": 48,
+      "bytes": 43850,
+      "sha256": "fd3cd2df1f6c3a5759cf8a0815ce0e27141869f76e5207e4cced5b4e2296f622"
+    },
+    "g3-platform-backends.csv": {
+      "rows": 10,
+      "bytes": 8025,
+      "sha256": "4da82573cf601c85a8e4049910ce81028c55fc9397aa0a9e364198bf6af6f30f"
+    },
+    "g3-cold-starts.csv": {
+      "rows": 144,
+      "bytes": 20047,
+      "sha256": "86b2f22e42822f94d44cc9f9e0af55a1e3ab75bb4c52a087553b8d8d52d17216"
+    },
+    "g3-thread-candidates.csv": {
+      "rows": 10,
+      "bytes": 2258,
+      "sha256": "b58f52da9d0dc2fd4f950fcc636ae32f90a12d47642226e01b0a025924d70176"
+    },
+    "g3-thread-candidate-frames.csv": {
+      "rows": 96,
+      "bytes": 81986,
+      "sha256": "53a1f662f8ecb4b76ff973e86cae085cbe939ea1e6fa6e240de38ad335566e67"
+    },
+    "g3-frames.csv": {
+      "rows": 9600,
+      "bytes": 8055040,
+      "sha256": "dbf5707862f74e2869f045ce17137399180a99fb32ad7feac6f4e485f919b9f8"
+    },
+    "g4-offline-parity.csv": {
+      "rows": 16,
+      "bytes": 6687,
+      "sha256": "e2c97f8773555e2ac06c8e0a2db428f02b7748423f5d6d6700eac15f16a17e5a"
+    },
+    "g4-offline-frames.csv": {
+      "rows": 1536,
+      "bytes": 1070112,
+      "sha256": "7c15850497861f50225af0a9e8039b5a9dff2a3e1f86fd5532a085c3e811352e"
+    },
+    "g4-loads.csv": {
+      "rows": 8,
+      "bytes": 11589,
+      "sha256": "50331d7373b236eb4505883a289c5ccae4da4cb9772c47c3166dafd93905cc06"
+    },
+    "g4-version-events.csv": {
+      "rows": 12,
+      "bytes": 2572,
+      "sha256": "fc15ef65458498b555b2da0cf60b8404479a38b93035991776309a43beb57d6e"
+    },
+    "g4-version-checks.csv": {
+      "rows": 2,
+      "bytes": 447,
+      "sha256": "319ee0bae9d7cb36317e0f0cfb969d4bea0ea90910f5a3b51f4c8c30e57984bf"
+    },
+    "g4-frames.csv": {
+      "rows": 7320,
+      "bytes": 8146078,
+      "sha256": "b1ceeca14288bb01ec6cc63c58c24b83923da96fb3742a36854fb7622d8d5fdc"
+    },
+    "process-resource-samples.csv": {
+      "rows": 17705,
+      "bytes": 1288319,
+      "sha256": "81e0d0de22231ff3e40f2c8e604c7c69b3463e39012cf86967a64810a3f279b6"
+    }
+  },
+  "html_example": {
+    "native_run": "20261124T045615289125Z-ab6f1bb58c4a4d60",
+    "condition": "bell-M4-MS-L1-30Hz",
+    "frame": "ingress-001799",
+    "target_view": "f119",
+    "map_revision": "eedb19d170445f22273333b8c7f7e014c160fc606bc3f9b12f7f0ed0f84a7fac",
+    "source_revision": "e3c82821c4c76258383e0c8b4d10ae7a84960ed08d7d004eeeb413e48ecc9332",
+    "output_sha256": "59a684bfd8adddeb41e5c4dcfa979e47c16ef05265d6c2d530c2a9d134c4d47c",
+    "images": [
+      "Predicted RGB",
+      "Continuous risk",
+      "Threshold state",
+      "Unknown reason"
+    ],
+    "html_sha256": "fd8119bdd072fe0bef9587339ba42ff1f74c927c7c060eb7b42a4d8c6fa3110d",
+    "arrays_sha256": "461a4537b0413a1cdac1455ebc316a910421242ac1a798364e75572350044ae2"
+  }
+}

@@ -30,7 +30,7 @@ Four-model file, resident and cached outputs agreed bit-for-bit on 64 original m
 
 ## RL-019 — One joint opening and its independent numerical checks
 
-On 24 November 2026 the six-object prediction matrix closed at 04:47 UTC. The same day at 04:51 UTC this entry recorded the resulting comparison. Wany had required the general study to retain successful, failed and adverse cases. ChatGPT specified the evaluation order and object-equal comparisons. Codex signed 42 logical conditions and 288 fixed risk slots, issued one opening, and then read the thirty-six authorized photographs for independent evaluation. There were 29 unique optimizations, one logical alias, 12 failed conditions and 240 available fixed model–view outputs. Verified counts include 2,592 registered quota rows and 252 scheduled reconstruction endpoints. The immutable primary and independent readers agreed.
+On 24 November 2026 the six-object prediction matrix closed at 04:47 UTC. The same day at 04:51 UTC this entry recorded the resulting comparison. Wany had required the general study to retain successful, failed and adverse cases. ChatGPT specified the evaluation order and object-equal comparisons. Codex sealed 42 logical conditions and 288 fixed risk slots, issued one opening, and then read the thirty-six authorized photographs for independent evaluation. There were 29 unique optimizations, one logical alias, 12 failed conditions and 240 available fixed model–view outputs. Verified counts include 2,592 registered quota rows and 252 scheduled reconstruction endpoints. The immutable primary and independent readers agreed.
 
 The prespecified risk-minus-uniform difference was −0.0066173 MAE over four defined objects. Two improved, one worsened and one produced exactly the same pair. Two objects were ineligible for a pair after the original probe failed. At matched 20% coverage the four-source risks had mean accepted-pixel error of 15.79% for MS-L1 and 12.40% for MS-ft over four objects. Set103 was adverse for camera selection, and set61's four-source 20% group had 9,635 errors for MS-ft and 9,606 for MS-L1 out of 78,642 each. This study changes neither the default choice nor the frozen thresholds. The engineering reader reproduced every available output in the registered four-thread comparison without reading evaluation labels. The next operational question concerned measured latency and throughput on static prepared frames; those were still pending at the time of this entry.
 
@@ -54,3 +54,14 @@ The scientific reference used four neural threads. Eight threads were selected o
 | Mac CPU profiles | `20261124T044909556355Z-524ecb53b3cc484a` |
 | Mac finite-queue static replay | `20261124T045615289125Z-ab6f1bb58c4a4d60` |
 | Eight-thread deployment-only numerical comparison | `20261124T050322569107Z-024a8726a64d4c5c` |
+
+## RL-021 — Windows throughput and frame dispositions
+
+Wany asked what latency a continuous use case could sustain on his own computers. ChatGPT specified fixed arrivals, a finite queue, expiration and revision handling. Codex completed the Windows tests between 04:50 and 05:22 UTC on 24 November 2026 and recorded this entry at 05:23 UTC. The Windows host completed 24 configurations, 4,800 hot samples and 72 independent cold starts in 1,360.828 seconds. Of the four neural thread candidates, four threads reproduced the four-thread file controls and qualified for the performance comparison. Dense bell M4 median file/resident-cache service was 283.83/127.60 ms for MS-L1 and 629.09/218.17 ms for MS-ft.
+
+At 10 Hz the default model delivered 466 of 600 inputs, dropped 132 and expired two processed results. At 30 Hz it delivered 470 of 1,800 inputs and dropped 1,330. No service call failed. The version-switch run delivered 53 of 60 inputs, dropped five and expired two. The offline control checked all four arrays for 528 distinct prepared frames. The evidence concerns static, pre-rendered input on an identified host. A tool-free Claude Opus high review covered the eight-thread bridge, performance exporter and release controls. It recommended binding measurements to their native manifests, identifying the configuration of every raw frame and distinguishing thread settings from the frozen scientific analysis. At this event the remaining question was whether others could download and replay the newly built release.
+
+| Evidence | Native Windows run | Mac archive verification |
+|---|---|---|
+| G3 configurations | `20261124T045003997485Z-0ac6de2edc7b4a91` | `20261124T051847516079Z-82a9b9eef4e142bc` |
+| G4 static replay | `20261124T051249715138Z-af1a8204c27b4b03` | `20261124T051942452757Z-204f25c262484a69` |

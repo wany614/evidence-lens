@@ -1,0 +1,3 @@
+platform,run_id,renderer_run,switched_target_arrays_different,switched_source_self_arrays_different,same_map_target_arrays_exact_after_source_switch,switch_wall_seconds,dropped,expired,failed,finished
+mac,20261124T045615289125Z-ab6f1bb58c4a4d60,20261124T042527050139Z-cd01a83985f94a14,24,4,24,6.001545749983052,0,0,0,60
+windows,20261124T051249715138Z-af1a8204c27b4b03,20261124T042527050139Z-cd01a83985f94a14,24,4,24,6.1049999999959255,5,2,0,53

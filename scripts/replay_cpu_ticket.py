@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from evidence_lens_bundle.common import encoded, parts, row, sha, write
+from evidence_lens_bundle.common import encoded, json_bytes, parts, require, row, sha, write
 
 FILES = {
     "evidence_lens": (
@@ -58,7 +58,9 @@ a=p.parse_args()
 if a.out.exists() and any(a.out.iterdir()): raise ValueError("expected an empty, fresh recorder payload")
 a.out.mkdir(parents=True,exist_ok=True)
 runtime=base/"runtime"
-env={**os.environ,"PYTHONPATH":str(runtime),"PYTHONDONTWRITEBYTECODE":"1"}
+env={**os.environ,"PYTHONPATH":str(runtime),"PYTHONDONTWRITEBYTECODE":"1",
+     "EL_STATIC_CPU_TICKET_SHA256":hashlib.sha256((base/"ticket.json").read_bytes()).hexdigest(),
+     "EL_SCORER_CONFIG_SHA256":ticket["engineering_config_sha256"]}
 args=["--models",str(a.models.resolve()),"--out",str(a.out.resolve())]
 with tempfile.TemporaryDirectory() as raw:
     if a.operation=="g3":
@@ -98,9 +100,32 @@ def make(a):
     with ZipFile(a.legal) as archive:
         for f in ("LICENSE", "NOTICE", "CC-BY-4.0.txt", "ORIGINAL-EXAMPLE-NOTICE.txt"):
             payload[f] = archive.read(f)
+    frozen = a.freeze.read_bytes()
+    config = json_bytes(frozen)
+    require(config["schema"] == "el-engineering-bridge-config-1", "expected a frozen engineering config")
+    checked = []
+    for module, digest in config["source_sha256"].items():
+        path = "runtime/" + module.replace(".", "/") + ".py"
+        if path in payload:
+            require(sha(payload[path]) == digest, "ticket source diverged from numerical bridge: " + module)
+            checked.append(module)
+    require(
+        {
+            "evidence_lens_bundle.resident",
+            "evidence_lens_bundle.bindings",
+            "evidence_lens_bundle.scoring",
+            "evidence_lens.multisource",
+            "evidence_lens_multirisk.deploy",
+        }
+        <= set(checked),
+        "ticket omits frozen inference dependencies",
+    )
+    payload["engineering-config.json"] = frozen
     files = [row(k, v) for k, v in sorted(payload.items())]
     ticket = {
         "schema": "el-g3-g4-cpu-ticket-1",
+        "engineering_config_sha256": sha(frozen),
+        "checked_frozen_modules": checked,
         "run_id": os.environ["EL_RUN_ID"],
         "files": files,
         "cpu_models_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
@@ -119,6 +144,7 @@ def make(a):
             "artifact": row(file.name, file.read_bytes()),
             "ticket_sha256": sha(payload["ticket.json"]),
             "protocol_sha256": sha(payload["protocol.json"]),
+            "engineering_config_sha256": sha(frozen),
         },
     )
 
@@ -156,6 +182,7 @@ if __name__ == "__main__":
         "project",
         "assets",
         "workloads",
+        "freeze",
         "legal",
         "out",
         "models",

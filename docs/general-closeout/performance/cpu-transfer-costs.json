@@ -1,0 +1,62 @@
+{
+  "schema": "el-original-cpu-transfer-costs-1",
+  "scope": "Local dispatch copy including checksum; native return acquisition and verification on the receiving Mac. Provider network-only duration unavailable.",
+  "dispatch": {
+    "receipt": {
+      "manifest_sha256": "fa0d9b48cd5eb9d8975cc45daf5d1b15e337babaabbb38d0d89b5dfecc693fdc",
+      "member": "payload/transfer.json",
+      "run_id": "20261124T044625226230Z-a5fadd7d9b5a4887",
+      "sha256": "fb7ded5d38d313ff5489e8a726a91f259fa2d41f326af16d2028ce45e2e06633"
+    },
+    "bytes": 22084023,
+    "elapsed_seconds": 0.020362082999781705,
+    "start_utc": "2026-11-24T04:46:26.360266Z",
+    "finish_utc": "2026-11-24T04:46:26.380631Z",
+    "sha256": "670867a78456fcd6ca4dacfaac307c5d5aa570cd198c3d32a8df53d160846104",
+    "provider_network_elapsed_seconds": null
+  },
+  "returned": {
+    "g3": {
+      "receipt": {
+        "manifest_sha256": "e8e5bb0135348e1450248477e03bb9381d0f36f544156705a30151f9411bc265",
+        "member": "payload/readback.json",
+        "run_id": "20261124T051847516079Z-82a9b9eef4e142bc",
+        "sha256": "0868d266d208596a50bd9753dbe8e16cbce599e426c60ea94d4885b365c0551e"
+      },
+      "native": {
+        "manifest_sha256": "c5ee7c0a1ce972b3b9fe0cf39d6e905a828a0a9aa6b393910f9a3d770937d2ab",
+        "member": "payload/g3.json",
+        "run_id": "20261124T045003997485Z-0ac6de2edc7b4a91",
+        "sha256": "0c1870e25a578ab2fdce3099e6bdca30a96f74b26c09a9664f8b70d4dc1443d3"
+      },
+      "container_bytes": 228976929,
+      "started_utc": "2026-11-24T05:18:48.661508Z",
+      "finished_utc": "2026-11-24T05:19:40.900253Z",
+      "local_intake_seconds": 52.23856008400617,
+      "return_container_sha256": "a880422b59955718cc92f52aee463c5598a2ac8156270e5d8d9bc68667d11cce",
+      "native_transfer_status": "accepted",
+      "provider_network_seconds": null
+    },
+    "g4": {
+      "receipt": {
+        "manifest_sha256": "4fea107637c7ff5015eec4a899bc70c6c15002155c14b3ff7fb0af61f9edc355",
+        "member": "payload/readback.json",
+        "run_id": "20261124T051942452757Z-204f25c262484a69",
+        "sha256": "db60c9d67a53de79a5b957f3b17c4181f39092a6104fac9e2c2eedf6987fc072"
+      },
+      "native": {
+        "manifest_sha256": "ec4a8f02eec1ca7519b8af9d4c1777ecaee8552fb9ab6bd8e8850a0357769e1a",
+        "member": "payload/g4.json",
+        "run_id": "20261124T051249715138Z-af1a8204c27b4b03",
+        "sha256": "a8a5d934d622ac397743ba5b7f948dfb465f176e237833e703b8eb842324a4cd"
+      },
+      "container_bytes": 640243751,
+      "started_utc": "2026-11-24T05:19:43.628534Z",
+      "finished_utc": "2026-11-24T05:22:04.047309Z",
+      "local_intake_seconds": 140.41827704200114,
+      "return_container_sha256": "6aeeff86c2c068af12115cf4c4f11f71344b2e54b040e90fc526f0a3b80db76e",
+      "native_transfer_status": "accepted",
+      "provider_network_seconds": null
+    }
+  }
+}

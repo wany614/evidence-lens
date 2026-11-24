@@ -1,0 +1,107 @@
+{
+  "schema": "el-portable-trajectory-cli-control-1",
+  "run_id": "20261124T051454127705Z-3662524913034f85",
+  "trajectory_zip_sha256": "933d16cd27549618bc7adf43a1a86988daaf187fc06282a9d21775ac9a37b806",
+  "runtime_ticket_zip_sha256": "670867a78456fcd6ca4dacfaac307c5d5aa570cd198c3d32a8df53d160846104",
+  "public_run_mode": "relative-path module CLI against extracted external archive with packaged imported runtime",
+  "performance_use": false,
+  "controls": {
+    "two-source": {
+      "public_argv": [
+        "--bundle",
+        "beads-M2",
+        "--hz",
+        "5",
+        "--seconds",
+        "0.4",
+        "--out",
+        "two-source"
+      ],
+      "rows": 2,
+      "status_counts": {
+        "dropped": 0,
+        "expired": 0,
+        "failed": 0,
+        "finished": 2
+      },
+      "cache_preparations": 1,
+      "four_array_words_exact_against_independent_file_for_each_frame": true,
+      "last_visible": "ingress-000001",
+      "frames": [
+        {
+          "sequence_id": "beads-M2",
+          "target_view": "f000",
+          "frame_id": "ingress-000000",
+          "risk_sha256": "462f294b4709b5eb2b0b4368092327802de0d124855d6cbc53c29cad17e4e80d",
+          "valid_sha256": "77f058c4a5cb011bf2855f2f09bfd21a1f51f6f22a9bc7684380d06a899b1e37",
+          "state_sha256": "257457c6dcaa51ef829becbe1fcaf978a15e37e934fd449da49fed61ac48fee9",
+          "unknown_reason_sha256": "4ac22427187096dee09e5bd235a3c95fa08b023b285565fcf81f3e0e7126c6e1"
+        },
+        {
+          "sequence_id": "beads-M2",
+          "target_view": "f001",
+          "frame_id": "ingress-000001",
+          "risk_sha256": "b704891eda997ad0edef4912a82f93c10c34453b3ff6680a8002617d035b9945",
+          "valid_sha256": "5259ea5ba27c2154f6471c7ad04b34159386e88d60b8aeca2f880a667f6db15c",
+          "state_sha256": "e66b2a636e9727afb0d86e1ba8d1ad0a08b56e90b3f368ae255106f19b86106f",
+          "unknown_reason_sha256": "be5713b4ebf375cf0a3ff148919f2db307208e4c5fa201a3541a966459d91389"
+        }
+      ]
+    },
+    "map-and-source": {
+      "public_argv": [
+        "--bundle",
+        "beads-M4",
+        "--switch",
+        "1=beads-map2-M4",
+        "--switch",
+        "2=beads-map2-source2-M4",
+        "--hz",
+        "4",
+        "--seconds",
+        "0.75",
+        "--out",
+        "map-and-source"
+      ],
+      "rows": 3,
+      "status_counts": {
+        "dropped": 0,
+        "expired": 0,
+        "failed": 0,
+        "finished": 3
+      },
+      "cache_preparations": 3,
+      "four_array_words_exact_against_independent_file_for_each_frame": true,
+      "last_visible": "ingress-000002",
+      "frames": [
+        {
+          "sequence_id": "beads-M4",
+          "target_view": "f000",
+          "frame_id": "ingress-000000",
+          "risk_sha256": "74646d1711dee17dffca8a16d02dd55d900a908bfd99485b7e540cd9832641e6",
+          "valid_sha256": "59dbfb4f16d44816374e3b1a5ab338b89b51e9d55abc777b88ba0de7dfd427b8",
+          "state_sha256": "8e33c22edeebb3901d5a4b863c5d89443e9c9f4f0e287fd4e27441bc52fd7cd7",
+          "unknown_reason_sha256": "0569fc602fed71fb0ef930f3badbe181b8d29be4d3e714f30c4331c97b86fa06"
+        },
+        {
+          "sequence_id": "beads-map2-M4",
+          "target_view": "f000",
+          "frame_id": "ingress-000001",
+          "risk_sha256": "7429a38e9220a927193dd4dc8674817d35697c4b4b1ed1cbf3ccf9185842165b",
+          "valid_sha256": "59dbfb4f16d44816374e3b1a5ab338b89b51e9d55abc777b88ba0de7dfd427b8",
+          "state_sha256": "16696258568368e59d400ab0d1893c0a39f77f538a077ffefd88e9aa703e8baf",
+          "unknown_reason_sha256": "0569fc602fed71fb0ef930f3badbe181b8d29be4d3e714f30c4331c97b86fa06"
+        },
+        {
+          "sequence_id": "beads-map2-source2-M4",
+          "target_view": "f000",
+          "frame_id": "ingress-000002",
+          "risk_sha256": "2006f8a79a0cc2564a655579a5d2c4721c282e60e1a30f526ccc0574c7caf020",
+          "valid_sha256": "59dbfb4f16d44816374e3b1a5ab338b89b51e9d55abc777b88ba0de7dfd427b8",
+          "state_sha256": "3b608faa405fd76396c8c173e3821cf6976c34655cc4a46d13a5eb3cff630ade",
+          "unknown_reason_sha256": "0569fc602fed71fb0ef930f3badbe181b8d29be4d3e714f30c4331c97b86fa06"
+        }
+      ]
+    }
+  }
+}

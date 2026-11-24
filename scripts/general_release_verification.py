@@ -107,7 +107,7 @@ def verify(a):
         "tag": spec["tag"], "code_commit": spec["code_commit"], "model_release": spec["model_release"],
         "manifest_sha256": msha, "release": release, "provenance": config["sources"],
         "anonymous_mac": anon, "anonymous_windows": win, "linux_image": linux["image"],
-        "linux_download_transport": "The verified public Mac download was mounted read-only in the network-off Linux container.",
+        "linux_download_transport": linux["distribution_boundary"],
         "compiled_tests": tests, "original_replays": compared,
     })
 

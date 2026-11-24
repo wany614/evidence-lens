@@ -1,0 +1,823 @@
+{
+  "T1_recalibration_count": 0,
+  "T1_unique_scene_optimizations": 29,
+  "code_commit_at_cutoff": "4aaf4041822ca33f939995d14f415915a5b5f677",
+  "evidence_cutoff_utc": "2026-11-24T05:18:12.159220Z",
+  "general_phase_complete": false,
+  "items": [
+    {
+      "code_version": "sha256:b9ba397dbeef4f127a6c969e3e698c57a945ec197ae26fb993cf2f95fc521858",
+      "evidence": [
+        "docs/general-closeout/status.json"
+      ],
+      "evidence_roles": [
+        "g0-entry",
+        "g0-platform-inventory",
+        "g0-windows-intake"
+      ],
+      "item": "g0_history_platforms",
+      "limitation": "Windows is native x86-64. Linux is an aarch64 container on the Mac.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T040929244925Z-29ed9ca73ca94672",
+        "20261124T041620589354Z-81131e8951334339",
+        "20261124T043423948459Z-7809d0aabbee46e3"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:f928555203ac814af104d5f3f63a6e8a664932155450a1075cd0d4d0eec00fa5",
+      "evidence": [
+        "docs/results/t0/confirmation/README.md",
+        "docs/results/t0/confirmation/evaluation.json"
+      ],
+      "evidence_roles": [
+        "t0_opening",
+        "t0_evaluation"
+      ],
+      "item": "t0_confirmation",
+      "limitation": "All 288 registered earlier-cohort scores were available. The six physical subjects are distinct from T1.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T013603310781Z-d1ba70c0ba3c4034",
+        "20261124T013936088026Z-3e1df3bb0a484836"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:0a3b88a223c1656bf20f3fd4e4608ad435b27723d66f642a5fb3ada8c14a2418",
+      "evidence": [
+        "docs/results/batch-two/calibration/calibration-results.json",
+        "docs/results/batch-two/calibration/calibration-audit.json"
+      ],
+      "evidence_roles": [
+        "c6_calibration",
+        "c6_recount"
+      ],
+      "item": "c6_threshold_adaptation",
+      "limitation": "Both registered operating points have null tau. Their finite support and exploratory ordering remain separate from the frozen threshold.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T021235608840Z-f0d12afab15c4b3e",
+        "20261124T021259461920Z-0f16697bc8ca4700"
+      ],
+      "status": "done_negative"
+    },
+    {
+      "code_version": "sha256:4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "evidence": [
+        "docs/results/t1/README.md",
+        "docs/results/t1/fixed/origins.json"
+      ],
+      "evidence_roles": [
+        "t1-terminals",
+        "t1-closed-matrix",
+        "t1-opening",
+        "t1-fixed-evaluation",
+        "t1-fixed-recount"
+      ],
+      "item": "t1_fixed_risk_and_opening",
+      "limitation": "42 logical dispositions and 288 fixed score slots. Six M2 and four M4 subjects produced the 240 available method–view scores.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T044706519514Z-c0c1442fff894311",
+        "20261124T044722294241Z-47e91f72d281446d",
+        "20261124T044751135267Z-7eafdcf5d2a44153",
+        "20261124T044825822019Z-bacb63b0a8334b2c",
+        "20261124T044844354144Z-c1c65b4356bb469f"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "evidence": [
+        "docs/results/t1/fixed/sealed-matrix.json",
+        "docs/results/t1/resources.md"
+      ],
+      "evidence_roles": [
+        "t1-decisions-set118",
+        "t1-decisions-set76",
+        "t1-closed-matrix"
+      ],
+      "item": "set118_set76_original_probe_and_downstream_m4",
+      "limitation": "M2 produced 16,251 and 17,199 Gaussians. The original 20,000-point probe condition prevented twelve M4 fits across the two subjects. Both had zero candidate photograph acquisitions.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T042721271294Z-e420d82edec24f85",
+        "20261124T042726583946Z-d13d9c28f0254d9e",
+        "20261124T044722294241Z-47e91f72d281446d"
+      ],
+      "status": "failed"
+    },
+    {
+      "code_version": "sha256:4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "evidence": [
+        "docs/results/t1/nbv.md",
+        "docs/results/t1/independent-nbv.json"
+      ],
+      "evidence_roles": [
+        "t1-nbv-evaluation",
+        "t1-nbv-independent"
+      ],
+      "item": "t1_active_view_endpoint",
+      "limitation": "Four of six subjects paired. The risk-minus-uniform object-equal MAE difference was -0.0066173, with two improvements, one adverse outcome and one exact tie.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T044825489277Z-1ca8f9b1522541fe",
+        "20261124T044829368776Z-3f0b55a69aa44e2d"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:c260a8c4f31f77b968371fbba6c0dc9c3799f21dcb5ae9a4f5f3f73425b0da12",
+      "evidence": [
+        "docs/releases/v0.4.0/MODEL_CARD.md",
+        "docs/tooling/original-archive.md"
+      ],
+      "evidence_roles": [
+        "g0-original-public-models",
+        "g2-original-four-models-final",
+        "g2-original-release-archive"
+      ],
+      "item": "four_original_models",
+      "limitation": "The optional neural parameters come from the original CPU archive. The default wheel embeds MS-L1.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T041052425868Z-d308c134e69d4d4b",
+        "20261124T042945308392Z-91efecddcb26478e",
+        "20261124T043355227636Z-0089be24b9884f5c"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:1ebf90a6ba175c2a424d448ad417cae35c2c5994ddd83cb616b79e0f891f500d",
+      "evidence": [
+        "docs/tooling/resident.md",
+        "tests/test_resident.py"
+      ],
+      "evidence_roles": [
+        "g2-original-four-models-final",
+        "g2-t1-frozen-four-models"
+      ],
+      "item": "resident_array_api_and_exact_cache",
+      "limitation": "The byte limit applies to retained cache payload. Each frame recomputes target-dependent features and scores.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T042945308392Z-91efecddcb26478e",
+        "20261124T044754363058Z-f44dcf52830b4157"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:1ebf90a6ba175c2a424d448ad417cae35c2c5994ddd83cb616b79e0f891f500d",
+      "evidence": [
+        "docs/general-closeout/t1-numerical-bridge.json",
+        "docs/tooling/numerical-bridge.md"
+      ],
+      "evidence_roles": [
+        "g2-original-four-models-final",
+        "g2-legacy-control-final",
+        "g2-t1-frozen-four-models"
+      ],
+      "item": "four_thread_scientific_numerical_bridge",
+      "limitation": "All four arrays matched for 240 available method–views on Mac at four neural threads and 64 MiB. The old archive contains three arrays. Frozen features and validity predicates recover the fourth reason channel.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T042945308392Z-91efecddcb26478e",
+        "20261124T043004207630Z-a25f8763a791454d",
+        "20261124T044754363058Z-f44dcf52830b4157"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:d5ff352ff27b212c4d37265c084f8358b09e2cb437e79dcec6dfb59bfc3bf42b",
+      "evidence": [
+        "docs/general-closeout/t1-threads8-preregistration.json",
+        "docs/general-closeout/t1-threads8-numerical-bridge.json"
+      ],
+      "evidence_roles": [
+        "g2-t1-selected8-preregistration",
+        "g2-t1-selected8-supplement"
+      ],
+      "item": "selected_thread_numerical_bridge",
+      "limitation": "At eight threads all three engineering paths matched 240/240. Four versus eight threads matched 204/240, or 219/240 when only MS-ft changed. Up to 1.1921e-7 absolute risk difference; all cutoff states and attainable quota memberships were identical.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T050258146968Z-4f7c9b991a494bec",
+        "20261124T050322569107Z-024a8726a64d4c5c"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:4519372662bea6c6d7ca02c4824e74fbb502860ef54ac1fbf8ae8c41e352566b",
+      "evidence": [
+        "docs/general-closeout/performance/g4-trajectory-verification.json",
+        "docs/general-closeout/performance/g4-upstream-frames.csv"
+      ],
+      "evidence_roles": [
+        "g4-original-trajectory-intake",
+        "g4-public-original-trajectories"
+      ],
+      "item": "original_static_renderer_trajectory",
+      "limitation": "Four 120-pose trajectories and two revision sequences contain 548 original CUDA source and target renders. Scene content was static.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T043049211238Z-4b001422de0e45c5",
+        "20261124T043228471188Z-f46971cf9115423b"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:873b395375324aaece73c117b9a4a37f7e65ad161d24a21076247b1ed64ed3d9",
+      "evidence": [
+        "docs/tooling/assets/README.md",
+        "docs/tooling/assets/render-parity.csv",
+        "docs/results/batch-two/README.md"
+      ],
+      "evidence_roles": [
+        "format_parity",
+        "format_portable",
+        "format_recount"
+      ],
+      "item": "format_support",
+      "limitation": "Historical COLMAP 3.10 text/binary, Gaussian PLY and native NPZ controls used the original Windows CUDA renderer. Prepared bundle scoring runs on CPU.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T021118010901Z-e7bca336730e47df",
+        "20261124T021735523259Z-8ee25029bf9d4422",
+        "20261124T030422988018Z-770cf828f0f945dd"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:4519372662bea6c6d7ca02c4824e74fbb502860ef54ac1fbf8ae8c41e352566b",
+      "evidence": [
+        "docs/general-closeout/specialization-readiness.md",
+        "src/evidence_lens_bundle/replay_sidecar.py"
+      ],
+      "evidence_roles": [
+        "g4-public-original-trajectories"
+      ],
+      "item": "optional_metadata_and_specialization_contract",
+      "limitation": "Capture time, covariance, dynamic-mask references and acquisition policy are recorded as declared. Effects of these optional fields on risk remain unevaluated.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T043228471188Z-f46971cf9115423b"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:d5ff352ff27b212c4d37265c084f8358b09e2cb437e79dcec6dfb59bfc3bf42b",
+      "evidence": [
+        "docs/general-closeout/README.md",
+        "docs/general-closeout/research-log.md"
+      ],
+      "evidence_roles": [
+        "t1-fixed-recount",
+        "t1-nbv-independent",
+        "g2-t1-selected8-supplement"
+      ],
+      "item": "repository_research_report_and_log",
+      "limitation": "The repository records the experimental results, Wany's decisions and the model and agent contributions. The companion-document verification has its own row.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T044844354144Z-c1c65b4356bb469f",
+        "20261124T044829368776Z-3f0b55a69aa44e2d",
+        "20261124T050322569107Z-024a8726a64d4c5c"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:4519372662bea6c6d7ca02c4824e74fbb502860ef54ac1fbf8ae8c41e352566b",
+      "evidence": [
+        "docs/releases/v0.4.0/RIGHTS.md",
+        "configs/public-source.json",
+        "licenses/multisource-assets.json"
+      ],
+      "evidence_roles": [
+        "g0-original-public-models",
+        "g2-original-release-archive",
+        "g4-public-original-trajectories"
+      ],
+      "item": "rights_inventory",
+      "limitation": "The legal inventory distinguishes original scenes, source code, third-party parameters and restricted DTU imagery. Published artifacts receive separate checks.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T041052425868Z-d308c134e69d4d4b",
+        "20261124T043355227636Z-0089be24b9884f5c",
+        "20261124T043228471188Z-f46971cf9115423b"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:1ebf90a6ba175c2a424d448ad417cae35c2c5994ddd83cb616b79e0f891f500d",
+      "evidence": [
+        "docs/general-closeout/performance/README.md"
+      ],
+      "evidence_roles": [
+        "mac_g3"
+      ],
+      "item": "mac_g3_measurements",
+      "limitation": "24 measured configurations; 4800 timed calls and 0 registered failures. Elapsed G3 time was 413.431 s within a 1800.0 s budget.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T044909556355Z-524ecb53b3cc484a"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:7af9428c8a3b9c02ab9472eacb30472b8698085b0968d330c7852c14af690e17",
+      "evidence": [
+        "docs/general-closeout/performance/README.md"
+      ],
+      "evidence_roles": [
+        "mac_g4"
+      ],
+      "item": "mac_g4_measurements",
+      "limitation": "4 sustained loads. 4800 input slots; 3512 finished. Every generated output is reconciled against the static render source. The revision check recorded 60 completions.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T045615289125Z-ab6f1bb58c4a4d60"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:7af9428c8a3b9c02ab9472eacb30472b8698085b0968d330c7852c14af690e17",
+      "evidence": [
+        "docs/general-closeout/performance/README.md"
+      ],
+      "evidence_roles": [
+        "mac_g4"
+      ],
+      "item": "mac_30hz_full_frame_delivery",
+      "limitation": "1288 of 3600 offered inputs were dropped under 30 Hz load. This load characterizes bounded service on prepared static evidence.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T045615289125Z-ab6f1bb58c4a4d60"
+      ],
+      "status": "done_negative"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/general-closeout/performance/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "windows_g3_measurements",
+      "limitation": "The Windows worker reported completion. Mac verification awaits the returned native run 20261124T045003997485Z-0ac6de2edc7b4a91.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "blocked"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/general-closeout/performance/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "windows_g4_measurements",
+      "limitation": "The native Windows replay was in progress at the cutoff. The platform measurement row awaits its sealed and transferred return.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "blocked"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/general-closeout/performance/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "published_performance_tables",
+      "limitation": "The cross-platform public projection requires both native measurement returns.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "blocked"
+    },
+    {
+      "code_version": "sha256:fca93f670149005dc8644caa3109bd2b61efe8d58103ef40e62108d5eda13b2f",
+      "evidence": [
+        "docs/general-closeout/research-log.md",
+        "docs/general-closeout/research-log-readback-020.json"
+      ],
+      "evidence_roles": [
+        "cloud_log"
+      ],
+      "item": "companion_research_log",
+      "limitation": "Each verified section occurred once: RL-017, RL-018, RL-019, RL-020. The revision digest is d38c17983efb185fc64799a9ed3d8ca0c4507134a1456be6b39780aa34da1128.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T051437656821Z-ff3299d9e5b24776"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "sha256:825a99fe97deda0c8b9058b814242ed2999c9aedb1bdd179d3a0aff458678aad",
+      "evidence": [
+        "docs/results/t1/resources.md",
+        "docs/general-closeout/resources/candidate/resources.json"
+      ],
+      "evidence_roles": [
+        "t1-resources",
+        "g6-storage-candidate"
+      ],
+      "item": "resource_accounting",
+      "limitation": "257 sealed native runs at 2026-11-24T05:11:22.802723Z. Full local-store logical bytes are 6784131894; external linked history and the active census are outside that scan.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [
+        "20261124T050302137300Z-43cd5f8faec54823",
+        "20261124T051120902506Z-8fccd048a4ea4093"
+      ],
+      "status": "done"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/releases/v0.4.0/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "anonymous_release_download",
+      "limitation": "Verification of the anonymous current-release assets awaits public publication.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "not_started"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/releases/v0.4.0/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "mac_acceptance",
+      "limitation": "Clean replay against the current public wheel awaits an authenticated platform receipt.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "not_started"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/releases/v0.4.0/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "windows_acceptance",
+      "limitation": "Clean replay against the current public wheel awaits an authenticated platform receipt.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "not_started"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/releases/v0.4.0/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "linux_acceptance",
+      "limitation": "Clean replay against the current public wheel awaits an authenticated platform receipt.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "not_started"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/releases/v0.4.0/README.md"
+      ],
+      "evidence_roles": [],
+      "item": "public_release",
+      "limitation": "The declared release has no anonymous publication receipt at this cutoff.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "not_started"
+    },
+    {
+      "code_version": "4aaf4041822ca33f939995d14f415915a5b5f677",
+      "evidence": [
+        "docs/general-closeout/specialization-readiness.md"
+      ],
+      "evidence_roles": [],
+      "item": "additional_risk_training_t2_specialization_embodied_control",
+      "limitation": "Zero new risk-model fits. Field data collection, specialized risk models, geometry and semantics training and vehicle or robot action await a separate study.",
+      "model_version": "v0.3.0-rc.1",
+      "runs": [],
+      "status": "out_of_scope"
+    }
+  ],
+  "model_version": "v0.3.0-rc.1",
+  "new_risk_training_count": 0,
+  "phase": "candidate",
+  "recorder_evidence": {
+    "c6_calibration": {
+      "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+      "member": "payload/calibration-results.json",
+      "recorded_code_commit": null,
+      "recorded_source_snapshot_sha256": "a1d2aa21975d794c6a335eadf0f1407bd592534e31c22c36ad0a7a0cd343e755",
+      "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+      "sha256": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a"
+    },
+    "c6_recount": {
+      "manifest_sha256": "477b68a6b32dbbfafa158fc909774407d91cfa969de09e02eeb4833db8c789cd",
+      "member": "payload/calibration-audit.json",
+      "recorded_code_commit": null,
+      "recorded_source_snapshot_sha256": "0a3b88a223c1656bf20f3fd4e4608ad435b27723d66f642a5fb3ada8c14a2418",
+      "run_id": "20261124T021259461920Z-0f16697bc8ca4700",
+      "sha256": "b13acbcf6c9c1663f0199f47acd65255e3bdf58e99605bf73166d78ef04615ad"
+    },
+    "cloud_log": {
+      "manifest_sha256": "eefbfe7cdee8dd8bf16f34148e1c0f4a1cae3621c588553c699f59d60f2f1295",
+      "member": "payload/research-log-readback.json",
+      "recorded_code_commit": "06f3059a6418e66920ba4386321204f0c50770ea",
+      "recorded_source_snapshot_sha256": "fca93f670149005dc8644caa3109bd2b61efe8d58103ef40e62108d5eda13b2f",
+      "run_id": "20261124T051437656821Z-ff3299d9e5b24776",
+      "sha256": "50cb2fb717f4a23ef563808e695655189d1d368063086ce5b3868a10b61338b4"
+    },
+    "format_parity": {
+      "manifest_sha256": "53ae4c03a9b84db770bf05679aa4bf105f692dd4cfc5b44106d4cea3441654a5",
+      "member": "payload/parity.json",
+      "recorded_code_commit": null,
+      "recorded_source_snapshot_sha256": "428d5d96bc0382ec1846e2e8acb427bc3a15a87cb00eda44de6b71da5b3a779d",
+      "run_id": "20261124T021118010901Z-e7bca336730e47df",
+      "sha256": "4c3041842f748b71e7a871438cd35017a6cd53b91d57af98fc988c4f80028304"
+    },
+    "format_portable": {
+      "manifest_sha256": "547d495429df8264fed5e797b28f3862cbb09d59f89f9ddb17b963ed0724dc5a",
+      "member": "payload/verification.json",
+      "recorded_code_commit": "cb4bc39aa24b11bfc59e1d92c9319321ea268a7f",
+      "recorded_source_snapshot_sha256": "ed51ea6220ebceda0b2e8d121a620435213fcc3dc067da03dadd2956b66d9d1f",
+      "run_id": "20261124T021735523259Z-8ee25029bf9d4422",
+      "sha256": "818b707575ffe343a952d77956f1c9eb6e17f18c86326094241b5071db26307f"
+    },
+    "format_recount": {
+      "manifest_sha256": "7efeabf3c288d77c050101a7aa0428fe3bf0def9eb28a025369eb9edff0a808a",
+      "member": "payload/windows-cpu.json",
+      "recorded_code_commit": "dbe5241954e48b71e3c3f9658e553d6a34cf0091",
+      "recorded_source_snapshot_sha256": "873b395375324aaece73c117b9a4a37f7e65ad161d24a21076247b1ed64ed3d9",
+      "run_id": "20261124T030422988018Z-770cf828f0f945dd",
+      "sha256": "6aea684c6cdec6ae1037968c252acc5fb488ba395969826e8d2e38b5cfe78657"
+    },
+    "g0-entry": {
+      "manifest_sha256": "5d81587227a11560c8349a9e3c68604b838218b4c8766c3b69003e0ec0f908a1",
+      "member": "payload/entry.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "770bdcaf5118b0af4cbd7908dba3e99c9b3b62d7c4f3871dcb2b3ded965e1218",
+      "run_id": "20261124T040929244925Z-29ed9ca73ca94672",
+      "sha256": "971d8c212153d39caca44747e0fad8b4b28c1bc08f4d15e25f5720e7992ac818"
+    },
+    "g0-original-public-models": {
+      "manifest_sha256": "f8e108526ee096811ce2e196eeb538f85a75b52c5e3a4ab90b2470379b185aa7",
+      "member": "payload/download.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "1f77272be91ff81514b82378e63e2154a461374ceb0c52a302a9ce583b2f5663",
+      "run_id": "20261124T041052425868Z-d308c134e69d4d4b",
+      "sha256": "2fc63f58a383b7da4e427d8ed8bfbafdff4a843b072e9cdbd2d8b08bd5f1ee98"
+    },
+    "g0-platform-inventory": {
+      "manifest_sha256": "d17637c1668603b02f0c5e9f524c3a06528a834e774a7c2a046b1abc47987209",
+      "member": "payload/platforms.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "b92385843d3c6f3946ae13624658db0b125b852df75b46a7a8cd362181d6dbdb",
+      "run_id": "20261124T041620589354Z-81131e8951334339",
+      "sha256": "373044a3faff4bb3fd2fd747dbe3dc8307a4fbf85be8319a58b1371ceb3dff6a"
+    },
+    "g0-windows-intake": {
+      "manifest_sha256": "2a38152985ed4ce56cd3513126bee8c2d5ffd2f53944c67bcb65d31b29cf8362",
+      "member": "payload/inventory.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "b9ba397dbeef4f127a6c969e3e698c57a945ec197ae26fb993cf2f95fc521858",
+      "run_id": "20261124T043423948459Z-7809d0aabbee46e3",
+      "sha256": "49a9e409cd8e06fb27a7176603cd3ed24bde455802faeeac7aa01413a02ee5c8"
+    },
+    "g2-legacy-control-final": {
+      "manifest_sha256": "ad5f5b387ca240ee58cf01d6b7cc69431141b16b8c899a03fdc1915c6484c311",
+      "member": "payload/numerical-bridge.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "a028a820ddca134b7e12e76260070c75aeeed0538793b42efe9dd8d800e49c41",
+      "run_id": "20261124T043004207630Z-a25f8763a791454d",
+      "sha256": "29dcca683df59bcd9653c136de34ad529dcab53ca1d561f5576818e53fe2cef8"
+    },
+    "g2-original-four-models-final": {
+      "manifest_sha256": "d8893616cad1b2b1f85ad39ff2832d1c3e7c58253556e4f45bd10a1493d34ff4",
+      "member": "payload/numerical-bridge.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "8e9dc04bda895baf7ea57477635923e4f9364cc006aa5bcb77eaea13f56cb79b",
+      "run_id": "20261124T042945308392Z-91efecddcb26478e",
+      "sha256": "0f4db74c826897634b2a6b5c351b0e655d66d89db5fa9e142a5fad5c924b3972"
+    },
+    "g2-original-release-archive": {
+      "manifest_sha256": "feca8554062fc31f6ae577a08c1b5e60d6eb37736bdcd3089e8d1c789bbe5461",
+      "member": "payload/original-replays.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "c260a8c4f31f77b968371fbba6c0dc9c3799f21dcb5ae9a4f5f3f73425b0da12",
+      "run_id": "20261124T043355227636Z-0089be24b9884f5c",
+      "sha256": "7230f8b0baccbd675fd42a1dee6774f3b55768818337ba6651d938579765c233"
+    },
+    "g2-t1-frozen-four-models": {
+      "manifest_sha256": "bec7344e2e1618e9849e827e44a39d022f6db6f8ca4a4e3e5fec6e6a2cb237ae",
+      "member": "payload/numerical-bridge.json",
+      "recorded_code_commit": "c62b72e02db2784d8d08d984f56c2bb6bf4a7ca4",
+      "recorded_source_snapshot_sha256": "1ebf90a6ba175c2a424d448ad417cae35c2c5994ddd83cb616b79e0f891f500d",
+      "run_id": "20261124T044754363058Z-f44dcf52830b4157",
+      "sha256": "0bb59893077107a54f5069353b2d48509501f0d4fcf6c8d287ca25d361fd74cc"
+    },
+    "g2-t1-selected8-preregistration": {
+      "manifest_sha256": "49c13bf1953a462d8a5717ecd1d06179b528d9d69620168c58582fe8cbbad59f",
+      "member": "payload/registration.json",
+      "recorded_code_commit": "c62b72e02db2784d8d08d984f56c2bb6bf4a7ca4",
+      "recorded_source_snapshot_sha256": "d5ff352ff27b212c4d37265c084f8358b09e2cb437e79dcec6dfb59bfc3bf42b",
+      "run_id": "20261124T050258146968Z-4f7c9b991a494bec",
+      "sha256": "ce4741e94d328d8871bf52b91d544acd943aa133e100000822f1d7a0bb683196"
+    },
+    "g2-t1-selected8-supplement": {
+      "manifest_sha256": "479a8ee42f0f9626c05a94ebd390ac990910d6cb8eb2d41ac98355ad717dc3fa",
+      "member": "payload/selected-thread-bridge.json",
+      "recorded_code_commit": "c62b72e02db2784d8d08d984f56c2bb6bf4a7ca4",
+      "recorded_source_snapshot_sha256": "d5ff352ff27b212c4d37265c084f8358b09e2cb437e79dcec6dfb59bfc3bf42b",
+      "run_id": "20261124T050322569107Z-024a8726a64d4c5c",
+      "sha256": "46bd4861a2989f2ac9cb31984f6f4f114faa86844d3de8c8e6e9fb4c903d0c17"
+    },
+    "g4-original-trajectory-intake": {
+      "manifest_sha256": "693008d8ffc352078ff3cb2994348eae4dbb992f5cf97cc48ebf382693b630c3",
+      "member": "payload/readback.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "e0e57378471618574e46199335b4c90ed292f73708e2892e4de8ab9e5661950c",
+      "run_id": "20261124T043049211238Z-4b001422de0e45c5",
+      "sha256": "d653a2ad23e886405572836fba0284c370cf0d8f8da10efb925dafb60a98b8fa"
+    },
+    "g4-public-original-trajectories": {
+      "manifest_sha256": "c80f3532ce38dafa7bee3933f4408ec9cc5209a5a7445fc672e1d3bed0fb4bb6",
+      "member": "payload/trajectory-verification.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "4519372662bea6c6d7ca02c4824e74fbb502860ef54ac1fbf8ae8c41e352566b",
+      "run_id": "20261124T043228471188Z-f46971cf9115423b",
+      "sha256": "ad7c4108907c8e32b397a2bcbd653ccc312d692058c4b368af4565de48d8d128"
+    },
+    "g6-complete-clean-handler-control": {
+      "manifest_sha256": "45c45e90f0966cac7afab363ca8e7990a434771824bfd52fede84b107bb073e1",
+      "member": "payload/acceptance.json",
+      "recorded_code_commit": "c62b72e02db2784d8d08d984f56c2bb6bf4a7ca4",
+      "recorded_source_snapshot_sha256": "d5ff352ff27b212c4d37265c084f8358b09e2cb437e79dcec6dfb59bfc3bf42b",
+      "run_id": "20261124T050303621534Z-bcc9b1950b104ce1",
+      "sha256": "8801b25dc282f04b9c7354889ef272bd3e04010a555cf0a624bd9d54192bf997"
+    },
+    "g6-storage-candidate": {
+      "manifest_sha256": "97fedd2826348a18f931d0bd14a9c83d027136e43e11993ee9ea0d9e7ef78e07",
+      "member": "payload/resources.json",
+      "recorded_code_commit": "06f3059a6418e66920ba4386321204f0c50770ea",
+      "recorded_source_snapshot_sha256": "825a99fe97deda0c8b9058b814242ed2999c9aedb1bdd179d3a0aff458678aad",
+      "run_id": "20261124T051120902506Z-8fccd048a4ea4093",
+      "sha256": "6b15cebafd72b8552af75991efab95f1e2a22bfac279cc1c3ccbf5f992a69c79"
+    },
+    "mac_g3": {
+      "manifest_sha256": "26cd1dd45368edf54be01876080b37d2267cb89f6b0797a8f3ff032c05e05adb",
+      "member": "payload/g3.json",
+      "recorded_code_commit": "c62b72e02db2784d8d08d984f56c2bb6bf4a7ca4",
+      "recorded_source_snapshot_sha256": "1ebf90a6ba175c2a424d448ad417cae35c2c5994ddd83cb616b79e0f891f500d",
+      "run_id": "20261124T044909556355Z-524ecb53b3cc484a",
+      "sha256": "e16a40a442c062b6a465b72522adca329738f878de3fb4ee15a153df20bb6ef0"
+    },
+    "mac_g4": {
+      "manifest_sha256": "c58561c3c12e19bcb8053e8a4d45864b1b64c223f042376f20dbafc004167bbb",
+      "member": "payload/g4.json",
+      "recorded_code_commit": "c62b72e02db2784d8d08d984f56c2bb6bf4a7ca4",
+      "recorded_source_snapshot_sha256": "7af9428c8a3b9c02ab9472eacb30472b8698085b0968d330c7852c14af690e17",
+      "run_id": "20261124T045615289125Z-ab6f1bb58c4a4d60",
+      "sha256": "6e51566e5fcb40d81bc0d14d5e7acab4da9c5af83c4435c8ee85d87584ca49b7"
+    },
+    "t0_evaluation": {
+      "manifest_sha256": "9231e455897663aa8201bf283d0b8ec6994a5211eb7339048917bced818b66f6",
+      "member": "payload/public/evaluation.json",
+      "recorded_code_commit": null,
+      "recorded_source_snapshot_sha256": "f928555203ac814af104d5f3f63a6e8a664932155450a1075cd0d4d0eec00fa5",
+      "run_id": "20261124T013936088026Z-3e1df3bb0a484836",
+      "sha256": "413cfdc10ebbefc77fa67abd56a5cac33e0528ea7aa9121b15833a79dba00c8f"
+    },
+    "t0_opening": {
+      "manifest_sha256": "626bf2ac2f6434059599ab0a2b336b46b133f465ac005fabb549dcd230ef6a79",
+      "member": "payload/opening.json",
+      "recorded_code_commit": null,
+      "recorded_source_snapshot_sha256": "f928555203ac814af104d5f3f63a6e8a664932155450a1075cd0d4d0eec00fa5",
+      "run_id": "20261124T013603310781Z-d1ba70c0ba3c4034",
+      "sha256": "87f9fdc00b283868f91274b11a51245494e8df969e3cbe46452611f2cd0f4daa"
+    },
+    "t1-closed-matrix": {
+      "manifest_sha256": "4354932ea8ad1d241f569245a3b3aad18933db3b5d40731a72fab986a1a286d6",
+      "member": "payload/sealed-matrix.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044722294241Z-47e91f72d281446d",
+      "sha256": "cc0bb6861817cc527571c6527b0f835f62921ad358d5ec2761cf8d4c00a420e8"
+    },
+    "t1-decisions-set118": {
+      "manifest_sha256": "a66cedf4699f1dc76a53c13aac3639e15c37490e720bb0452c9abcd13bda8109",
+      "member": "payload/choices.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "90027d1ad0f8d7ca5479ae084a33f09f2331369682e71566af785883159dd2d6",
+      "run_id": "20261124T042721271294Z-e420d82edec24f85",
+      "sha256": "c6cb8965a382f368a71840651aac77ab312a7e4ceadc4955858c1ab36216af3b"
+    },
+    "t1-decisions-set76": {
+      "manifest_sha256": "2f0ed0995fcd569809dc6bd3278bcc9e8aa0ce6dd6305113940c6a0805086a0b",
+      "member": "payload/choices.json",
+      "recorded_code_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+      "recorded_source_snapshot_sha256": "90027d1ad0f8d7ca5479ae084a33f09f2331369682e71566af785883159dd2d6",
+      "run_id": "20261124T042726583946Z-d13d9c28f0254d9e",
+      "sha256": "58573d64670b99a232a4d07a282ea6b2d067c9980c2085fd046a0798be08caff"
+    },
+    "t1-fixed-evaluation": {
+      "manifest_sha256": "0b53cc585079be64119dd7f02bb23028409025f553edddfb26090c9b6cb27797",
+      "member": "payload/public/evaluation.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044825822019Z-bacb63b0a8334b2c",
+      "sha256": "fa3e72afda3ca5d2418aa6bf9d90cbd68f20005c83579a42d9d2757a9744e678"
+    },
+    "t1-fixed-recount": {
+      "manifest_sha256": "daa3c3cf3564e3738081dfff77edf2bcea1d248467ee3e85215594859d6f8e99",
+      "member": "payload/recount.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044844354144Z-c1c65b4356bb469f",
+      "sha256": "17c34ee1782ac6a51554bf216e3417246ad4d2a3f2ff4b58ffba41b06b2a67aa"
+    },
+    "t1-nbv-evaluation": {
+      "manifest_sha256": "13f24422bf02fb6dea3a414db53472367754135056a54a8b52db64fe2e27ad2d",
+      "member": "payload/nbv.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044825489277Z-1ca8f9b1522541fe",
+      "sha256": "26fde4627d9a1e941f3baf5cbc6dd3b89df9f375e4d3440d426baa2f3e4c1cdd"
+    },
+    "t1-nbv-independent": {
+      "manifest_sha256": "3826d3bf2b1c2b209bb6f8b47a2deb24766113af7208fac4328c13d0f3df6ded",
+      "member": "payload/independent-nbv.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044829368776Z-3f0b55a69aa44e2d",
+      "sha256": "6210699c7defe1326035ee5bac6fbcade57702dda98b2b953bf612bffee89510"
+    },
+    "t1-opening": {
+      "manifest_sha256": "b9040526979f23b39c60adc0f1ad699993cd456464d45fb6e2b5b90fd6941068",
+      "member": "payload/opening.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044751135267Z-7eafdcf5d2a44153",
+      "sha256": "b2cccd3449521f69aee20939167924f758e006995a6f67ab3dd1e432e601e3fc"
+    },
+    "t1-resources": {
+      "manifest_sha256": "eeab57286bef50cfb42f20f70962ce7be9362f74e7d6809b038c242607134bf9",
+      "member": "payload/resources.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "d8c8ccb687c74ba3408b1e653cb8a104749cdd0f7a23d9bd3f1c00402b7edeec",
+      "run_id": "20261124T050302137300Z-43cd5f8faec54823",
+      "sha256": "fc896bde93b56f880ead847923c0f153ca8cd2a168a565ea94dccf1de9f49dac"
+    },
+    "t1-terminals": {
+      "manifest_sha256": "f652dc473a85e62306437c8631f376aef13b72909178e51a35b6508f5c53536e",
+      "member": "payload/terminals.json",
+      "recorded_code_commit": "c19b4235beedd905f7bb0e38c824efaf6b3bcc0e",
+      "recorded_source_snapshot_sha256": "4e23446080c123bf5f24e1a1b265645059292194396ec85af1cb6c9f0bd4e6e4",
+      "run_id": "20261124T044706519514Z-c0c1442fff894311",
+      "sha256": "29866b3665656bd72f42c483655f3de0e080d81f53d1325c65347959cfc402bb"
+    }
+  },
+  "repository_files_sha256": {
+    "configs/public-source.json": "fdd5d37054b7927d69812b080436c7c415b21b4b618801651c98f7986d97561e",
+    "docs/general-closeout/README.md": "81c5009dcabd7261de00046758d4199256d275e61759fe96b4aa5781acbfff46",
+    "docs/general-closeout/performance/README.md": "f65709427ba459346748def41a74490b3aa22e1f3c94c3fc8053773cb6b310d7",
+    "docs/general-closeout/performance/g4-trajectory-verification.json": "ad7c4108907c8e32b397a2bcbd653ccc312d692058c4b368af4565de48d8d128",
+    "docs/general-closeout/performance/g4-upstream-frames.csv": "7a12793586db207c99e6ca6138e616bedd17498d271c375615803c7dce507bd7",
+    "docs/general-closeout/research-log-readback-020.json": "50cb2fb717f4a23ef563808e695655189d1d368063086ce5b3868a10b61338b4",
+    "docs/general-closeout/research-log.md": "5b6640eda4456106252ea01e18161c8106cf3ebefa2f828acd51ab02d61428c1",
+    "docs/general-closeout/resources/candidate/resources.json": "6b15cebafd72b8552af75991efab95f1e2a22bfac279cc1c3ccbf5f992a69c79",
+    "docs/general-closeout/specialization-readiness.md": "d26ba9e5ed5579693ef11ce02e6cecbc44220444e670e7def2e7e4054afc6d91",
+    "docs/general-closeout/status.json": "89bb8d565f2969ea992a5ff1c2028045ce3ecd31b60204b88682c9cf96921c5e",
+    "docs/general-closeout/t1-numerical-bridge.json": "0bb59893077107a54f5069353b2d48509501f0d4fcf6c8d287ca25d361fd74cc",
+    "docs/general-closeout/t1-threads8-numerical-bridge.json": "46bd4861a2989f2ac9cb31984f6f4f114faa86844d3de8c8e6e9fb4c903d0c17",
+    "docs/general-closeout/t1-threads8-preregistration.json": "577eb49bcf71687163075c8ded4dde1662f53a877d899839e5ded24c5af250fb",
+    "docs/releases/v0.4.0/MODEL_CARD.md": "f17451da2bc9d75b8a41a0d4d0539786d9e63578c3c2e8cc16402d8d9e3ef7c3",
+    "docs/releases/v0.4.0/README.md": "13d533fa601dd89437a32ff147f78e2e1ddbda32ccffe44ca23fbb0690fac9af",
+    "docs/releases/v0.4.0/RIGHTS.md": "c50a5aea47156f4408c37e68fa6dd4327f4a8306534a9f194013934a5b350c84",
+    "docs/results/batch-two/README.md": "3ea8090030a72964e9a6d6dede9e8684c10a3b2f13c114a5b46d406128f14cf6",
+    "docs/results/batch-two/calibration/calibration-audit.json": "b13acbcf6c9c1663f0199f47acd65255e3bdf58e99605bf73166d78ef04615ad",
+    "docs/results/batch-two/calibration/calibration-results.json": "ac0a740cc2744e993bd376a101d072901d9eb54f542665c2631565fdc26c032a",
+    "docs/results/t0/confirmation/README.md": "0ca3d80b78bc8134df9d129f799857eba496d893ae1a103ec58ef199e720a918",
+    "docs/results/t0/confirmation/evaluation.json": "413cfdc10ebbefc77fa67abd56a5cac33e0528ea7aa9121b15833a79dba00c8f",
+    "docs/results/t1/README.md": "cf1ad07bfe6bdc6349b0b598d3f4ea7d9d662b7c062b19b10448b919f4b722ad",
+    "docs/results/t1/fixed/origins.json": "ceba9c33e77b405f3867e96d2cc4c79db7fb576fbe8bcd555b62dafb0f8d49d7",
+    "docs/results/t1/fixed/sealed-matrix.json": "cc0bb6861817cc527571c6527b0f835f62921ad358d5ec2761cf8d4c00a420e8",
+    "docs/results/t1/independent-nbv.json": "6210699c7defe1326035ee5bac6fbcade57702dda98b2b953bf612bffee89510",
+    "docs/results/t1/nbv.md": "c8a8f4be5c3d422c053f01e4d62b9484be248f679993560a617b2d0ceefedf0e",
+    "docs/results/t1/resources.md": "48da847cc8c80b4e822cf397dbcb4bff916fb1ad6a2fd2b1044fe4aecea53ab2",
+    "docs/tooling/assets/README.md": "35c7c584a38be56548be0cd72a6ed6a53aa262d1eed003b5b9a3de7f79ed5ff9",
+    "docs/tooling/assets/render-parity.csv": "0172ad490d449c6456669053399b784a69ca29e123727ca7e9a210195184ce20",
+    "docs/tooling/numerical-bridge.md": "c3cdd30231d7ce3588d046cb6a1a4c53209b5036f27f176ac6248c18c0997894",
+    "docs/tooling/original-archive.md": "90ed958b2ae1ea36780a80863638971297c25197819ba514571d9d67fd93fd76",
+    "docs/tooling/resident.md": "640f311b4dd4752719213e634492f4a4615a325f5cc12651dab4274e33430314",
+    "licenses/multisource-assets.json": "ac467b23d260496c9578bab4eea9473fa27f486fb7af6d40f193ff90b17de2e7",
+    "src/evidence_lens_bundle/replay_sidecar.py": "010018e15c451e8a07683d063f780c9902309193a87285034767b1ba241e1529",
+    "tests/test_resident.py": "24e76a1a80575b38c93d8aa3029c96c360634b54523c922dfbe6cd3b594b195f"
+  },
+  "run_id": "20261124T051812554019Z-cb90272c6d0940ad",
+  "schema": "el-general-completion-matrix-2",
+  "software_release_ready": false,
+  "tool_version": "v0.4.0"
+}

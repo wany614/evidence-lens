@@ -1,6 +1,6 @@
 # Prospective T1 on six DTU objects
 
-The jointly sealed cohort supplied 240 scored slots among 288 scheduled. The source evidence, immutable fits and terminal failures had all been signed when the independent reader opened the 36 registered target photographs. The 42 logical reconstruction conditions have a separate observation and computation ledger. [Pre-opening matrix](fixed/sealed-matrix.json) · [Collective opening](fixed/opening.json) · [Native independent recount](fixed/native-recount.json)
+The jointly sealed cohort supplied 240 scored slots among 288 scheduled. The source evidence, immutable fits and terminal failures had all been hash-sealed when the independent reader opened the 36 registered target photographs. The 42 logical reconstruction conditions have a separate observation and computation ledger. [Pre-opening matrix](fixed/sealed-matrix.json) · [Collective opening](fixed/opening.json) · [Native independent recount](fixed/native-recount.json)
 
 ## Per-object fixed-layout reconstruction and released MS-L1 threshold
 

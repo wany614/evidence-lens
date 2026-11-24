@@ -1,0 +1,34 @@
+{
+  "allocated_stat_bytes": 6068322304,
+  "execution_states": {
+    "failed": 4,
+    "succeeded": 253
+  },
+  "files": 133719,
+  "finished_utc": "2026-11-24T05:11:23.926326Z",
+  "free_volume_bytes": 1009774370816,
+  "local_store": {
+    "allocated_stat_bytes": 7114043392,
+    "distinct_inodes": 134966,
+    "entries_vanished_during_scan": 0,
+    "files": 135436,
+    "hardlink_distinct_allocated_stat_bytes": 5596258304,
+    "hardlink_distinct_logical_bytes": 5282608650,
+    "logical_bytes": 6784131894,
+    "symlinks_skipped": 1465
+  },
+  "logical_bytes": 5742500840,
+  "partial_artifacts": "Native terminal failures retain their own rows. Pre-launch and transport failures have separate receipts. Store-level sizes include live work visible during the scan.",
+  "run_id": "20261124T051120902506Z-8fccd048a4ea4093",
+  "schema": "el-general-size-ledger-2",
+  "scope": "Native run and completion records present at scan start and sealed by that time. The separate local-store inventory includes assets, transport, work, indexes, receipts and history-link metadata. The census's own active work directory is excluded.",
+  "sealed_runs": 257,
+  "size_basis": "Path totals sum regular files and POSIX stat blocks. Distinct-inode totals count hard links once. APFS clones can share extents across different inodes; filesystem blocks do not measure net physical storage. Symbolic links are counted separately and never followed.",
+  "start_utc": "2026-11-24T05:11:22.802723Z",
+  "tables_sha256": {
+    "components.csv": "3dec4bc387c71e68a27193c82bddcd3862da1fa1ecdb081bf4344bc5fb95ab5e",
+    "runs.csv": "0be0a39a20d62011055a44a822abe3634cc2307c6ba50bf12b4b15da0973bbb7"
+  },
+  "time_basis": "The local store and free volume were sampled over the given interval. Run wall intervals can overlap or contain child runs.",
+  "volume_bytes": 1023999787008
+}

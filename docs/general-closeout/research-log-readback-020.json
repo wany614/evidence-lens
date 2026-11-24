@@ -1,0 +1,35 @@
+{
+  "begin_utc": "2026-11-24T05:14:38.881268Z",
+  "document_text_sha256": "f724b494fd0dd8e9ed73d5f4f39446b580a10a17e713272b65bbfa51fb15f2f7",
+  "entry_checks": [
+    {
+      "characters": 642,
+      "count": 1,
+      "entry": "RL-017",
+      "paragraph_text_sha256": "0451bcb67709fe8556e07e15da38347000f56fddba8a4c2a6d11740623147299"
+    },
+    {
+      "characters": 742,
+      "count": 1,
+      "entry": "RL-018",
+      "paragraph_text_sha256": "353a8f86d6125ac245047e3149e4eb1ad4f333caf047cffe538cb025ed130010"
+    },
+    {
+      "characters": 807,
+      "count": 1,
+      "entry": "RL-019",
+      "paragraph_text_sha256": "183531e0c1dd4f8719cad030bfb095d61b14bf5dd753db3fdcdd611f36ffbbfd"
+    },
+    {
+      "characters": 854,
+      "count": 1,
+      "entry": "RL-020",
+      "paragraph_text_sha256": "517219dd4db53c16c360f1f53321c790530ec2f94c79f105abcaab59b3adae18"
+    }
+  ],
+  "finish_utc": "2026-11-24T05:15:01.046154Z",
+  "read_boundary": "Authorized Google Docs connector parsed the current native document at its returned revision. Only digests and entry counts are public.",
+  "revision_sha256": "d38c17983efb185fc64799a9ed3d8ca0c4507134a1456be6b39780aa34da1128",
+  "run_id": "20261124T051437656821Z-ff3299d9e5b24776",
+  "schema": "el-general-private-log-projection-1"
+}

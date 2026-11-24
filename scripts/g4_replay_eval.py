@@ -242,6 +242,8 @@ def run(args):
         {
             "schema": "el-static-replay-tests-1",
             "run_id": os.environ["EL_RUN_ID"],
+            "cpu_ticket_sha256": os.environ.get("EL_STATIC_CPU_TICKET_SHA256"),
+            "engineering_config_sha256": os.environ.get("EL_SCORER_CONFIG_SHA256"),
             "platform": platform.platform(),
             "status": "done",
             "parity": parity,
