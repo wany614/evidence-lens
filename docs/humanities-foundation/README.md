@@ -2,15 +2,15 @@
 
 Open the [case viewer](../../examples/evidence-foundation/index.html) and choose a camera. First inspect the reconstructed frame. Switch on the model assessment to see what its score and unknown states say about that frame. The source view identifies the synthetic camera images queried and the procedure that selected them. The independent evaluation opens separately.
 
-六个铃架视角共用一套四源重建。另一个原创案例固定同一张廊道预测，依次查询 4、8、16、32 和 128 张来源。读者可以核对哪些像素多了一份可比较的证据，以及预测图本身是否改变。这两例都用合成相机生成源图。这些案例只展示图像误差、来源证据与研究过程，不评价实际观众反应或历史真实性。
+All six bell-cage views share a single four-source reconstruction. A second authored case keeps the rendered gallery view fixed while querying 4, 8, 16, 32 and 128 source images in turn. Readers can check which pixels gain additional comparable source evidence and whether the rendered view itself changes. Both cases use source images rendered from synthetic cameras. They illustrate image error, source evidence and the research process; they do not assess audience responses or historical authenticity.
 
 | Reading | What you can check |
 |---|---|
-| [Models and data](MODEL_AND_DATA_BASIS.md) | Which weights changed in previous training, what the new NumPy head learned and how an independent image becomes a label. |
+| [Models and data](MODEL_AND_DATA_BASIS.md) | Which model weights were updated in earlier training, what the NumPy risk-scoring head learned and how an independent reference image is used to derive error labels. |
 | [Concepts and claims](CONCEPTS_AND_CLAIMS.md) | Seven different propositions about an image, from visual plausibility to historical interpretation, with examples and counterexamples. |
-| [Three primary readings](THEORY_SOURCES.md) | The passages actually read, their versions and the limits of applying them here. [Citable bibliography](bibliography.bib) |
+| [Three primary readings](THEORY_SOURCES.md) | The primary-source passages consulted, the editions used and the limits of applying them to these cases. [Citable bibliography](bibliography.bib) |
 | [Case index](../../examples/evidence-foundation/case-index.json) | Original scene, camera, queried sources, prediction identity, reference and reproduction rights. |
-| [Decisions and contributions](CONTRIBUTIONS.md) | Who introduced the concern, designed the comparison, implemented it and reviewed the materials. |
+| [Decisions and contributions](CONTRIBUTIONS.md) | Contributions to the research direction, experimental design, implementation and technical review. |
 
 ## Materials fixed for this edition
 

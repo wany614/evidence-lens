@@ -26,7 +26,7 @@ The CPU tools use calibrated source images, source-view renders and predicted co
 | **B · Many-source dev.0** | Separate experimental source-bank retrieval, streaming evidence aggregation and a trained NumPy risk ranker. The registered ranking result is negative. | [Research release](https://github.com/wany614/evidence-lens/releases/tag/many-source-v0.1.0-dev.0) · [Study and CLI](docs/research/many-source-v1/README.md) |
 | **C · Humanities foundation v1** | Offline case viewer, model and data lineage, primary theory readings and the scope of evidence and remediation. | [Exhibit release](https://github.com/wany614/evidence-lens/releases/tag/humanities-foundation-v1) · [Research materials](docs/humanities-foundation/README.md) |
 
-The three editions are separately archived. The experimental many-source package is not a capability claimed by the v0.5.0 two-/four-source scorer.
+The three releases are archived separately. The experimental many-source package is not part of the v0.5.0 two- and four-source scorer.
 
 ## Architecture
 
@@ -101,7 +101,7 @@ Open `landscape.html` locally. Use a new output directory for each run. The defa
 | **More source views improved these reconstructions.** | In the six-object DTU T0 confirmation, mean target RGB MAE fell from 0.20535 with two sources to 0.10053 with four. [T0 results](docs/results/t0/README.md) |
 | **Model ranking depends on the data and metric.** | At matched 20% coverage in T0 four-source comparisons, accepted-pixel error was 16.94% for MS-ft and 21.05% for MS-L1. Earlier synthetic comparisons favoured the simpler model. In T1, the four objects with M4 scores gave 12.40% for MS-ft and 15.79% for MS-L1; two objects lacked M4 results. [T1 results](docs/results/t1/README.md) · [Synthetic study](docs/results/multisource-confirmation.md) |
 | **Low-risk labels are not calibrated.** | At the original cutoff, T0 four-source MS-L1 gave 41.70% low-risk coverage and 22.83% error within that group (object-equal means). On six separate calibration objects (C6), neither registered MS-L1 profile met the target of mean accepted-pixel error at most 5%, mean coverage at least 20%, and a non-empty acceptance region for every object. Both adapted thresholds were therefore left unset; v0.5.0 retains the original cutoff for descriptive comparison. [Calibration and development study](docs/results/batch-two/README.md) |
-| **Source selection changes the evidence available.** | In two ETH3D confirmation scenes, coverage-first selection of four sources reduced missed comparable observations relative to fixed four-source selection and a complete bank audit. An authored gallery view provides a counterexample to the superiority of that selection strategy. [Source-bank results](docs/research/many-source-v1/results.md) · [Gallery case](docs/humanities-foundation/README.md) |
+| **Source selection changes the evidence available.** | In two ETH3D confirmation scenes, coverage-first selection of four sources missed fewer comparable observations than a fixed four-source order, with misses counted against a complete audit of the source bank. An authored gallery view shows the opposite result. [Source-bank results](docs/research/many-source-v1/results.md) · [Gallery case](docs/humanities-foundation/README.md) |
 | **A trained ranker did not consistently beat a simple rule.** | At the same 16-source budget and 20% common-domain acceptance quota, the new head accepted 51,334 errors against the colour-residual rule's 45,524 in living_room, and 44,943 against 46,014 in bridge (190,510 accepted pixels per scene). It was worse in living_room and slightly better in bridge, so the registered requirement to improve in both scenes was not met. [Experimental model card](docs/research/many-source-v1/model-card.md) |
 
 The basic error event is a mean absolute difference across the three display-sRGB channels greater than 0.05 against an independent target image. Coverage and accepted-pixel error describe different populations. Ranking metrics do not establish calibrated probabilities. See the [complete research history](docs/research-history.md) for original protocols, comparison domains, denominators, negative results and failures.
@@ -112,7 +112,7 @@ The project began with a first-year Digital Media & Culture student's question a
 
 | Contributor | Role |
 | --- | --- |
-| Project owner (wany614) | Research question, direction, staged scope, evaluation priorities, challenges to results and application decisions. |
+| Project lead (wany614) | Research question and direction, staged research scope, evaluation priorities, critical evaluation of results and decisions on intended use. |
 | ChatGPT | Translating research questions into technical proposals, experimental protocols and review criteria. |
 | Codex | Software implementation, training, experiments, validation, packaging and publication. |
 | Claude | Technical reviews of supplied protocols, code excerpts and research materials. |

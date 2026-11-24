@@ -1,10 +1,10 @@
 # Contributions
 
-Evidence Lens is a humanities-led interdisciplinary project. AI tools are credited for their contributions to the research process; the project owner is responsible for the research direction and interpretation.
+Evidence Lens is a humanities-led interdisciplinary project. AI tools are credited for their contributions to the research process; the project lead is responsible for the research direction and interpretation.
 
 | Contributor | Contribution |
 | --- | --- |
-| **wany614** · Project lead | Established the research direction around evidence and trust, guided the progression from single- to multi-source assessment, requested a practical CPU implementation and established the staged research scope. Brought external feedback about missed source observations into the project and authorised the larger-source study. |
+| **wany614** · Project lead | Set the research direction around evidence and trust, guided the shift from single- to multi-source assessment, prioritised a practical CPU implementation and defined the staged research scope. Brought external feedback on missed source observations into the project and guided the direction of the larger-source study that followed. |
 | **ChatGPT** · Research and method development | Developed technical proposals and experimental protocols, including the separation of reconstruction, accessible sources, queried sources and held-out references (R/A/Q/H), matched source-budget comparisons and streaming evidence aggregation. |
 | **Codex** · Implementation and evaluation | Implemented and tested the software, trained the risk model, executed and recorded experiments, verified numerical outputs and prepared the public exhibits and releases. |
 | **Claude** · Technical review | Reviewed supplied protocols, code excerpts and explanatory materials, including comparison domains, camera conventions, source ordering and release packaging. |
