@@ -118,12 +118,18 @@ def summarize(data,out,freeze):
                         head_seconds=sum(r["head_seconds"] for r in observed) if method=="B-CPU-LR" else None,
                         shared_all_three_rules_seconds=sum(r["all_three_simple_rules_seconds"] for r in observed)))
         all_views=[v for v in view_rows if v["scene"]==scene]
+        mechanism_total={}
+        for cell,key in (("fixed-4","fixed4"),("coverage-4","coverage4"),("coverage-16","coverage16")):
+            values=[sc for sc in scopes if sc["scene"]==scene and sc["cell"]==cell]
+            complete=len(values)==len(all_views) and all(v["correct_gap_rate"] is not None for v in values)
+            mechanism_total[key+"_gap_pixels"]=sum(v["correct_with_gap"] for v in values) if complete else None
+            mechanism_total[key+"_correct_label_denominator"]=sum(v["all_reference_correct"] for v in values) if complete else None
         scene_rows.append(dict(scene=scene,role=part,checkpoints=len(configs),views=len(all_views),
             complete_p2_views=sum(v.get("new_minus_rule") is not None for v in all_views),
             reference_pixels=sum(v["reference"] for v in all_views),labelled_pixels=sum(v["labelled"] for v in all_views),
             error_pixels=sum(v["errors"] for v in all_views),common=sum(v.get("common",0) for v in all_views),
             quota=sum(v.get("quota",0) for v in all_views),new_errors=sum(v.get("new_errors",0) for v in all_views),
-            rule_errors=sum(v.get("rule_errors",0) for v in all_views),**{
+            rule_errors=sum(v.get("rule_errors",0) for v in all_views),**mechanism_total,**{
                 k:mean_or_missing([q[k] for q in checkpoints]) for k in checkpoints[0]}))
     metrics=[]
     for (scene,n,cell,method,domain),items in domain_collect.items():
@@ -135,9 +141,25 @@ def summarize(data,out,freeze):
             ap_target_equal=mean_or_missing([x[0] for x in items]) if complete else None,
             base_target_equal=mean_or_missing([x[1] for x in items]) if complete else None,
             errors=sum(v[2] for v in items),denominator=sum(v[3] for v in items)))
+    scene_domains=[]
+    lookup={(r["scene"],r["R"],r["cell"],r["method"],r["domain"]):r for r in metrics}
+    for scene,configs in ROSTER.items():
+        for strategy,nominal in (("fixed",4),("nearest",4),*(("coverage",n) for n in (4,8,16,32,"all"))):
+            for method in ("B-CPU-LR","coverage","alpha_missing","residual","MS-L1","MS-ft"):
+                if method.startswith("MS-") and (strategy,nominal)!=("coverage",4):continue
+                for domain in ("own","same_query_methods","all_checkpoint_ranks"):
+                    rows=[lookup[scene,n,strategy+"-"+str(n if nominal=="all" else min(n,nominal)),method,domain] for n in configs]
+                    scene_domains.append(dict(scene=scene,strategy=strategy,nominal_k=nominal,method=method,domain=domain,
+                        checkpoints=len(configs),planned_views=sum(d["planned_views"] for d in rows),
+                        measured_views=sum(d["measured_views"] for d in rows),
+                        views_with_defined_ap=sum(d["views_with_defined_ap"] for d in rows),
+                        ap_target_then_checkpoint_equal=mean_or_missing([d["ap_target_equal"] for d in rows]),
+                        base_target_then_checkpoint_equal=mean_or_missing([d["base_target_equal"] for d in rows]),
+                        pooled_positive=sum(d["errors"] for d in rows),pooled_denominator=sum(d["denominator"] for d in rows)))
     outputs={"scenes":scene_rows,"views":view_rows,"comparability":scopes,"geometric-visibility":visibility,
              "nearest-depth-approximation":depth_approx,"query-costs":query_rows,
-             "view-priority":proxies,"domain-ranks":ranks,"domain-averages":metrics,"coverage-curves":curves,"unknown-reasons":reason_rows}
+             "view-priority":proxies,"domain-ranks":ranks,"domain-averages":metrics,"scene-domain-averages":scene_domains,
+             "coverage-curves":curves,"unknown-reasons":reason_rows}
     for name,rows in outputs.items():table(out/(name+".csv"),rows)
     external=[r for r in scene_rows if r["scene"] in ("living_room","bridge")]
     confirms=[r for r in scene_rows if r["role"]=="confirmation"]
@@ -164,6 +186,12 @@ def summarize(data,out,freeze):
         lines.append(f"| {r['scene']} | {r['role']} | {r['error_pixels']:,} / {r['labelled_pixels']:,} | "
                      f"{r['new_errors']:,} / {r['quota']:,} | {r['rule_errors']:,} / {r['quota']:,} | "
                      f"{format_num(r['new_minus_rule'])} | {format_num(r['coverage4_minus_fixed4'])} |")
+    lines+=["","## Missing comparable evidence","","| Scene | Fixed Q4 gaps / correct | Coverage Q4 gaps / correct | Coverage Q16 gaps / correct |",
+            "|---|---:|---:|---:|"]
+    for r in scene_rows:
+        def gap(k):
+            return "N/A" if r[k+"_gap_pixels"] is None else f"{r[k+'_gap_pixels']:,} / {r[k+'_correct_label_denominator']:,}"
+        lines.append(f"| {r['scene']} | {gap('fixed4')} | {gap('coverage4')} | {gap('coverage16')} |")
     lines+=["","The P1 gap requires a correct independent RGB label, no comparable source in the selection, and a comparable source in the complete audited bank. "
             "Its denominator is all correctly predicted labelled pixels in that target. The P2 table includes the accepted share of the complete reference image. "
             "For the authored scenes, geometric-visibility.csv compares the model to independent mesh line-of-sight on the registered 54 × 36 grid. "
