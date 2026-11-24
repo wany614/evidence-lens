@@ -33,3 +33,9 @@ docs/results/batch-two/**/*.csv -text whitespace=trailing-space,space-before-tab
 docs/tooling/assets/** -text
 docs/tooling/assets/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
 examples/helical-beads/*.html -text
+
+# Preserve the recorded scientific tables and original deployment reports.
+docs/results/t1/** -text
+docs/results/t1/**/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/general-closeout/performance/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+examples/general-four-models/*.html -text

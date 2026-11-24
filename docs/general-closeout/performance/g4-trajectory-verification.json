@@ -1,0 +1,147 @@
+{
+  "archive": {
+    "bytes": 329268781,
+    "file": "evidence-lens-static-trajectories.zip",
+    "sha256": "933d16cd27549618bc7adf43a1a86988daaf187fc06282a9d21775ac9a37b806"
+  },
+  "raw_cost_rows": 548,
+  "release_scope": "Only original authorized deployment evidence, its measured per-frame costs and required notices.",
+  "renderer_run_id": "20261124T042527050139Z-cd01a83985f94a14",
+  "renderer_ticket_sha256": "3032e8e1cf2550fb9c93a9788c787a3e83967bd503b6471264cb2e0d81a2293e",
+  "run_id": "20261124T043228471188Z-f46971cf9115423b",
+  "schema": "el-original-static-export-1",
+  "sequences": [
+    {
+      "bundle_sha256": "f83dfdc530ac74310bcea05ebc326f9304a4b8c26eabe7cbddbbeba9b93b2f5e",
+      "encode_write_hash_seconds": 1.2620320999267278,
+      "map_origin": {
+        "asset": "graphdeco-sh3.ply",
+        "optimization_seconds": null,
+        "recipe": "b2_asset_fixture.native_values / save_assets, seed 9312",
+        "reconstruction": "authored, no optimization",
+        "run_id": "20261124T041024524635Z-79498323ad3242b1",
+        "sha256": "48084e9075994ba392df81a77e5fa0fedb72fe85eefd054cb0ba500ddc8d4f61",
+        "source_code_sha256": "f6234caeea6aff7bbe5ede301079cd66c3788910a87e36bc4825ddb94e31c87b"
+      },
+      "map_sha256": "48084e9075994ba392df81a77e5fa0fedb72fe85eefd054cb0ba500ddc8d4f61",
+      "max_rotation_step_rad": 0.00933367555387181,
+      "max_translation_step_m": 0.021982025476566816,
+      "n_sources": 2,
+      "n_target": 120,
+      "sequence_id": "beads-M2",
+      "source_self_render": 0.04498040000908077,
+      "source_sha256": "c537a7f981dcf02b27caf2b991e9d58f6140bf49c95e6202dacbdabebf873c4b",
+      "target_render": 0.28884280008787755
+    },
+    {
+      "bundle_sha256": "02c736c5013d1e192621059018f924cf7b1e399bc60b1be8b07ae41be1c5f08f",
+      "encode_write_hash_seconds": 1.269041200139327,
+      "map_origin": {
+        "asset": "graphdeco-sh3.ply",
+        "optimization_seconds": null,
+        "recipe": "b2_asset_fixture.native_values / save_assets, seed 9312",
+        "reconstruction": "authored, no optimization",
+        "run_id": "20261124T041024524635Z-79498323ad3242b1",
+        "sha256": "48084e9075994ba392df81a77e5fa0fedb72fe85eefd054cb0ba500ddc8d4f61",
+        "source_code_sha256": "f6234caeea6aff7bbe5ede301079cd66c3788910a87e36bc4825ddb94e31c87b"
+      },
+      "map_sha256": "48084e9075994ba392df81a77e5fa0fedb72fe85eefd054cb0ba500ddc8d4f61",
+      "max_rotation_step_rad": 0.00933367555387181,
+      "max_translation_step_m": 0.021982025476566816,
+      "n_sources": 4,
+      "n_target": 120,
+      "sequence_id": "beads-M4",
+      "source_self_render": 0.011102000018581748,
+      "source_sha256": "9e61b9cb7be9702599b98fc795138da7382aa962d552ccbbbfe633ddece51eb2",
+      "target_render": 0.2832018998742569
+    },
+    {
+      "bundle_sha256": "5b969f8cd6080c84cc7a377bafcf4e7b4a4e3d02f59e96ec0f770a007275acbc",
+      "encode_write_hash_seconds": 0.340552600013325,
+      "map_origin": {
+        "asset": "graphdeco-sh0.ply",
+        "optimization_seconds": null,
+        "recipe": "b2_asset_fixture.native_values / save_assets, seed 9312",
+        "reconstruction": "authored, no optimization",
+        "run_id": "20261124T041024524635Z-79498323ad3242b1",
+        "sha256": "acea73076373b28e99e711f1978499ed780364764f9dc0b75fcdce3b355652d8",
+        "source_code_sha256": "f6234caeea6aff7bbe5ede301079cd66c3788910a87e36bc4825ddb94e31c87b"
+      },
+      "map_sha256": "acea73076373b28e99e711f1978499ed780364764f9dc0b75fcdce3b355652d8",
+      "max_rotation_step_rad": 0.008636758133470401,
+      "max_translation_step_m": 0.02052738310514558,
+      "n_sources": 4,
+      "n_target": 24,
+      "sequence_id": "beads-map2-M4",
+      "source_self_render": 0.010689500006265007,
+      "source_sha256": "9e61b9cb7be9702599b98fc795138da7382aa962d552ccbbbfe633ddece51eb2",
+      "target_render": 0.07552049998776056
+    },
+    {
+      "bundle_sha256": "2e786797905e835f5aa63a88e9e8c45d4352b697377885939363cf3a6e128e15",
+      "encode_write_hash_seconds": 0.2878157000086503,
+      "map_origin": {
+        "asset": "graphdeco-sh0.ply",
+        "optimization_seconds": null,
+        "recipe": "b2_asset_fixture.native_values / save_assets, seed 9312",
+        "reconstruction": "authored, no optimization",
+        "run_id": "20261124T041024524635Z-79498323ad3242b1",
+        "sha256": "acea73076373b28e99e711f1978499ed780364764f9dc0b75fcdce3b355652d8",
+        "source_code_sha256": "f6234caeea6aff7bbe5ede301079cd66c3788910a87e36bc4825ddb94e31c87b"
+      },
+      "map_sha256": "acea73076373b28e99e711f1978499ed780364764f9dc0b75fcdce3b355652d8",
+      "max_rotation_step_rad": 0.008636758133470401,
+      "max_translation_step_m": 0.02052738310514558,
+      "n_sources": 4,
+      "n_target": 24,
+      "sequence_id": "beads-map2-source2-M4",
+      "source_self_render": 0.010225399979390204,
+      "source_sha256": "3171da32e2e8d12965321b62203046ee218311c019afb6630f1f81715f90501d",
+      "target_render": 0.05773759994190186
+    },
+    {
+      "bundle_sha256": "0ef6a9c38f28ff112dd9009edc477455444b5523bfe0ef48cac7fdc7754bb088",
+      "encode_write_hash_seconds": 6.771271500067087,
+      "map_origin": {
+        "checkpoint_sha256": "4a08222890c42858c3d161208bc5c4d8347e019196c849e14777154d712de209",
+        "final_gaussian_count": 4096,
+        "gaussian_optimization_steps": 256,
+        "optimization_seconds": 0.9776755000057165,
+        "reconstruction": "previously released development map",
+        "run_id": "20261123T161552137289Z-11e39efcffd94591",
+        "stage_seconds": 3.1291004000013345
+      },
+      "map_sha256": "4a08222890c42858c3d161208bc5c4d8347e019196c849e14777154d712de209",
+      "max_rotation_step_rad": 0.012480356404709394,
+      "max_translation_step_m": 0.02302854357102996,
+      "n_sources": 2,
+      "n_target": 120,
+      "sequence_id": "bell-M2",
+      "source_self_render": 0.005236200013314374,
+      "source_sha256": "2267ca0e908e49506b8858494d52c2afe010542bb9cf47829d938bae4add3de0",
+      "target_render": 1.178299600025639
+    },
+    {
+      "bundle_sha256": "7e2e30b418c9a0b542fbc7b1a428143a040a1b15205c9dc4ef0ad6d5a8542d6c",
+      "encode_write_hash_seconds": 7.132502799999202,
+      "map_origin": {
+        "checkpoint_sha256": "eedb19d170445f22273333b8c7f7e014c160fc606bc3f9b12f7f0ed0f84a7fac",
+        "final_gaussian_count": 4096,
+        "gaussian_optimization_steps": 256,
+        "optimization_seconds": 0.8601329000011901,
+        "reconstruction": "previously released development map",
+        "run_id": "20261123T161606028919Z-a8035c52a31d4515",
+        "stage_seconds": 2.970308500000101
+      },
+      "map_sha256": "eedb19d170445f22273333b8c7f7e014c160fc606bc3f9b12f7f0ed0f84a7fac",
+      "max_rotation_step_rad": 0.012480356404709394,
+      "max_translation_step_m": 0.02302854357102996,
+      "n_sources": 4,
+      "n_target": 120,
+      "sequence_id": "bell-M4",
+      "source_self_render": 0.045720199967036024,
+      "source_sha256": "e3c82821c4c76258383e0c8b4d10ae7a84960ed08d7d004eeeb413e48ecc9332",
+      "target_render": 1.288318899969454
+    }
+  ]
+}

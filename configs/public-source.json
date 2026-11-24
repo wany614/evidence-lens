@@ -1,20 +1,198 @@
 {
-  "schema": "el-source-allowlist-1",
-  "license_status": {
-    "apache-original": {
-      "license": "Apache-2.0",
-      "description": "Original source, tests, build scripts, software configuration and machine-executable experiment protocols.",
-      "public_export": true
-    },
-    "cc-original": {
+  "authored_html": {
+    "examples/general-four-models/B-L1-transfer.html": {
+      "bytes": 1122857,
       "license": "CC-BY-4.0",
-      "description": "Original writing, attributed images and grantable data or measurements. Factual information is covered only to the extent rights apply.",
-      "public_export": true
+      "sha256": "e97f5c994c831ba3303e73e276a6b01be5fc4f5087fca4b0fc7e2176c055ba92",
+      "source": "Original offset bell cage. The four-source development bundle and each actual model report are bound by docs/general-closeout/numerical-bridge.json."
     },
-    "notices": {
-      "license": "Respective notices",
-      "description": "License instruments and notices reproduced as issued. Retain their own terms and attribution.",
-      "public_export": true
+    "examples/general-four-models/MS-L1.html": {
+      "bytes": 960527,
+      "license": "CC-BY-4.0",
+      "sha256": "b7c8b521e2f9de2d45ef352c041dfdac9fda4370c0225bcd631d56f2e58709ee",
+      "source": "Original offset bell cage. The four-source development bundle and each actual model report are bound by docs/general-closeout/numerical-bridge.json."
+    },
+    "examples/general-four-models/MS-frozen.html": {
+      "bytes": 912639,
+      "license": "CC-BY-4.0",
+      "sha256": "421ad5aad237c5ee2e767c1b7f117c88072aa800107d23c6e0141a264ea02ab6",
+      "source": "Original offset bell cage. The four-source development bundle and each actual model report are bound by docs/general-closeout/numerical-bridge.json."
+    },
+    "examples/general-four-models/MS-ft.html": {
+      "bytes": 898314,
+      "license": "CC-BY-4.0",
+      "sha256": "de8ac3b32e61538b4b1f7108de608e38d7ccc7be54b17d6db3963f05bbf5cf9c",
+      "source": "Original offset bell cage. The four-source development bundle and each actual model report are bound by docs/general-closeout/numerical-bridge.json."
+    },
+    "examples/helical-beads/outside-scope.html": {
+      "bytes": 212133,
+      "license": "CC-BY-4.0",
+      "sha256": "eb9158e89cedbe0e88e4c2bfdb0e306a9eaf509f5d55aee3393b3ae095b22fc3",
+      "source": "Original helical bead scene by wany614. The camera, render and HTML source pins appear in examples/helical-beads/manifest.json."
+    },
+    "examples/helical-beads/report.html": {
+      "bytes": 210530,
+      "license": "CC-BY-4.0",
+      "sha256": "3bc6f9f9cceb2bd76ad656b8ada79f215bd9d8b2aaa4a4272bc8ca2458bf32ad",
+      "source": "Original helical bead scene by wany614. The camera, render and HTML source pins appear in examples/helical-beads/manifest.json."
+    },
+    "examples/offset-bell-cage/bundle-report.html": {
+      "bytes": 958001,
+      "license": "CC-BY-4.0",
+      "sha256": "16da1a4945e902ee8e5f4afb593154d143dca472794b7809a2808148121d014d",
+      "source": "Original offset bell cage; four-source deployment-only report, authored bundle and model index recorded in docs/tooling/verification.json"
+    }
+  },
+  "binary_examples": {
+    "docs/results/batch-two/calibration/risk-coverage.png": {
+      "bytes": 45971,
+      "format": "rgb8-png",
+      "sha256": "0669d752d477ca16b52eb3ea10ad1dd4869881d54a3c00390d6e7311a4f023e3"
+    },
+    "docs/results/stage3-learning-curves/learning-curves.png": {
+      "bytes": 88364,
+      "format": "rgba8-png",
+      "sha256": "1c22e49460e47f964d63cac610cd02a834d0f800136bd049d9b26bbf8d7bbf9d"
+    },
+    "examples/heldout-drum/blender-v01.png": {
+      "bytes": 111096,
+      "format": "rgb8-png",
+      "sha256": "ac404836c55433b07257e5414f1b4e69792a17d209624294283e46111a04a041"
+    },
+    "examples/heldout-drum/input.png": {
+      "bytes": 111556,
+      "format": "rgb8-png",
+      "sha256": "bf0ce4e2515fef11737910046773102435a23b324bce7aaacdf307c00ccb3305"
+    },
+    "examples/helical-beads/sh3-comparison.png": {
+      "bytes": 44073,
+      "format": "rgb8-png",
+      "sha256": "bac8a474c0b3c72cbdaa094b072eb4502ddbb517e0c1b44b5dbff27cb4db45c4"
+    },
+    "examples/native-plane-control/input.png": {
+      "bytes": 92650,
+      "format": "rgb8-png",
+      "sha256": "1c689d3ef4f82729082b54d148e23d7e298f4cdae2fc6ac21bcff71aacd6bbe4"
+    },
+    "examples/native-plane-control/prediction-v01.png": {
+      "bytes": 92224,
+      "format": "rgb8-png",
+      "sha256": "37fc7eefe9c433147547d25d5e1c239435c5c1740d1b4638ef903fb37008cd02"
+    },
+    "examples/native-plane-control/rgb-error-v01.png": {
+      "bytes": 251099,
+      "format": "rgb8-png",
+      "sha256": "0b775adaa55a2398bc0a723bf12916dcefb78ecdce79ccc92991333956b1547c"
+    },
+    "examples/native-plane-control/v01-L2-vision-ft-state.png": {
+      "bytes": 4156,
+      "format": "rgb8-png",
+      "sha256": "fec323ae18774814dfd66a0c98bbe429503566e41a773a3e6b1dff7ea09b5d6e"
+    },
+    "examples/offset-bell-cage/four-method-comparison-v01.png": {
+      "bytes": 1024468,
+      "format": "rgb8-png",
+      "sha256": "bb46dc2935ec89ceaa19fd45e79c65b62932da2cdab5092fd9c086b9a5c427cf"
+    },
+    "examples/offset-bell-cage/m4-target-v01.png": {
+      "bytes": 38740,
+      "format": "rgb8-png",
+      "sha256": "40433b03729b97fb1733c8d6c92f0518c91a4836552bc0c7970e0ece1db61c82"
+    },
+    "examples/offset-bell-cage/m4-v01-risk.png": {
+      "bytes": 47498,
+      "format": "rgb8-png",
+      "sha256": "6b6212d4a6eca9874a9b1c57e51fd07ffe062f7467795488b95f120f96cae4c6"
+    },
+    "examples/offset-bell-cage/m4-v01-state.png": {
+      "bytes": 2902,
+      "format": "rgb8-png",
+      "sha256": "445cbb0b9f349066c8c0e33f71b4f244446c01944def08bcc80f93f133c50693"
+    },
+    "examples/offset-bell-cage/recovery-target-comparison.png": {
+      "bytes": 1820172,
+      "format": "rgb8-png",
+      "sha256": "22686c84d282142c6e7155c8b5cea6425d2c1322e2e0c998bcd2ec6defcba58b"
+    },
+    "examples/offset-bell-cage/reference-v01.png": {
+      "bytes": 36826,
+      "format": "rgb8-png",
+      "sha256": "fcfdb64c609d4cfd76b5d60de52feed5fddf7497fbbb5cf88914f251df366396"
+    },
+    "examples/offset-bell-cage/source-s00.png": {
+      "bytes": 35749,
+      "format": "rgb8-png",
+      "sha256": "0f5997191125d2360cbf4946e22ea391da8e8539a0e15398915d121307c2b61b"
+    },
+    "examples/study-figures/paired-changes.png": {
+      "bytes": 39537,
+      "format": "rgb8-png",
+      "sha256": "d24ebfd804991cfcfb162c2cc7c619a743e0521ef4f7e461d162067eabe59cbe"
+    },
+    "examples/study-figures/risk-coverage-B0.png": {
+      "bytes": 45549,
+      "format": "rgb8-png",
+      "sha256": "935683f5175e72c77da8bd63100b5b9d6122084b4380c58fb5100712d4f52b8f"
+    },
+    "examples/study-figures/risk-coverage-Q1.png": {
+      "bytes": 45386,
+      "format": "rgb8-png",
+      "sha256": "f09027e4ac6ff01153adffd5419f750c11ff3ca85e119602128af3e0e4f5a9d1"
+    },
+    "examples/study-figures/risk-coverage-R1.png": {
+      "bytes": 45694,
+      "format": "rgb8-png",
+      "sha256": "011afbc104bd5615ee58fc091bf51acdf8a940f99c5256d149930eab091aa704"
+    },
+    "examples/tabletop-plane/input.png": {
+      "bytes": 10275,
+      "format": "rgb8-png",
+      "sha256": "72e32aa18d67a13e02277b0c9decd010872f8847cd8ade96e1ab1bdd04446537"
+    },
+    "examples/tabletop-plane/v01-prediction.png": {
+      "bytes": 10454,
+      "format": "rgb8-png",
+      "sha256": "80f22fad79dfb4fa47c00b744d03f3faa88b6fcc560117acd5de6d765e2057b2"
+    },
+    "examples/tabletop-plane/v01-risk.png": {
+      "bytes": 12467,
+      "format": "rgb8-png",
+      "sha256": "c992f1ed1e4c13fd78ad84d8fbbd136b8c6a5258ec2d7abca8fb77116f34baae"
+    },
+    "examples/tabletop-plane/v01-state.png": {
+      "bytes": 834,
+      "format": "rgb8-png",
+      "sha256": "94d7cb81496da1d39e5a3a88ae5c096d809afab92044569bf1cf14aec04b4405"
+    },
+    "examples/vision-study-figures/historical_regression-B0.png": {
+      "bytes": 146664,
+      "format": "rgb8-png",
+      "sha256": "8c6320e9844b1cc2fd25c84c5cd05f1ea6f9e897b0ad304b350e4dee18162012"
+    },
+    "examples/vision-study-figures/historical_regression-Q1.png": {
+      "bytes": 149105,
+      "format": "rgb8-png",
+      "sha256": "beb4ec810556677d4ded0b2aa869468db2812a7fcffe4b0a13bdc2ee3a2d2ab0"
+    },
+    "examples/vision-study-figures/historical_regression-R1.png": {
+      "bytes": 149197,
+      "format": "rgb8-png",
+      "sha256": "cc9677a3100413e439ffeb88a48fa540165755e17d2253a5f9509babba119c63"
+    },
+    "examples/vision-study-figures/new_confirmation-B0.png": {
+      "bytes": 234124,
+      "format": "rgb8-png",
+      "sha256": "d3f0fc351d2c09616d844a47da6a37a3d14fd16b93579b9babfb556c994dbbdf"
+    },
+    "examples/vision-study-figures/new_confirmation-Q1.png": {
+      "bytes": 236462,
+      "format": "rgb8-png",
+      "sha256": "0d9ed555d32a0a3a495f1ca5738ab5b1547e85829dc9cc0f44e94041ea144b73"
+    },
+    "examples/vision-study-figures/new_confirmation-R1.png": {
+      "bytes": 235022,
+      "format": "rgb8-png",
+      "sha256": "bc97ca142fc212e0ed2fea88786797191200b5f7336401424504ea2b5c2095ad"
     }
   },
   "files": {
@@ -100,6 +278,17 @@
     "docs/data-contract.md": "cc-original",
     "docs/dtu-camera.md": "cc-original",
     "docs/formal-evaluation.md": "cc-original",
+    "docs/general-closeout/README.md": "cc-original",
+    "docs/general-closeout/archived-c6-numerical-bridge.json": "cc-original",
+    "docs/general-closeout/numerical-bridge.json": "cc-original",
+    "docs/general-closeout/original-replays.json": "cc-original",
+    "docs/general-closeout/performance/README.md": "cc-original",
+    "docs/general-closeout/performance/g4-trajectory-verification.json": "cc-original",
+    "docs/general-closeout/performance/g4-upstream-cost.json": "cc-original",
+    "docs/general-closeout/performance/g4-upstream-frames.csv": "cc-original",
+    "docs/general-closeout/research-log.md": "cc-original",
+    "docs/general-closeout/specialization-readiness.md": "cc-original",
+    "docs/general-closeout/status.json": "cc-original",
     "docs/l1-training.md": "cc-original",
     "docs/licenses.md": "cc-original",
     "docs/model-release.md": "cc-original",
@@ -148,6 +337,8 @@
     "docs/releases/v0.3.0-rc.1/REBUILD.md": "cc-original",
     "docs/releases/v0.3.0-rc.1/requirements-light.txt": "apache-original",
     "docs/releases/v0.3.0-rc.1/requirements.txt": "cc-original",
+    "docs/releases/v0.4.0/MODEL_CARD.md": "cc-original",
+    "docs/releases/v0.4.0/README.md": "cc-original",
     "docs/reproducibility-matrix.md": "cc-original",
     "docs/results/README.md": "cc-original",
     "docs/results/batch-two/README.md": "cc-original",
@@ -394,7 +585,10 @@
     "docs/tooling/assets/verification.json": "cc-original",
     "docs/tooling/bundle-v1.md": "cc-original",
     "docs/tooling/compatibility.md": "cc-original",
+    "docs/tooling/numerical-bridge.md": "cc-original",
+    "docs/tooling/original-archive.md": "cc-original",
     "docs/tooling/platform-verification.json": "cc-original",
+    "docs/tooling/resident.md": "cc-original",
     "docs/tooling/stage-costs.csv": "cc-original",
     "docs/tooling/verification.json": "cc-original",
     "docs/verification/v0.2.0-rc.1/README.md": "cc-original",
@@ -416,6 +610,11 @@
     "docs/vision-rights.md": "cc-original",
     "docs/vision-worker.md": "cc-original",
     "docs/windows-worker.md": "cc-original",
+    "examples/general-four-models/B-L1-transfer.html": "cc-original",
+    "examples/general-four-models/MS-L1.html": "cc-original",
+    "examples/general-four-models/MS-frozen.html": "cc-original",
+    "examples/general-four-models/MS-ft.html": "cc-original",
+    "examples/general-four-models/README.md": "cc-original",
     "examples/heldout-drum/README.md": "cc-original",
     "examples/heldout-drum/blender-v01.png": "cc-original",
     "examples/heldout-drum/input.png": "cc-original",
@@ -475,6 +674,7 @@
     "protocol/b2-t1-confirmation-v1.json": "apache-original",
     "protocol/dtu-external-v1.json": "apache-original",
     "protocol/families-v1.json": "apache-original",
+    "protocol/general-static-engineering-v1.json": "apache-original",
     "protocol/multisource-v1.json": "apache-original",
     "protocol/operating-points-v1.json": "apache-original",
     "protocol/phase1-backdrop-v1.json": "apache-original",
@@ -643,6 +843,27 @@
     "scripts/formal_lineage.py": "apache-original",
     "scripts/formal_reference.py": "apache-original",
     "scripts/freeze_stage3_method.py": "apache-original",
+    "scripts/g3_perf.py": "apache-original",
+    "scripts/g3_perf_originals.py": "apache-original",
+    "scripts/g3_perf_resources.py": "apache-original",
+    "scripts/g3_perf_tables.py": "apache-original",
+    "scripts/g4_replay_eval.py": "apache-original",
+    "scripts/g4_trajectory_export.py": "apache-original",
+    "scripts/general_bridge_record.py": "apache-original",
+    "scripts/general_build.py": "apache-original",
+    "scripts/general_clean_accept.py": "apache-original",
+    "scripts/general_exchange.py": "apache-original",
+    "scripts/general_fixed_public.py": "apache-original",
+    "scripts/general_manifest.py": "apache-original",
+    "scripts/general_original_accept.py": "apache-original",
+    "scripts/general_original_pack.py": "apache-original",
+    "scripts/general_platform.py": "apache-original",
+    "scripts/general_public_download.py": "apache-original",
+    "scripts/general_receive.py": "apache-original",
+    "scripts/general_records.py": "apache-original",
+    "scripts/general_release_weights.py": "apache-original",
+    "scripts/general_t1_bridge_roster.py": "apache-original",
+    "scripts/general_windows_g0.py": "apache-original",
     "scripts/inspect_sharp_ply.py": "apache-original",
     "scripts/mac_trial.py": "apache-original",
     "scripts/make_handoff.py": "apache-original",
@@ -709,6 +930,7 @@
     "scripts/release_scope.py": "apache-original",
     "scripts/release_smoke.py": "apache-original",
     "scripts/release_wheel.py": "apache-original",
+    "scripts/replay_cpu_ticket.py": "apache-original",
     "scripts/report_study.py": "apache-original",
     "scripts/restore_replay.py": "apache-original",
     "scripts/rgb_headline_regression.py": "apache-original",
@@ -810,6 +1032,8 @@
     "scripts/t0_worker_pack.py": "apache-original",
     "scripts/t0_worker_run.py": "apache-original",
     "scripts/train_l1.py": "apache-original",
+    "scripts/trajectory_pack.py": "apache-original",
+    "scripts/trajectory_render.py": "apache-original",
     "scripts/verify_l1_development.py": "apache-original",
     "scripts/verify_public_prerelease.py": "apache-original",
     "scripts/verify_reference_config.py": "apache-original",
@@ -904,13 +1128,21 @@
     "src/evidence_lens_bundle/assets/MS-L1/model.json": "apache-original",
     "src/evidence_lens_bundle/assets/MS-L1/preprocessing.json": "apache-original",
     "src/evidence_lens_bundle/assets/profile.json": "apache-original",
+    "src/evidence_lens_bundle/bindings.py": "apache-original",
+    "src/evidence_lens_bundle/bridge.py": "apache-original",
+    "src/evidence_lens_bundle/bridge_history.py": "apache-original",
     "src/evidence_lens_bundle/bundle.py": "apache-original",
     "src/evidence_lens_bundle/calibration.py": "apache-original",
     "src/evidence_lens_bundle/cli.py": "apache-original",
     "src/evidence_lens_bundle/common.py": "apache-original",
+    "src/evidence_lens_bundle/frozen_reasons.py": "apache-original",
     "src/evidence_lens_bundle/legacy.py": "apache-original",
+    "src/evidence_lens_bundle/numerics.py": "apache-original",
     "src/evidence_lens_bundle/proof.py": "apache-original",
+    "src/evidence_lens_bundle/replay.py": "apache-original",
+    "src/evidence_lens_bundle/replay_sidecar.py": "apache-original",
     "src/evidence_lens_bundle/report.py": "apache-original",
+    "src/evidence_lens_bundle/resident.py": "apache-original",
     "src/evidence_lens_bundle/scoring.py": "apache-original",
     "src/evidence_lens_multirisk/__init__.py": "apache-original",
     "src/evidence_lens_multirisk/data.py": "apache-original",
@@ -977,6 +1209,8 @@
     "tests/test_release_model.py": "apache-original",
     "tests/test_release_reader_guide.py": "apache-original",
     "tests/test_release_scope.py": "apache-original",
+    "tests/test_replay.py": "apache-original",
+    "tests/test_resident.py": "apache-original",
     "tests/test_rgb_headline_regression.py": "apache-original",
     "tests/test_rolling_archive.py": "apache-original",
     "tests/test_score_maps.py": "apache-original",
@@ -1020,194 +1254,40 @@
     "tests/test_vision_worker.py": "apache-original",
     "tests/vision_gate_fixture.py": "apache-original"
   },
-  "binary_examples": {
-    "docs/results/stage3-learning-curves/learning-curves.png": {
-      "format": "rgba8-png",
-      "bytes": 88364,
-      "sha256": "1c22e49460e47f964d63cac610cd02a834d0f800136bd049d9b26bbf8d7bbf9d"
+  "license_status": {
+    "apache-original": {
+      "description": "Original source, tests, build scripts, software configuration and machine-executable experiment protocols.",
+      "license": "Apache-2.0",
+      "public_export": true
     },
-    "examples/heldout-drum/blender-v01.png": {
-      "format": "rgb8-png",
-      "bytes": 111096,
-      "sha256": "ac404836c55433b07257e5414f1b4e69792a17d209624294283e46111a04a041"
+    "cc-original": {
+      "description": "Original writing, attributed images and grantable data or measurements. Factual information is covered only to the extent rights apply.",
+      "license": "CC-BY-4.0",
+      "public_export": true
     },
-    "examples/heldout-drum/input.png": {
-      "format": "rgb8-png",
-      "bytes": 111556,
-      "sha256": "bf0ce4e2515fef11737910046773102435a23b324bce7aaacdf307c00ccb3305"
-    },
-    "examples/native-plane-control/input.png": {
-      "format": "rgb8-png",
-      "bytes": 92650,
-      "sha256": "1c689d3ef4f82729082b54d148e23d7e298f4cdae2fc6ac21bcff71aacd6bbe4"
-    },
-    "examples/native-plane-control/prediction-v01.png": {
-      "format": "rgb8-png",
-      "bytes": 92224,
-      "sha256": "37fc7eefe9c433147547d25d5e1c239435c5c1740d1b4638ef903fb37008cd02"
-    },
-    "examples/native-plane-control/rgb-error-v01.png": {
-      "format": "rgb8-png",
-      "bytes": 251099,
-      "sha256": "0b775adaa55a2398bc0a723bf12916dcefb78ecdce79ccc92991333956b1547c"
-    },
-    "examples/native-plane-control/v01-L2-vision-ft-state.png": {
-      "format": "rgb8-png",
-      "bytes": 4156,
-      "sha256": "fec323ae18774814dfd66a0c98bbe429503566e41a773a3e6b1dff7ea09b5d6e"
-    },
-    "examples/offset-bell-cage/four-method-comparison-v01.png": {
-      "format": "rgb8-png",
-      "bytes": 1024468,
-      "sha256": "bb46dc2935ec89ceaa19fd45e79c65b62932da2cdab5092fd9c086b9a5c427cf"
-    },
-    "examples/offset-bell-cage/m4-target-v01.png": {
-      "format": "rgb8-png",
-      "bytes": 38740,
-      "sha256": "40433b03729b97fb1733c8d6c92f0518c91a4836552bc0c7970e0ece1db61c82"
-    },
-    "examples/offset-bell-cage/m4-v01-risk.png": {
-      "bytes": 47498,
-      "sha256": "6b6212d4a6eca9874a9b1c57e51fd07ffe062f7467795488b95f120f96cae4c6",
-      "format": "rgb8-png"
-    },
-    "examples/offset-bell-cage/m4-v01-state.png": {
-      "bytes": 2902,
-      "sha256": "445cbb0b9f349066c8c0e33f71b4f244446c01944def08bcc80f93f133c50693",
-      "format": "rgb8-png"
-    },
-    "examples/offset-bell-cage/reference-v01.png": {
-      "format": "rgb8-png",
-      "bytes": 36826,
-      "sha256": "fcfdb64c609d4cfd76b5d60de52feed5fddf7497fbbb5cf88914f251df366396"
-    },
-    "examples/offset-bell-cage/source-s00.png": {
-      "format": "rgb8-png",
-      "bytes": 35749,
-      "sha256": "0f5997191125d2360cbf4946e22ea391da8e8539a0e15398915d121307c2b61b"
-    },
-    "examples/study-figures/paired-changes.png": {
-      "format": "rgb8-png",
-      "bytes": 39537,
-      "sha256": "d24ebfd804991cfcfb162c2cc7c619a743e0521ef4f7e461d162067eabe59cbe"
-    },
-    "examples/study-figures/risk-coverage-B0.png": {
-      "format": "rgb8-png",
-      "bytes": 45549,
-      "sha256": "935683f5175e72c77da8bd63100b5b9d6122084b4380c58fb5100712d4f52b8f"
-    },
-    "examples/study-figures/risk-coverage-Q1.png": {
-      "format": "rgb8-png",
-      "bytes": 45386,
-      "sha256": "f09027e4ac6ff01153adffd5419f750c11ff3ca85e119602128af3e0e4f5a9d1"
-    },
-    "examples/study-figures/risk-coverage-R1.png": {
-      "format": "rgb8-png",
-      "bytes": 45694,
-      "sha256": "011afbc104bd5615ee58fc091bf51acdf8a940f99c5256d149930eab091aa704"
-    },
-    "examples/tabletop-plane/input.png": {
-      "format": "rgb8-png",
-      "bytes": 10275,
-      "sha256": "72e32aa18d67a13e02277b0c9decd010872f8847cd8ade96e1ab1bdd04446537"
-    },
-    "examples/tabletop-plane/v01-prediction.png": {
-      "format": "rgb8-png",
-      "bytes": 10454,
-      "sha256": "80f22fad79dfb4fa47c00b744d03f3faa88b6fcc560117acd5de6d765e2057b2"
-    },
-    "examples/tabletop-plane/v01-risk.png": {
-      "format": "rgb8-png",
-      "bytes": 12467,
-      "sha256": "c992f1ed1e4c13fd78ad84d8fbbd136b8c6a5258ec2d7abca8fb77116f34baae"
-    },
-    "examples/tabletop-plane/v01-state.png": {
-      "format": "rgb8-png",
-      "bytes": 834,
-      "sha256": "94d7cb81496da1d39e5a3a88ae5c096d809afab92044569bf1cf14aec04b4405"
-    },
-    "examples/vision-study-figures/historical_regression-B0.png": {
-      "format": "rgb8-png",
-      "bytes": 146664,
-      "sha256": "8c6320e9844b1cc2fd25c84c5cd05f1ea6f9e897b0ad304b350e4dee18162012"
-    },
-    "examples/vision-study-figures/historical_regression-Q1.png": {
-      "format": "rgb8-png",
-      "bytes": 149105,
-      "sha256": "beb4ec810556677d4ded0b2aa869468db2812a7fcffe4b0a13bdc2ee3a2d2ab0"
-    },
-    "examples/vision-study-figures/historical_regression-R1.png": {
-      "format": "rgb8-png",
-      "bytes": 149197,
-      "sha256": "cc9677a3100413e439ffeb88a48fa540165755e17d2253a5f9509babba119c63"
-    },
-    "examples/vision-study-figures/new_confirmation-B0.png": {
-      "format": "rgb8-png",
-      "bytes": 234124,
-      "sha256": "d3f0fc351d2c09616d844a47da6a37a3d14fd16b93579b9babfb556c994dbbdf"
-    },
-    "examples/vision-study-figures/new_confirmation-Q1.png": {
-      "format": "rgb8-png",
-      "bytes": 236462,
-      "sha256": "0d9ed555d32a0a3a495f1ca5738ab5b1547e85829dc9cc0f44e94041ea144b73"
-    },
-    "examples/vision-study-figures/new_confirmation-R1.png": {
-      "format": "rgb8-png",
-      "bytes": 235022,
-      "sha256": "bc97ca142fc212e0ed2fea88786797191200b5f7336401424504ea2b5c2095ad"
-    },
-    "examples/offset-bell-cage/recovery-target-comparison.png": {
-      "format": "rgb8-png",
-      "bytes": 1820172,
-      "sha256": "22686c84d282142c6e7155c8b5cea6425d2c1322e2e0c998bcd2ec6defcba58b"
-    },
-    "docs/results/batch-two/calibration/risk-coverage.png": {
-      "format": "rgb8-png",
-      "bytes": 45971,
-      "sha256": "0669d752d477ca16b52eb3ea10ad1dd4869881d54a3c00390d6e7311a4f023e3"
-    },
-    "examples/helical-beads/sh3-comparison.png": {
-      "format": "rgb8-png",
-      "bytes": 44073,
-      "sha256": "bac8a474c0b3c72cbdaa094b072eb4502ddbb517e0c1b44b5dbff27cb4db45c4"
+    "notices": {
+      "description": "License instruments and notices reproduced as issued. Retain their own terms and attribution.",
+      "license": "Respective notices",
+      "public_export": true
     }
   },
   "numeric_tables": {
     "docs/results/reconstruction-recovery/resources/fit-steps.csv.gz": {
-      "format": "gzip-csv-1",
       "bytes": 1853607,
-      "sha256": "7e505d69142a867cfd421db063a29fec7b4e5e1edb01117325dbb82ac93f8dc8",
       "csv_bytes": 11387125,
       "csv_sha256": "f4a1f7b34006f2fe159956f4b77d4bf72a94c4ea148a4fc25cc2e2987c2de4c6",
-      "rows": 40024
+      "format": "gzip-csv-1",
+      "rows": 40024,
+      "sha256": "7e505d69142a867cfd421db063a29fec7b4e5e1edb01117325dbb82ac93f8dc8"
     },
     "docs/results/reconstruction-recovery/resources/telemetry.csv.gz": {
-      "format": "gzip-csv-1",
       "bytes": 8173,
-      "sha256": "9f7203e7d505f15c83b2c3a502f015309c6637f1340e7339728e6aa0ce477e9f",
       "csv_bytes": 38215,
       "csv_sha256": "6190566780d50c1950e5d52c09555592d4122a8a0ee54c7fbc0f6ae39ff7115b",
-      "rows": 508
+      "format": "gzip-csv-1",
+      "rows": 508,
+      "sha256": "9f7203e7d505f15c83b2c3a502f015309c6637f1340e7339728e6aa0ce477e9f"
     }
   },
-  "authored_html": {
-    "examples/offset-bell-cage/bundle-report.html": {
-      "bytes": 958001,
-      "sha256": "16da1a4945e902ee8e5f4afb593154d143dca472794b7809a2808148121d014d",
-      "source": "Original offset bell cage; four-source deployment-only report, authored bundle and model index recorded in docs/tooling/verification.json",
-      "license": "CC-BY-4.0"
-    },
-    "examples/helical-beads/outside-scope.html": {
-      "bytes": 212133,
-      "sha256": "eb9158e89cedbe0e88e4c2bfdb0e306a9eaf509f5d55aee3393b3ae095b22fc3",
-      "source": "Original helical bead scene by wany614. The camera, render and HTML source pins appear in examples/helical-beads/manifest.json.",
-      "license": "CC-BY-4.0"
-    },
-    "examples/helical-beads/report.html": {
-      "bytes": 210530,
-      "sha256": "3bc6f9f9cceb2bd76ad656b8ada79f215bd9d8b2aaa4a4272bc8ca2458bf32ad",
-      "source": "Original helical bead scene by wany614. The camera, render and HTML source pins appear in examples/helical-beads/manifest.json.",
-      "license": "CC-BY-4.0"
-    }
-  }
+  "schema": "el-source-allowlist-1"
 }

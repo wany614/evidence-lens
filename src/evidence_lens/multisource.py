@@ -182,6 +182,22 @@ def extract(target, target_camera, sources, *, depth_verified=True):
 
 def extract_ordered(target, target_camera, ordered_sources, *, depth_verified=True):
     """Apply the frozen numerical kernel to real source IDs in an explicitly authorized order."""
+    return _extract_ordered(target, target_camera, ordered_sources, depth_verified=depth_verified)
+
+
+def camera_rays(camera):
+    yy, xx = np.indices(camera.shape, dtype=np.float64)
+    return np.stack((xx, yy, np.ones_like(xx)), axis=-1) @ np.linalg.inv(camera.K).T
+
+
+def source_self_mae(image, frame):
+    """Native source-pixel residual before target-dependent nearest-neighbour sampling."""
+    with np.errstate(invalid="ignore"):
+        return np.where(rgb_valid(frame["rgb"]), np.abs(frame["rgb"] - image).mean(axis=-1), np.nan)
+
+
+def _extract_ordered(target, target_camera, ordered_sources, *, depth_verified, rays=None, self_mae_maps=None):
+    """Optional invariants belong to the checked, immutable resident source snapshot."""
     ordered_sources = tuple(ordered_sources)
     names = [name for name, _ in ordered_sources]
     if type(depth_verified) is not bool or not names or len(set(names)) != len(names):
@@ -191,21 +207,22 @@ def extract_ordered(target, target_camera, ordered_sources, *, depth_verified=Tr
     tz = depth_valid(z) & depth_verified
     ta, tr = alpha_valid(alpha), rgb_valid(rgb)
     rgb_local, z_local = _local_variation(rgb, z, tz)
-    yy, xx = np.indices(z.shape, dtype=np.float64)
-    ray = np.stack((xx, yy, np.ones_like(xx)), axis=-1) @ np.linalg.inv(target_camera.K).T
+    ray = camera_rays(target_camera) if rays is None else rays
     points = ray * np.where(tz, z, 0)[..., None]
     names = ("inside", "comparable", "support", "depth_conflict", "colour_conflict")
     counts = {k: np.zeros(z.shape, np.uint8) for k in names}
     quantities = {k: [] for k in ("alpha", "residual", "angle", "target_mae", "self_mae", "colour")}
     for name, (image, frame, camera) in ordered_sources:
-        check_rgb(image, camera, f"original {name}")
-        if not rgb_valid(image).all():
-            raise ValueError("an original source PNG must be finite")
+        if self_mae_maps is None:
+            check_rgb(image, camera, f"original {name}")
+            if not rgb_valid(image).all():
+                raise ValueError("an original source PNG must be finite")
         inside, v, u, projected_z, angle = _project(points, tz, target_camera, camera)
         counts["inside"] += inside
         if frame is None:
             continue
-        validate_render(frame, camera)
+        if self_mae_maps is None:
+            validate_render(frame, camera)
         a, zs = frame["alpha"][v, u], frame["z"][v, u]
         compare = inside & ta & alpha_valid(a) & depth_valid(zs)
         residual = np.full(z.shape, np.nan, np.float32)
@@ -215,12 +232,16 @@ def extract_ordered(target, target_camera, ordered_sources, *, depth_verified=Tr
         opaque = compare & (alpha >= ALPHA_MIN) & (a >= ALPHA_MIN)
         support = opaque & (residual <= CONFLICT_MAX)
         d_conflict = opaque & ~support
-        image_rgb, frame_rgb = image[v, u], frame["rgb"][v, u]
+        image_rgb = image[v, u]
         with np.errstate(invalid="ignore"):
             target_mae = np.where(support & tr, np.abs(rgb - image_rgb).mean(axis=-1), np.nan)
-            self_mae = np.where(
-                compare & rgb_valid(frame_rgb), np.abs(frame_rgb - image_rgb).mean(axis=-1), np.nan
-            )
+            if self_mae_maps is None:
+                frame_rgb = frame["rgb"][v, u]
+                self_mae = np.where(
+                    compare & rgb_valid(frame_rgb), np.abs(frame_rgb - image_rgb).mean(axis=-1), np.nan
+                )
+            else:
+                self_mae = np.where(compare, self_mae_maps[name][v, u], np.nan)
         counts["comparable"] += compare
         counts["support"] += support
         counts["depth_conflict"] += d_conflict

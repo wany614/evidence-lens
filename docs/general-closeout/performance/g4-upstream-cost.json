@@ -1,0 +1,60 @@
+{
+  "compression_write_hash_seconds": 17.06321590015432,
+  "cpu_seconds_boundary": "Integrated per-core recorder tree CPU samples between observed timestamps; missing first/final intervals excluded.",
+  "g3_additional_analytic_source_photo_seconds": {
+    "109": 0.0653137500048615,
+    "70": 0.06404033399303444
+  },
+  "gpu_native_manifest_sha256": "3e5bbabb9d2b95b3f28f67dcd77b63d83699ea1782cc9f642ffbaddae455cc92",
+  "gpu_native_run": "20261124T042527050139Z-cd01a83985f94a14",
+  "gpu_peak_allocated_bytes": 13753344,
+  "gpu_peak_reserved_bytes": 29360128,
+  "historical_reconstruction_seconds_by_layout": {
+    "beads-M2": null,
+    "beads-M4": null,
+    "bell-M2": 0.9776755000057165,
+    "bell-M4": 0.8601329000011901
+  },
+  "local_return_intake": {
+    "container_bytes": 331979380,
+    "finished_utc": "2026-11-24T04:31:51.632862Z",
+    "local_intake_seconds": 61.560182290995726,
+    "provider_network_seconds": null,
+    "started_utc": "2026-11-24T04:30:50.074557Z"
+  },
+  "local_ticket_handoff": {
+    "bytes": 764238,
+    "elapsed_seconds": 0.0036917499965056777,
+    "finish_utc": "2026-11-24T04:12:38.802925Z",
+    "measured_boundary": "Local study storage to local synchronized project folder, including checksum readback.",
+    "provider_network_elapsed_seconds": null,
+    "start_utc": "2026-11-24T04:12:38.799230Z"
+  },
+  "original_trajectory_ticket_preparation_peak_rss_bytes": 6832128,
+  "original_trajectory_ticket_preparation_wall_seconds": 0.8088067079952452,
+  "recorder_wall_seconds": 29.452999999994063,
+  "rows": 548,
+  "runtime": {
+    "configuration": "RGB+ED, classic, eps2d=.3, near=.01/far=100m",
+    "cuda": "12.8",
+    "engine": "gsplat",
+    "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "implementation_sha256": "1a79ea1298f3eb63a4beadeadb9d473f48d127510b90b2d6b3cdb2d9c898702f",
+    "numpy": "2.3.3",
+    "python": "3.11.5",
+    "run_id": "20261124T042527050139Z-cd01a83985f94a14",
+    "schema": "el-static-trajectory-renderer-1",
+    "torch": "2.8.0+cu128",
+    "version": "1.5.3"
+  },
+  "sampled_peak_tree_rss_bytes": 912666624,
+  "sampled_process_tree_cpu_seconds": 25.875,
+  "samples": 26,
+  "schema": "el-static-upstream-cost-1",
+  "source_analytic_preparation_run": "20261124T041024524635Z-79498323ad3242b1",
+  "source_frame_count": 20,
+  "source_self_render_sync_and_device_to_host_seconds": 0.12795369999366812,
+  "target_frame_count": 528,
+  "target_render_sync_and_device_to_host_seconds": 3.1719212998868898,
+  "worker_seconds": 27.65571479999926
+}

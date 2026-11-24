@@ -128,7 +128,11 @@ def load_transfer(package, index_hash, weights_hash, tau):
 def transfer_risk(target, target_camera, source, model, depth_verified):
     image, frame, camera = source
     f = extract_features(image, frame, target, camera, target_camera, depth_verified)
-    out = np.full(target_camera.shape, np.nan, np.float32)
+    return transfer_feature_risk(f, model)
+
+
+def transfer_feature_risk(f, model):
+    out = np.full(f["scoreable"].shape, np.nan, np.float32)
     ids = np.flatnonzero(f["scoreable"])
     for start in range(0, len(ids), 65536):
         selected = ids[start : start + 65536]

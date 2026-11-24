@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-lens"
-version = "0.4.0b1"
+version = "0.4.0"
 description = "CPU diagnostics for single- and multi-image novel-view synthesis"
 readme = "README.md"
 authors = [{name = "wany614"}]

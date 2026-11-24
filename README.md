@@ -2,6 +2,10 @@
 
 Evidence Lens estimates where a synthesized view is likely to disagree with an independent image from the same camera. Its CPU scorer reads calibrated source images and predicted RGB, opacity and expected camera depth. It returns a continuous risk map and a low, high or unknown state for each target pixel. Researchers can compare the maps with Blender references through a separate evaluation command.
 
+## General CPU tools
+
+The release includes a prepared four-model replay, a real fine-tuned CPU model, a resident array API and original static camera trajectories. MS-L1 is the default. The research report compares frozen scores on DTU, records the empirical threshold results and explains where the models have been evaluated. [Install and reproduce](docs/releases/v0.4.0/README.md) · [Model card](docs/releases/v0.4.0/MODEL_CARD.md) · [Research report](docs/general-closeout/README.md)
+
 ## Score a prepared bundle on CPU
 
 Install this checkout with `python -m pip install .`. Run `evidence-lens validate --bundle CASE`, then `evidence-lens score --bundle CASE --out scores` and `evidence-lens report --scores scores --out report.html`. The default scorer includes the released MS-L1 parameters. An original bell-cage example supplies all required evidence. [Installation, example and optional MS-ft](docs/tooling/README.md) · [Offline HTML report](examples/offset-bell-cage/bundle-report.html)

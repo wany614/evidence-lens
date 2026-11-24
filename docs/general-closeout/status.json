@@ -1,0 +1,162 @@
+{
+  "archive": {
+    "measured_external_free_bytes": 1016232402944,
+    "total_volume_bytes": 1023999787008
+  },
+  "baseline_commit": "cdf2267a8775030cf26616aeaa472f38ec5b2f7f",
+  "c6_profiles": {
+    "M2": {
+      "pin": {
+        "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+        "member": "payload/profiles/M2.json",
+        "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+        "sha256": "ad20abb913eaf0f34104ac3fcde5c091e29a71e4cca43222408c1af2182c2ab1"
+      },
+      "status": "no_feasible_operating_point",
+      "tau": null
+    },
+    "M4": {
+      "pin": {
+        "manifest_sha256": "66252666aeacb50ae7bfefb9e5e502649068fdd17de5403e869560798130e6cc",
+        "member": "payload/profiles/M4.json",
+        "run_id": "20261124T021235608840Z-f0d12afab15c4b3e",
+        "sha256": "36cb7e435cbcb7713145a855e08b8b2eb76182ed5f398fa4926fcdfec06e6b92"
+      },
+      "status": "no_feasible_operating_point",
+      "tau": null
+    }
+  },
+  "engineering_version_at_entry": "0.4.0b1",
+  "entry": {
+    "manifest_sha256": "5d81587227a11560c8349a9e3c68604b838218b4c8766c3b69003e0ec0f908a1",
+    "member": "payload/entry.json",
+    "run_id": "20261124T040929244925Z-29ed9ca73ca94672",
+    "sha256": "971d8c212153d39caca44747e0fad8b4b28c1bc08f4d15e25f5720e7992ac818"
+  },
+  "evidence_cutoff_utc": "2026-11-24T04:16:21.403590Z",
+  "freeze": {
+    "manifest_sha256": "fec5d3267412b8fd5a58b79304d5c50ada6c157b7875c7bff7c6a902bf0190b8",
+    "member": "payload/t1-freeze.json",
+    "run_id": "20261124T023243052988Z-5e3007d1b3ed48dc",
+    "sha256": "b59dddc26d22cb28908ba5b4d27d7795871998e878408243a178ad1c7a2bf946"
+  },
+  "general_phase_complete_at_entry": false,
+  "historical_inputs": {
+    "C6_and_development": "../results/batch-two/README.md",
+    "T0": "../results/t0/README.md"
+  },
+  "historical_runs_indexed": {
+    "locations": {
+      "batch_one": 156,
+      "batch_two": 249,
+      "cold_shelf": 610,
+      "history": 447
+    },
+    "unique_run_ids": 1462
+  },
+  "logical_conditions": 42,
+  "model_version": "v0.3.0-rc.1",
+  "original_public_model_download": {
+    "bytes": 164854827,
+    "receipt": {
+      "manifest_sha256": "f8e108526ee096811ce2e196eeb538f85a75b52c5e3a4ab90b2470379b185aa7",
+      "member": "payload/download.json",
+      "run_id": "20261124T041052425868Z-d308c134e69d4d4b",
+      "sha256": "2fc63f58a383b7da4e427d8ed8bfbafdff4a843b072e9cdbd2d8b08bd5f1ee98"
+    },
+    "sha256": "f555956840870309217cc85fe9b339ef53762679bbd2138b7f149d8ea451a7b7",
+    "verified_members": 116
+  },
+  "photographic_access_at_entry": {
+    "T1_photo_receipts": 0,
+    "inventoried_acquisitions": 30
+  },
+  "platforms": {
+    "linux": {
+      "arch": "aarch64",
+      "environment": "Docker container under OrbStack",
+      "image_digest": "sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+      "logical_cpus": 12,
+      "python": "3.12.16",
+      "system": "Linux"
+    },
+    "mac": {
+      "arch": "arm64",
+      "cpu": "Apple M6",
+      "logical_cpus": 12,
+      "python": "3.12.16",
+      "system": "Darwin",
+      "total_ram_bytes": 17179869184,
+      "version": "27.2"
+    },
+    "record": {
+      "manifest_sha256": "d17637c1668603b02f0c5e9f524c3a06528a834e774a7c2a046b1abc47987209",
+      "member": "payload/platforms.json",
+      "run_id": "20261124T041620589354Z-81131e8951334339",
+      "sha256": "373044a3faff4bb3fd2fd747dbe3dc8307a4fbf85be8319a58b1371ceb3dff6a"
+    },
+    "windows": {
+      "census_utc": "2026-11-24T04:19:41.967138Z",
+      "cpu": [
+        {
+          "logical_processors": 20,
+          "model": "12th Gen Intel(R) Core(TM) i7-12700H",
+          "physical_cores": 14
+        }
+      ],
+      "gpu": [
+        {
+          "driver": "610.47",
+          "instant_utilization_percent": 0,
+          "memory_free_MiB": 5209,
+          "memory_total_MiB": 6144,
+          "memory_used_MiB": 786,
+          "model": "NVIDIA GeForce RTX 3060 Laptop GPU"
+        }
+      ],
+      "historical_indices": 14,
+      "historical_supplement_utc": "2026-11-24T04:27:03.706576Z",
+      "indexed_archive_rows": 381,
+      "python": "3.11.5",
+      "ram_bytes": 42749083648,
+      "raw_seals": [
+        {
+          "bytes": 1962309,
+          "container_sha256": "2695287b3f5e311dfe64a237055c87caae53f31b21365b245e4e1690d047db7f",
+          "manifest_sha256": "67209d1f41c812ae881d05206f210c6520d401f212e1e4b714a4dc41e954a62b",
+          "run_id": "20261124T041843258276Z-467fe6ab124f4ed4"
+        },
+        {
+          "bytes": 1937556,
+          "container_sha256": "ccb2a4521b1f8bda249d92c3e3a03bf744cf25638761c2fc83600a9e42e60446",
+          "manifest_sha256": "e516bd31364f500b2963b34b8c213d6995d6acd1ba0a0b3ba8c903a878aa10ab",
+          "run_id": "20261124T042700503157Z-945fafacedab4617"
+        }
+      ],
+      "receipt": {
+        "manifest_sha256": "2a38152985ed4ce56cd3513126bee8c2d5ffd2f53944c67bcb65d31b29cf8362",
+        "member": "payload/inventory.json",
+        "run_id": "20261124T043423948459Z-7809d0aabbee46e3",
+        "sha256": "49a9e409cd8e06fb27a7176603cd3ed24bde455802faeeac7aa01413a02ee5c8"
+      },
+      "system": "Microsoft Windows 11 Home China",
+      "torch": "2.8.0+cu128",
+      "torch_cuda_runtime": "12.8",
+      "version": "10.0.26200"
+    }
+  },
+  "recorded_authorization_utc": "2026-11-24T04:04:53Z",
+  "risk_training": 0,
+  "schema": "el-general-entry-status-1",
+  "scientific_formal_score_slots": 288,
+  "selected_additional_risk_scores": 0,
+  "software_release_ready_at_entry": false,
+  "t1_subjects": [
+    "set118",
+    "set76",
+    "set45",
+    "set103",
+    "set61",
+    "set32"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "bridge_run_id": "20261124T042945308392Z-91efecddcb26478e",
+  "bytes": 44233110,
+  "expected_sha256": "7aed41037e7c4ec7f0a8583d33bdbe5291d6b02bf0ef8df325a13d337490f9cc",
+  "method_views": 64,
+  "numerical_bridge_sha256": "0f4db74c826897634b2a6b5c351b0e655d66d89db5fa9e142a5fad5c924b3972",
+  "path": "evidence-lens-original-replays-v1.zip",
+  "reports": 16,
+  "rights": "Authored development material; CC BY 4.0 and Apache-2.0 software.",
+  "run_id": "20261124T043355227636Z-0089be24b9884f5c",
+  "schema": "el-original-replay-archive-1",
+  "sequences": 4,
+  "sha256": "0ed367c24019004d5126c823d899db3941f0fe9dd24473394c3cd6b581c7cfa0"
+}

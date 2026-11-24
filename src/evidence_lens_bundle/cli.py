@@ -1,4 +1,4 @@
-"""Evidence Lens prepared-bundle CPU commands."""
+"""CPU risk scoring for prepared native 256×256 M2/M4 evidence. Rendering new views from supported Gaussian assets requires the separate CUDA gsplat command."""
 
 import argparse
 import json

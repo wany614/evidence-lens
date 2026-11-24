@@ -1,0 +1,40 @@
+{
+  "schema": "el-general-static-engineering-1",
+  "data_boundary": "Original development scenes only, 256 x 256, 2 or 4 sources. Zero risk fitting and no holdout labels.",
+  "g3": {
+    "named_workloads": ["bell-M4", "beads-M2", "bell-M2", "beads-M4"],
+    "originals": {
+      "bell-M2": "2561eb1e68bb2a9567d722c3097ba25aa9ef85aeeda627d0ae3c0d2162c917aa",
+      "bell-M4": "b8feb75ade71f39336f7927ebbb814e828b345932b4f651e0e1cb81137e109c2",
+      "beads-M2": "d5b187fbd93eea875508d54d0a2ca67828c7a3d44ed07b13913ed805020a7ea5",
+      "beads-M4": "Same SH3 checkpoint and the existing calibrated RGB/Z/alpha renders at 41,70,109,5; analytic source photographs acquired for 70 and 109; the sole target is 13."
+    },
+    "frame_sampling": "At most four different targets in equally spaced roster order, wrapped round-robin. Each sample evaluates its actual target again.",
+    "methods": ["MS-L1","MS-ft"],
+    "engines": ["original file entry point including numeric outputs","resident exact bounded cache","resident cache disabled"],
+    "budget_wall_seconds_per_platform": 1800,
+    "independent_cold_processes_per_measured_configuration": 3,
+    "warmup_frames_per_measured_configuration": 1,
+    "required_measured_hot_frames_per_configuration": 200,
+    "candidate_fixtures": "Bell M4 only. Compare 4-thread file words for four targets, eight measured frames per proposed resident thread count.",
+    "candidate_threads": "PyTorch 1,2,4,min(8, available logical CPUs) deduplicated. MS-L1 uses the CPU array backend; no optional thread scan without a demonstrated controllable hotspot.",
+    "selection": "Shortest sample-median resident service among exact-word candidates. If none match, keep the reference and flag the discrepancy.",
+    "order": "File then cached final path across the four original workloads and both models, then uncached comparison. Each file result, source, weights, output NPZ, PNG and optional HTML is read or written in its declared scope.",
+    "time_boundaries": "Fresh process spawn to first result; source decode and preparation; features; model; postprocess; serialization; separately measured HTML; worker service. Resource sample period .1 s, one busy logical CPU = 100 percent."
+  },
+  "g4": {
+    "render_ticket_sha256": "3032e8e1cf2550fb9c93a9788c787a3e83967bd503b6471264cb2e0d81a2293e",
+    "trajectory_cases": ["beads-M2","beads-M4","bell-M2","bell-M4"],
+    "distinct_poses_per_case": 120,
+    "renderer": "gsplat 1.5.3 CUDA, immutable original Gaussian checkpoints, synchronized CPU delivery of RGB, camera Z and alpha",
+    "representative_load": "offset bell cage, M4",
+    "ingress_hz": [10,30],
+    "duration_seconds_per_load": 60,
+    "mac_methods": ["MS-L1","MS-ft"],
+    "windows_methods": ["MS-L1"],
+    "queue": "One serial scorer, capacity one pending, replace latest pending. A result expires when its map/source snapshot is superseded or its prepared-input age exceeds 250 ms.",
+    "precondition": "Every original trajectory frame has exact numerical word checks against the independent file-scoring entry. Every serviced timed frame must match its offline digest.",
+    "switch": {"source_sequence":"beads-M4","hz":10,"seconds":6,"offered_indices":[0,20,40],"snapshots":["SH3","SH0 with previous sources","SH0 with new interior camera and actual new source photograph"],"require":"source prepare misses on all three snapshots, distinct map bytes, rerendered target and source evidence, distinct source bytes"},
+    "denominators": "Every offered frame receives one terminal outcome. Full-canvas pixel counts are reported for scored frames, including unknown. Repeated offers do not increase scientific quality sample count."
+  }
+}

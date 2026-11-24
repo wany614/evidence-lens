@@ -4,6 +4,8 @@
 
 The default **MS-L1** uses the released linear model and its original cutoff of **0.06428983435034752**. The wheel includes its coefficients and preprocessing. Python 3.11 or later, NumPy and Pillow are sufficient for the default path. A prepared bundle supplies the images, calibrated cameras and renderer outputs. The scoring command performs no reconstruction or rendering.
 
+The current four-model replay archive includes both M2 and M4 for two authored scenes, sixteen HTML reports and an installed-wheel grader. The resident API scores arrays with the same frozen kernels and an explicit byte-limited cache. [Four-model reports](../../examples/general-four-models/README.md) · [Archive and grading commands](original-archive.md) · [Resident API](resident.md) · [Numerical comparison](numerical-bridge.md)
+
 ## Run the original example
 
 From a source checkout, install with `python -m pip install .` in a fresh virtual environment. Alternatively, the portable example includes the universal wheel. Install that wheel from the unpacked directory, then run:

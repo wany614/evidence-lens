@@ -12,9 +12,10 @@ from time import perf_counter
 import numpy as np
 from PIL import Image, __version__ as pillow_version
 
+from evidence_lens.features import extract_features
 from evidence_lens.l1 import risk_state
-from evidence_lens.multisource import REASONS, extract_ordered
-from evidence_lens.multisource_model import light_risk, load_light, load_transfer, transfer_risk
+from evidence_lens.multisource import REASONS, _extract_ordered
+from evidence_lens.multisource_model import light_risk, load_light, load_transfer, transfer_feature_risk
 from evidence_lens.scoring_io import alpha_valid, depth_valid, new_output, rgb_valid
 
 from .bundle import Bundle
@@ -76,14 +77,64 @@ def models(method, cpu_dir, threads):
     return model, spec
 
 
-def calculate(bundle, view, frame, sources, method, m, tau):
-    target_cam = bundle.cameras[view]
+def calculate(bundle, view, frame, sources, method, m, tau, *, timing=None):
+    return calculate_frame(
+        frame,
+        bundle.cameras[view],
+        sources,
+        bundle.primary,
+        bundle.producer["depth_verified"],
+        method,
+        m,
+        tau,
+        timing=timing,
+    )
+
+
+def calculate_frame(
+    frame,
+    target_cam,
+    sources,
+    primary,
+    verified,
+    method,
+    m,
+    tau,
+    *,
+    rays=None,
+    self_mae_maps=None,
+    timing=None,
+):
+    started = perf_counter()
+    if frame is not None:
+        if method == "B-L1-transfer":
+            photo, rendered, camera = sources[primary]
+            feat = extract_features(photo, rendered, frame, camera, target_cam, verified)
+        else:
+            feat = _extract_ordered(
+                frame,
+                target_cam,
+                tuple(sources.items()),
+                depth_verified=verified,
+                rays=rays,
+                self_mae_maps=self_mae_maps,
+            )
+    after_features = perf_counter()
     if frame is None:
         risk = np.full(target_cam.shape, np.nan, np.float32)
+    elif method == "B-L1-transfer":
+        risk = transfer_feature_risk(feat, m)
+    elif method == "MS-L1":
+        risk = light_risk(feat, *m)
+    else:
+        from evidence_lens_multirisk.deploy import score_grid
+
+        original = score_grid(m, frame["rgb"], feat["X"], feat["scoreable"], "cpu")
+        risk = original["risk"]
+    after_model = perf_counter()
+    if frame is None:
         why = np.full(target_cam.shape, REASON_NAMES.index("render_failed"), np.uint8)
     elif method == "B-L1-transfer":
-        verified = bundle.producer["depth_verified"]
-        risk = transfer_risk(frame, target_cam, sources[bundle.primary], m, verified)
         why = np.select(
             [
                 np.full(target_cam.shape, not verified),
@@ -95,17 +146,8 @@ def calculate(bundle, view, frame, sources, method, m, tau):
             default=0,
         ).astype(np.uint8)
     else:
-        feat = extract_ordered(
-            frame, target_cam, tuple(sources.items()), depth_verified=bundle.producer["depth_verified"]
-        )
         why = feat["unknown_reason"].copy()
-        if method == "MS-L1":
-            risk = light_risk(feat, *m)
-        else:
-            from evidence_lens_multirisk.deploy import score_grid
-
-            original = score_grid(m, frame["rgb"], feat["X"], feat["scoreable"], "cpu")
-            risk = original["risk"]
+        if method != "MS-L1":
             require(
                 np.array_equal(original["state"], risk_state(risk, tau))
                 and np.array_equal(original["valid"], np.isfinite(risk)),
@@ -117,7 +159,14 @@ def calculate(bundle, view, frame, sources, method, m, tau):
         np.array_equal(why == 0, valid) and np.all((risk[valid] >= 0) & (risk[valid] <= 1)),
         "invalid risk or reason partition",
     )
-    return {"risk": risk, "valid": valid, "state": risk_state(risk, tau), "unknown_reason": why}
+    result = {"risk": risk, "valid": valid, "state": risk_state(risk, tau), "unknown_reason": why}
+    if timing is not None:
+        timing.update(
+            feature_seconds=after_features - started,
+            model_seconds=after_model - after_features,
+            postprocess_seconds=perf_counter() - after_model,
+        )
+    return result
 
 
 def counts(a):
@@ -167,6 +216,7 @@ def score(
     after_load = perf_counter()
     source_ids = (bundle.primary,) if method == "B-L1-transfer" else bundle.order
     sources = {s: bundle.source(s) for s in source_ids}
+    source_seconds = perf_counter() - after_load
     observations = []
     with new_output(output) as stage:
 
@@ -194,7 +244,10 @@ def score(
         for i, t in enumerate(bundle.targets):
             tick = perf_counter()
             frame = bundle.frame(t)
-            a = calculate(bundle, t, frame, sources, method, m, spec["threshold"])
+            decoded = perf_counter()
+            timing = {"target_decode_seconds": decoded - tick}
+            a = calculate(bundle, t, frame, sources, method, m, spec["threshold"], timing=timing)
+            serialization = perf_counter()
             raw = io.BytesIO()
             np.savez_compressed(raw, **a)
             folder = f"views/{i:03d}/"
@@ -211,6 +264,7 @@ def score(
                     if frame is None
                     else save(folder + "prediction.png", rgb_preview(frame["rgb"])),
                     "read_score_write_seconds": perf_counter() - tick,
+                    "timing": timing,
                 }
             )
             if selected and selected["applied"]:
@@ -221,6 +275,7 @@ def score(
                     "counts": state_counts(state),
                     "state": save(folder + "calibrated-state.npy", raw_state.getvalue()),
                 }
+            timing["serialization_seconds"] = perf_counter() - serialization
         summary = {k: sum(x["counts"][k] for x in observations) for k in observations[0]["counts"]}
         if selected and selected["applied"]:
             selected["counts"] = {
@@ -261,6 +316,7 @@ def score(
                 "device": "cpu",
                 "configured_neural_threads": threads if method.startswith(("MS-ft", "MS-frozen")) else None,
                 "bundle_and_model_load_seconds": after_load - started,
+                "source_decode_seconds": source_seconds,
                 "worker_to_receipt_seconds": perf_counter() - started,
                 "process_environment": {
                     "python": sys.version.split()[0],

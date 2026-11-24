@@ -331,7 +331,7 @@ def render(root, output, expected_sha256=None):
     prov = "".join(f"<tr><th>{esc(k)}</th><td><code>{esc(n)}</code></td></tr>" for k, n in details)
     out = f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Novel-view risk report · {esc(r["method"])}</title><style>{STYLE}</style>
 <main>{header}<div class="stats">{stats}</div><h2>Source photographs</h2><div class="sources">{"".join(source_tiles)}</div>
-<h2>Target predictions</h2><p>{calibration_note}</p><p>Risk ranks potential reconstruction error. The original model threshold assigns low and high states. Unknown marks missing evidence. Coverage uses every pixel on the target canvas, including failed renders.</p>
+<h2>Target predictions</h2><p>{calibration_note}</p><p>CPU scoring uses prepared 256 × 256 RGB, camera-Z and opacity. Rendering new views from a supported Gaussian asset uses the separate CUDA gsplat renderer. Risk ranks potential reconstruction error. The original threshold assigns low and high states. Unknown marks missing evidence. Coverage includes every target pixel.</p>
 <div class="legend">Risk 0<span class="scale"></span>1 &nbsp; {legend}</div>
 <p class="filter" hidden><label for="pick">Target view </label><select id="pick">{options}<option value="all">All views</option></select></p>
 {"".join(parts)}<details><summary>Model, inputs and measured cost</summary><p>Verified model domain: {esc(r["tested_domain"])}</p><table>{prov}</table></details>
