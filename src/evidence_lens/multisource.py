@@ -175,6 +175,17 @@ def extract(target, target_camera, sources, *, depth_verified=True):
     """Accept only legal (original source RGB, same-reconstruction self render, source Camera) tuples."""
     if type(depth_verified) is not bool or not sources or not set(sources) <= set(SOURCES):
         raise ValueError("invalid predicted-depth validation or source IDs")
+    return extract_ordered(
+        target, target_camera, [(name, sources[name]) for name in sorted(sources)], depth_verified=depth_verified
+    )
+
+
+def extract_ordered(target, target_camera, ordered_sources, *, depth_verified=True):
+    """Apply the frozen numerical kernel to real source IDs in an explicitly authorized order."""
+    ordered_sources = tuple(ordered_sources)
+    names = [name for name, _ in ordered_sources]
+    if type(depth_verified) is not bool or not names or len(set(names)) != len(names):
+        raise ValueError("invalid predicted-depth validation or ordered sources")
     validate_render(target, target_camera)
     rgb, z, alpha = (target[k] for k in ("rgb", "z", "alpha"))
     tz = depth_valid(z) & depth_verified
@@ -186,8 +197,7 @@ def extract(target, target_camera, sources, *, depth_verified=True):
     names = ("inside", "comparable", "support", "depth_conflict", "colour_conflict")
     counts = {k: np.zeros(z.shape, np.uint8) for k in names}
     quantities = {k: [] for k in ("alpha", "residual", "angle", "target_mae", "self_mae", "colour")}
-    for name in sorted(sources):
-        image, frame, camera = sources[name]
+    for name, (image, frame, camera) in ordered_sources:
         check_rgb(image, camera, f"original {name}")
         if not rgb_valid(image).all():
             raise ValueError("an original source PNG must be finite")
@@ -229,7 +239,7 @@ def extract(target, target_camera, sources, *, depth_verified=True):
     def reduced(name, kind):
         return _reduce(quantities[name], kind) if quantities[name] else empty
 
-    n = len(sources)
+    n = len(ordered_sources)
     sup, comp, inside = counts["support"], counts["comparable"], counts["inside"]
     conflict = counts["depth_conflict"] + counts["colour_conflict"]
     pair = [np.abs(a - b).mean(axis=-1) for a, b in itertools.combinations(quantities["colour"], 2)]

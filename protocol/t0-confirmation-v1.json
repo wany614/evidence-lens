@@ -1,0 +1,149 @@
+{
+  "schema": "el-t0-confirmation-protocol-1",
+  "recovery_code_commit": "bc8da49815751fa7a6e191d0dc17c9f987f9c825",
+  "release_tag": "v0.3.0-rc.1",
+  "release_commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+  "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "source_rules": {
+    "source": "official DTU calibrated rectified collection, lighting 3, same registered source/target cameras and use rights",
+    "eligibility": "New physical subject with all ten required frames and finite compatible calibrations, independently documented identity, required rights and accessible within a separately registered storage/transfer budget. Exclude set1/set6, previously exposed subjects, rotation variants and ambiguous or duplicate physical subjects. Log every exclusion from catalogue evidence.",
+    "ordering": "Sort eligible official scan IDs as integers ascending; retain the lowest ID of each independently established physical family. A future confirmation takes the first up to six eligible families, reports a shortfall below four, and preserves failures."
+  },
+  "roles": {
+    "D": [
+      "set1",
+      "set6",
+      "exposed authored controls"
+    ],
+    "T0": "first up to six new eligible independent physical families by integer scan ID, with documented official mapping; keep all post-registration failures"
+  },
+  "camera": {
+    "sources": {
+      "s00": 24,
+      "s01": 23,
+      "s02": 17,
+      "s03": 22
+    },
+    "targets": {
+      "v01": 16,
+      "v02": 18,
+      "v03": 25,
+      "v04": 37,
+      "v05": 35,
+      "v06": 36
+    },
+    "M2": [
+      "s00",
+      "s03"
+    ],
+    "M4": [
+      "s00",
+      "s01",
+      "s02",
+      "s03"
+    ],
+    "light": 3,
+    "crop_sha256": "28fc8c466883f97c53bce0673e79980bc5f211db1d443c7ef5f12adec8d68350",
+    "rig_sha256": "764f81c491969dcd1dfdbbd2443ce29cba354b26af1a87ac5260422526ca235d",
+    "views_sha256": "11b9da336f3cdef53d5703d7496ea11ab5694bb0656e31e8b53d2eac386be440",
+    "plan_sha256": "e688ed923a57c65bc73be6a2ca794e8cc23ea554474ee825d65a92450fddbdbd"
+  },
+  "converter": "dtu-crop256-v1",
+  "recipe": "r2-scale-decay-02",
+  "frozen_endpoint_updates": 5000,
+  "maximum_gaussians": 20000,
+  "allowed_reads_before_reference_opening": "condition-specific source photographs and their self-renders, registered camera geometry, frozen models and derived target RGB/Z/alpha predictions; no target photographs, reference scans or object boxes",
+  "initialization": "apply frozen source-only eligibility; otherwise run the original 2048 ray hypotheses in endpoint_stratified_inverse_depth. Failure to triangulate is reported separately from final failure.",
+  "D_fixture": "only one complete forced fallback fit on set1 M2, never inspect its target reference or error; exclude this fit from T0",
+  "score_scopes": {
+    "B-L1-transfer": "one",
+    "MS-L1": "all",
+    "MS-frozen": "all",
+    "MS-ft": "all"
+  },
+  "score_scope_one_source": "s00",
+  "model_input_columns": {
+    "B-L1-transfer": 26,
+    "MS-L1": 39,
+    "MS-frozen": 39,
+    "MS-ft": 39
+  },
+  "evaluation": {
+    "label": "float32 mean absolute three-channel difference of display-sRGB, strictly > float32(0.05)",
+    "primary_domain": "full 256x256 center crop; predicted alpha does not mask RGB labels",
+    "ranking": "within_new = E intersect finite score of all four released methods; AP paired with prevalence over exactly those defined views",
+    "matched_coverage": "recover original per-view q% of V (1,2,5,10,20,40,60,80), same exact-k rounding, hash-seeded PCG64 tie ranks over the whole grid, and nominal MS-L1 anchor; no old-version comparator on new objects",
+    "aggregation": "six views per condition; show pooled numerators and denominators, mean of defined view AP with companion mean prevalence. Compare M2 and M4 separately across equally weighted physical objects; provide defined object/view counts. No imputation of missing MAE.",
+    "counts": [
+      "V",
+      "E",
+      "Y",
+      "S",
+      "SY",
+      "C",
+      "CY",
+      "L",
+      "LY",
+      "H",
+      "HY",
+      "U",
+      "UY"
+    ],
+    "unknown": "E without finite method score; missing prediction reduces E, missing reference implies unknown V. Count all scheduled methods and objects in system completion.",
+    "objects_without_masks": "object-only domain N/A",
+    "opening": "require the complete frozen object x condition matrix; for each expected view require all four original score maps bound to its native prediction or a sealed terminal failure receipt. Once per whole study, by independent evaluator. No substitution or performance-triggered retry."
+  },
+  "budget": {
+    "scientific_fits_per_object": 2,
+    "source_updates_per_fit": 5000,
+    "maximum_fits": 12,
+    "maximum_score_cells": 288,
+    "D_forced_fallback_fits": 1,
+    "risk_training": 0,
+    "calibration": 0,
+    "NBV": 0,
+    "DTU_network_bytes": 21474836480,
+    "active_batch_target_bytes": 21474836480,
+    "free_floor_bytes": 32212254720,
+    "scientific_retry_per_issue": 1
+  },
+  "source_sha256": {
+    "protocol/reconstruction-recovery-v1.json": "82619d87327135f0f999fab67b468de121b2fb95c77fab3af55b90285d0b2c8d",
+    "protocol/dtu-external-v1.json": "7460bff77c65709cf2bd3f1273ff67a71fa9a400b80c809e9343e637a08d012b",
+    "protocol/recovery-initialization-v1.json": "024a4a08552e748afafc3ead27ba745d6f96e84757572e5fbf9aec387653d086",
+    "protocol/recovery-gsplat-scale-decay-v1.json": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+    "protocol/recovery-risk-comparison-v1.json": "d08647fd05b3c3ae1fedab75ea77b9cf869b4b7d0a3d3f3afca0f45445b79e31",
+    "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+    "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+    "scripts/recovery_eval_coverage.py": "5759c05cae1d2dc7269fdeb41ebd297e7dbc43109153667d175f7b7203cc177a",
+    "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+    "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27"
+  },
+  "rights": "Official DTU photographs and derived imagery stay private; share original software, authored example, citations, identities and numerical summaries."
+}

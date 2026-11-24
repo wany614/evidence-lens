@@ -1,0 +1,12 @@
+{
+  "authored_source_used_as_surrogate_for_shape": true,
+  "complete_maps_tested": 24,
+  "deliberately_absent_maps_tested": 24,
+  "evaluation_code_sha256": "6399572e8bd9c74dd2c9c4caf0a018c6d303445792c55febbe07bb0f725325b3",
+  "panels_rendered": 12,
+  "physical_T0_objects": 0,
+  "run_id": "20261124T012348959977Z-20ab3779dad24e9b",
+  "schema": "el-t0-evaluation-engineering-fixture-1",
+  "scientific_metrics_exported": false,
+  "target_reference_files_opened": 0
+}

@@ -1,0 +1,102 @@
+{
+  "archive_bytes": 129593443783,
+  "bounds": "No transfer of an entire collection archive; same lab setup and incidental background objects can recur; new physical identity is documented for the named principal subject.",
+  "calibration_cross_archive_anchors": 20,
+  "checksum": "All successful photograph requests checked for exact HTTP 206 ranges, strong ETag, original ZIP CRC and received SHA-256. The M4 common endpoints match M2 in original bytes, PNG bytes and decoded pixel SHA.",
+  "existing_data_volume_metadata": {
+    "directories": 2,
+    "regular_files": 0
+  },
+  "freeze": {
+    "manifest_sha256": "6fecea74ead7246c8bdc9db4ed2b92dd9cedfc53027af120f1ecbb29bfa0c0e1",
+    "member": "payload/freeze.json",
+    "run_id": "20261124T011650674892Z-3792a73748f64d36",
+    "sha256": "e26aefdc19ca66a02a294b2c5d258f93b1014b92da7e49a6335d17c375259944"
+  },
+  "inventory": {
+    "conservatively_grouped_or_rotated_duplicate": 15,
+    "eligible_beyond_registered_budget": 16,
+    "physical_identity_unresolved": 85,
+    "previously_exposed": 2,
+    "selected": 6
+  },
+  "metadata_failed_runs": 3,
+  "metadata_http_body_bytes": 48868726,
+  "metadata_sealed_runs": 8,
+  "network_accounting": "HTTP entity bytes read, exclusive of transport headers. HTTP discovery-engine results are not measured by the acquisition recorder.",
+  "objects": [
+    {
+      "documented_subject": "rabbit statue",
+      "object_id": "set2",
+      "physical_family_id": "dtu-subject-2"
+    },
+    {
+      "documented_subject": "bird doll",
+      "object_id": "set4",
+      "physical_family_id": "dtu-subject-4"
+    },
+    {
+      "documented_subject": "cardboard box",
+      "object_id": "set10",
+      "physical_family_id": "dtu-subject-10"
+    },
+    {
+      "documented_subject": "power supply",
+      "object_id": "set11",
+      "physical_family_id": "dtu-subject-11"
+    },
+    {
+      "documented_subject": "beverage cans",
+      "object_id": "set12",
+      "physical_family_id": "dtu-subject-12"
+    },
+    {
+      "documented_subject": "pumpkin",
+      "object_id": "set31",
+      "physical_family_id": "dtu-subject-31"
+    }
+  ],
+  "official_directories": 54373,
+  "opening": null,
+  "outputs": {
+    "metadata-operations.csv": "10128e638d181465c345731fd88f7fedf0309469be1b3c6c35b1851eb3ab4110",
+    "photo-hashes.csv": "035de72753afb64e3ce37725c8e0db56bcd189bfee67c99bdc171b1625a95080",
+    "photograph-transfers.csv": "eacf008547bf6406a8a42f27dcf8deec1d2a47568e50c433706a6ea6c718c661",
+    "physical-eligibility.csv": "38abe33624b771dd562f3086a64556c46e8535587c60e85d8cc8eb83e1b0abff"
+  },
+  "per_role": {
+    "references": {
+      "cached_endpoint_bytes": 0,
+      "cropped_png_bytes": 0,
+      "elapsed_s": 0,
+      "http_body_bytes": 0,
+      "http_requests": 0,
+      "sealed_manifest_member_bytes": 0,
+      "unique_photographs": 0,
+      "unpacked_from_http_bytes": 0,
+      "views": 0
+    },
+    "sources": {
+      "cached_endpoint_bytes": 31621394,
+      "cropped_png_bytes": 4264585,
+      "elapsed_s": 25.630461416978505,
+      "http_body_bytes": 63049695,
+      "http_requests": 84,
+      "sealed_manifest_member_bytes": 198780364,
+      "unique_photographs": 24,
+      "unpacked_from_http_bytes": 63048047,
+      "views": 36
+    }
+  },
+  "phase": "sources",
+  "photo_acquisition_failure_runs": 0,
+  "photo_acquisition_failures": [],
+  "roster": {
+    "manifest_sha256": "6537852178662a8c87dfecb7440e1d0b4cc1a4316f34e67cf8b6fdc4c026d028",
+    "member": "payload/roster.json",
+    "run_id": "20261124T011500481447Z-a60b8b0a33144727",
+    "sha256": "f83e1327701a1469321ba1c7259d5752cb4ef5cb88f6aad33ef773fd865a0e99"
+  },
+  "schema": "el-t0-intake-audit-1",
+  "successful_scientific_photo_acquisitions": 12
+}

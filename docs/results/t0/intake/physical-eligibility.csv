@@ -1,0 +1,125 @@
+scan_id,physical_family_id,official_paper_evaluation,ten_fixed_members_available,dturotation_scan_ids,known_or_possible_shared_scan_ids,decision
+1,dtu-subject-1,1,1,,1,previously_exposed
+2,dtu-subject-2,1,1,,2,selected
+3,,1,1,,,physical_identity_unresolved
+4,dtu-subject-4,1,1,,4 49,selected
+5,,1,1,,,physical_identity_unresolved
+6,dtu-subject-6,1,1,,6,previously_exposed
+7,,0,1,,,physical_identity_unresolved
+8,,0,1,,,physical_identity_unresolved
+9,,1,1,,,physical_identity_unresolved
+10,dtu-subject-10,1,1,,10 95,selected
+11,dtu-subject-11,1,1,,11,selected
+12,dtu-subject-12,1,1,,12 59 97,selected
+13,,1,1,,,physical_identity_unresolved
+14,,1,1,,,physical_identity_unresolved
+15,,1,1,,,physical_identity_unresolved
+16,,1,1,,,physical_identity_unresolved
+17,,1,1,,,physical_identity_unresolved
+18,,1,1,,,physical_identity_unresolved
+19,,1,1,,,physical_identity_unresolved
+20,,0,1,,,physical_identity_unresolved
+21,,1,1,,,physical_identity_unresolved
+22,,1,1,,,physical_identity_unresolved
+23,,1,1,,,physical_identity_unresolved
+24,,1,1,,,physical_identity_unresolved
+25,,1,1,,,physical_identity_unresolved
+26,,0,1,,,physical_identity_unresolved
+27,,0,1,,,physical_identity_unresolved
+28,,1,1,,,physical_identity_unresolved
+29,,1,1,,,physical_identity_unresolved
+30,,1,1,,,physical_identity_unresolved
+31,dtu-subject-31,1,1,,31,selected
+32,dtu-subject-32,1,1,,32,eligible_beyond_registered_budget
+33,,1,1,,,physical_identity_unresolved
+34,dtu-subject-34,1,1,,34 36,eligible_beyond_registered_budget
+35,,1,1,,,physical_identity_unresolved
+36,dtu-subject-34,1,1,,34 36,conservatively_grouped_or_rotated_duplicate
+37,dtu-subject-37,1,1,,37,eligible_beyond_registered_budget
+38,,1,1,,,physical_identity_unresolved
+39,,1,1,,,physical_identity_unresolved
+40,,1,1,,,physical_identity_unresolved
+41,,1,1,,,physical_identity_unresolved
+42,dtu-subject-42,1,1,,42,eligible_beyond_registered_budget
+43,,1,1,,,physical_identity_unresolved
+44,,1,1,,,physical_identity_unresolved
+45,dtu-subject-45,1,1,,45,eligible_beyond_registered_budget
+46,,1,1,,,physical_identity_unresolved
+47,,1,1,,,physical_identity_unresolved
+48,dtu-subject-48,1,1,,48,eligible_beyond_registered_budget
+49,dtu-subject-4,1,1,,4 49,conservatively_grouped_or_rotated_duplicate
+50,,1,1,,,physical_identity_unresolved
+51,,1,1,,,physical_identity_unresolved
+52,dtu-subject-52,0,1,,52,eligible_beyond_registered_budget
+53,,0,1,,,physical_identity_unresolved
+54,dtu-subject-54,0,1,,54,eligible_beyond_registered_budget
+55,,1,1,55 56 57 58,55 56 57 58,physical_identity_unresolved
+56,,0,1,55 56 57 58,55 56 57 58,physical_identity_unresolved
+57,,0,1,55 56 57 58,55 56 57 58,physical_identity_unresolved
+58,,0,1,55 56 57 58,55 56 57 58,physical_identity_unresolved
+59,dtu-subject-12,1,1,,12 59 97,conservatively_grouped_or_rotated_duplicate
+60,,1,1,,,physical_identity_unresolved
+61,dtu-subject-61,1,1,,61,eligible_beyond_registered_budget
+62,dtu-subject-62,1,1,,62,eligible_beyond_registered_budget
+63,,1,1,,,physical_identity_unresolved
+64,,1,1,,,physical_identity_unresolved
+65,,1,1,65 66 67 68,65 66 67 68,physical_identity_unresolved
+66,,0,1,65 66 67 68,65 66 67 68,physical_identity_unresolved
+67,,0,1,65 66 67 68,65 66 67 68,physical_identity_unresolved
+68,,0,1,65 66 67 68,65 66 67 68,physical_identity_unresolved
+69,,1,1,69 70 71 72 73,69 70 71 72 73,physical_identity_unresolved
+70,,0,1,69 70 71 72 73,69 70 71 72 73,physical_identity_unresolved
+71,,0,1,69 70 71 72 73,69 70 71 72 73,physical_identity_unresolved
+72,,0,1,69 70 71 72 73,69 70 71 72 73,physical_identity_unresolved
+73,,0,1,69 70 71 72 73,69 70 71 72 73,physical_identity_unresolved
+74,,1,1,,,physical_identity_unresolved
+75,dtu-subject-75,1,1,,75,eligible_beyond_registered_budget
+76,dtu-subject-76,1,1,,76,eligible_beyond_registered_budget
+77,dtu-subject-77,1,1,,77,eligible_beyond_registered_budget
+82,,0,1,,,physical_identity_unresolved
+83,,1,1,,,physical_identity_unresolved
+84,,1,1,,,physical_identity_unresolved
+85,,0,1,,,physical_identity_unresolved
+86,,0,1,,,physical_identity_unresolved
+87,,0,1,,,physical_identity_unresolved
+88,,0,1,,,physical_identity_unresolved
+89,,0,1,,,physical_identity_unresolved
+90,,0,1,,,physical_identity_unresolved
+91,,0,1,,,physical_identity_unresolved
+92,,0,1,,,physical_identity_unresolved
+93,,1,1,,,physical_identity_unresolved
+94,,1,1,,,physical_identity_unresolved
+95,dtu-subject-10,1,1,,10 95,conservatively_grouped_or_rotated_duplicate
+96,,1,1,,,physical_identity_unresolved
+97,dtu-subject-12,1,1,,12 59 97,conservatively_grouped_or_rotated_duplicate
+98,,1,1,,,physical_identity_unresolved
+99,,1,1,,,physical_identity_unresolved
+100,,1,1,,,physical_identity_unresolved
+101,,0,1,,,physical_identity_unresolved
+102,,1,1,,,physical_identity_unresolved
+103,dtu-subject-103,1,1,,103,eligible_beyond_registered_budget
+104,,0,1,,,physical_identity_unresolved
+105,,1,1,,,physical_identity_unresolved
+106,,1,1,106 107 108 109,106 107 108 109,physical_identity_unresolved
+107,,0,1,106 107 108 109,106 107 108 109,physical_identity_unresolved
+108,,0,1,106 107 108 109,106 107 108 109,physical_identity_unresolved
+109,,0,1,106 107 108 109,106 107 108 109,physical_identity_unresolved
+110,dtu-subject-110,1,1,110 111 112 113,110 111 112 113,eligible_beyond_registered_budget
+111,dtu-subject-110,0,1,110 111 112 113,110 111 112 113,conservatively_grouped_or_rotated_duplicate
+112,dtu-subject-110,0,1,110 111 112 113,110 111 112 113,conservatively_grouped_or_rotated_duplicate
+113,dtu-subject-110,0,1,110 111 112 113,110 111 112 113,conservatively_grouped_or_rotated_duplicate
+114,,1,1,114 115 116 117,114 115 116 117,physical_identity_unresolved
+115,,0,1,114 115 116 117,114 115 116 117,physical_identity_unresolved
+116,,0,1,114 115 116 117,114 115 116 117,physical_identity_unresolved
+117,,0,1,114 115 116 117,114 115 116 117,physical_identity_unresolved
+118,dtu-subject-118,1,1,118 119 120 121,118 119 120 121 122 123 124 125,eligible_beyond_registered_budget
+119,dtu-subject-118,0,1,118 119 120 121,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+120,dtu-subject-118,0,1,118 119 120 121,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+121,dtu-subject-118,0,1,118 119 120 121,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+122,dtu-subject-118,1,1,122 123 124 125,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+123,dtu-subject-118,0,1,122 123 124 125,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+124,dtu-subject-118,0,1,122 123 124 125,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+125,dtu-subject-118,0,1,122 123 124 125,118 119 120 121 122 123 124 125,conservatively_grouped_or_rotated_duplicate
+126,,1,1,,,physical_identity_unresolved
+127,,1,1,,,physical_identity_unresolved
+128,,1,1,,,physical_identity_unresolved

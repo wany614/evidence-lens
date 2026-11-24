@@ -1,0 +1,108 @@
+{
+  "schema": "el-t0-reconstruction-readback-1",
+  "run_id": "20261124T011724106134Z-89b47b009fcd435e",
+  "object_id": "set1",
+  "condition": "M2",
+  "forced_fallback_fixture": true,
+  "scientific_sample": false,
+  "source": {
+    "manifest_sha256": "15a943f932cee0007b603f20c801297f75754d62a864e030ddceb44b01c77c25",
+    "member": "payload/bridge.json",
+    "run_id": "20261124T010903238246Z-4e2a63632657456f",
+    "sha256": "b5c2865afd5ebb385957309cef165c527d91a72dc7c02e2a46a370c4c6ba32eb"
+  },
+  "initialization": {
+    "manifest_sha256": "f90868b923421774bc63b0259df81acb9e17fe662f4e7621e671e0000907ec4d",
+    "member": "payload/init.json",
+    "run_id": "20261124T010907891678Z-cfd36864f1f046a1",
+    "sha256": "af58465921e84d817361bd8a272be5b0ec01bda25c696f94410fdeac8858afdd"
+  },
+  "actual_method": "endpoint_stratified_inverse_depth",
+  "initial_points": 2048,
+  "natural_eligibility": {
+    "failed_gates": [],
+    "independent_tracks": 52,
+    "qualified": true,
+    "source_coverage": {
+      "s00": {
+        "histogram_4x4": [
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            10,
+            15,
+            3
+          ],
+          [
+            0,
+            3,
+            9,
+            1
+          ]
+        ],
+        "observed_tracks": 52,
+        "occupied_cells": 8
+      },
+      "s03": {
+        "histogram_4x4": [
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            12,
+            11,
+            3
+          ],
+          [
+            0,
+            10,
+            4,
+            1
+          ]
+        ],
+        "observed_tracks": 52,
+        "occupied_cells": 8
+      }
+    }
+  },
+  "target_reference_files_opened": 0,
+  "risk_scorings": 0,
+  "verified": true,
+  "status": "succeeded",
+  "completed_steps": 5000,
+  "cap": 20000,
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "case_sha256": "5daf5eec0a1b78fd86a40fee3714fb086cb38acbfeea24d025a199239a274f43",
+  "source_renderer_id": "20261124T011247422937Z-2da8de0b23cf4f96",
+  "states": {
+    "generation": "succeeded",
+    "render": "succeeded"
+  },
+  "original": {
+    "manifest_sha256": "05cbab28bc139b800631ec200de1db15eeb31fe0844bd631b428cde705a9d6c1",
+    "member": "payload/reconstruction-readback.json",
+    "run_id": "20261124T011724106134Z-89b47b009fcd435e",
+    "sha256": "d1e2ab296db7bc9d2f352e953721e11cefe717b3d9a5b60878d28e6d5c58ecb6"
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "conditions": [
+    "M2",
+    "M4"
+  ],
+  "expected_fits": 12,
+  "expected_scores": 288,
+  "families": {
+    "set10": "dtu-subject-10",
+    "set11": "dtu-subject-11",
+    "set12": "dtu-subject-12",
+    "set2": "dtu-subject-2",
+    "set31": "dtu-subject-31",
+    "set4": "dtu-subject-4"
+  },
+  "models": {
+    "B-L1-transfer": {
+      "model_id": "20261123T132250544881Z-e115a32a4501435b",
+      "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+      "threshold": 0.43483029305934906,
+      "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+    },
+    "MS-L1": {
+      "model_id": "20261123T162437825142Z-deffacafa1184806",
+      "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+      "threshold": 0.06428983435034752,
+      "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+    },
+    "MS-frozen": {
+      "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+      "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+      "threshold": 0.11090798303484917,
+      "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+    },
+    "MS-ft": {
+      "model_id": "20261123T163946850310Z-7bba96f006e74705",
+      "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+      "threshold": 0.1158289834856987,
+      "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+    }
+  },
+  "new_scientific_files": {
+    "scripts/t0_authority.py": "dcd36c130eaa51936db944ff0a7ab237b914ee3e89bf33674153466d9c1f0ac9",
+    "scripts/t0_dtu_archive.py": "381ffd03ea4df853ab0dcfa6e27c89e7fc8710d9838f086aec8c52dc883858d1",
+    "scripts/t0_dtu_roster.py": "704fcbe416f29c39ce6f19a2a764da210913cf49ea9d6ca2da24f8a8be94bea2",
+    "scripts/t0_evaluate.py": "6399572e8bd9c74dd2c9c4caf0a018c6d303445792c55febbe07bb0f725325b3",
+    "scripts/t0_records.py": "a3bd014e134e88ee7ad804790cfc1bd985f46444262990f1b162ec7cf43b6f05",
+    "scripts/t0_worker_init.py": "934577b9f8c3b132683fe555bceda8d4acd454c0e54e8ed7c0573823715b6e64",
+    "scripts/t0_worker_pack.py": "a6d3d11382d15110fd4bbb0a1c8d53144852282f1556c0303aa331be3df6d579",
+    "scripts/t0_worker_run.py": "69a800973bbdf9d1de6876c3cee8b02de31dc7789cdc704b08517ff1833ba182"
+  },
+  "object_ids": [
+    "set2",
+    "set4",
+    "set10",
+    "set11",
+    "set12",
+    "set31"
+  ],
+  "protocol": {
+    "D_fixture": "only one complete forced fallback fit on set1 M2, never inspect its target reference or error; exclude this fit from T0",
+    "allowed_reads_before_reference_opening": "condition-specific source photographs and their self-renders, registered camera geometry, frozen models and derived target RGB/Z/alpha predictions; no target photographs, reference scans or object boxes",
+    "budget": {
+      "DTU_network_bytes": 21474836480,
+      "D_forced_fallback_fits": 1,
+      "NBV": 0,
+      "active_batch_target_bytes": 21474836480,
+      "calibration": 0,
+      "free_floor_bytes": 32212254720,
+      "maximum_fits": 12,
+      "maximum_score_cells": 288,
+      "risk_training": 0,
+      "scientific_fits_per_object": 2,
+      "scientific_retry_per_issue": 1,
+      "source_updates_per_fit": 5000
+    },
+    "camera": {
+      "M2": [
+        "s00",
+        "s03"
+      ],
+      "M4": [
+        "s00",
+        "s01",
+        "s02",
+        "s03"
+      ],
+      "crop_sha256": "28fc8c466883f97c53bce0673e79980bc5f211db1d443c7ef5f12adec8d68350",
+      "light": 3,
+      "plan_sha256": "e688ed923a57c65bc73be6a2ca794e8cc23ea554474ee825d65a92450fddbdbd",
+      "rig_sha256": "764f81c491969dcd1dfdbbd2443ce29cba354b26af1a87ac5260422526ca235d",
+      "sources": {
+        "s00": 24,
+        "s01": 23,
+        "s02": 17,
+        "s03": 22
+      },
+      "targets": {
+        "v01": 16,
+        "v02": 18,
+        "v03": 25,
+        "v04": 37,
+        "v05": 35,
+        "v06": 36
+      },
+      "views_sha256": "11b9da336f3cdef53d5703d7496ea11ab5694bb0656e31e8b53d2eac386be440"
+    },
+    "converter": "dtu-crop256-v1",
+    "evaluation": {
+      "aggregation": "six views per condition; show pooled numerators and denominators, mean of defined view AP with companion mean prevalence. Compare M2 and M4 separately across equally weighted physical objects; provide defined object/view counts. No imputation of missing MAE.",
+      "counts": [
+        "V",
+        "E",
+        "Y",
+        "S",
+        "SY",
+        "C",
+        "CY",
+        "L",
+        "LY",
+        "H",
+        "HY",
+        "U",
+        "UY"
+      ],
+      "label": "float32 mean absolute three-channel difference of display-sRGB, strictly > float32(0.05)",
+      "matched_coverage": "recover original per-view q% of V (1,2,5,10,20,40,60,80), same exact-k rounding, hash-seeded PCG64 tie ranks over the whole grid, and nominal MS-L1 anchor; no old-version comparator on new objects",
+      "objects_without_masks": "object-only domain N/A",
+      "opening": "require the complete frozen object x condition matrix; for each expected view require all four original score maps bound to its native prediction or a sealed terminal failure receipt. Once per whole study, by independent evaluator. No substitution or performance-triggered retry.",
+      "primary_domain": "full 256x256 center crop; predicted alpha does not mask RGB labels",
+      "ranking": "within_new = E intersect finite score of all four released methods; AP paired with prevalence over exactly those defined views",
+      "unknown": "E without finite method score; missing prediction reduces E, missing reference implies unknown V. Count all scheduled methods and objects in system completion."
+    },
+    "frozen_endpoint_updates": 5000,
+    "initialization": "apply frozen source-only eligibility; otherwise run the original 2048 ray hypotheses in endpoint_stratified_inverse_depth. Failure to triangulate is reported separately from final failure.",
+    "maximum_gaussians": 20000,
+    "model_input_columns": {
+      "B-L1-transfer": 26,
+      "MS-L1": 39,
+      "MS-frozen": 39,
+      "MS-ft": 39
+    },
+    "models": {
+      "B-L1-transfer": {
+        "model_id": "20261123T132250544881Z-e115a32a4501435b",
+        "model_index_sha256": "cd8573eaf809000be8510a7aa28f6f992215b75dbe2da44048ed1d0e34a18ca2",
+        "threshold": 0.43483029305934906,
+        "weights_sha256": "91beba595896a55b895237e4212eca36140790bc2d96cfbe42c7adbea2685d66"
+      },
+      "MS-L1": {
+        "model_id": "20261123T162437825142Z-deffacafa1184806",
+        "model_index_sha256": "b77aaa5444be8a21a29a1aad4960fe969c2d6fe3b81bc23db127722e2ddd6b25",
+        "threshold": 0.06428983435034752,
+        "weights_sha256": "d0a42f0458390710aba87d43da48770309ca78fdf93cfba6a47229e186b9f02a"
+      },
+      "MS-frozen": {
+        "model_id": "20261123T164358150946Z-ea3b69063c2b4e0f",
+        "model_index_sha256": "56991821dcbc3d05e7c7e17466f21c8af764cb772cc6116b42f53b99a91eeb4a",
+        "threshold": 0.11090798303484917,
+        "weights_sha256": "00be5de5abd30bf3e7eb1686e458a96e3ca55dffd6b892af862c98913c85c0b6"
+      },
+      "MS-ft": {
+        "model_id": "20261123T163946850310Z-7bba96f006e74705",
+        "model_index_sha256": "c2b465507c0caee5470af927be670bcaaa89396eecb6c262d778feb19b431318",
+        "threshold": 0.1158289834856987,
+        "weights_sha256": "99dfef7c82b808939895ffbbd0327513011920e1f47a5d0556d0eb6c6c6d0fd3"
+      }
+    },
+    "recipe": "r2-scale-decay-02",
+    "recovery_code_commit": "bc8da49815751fa7a6e191d0dc17c9f987f9c825",
+    "release_commit": "a65b1caea258d991573bddb7a65f2bc4f9945fd7",
+    "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+    "release_tag": "v0.3.0-rc.1",
+    "rights": "Official DTU photographs and derived imagery stay private; share original software, authored example, citations, identities and numerical summaries.",
+    "roles": {
+      "D": [
+        "set1",
+        "set6",
+        "exposed authored controls"
+      ],
+      "T0": "first up to six new eligible independent physical families by integer scan ID, with documented official mapping; keep all post-registration failures"
+    },
+    "schema": "el-t0-confirmation-protocol-1",
+    "score_scope_one_source": "s00",
+    "score_scopes": {
+      "B-L1-transfer": "one",
+      "MS-L1": "all",
+      "MS-frozen": "all",
+      "MS-ft": "all"
+    },
+    "source_rules": {
+      "eligibility": "New physical subject with all ten required frames and finite compatible calibrations, independently documented identity, required rights and accessible within a separately registered storage/transfer budget. Exclude set1/set6, previously exposed subjects, rotation variants and ambiguous or duplicate physical subjects. Log every exclusion from catalogue evidence.",
+      "ordering": "Sort eligible official scan IDs as integers ascending; retain the lowest ID of each independently established physical family. A future confirmation takes the first up to six eligible families, reports a shortfall below four, and preserves failures.",
+      "source": "official DTU calibrated rectified collection, lighting 3, same registered source/target cameras and use rights"
+    },
+    "source_sha256": {
+      "protocol/dtu-external-v1.json": "7460bff77c65709cf2bd3f1273ff67a71fa9a400b80c809e9343e637a08d012b",
+      "protocol/reconstruction-recovery-v1.json": "82619d87327135f0f999fab67b468de121b2fb95c77fab3af55b90285d0b2c8d",
+      "protocol/recovery-gsplat-scale-decay-v1.json": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+      "protocol/recovery-initialization-v1.json": "024a4a08552e748afafc3ead27ba745d6f96e84757572e5fbf9aec387653d086",
+      "protocol/recovery-risk-comparison-v1.json": "d08647fd05b3c3ae1fedab75ea77b9cf869b4b7d0a3d3f3afca0f45445b79e31",
+      "scripts/dtu_eval_metrics.py": "b688ae8dc140ff2c94f4fb48da00eb83853b48904dec152eaf1d1408b216215d",
+      "scripts/dtu_score.py": "4a1f4e0561f1a642340d67d9bf83ae4b22d662db91107b2359d5385331f5807b",
+      "scripts/recovery_eval_coverage.py": "5759c05cae1d2dc7269fdeb41ebd297e7dbc43109153667d175f7b7203cc177a",
+      "scripts/recovery_triangulate.py": "fbcb2b8b51ea7f7ede80c5b115e8581e7a4c4611fa83eecf56d4db88b2ef5840",
+      "scripts/recovery_windows.py": "ada703afd15f38c4e12754d6d389774d81a87d4d106cb5ca9e0dda8f8c4d1f27"
+    }
+  },
+  "protocol_sha256": "5ddf5e15e6d0187897860f02f64d008cc5909f50d5c6654e3cc01309e7fcb7bf",
+  "recipe_sha256": "57730c706aaaa2f88c7f39ff179ba04ff971f31e599bf3409a3d545c61d72c98",
+  "release_index_sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d",
+  "required_before_scientific_dispatch": "successful independent D forced-fallback fixture receipt",
+  "roster_sha256": "f83e1327701a1469321ba1c7259d5752cb4ef5cb88f6aad33ef773fd865a0e99",
+  "run_id": "20261124T011650674892Z-3792a73748f64d36",
+  "schema": "el-t0-freeze-1",
+  "sources": {
+    "baseline": {
+      "manifest_sha256": "ac6d459ea2ba41688123811b5cd43b5559d27c4e272babfe7c411cfb1c3990d4",
+      "member": "payload/freeze.json",
+      "run_id": "20261123T223830955940Z-3256d8a180b341b3",
+      "sha256": "2669469cc51eb7d0bcfc95d175b5f0b052373800e2a903da669ffcf3f3b8f07a"
+    },
+    "release": {
+      "manifest_sha256": "0b5ce75ed8670762b035dcf7b9b5820ec47a20a86ac92db08246fead9e8af33a",
+      "member": "payload/cpu/release.json",
+      "run_id": "20261123T193505072501Z-6046afc1fce4480b",
+      "sha256": "150b04e702f5386b5808ac17545cd073e3d4d837ea789e6ae167168ac086084d"
+    },
+    "roster": {
+      "manifest_sha256": "6537852178662a8c87dfecb7440e1d0b4cc1a4316f34e67cf8b6fdc4c026d028",
+      "member": "payload/roster.json",
+      "run_id": "20261124T011500481447Z-a60b8b0a33144727",
+      "sha256": "f83e1327701a1469321ba1c7259d5752cb4ef5cb88f6aad33ef773fd865a0e99"
+    }
+  },
+  "stop_step": 5000,
+  "target_ids": [
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05",
+    "v06"
+  ],
+  "target_reference_permission": "closed",
+  "utc": "2026-11-24T01:16:51.040690Z"
+}

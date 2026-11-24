@@ -16,3 +16,7 @@ docs/results/reconstruction-recovery/quality/quality-curves.svg whitespace=-blan
 docs/results/reconstruction-recovery/risk/matched-coverage.svg whitespace=-blank-at-eol
 docs/results/reconstruction-recovery/resources/fit-and-resources.svg whitespace=-blank-at-eol
 docs/results/reconstruction-recovery/quality/visual-readback.md whitespace=-blank-at-eof
+
+# Preserve byte identities of the frozen DTU T0 protocol receipts and CSV exports.
+docs/results/t0/** -text
+docs/results/t0/intake/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
